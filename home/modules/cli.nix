@@ -1,0 +1,72 @@
+{ config, pkgs, ... }@inputs:
+{
+  home.packages = with pkgs; [
+    copyq
+    pavucontrol
+    grim
+    hyprpicker
+    slurp
+    wl-clipboard
+    blahaj
+  ];
+
+  home.shellAliases = {
+    sudo = "doas";
+    svim = "doas nvim";
+  };
+
+  programs.zsh = {
+    enable = true;
+    enableCompletion = true;
+    autosuggestion.enable = true;
+    history = {
+      append = true;
+      path = "${config.xdg.dataHome}/zsh/zsh_history";
+    };
+  };
+
+  programs.kitty = {
+    enable = true;
+    font = {
+     name = "Jetbrains Mono";
+     size = 11;
+    };
+    shellIntegration = {
+      enableBashIntegration = true;
+      enableZshIntegration = true;
+    };
+  };
+
+  # fetches
+  programs.fastfetch.enable = true;
+  programs.hyfetch = {
+    enable = true;
+    settings = {
+      preset = "transfeminine";
+	    mode = "rgb";
+	    light_dark = "dark";
+	    lightness = 0.65;
+	    color_align = {
+		    mode = "horizontal";
+		    custom_colors = [];
+		    fore_back = [];
+	    };
+	    backend = "fastfetch";
+	    args = null;
+	    distro = null;
+	    pride_month_shown = [];
+	    pride_month_disable = false;
+    };
+  };
+
+  programs.starship = {
+    enable = true;
+    enableZshIntegration = true;
+    enableBashIntegration = true;
+    settings = pkgs.lib.importTOML ./starship.toml;
+  };
+
+  programs.btop.settings = {
+    update_ms = 200;
+  };
+}

@@ -1,0 +1,10 @@
+.direnv
+*.qcow2
+result
+.git-hooks
+.direnv
+*.qcow2
+result
+.git-hooks
+
+secret-key
