@@ -9,6 +9,9 @@
     QT_STYLE_OVERRIDE = "kvantum";
   };
 
+  # Steam Theme
+  home.packages = [ pkgs.adwsteamgtk ];
+
   home.pointerCursor = {
     package = pkgs.catppuccin-cursors.mochaPink;
     name = "catppuccin-mocha-pink-cursors";
