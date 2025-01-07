@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, pkgs, nur, ... }:
 {
   home.packages = with pkgs; [
     (prismlauncher.override {
@@ -10,6 +10,8 @@
       # Change Java runtimes available to Prism Launcher
       jdks = [
         graalvm-ce
+        zulu8
+        nur.legacyPackages."${pkgs.system}".repos."7mind".graalvm-legacy-packages.graalvm17-ce
       ];
     })
   ];

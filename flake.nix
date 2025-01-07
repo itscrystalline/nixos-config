@@ -19,39 +19,46 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     nix-jebrains-plugins.url = "github:theCapypara/nix-jebrains-plugins";
+    nur = {
+      url = "github:nix-community/NUR";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     # hyprland.url = "github:hyprwm/Hyprland";
     # ags.url = "github:Aylur/ags/v1";
   };
 
-  outputs = inputs@{ nixpkgs, nixpkgs-unstable, home-manager, catppuccin, zen-browser, nix-jebrains-plugins, ... }: {
+  outputs = inputs@{ nixpkgs, nixpkgs-unstable, nur, home-manager, catppuccin, zen-browser, nix-jebrains-plugins, ... }: {
     # Please replace my-nixos with your hostname
     nixosConfigurations.cwystaws-meowchine = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
       specialArgs = { inherit inputs; };
       modules = [
+        # NUR
+        nur.modules.nixos.default
         # Import the previous configuration.nix we used,
         # so the old configuration file still takes effect
         ./configuration.nix
 
-	catppuccin.nixosModules.catppuccin
+        catppuccin.nixosModules.catppuccin
 
-	home-manager.nixosModules.home-manager {
-	  home-manager.useGlobalPkgs = true;
+        home-manager.nixosModules.home-manager {
+          home-manager.useGlobalPkgs = true;
           home-manager.useUserPackages = true;
-	  home-manager.backupFileExtension = "hmbkup";
-	  home-manager.users.itscrystalline = {
-	    imports = [
-	      ./home/home.nix
-        catppuccin.homeManagerModules.catppuccin
-	    ];
-	  };
+          home-manager.backupFileExtension = "hmbkup";
+          home-manager.users.itscrystalline = {
+            imports = [
+              ./home/home.nix
+              catppuccin.homeManagerModules.catppuccin
+            ];
+          };
 
-	  home-manager.extraSpecialArgs = {
-	    inherit inputs;
-	    inherit zen-browser;
-	    inherit nix-jebrains-plugins;
-	  };
-	}
+       	  home-manager.extraSpecialArgs = {
+       	    inherit inputs;
+       	    inherit zen-browser;
+       	    inherit nix-jebrains-plugins;
+            inherit nur;
+       	  };
+        }
       ];
     };
   };
