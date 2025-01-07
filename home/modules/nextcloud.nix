@@ -1,6 +1,6 @@
 { config, pkgs, ... }@inputs:
 let
-  nc_pass = builtins.readFile ./nc_password.txt;
+  nc_pass = builtins.readFile ../../secrets/nc_password.txt;
 in {
   xdg.configFile."rclone/nextcloud.conf".text = ''
     [nextcloud]

@@ -15,6 +15,15 @@
     terminal = "kitty";
   };
 
+  # git config
+  programs.git = {
+    config = {
+      safe = {
+        directory = "/home/itscrystalline/nixos-config";
+      };
+    };
+  };
+
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
