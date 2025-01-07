@@ -14,5 +14,6 @@
     ./modules/hyprland.nix
     ./modules/pipewire/pipewire.nix
     ./modules/users/itscrystalline.nix
+    ./modules/games.nix
   ];
 }
