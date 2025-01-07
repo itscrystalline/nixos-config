@@ -14,16 +14,21 @@
   home.shellAliases = {
     sudo = "doas";
     svim = "doas nvim";
+    update = "sudo nixos-rebuild switch";
   };
 
   programs.zsh = {
     enable = true;
     enableCompletion = true;
     autosuggestion.enable = true;
+    syntaxHighlighting.enable = true;
     history = {
       append = true;
       path = "${config.xdg.dataHome}/zsh/zsh_history";
     };
+    initExtra = ''
+      hyfetch
+    '';
   };
 
   programs.kitty = {
