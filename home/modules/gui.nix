@@ -1,11 +1,22 @@
 { config, pkgs, zen-browser, ... }@inputs:
 {
   home.packages = with pkgs; [
-    unstable.ghostty
     vesktop # discor
     teams-for-linux # teams :vomit:
-    ytmdesktop # YT Music
+    (youtube-music.overrideAttrs (finalAttrs: previousAttrs: {
+      desktopItems = [
+          (makeDesktopItem {
+            name = "youtube-music";
+            exec = "youtube-music --enable-features=UseOzonePlatform --ozone-platform=wayland --enable-wayland-ime %u";
+            icon = "youtube-music";
+            desktopName = "Youtube Music";
+            startupWMClass = "Youtube Music";
+            categories = [ "AudioVideo" ];
+          })
+        ];
+    })) # YT Music
     keepassxc
     teamviewer
+    pavucontrol
   ] ++ [ zen-browser.packages.${pkgs.system}.default ];
 }

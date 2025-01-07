@@ -12,7 +12,7 @@
   # open any terminal in nautilus
   programs.nautilus-open-any-terminal = {
     enable = true;
-    terminal = "kitty";
+    terminal = "ghostty";
   };
 
   # git config

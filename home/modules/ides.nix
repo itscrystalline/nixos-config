@@ -54,7 +54,7 @@ in {
                     };
                 };
                 env = {
-                    TERM = "kitty";
+                    TERM = "ghostty";
                 };
                 font_family = "JetBrainsMono Nerd Font";
                 font_features = null;
@@ -71,9 +71,7 @@ in {
 
             lsp = {
                 rust-analyzer = {
-
                     binary = {
-                        #                        path = lib.getExe pkgs.rust-analyzer;
                         path_lookup = true;
                     };
                 };

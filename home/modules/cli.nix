@@ -2,12 +2,13 @@
 {
   home.packages = with pkgs; [
     copyq
-    pavucontrol
     grim
     hyprpicker
     slurp
     wl-clipboard
     blahaj
+    alsa-utils
+    unstable.ghostty
   ];
 
   home.shellAliases = {
@@ -69,4 +70,14 @@
   programs.btop.settings = {
     update_ms = 200;
   };
+
+  xdg.configFile."ghostty/catppuccin-mocha".source = pkgs.fetchurl {
+    url = "https://raw.githubusercontent.com/catppuccin/ghostty/refs/heads/main/themes/catppuccin-mocha.conf";
+    hash = "sha256-ObWG1CqlSc79FayG7WpIetpYb/gsY4FZ9KPo44VByGk=";
+  };
+  xdg.configFile."ghostty/config".text = ''
+    config-file = catppuccin-mocha
+    font-family = JetBrainsMono Nerd Font
+    font-size = 11
+  '';
 }
