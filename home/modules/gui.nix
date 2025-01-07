@@ -18,5 +18,6 @@
     keepassxc
     teamviewer
     pavucontrol
+    vlc
   ] ++ [ zen-browser.packages.${pkgs.system}.default ];
 }

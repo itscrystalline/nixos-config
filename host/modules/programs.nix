@@ -46,6 +46,7 @@
     gnome-keyring
     # open any term
     nautilus-python
+    file
 
     htop
     btop
