@@ -8,6 +8,7 @@
     ./modules/dev.nix
     ./modules/theme.nix
     ./modules/nextcloud.nix
+    ./modules/games.nix
   ];
 
   # Home Manager needs a bit of information about you and the

@@ -1,6 +1,7 @@
 { config, pkgs, ... }@inputs:
 {
   hardware.graphics.enable = true;
+  hardware.graphics.enable32Bit = true;
 
   # VA-API
   hardware.graphics.extraPackages = with pkgs; [ intel-media-driver libvdpau-va-gl libva-utils ];
