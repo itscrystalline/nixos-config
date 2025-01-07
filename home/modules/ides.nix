@@ -25,8 +25,8 @@ in {
 
   programs.zed-editor = {
         enable = true;
-        package = pkgs.unstable.zed-editor;
-        extensions = ["nix" "toml" "make" "git-firefly"];
+        package = (pkgs.unstable.zed-editor.fhsWithPackages (pkgs: [ pkgs.zlib ]));
+        extensions = ["nix" "toml" "make" "git-firefly" "discord-presence"];
 
         ## everything inside of these brackets are Zed options.
         userSettings = {

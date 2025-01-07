@@ -12,7 +12,7 @@
   # Nix Flakes
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
-  # Hyprland Cachix
+  # Devenv Cachix
   nix.settings = {
     substituters = [
       "https://devenv.cachix.org"
@@ -21,6 +21,7 @@
       "devenv.cachix.org-1:w1cLUi8dv3hnoSPGAuibQv+f9TZLr6cv/Hm9XgU50cw="
     ];
   };
+
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
   # unstable overlay
