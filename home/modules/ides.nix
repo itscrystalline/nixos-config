@@ -82,6 +82,11 @@ in {
                         path_lookup = true;
                     };
                 };
+
+                # discord presence
+                discord_presence = {
+                  git_integration = true;
+                };
             };
 
             languages = {
