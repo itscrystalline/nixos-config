@@ -11,8 +11,6 @@ in {
     plymouth = {
       enable = true;
       themePackages = [ (pkgs.plymouth-blahaj-theme.overrideAttrs (old: {
-
-
         patchPhase = ''
             runHook prePatch
 

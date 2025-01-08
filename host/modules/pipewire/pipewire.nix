@@ -22,7 +22,8 @@
     extraConfig = {
       pipewire."92-low-latency" = {
         "context.properties" = {
-          "default.clock.rate" = 48000;
+          # Lower the clock rates to remove cracking
+          "default.clock.allowed-rates" = [ 44100 48000 ];
           "default.clock.quantum" = 32;
           "default.clock.min-quantum" = 32;
           "default.clock.max-quantum" = 32;
@@ -49,13 +50,15 @@
     };
 
     # Wireplumber BT
-    wireplumber.extraConfig.bluetoothEnhancements = {
-      "monitor.bluez.properties" = {
+    wireplumber.extraConfig = {
+      bluetoothEnhancements = {
+        "monitor.bluez.properties" = {
           "bluez5.enable-sbc-xq" = true;
           "bluez5.enable-msbc" = true;
           "bluez5.enable-hw-volume" = true;
           "bluez5.roles" = [ "a2dp_sink" "a2dp_source" "bap_sink" "bap_source" "hfp_hf" "hfp_ag" ];
           "bluez5.codecs" = [ "sbc" "sbc_xq" "msbc" "aac" "aptx" "aptx_hd" "ldac" ];
+        };
       };
     };
 
