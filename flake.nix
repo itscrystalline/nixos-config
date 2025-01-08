@@ -24,11 +24,12 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     blender-flake.url = "github:edolstra/nix-warez?dir=blender";
+    nix-flatpak.url = "github:gmodena/nix-flatpak";
     # hyprland.url = "github:hyprwm/Hyprland";
     # ags.url = "github:Aylur/ags/v1";
   };
 
-  outputs = inputs@{ nixpkgs, nixpkgs-unstable, nur, home-manager, catppuccin, zen-browser, nix-jebrains-plugins, blender-flake, ... }: {
+  outputs = inputs@{ nixpkgs, nixpkgs-unstable, nur, home-manager, catppuccin, zen-browser, nix-jebrains-plugins, blender-flake, nix-flatpak, ... }: {
     # Please replace my-nixos with your hostname
     nixosConfigurations.cwystaws-meowchine = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
@@ -41,6 +42,7 @@
         ./configuration.nix
 
         catppuccin.nixosModules.catppuccin
+        nix-flatpak.nixosModules.nix-flatpak
 
         home-manager.nixosModules.home-manager {
           home-manager.useGlobalPkgs = true;
@@ -49,7 +51,9 @@
           home-manager.users.itscrystalline = {
             imports = [
               ./home/home.nix
+
               catppuccin.homeManagerModules.catppuccin
+              nix-flatpak.homeManagerModules.nix-flatpak
             ];
           };
 

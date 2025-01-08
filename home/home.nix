@@ -1,4 +1,4 @@
-{ config, pkgs, nur, catppuccin, zen-browser, nix-jebrains-plugins, ... }@inputs:
+{ config, pkgs, nur, catppuccin, zen-browser, nix-jebrains-plugins, nix-flatpak, ... }@inputs:
 
 {
   home.username = "itscrystalline";
