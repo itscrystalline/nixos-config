@@ -1,6 +1,9 @@
 { config, pkgs, nur, catppuccin, zen-browser, nix-jebrains-plugins, ... }@inputs:
 
 {
+  home.username = "itscrystalline";
+  home.homeDirectory = "/home/itscrystalline";
+
   imports = [
     ./modules/ags.nix
     ./modules/cli.nix
@@ -13,8 +16,6 @@
 
   # Home Manager needs a bit of information about you and the
   # paths it should manage.
-  home.username = "itscrystalline";
-  home.homeDirectory = "/home/itscrystalline";
 
   # gnome polkit
   systemd.user.services.polkit-gnome-authentication-agent-1 = {

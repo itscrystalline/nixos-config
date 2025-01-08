@@ -1,4 +1,4 @@
-{ config, pkgs, ... }@inputs:
+{ config, pkgs, home, ... }@inputs:
 {
   home.packages = with pkgs; [
     copyq
@@ -15,6 +15,7 @@
     sudo = "doas";
     svim = "doas nvim";
     update = "sudo nixos-rebuild switch";
+    nuke-cache = "sudo rm -rf ~/.cache/nix";
   };
 
   programs.zsh = {
