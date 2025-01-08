@@ -1,12 +1,32 @@
 {
   "nodes": {
+    "blender-flake": {
+      "inputs": {
+        "nixpkgs": "nixpkgs"
+      },
+      "locked": {
+        "dir": "blender",
+        "lastModified": 1734963688,
+        "narHash": "sha256-FTbHXdo1O5avRbOkSzGWI52V0sRX+B9Ka2trEiuaewk=",
+        "owner": "edolstra",
+        "repo": "nix-warez",
+        "rev": "91297beb20864e611af6017c5eeef1b4564d7157",
+        "type": "github"
+      },
+      "original": {
+        "dir": "blender",
+        "owner": "edolstra",
+        "repo": "nix-warez",
+        "type": "github"
+      }
+    },
     "catppuccin": {
       "inputs": {
         "catppuccin-v1_1": "catppuccin-v1_1",
         "catppuccin-v1_2": "catppuccin-v1_2",
         "home-manager": "home-manager",
         "home-manager-stable": "home-manager-stable",
-        "nixpkgs": "nixpkgs",
+        "nixpkgs": "nixpkgs_2",
         "nixpkgs-stable": "nixpkgs-stable",
         "nuscht-search": "nuscht-search"
       },
@@ -204,7 +224,7 @@
     "nix-jebrains-plugins": {
       "inputs": {
         "flake-utils": "flake-utils_2",
-        "nixpkgs": "nixpkgs_2",
+        "nixpkgs": "nixpkgs_3",
         "systems": "systems_3"
       },
       "locked": {
@@ -223,18 +243,17 @@
     },
     "nixpkgs": {
       "locked": {
-        "lastModified": 1734424634,
-        "narHash": "sha256-cHar1vqHOOyC7f1+tVycPoWTfKIaqkoe1Q6TnKzuti4=",
+        "lastModified": 1733808091,
+        "narHash": "sha256-KWwINTQelKOoQgrXftxoqxmKFZb9pLVfnRvK270nkVk=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "d3c42f187194c26d9f0309a8ecc469d6c878ce33",
+        "rev": "a0f3e10d94359665dba45b71b4227b0aeb851f8e",
         "type": "github"
       },
       "original": {
-        "owner": "NixOS",
-        "ref": "nixos-unstable",
-        "repo": "nixpkgs",
-        "type": "github"
+        "id": "nixpkgs",
+        "ref": "nixos-24.11",
+        "type": "indirect"
       }
     },
     "nixpkgs-stable": {
@@ -270,6 +289,22 @@
     },
     "nixpkgs_2": {
       "locked": {
+        "lastModified": 1734424634,
+        "narHash": "sha256-cHar1vqHOOyC7f1+tVycPoWTfKIaqkoe1Q6TnKzuti4=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "d3c42f187194c26d9f0309a8ecc469d6c878ce33",
+        "type": "github"
+      },
+      "original": {
+        "owner": "NixOS",
+        "ref": "nixos-unstable",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
+    "nixpkgs_3": {
+      "locked": {
         "lastModified": 1733412085,
         "narHash": "sha256-FillH0qdWDt/nlO6ED7h4cmN+G9uXwGjwmCnHs0QVYM=",
         "owner": "NixOS",
@@ -284,7 +319,7 @@
         "type": "github"
       }
     },
-    "nixpkgs_3": {
+    "nixpkgs_4": {
       "locked": {
         "lastModified": 1735669367,
         "narHash": "sha256-tfYRbFhMOnYaM4ippqqid3BaLOXoFNdImrfBfCp4zn0=",
@@ -347,10 +382,11 @@
     },
     "root": {
       "inputs": {
+        "blender-flake": "blender-flake",
         "catppuccin": "catppuccin",
         "home-manager": "home-manager_2",
         "nix-jebrains-plugins": "nix-jebrains-plugins",
-        "nixpkgs": "nixpkgs_3",
+        "nixpkgs": "nixpkgs_4",
         "nixpkgs-unstable": "nixpkgs-unstable",
         "nur": "nur",
         "zen-browser": "zen-browser"

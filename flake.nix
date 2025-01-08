@@ -28,7 +28,7 @@
     # ags.url = "github:Aylur/ags/v1";
   };
 
-  outputs = inputs@{ nixpkgs, nixpkgs-unstable, nur, home-manager, catppuccin, zen-browser, nix-jebrains-plugins, ... }: {
+  outputs = inputs@{ nixpkgs, nixpkgs-unstable, nur, home-manager, catppuccin, zen-browser, nix-jebrains-plugins, blender-flake, ... }: {
     # Please replace my-nixos with your hostname
     nixosConfigurations.cwystaws-meowchine = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
@@ -58,6 +58,7 @@
        	    inherit zen-browser;
        	    inherit nix-jebrains-plugins;
             inherit nur;
+            inherit blender-flake;
        	  };
         }
       ];

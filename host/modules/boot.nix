@@ -1,10 +1,18 @@
 { config, pkgs, ... }@inputs:
-{
+
+let
+    logo = pkgs.fetchurl {
+        url = "https://raw.githubusercontent.com/NixOS/nixos-artwork/refs/heads/master/logo/nixos-white.png";
+        sha256 = "sha256-2bY//ppmTwtovkdaRIj20tKcxOQPrP2Z2zbjQ+9FWtI=";
+    };
+in {
   boot = {
     #plymouth
     plymouth = {
       enable = true;
       themePackages = [ (pkgs.plymouth-blahaj-theme.overrideAttrs (old: {
+
+
         patchPhase = ''
             runHook prePatch
 
@@ -19,7 +27,7 @@
             sed -i 's/0x000000/0x11111b/g' blahaj.plymouth
 
             # watermark
-            cp ${pkgs.nixos-icons}/share/icons/hicolor/48x48/apps/nix-snowflake-white.png watermark.png
+            cp ${logo} watermark.png
 
             runHook postPatch
         '';

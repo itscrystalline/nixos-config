@@ -1,4 +1,4 @@
-{ config, pkgs, zen-browser, ... }@inputs:
+{ config, pkgs, zen-browser, blender-flake, ... }@inputs:
 {
   home.packages = with pkgs; [
     vesktop # discor
@@ -19,5 +19,8 @@
     teamviewer
     pavucontrol
     vlc
-  ] ++ [ zen-browser.packages.${pkgs.system}.default ];
+  ] ++ [
+    zen-browser.packages.${pkgs.system}.default
+    blender-flake.packages.${pkgs.system}.default
+  ];
 }
