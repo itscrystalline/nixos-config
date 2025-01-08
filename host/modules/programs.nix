@@ -7,7 +7,7 @@
   programs.zsh.enable = true;
   # ZSH system completion
   environment.pathsToLink = [ "/share/zsh" "/share/nautilus-python/extensions" ];
-  environment.sessionVariables.NAUTILUS_4_EXTENSION_DIR = pkgs.lib.mkForce "${pkgs.gnome.nautilus-python}/lib/nautilus/extensions-4";
+  environment.sessionVariables.NAUTILUS_4_EXTENSION_DIR = pkgs.lib.mkForce "${pkgs.nautilus-python}/lib/nautilus/extensions-4";
 
   # open any terminal in nautilus
   programs.nautilus-open-any-terminal = {

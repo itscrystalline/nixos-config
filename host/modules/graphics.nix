@@ -22,8 +22,10 @@
     };
   };
 
+
   # CUDA
+  nixpkgs.config.cudaSupport = true;
   environment.systemPackages = with pkgs; [
-    unstable.cudatoolkit
+    cudatoolkit
   ];
 }
