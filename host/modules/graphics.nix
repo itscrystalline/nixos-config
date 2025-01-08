@@ -21,4 +21,9 @@
       nvidiaBusId = "PCI:1:0:0";
     };
   };
+
+  # CUDA
+  environment.systemPackages = with pkgs; [
+    cudatoolkit
+  ];
 }
