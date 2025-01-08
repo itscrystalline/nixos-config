@@ -63,4 +63,10 @@
       apply = true;
     };
   };
+
+  # Blender Catppuccin
+  xdg.configFile."blender/4.3/scripts/presets/interface_theme/mocha_pink.xml".source = pkgs.fetchurl {
+    url = "https://github.com/Dalibor-P/blender/releases/download/v1.1/mocha_pink.xml";
+    sha256 = "sha256-bEmn7pne5q0Cebyq6UKkluuMfGkfGf+uUMQzLUikUaU=";
+  };
 }
