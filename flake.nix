@@ -23,6 +23,7 @@
       url = "github:nix-community/NUR";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    blender-flake.url = "github:edolstra/nix-warez?dir=blender";
     # hyprland.url = "github:hyprwm/Hyprland";
     # ags.url = "github:Aylur/ags/v1";
   };
