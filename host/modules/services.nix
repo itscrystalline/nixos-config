@@ -17,4 +17,9 @@
 
   # TeamViewer service
   services.teamviewer.enable = true;
+
+  # Suspend on power button click
+  services.logind.extraConfig = ''
+     HandlePowerKey=suspend
+   '';
 }
