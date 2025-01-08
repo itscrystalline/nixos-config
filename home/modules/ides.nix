@@ -40,6 +40,11 @@ in {
                 };
             };
 
+            buffer_font_family = "JetBrainsMono Nerd Font";
+            buffer_font_features = {
+              calt = true;
+            };
+
             hour_format = "hour24";
             auto_update = false;
             terminal = {
@@ -97,6 +102,7 @@ in {
                 mode = "system";
             };
             show_whitespaces = "all" ;
+            ui_font_family = "Inter Display";
             ui_font_size = 15;
             buffer_font_size = 15;
         };
