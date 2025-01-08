@@ -9,6 +9,7 @@
     ./modules/security.nix
     ./modules/programs.nix
     ./modules/services.nix
+    ./modules/bluetooth.nix
     ./modules/localization.nix
     ./modules/theming.nix
     ./modules/hyprland.nix
