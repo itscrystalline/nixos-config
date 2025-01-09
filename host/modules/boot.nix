@@ -1,11 +1,6 @@
 { config, pkgs, ... }@inputs:
 
-let
-    logo = pkgs.fetchurl {
-        url = "https://raw.githubusercontent.com/NixOS/nixos-artwork/refs/heads/master/logo/nixos-white.png";
-        sha256 = "sha256-2bY//ppmTwtovkdaRIj20tKcxOQPrP2Z2zbjQ+9FWtI=";
-    };
-in {
+{
   boot = {
     #plymouth
     plymouth = {
@@ -25,7 +20,7 @@ in {
             sed -i 's/0x000000/0x11111b/g' blahaj.plymouth
 
             # watermark
-            cp ${logo} watermark.png
+            cp ${pkgs.nixos-icons}/share/icons/hicolor/48x48/apps/nix-snowflake-white.png watermark.png
 
             runHook postPatch
         '';

@@ -33,7 +33,7 @@
     # Please replace my-nixos with your hostname
     nixosConfigurations.cwystaws-meowchine = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
-      specialArgs = { inherit inputs; };
+      specialArgs = { inherit inputs; inherit blender-flake; };
       modules = [
         # NUR
         nur.modules.nixos.default

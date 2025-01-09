@@ -2,9 +2,10 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, inputs, ... }:
+{ config, pkgs, inputs, blender-flake, ... }:
 
 {
+
   imports = [
     ./host/host.nix
   ];
@@ -34,6 +35,9 @@
         system = prev.system;
       };
     })
+
+    # blender
+    blender-flake.overlays.default
   ];
 
   nix.gc = {

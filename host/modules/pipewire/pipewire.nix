@@ -60,6 +60,13 @@
           "bluez5.codecs" = [ "sbc" "sbc_xq" "msbc" "aac" "aptx" "aptx_hd" "ldac" ];
         };
       };
+      alsa-vm = {
+        "actions" = {
+          "update-props" = {
+            "session.suspend-timeout-seconds" = 0;
+          };
+        };
+      };
     };
 
 
