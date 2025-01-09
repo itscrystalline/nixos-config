@@ -19,6 +19,9 @@
     };
   };
 
+  # flatpak compat
+  fonts.fontDir.enable = true;
+
   catppuccin = {
     flavor = "mocha";
     accent = "pink";

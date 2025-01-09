@@ -12,6 +12,7 @@
     ./modules/theme.nix
     ./modules/nextcloud.nix
     ./modules/games.nix
+    ./modules/flatpak.nix
   ];
 
   # Home Manager needs a bit of information about you and the

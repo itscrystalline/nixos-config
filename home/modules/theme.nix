@@ -1,5 +1,5 @@
 { config, pkgs, catppuccin, ... }@inputs:
-{
+ {
   home.sessionVariables = {
     NIXOS_OZONE_WL = "1";
     NVD_BACKEND = "direct";
