@@ -2,7 +2,7 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, inputs, blender-flake, ... }:
+{ config, pkgs, inputs, blender-flake, system, ... }:
 
 {
 
@@ -31,6 +31,10 @@
   nixpkgs.overlays = [
     (final: prev: {
       unstable = import inputs.nixpkgs-unstable {
+        config.allowUnfree = true;
+        system = prev.system;
+      };
+      bluez-5-75 = import inputs.nixpkgs-bluez-5-75 {
         config.allowUnfree = true;
         system = prev.system;
       };

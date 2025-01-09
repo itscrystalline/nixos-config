@@ -5,6 +5,7 @@
     # NixOS official package source, using the nixos-24.11 branch here
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-24.11";
     nixpkgs-unstable.url = "nixpkgs/nixos-unstable";
+    nixpkgs-bluez-5-75.url = "github:NixOS/nixpkgs/038fb464fcfa79b4f08131b07f2d8c9a6bcc4160";
     home-manager = {
       url = "github:nix-community/home-manager/release-24.11";
       # The `follows` keyword in inputs is used for inheritance.
@@ -29,7 +30,7 @@
     # ags.url = "github:Aylur/ags/v1";
   };
 
-  outputs = inputs@{ nixpkgs, nixpkgs-unstable, nur, home-manager, catppuccin, zen-browser, nix-jebrains-plugins, blender-flake, nix-flatpak, ... }: {
+  outputs = inputs@{ nixpkgs, nixpkgs-unstable, nixpkgs-bluez-5-75, nur, home-manager, catppuccin, zen-browser, nix-jebrains-plugins, blender-flake, nix-flatpak, ... }: {
     # Please replace my-nixos with your hostname
     nixosConfigurations.cwystaws-meowchine = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
