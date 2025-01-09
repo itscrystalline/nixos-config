@@ -49,4 +49,8 @@
   ] ++ [
     zen-browser.packages.${pkgs.system}.default
   ];
+
+  services.flatpak.packages = [
+    "com.github.tchx84.Flatseal"
+  ];
 }
