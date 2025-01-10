@@ -47,6 +47,7 @@
     # open any term
     nautilus-python
     file
+    fd
 
     htop
     btop
