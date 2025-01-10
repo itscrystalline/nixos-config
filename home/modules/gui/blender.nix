@@ -35,6 +35,6 @@ in {
   xdg.configFile."blender/4.3/extensions/user_default".source = pkgs.fetchzip {
     name = "blenderkit";
     url = "https://github.com/BlenderKit/BlenderKit/releases/download/v${blenderkit_version}/blenderkit-v${blenderkit_version}.zip";
-    sha256 = "c2b314cfa3b34c10ded2b6ea5ea8a2cd6a3bda345d33bbade135d557fdca9b30";
+    sha256 = "sha256-nKafsyrMKVQzgvbiurLijKw9GpMldpoRPrLtGleVMa0=";
   };
 }
