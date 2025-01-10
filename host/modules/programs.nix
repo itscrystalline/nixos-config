@@ -48,6 +48,7 @@
     nautilus-python
     file
     fd
+    unzip
 
     htop
     btop
