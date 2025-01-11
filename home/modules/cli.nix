@@ -9,6 +9,7 @@
     blahaj
     alsa-utils
     unstable.ghostty
+    zoxide
   ];
 
   home.shellAliases = {
@@ -30,6 +31,14 @@
     initExtra = ''
       hyfetch
     '';
+  };
+
+  programs.zoxide = {
+    enable = true;
+    enableZshIntegration = true;
+    options = [
+      "--cmd cd"
+    ];
   };
 
   programs.kitty = {
