@@ -17,6 +17,7 @@
     svim = "doas nvim";
     update = "sudo nixos-rebuild switch";
     nuke-cache = "sudo rm -rf ~/.cache/nix";
+    gc = "sudo nix-store --gc";
   };
 
   programs.zsh = {

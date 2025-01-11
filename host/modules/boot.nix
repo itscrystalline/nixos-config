@@ -2,6 +2,9 @@
 
 {
   boot = {
+    # NTFS support
+    supportedFilesystems = [ "ntfs" ];
+
     #plymouth
     plymouth = {
       enable = true;

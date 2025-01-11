@@ -23,6 +23,14 @@
     teamviewer
     pavucontrol
     vlc
+    gparted
+
+    # video, audio, and image editing
+    obs-studio
+    kdenlive
+    gimp
+    davinci-resolve
+    audacity
   ] ++ [
     zen-browser.packages.${pkgs.system}.default
   ];
