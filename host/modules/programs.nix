@@ -49,8 +49,12 @@
     file
     fd
     unzip
+    hydra-check
 
     htop
     btop
+    powertop
   ];
+
+  # powerManagement.powertop.enable = true;
 }

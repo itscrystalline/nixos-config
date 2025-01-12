@@ -4,7 +4,7 @@
     ./gui/blender.nix
   ];
 
-  home.packages = with pkgs; [
+  home.packages = with pkgs.stable; [
     vesktop # discor
     teams-for-linux # teams :vomit:
     (youtube-music.overrideAttrs (finalAttrs: previousAttrs: {

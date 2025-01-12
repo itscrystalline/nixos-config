@@ -5,11 +5,6 @@
 { config, pkgs, inputs, blender-flake, system, ... }:
 
 {
-
-  imports = [
-    ./host/host.nix
-  ];
-
   # Nix Flakes
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
@@ -30,6 +25,10 @@
   # unstable overlay
   nixpkgs.overlays = [
     (final: prev: {
+      stable = import inputs.nixpkgs {
+        config.allowUnfree = true;
+        system = prev.system;
+      };
       unstable = import inputs.nixpkgs-unstable {
         config.allowUnfree = true;
         system = prev.system;

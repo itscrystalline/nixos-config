@@ -22,6 +22,11 @@
     "org/gnome/desktop/interface" = {
       color-scheme = "prefer-dark";
     };
+    # set cursor 3 times !!! (thanks gnome)
+    "org/gnome/desktop/interface" = {
+      cursor-theme = "catppuccin-mocha-pink-cursors";
+      cursor-size = 16;
+    };
   };
 
   qt = {
