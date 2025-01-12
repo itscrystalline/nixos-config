@@ -21,4 +21,7 @@
   services.logind.extraConfig = ''
      HandlePowerKey=suspend
    '';
+
+   # sched-ext scheduler
+   # services.scx.enable = true; # by default uses scx_rustland scheduler
 }

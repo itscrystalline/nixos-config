@@ -6,6 +6,7 @@
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-24.11";
     nixpkgs-unstable.url = "nixpkgs/nixos-unstable";
     nixpkgs-bluez-5-75.url = "github:NixOS/nixpkgs/038fb464fcfa79b4f08131b07f2d8c9a6bcc4160";
+    chaotic.url = "github:chaotic-cx/nyx/nyxpkgs-unstable"; # chaotic-nyx: cachyos kernel
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
     home-manager = {
       url = "github:nix-community/home-manager/release-24.11";
@@ -31,16 +32,19 @@
     # ags.url = "github:Aylur/ags/v1";
   };
 
-  outputs = inputs@{ nixpkgs, nixos-hardware, nur, home-manager, catppuccin, zen-browser, nix-jebrains-plugins, blender-flake, nix-flatpak, ... }: {
+  outputs = inputs@{ nixpkgs, chaotic, nixos-hardware, nur, home-manager, catppuccin, zen-browser, nix-jebrains-plugins, blender-flake, nix-flatpak, ... }: {
     # Please replace my-nixos with your hostname
     nixosConfigurations.cwystaws-meowchine = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
       specialArgs = { inherit inputs blender-flake; };
       modules = [
-        # NUR, catppuccin, nix-flatpak
+        # NUR, catppuccin, nix-flatpak, chaotic-nyx
         nur.modules.nixos.default
         catppuccin.nixosModules.catppuccin
         nix-flatpak.nixosModules.nix-flatpak
+        chaotic.nixosModules.nyx-cache
+        chaotic.nixosModules.nyx-overlay
+        chaotic.nixosModules.nyx-registry
 
         # HW
         nixos-hardware.nixosModules.asus-fx506hm

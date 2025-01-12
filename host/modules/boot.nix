@@ -5,6 +5,9 @@
     # NTFS support
     supportedFilesystems = [ "ntfs" ];
 
+    # CachyOS Kernel
+    kernelPackages = pkgs.linuxPackages_cachyos;
+
     #plymouth
     plymouth = {
       enable = true;
