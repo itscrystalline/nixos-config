@@ -83,8 +83,11 @@
     settings = pkgs.lib.importTOML ./starship.toml;
   };
 
-  programs.btop.settings = {
-    update_ms = 200;
+  programs.btop = {
+    enable = true;
+    settings = {
+        update_ms = 200;
+    };
   };
 
   xdg.configFile."ghostty/catppuccin-mocha".source = pkgs.fetchurl {
