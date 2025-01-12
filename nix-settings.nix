@@ -8,6 +8,19 @@
   # Nix Flakes
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
+  # NIX_PATH
+  nix.nixPath = [
+    "nixpkgs=${inputs.nixpkgs}"
+    "nixos-hardware=${inputs.nixos-hardware}"
+    "nur=${inputs.nur}"
+    "home-manager=${inputs.home-manager}"
+    "catppuccin=${inputs.catppuccin}"
+    "zen-browser=${inputs.zen-browser}"
+    "nix-jebrains-plugins=${inputs.nix-jebrains-plugins}"
+    "blender-flake=${inputs.blender-flake}"
+    "nix-flatpak=${inputs.nix-flatpak}"
+  ];
+
   # Cachixes
   nix.settings = {
     substituters = [
@@ -43,11 +56,12 @@
     blender-flake.overlays.default
   ];
 
-  nix.gc = {
-      automatic = true;
-      dates = "weekly";
-      options = "--delete-older-than 1w";
-    };
+  programs.nh = {
+    enable = true;
+    clean.enable = true;
+    clean.extraArgs = "--keep-since 1w --keep 10";
+    flake = "/home/itscrystalline/nixos-config";
+  };
 
     # Optimize storage
     # You can also manually optimize the store via:

@@ -15,9 +15,9 @@
   home.shellAliases = {
     sudo = "doas";
     svim = "doas nvim";
-    update = "sudo nixos-rebuild switch";
+    update = "sudo nh os switch ~/nixos-config -R";
     nuke-cache = "sudo rm -rf ~/.cache/nix";
-    gc = "sudo nix-store --gc";
+    gc = "sudo nh clean all";
   };
 
   programs.zsh = {

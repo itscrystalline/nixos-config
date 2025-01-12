@@ -47,9 +47,12 @@
   };
 
 
-  # CUDA
+  # CUDA & utilities
   nixpkgs.config.cudaSupport = true;
   environment.systemPackages = with pkgs; [
     cudatoolkit
+    libva-utils
+    nvtop
+    intel-gpu-tools
   ];
 }

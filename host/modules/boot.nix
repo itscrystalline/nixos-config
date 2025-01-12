@@ -1,6 +1,10 @@
 { config, pkgs, ... }@inputs:
 
-{
+let nixos_logo = pkgs.fetchurl {
+  url = "https://raw.githubusercontent.com/NixOS/nixos-artwork/refs/heads/master/logo/nixos-white.svg";
+  sha256 = "sha256-Ly4jHvtxlnOe1CsZ5+f+K7pclUF4S0HS4Vgs5U8Ofl4=";
+};
+in {
   boot = {
     # NTFS support
     supportedFilesystems = [ "ntfs" ];
@@ -26,7 +30,7 @@
             sed -i 's/0x000000/0x11111b/g' blahaj.plymouth
 
             # watermark
-            cp ${pkgs.nixos-icons}/share/icons/hicolor/48x48/apps/nix-snowflake-white.png watermark.png
+            ${pkgs.inkscape}/bin/inkscape --export-height=48 --export-type=png --export-filename="watermark.png" ${nixos_logo}
 
             runHook postPatch
         '';
