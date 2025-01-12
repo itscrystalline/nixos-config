@@ -7,7 +7,6 @@
   services.xserver.displayManager.gdm.enable = true;
   services.xserver.desktopManager.gnome.enable = true;
 
-
   # Enable CUPS to print documents.
   services.printing.enable = true;
 
@@ -24,4 +23,11 @@
 
    # sched-ext scheduler
    # services.scx.enable = true; # by default uses scx_rustland scheduler
+
+   # ananicy: an auto nice daemon
+    services.ananicy = {
+      enable = true;
+      package = pkgs.ananicy-cpp;
+      rulesProvider = pkgs.ananicy-rules-cachyos;
+    };
 }
