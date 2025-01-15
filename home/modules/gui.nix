@@ -7,6 +7,7 @@
   home.packages = with pkgs.stable; [
     vesktop # discor
     teams-for-linux # teams :vomit:
+    beeper # others
     (youtube-music.overrideAttrs (finalAttrs: previousAttrs: {
       desktopItems = [
           (makeDesktopItem {
