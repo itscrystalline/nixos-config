@@ -33,7 +33,9 @@
     audacity
   ] ++ [
     zen-browser.packages.${pkgs.system}.default
-  ];
+  ] ++ (with pkgs.unstable; [
+    valent
+  ]);
 
   services.flatpak.packages = [
     "com.github.tchx84.Flatseal"
