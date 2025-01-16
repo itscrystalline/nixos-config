@@ -32,6 +32,9 @@
     gimp
     davinci-resolve
     audacity
+    aseprite
+    blockbench
+    figma-linux
   ] ++ [
     zen-browser.packages.${pkgs.system}.default
   ] ++ (with pkgs.unstable; [
