@@ -14,14 +14,16 @@ let
     '';
 in {
   home.packages = with pkgs; [
-    (jetbrains.plugins.addPlugins jetbrains.idea-ultimate pluginList)
+    (jetbrains.plugins.addPlugins unstable.jetbrains.idea-ultimate pluginList)
     (jetbrains.plugins.addPlugins unstable.jetbrains.rust-rover pluginList)
     (jetbrains.plugins.addPlugins unstable.jetbrains.pycharm-professional pluginList)
+    (jetbrains.plugins.addPlugins unstable.jetbrains.webstorm pluginList)
   ];
 
   xdg.configFile."JetBrains/RustRover2024.3/rustrover64.vmoptions".text = jetbrainsWayland;
   xdg.configFile."JetBrains/IntelliJIdea2024.3/idea64.vmoptions".text = jetbrainsWayland;
   xdg.configFile."JetBrains/PyCharm2024.3/pycharm64.vmoptions".text = jetbrainsWayland;
+  xdg.configFile."JetBrains/WebStorm2024.3/webstorm64.vmoptions".text = jetbrainsWayland;
 
   programs.zed-editor = {
         enable = true;
