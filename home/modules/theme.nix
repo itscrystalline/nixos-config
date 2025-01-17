@@ -74,4 +74,11 @@
     url = "https://github.com/Dalibor-P/blender/releases/download/v1.1/mocha_pink.xml";
     sha256 = "sha256-bEmn7pne5q0Cebyq6UKkluuMfGkfGf+uUMQzLUikUaU=";
   };
+
+  # aseprite catppuccin
+  xdg.configFile."aseprite/extensions/mocha".source = pkgs.fetchzip {
+    url = "https://github.com/catppuccin/aseprite/releases/download/v1.2.0/mocha.aseprite-extension";
+    sha256 = "sha256-/O2ul4SQ//AU0bo1A0XAwOZAZ0R2zU0nPb6XZGOd6h8=";
+    extension = "zip";
+  };
 }

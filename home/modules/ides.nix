@@ -9,12 +9,21 @@ let
         plugins."nix-idea"
         plugins."systems.fehn.intellijdirenv"
     ];
+
+    idea_pluginList = let
+        plugins = nix-jebrains-plugins.plugins."${pkgs.system}".idea-ultimate."2024.3";
+    in [
+        plugins."com.demonwav.minecraft-dev"
+        plugins."com.github.tth05.minecraft-nbt-intellij-plugin"
+        plugins."com.github.nopothegamer.mcresourceplugin"
+    ];
+
     jetbrainsWayland = ''
       -Dawt.toolkit.name=WLToolkit
     '';
 in {
   home.packages = with pkgs; [
-    (jetbrains.plugins.addPlugins unstable.jetbrains.idea-ultimate pluginList)
+    (jetbrains.plugins.addPlugins unstable.jetbrains.idea-ultimate pluginList ++ idea_pluginList)
     (jetbrains.plugins.addPlugins unstable.jetbrains.rust-rover pluginList)
     (jetbrains.plugins.addPlugins unstable.jetbrains.pycharm-professional pluginList)
     (jetbrains.plugins.addPlugins unstable.jetbrains.webstorm pluginList)
