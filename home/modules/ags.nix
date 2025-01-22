@@ -38,7 +38,6 @@
     sass
     sassc
     libnotify
-    yt-dlp
     cava
     yad
     jq

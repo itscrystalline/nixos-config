@@ -90,6 +90,11 @@
     };
   };
 
+  programs.yt-dlp = {
+    enable = true;
+    package = pkgs.unstable.yt-dlp;
+  };
+
   xdg.configFile."ghostty/catppuccin-mocha".source = pkgs.fetchurl {
     url = "https://raw.githubusercontent.com/catppuccin/ghostty/refs/heads/main/themes/catppuccin-mocha.conf";
     hash = "sha256-ObWG1CqlSc79FayG7WpIetpYb/gsY4FZ9KPo44VByGk=";
