@@ -6,6 +6,8 @@
     devenv
     nixd
     gh
+
+    filezilla
   ];
 
   programs.git = {
