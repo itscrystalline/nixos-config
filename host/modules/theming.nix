@@ -8,6 +8,7 @@
       inter
       (nerdfonts.override { fonts = [ "JetBrainsMono" ]; })
       material-symbols
+      sarabun-font
     ];
 
     fontconfig = {
