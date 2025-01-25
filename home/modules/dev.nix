@@ -6,6 +6,7 @@
     devenv
     nixd
     gh
+    cargo-mommy
 
     filezilla
   ];

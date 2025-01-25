@@ -26,10 +26,12 @@
     substituters = [
       "https://hyprland.cachix.org"
       "https://devenv.cachix.org"
+      "https://nixpkgs-python.cachix.org"
     ];
     trusted-public-keys = [
       "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="
       "devenv.cachix.org-1:w1cLUi8dv3hnoSPGAuibQv+f9TZLr6cv/Hm9XgU50cw="
+      "nixpkgs-python.cachix.org-1:hxjI7pFxTyuTHn2NkvWCrAUcNZLNS3ZAvfYNuYifcEU= devenv.cachix.org-1:w1cLUi8dv3hnoSPGAuibQv+f9TZLr6cv/Hm9XgU50cw="
     ];
   };
 
@@ -62,6 +64,11 @@
     clean.extraArgs = "--keep-since 1w --keep 10";
     flake = "/home/itscrystalline/nixos-config";
   };
+
+  # make devenv shut up
+  nix.extraOptions = ''
+    trusted-users = root itscrystalline
+  '';
 
     # Optimize storage
     # You can also manually optimize the store via:

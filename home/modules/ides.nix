@@ -17,13 +17,20 @@ let
         plugins."com.github.tth05.minecraft-nbt-intellij-plugin"
     ];
 
+    rustrover_pluginList = let
+        plugins = nix-jebrains-plugins.plugins."${pkgs.system}".rust-rover."2024.3";
+    in [
+        plugins."PythonCore"
+    ];
+
+
     jetbrainsWayland = ''
       -Dawt.toolkit.name=WLToolkit
     '';
 in {
   home.packages = with pkgs; [
     (jetbrains.plugins.addPlugins unstable.jetbrains.idea-ultimate (pluginList ++ idea_pluginList))
-    (jetbrains.plugins.addPlugins unstable.jetbrains.rust-rover pluginList)
+    (jetbrains.plugins.addPlugins unstable.jetbrains.rust-rover (pluginList ++ rustrover_pluginList))
     (jetbrains.plugins.addPlugins unstable.jetbrains.pycharm-professional pluginList)
     (jetbrains.plugins.addPlugins unstable.jetbrains.webstorm pluginList)
   ];
@@ -91,6 +98,11 @@ in {
                     };
                 };
                 nix = {
+                    binary = {
+                        path_lookup = true;
+                    };
+                };
+                php = {
                     binary = {
                         path_lookup = true;
                     };
