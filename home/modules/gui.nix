@@ -4,6 +4,23 @@
     ./gui/blender.nix
   ];
 
+  # chromium with LINE extension
+  programs.chromium = {
+    enable = true;
+    extensions = [
+      "ophjlpahpchlmihnnnihgmmeilfjmjjc" # LINE
+    ];
+  };
+  # desktop file
+  xdg.desktopEntries.LINE = {
+    name = "LINE";
+    exec = "${pkgs.chromium}/bin/chromium --app=chrome-extension://ophjlpahpchlmihnnnihgmmeilfjmjjc/index.html";
+    terminal = false;
+    type = "Application";
+    categories = [ "" ];
+    mimeType = ["x-scheme-handler/org-protocol"];
+  };
+
   home.packages = with pkgs.stable; [
     vesktop # discor
     teams-for-linux # teams :vomit:
@@ -44,6 +61,20 @@
   ] ++ (with pkgs.unstable; [
     valent
   ]);
+
+  # Default Browser
+  xdg.mimeApps = {
+    enable = true;
+    defaultApplications = (let browser = "zen.desktop"; in {
+        "text/html" = browser;
+        "text/xml" = browser;
+        "application/xhtml+xml" = browser;
+        "application/vnd.mozilla.xul+xml" = browser;
+        "x-scheme-handler/http" = browser;
+        "x-scheme-handler/https" = browser;
+    });
+  };
+  home.sessionVariables.DEFAULT_BROWSER = "${zen-browser.packages.${pkgs.system}.default}/bin/qutebrowser";
 
   services.flatpak.packages = [
     "com.github.tchx84.Flatseal"

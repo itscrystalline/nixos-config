@@ -3,7 +3,7 @@
   users.users.itscrystalline = {
     isNormalUser = true;
     description = "itscrystalline";
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = [ "networkmanager" "wheel" "libvirtd" ];
     shell = pkgs.zsh;
   };
   # PFP
