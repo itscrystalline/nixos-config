@@ -30,9 +30,16 @@
     nix-flatpak.url = "github:gmodena/nix-flatpak";
     # hyprland.url = "github:hyprwm/Hyprland";
     # ags.url = "github:Aylur/ags/v1";
+
+    # nix-on-droid
+    nix-on-droid = {
+      url = "github:nix-community/nix-on-droid/release-24.05";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.home-manager.follows = "home-manager";
+    };
   };
 
-  outputs = inputs@{ nixpkgs, chaotic, nixos-hardware, nur, home-manager, catppuccin, zen-browser, nix-jebrains-plugins, blender-flake, nix-flatpak, ... }: {
+  outputs = inputs@{ nixpkgs, chaotic, nixos-hardware, nix-on-droid, nur, home-manager, catppuccin, zen-browser, nix-jebrains-plugins, blender-flake, nix-flatpak, ... }: {
     # Please replace my-nixos with your hostname
     nixosConfigurations.cwystaws-meowchine = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
@@ -76,6 +83,24 @@
        	  };
         }
       ];
+    };
+
+    # nix-on-droid
+    nixOnDroidConfigurations.cwystaw-the-neko = nix-on-droid.lib.nixOnDroidConfiguration {
+      system = "aarch64-linux";
+
+      specialArgs = { inherit inputs; };
+
+      modules = [
+        ./nix-settings.nix
+        ./host/devices/cwystaw-the-neko/host.nix
+      ];
+
+      nixpkgs.overlays = [
+        nix-on-droid.overlays.default
+      ];
+
+      home-manager-path = home-manager.outPath;
     };
   };
 }

@@ -35,6 +35,10 @@
     aseprite
     blockbench
     figma-linux
+
+    # wine
+    wineWowPackages.waylandFull
+    winetricks
   ] ++ [
     zen-browser.packages.${pkgs.system}.default
   ] ++ (with pkgs.unstable; [
