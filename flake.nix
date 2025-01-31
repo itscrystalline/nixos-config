@@ -37,9 +37,15 @@
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.home-manager.follows = "home-manager";
     };
+
+    #nvchad
+    nvchad4nix = {
+      url = "github:nix-community/nix4nvchad";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
-  outputs = inputs@{ nixpkgs, chaotic, nixos-hardware, nix-on-droid, nur, home-manager, catppuccin, zen-browser, nix-jebrains-plugins, blender-flake, nix-flatpak, ... }: {
+  outputs = inputs@{ nixpkgs, chaotic, nixos-hardware, nix-on-droid, nur, home-manager, catppuccin, zen-browser, nix-jebrains-plugins, blender-flake, nix-flatpak, nvchad4nix, ... }: {
     # Please replace my-nixos with your hostname
     nixosConfigurations.cwystaws-meowchine = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
@@ -71,6 +77,7 @@
 
               catppuccin.homeManagerModules.catppuccin
               nix-flatpak.homeManagerModules.nix-flatpak
+              nvchad4nix.homeManagerModule
             ];
           };
 
