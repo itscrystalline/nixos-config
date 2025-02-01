@@ -33,6 +33,8 @@ in {
     (jetbrains.plugins.addPlugins unstable.jetbrains.rust-rover (pluginList ++ rustrover_pluginList))
     (jetbrains.plugins.addPlugins unstable.jetbrains.pycharm-professional pluginList)
     (jetbrains.plugins.addPlugins unstable.jetbrains.webstorm pluginList)
+
+    neovide
   ];
 
   xdg.configFile."JetBrains/RustRover2024.3/rustrover64.vmoptions".text = jetbrainsWayland;
@@ -139,10 +141,14 @@ in {
             vimPlugins.nvim-dap-ui
             vimPlugins.rust-vim
             vimPlugins.crates-nvim
+            vimPlugins.lazygit-nvim
+            vimPlugins.telescope-zoxide
+            vimPlugins.zoxide-vim
             (python3.withPackages(ps: with ps; [
               python-lsp-server
               flake8
             ]))
+            lazygit
             rust-analyzer
             lldb
           ];
@@ -156,9 +162,11 @@ in {
       extraConfig = ''
         require "nvchad.mappings"
 
+        --lsp
+
         local lspconfig = require "lspconfig"
 
-        local servers = { "pylsp" }
+        local servers = { "pylsp", "nixd" }
         local nvlsp = require "nvchad.configs.lspconfig"
 
         for _, lsp in ipairs(servers) do
@@ -170,6 +178,15 @@ in {
         end
 
         local map = vim.keymap.set
+
+        -- indents
+        local n_opts = {silent = true, noremap = true} 
+        -- Visual mode
+        map('v', '<', '<gv', n_opts)
+        map('v', '>', '>gv', n_opts)
+        -- Normal mode
+        map('n', '<', '<<', n_opts)
+        map('n', '>', '>>', n_opts)
 
         -- Nvim DAP
         map("n", "<Leader>dl", "<cmd>lua require'dap'.step_into()<CR>", { desc = "Debugger step into" })
@@ -188,6 +205,12 @@ in {
 
         -- rustaceanvim
         map("n", "<Leader>dt", "<cmd>lua vim.cmd('RustLsp testables')<CR>", { desc = "Debugger testables" })
+
+        -- lazygit
+        map("n", "<Leader>gg", "<cmd>LazyGit<CR>", { desc = "Open lazygit" })
+
+        --zoxide
+        map("n", "<leader>cd", require("telescope").extensions.zoxide.list)
       '';
       extraPlugins = ''
         return {
@@ -264,6 +287,37 @@ in {
                 end
             },
             {
+                "kdheepak/lazygit.nvim",
+                lazy = false,
+                cmd = {
+                    "LazyGit",
+                    "LazyGitConfig",
+                    "LazyGitCurrentFile",
+                    "LazyGitFilter",
+                    "LazyGitFilterCurrentFile",
+                },
+                -- optional for floating window border decoration
+                dependencies = {
+                    "nvim-telescope/telescope.nvim",
+                    "nvim-lua/plenary.nvim",
+                },
+                config = function()
+                    require("telescope").load_extension("lazygit")
+                end,
+            },
+            {
+                "jvgrootveld/telescope-zoxide",
+                lazy = false,
+                dependencies = {
+                    "nvim-telescope/telescope.nvim",
+                    "nvim-lua/plenary.nvim",
+                    "nanotee/zoxide.vim",
+                },
+                config = function()
+                    require("telescope").load_extension('zoxide')
+                end,
+            }
+            {
               'IogaMaster/neocord',
               event = "VeryLazy",
               config = function()
@@ -273,4 +327,12 @@ in {
         }
       '';
     };
+
+    xdg.configFile."neovide/config.toml".text = ''
+      fork = true
+
+      [font]
+      normal = ["JetBrainsMono Nerd Font"]
+      size = 15
+    '';
   }
