@@ -18,6 +18,7 @@
     update = "sudo nh os switch ~/nixos-config -R";
     nuke-cache = "sudo rm -rf ~/.cache/nix";
     gc = "sudo nh clean all";
+    ":q" = "exit";
 
     # :3
     cargo = "cargo mommy";

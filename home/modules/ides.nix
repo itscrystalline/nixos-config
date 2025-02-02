@@ -151,6 +151,7 @@ in {
             lazygit
             rust-analyzer
             lldb
+            zoxide
           ];
       chadrcConfig = ''
         local M = {}
@@ -161,6 +162,8 @@ in {
       '';
       extraConfig = ''
         require "nvchad.mappings"
+
+        vim.opt.smartindent = true
 
         --lsp
 
@@ -188,12 +191,22 @@ in {
         map('n', '<', '<<', n_opts)
         map('n', '>', '>>', n_opts)
 
+        -- arrow keys
+        map('n', '<C-Left>', '<C-h>', n_opts)
+        map('n', '<C-Down>', '<C-j>', n_opts)
+        map('n', '<C-Up>', '<C-k>', n_opts)
+        map('n', '<C-Right>', '<C-l>', n_opts)
+
+        -- inline hints
+        map('n', "<Leader>l", "<cmd>lua if vim.lsp.inlay_hint.is_enabled() then vim.lsp.inlay_hint.enable(false, { bufnr }) else vim.lsp.inlay_hint.enable(true, { bufnr }) end<CR>", { desc = "Enable Inline Hints" })
+
         -- Nvim DAP
         map("n", "<Leader>dl", "<cmd>lua require'dap'.step_into()<CR>", { desc = "Debugger step into" })
         map("n", "<Leader>dj", "<cmd>lua require'dap'.step_over()<CR>", { desc = "Debugger step over" })
         map("n", "<Leader>dk", "<cmd>lua require'dap'.step_out()<CR>", { desc = "Debugger step out" })
         map("n", "<Leader>dc", "<cmd>lua require'dap'.continue()<CR>", { desc = "Debugger continue" })
         map("n", "<Leader>db", "<cmd>lua require'dap'.toggle_breakpoint()<CR>", { desc = "Debugger toggle breakpoint" })
+        
         map(
         	"n",
         	"<Leader>dd",
@@ -211,27 +224,61 @@ in {
 
         --zoxide
         map("n", "<leader>cd", require("telescope").extensions.zoxide.list)
+
+        -- lsp
+        map("n", "gd", require("telescope.builtin").lsp_definitions(), { desc = "Go to Definition", silent = true, noremap = true })
+        map("n", "gi", require("telescope.builtin").lsp_implementations(), { desc = "Go to Definition", silent = true, noremap = true })
+        map("n", "gt", require("telescope.builtin").lsp_type_definitions(), { desc = "Go to Type Definition", silent = true, noremap = true })
+        map("n", "gr", require("telescope.builtin").lsp_references(), { desc = "List References for this symbol", silent = true, noremap = true })
+        map("n", "gs", require("telescope.builtin").lsp_document_symbols(), { desc = "List all symbols in buffer", silent = true, noremap = true })
+        map("n", "<Leader>ra", "<cmd>lua vim.lsp.buf.rename()<CR>", { desc = "Rename Symbol", silent = true, noremap = true })
+
+
+        --neovide
+        if vim.g.neovide then
+          vim.api.nvim_set_keymap('v', '<sc-c>', '"+y', {noremap = true})
+          vim.api.nvim_set_keymap('n', '<sc-v>', '"+P', {noremap = true})
+          vim.api.nvim_set_keymap('v', '<sc-v>', '"+P', {noremap = true})
+          vim.api.nvim_set_keymap('c', '<sc-v>', '<C-R>0', {noremap = true})
+          vim.api.nvim_set_keymap('i', '<sc-v>', '<ESC>"+p', {noremap = true})
+          vim.api.nvim_set_keymap('t', '<sc-v>', '<C-\\><C-n>"+Pi', {noremap = true})
+
+          vim.g.neovide_padding_top = 16
+          vim.g.neovide_padding_bottom = 16
+          vim.g.neovide_padding_right = 16
+          vim.g.neovide_padding_left = 16
+          vim.g.neovide_hide_mouse_when_typing = false
+          vim.g.neovide_cursor_vfx_mode = "railgun"
+          vim.g.neovide_cursor_animation_length = 0.1
+        end
       '';
       extraPlugins = ''
         return {
+          {
+                "actionshrimp/direnv.nvim",
+                lazy = false,
+                opts = {
+                    type = "dir"
+                }
+          },
           {
                 'mrcjkb/rustaceanvim',
                 version = '^5', -- Recommended
                 lazy = false, -- This plugin is already lazy
                 ft = "rust",
                 config = function ()
-                local mason_registry = require('mason-registry')
-                local codelldb = mason_registry.get_package("codelldb")
-                local extension_path = codelldb:get_install_path() .. "/extension/"
-                local codelldb_path = extension_path .. "adapter/codelldb"
-                local liblldb_path = extension_path .. "lldb/lib/liblldb.so"
-                local cfg = require('rustaceanvim.config')
+                  local mason_registry = require('mason-registry')
+                  local codelldb = mason_registry.get_package("codelldb")
+                  local extension_path = codelldb:get_install_path() .. "/extension/"
+                  local codelldb_path = extension_path .. "adapter/codelldb"
+                  local liblldb_path = extension_path .. "lldb/lib/liblldb.so"
+                  local cfg = require('rustaceanvim.config')
 
-                vim.g.rustaceanvim = {
-                    dap = {
-                    adapter = cfg.get_codelldb_adapter(codelldb_path, liblldb_path),
-                    },
-                }
+                  vim.g.rustaceanvim = {
+                      dap = {
+                          adapter = cfg.get_codelldb_adapter(codelldb_path, liblldb_path),
+                      },
+                  }
                 end
             },
 
@@ -246,20 +293,20 @@ in {
             {
                 'mfussenegger/nvim-dap',
                 config = function()
-         			local dap, dapui = require("dap"), require("dapui")
-                dap.listeners.before.attach.dapui_config = function()
-                    dapui.open()
-                end
-                dap.listeners.before.launch.dapui_config = function()
-                    dapui.open()
-                end
-                dap.listeners.before.event_terminated.dapui_config = function()
-                    dapui.close()
-                end
-                dap.listeners.before.event_exited.dapui_config = function()
-                    dapui.close()
-                end
-          		end,
+                local dap, dapui = require("dap"), require("dapui")
+                  dap.listeners.before.attach.dapui_config = function()
+                      dapui.open()
+                  end
+                  dap.listeners.before.launch.dapui_config = function()
+                      dapui.open()
+                  end
+                  dap.listeners.before.event_terminated.dapui_config = function()
+                      dapui.close()
+                  end
+                  dap.listeners.before.event_exited.dapui_config = function()
+                      dapui.close()
+                  end
+                end,
             },
 
             {
@@ -316,7 +363,26 @@ in {
                 config = function()
                     require("telescope").load_extension('zoxide')
                 end,
-            }
+            },
+            {
+                "kylechui/nvim-surround",
+                -- version = "*", -- Use for stability; omit to use `main` branch for the latest features
+                event = "VeryLazy",
+                config = function()
+                    require("nvim-surround").setup({
+                        -- Configuration here, or leave empty to use defaults
+                    })
+                end
+            },
+            {
+              "folke/todo-comments.nvim",
+              dependencies = { "nvim-lua/plenary.nvim" },
+              opts = {
+                -- your configuration comes here
+                -- or leave it empty to use the default settings
+                -- refer to the configuration section below
+              }
+            },
             {
               'IogaMaster/neocord',
               event = "VeryLazy",
@@ -332,7 +398,7 @@ in {
       fork = true
 
       [font]
-      normal = ["JetBrainsMono Nerd Font"]
-      size = 15
+      normal = ["JetBrainsMono Nerd Font", "Noto Sans CJK JP", "Noto Color Emoji" ]
+      size = 12
     '';
   }

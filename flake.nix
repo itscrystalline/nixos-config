@@ -26,6 +26,10 @@
       url = "github:nix-community/NUR";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    lix-module = {
+      url = "https://git.lix.systems/lix-project/nixos-module/archive/2.92.0.tar.gz";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     blender-flake.url = "github:edolstra/nix-warez?dir=blender";
     nix-flatpak.url = "github:gmodena/nix-flatpak";
     # hyprland.url = "github:hyprwm/Hyprland";
@@ -45,19 +49,20 @@
     };
   };
 
-  outputs = inputs@{ nixpkgs, chaotic, nixos-hardware, nix-on-droid, nur, home-manager, catppuccin, zen-browser, nix-jebrains-plugins, blender-flake, nix-flatpak, nvchad4nix, ... }: {
+  outputs = inputs@{ nixpkgs, chaotic, nixos-hardware, nix-on-droid, nur, home-manager, catppuccin, zen-browser, nix-jebrains-plugins, blender-flake, nix-flatpak, nvchad4nix, lix-module, ... }: {
     # Please replace my-nixos with your hostname
     nixosConfigurations.cwystaws-meowchine = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
       specialArgs = { inherit inputs blender-flake; };
       modules = [
-        # NUR, catppuccin, nix-flatpak, chaotic-nyx
+        # NUR, catppuccin, nix-flatpak, chaotic-nyx, lix
         nur.modules.nixos.default
         catppuccin.nixosModules.catppuccin
         nix-flatpak.nixosModules.nix-flatpak
         chaotic.nixosModules.nyx-cache
         chaotic.nixosModules.nyx-overlay
         chaotic.nixosModules.nyx-registry
+        lix-module.nixosModules.default
 
         # HW
         nixos-hardware.nixosModules.asus-fx506hm
