@@ -144,10 +144,14 @@ in {
             vimPlugins.lazygit-nvim
             vimPlugins.telescope-zoxide
             vimPlugins.zoxide-vim
+            vimPlugins.clangd_extensions-nvim
             (python3.withPackages(ps: with ps; [
               python-lsp-server
               flake8
+              pynvim
             ]))
+            clang
+            clang-tools
             lazygit
             rust-analyzer
             lldb
@@ -164,12 +168,13 @@ in {
         require "nvchad.mappings"
 
         vim.opt.smartindent = true
+        vim.lsp.inlay_hint.enable(true)
 
         --lsp
 
         local lspconfig = require "lspconfig"
 
-        local servers = { "pylsp", "nixd" }
+        local servers = { "pylsp", "nixd", "clangd" }
         local nvlsp = require "nvchad.configs.lspconfig"
 
         for _, lsp in ipairs(servers) do
@@ -226,22 +231,23 @@ in {
         map("n", "<leader>cd", require("telescope").extensions.zoxide.list)
 
         -- lsp
-        map("n", "gd", require("telescope.builtin").lsp_definitions(), { desc = "Go to Definition", silent = true, noremap = true })
-        map("n", "gi", require("telescope.builtin").lsp_implementations(), { desc = "Go to Definition", silent = true, noremap = true })
-        map("n", "gt", require("telescope.builtin").lsp_type_definitions(), { desc = "Go to Type Definition", silent = true, noremap = true })
-        map("n", "gr", require("telescope.builtin").lsp_references(), { desc = "List References for this symbol", silent = true, noremap = true })
-        map("n", "gs", require("telescope.builtin").lsp_document_symbols(), { desc = "List all symbols in buffer", silent = true, noremap = true })
+        map("n", "gd", '<cmd>lua require("telescope.builtin").lsp_definitions()<CR>', { desc = "Go to Definition", silent = true, noremap = true })
+        map("n", "gi", '<cmd>lua require("telescope.builtin").lsp_implementations()<CR>', { desc = "Go to Imglementation", silent = true, noremap = true })
+        map("n", "gt", '<cmd>lua require("telescope.builtin").lsp_type_definitions()<CR>', { desc = "Go to Type Definition", silent = true, noremap = true })
+        map("n", "gr", '<cmd>lua require("telescope.builtin").lsp_references()<CR>', { desc = "List References for this symbol", silent = true, noremap = true })
+        map("n", "gs", '<cmd>lua require("telescope.builtin").lsp_document_symbols()<CR>', { desc = "List all symbols in buffer", silent = true, noremap = true })
+
+        map("n", "gS", '<cmd>lua require("telescope.builtin").lsp_dynamic_workspace_symbols()<CR>', { desc = "List all symbols in buffer", silent = true, noremap = true })        
         map("n", "<Leader>ra", "<cmd>lua vim.lsp.buf.rename()<CR>", { desc = "Rename Symbol", silent = true, noremap = true })
 
 
         --neovide
         if vim.g.neovide then
-          vim.api.nvim_set_keymap('v', '<sc-c>', '"+y', {noremap = true})
-          vim.api.nvim_set_keymap('n', '<sc-v>', '"+P', {noremap = true})
-          vim.api.nvim_set_keymap('v', '<sc-v>', '"+P', {noremap = true})
-          vim.api.nvim_set_keymap('c', '<sc-v>', '<C-R>0', {noremap = true})
-          vim.api.nvim_set_keymap('i', '<sc-v>', '<ESC>"+p', {noremap = true})
-          vim.api.nvim_set_keymap('t', '<sc-v>', '<C-\\><C-n>"+Pi', {noremap = true})
+          vim.keymap.set('v', '<C-c>', '"+y') -- Copy
+          vim.keymap.set('n', '<C-v>', '"+P') -- Paste normal mode
+          vim.keymap.set('v', '<C-v>', '"+P') -- Paste visual mode
+          vim.keymap.set('c', '<C-v>', '<C-R>+') -- Paste command mode
+          vim.keymap.set('i', '<C-v>', '<ESC>l"+Pli') -- Paste insert mode
 
           vim.g.neovide_padding_top = 16
           vim.g.neovide_padding_bottom = 16
@@ -332,6 +338,12 @@ in {
                     sources = { { name = "crates" }}
                 })
                 end
+            },
+            {
+                'numirias/semshi'
+            },
+            {
+                'p00f/clangd_extensions.nvim'
             },
             {
                 "kdheepak/lazygit.nvim",
