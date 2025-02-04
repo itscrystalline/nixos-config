@@ -5,14 +5,14 @@
   ];
 
   # chromium with LINE extension
-  programs.chromium = {
+  programs.chromium = pkgs.lib.mkIf config.gui {
     enable = true;
     extensions = [
       "ophjlpahpchlmihnnnihgmmeilfjmjjc" # LINE
     ];
   };
   # desktop file
-  xdg.desktopEntries.LINE = {
+  xdg.desktopEntries.LINE = pkgs.lib.mkIf config.gui {
     name = "LINE";
     exec = "${pkgs.chromium}/bin/chromium --app=chrome-extension://ophjlpahpchlmihnnnihgmmeilfjmjjc/index.html";
     terminal = false;
@@ -21,7 +21,7 @@
     mimeType = ["x-scheme-handler/org-protocol"];
   };
 
-  home.packages = with pkgs.stable; [
+  home.packages = pkgs.lib.mkIf config.gui (with pkgs.stable; [
     vesktop # discor
     teams-for-linux # teams :vomit:
     beeper # others
@@ -43,14 +43,11 @@
     vlc
     gparted
 
-    # term emulators
-    unstable.ghostty
-    
     # cli that depend on gui
-    copyq                                                                                                                                                    
-    grim     
-    hyprpicker                                                                                                                                               
-    slurp                                                                                                                                                    
+    copyq
+    grim
+    hyprpicker
+    slurp
     wl-clipboard
     alsa-utils
 
@@ -71,17 +68,18 @@
     zen-browser.packages.${pkgs.system}.default
   ] ++ (with pkgs.unstable; [
     valent
-  ]);
-  
-  programs.kitty = {
+    ghostty
+  ]));
+
+  programs.kitty = pkgs.lib.mkIf config.gui {
     enable = true;
     shellIntegration = {
-      zsh = true;
+      enableZshIntegration = true;
     };
   };
 
   # Default Browser
-  xdg.mimeApps = {
+  xdg.mimeApps = pkgs.lib.mkIf config.gui {
     enable = true;
     defaultApplications = (let browser = "zen.desktop"; in {
         "text/html" = browser;
@@ -92,9 +90,9 @@
         "x-scheme-handler/https" = browser;
     });
   };
-  home.sessionVariables.DEFAULT_BROWSER = "${zen-browser.packages.${pkgs.system}.default}/bin/qutebrowser";
+  home.sessionVariables.DEFAULT_BROWSER = pkgs.lib.optionalString config.gui "${zen-browser.packages.${pkgs.system}.default}/bin/zen";
 
-  services.flatpak.packages = [
+  services.flatpak.packages = pkgs.lib.optionals config.gui [
     "com.github.tchx84.Flatseal"
   ];
 }

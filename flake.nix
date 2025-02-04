@@ -69,7 +69,7 @@
 
         # Import the previous configuration.nix we used,
         # so the old configuration file still takes effect
-        ./config.nix
+        ./vars.nix
         ./nix-settings.nix
         ./host/devices/cwystaws-meowchine/host.nix
 
@@ -88,6 +88,7 @@
           };
 
        	  home-manager.extraSpecialArgs = {
+            inherit nixpkgs;
        	    inherit inputs;
        	    inherit zen-browser;
        	    inherit nix-jebrains-plugins;

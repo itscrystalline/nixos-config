@@ -1,5 +1,5 @@
-{ config, pkgs, ... }@inputs:
-{
+{ config, pkgs, lib, ... }@inputs:
+lib.mkIf config.gui {
   home.packages = with pkgs; [
     (ags.overrideAttrs (old: {
       buildInputs = old.buildInputs ++ [

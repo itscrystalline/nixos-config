@@ -37,100 +37,107 @@ in {
     neovide
   ];
 
-  config = pkgs.lib.mkIf config.gui {
-    xdg.configFile."JetBrains/RustRover2024.3/rustrover64.vmoptions".text = jetbrainsWayland;
-    xdg.configFile."JetBrains/IntelliJIdea2024.3/idea64.vmoptions".text = jetbrainsWayland;
-    xdg.configFile."JetBrains/PyCharm2024.3/pycharm64.vmoptions".text = jetbrainsWayland;
-    xdg.configFile."JetBrains/WebStorm2024.3/webstorm64.vmoptions".text = jetbrainsWayland;
+  xdg.configFile = {  
+    "JetBrains/RustRover2024.3/rustrover64.vmoptions".text = jetbrainsWayland; 
+    "JetBrains/IntelliJIdea2024.3/idea64.vmoptions".text = jetbrainsWayland;
+    "JetBrains/PyCharm2024.3/pycharm64.vmoptions".text = jetbrainsWayland; 
+    "JetBrains/WebStorm2024.3/webstorm64.vmoptions".text = jetbrainsWayland; 
+    "neovide/config.toml".text = ''
+      fork = true
 
-    programs.zed-editor = {
-      enable = true;
-      package = (pkgs.unstable.zed-editor.fhsWithPackages (pkgs: [ pkgs.zlib ]));
-      extensions = ["nix" "toml" "make" "git-firefly" "discord-presence"];
+      [font]
+      normal = ["JetBrainsMono Nerd Font", "Noto Sans CJK JP", "Noto Color Emoji" ]
+      size = 12
+    '';  
+  };
 
-      ## everything inside of these brackets are Zed options.
-      userSettings = {
-        assistant = {
-            enabled = true;
-            version = "2";
-            default_open_ai_model = null;
-            default_model = {
-                provider = "zed.dev";
-                model = "claude-3-5-sonnet-latest";
-            };
+  programs.zed-editor = pkgs.lib.mkIf config.gui {
+    enable = true;
+    package = (pkgs.unstable.zed-editor.fhsWithPackages (pkgs: [ pkgs.zlib ]));
+    extensions = ["nix" "toml" "make" "git-firefly" "discord-presence"];
+
+    ## everything inside of these brackets are Zed options.
+    userSettings = {
+      assistant = {
+          enabled = true;
+          version = "2";
+          default_open_ai_model = null;
+          default_model = {
+              provider = "zed.dev";
+              model = "claude-3-5-sonnet-latest";
+          };
+      };
+
+      buffer_font_family = "JetBrainsMono Nerd Font";
+      buffer_font_features = {
+        calt = true;
+      };
+
+      hour_format = "hour24";
+      auto_update = false;
+      terminal = {
+          alternate_scroll = "off";
+          blinking = "off";
+          copy_on_select = false;
+          dock = "bottom";
+          detect_venv = {
+              on = {
+                  directories = [".env" "env" ".venv" "venv"];
+                  activate_script = "default";
+              };
+          };
+          env = {
+              TERM = "ghostty";
+          };
+          font_family = "JetBrainsMono Nerd Font";
+          font_features = null;
+          font_size = null;
+          line_height = "comfortable";
+          option_as_meta = false;
+          button = false;
+          shell = "system";
+          toolbar = {
+              title = true;
+          };
+          working_directory = "current_project_directory";
         };
 
-        buffer_font_family = "JetBrainsMono Nerd Font";
-        buffer_font_features = {
-          calt = true;
-        };
-
-        hour_format = "hour24";
-        auto_update = false;
-        terminal = {
-            alternate_scroll = "off";
-            blinking = "off";
-            copy_on_select = false;
-            dock = "bottom";
-            detect_venv = {
-                on = {
-                    directories = [".env" "env" ".venv" "venv"];
-                    activate_script = "default";
+        lsp = {
+            rust-analyzer = {
+                binary = {
+                    path_lookup = true;
                 };
             };
-            env = {
-                TERM = "ghostty";
+            nix = {
+                binary = {
+                    path_lookup = true;
+                };
             };
-            font_family = "JetBrainsMono Nerd Font";
-            font_features = null;
-            font_size = null;
-            line_height = "comfortable";
-            option_as_meta = false;
-            button = false;
-            shell = "system";
-            toolbar = {
-                title = true;
+            php = {
+                binary = {
+                    path_lookup = true;
+                };
             };
-            working_directory = "current_project_directory";
-          };
 
-          lsp = {
-              rust-analyzer = {
-                  binary = {
-                      path_lookup = true;
-                  };
-              };
-              nix = {
-                  binary = {
-                      path_lookup = true;
-                  };
-              };
-              php = {
-                  binary = {
-                      path_lookup = true;
-                  };
-              };
+            # discord presence
+            discord_presence = {
+              git_integration = true;
+            };
+        };
 
-              # discord presence
-              discord_presence = {
-                git_integration = true;
-              };
-          };
+        languages = {
+        };
 
-          languages = {
-          };
-
-          ## tell zed to use direnv and direnv can use a flake.nix enviroment.
-          load_direnv = "shell_hook";
-          base_keymap = "JetBrains";
-          theme = {
-              mode = "system";
-          };
-          show_whitespaces = "all" ;
-          ui_font_family = "Inter Display";
-          ui_font_size = 15;
-          buffer_font_size = 15;
-      };
+        ## tell zed to use direnv and direnv can use a flake.nix enviroment.
+        load_direnv = "shell_hook";
+        base_keymap = "JetBrains";
+        theme = {
+            mode = "system";
+        };
+        show_whitespaces = "all" ;
+        ui_font_family = "Inter Display";
+        ui_font_size = 15;
+        buffer_font_size = 15;
     };
   };
 
@@ -406,13 +413,5 @@ in {
             }
         }
       '';
-  };
-
-  xdg.configFile."neovide/config.toml".text = ''
-      fork = true
-
-      [font]
-      normal = ["JetBrainsMono Nerd Font", "Noto Sans CJK JP", "Noto Color Emoji" ]
-      size = 12
-  '';
+  }; 
 }
