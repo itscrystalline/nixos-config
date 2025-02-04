@@ -5,12 +5,11 @@
   home.homeDirectory = "/home/itscrystalline"; 
 
   imports = [
-    ./config.nix
+    ./../vars.nix
     ./modules/cli.nix
     ./modules/dev.nix
     ./modules/theme.nix
     ./modules/nextcloud.nix
-  ] ++ pkgs.lib.optionals config.gui [
     ./modules/ags.nix
     ./modules/gui.nix
     ./modules/games.nix
