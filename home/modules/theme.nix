@@ -1,5 +1,6 @@
 { config, pkgs, catppuccin, ... }@inputs:
  {
+  config = pkgs.lib.mkIf config.gui {
   home.sessionVariables = {
     NIXOS_OZONE_WL = "1";
     NVD_BACKEND = "direct";
@@ -53,19 +54,20 @@
   };
 
   catppuccin = {
-    flavor = "mocha";
-    accent = "pink";
-
-    gtk.enable = true;
-    btop.enable = true;
-    zsh-syntax-highlighting.enable = true;
-    nvim.enable = true;
-    cava.enable = true;
+    gtk.enable = true; 
     kitty.enable = true;
     zed.enable = true;
     kvantum = {
       enable = true;
       apply = true;
+    };
+  };
+
+  # kitty extra
+  programs.kitty = {
+    font = {
+      name = "Jetbrains Mono";
+      size = 11;
     };
   };
 
@@ -81,4 +83,26 @@
     sha256 = "sha256-/O2ul4SQ//AU0bo1A0XAwOZAZ0R2zU0nPb6XZGOd6h8=";
     extension = "zip";
   };
-}
+
+  # ghostty catppuccin
+  xdg.configFile."ghostty/catppuccin-mocha".source = pkgs.fetchurl {
+    url = "https://raw.githubusercontent.com/catppuccin/ghostty/refs/heads/main/themes/catppuccin-mocha.conf";
+    hash = "sha256-ObWG1CqlSc79FayG7WpIetpYb/gsY4FZ9KPo44VByGk=";
+  };
+  xdg.configFile."ghostty/config".text = ''
+    config-file = catppuccin-mocha
+    font-family = JetBrainsMono Nerd Font
+    font-size = 11
+  '';
+  };
+
+  catppuccin = {
+    flavor = "mocha";
+    accent = "pink";
+
+    btop.enable = true;
+    zsh-syntax-highlighting.enable = true;
+    nvim.enable = true;
+    cava.enable = true;
+  };
+ }

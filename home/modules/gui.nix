@@ -43,6 +43,17 @@
     vlc
     gparted
 
+    # term emulators
+    unstable.ghostty
+    
+    # cli that depend on gui
+    copyq                                                                                                                                                    
+    grim     
+    hyprpicker                                                                                                                                               
+    slurp                                                                                                                                                    
+    wl-clipboard
+    alsa-utils
+
     # video, audio, and image editing
     obs-studio
     kdenlive
@@ -61,6 +72,13 @@
   ] ++ (with pkgs.unstable; [
     valent
   ]);
+  
+  programs.kitty = {
+    enable = true;
+    shellIntegration = {
+      zsh = true;
+    };
+  };
 
   # Default Browser
   xdg.mimeApps = {

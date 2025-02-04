@@ -4,13 +4,19 @@
   home.username = "itscrystalline";
   home.homeDirectory = "/home/itscrystalline";
 
+  options.gui = pkgs.lib.mkOption {
+    type = pkgs.lib.types.bool;
+    default = true;
+  };
+
   imports = [
-    ./modules/ags.nix
     ./modules/cli.nix
-    ./modules/gui.nix
     ./modules/dev.nix
     ./modules/theme.nix
     ./modules/nextcloud.nix
+  ] ++ pkgs.lib.optionals config.gui [
+    ./modules/ags.nix
+    ./modules/gui.nix
     ./modules/games.nix
     ./modules/flatpak.nix
   ];

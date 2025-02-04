@@ -1,14 +1,7 @@
 { config, pkgs, home, ... }@inputs:
 {
-  home.packages = with pkgs; [
-    copyq
-    grim
-    hyprpicker
-    slurp
-    wl-clipboard
+  home.packages = with pkgs; [  
     blahaj
-    alsa-utils
-    unstable.ghostty
     zoxide
   ];
 
@@ -44,18 +37,6 @@
     options = [
       "--cmd cd"
     ];
-  };
-
-  programs.kitty = {
-    enable = true;
-    font = {
-     name = "Jetbrains Mono";
-     size = 11;
-    };
-    shellIntegration = {
-      enableBashIntegration = true;
-      enableZshIntegration = true;
-    };
   };
 
   # fetches
@@ -97,15 +78,5 @@
   programs.yt-dlp = {
     enable = true;
     package = pkgs.unstable.yt-dlp;
-  };
-
-  xdg.configFile."ghostty/catppuccin-mocha".source = pkgs.fetchurl {
-    url = "https://raw.githubusercontent.com/catppuccin/ghostty/refs/heads/main/themes/catppuccin-mocha.conf";
-    hash = "sha256-ObWG1CqlSc79FayG7WpIetpYb/gsY4FZ9KPo44VByGk=";
-  };
-  xdg.configFile."ghostty/config".text = ''
-    config-file = catppuccin-mocha
-    font-family = JetBrainsMono Nerd Font
-    font-size = 11
-  '';
+  }; 
 }
