@@ -2,14 +2,10 @@
 
 {
   home.username = "itscrystalline";
-  home.homeDirectory = "/home/itscrystalline";
-
-  options.gui = pkgs.lib.mkOption {
-    type = pkgs.lib.types.bool;
-    default = true;
-  };
+  home.homeDirectory = "/home/itscrystalline"; 
 
   imports = [
+    ./config.nix
     ./modules/cli.nix
     ./modules/dev.nix
     ./modules/theme.nix
