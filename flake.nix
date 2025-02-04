@@ -69,6 +69,7 @@
 
         # Import the previous configuration.nix we used,
         # so the old configuration file still takes effect
+        ./config.nix
         ./nix-settings.nix
         ./host/devices/cwystaws-meowchine/host.nix
 
