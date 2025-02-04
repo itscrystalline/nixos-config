@@ -28,15 +28,16 @@ let
       -Dawt.toolkit.name=WLToolkit
     '';
 in {
-  home.packages = with pkgs; [
+  home.packages = with pkgs; pkgs.lib.optionals config.gui [
     (jetbrains.plugins.addPlugins unstable.jetbrains.idea-ultimate (pluginList ++ idea_pluginList))
     (jetbrains.plugins.addPlugins unstable.jetbrains.rust-rover (pluginList ++ rustrover_pluginList))
     (jetbrains.plugins.addPlugins unstable.jetbrains.pycharm-professional pluginList)
     (jetbrains.plugins.addPlugins unstable.jetbrains.webstorm pluginList)
-
+  ] ++ [
     neovide
   ];
 
+  config = pkgs.lib.mkIf config.gui {
   xdg.configFile."JetBrains/RustRover2024.3/rustrover64.vmoptions".text = jetbrainsWayland;
   xdg.configFile."JetBrains/IntelliJIdea2024.3/idea64.vmoptions".text = jetbrainsWayland;
   xdg.configFile."JetBrains/PyCharm2024.3/pycharm64.vmoptions".text = jetbrainsWayland;
@@ -131,6 +132,7 @@ in {
             buffer_font_size = 15;
         };
     };
+  };
 
     programs.nvchad = {
       enable = true;
