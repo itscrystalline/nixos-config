@@ -34,9 +34,7 @@
           catppuccin.homeManagerModules.catppuccin
           nvchad4nix.homeManagerModule        
         ];
-
         gui = false;
-
         # Optionally use extraSpecialArgs
         # to pass through arguments to home.nix
         extraSpecialArgs = {
