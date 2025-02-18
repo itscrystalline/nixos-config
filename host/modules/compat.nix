@@ -33,6 +33,10 @@
       libidn
       tbb
       zlib
+
+      libadwaita
+      libimobiledevice
+      libplist
     ];
   };
 }

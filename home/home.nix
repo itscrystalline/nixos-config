@@ -5,7 +5,6 @@
   home.homeDirectory = "/home/itscrystalline"; 
 
   imports = [
-    ./../vars.nix
     ./modules/cli.nix
     ./modules/dev.nix
     ./modules/theme.nix
@@ -14,6 +13,7 @@
     ./modules/gui.nix
     ./modules/games.nix
     ./modules/flatpak.nix
+    ./modules/virtualisation.nix
   ];
 
   # Home Manager needs a bit of information about you and the
@@ -38,15 +38,7 @@
       RestartSec = 1;
       TimeoutStopSec = 10;
     };
-  };
-
-  dconf.settings = {
-    "org/virt-manager/virt-manager/connections" = {
-      autoconnect = ["qemu:///system"];
-      uris = ["qemu:///system"];
-    };
-  };
-
+  }; 
 
   # MPRIS Proxy (Bluetooth Audio)
   services.mpris-proxy.enable = true;

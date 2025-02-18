@@ -35,6 +35,7 @@ lib.mkIf config.gui {
     brightnessctl
     ddcutil
     swww
+    mpvpaper
     sass
     sassc
     libnotify

@@ -1,6 +1,6 @@
-{ config, pkgs, catppuccin, ... }@inputs:
+{ config, pkgs, lib, catppuccin, ... }@inputs:
 {
-    home = pkgs.lib.mkIf config.gui {
+    home = lib.mkIf config.gui {
       sessionVariables = {
         NIXOS_OZONE_WL = "1";
         NVD_BACKEND = "direct";
@@ -8,19 +8,24 @@
         GSK_RENDERER = "ngl";
 
         QT_STYLE_OVERRIDE = "kvantum";
-        };
+      };
 
         # Steam Theme
-        packages = [ pkgs.adwsteamgtk ];
+      packages = [ pkgs.adwsteamgtk ];
 
-        pointerCursor = {
-          package = pkgs.catppuccin-cursors.mochaPink;
-          name = "catppuccin-mocha-pink-cursors";
-          size = 48;
-        };
+      pointerCursor = {
+        package = pkgs.catppuccin-cursors.mochaPink;
+        name = "catppuccin-mocha-pink-cursors";
+        size = 48;
+      };
+
+      file.".binaryninja/themes/catppuccin-mocha.bntheme".source = pkgs.fetchurl {
+        url = "https://raw.githubusercontent.com/catppuccin/binary-ninja/refs/heads/main/themes/catppuccin-mocha.bntheme";
+        sha256 = "sha256-VPWBEVIjcbbb7VB71KVPIjTBxr50nMpbizL5Xhuky48=";
+      };
     };
 
-    dconf.settings = pkgs.lib.mkIf config.gui {
+    dconf.settings = lib.mkIf config.gui {
       "org/gnome/desktop/interface" = {
         color-scheme = "prefer-dark";
       };
@@ -31,13 +36,13 @@
       };
     };
 
-    qt = pkgs.lib.mkIf config.gui {
+    qt = lib.mkIf config.gui {
       enable = true;
       platformTheme.name = "kvantum";
       style.name = "kvantum";
     };
 
-    gtk = pkgs.lib.mkIf config.gui {
+    gtk = lib.mkIf config.gui {
       enable = true;
       iconTheme = {
         package = pkgs.morewaita-icon-theme;
@@ -55,14 +60,14 @@
     };
 
     # kitty extra
-    programs.kitty = pkgs.lib.mkIf config.gui {
+    programs.kitty = lib.mkIf config.gui {
       font = {
         name = "Jetbrains Mono";
         size = 11;
       };
     };
 
-    xdg.configFile = pkgs.lib.mkIf config.gui {
+    xdg.configFile = lib.mkIf config.gui {
       "blender/4.3/scripts/presets/interface_theme/mocha_pink.xml".source = pkgs.fetchurl {
         url = "https://github.com/Dalibor-P/blender/releases/download/v1.1/mocha_pink.xml";
         sha256 = "sha256-bEmn7pne5q0Cebyq6UKkluuMfGkfGf+uUMQzLUikUaU=";

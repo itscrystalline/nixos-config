@@ -51,6 +51,8 @@
     wl-clipboard
     alsa-utils
 
+    gnome-network-displays
+
     # video, audio, and image editing
     obs-studio
     kdenlive

@@ -14,6 +14,7 @@
       (nerdfonts.override { fonts = [ "JetBrainsMono" ]; })
       material-symbols
       sarabun-font
+      (import ./thai-sarabun-font.nix { inherit pkgs; }) 
     ];
 
     fontconfig = {

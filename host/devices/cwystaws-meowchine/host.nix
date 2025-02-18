@@ -19,5 +19,6 @@
     ../../modules/users/itscrystalline.nix
     ../../modules/games.nix
     ../../modules/flatpak.nix
+    ../../modules/virtualisation.nix
   ];
 }

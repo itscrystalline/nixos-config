@@ -3,6 +3,8 @@
   # Install firefox.
   programs.firefox.enable = true;
 
+  programs.binary-ninja.enable = true;
+
   # Install ZSH.
   programs.zsh.enable = true;
   # ZSH system completion
@@ -50,12 +52,5 @@
     btop
     powertop
   ];
-
-  programs.virt-manager.enable = true;
-  virtualisation.libvirtd.enable = true;
-  virtualisation.spiceUSBRedirection.enable = true;
-
-
-
   # powerManagement.powertop.enable = true;
 }

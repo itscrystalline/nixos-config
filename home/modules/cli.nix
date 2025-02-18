@@ -3,6 +3,7 @@
   home.packages = with pkgs; [  
     blahaj
     zoxide
+    sshfs
   ];
 
   home.shellAliases = {

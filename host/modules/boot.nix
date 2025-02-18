@@ -11,7 +11,8 @@ in {
 
     # CachyOS Kernel
     kernelPackages = pkgs.linuxPackages_cachyos;
-
+    kernel.sysctl."kernel.sysrq" = 1;
+    
     #plymouth
     plymouth = {
       enable = true;

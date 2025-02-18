@@ -33,8 +33,11 @@ in {
     (jetbrains.plugins.addPlugins unstable.jetbrains.rust-rover (pluginList ++ rustrover_pluginList))
     (jetbrains.plugins.addPlugins unstable.jetbrains.pycharm-professional pluginList)
     (jetbrains.plugins.addPlugins unstable.jetbrains.webstorm pluginList)
+    ida-free
+    arduino-ide
   ] ++ [
     neovide
+    arduino-cli
   ];
 
   xdg.configFile = {  
@@ -51,6 +54,10 @@ in {
     '';  
   };
 
+  # programs.binary-ninja = pkgs.lib.mkIf config.gui {
+  #   enable = true;
+  # };
+  
   programs.zed-editor = pkgs.lib.mkIf config.gui {
     enable = true;
     package = (pkgs.unstable.zed-editor.fhsWithPackages (pkgs: [ pkgs.zlib ]));
@@ -154,6 +161,8 @@ in {
             vimPlugins.telescope-zoxide
             vimPlugins.zoxide-vim
             vimPlugins.clangd_extensions-nvim
+            php
+            php82Packages.composer
             (python3.withPackages(ps: with ps; [
               python-lsp-server
               flake8
@@ -183,16 +192,30 @@ in {
 
         local lspconfig = require "lspconfig"
 
-        local servers = { "pylsp", "nixd", "clangd" }
+        local servers = { "pylsp", "nixd", "clangd", "phpactor" }
         local nvlsp = require "nvchad.configs.lspconfig"
 
         for _, lsp in ipairs(servers) do
-          lspconfig[lsp].setup {
+          local config = {
             on_attach = nvlsp.on_attach,
             on_init = nvlsp.on_init,
             capabilities = nvlsp.capabilities,
           }
+          if lsp == "phpactor" then
+            config["root_dir"] = function(_)
+              return vim.loop.cwd()
+            end
+          end
+          lspconfig[lsp].setup(config)
         end
+
+        vim.api.nvim_set_hl(0, "RainbowDelimiterRed", { fg = "#f38ba8" })
+        vim.api.nvim_set_hl(0, "RainbowDelimiterYellow", { fg = "#f9e2af" })
+        vim.api.nvim_set_hl(0, "RainbowDelimiterBlue", { fg = "#89b4fa" })
+        vim.api.nvim_set_hl(0, "RainbowDelimiterOrange", { fg = "#fab387" })
+        vim.api.nvim_set_hl(0, "RainbowDelimiterGreen", { fg = "#a6e3a1" })
+        vim.api.nvim_set_hl(0, "RainbowDelimiterViolet", { fg = "#cba6f7" })
+        vim.api.nvim_set_hl(0, "RainbowDelimiterCyan", { fg = "#94e2d5" }) 
 
         local map = vim.keymap.set
 
@@ -206,10 +229,20 @@ in {
         map('n', '>', '>>', n_opts)
 
         -- arrow keys
-        map('n', '<C-Left>', '<C-h>', n_opts)
-        map('n', '<C-Down>', '<C-j>', n_opts)
-        map('n', '<C-Up>', '<C-k>', n_opts)
-        map('n', '<C-Right>', '<C-l>', n_opts)
+        map('n', '<C-Left>', '<C-h>')
+        map('n', '<C-Down>', '<C-j>')
+        map('n', '<C-Up>', '<C-k>')
+        map('n', '<C-Right>', '<C-l>')
+
+        -- alt+hjkl
+        map("n", "<A-j>", ":m .+1<CR>==") -- move line up(n)
+        map("n", "<A-k>", ":m .-2<CR>==") -- move line down(n)
+        map("v", "<A-j>", ":m '>+1<CR>gv=gv") -- move line up(v)
+        map("v", "<A-k>", ":m '<-2<CR>gv=gv") -- move line down(v)
+        map("n", "<A-Down>", ":m .+1<CR>==") -- move line up(n)
+        map("n", "<A-Up>", ":m .-2<CR>==") -- move line down(n)
+        map("v", "<A-Down>", ":m '>+1<CR>gv=gv") -- move line up(v)
+        map("v", "<A-Up>", ":m '<-2<CR>gv=gv") -- move line down(v)
 
         -- inline hints
         map('n', "<Leader>l", "<cmd>lua if vim.lsp.inlay_hint.is_enabled() then vim.lsp.inlay_hint.enable(false, { bufnr }) else vim.lsp.inlay_hint.enable(true, { bufnr }) end<CR>", { desc = "Enable Inline Hints" })
@@ -232,6 +265,10 @@ in {
 
         -- rustaceanvim
         map("n", "<Leader>dt", "<cmd>lua vim.cmd('RustLsp testables')<CR>", { desc = "Debugger testables" })
+        map("n", "<Leader>rd", "<cmd>lua vim.cmd.RustLsp('openDocs')<CR>", { desc = "Rust: Open Documentation Under the cursor" })
+        map("n", "<Leader>rD", "<cmd>lua vim.cmd.RustLsp('renderDiagnostic')<CR>", { desc = "Rust: Render diagnostics" })
+        map("n", "<Leader>rc", "<cmd>lua vim.cmd.RustLsp('codeAction')<CR>", { desc = "Rust: Show code actions" })
+
 
         -- lazygit
         map("n", "<Leader>gg", "<cmd>LazyGit<CR>", { desc = "Open lazygit" })
@@ -296,7 +333,6 @@ in {
                   }
                 end
             },
-
             {
                 'rust-lang/rust.vim',
                 ft = "rust",
@@ -304,7 +340,24 @@ in {
                 vim.g.rustfmt_autosave = 1
                 end
             },
+            {
+              'hiphish/rainbow-delimiters.nvim',
+              lazy = false,
+              config = function ()
+                vim.g.rainbow_delimiters = {
 
+                highlight = {
+                  'RainbowDelimiterRed',
+                  'RainbowDelimiterOrange',
+                  'RainbowDelimiterYellow',
+                  'RainbowDelimiterGreen',
+                  'RainbowDelimiterCyan',
+                  'RainbowDelimiterBlue',
+                  'RainbowDelimiterViolet',
+                },
+                }
+              end
+            }, 
             {
                 'mfussenegger/nvim-dap',
                 config = function()

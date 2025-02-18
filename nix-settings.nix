@@ -2,7 +2,7 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, inputs, blender-flake, system, ... }:
+{ config, pkgs, inputs, blender-flake, ... }:
 
 {
   # Nix Flakes
@@ -11,6 +11,7 @@
   # NIX_PATH
   nix.nixPath = [
     "nixpkgs=${inputs.nixpkgs}"
+    "nixpkgs-unstable=${inputs.nixpkgs-unstable}"
     "nixos-hardware=${inputs.nixos-hardware}"
     "nur=${inputs.nur}"
     "home-manager=${inputs.home-manager}"

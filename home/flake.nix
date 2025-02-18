@@ -13,9 +13,20 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     catppuccin.url = "github:catppuccin/nix";
+    zen-browser = {
+      url = "github:youwen5/zen-browser-flake";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    nix-jebrains-plugins.url = "github:theCapypara/nix-jebrains-plugins";
+    nur = {
+      url = "github:nix-community/NUR";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    blender-flake.url = "github:edolstra/nix-warez?dir=blender";
+    nix-flatpak.url = "github:gmodena/nix-flatpak";  
   };
 
-  outputs = inputs@{ nixpkgs, home-manager, nvchad4nix, catppuccin, ... }:
+  outputs = inputs@{ nixpkgs, home-manager, nvchad4nix, catppuccin, zen-browser, nix-jebrains-plugins, nur, blender-flake, nix-flatpak, ... }:
     let
       system = "aarch64-linux";
       pkgs = nixpkgs.legacyPackages.${system};
@@ -27,18 +38,21 @@
         # Specify your home configuration modules here, for example,
         # the path to your home.nix.
         modules = [
-          ./../nix-settings.nix
           ./../vars.nix
           ./home.nix
 
           catppuccin.homeManagerModules.catppuccin
+          nix-flatpak.homeManagerModules.nix-flatpak
           nvchad4nix.homeManagerModule        
         ];
-        gui = false;
         # Optionally use extraSpecialArgs
         # to pass through arguments to home.nix
         extraSpecialArgs = {
           inherit inputs;
+          inherit zen-browser;
+       	  inherit nix-jebrains-plugins;
+          inherit nur;
+          inherit blender-flake; 
         };
       };
     };

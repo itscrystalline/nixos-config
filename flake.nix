@@ -47,9 +47,17 @@
       url = "github:nix-community/nix4nvchad";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    # binary ninja
+    binaryninja = {
+      url = "github:jchv/nix-binary-ninja";
+
+      # Optional, but recommended.
+      inputs.nixpkgs.follows = "nixpkgs";
+    };  
   };
 
-  outputs = inputs@{ nixpkgs, chaotic, nixos-hardware, nix-on-droid, nur, home-manager, catppuccin, zen-browser, nix-jebrains-plugins, blender-flake, nix-flatpak, nvchad4nix, lix-module, ... }: {
+  outputs = inputs@{ nixpkgs, chaotic, nixos-hardware, nix-on-droid, nur, home-manager, catppuccin, zen-browser, nix-jebrains-plugins, blender-flake, nix-flatpak, nvchad4nix, lix-module, binaryninja, ... }: {
     # Please replace my-nixos with your hostname
     nixosConfigurations.cwystaws-meowchine = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
@@ -63,6 +71,7 @@
         chaotic.nixosModules.nyx-overlay
         chaotic.nixosModules.nyx-registry
         lix-module.nixosModules.default
+        binaryninja.nixosModules.binaryninja
 
         # HW
         nixos-hardware.nixosModules.asus-fx506hm
@@ -79,6 +88,7 @@
           home-manager.backupFileExtension = "hmbkup";
           home-manager.users.itscrystalline = {
             imports = [
+              ./vars.nix
               ./home/home.nix
 
               catppuccin.homeManagerModules.catppuccin
@@ -94,6 +104,7 @@
        	    inherit nix-jebrains-plugins;
             inherit nur;
             inherit blender-flake;
+            inherit binaryninja;
        	  };
         }
       ];
