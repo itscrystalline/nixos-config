@@ -5,7 +5,7 @@ pkgs.stdenvNoCC.mkDerivation {
 
   src = pkgs.fetchzip {
     url = "https://www.kruploy.com/md/00100/3/13ThaiFont.zip";
-    sha256 = "1cyjq5zxwa5pgjsnx9v1c7ghnahi1cz53cpc69y3has2mgdabsr4";
+    sha256 = "sha256-o/2yv9KuWcnqwXJtP9p437vaif+LFI++RWrNCB45aoY=";
     stripRoot = false;
   };
 
