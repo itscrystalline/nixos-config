@@ -51,7 +51,13 @@ in {
       [font]
       normal = ["JetBrainsMono Nerd Font", "Noto Sans CJK JP", "Noto Color Emoji" ]
       size = 12
-    '';  
+    '';
+    "lazygit/config.yml".text = ''
+      git:
+        paging:
+          colorArg: always
+          pager: delta --dark --paging=never --line-numbers --hyperlinks --hyperlinks-file-link-format="lazygit-edit://{path}:{line}"
+    '';
   };
 
   # programs.binary-ninja = pkgs.lib.mkIf config.gui {
@@ -171,6 +177,7 @@ in {
             clang
             clang-tools
             lazygit
+            delta
             rust-analyzer
             lldb
             zoxide

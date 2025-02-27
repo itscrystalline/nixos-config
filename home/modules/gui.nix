@@ -54,7 +54,6 @@
     gnome-network-displays
 
     # video, audio, and image editing
-    obs-studio
     kdenlive
     gimp
     davinci-resolve
@@ -72,6 +71,15 @@
     valent
     ghostty
   ]));
+  
+  programs.obs-studio = pkgs.lib.mkIf config.gui {
+    enable = true;
+    plugins = with pkgs.stable.obs-studio-plugins; [
+      obs-composite-blur      
+      obs-backgroundremoval
+      obs-pipewire-audio-capture
+    ];
+  };
 
   programs.kitty = pkgs.lib.mkIf config.gui {
     enable = true;
