@@ -2,16 +2,18 @@
 let
   nc_pass = builtins.readFile ../../secrets/nc_password.txt;
 in {
-  xdg.configFile."rclone/nextcloud.conf".text = ''
-    [nextcloud]
-    type = webdav
-    url = https://nc.iw2tryhard.dev/remote.php/dav/files/crystal
-    vendor = nextcloud
-    user = crystal
-    pass = ${nc_pass}
-  '';
+  xdg.configFile = pkgs.lib.mkIf config.gui {
+    "rclone/nextcloud.conf".text = ''
+      [nextcloud]
+      type = webdav
+      url = https://nc.iw2tryhard.dev/remote.php/dav/files/crystal
+      vendor = nextcloud
+      user = crystal
+      pass = ${nc_pass}
+    '';
+  };
 
-  systemd.user.services.nextcloud-mount = {
+  systemd.user.services.nextcloud-mount = pkgs.lib.mkIf config.gui {
     Unit = {
       Description = "Mounts My Nextcloud as a local directory.";
       After = [ "network-online.target" ];
