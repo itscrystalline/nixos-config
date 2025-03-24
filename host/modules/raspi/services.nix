@@ -20,6 +20,8 @@
     openFirewall = true;
     drivers = with pkgs; [ gutenprint ];
   };
+
+  services.hardware.argonone.enable = true;
 }
 
 
