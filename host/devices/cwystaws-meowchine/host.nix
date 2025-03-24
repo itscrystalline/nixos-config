@@ -14,7 +14,7 @@
     ../../modules/main/games.nix
     ../../modules/main/flatpak.nix
     ../../modules/main/virtualisation.nix
-    ../../modules/common/hw-misc.nix
+    ../../modules/main/hw-misc.nix
     ../../modules/common/security.nix
     ../../modules/common/localization.nix
     ../../modules/common/theming.nix

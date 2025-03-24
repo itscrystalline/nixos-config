@@ -10,6 +10,7 @@
     ../../modules/common/security.nix
     ../../modules/common/localization.nix
     ../../modules/common/theming.nix
+    ../../modules/common/hw-misc.nix
     ../../modules/common/users/itscrystalline.nix
   ];
 }
