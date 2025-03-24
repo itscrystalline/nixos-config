@@ -112,7 +112,7 @@
 
     nixosConfigurations.cwystaws-raspi = nixpkgs.lib.nixosSystem {
       system = "aarch64-linux";
-      specialArgs = { inherit inputs; };
+      specialArgs = { inherit inputs blender-flake; };
       modules = [
         # NUR, catppuccin, nix-flatpak, chaotic-nyx, lix
         nur.modules.nixos.default
