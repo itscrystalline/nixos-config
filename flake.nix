@@ -121,6 +121,9 @@
         chaotic.nixosModules.nyx-overlay
         chaotic.nixosModules.nyx-registry
         lix-module.nixosModules.default
+        
+        # HW
+        nixos-hardware.nixosModules.raspberry-pi-4
 
         # Import the previous configuration.nix we used,
         # so the old configuration file still takes effect
