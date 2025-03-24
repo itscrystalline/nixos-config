@@ -5,6 +5,7 @@
   services.avahi = {
     enable = true;
     nssmdns4 = true;
+    nssmdns6 = true;
     openFirewall = true;
     publish = {
       enable = true;
@@ -19,6 +20,9 @@
     defaultShared = true;
     openFirewall = true;
     drivers = with pkgs; [ gutenprint ];
+    extraConf = ''
+      DefaultPaperSize A4
+    '';
   };
 
   services.hardware.argonone.enable = true;

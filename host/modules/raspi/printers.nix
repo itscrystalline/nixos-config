@@ -12,5 +12,6 @@
         };
       }
     ];
+    ensureDefaultPrinter = "Canon_G2010_Series";
   };
 }
