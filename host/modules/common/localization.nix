@@ -19,14 +19,15 @@
   };
 
   i18n.inputMethod = {
-   type = "fcitx5";
-   enable = true;
-   fcitx5.addons = with pkgs; [
-     fcitx5-mozc
-     fcitx5-gtk
-   ];
- };
+    type = "fcitx5";
+    enable = true;
+    fcitx5.addons = with pkgs; [
+      fcitx5-mozc
+      fcitx5-gtk
+    ];
+  };
 
+  console.keyMap = "colemak";
   # Configure keymap in X11
   services.xserver.xkb = {
     layout = "us";

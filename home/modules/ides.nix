@@ -368,7 +368,7 @@ in {
             {
                 'mfussenegger/nvim-dap',
                 config = function()
-                local dap, dapui = require("dap"), require("dapui")
+                  local dap, dapui = require("dap"), require("dapui")
                   dap.listeners.before.attach.dapui_config = function()
                       dapui.open()
                   end
@@ -381,6 +381,13 @@ in {
                   dap.listeners.before.event_exited.dapui_config = function()
                       dapui.close()
                   end
+
+                  dap.adapters.cppdbg = {
+                    id = 'cppdbg',
+                    type = 'executable',
+                    command = '/home/itscrystalline/.local/share/nvim/mason/bin/OpenDebugAD7',
+                  }
+                  dap.configurations.rust = dap.configurations.cpp
                 end,
             },
 
@@ -394,6 +401,7 @@ in {
 
             {
                 'saecki/crates.nvim',
+                tag = 'stable',
                 ft = {"toml"},
                 config = function()
                 require("crates").setup {

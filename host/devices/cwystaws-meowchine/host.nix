@@ -2,23 +2,23 @@
 {
   imports = [
     ./hardware-configuration.nix
-    ../../modules/boot.nix
-    ../../modules/graphics.nix
-    ../../modules/network.nix
-    ../../modules/hw-misc.nix
-    ../../modules/asus.nix
-    ../../modules/security.nix
-    ../../modules/programs.nix
-    ../../modules/services.nix
-    ../../modules/bluetooth.nix
-    ../../modules/localization.nix
-    ../../modules/theming.nix
-    ../../modules/hyprland.nix
-    ../../modules/compat.nix
-    ../../modules/pipewire/pipewire.nix
-    ../../modules/users/itscrystalline.nix
-    ../../modules/games.nix
-    ../../modules/flatpak.nix
-    ../../modules/virtualisation.nix
+    ../../modules/main/boot.nix
+    ../../modules/main/programs.nix
+    ../../modules/main/services.nix
+    ../../modules/main/bluetooth.nix
+    ../../modules/main/graphics.nix
+    ../../modules/main/network.nix
+    ../../modules/main/asus.nix
+    ../../modules/main/hyprland.nix
+    ../../modules/main/pipewire/pipewire.nix
+    ../../modules/main/games.nix
+    ../../modules/main/flatpak.nix
+    ../../modules/main/virtualisation.nix
+    ../../modules/common/hw-misc.nix
+    ../../modules/common/security.nix
+    ../../modules/common/localization.nix
+    ../../modules/common/theming.nix
+    ../../modules/common/compat.nix
+    ../../modules/main/users/itscrystalline.nix
   ];
 }

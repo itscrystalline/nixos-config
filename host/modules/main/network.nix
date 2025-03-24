@@ -1,7 +1,10 @@
 { config, pkgs, ... }@inputs:
 {
+  imports = [
+    ../common/network.nix
+  ];
+
   networking.hostName = "cwystaws-meowchine";
-  networking.networkmanager.enable = true;
 
   # Valent (KDE Connect)
   networking.firewall = rec {

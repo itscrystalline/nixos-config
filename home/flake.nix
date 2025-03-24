@@ -50,7 +50,7 @@
         extraSpecialArgs = {
           inherit inputs;
           inherit zen-browser;
-       	  inherit nix-jebrains-plugins;
+          inherit nix-jebrains-plugins;
           inherit nur;
           inherit blender-flake; 
         };

@@ -1,21 +1,8 @@
 { config, pkgs, ... }@inputs:
 {
-  # Install firefox.
-  programs.firefox.enable = true;
-
-  programs.binary-ninja.enable = true;
-
-  # Install ZSH.
   programs.zsh.enable = true;
   # ZSH system completion
   environment.pathsToLink = [ "/share/zsh" "/share/nautilus-python/extensions" ];
-  environment.sessionVariables.NAUTILUS_4_EXTENSION_DIR = pkgs.lib.mkForce "${pkgs.nautilus-python}/lib/nautilus/extensions-4";
-
-  # open any terminal in nautilus
-  programs.nautilus-open-any-terminal = {
-    enable = true;
-    terminal = "ghostty";
-  };
 
   # git config
   programs.git = {
@@ -39,10 +26,6 @@
     killall
     rclone
     git
-    polkit_gnome
-    gnome-keyring
-    # open any term
-    nautilus-python
     file
     fd
     unzip
@@ -51,6 +34,9 @@
     htop
     btop
     powertop
+
+    linuxKernel.packages.linux_6_12.usbip
   ];
   # powerManagement.powertop.enable = true;
 }
+

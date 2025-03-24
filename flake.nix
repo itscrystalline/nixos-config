@@ -97,15 +97,62 @@
             ];
           };
 
-       	  home-manager.extraSpecialArgs = {
+          home-manager.extraSpecialArgs = {
             inherit nixpkgs;
-       	    inherit inputs;
-       	    inherit zen-browser;
-       	    inherit nix-jebrains-plugins;
+            inherit inputs;
+            inherit zen-browser;
+            inherit nix-jebrains-plugins;
             inherit nur;
             inherit blender-flake;
             inherit binaryninja;
-       	  };
+          };
+        }
+      ];
+    };
+
+    nixosConfigurations.cwystaws-raspi = nixpkgs.lib.nixosSystem {
+      system = "aarch64-linux";
+      specialArgs = { inherit inputs; };
+      modules = [
+        # NUR, catppuccin, nix-flatpak, chaotic-nyx, lix
+        nur.modules.nixos.default
+        catppuccin.nixosModules.catppuccin
+        chaotic.nixosModules.nyx-cache
+        chaotic.nixosModules.nyx-overlay
+        chaotic.nixosModules.nyx-registry
+        lix-module.nixosModules.default
+
+        # Import the previous configuration.nix we used,
+        # so the old configuration file still takes effect
+        ./vars.nix
+        ./nix-settings.nix
+        ./host/devices/cwystaws-raspi/host.nix
+
+        home-manager.nixosModules.home-manager {
+          home-manager.useGlobalPkgs = true;
+          home-manager.useUserPackages = true;
+          home-manager.backupFileExtension = "hmbkup";
+          home-manager.users.itscrystalline = {
+            imports = [
+              ./vars.nix
+
+              {
+                config.gui = false;
+              }
+
+              ./home/home.nix
+
+              catppuccin.homeManagerModules.catppuccin
+              nix-flatpak.homeManagerModules.nix-flatpak
+              nvchad4nix.homeManagerModule
+            ];
+          };
+
+          home-manager.extraSpecialArgs = {
+            inherit nixpkgs;
+            inherit inputs;
+            inherit nur;
+          };
         }
       ];
     };

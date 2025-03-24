@@ -9,6 +9,7 @@
     cargo-mommy
   ] ++ pkgs.lib.optionals config.gui [
     filezilla
+    renode
   ];
 
   programs.git = {

@@ -1,11 +1,8 @@
 { config, pkgs, ... }@inputs:
 {
-  users.users.itscrystalline = {
-    isNormalUser = true;
-    description = "itscrystalline";
-    extraGroups = [ "networkmanager" "wheel" "libvirtd" "dialout" ];
-    shell = pkgs.zsh;
-  };
+  imports = [ ../../common/users/itscrystalline.nix ];
+
+  users.users.itscrystalline.extraGroups = [ "libvirtd" "dialout" ];
   # PFP
   system.activationScripts.script.text = ''
     mkdir -p /var/lib/AccountsService/{icons,users}
