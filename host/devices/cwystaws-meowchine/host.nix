@@ -15,8 +15,8 @@
     ../../modules/main/flatpak.nix
     ../../modules/main/virtualisation.nix
     ../../modules/main/hw-misc.nix
+    ../../modules/main/localization.nix
     ../../modules/common/security.nix
-    ../../modules/common/localization.nix
     ../../modules/common/theming.nix
     ../../modules/common/compat.nix
     ../../modules/main/users/itscrystalline.nix
