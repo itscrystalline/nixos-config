@@ -231,10 +231,10 @@ in {
               },
               options = {
                 nixos = {
-                  expr = '(builtins.getFlake ("git+file://" + toString ./.)).nixosConfigurations.cwystaws-meowchine.options',
+                  expr = '(builtins.getFlake "git+file:///home/itscrystalline/nixos-config").nixosConfigurations.cwystaws-meowchine.options',
                 },
                 home_manager = {
-                  expr = '(builtins.getFlake ("git+file://" + toString ./.)).homeConfigurations."itscrystalline@cwystaws-meowchine".options',
+                  expr = '(builtins.getFlake "git+file:///home/itscrystalline/nixos-config").homeConfigurations."itscrystalline@cwystaws-meowchine".options',
                 },
               },
             }
