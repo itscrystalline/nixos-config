@@ -1,8 +1,4 @@
-{
-  config,
-  pkgs,
-  ...
-} @ inputs: {
+{pkgs, ...}: {
   imports = [
     ../common/services.nix
     ./docker.nix

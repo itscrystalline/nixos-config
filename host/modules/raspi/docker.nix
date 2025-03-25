@@ -1,5 +1,8 @@
-{pkgs, ...}: {
+{...}: {
   virtualisation.docker = {
-    enable = true;
+    enable = false; # change this later
+    daemon.settings = {
+      data-root = "/mnt/main/docker";
+    };
   };
 }
