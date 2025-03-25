@@ -99,7 +99,9 @@
         enable = true;
         apply = true;
       };
-      
+
+      lazygit.enable = true;
+      fuzzel.enable = true;
       btop.enable = true;
       zsh-syntax-highlighting.enable = true;
       nvim.enable = true;

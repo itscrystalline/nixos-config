@@ -12,6 +12,8 @@
     update = "sudo nh os switch ~/nixos-config -R";
     nuke-cache = "sudo rm -rf ~/.cache/nix";
     gc = "sudo nh clean all";
+    clean-hmbkups = "find /home/itscrystalline/.config -name \"*.hmbkup\" -type f -delete";
+    gssh = "TERM=xterm-256color ssh";
     ":q" = "exit";
 
     # :3
@@ -83,5 +85,7 @@
   programs.yt-dlp = {
     enable = true;
     package = pkgs.unstable.yt-dlp;
-  }; 
+  };
+  
+  programs.lazygit.enable = true;
 }

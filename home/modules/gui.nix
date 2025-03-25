@@ -50,6 +50,8 @@
     slurp
     wl-clipboard
     alsa-utils
+    bemoji
+    tesseract
 
     gnome-network-displays
 
@@ -87,6 +89,8 @@
       enableZshIntegration = true;
     };
   };
+
+  programs.fuzzel.enable = config.gui;
 
   # Default Apps
   xdg.mimeApps = pkgs.lib.mkIf config.gui {
