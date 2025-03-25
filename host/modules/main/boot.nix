@@ -1,23 +1,27 @@
-{ config, pkgs, ... }@inputs:
-
-let nixos_logo = pkgs.fetchurl {
-  url = "https://raw.githubusercontent.com/NixOS/nixos-artwork/refs/heads/master/logo/nixos-white.svg";
-  sha256 = "sha256-Ly4jHvtxlnOe1CsZ5+f+K7pclUF4S0HS4Vgs5U8Ofl4=";
-};
+{
+  config,
+  pkgs,
+  ...
+} @ inputs: let
+  nixos_logo = pkgs.fetchurl {
+    url = "https://raw.githubusercontent.com/NixOS/nixos-artwork/refs/heads/master/logo/nixos-white.svg";
+    sha256 = "sha256-Ly4jHvtxlnOe1CsZ5+f+K7pclUF4S0HS4Vgs5U8Ofl4=";
+  };
 in {
   boot = {
     # NTFS support
-    supportedFilesystems = [ "ntfs" ];
+    supportedFilesystems = ["ntfs"];
 
     # CachyOS Kernel
     kernelPackages = pkgs.linuxPackages_cachyos;
     kernel.sysctl."kernel.sysrq" = 1;
-    
+
     #plymouth
     plymouth = {
       enable = true;
-      themePackages = [ (pkgs.plymouth-blahaj-theme.overrideAttrs (old: {
-        patchPhase = ''
+      themePackages = [
+        (pkgs.plymouth-blahaj-theme.overrideAttrs (old: {
+          patchPhase = ''
             runHook prePatch
 
             shopt -s extglob
@@ -34,8 +38,9 @@ in {
             ${pkgs.inkscape}/bin/inkscape --export-height=48 --export-type=png --export-filename="watermark.png" ${nixos_logo}
 
             runHook postPatch
-        '';
-      })) ];
+          '';
+        }))
+      ];
       theme = "blahaj";
     };
 

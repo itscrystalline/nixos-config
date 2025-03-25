@@ -1,23 +1,30 @@
-{ config, pkgs, lib, ... }@inputs:
+{
+  config,
+  pkgs,
+  lib,
+  ...
+} @ inputs:
 lib.mkIf config.gui {
   home.packages = with pkgs; [
     (ags.overrideAttrs (old: {
-      buildInputs = old.buildInputs ++ [
-        pkgs.libdbusmenu-gtk3
-       	pkgs.libnotify
-       	pkgs.gtkmm3
-       	pkgs.sassc
-       	pkgs.pywal
-       	pkgs.webkitgtk
-       	pkgs.ydotool
-       	pkgs.webp-pixbuf-loader
-        pkgs.cairomm
-       	pkgs.gtksourceview
-       	pkgs.gtksourceview4
-       	pkgs.python311Packages.material-color-utilities
-        pkgs.python311Packages.pywayland
-        pkgs.python311Packages.materialyoucolor
-      ];
+      buildInputs =
+        old.buildInputs
+        ++ [
+          pkgs.libdbusmenu-gtk3
+          pkgs.libnotify
+          pkgs.gtkmm3
+          pkgs.sassc
+          pkgs.pywal
+          pkgs.webkitgtk
+          pkgs.ydotool
+          pkgs.webp-pixbuf-loader
+          pkgs.cairomm
+          pkgs.gtksourceview
+          pkgs.gtksourceview4
+          pkgs.python311Packages.material-color-utilities
+          pkgs.python311Packages.pywayland
+          pkgs.python311Packages.materialyoucolor
+        ];
     }))
     (python311.withPackages (p: [
       p.material-color-utilities

@@ -1,9 +1,15 @@
-{ config, pkgs, nur, lib, ... }:
+{
+  config,
+  pkgs,
+  nur,
+  lib,
+  ...
+}:
 lib.mkIf config.gui {
   home.packages = with pkgs; [
     (prismlauncher.override {
       # Add binary required by some mod
-      additionalPrograms = [ ffmpeg ];
+      additionalPrograms = [ffmpeg];
 
       gamemodeSupport = true;
 

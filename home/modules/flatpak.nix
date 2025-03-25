@@ -1,4 +1,9 @@
-{ config, pkgs, lib, ... }:
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}:
 lib.mkIf config.gui {
   # session vars
   home.sessionVariables = {

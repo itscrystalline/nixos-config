@@ -1,5 +1,10 @@
-{ config, pkgs, lib, ... }:
-lib.mkIf config.gui {  
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}:
+lib.mkIf config.gui {
   dconf.settings = {
     "org/virt-manager/virt-manager/connections" = {
       autoconnect = ["qemu:///system"];

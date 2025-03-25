@@ -1,15 +1,18 @@
-{ config, pkgs, ... }@inputs:
 {
+  config,
+  pkgs,
+  ...
+} @ inputs: {
   hardware.graphics.enable = true;
   hardware.graphics.enable32Bit = true;
 
   # VA-API
-  hardware.graphics.extraPackages = with pkgs; [ intel-media-driver libvdpau-va-gl libva-utils ];
-  hardware.graphics.extraPackages32 = with pkgs.pkgsi686Linux; [ intel-media-driver ];
-  environment.sessionVariables = { LIBVA_DRIVER_NAME = "iHD"; };
+  hardware.graphics.extraPackages = with pkgs; [intel-media-driver libvdpau-va-gl libva-utils];
+  hardware.graphics.extraPackages32 = with pkgs.pkgsi686Linux; [intel-media-driver];
+  environment.sessionVariables = {LIBVA_DRIVER_NAME = "iHD";};
 
   # NVIDIA Optimus
-  services.xserver.videoDrivers = [ "nvidia" ];
+  services.xserver.videoDrivers = ["nvidia"];
   hardware.nvidia = {
     open = pkgs.lib.mkForce false; # Set to false for proprietary drivers
 
@@ -43,9 +46,8 @@
       # Remove NVIDIA VGA/3D controller devices
       ACTION=="add", SUBSYSTEM=="pci", ATTR{vendor}=="0x10de", ATTR{class}=="0x03[0-9]*", ATTR{power/control}="auto", ATTR{remove}="1"
     '';
-    boot.blacklistedKernelModules = [ "nouveau" "nvidia" "nvidia_drm" "nvidia_modeset" ];
+    boot.blacklistedKernelModules = ["nouveau" "nvidia" "nvidia_drm" "nvidia_modeset"];
   };
-
 
   # CUDA & utilities
   nixpkgs.config.cudaSupport = true;

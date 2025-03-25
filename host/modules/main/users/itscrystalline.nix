@@ -1,8 +1,11 @@
-{ config, pkgs, ... }@inputs:
 {
-  imports = [ ../../common/users/itscrystalline.nix ];
+  config,
+  pkgs,
+  ...
+} @ inputs: {
+  imports = [../../common/users/itscrystalline.nix];
 
-  users.users.itscrystalline.extraGroups = [ "libvirtd" "dialout" ];
+  users.users.itscrystalline.extraGroups = ["libvirtd" "dialout"];
   # PFP
   system.activationScripts.script.text = ''
     mkdir -p /var/lib/AccountsService/{icons,users}

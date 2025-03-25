@@ -1,8 +1,15 @@
-{ config, pkgs, nur, catppuccin, zen-browser, nix-jebrains-plugins, nix-flatpak, ... }@inputs:
-
 {
+  config,
+  pkgs,
+  nur,
+  catppuccin,
+  zen-browser,
+  nix-jebrains-plugins,
+  nix-flatpak,
+  ...
+} @ inputs: {
   home.username = "itscrystalline";
-  home.homeDirectory = "/home/itscrystalline"; 
+  home.homeDirectory = "/home/itscrystalline";
 
   imports = [
     ./modules/cli.nix
@@ -23,22 +30,22 @@
   systemd.user.services.polkit-gnome-authentication-agent-1 = {
     Unit = {
       Description = "polkit-gnome-authentication-agent-1";
-      After = [ "graphical-session.target" ];
+      After = ["graphical-session.target"];
     };
 
     Install = {
-      WantedBy = [ "graphical-session.target" ];
-      Wants = [ "graphical-session.target" ];
+      WantedBy = ["graphical-session.target"];
+      Wants = ["graphical-session.target"];
     };
 
     Service = {
-	    Type = "simple";
+      Type = "simple";
       ExecStart = "${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1";
       Restart = "always";
       RestartSec = 1;
       TimeoutStopSec = 10;
     };
-  }; 
+  };
 
   # MPRIS Proxy (Bluetooth Audio)
   services.mpris-proxy.enable = true;

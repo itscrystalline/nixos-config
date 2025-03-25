@@ -1,6 +1,10 @@
-{ config, pkgs, home, ... }@inputs:
 {
-  home.packages = with pkgs; [  
+  config,
+  pkgs,
+  home,
+  ...
+} @ inputs: {
+  home.packages = with pkgs; [
     blahaj
     zoxide
     sshfs
@@ -52,19 +56,19 @@
     enable = true;
     settings = {
       preset = "transfeminine";
-	    mode = "rgb";
-	    light_dark = "dark";
-	    lightness = 0.65;
-	    color_align = {
-		    mode = "horizontal";
-		    custom_colors = [];
-		    fore_back = [];
-	    };
-	    backend = "fastfetch";
-	    args = null;
-	    distro = null;
-	    pride_month_shown = [];
-	    pride_month_disable = false;
+      mode = "rgb";
+      light_dark = "dark";
+      lightness = 0.65;
+      color_align = {
+        mode = "horizontal";
+        custom_colors = [];
+        fore_back = [];
+      };
+      backend = "fastfetch";
+      args = null;
+      distro = null;
+      pride_month_shown = [];
+      pride_month_disable = false;
     };
   };
 
@@ -78,7 +82,7 @@
   programs.btop = {
     enable = true;
     settings = {
-        update_ms = 200;
+      update_ms = 200;
     };
   };
 
@@ -86,6 +90,6 @@
     enable = true;
     package = pkgs.unstable.yt-dlp;
   };
-  
+
   programs.lazygit.enable = true;
 }

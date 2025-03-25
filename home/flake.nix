@@ -23,37 +23,46 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     blender-flake.url = "github:edolstra/nix-warez?dir=blender";
-    nix-flatpak.url = "github:gmodena/nix-flatpak";  
+    nix-flatpak.url = "github:gmodena/nix-flatpak";
   };
 
-  outputs = inputs@{ nixpkgs, home-manager, nvchad4nix, catppuccin, zen-browser, nix-jebrains-plugins, nur, blender-flake, nix-flatpak, ... }:
-    let
-      system = "aarch64-linux";
-      pkgs = nixpkgs.legacyPackages.${system};
-    in {
-      homeConfigurations."opc" = home-manager.lib.homeManagerConfiguration {
-        inherit pkgs;
+  outputs = inputs @ {
+    nixpkgs,
+    home-manager,
+    nvchad4nix,
+    catppuccin,
+    zen-browser,
+    nix-jebrains-plugins,
+    nur,
+    blender-flake,
+    nix-flatpak,
+    ...
+  }: let
+    system = "aarch64-linux";
+    pkgs = nixpkgs.legacyPackages.${system};
+  in {
+    homeConfigurations."opc" = home-manager.lib.homeManagerConfiguration {
+      inherit pkgs;
 
+      # Specify your home configuration modules here, for example,
+      # the path to your home.nix.
+      modules = [
+        ./../vars.nix
+        ./home.nix
 
-        # Specify your home configuration modules here, for example,
-        # the path to your home.nix.
-        modules = [
-          ./../vars.nix
-          ./home.nix
-
-          catppuccin.homeManagerModules.catppuccin
-          nix-flatpak.homeManagerModules.nix-flatpak
-          nvchad4nix.homeManagerModule        
-        ];
-        # Optionally use extraSpecialArgs
-        # to pass through arguments to home.nix
-        extraSpecialArgs = {
-          inherit inputs;
-          inherit zen-browser;
-          inherit nix-jebrains-plugins;
-          inherit nur;
-          inherit blender-flake; 
-        };
+        catppuccin.homeManagerModules.catppuccin
+        nix-flatpak.homeManagerModules.nix-flatpak
+        nvchad4nix.homeManagerModule
+      ];
+      # Optionally use extraSpecialArgs
+      # to pass through arguments to home.nix
+      extraSpecialArgs = {
+        inherit inputs;
+        inherit zen-browser;
+        inherit nix-jebrains-plugins;
+        inherit nur;
+        inherit blender-flake;
       };
     };
+  };
 }

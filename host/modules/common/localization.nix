@@ -1,5 +1,8 @@
-{ config, pkgs, ... }@inputs:
 {
+  config,
+  pkgs,
+  ...
+} @ inputs: {
   # Set your time zone.
   time.timeZone = "Asia/Bangkok";
 

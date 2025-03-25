@@ -1,8 +1,11 @@
-{ config, pkgs, ... }@inputs:
 {
+  config,
+  pkgs,
+  ...
+} @ inputs: {
   programs.zsh.enable = true;
   # ZSH system completion
-  environment.pathsToLink = [ "/share/zsh" "/share/nautilus-python/extensions" ];
+  environment.pathsToLink = ["/share/zsh" "/share/nautilus-python/extensions"];
 
   # git config
   programs.git = {
@@ -39,4 +42,3 @@
   ];
   # powerManagement.powertop.enable = true;
 }
-

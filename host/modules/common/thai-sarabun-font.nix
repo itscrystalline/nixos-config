@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{pkgs, ...}:
 pkgs.stdenvNoCC.mkDerivation {
   name = "sipa-th-fonts";
   version = "1.0.0";
@@ -12,6 +12,6 @@ pkgs.stdenvNoCC.mkDerivation {
   buildPhase = ''
     mkdir -p $out/share/fonts/truetype
 
-    cp $src/Font/*.ttf $out/share/fonts/truetype 
+    cp $src/Font/*.ttf $out/share/fonts/truetype
   '';
 }

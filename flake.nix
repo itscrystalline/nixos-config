@@ -54,14 +54,30 @@
 
       # Optional, but recommended.
       inputs.nixpkgs.follows = "nixpkgs";
-    };  
+    };
   };
 
-  outputs = inputs@{ nixpkgs, chaotic, nixos-hardware, nix-on-droid, nur, home-manager, catppuccin, zen-browser, nix-jebrains-plugins, blender-flake, nix-flatpak, nvchad4nix, lix-module, binaryninja, ... }: {
+  outputs = inputs @ {
+    nixpkgs,
+    chaotic,
+    nixos-hardware,
+    nix-on-droid,
+    nur,
+    home-manager,
+    catppuccin,
+    zen-browser,
+    nix-jebrains-plugins,
+    blender-flake,
+    nix-flatpak,
+    nvchad4nix,
+    lix-module,
+    binaryninja,
+    ...
+  }: {
     # Please replace my-nixos with your hostname
     nixosConfigurations.cwystaws-meowchine = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
-      specialArgs = { inherit inputs blender-flake; };
+      specialArgs = {inherit inputs blender-flake;};
       modules = [
         # NUR, catppuccin, nix-flatpak, chaotic-nyx, lix
         nur.modules.nixos.default
@@ -82,7 +98,8 @@
         ./nix-settings.nix
         ./host/devices/cwystaws-meowchine/host.nix
 
-        home-manager.nixosModules.home-manager {
+        home-manager.nixosModules.home-manager
+        {
           home-manager.useGlobalPkgs = true;
           home-manager.useUserPackages = true;
           home-manager.backupFileExtension = "hmbkup";
@@ -112,7 +129,7 @@
 
     nixosConfigurations.cwystaws-raspi = nixpkgs.lib.nixosSystem {
       system = "aarch64-linux";
-      specialArgs = { inherit inputs blender-flake; };
+      specialArgs = {inherit inputs blender-flake;};
       modules = [
         # NUR, catppuccin, nix-flatpak, chaotic-nyx, lix
         nur.modules.nixos.default
@@ -121,7 +138,7 @@
         chaotic.nixosModules.nyx-overlay
         chaotic.nixosModules.nyx-registry
         lix-module.nixosModules.default
-        
+
         # HW
         nixos-hardware.nixosModules.raspberry-pi-4
 
@@ -131,7 +148,8 @@
         ./nix-settings.nix
         ./host/devices/cwystaws-raspi/host.nix
 
-        home-manager.nixosModules.home-manager {
+        home-manager.nixosModules.home-manager
+        {
           home-manager.useGlobalPkgs = true;
           home-manager.useUserPackages = true;
           home-manager.backupFileExtension = "hmbkup";
@@ -164,7 +182,7 @@
     nixOnDroidConfigurations.cwystaw-the-neko = nix-on-droid.lib.nixOnDroidConfiguration {
       system = "aarch64-linux";
 
-      specialArgs = { inherit inputs; };
+      specialArgs = {inherit inputs;};
 
       modules = [
         ./nix-settings.nix

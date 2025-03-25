@@ -1,5 +1,10 @@
-{ config, pkgs, zen-browser, blender-flake, ... }@inputs:
 {
+  config,
+  pkgs,
+  zen-browser,
+  blender-flake,
+  ...
+} @ inputs: {
   imports = [
     ./gui/blender.nix
   ];
@@ -17,67 +22,70 @@
     exec = "${pkgs.chromium}/bin/chromium --app=chrome-extension://ophjlpahpchlmihnnnihgmmeilfjmjjc/index.html";
     terminal = false;
     type = "Application";
-    categories = [ "" ];
+    categories = [""];
     mimeType = ["x-scheme-handler/org-protocol"];
   };
 
-  home.packages = pkgs.lib.mkIf config.gui (with pkgs.stable; [
-    vesktop # discor
-    teams-for-linux # teams :vomit:
-    beeper # others
-    (youtube-music.overrideAttrs (finalAttrs: previousAttrs: {
-      desktopItems = [
+  home.packages = pkgs.lib.mkIf config.gui (with pkgs.stable;
+    [
+      vesktop # discor
+      teams-for-linux # teams :vomit:
+      beeper # others
+      (youtube-music.overrideAttrs (finalAttrs: previousAttrs: {
+        desktopItems = [
           (makeDesktopItem {
             name = "youtube-music";
             exec = "youtube-music --enable-features=UseOzonePlatform --ozone-platform=wayland --enable-wayland-ime %u";
             icon = "youtube-music";
             desktopName = "Youtube Music";
             startupWMClass = "Youtube Music";
-            categories = [ "AudioVideo" ];
+            categories = ["AudioVideo"];
           })
         ];
-    })) # YT Music
-    keepassxc
-    teamviewer
-    pavucontrol
-    vlc
-    gparted
+      })) # YT Music
+      keepassxc
+      teamviewer
+      pavucontrol
+      vlc
+      gparted
 
-    # cli that depend on gui
-    copyq
-    grim
-    hyprpicker
-    slurp
-    wl-clipboard
-    alsa-utils
-    bemoji
-    tesseract
+      # cli that depend on gui
+      copyq
+      grim
+      hyprpicker
+      slurp
+      wl-clipboard
+      alsa-utils
+      bemoji
+      tesseract
 
-    gnome-network-displays
+      gnome-network-displays
 
-    # video, audio, and image editing
-    kdenlive
-    gimp
-    davinci-resolve
-    audacity
-    aseprite
-    blockbench
-    figma-linux
+      # video, audio, and image editing
+      kdenlive
+      gimp
+      davinci-resolve
+      audacity
+      aseprite
+      blockbench
+      figma-linux
 
-    # wine
-    wineWowPackages.waylandFull
-    winetricks
-  ] ++ [
-    zen-browser.packages.${pkgs.system}.default
-  ] ++ (with pkgs.unstable; [
-    valent
-    ghostty
-  ]));
-  
+      # wine
+      wineWowPackages.waylandFull
+      winetricks
+    ]
+    ++ [
+      zen-browser.packages.${pkgs.system}.default
+    ]
+    ++ (with pkgs.unstable; [
+      valent
+      ghostty
+    ]));
+
   programs.obs-studio = pkgs.lib.mkIf config.gui {
     enable = true;
     plugins = with pkgs.stable.obs-studio-plugins; [
-      obs-composite-blur      
+      obs-composite-blur
       obs-backgroundremoval
       obs-pipewire-audio-capture
     ];
@@ -96,7 +104,7 @@
   xdg.mimeApps = pkgs.lib.mkIf config.gui {
     enable = true;
     defaultApplications = (
-      let 
+      let
         browser = "zen.desktop";
         image_viewer = "org.gnome.Loupe.desktop";
         pdf_viewer = "org.gnome.Evince.desktop";
@@ -140,8 +148,8 @@
         # Video MIME types
         "video/mp4" = video_player;
         "video/webm" = video_player;
-        "video/x-msvideo" = video_player;  # AVI
-        "video/quicktime" = video_player;  # MOV
+        "video/x-msvideo" = video_player; # AVI
+        "video/quicktime" = video_player; # MOV
         "video/ogg" = video_player;
         "video/mpeg" = video_player;
         "video/3gpp" = video_player;
@@ -152,7 +160,7 @@
         "application/zip" = archiver;
         "application/gzip" = archiver;
         "application/vnd.rar" = archiver;
-        "application/x-7z-compressed" = archiver; 
+        "application/x-7z-compressed" = archiver;
       }
     );
   };

@@ -1,7 +1,10 @@
-{ config, pkgs, ... }@inputs:
 {
-  imports = [ ../common/programs.nix ];
-  
+  config,
+  pkgs,
+  ...
+} @ inputs: {
+  imports = [../common/programs.nix];
+
   programs.firefox.enable = true;
 
   programs.binary-ninja.enable = true;
@@ -14,7 +17,7 @@
     terminal = "ghostty";
   };
 
-   # List packages installed in system profile. To search, run:
+  # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
     polkit_gnome

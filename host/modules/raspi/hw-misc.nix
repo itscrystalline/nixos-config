@@ -1,6 +1,5 @@
-{ ... }:
-{
-  imports = [ ../common/hw-misc.nix ];
+{...}: {
+  imports = [../common/hw-misc.nix];
 
   hardware.raspberry-pi."4".apply-overlays-dtmerge.enable = true;
 }

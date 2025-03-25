@@ -1,4 +1,7 @@
-{ config, pkgs, ... }@inputs:
 {
+  config,
+  pkgs,
+  ...
+} @ inputs: {
   hardware.enableRedistributableFirmware = true;
 }

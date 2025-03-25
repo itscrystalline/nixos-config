@@ -1,5 +1,8 @@
-{ config, pkgs, ... }@inputs:
 {
+  config,
+  pkgs,
+  ...
+} @ inputs: {
   imports = [
     ./hardware-configuration.nix
     ../../modules/raspi/boot.nix

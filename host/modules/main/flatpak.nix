@@ -1,5 +1,4 @@
-{ pkgs, ... }:
-{
+{pkgs, ...}: {
   services.flatpak.enable = true;
 
   services.flatpak.update.onActivation = true;
@@ -8,5 +7,5 @@
     onCalendar = "weekly"; # Default value
   };
   # avoid compiling gnome-software
-  environment.gnome.excludePackages = [ pkgs.gnome-software ];
+  environment.gnome.excludePackages = [pkgs.gnome-software];
 }

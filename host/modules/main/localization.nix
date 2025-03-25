@@ -1,6 +1,9 @@
-{ config, pkgs, ... }@inputs:
 {
-  imports = [ ../common/localization.nix ];
+  config,
+  pkgs,
+  ...
+} @ inputs: {
+  imports = [../common/localization.nix];
 
   i18n.inputMethod = {
     type = "fcitx5";

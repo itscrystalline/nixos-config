@@ -1,7 +1,6 @@
-{ pkgs, ... }:
-{
+{pkgs, ...}: {
   # steam-run and xhost (add and delete host names or user names to the list allowed to make connections to the X server)
-  environment.systemPackages = [ pkgs.steam-run pkgs.xorg.xhost ];
+  environment.systemPackages = [pkgs.steam-run pkgs.xorg.xhost];
   # nix-ld
   programs.nix-ld = {
     enable = true;

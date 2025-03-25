@@ -1,5 +1,8 @@
-{ config, pkgs, ... }@inputs:
 {
+  config,
+  pkgs,
+  ...
+} @ inputs: {
   # Enable CUPS to print documents.
   services.printing.enable = true;
 
@@ -14,4 +17,3 @@
     openFirewall = true;
   };
 }
-

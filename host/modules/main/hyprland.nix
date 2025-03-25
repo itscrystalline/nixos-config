@@ -1,5 +1,8 @@
-{ config, pkgs, ... }@inputs:
 {
+  config,
+  pkgs,
+  ...
+} @ inputs: {
   programs.hyprland = {
     enable = true;
     # set the flake package
