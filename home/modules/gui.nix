@@ -73,6 +73,9 @@
       # wine
       wineWowPackages.waylandFull
       winetricks
+
+      # fwupd
+      gnome-firmware
     ]
     ++ [
       zen-browser.packages.${pkgs.system}.default

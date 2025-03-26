@@ -5,6 +5,9 @@
 } @ inputs: {
   imports = [../common/services.nix];
 
+  # fwupd
+  services.fwupd.enable = true;
+
   # Enable the X11 windowing system.
   services.xserver.enable = true;
 
