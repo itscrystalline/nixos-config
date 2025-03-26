@@ -1,7 +1,13 @@
-{pkgs, ...}: {
+{
+  inputs,
+  pkgs,
+  ...
+}: {
   imports = [
     ../common/services.nix
     ./docker.nix
+
+    (inputs.nixpkgs-unstable + "/nixos/modules/services/hardware/scanservjs.nix")
   ];
 
   services.avahi = {
@@ -23,6 +29,11 @@
     '';
   };
 
+  nixpkgs.overlays = [
+    (final: prev: {
+      scanservjs = pkgs.unstable.scanservjs;
+    })
+  ];
   services.scanservjs.enable = true;
 
   services.hardware.argonone.enable = true;
