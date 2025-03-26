@@ -78,7 +78,8 @@
       };
     };
   in {
-    homeConfigurations."opc" = home_config;
-    homeConfigurations."ubuntu" = home_config;
+    # homeConfigurations."opc" = home_config;
+    # homeConfigurations."ubuntu" = home_config;
+    homeConfigurations."itscrystalline" = home_config;
   };
 }
