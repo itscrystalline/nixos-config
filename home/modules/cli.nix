@@ -8,6 +8,7 @@
     blahaj
     zoxide
     sshfs
+    nh
   ];
 
   home.shellAliases = {
