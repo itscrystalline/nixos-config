@@ -71,7 +71,7 @@ in {
 
   programs.zed-editor = pkgs.lib.mkIf config.gui {
     enable = true;
-    package = pkgs.unstable.zed-editor.fhsWithPackages (pkgs: [pkgs.zlib]);
+    package = pkgs.zed-editor.fhsWithPackages (pkgs: [pkgs.zlib]);
     extensions = ["nix" "toml" "make" "git-firefly" "discord-presence"];
 
     ## everything inside of these brackets are Zed options.
