@@ -23,6 +23,8 @@
     '';
   };
 
+  services.scanservjs.enable = true;
+
   services.hardware.argonone.enable = true;
   environment.etc = {
     "argononed.conf".text = ''

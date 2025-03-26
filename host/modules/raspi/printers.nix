@@ -17,4 +17,5 @@
     ];
     ensureDefaultPrinter = "Canon_G2010_Series";
   };
+  hardware.sane.enable = true;
 }
