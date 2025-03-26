@@ -1,13 +1,4 @@
-{
-  config,
-  pkgs,
-  nur,
-  catppuccin,
-  zen-browser,
-  nix-jebrains-plugins,
-  nix-flatpak,
-  ...
-} @ inputs: {
+{pkgs, ...} @ inputs: {
   home.username = "itscrystalline";
   home.homeDirectory = "/home/itscrystalline";
 

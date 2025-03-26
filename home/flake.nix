@@ -48,6 +48,23 @@
       # the path to your home.nix.
       modules = [
         ./../vars.nix
+
+        ({
+          pkgs,
+          inputs,
+          ...
+        }: {
+          config.gui = false;
+          nixpkgs.overlays = [
+            (final: prev: {
+              unstable = import inputs.nixpkgs {
+                config.allowUnfree = true;
+                system = prev.system;
+              };
+            })
+          ];
+        })
+
         ./home.nix
 
         catppuccin.homeManagerModules.catppuccin
