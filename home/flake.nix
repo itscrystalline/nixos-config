@@ -49,12 +49,8 @@
       modules = [
         ./../vars.nix
 
-        ({
-          pkgs,
-          inputs,
-          ...
-        }: {
-          config.gui = false;
+        {config.gui = false;}
+        ({inputs, ...}: {
           nixpkgs.overlays = [
             (final: prev: {
               unstable = import inputs.nixpkgs {
@@ -75,6 +71,7 @@
       # to pass through arguments to home.nix
       extraSpecialArgs = {
         inherit inputs;
+        inherit nixpkgs;
         inherit zen-browser;
         inherit nix-jebrains-plugins;
         inherit nur;
