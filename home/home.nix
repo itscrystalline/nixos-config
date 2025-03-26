@@ -12,34 +12,11 @@
     ./modules/games.nix
     ./modules/flatpak.nix
     ./modules/virtualisation.nix
+    ./modules/services.nix
   ];
 
   # Home Manager needs a bit of information about you and the
   # paths it should manage.
-
-  # gnome polkit
-  systemd.user.services.polkit-gnome-authentication-agent-1 = {
-    Unit = {
-      Description = "polkit-gnome-authentication-agent-1";
-      After = ["graphical-session.target"];
-    };
-
-    Install = {
-      WantedBy = ["graphical-session.target"];
-      Wants = ["graphical-session.target"];
-    };
-
-    Service = {
-      Type = "simple";
-      ExecStart = "${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1";
-      Restart = "always";
-      RestartSec = 1;
-      TimeoutStopSec = 10;
-    };
-  };
-
-  # MPRIS Proxy (Bluetooth Audio)
-  services.mpris-proxy.enable = true;
 
   # This value determines the Home Manager release that your
   # configuration is compatible with. This helps avoid breakage
