@@ -40,8 +40,7 @@
   }: let
     system = "aarch64-linux";
     pkgs = nixpkgs.legacyPackages.${system};
-  in {
-    homeConfigurations."opc" = home-manager.lib.homeManagerConfiguration {
+    home_config = home-manager.lib.homeManagerConfiguration {
       inherit pkgs;
 
       # Specify your home configuration modules here, for example,
@@ -78,5 +77,8 @@
         inherit blender-flake;
       };
     };
+  in {
+    homeConfigurations."opc" = home_config;
+    homeConfigurations."ubuntu" = home_config;
   };
 }
