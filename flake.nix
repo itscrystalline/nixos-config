@@ -158,7 +158,7 @@
               # systems = ["x86_64-linux" "aarch64-linux"];
               maxJobs = 2;
               speedFactor = 2;
-              supportedFeatures = ["big-parallel" "kvm"];
+              supportedFeatures = [];
               mandatoryFeatures = [];
             }
             {
@@ -170,7 +170,7 @@
               # systems = ["x86_64-linux" "aarch64-linux"];
               maxJobs = 2;
               speedFactor = 2;
-              supportedFeatures = ["big-parallel" "kvm"];
+              supportedFeatures = [];
               mandatoryFeatures = [];
             }
           ];
