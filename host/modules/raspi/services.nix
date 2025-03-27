@@ -29,6 +29,7 @@
     '';
   };
 
+  # REMOVE: once scanservjs gits into stable
   nixpkgs.overlays = [
     (final: prev: {
       scanservjs = pkgs.unstable.scanservjs;

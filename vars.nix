@@ -1,10 +1,6 @@
-{
-  config,
-  pkgs,
-  ...
-}: {
-  options.gui = pkgs.lib.mkOption {
-    type = pkgs.lib.types.bool;
+{lib, ...}: {
+  options.gui = lib.mkOption {
+    type = lib.types.bool;
     default = true;
   };
 }

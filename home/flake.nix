@@ -40,14 +40,26 @@
   }: let
     system = "aarch64-linux";
     pkgs = nixpkgs.legacyPackages.${system};
-  in {
-    homeConfigurations."opc" = home-manager.lib.homeManagerConfiguration {
+    home_config = home-manager.lib.homeManagerConfiguration {
       inherit pkgs;
 
       # Specify your home configuration modules here, for example,
       # the path to your home.nix.
       modules = [
         ./../vars.nix
+
+        {config.gui = false;}
+        ({inputs, ...}: {
+          nixpkgs.overlays = [
+            (final: prev: {
+              unstable = import inputs.nixpkgs {
+                config.allowUnfree = true;
+                system = prev.system;
+              };
+            })
+          ];
+        })
+
         ./home.nix
 
         catppuccin.homeManagerModules.catppuccin
@@ -58,11 +70,16 @@
       # to pass through arguments to home.nix
       extraSpecialArgs = {
         inherit inputs;
+        inherit nixpkgs;
         inherit zen-browser;
         inherit nix-jebrains-plugins;
         inherit nur;
         inherit blender-flake;
       };
     };
+  in {
+    # homeConfigurations."opc" = home_config;
+    # homeConfigurations."ubuntu" = home_config;
+    homeConfigurations."itscrystalline" = home_config;
   };
 }
