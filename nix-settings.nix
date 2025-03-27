@@ -70,7 +70,7 @@
 
   # make devenv shut up
   nix.extraOptions = ''
-    trusted-users = root itscrystalline
+    trusted-users = root itscrystalline nixremote
     builders-use-substitutes = true
   '';
 
