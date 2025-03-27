@@ -146,6 +146,41 @@
         # so the old configuration file still takes effect
         ./vars.nix
         ./nix-settings.nix
+
+        {
+          nix.buildMachines = [
+            {
+              hostName = "cwystaws-siwwybowox";
+              system = "aarch64-linux";
+              protocol = "ssh-ng";
+              # if the builder supports building for multiple architectures,
+              # replace the previous line by, e.g.
+              # systems = ["x86_64-linux" "aarch64-linux"];
+              maxJobs = 2;
+              speedFactor = 2;
+              supportedFeatures = ["big-parallel" "kvm"];
+              mandatoryFeatures = [];
+            }
+            {
+              hostName = "cwystaws-grass-box";
+              system = "aarch64-linux";
+              protocol = "ssh-ng";
+              # if the builder supports building for multiple architectures,
+              # replace the previous line by, e.g.
+              # systems = ["x86_64-linux" "aarch64-linux"];
+              maxJobs = 2;
+              speedFactor = 2;
+              supportedFeatures = ["big-parallel" "kvm"];
+              mandatoryFeatures = [];
+            }
+          ];
+          nix.distributedBuilds = true;
+          # optional, useful when the builder has a faster internet connection than yours
+          nix.extraOptions = ''
+            builders-use-substitutes = true
+          '';
+        }
+
         ./host/devices/cwystaws-raspi/host.nix
 
         home-manager.nixosModules.home-manager
