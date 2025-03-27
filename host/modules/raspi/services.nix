@@ -35,7 +35,10 @@
       scanservjs = pkgs.unstable.scanservjs;
     })
   ];
-  services.scanservjs.enable = true;
+  services.scanservjs = {
+    enable = true;
+    settings.host = "0.0.0.0";
+  };
 
   services.hardware.argonone.enable = true;
   environment.etc = {
