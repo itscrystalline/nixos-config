@@ -1,6 +1,7 @@
 {
   config,
   pkgs,
+  lib,
   ...
 } @ inputs: {
   # Enable CUPS to print documents.
@@ -13,7 +14,7 @@
   services.avahi = {
     enable = true;
     nssmdns4 = true;
-    nssmdns6 = true;
+    # nssmdns6 = true;
     openFirewall = true;
   };
 }
