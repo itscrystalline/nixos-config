@@ -14,6 +14,6 @@
     ../../modules/common/security.nix
     ../../modules/common/localization.nix
     ../../modules/common/theming.nix
-    ../../modules/common/users/itscrystalline.nix
+    ../../modules/raspi/users/itscrystalline.nix
   ];
 }
