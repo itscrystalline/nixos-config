@@ -71,7 +71,37 @@
   # make devenv shut up
   nix.extraOptions = ''
     trusted-users = root itscrystalline
+    builders-use-substitutes = true
   '';
+
+  # remote buliders
+  nix.buildMachines = [
+    {
+      hostName = "cwystaws-siwwybowox";
+      system = "aarch64-linux";
+      protocol = "ssh-ng";
+      # if the builder supports building for multiple architectures,
+      # replace the previous line by, e.g.
+      # systems = ["x86_64-linux" "aarch64-linux"];
+      maxJobs = 4;
+      speedFactor = 2;
+      supportedFeatures = [];
+      mandatoryFeatures = [];
+    }
+    {
+      hostName = "cwystaws-grass-box";
+      system = "aarch64-linux";
+      protocol = "ssh-ng";
+      # if the builder supports building for multiple architectures,
+      # replace the previous line by, e.g.
+      # systems = ["x86_64-linux" "aarch64-linux"];
+      maxJobs = 4;
+      speedFactor = 2;
+      supportedFeatures = [];
+      mandatoryFeatures = [];
+    }
+  ];
+  nix.distributedBuilds = true;
 
   # Optimize storage
   # You can also manually optimize the store via:

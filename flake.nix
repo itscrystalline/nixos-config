@@ -150,35 +150,20 @@
         {
           nix.buildMachines = [
             {
-              hostName = "cwystaws-siwwybowox";
-              system = "aarch64-linux";
+              hostName = "cwystaws-meowchine";
+              systems = ["x86_64-linux" "aarch64-linux"];
               protocol = "ssh-ng";
-              # if the builder supports building for multiple architectures,
-              # replace the previous line by, e.g.
-              # systems = ["x86_64-linux" "aarch64-linux"];
-              maxJobs = 2;
+              maxJobs = 6;
               speedFactor = 2;
-              supportedFeatures = [];
-              mandatoryFeatures = [];
-            }
-            {
-              hostName = "cwystaws-grass-box";
-              system = "aarch64-linux";
-              protocol = "ssh-ng";
-              # if the builder supports building for multiple architectures,
-              # replace the previous line by, e.g.
-              # systems = ["x86_64-linux" "aarch64-linux"];
-              maxJobs = 2;
-              speedFactor = 2;
-              supportedFeatures = [];
+              supportedFeatures = [
+                "benchmark"
+                "big-parallel"
+                "kvm"
+                "nixos-test"
+              ];
               mandatoryFeatures = [];
             }
           ];
-          nix.distributedBuilds = true;
-          # optional, useful when the builder has a faster internet connection than yours
-          nix.extraOptions = ''
-            builders-use-substitutes = true
-          '';
         }
 
         ./host/devices/cwystaws-raspi/host.nix

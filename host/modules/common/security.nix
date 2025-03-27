@@ -36,6 +36,7 @@
 
   # Enable the OpenSSH daemon.
   services.openssh.enable = true;
+  services.openssh.settings.SetEnv = "PATH=/nix/var/nix/profiles/default/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin";
 
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ ... ];

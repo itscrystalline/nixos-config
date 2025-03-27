@@ -12,6 +12,9 @@ in {
     # NTFS support
     supportedFilesystems = ["ntfs"];
 
+    # remote building from pi
+    binfmt.emulatedSystems = ["aarch64-linux"];
+
     # CachyOS Kernel
     kernelPackages = pkgs.linuxPackages_cachyos;
     kernel.sysctl."kernel.sysrq" = 1;

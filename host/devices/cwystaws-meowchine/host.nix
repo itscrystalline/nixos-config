@@ -22,6 +22,7 @@
     ../../modules/common/security.nix
     ../../modules/common/theming.nix
     ../../modules/common/compat.nix
+    ../../modules/main/users/nixremote.nix
     ../../modules/main/users/itscrystalline.nix
   ];
 }
