@@ -24,6 +24,7 @@
     };
     blender-flake.url = "github:edolstra/nix-warez?dir=blender";
     nix-flatpak.url = "github:gmodena/nix-flatpak";
+    nixvim.url = "github:nix-community/nixvim";
   };
 
   outputs = inputs @ {
@@ -36,6 +37,7 @@
     nur,
     blender-flake,
     nix-flatpak,
+    nixvim,
     ...
   }: let
     system = "aarch64-linux";
@@ -65,6 +67,7 @@
         catppuccin.homeManagerModules.catppuccin
         nix-flatpak.homeManagerModules.nix-flatpak
         nvchad4nix.homeManagerModule
+        nixvim.homeManagerModules.nixvim
       ];
       # Optionally use extraSpecialArgs
       # to pass through arguments to home.nix
@@ -75,6 +78,7 @@
         inherit nix-jebrains-plugins;
         inherit nur;
         inherit blender-flake;
+        inherit nixvim;
       };
     };
   in {

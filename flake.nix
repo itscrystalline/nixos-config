@@ -55,6 +55,7 @@
       # Optional, but recommended.
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    nixvim.url = "github:nix-community/nixvim";
   };
 
   outputs = inputs @ {
@@ -72,6 +73,7 @@
     nvchad4nix,
     lix-module,
     binaryninja,
+    nixvim,
     ...
   }: {
     # Please replace my-nixos with your hostname
@@ -111,6 +113,7 @@
               catppuccin.homeManagerModules.catppuccin
               nix-flatpak.homeManagerModules.nix-flatpak
               nvchad4nix.homeManagerModule
+              nixvim.homeManagerModules.nixvim
             ];
           };
 
@@ -186,6 +189,7 @@
               catppuccin.homeManagerModules.catppuccin
               nix-flatpak.homeManagerModules.nix-flatpak
               nvchad4nix.homeManagerModule
+              nixvim.homeManagerModules.nixvim
             ];
           };
 
