@@ -102,5 +102,4 @@
     forceSSL = true;
     enableACME = true;
   };
-  users.users.nginx.extraGroups = ["acme"];
 }
