@@ -95,10 +95,12 @@
     notify_push.enable = true;
     enableImagemagick = true;
     configureRedis = true;
+    database.createLocally = true;
     maxUploadSize = "4G";
   };
   services.nginx.virtualHosts.${config.services.nextcloud.hostName} = {
     forceSSL = true;
     enableACME = true;
   };
+  users.users.nginx.extraGroups = ["acme"];
 }
