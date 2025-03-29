@@ -96,6 +96,12 @@
         "OC\\Preview\\XBitmap"
         "OC\\Preview\\HEIC"
       ];
+      trusted_domains = [
+        "nc.iw2tryhard.dev"
+        "100.125.37.13"
+        "192.128.1.61"
+        "cwystaws-raspi"
+      ];
     };
 
     notify_push.enable = true;
