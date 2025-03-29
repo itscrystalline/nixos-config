@@ -63,11 +63,14 @@
     };
   };
   services.nextcloud = {
-    enable = false;
+    enable = true;
     package = pkgs.nextcloud30;
-    home = "/mnt/main/nextcloud";
+    home = "/mnt/main/nextcloud/nextcloud";
     hostName = "nc.iw2tryhard.dev";
     https = true;
+    config = {
+      dbtype = "mysql";
+    };
 
     extraApps = with config.services.nextcloud.package.packages.apps; {
       inherit news contacts calendar tasks recognize phonetrack memories previewgenerator notes groupfolders;
