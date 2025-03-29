@@ -70,9 +70,10 @@
 
   # make devenv shut up
   nix.extraOptions = ''
-    trusted-users = root itscrystalline nixremote
     builders-use-substitutes = true
   '';
+
+  nix.settings.trusted-users = ["root" "itscrystalline" "nixremote" "opc" "ubuntu"];
 
   # remote buliders
   nix.buildMachines = [
