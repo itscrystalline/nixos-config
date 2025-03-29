@@ -67,7 +67,7 @@
   in {
     enable = true;
     package = pkgs.nextcloud30;
-    home = "/mnt/main/nextcloud/nextcloud";
+    home = "/mnt/main/nextcloud";
     hostName = "nc.iw2tryhard.dev";
     https = true;
     config = {
