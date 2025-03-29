@@ -11,7 +11,7 @@
     ../../modules/raspi/printers.nix
     ../../modules/raspi/programs.nix
     ../../modules/raspi/hw-misc.nix
-    ../../modules/common/security.nix
+    ../../modules/raspi/security.nix
     ../../modules/common/localization.nix
     ../../modules/common/theming.nix
     ../../modules/raspi/users/itscrystalline.nix

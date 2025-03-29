@@ -1,4 +1,5 @@
 {
+  config,
   inputs,
   pkgs,
   ...
@@ -48,5 +49,56 @@
 
       hysteresis = 5
     '';
+  };
+
+  services.cloudflared = let
+    secret_path = builtins.toPath ../../../secrets/cfd_creds.json;
+  in {
+    enable = true;
+    tunnels = {
+      "fc4d0058-a84e-4ef5-b66f-56c2a1a7eb7f" = {
+        credentialsFile = "${secret_path}";
+        default = "http_status:404";
+      };
+    };
+  };
+  services.nextcloud = {
+    enable = false;
+    package = pkgs.nextcloud30;
+    home = "/mnt/main/nextcloud";
+    hostName = "nc.iw2tryhard.dev";
+    https = true;
+
+    extraApps = with config.services.nextcloud.package.packages.apps; {
+      inherit news contacts calendar tasks recognize phonetrack memories previewgenerator notes groupfolders;
+    };
+    extraAppsEnable = true;
+
+    settings = {
+      # mail_smtpmode = "sendmail";
+      # mail_sendmailmode = "pipe";
+      enabledPreviewProviders = [
+        "OC\\Preview\\BMP"
+        "OC\\Preview\\GIF"
+        "OC\\Preview\\JPEG"
+        "OC\\Preview\\Krita"
+        "OC\\Preview\\MarkDown"
+        "OC\\Preview\\MP3"
+        "OC\\Preview\\OpenDocument"
+        "OC\\Preview\\PNG"
+        "OC\\Preview\\TXT"
+        "OC\\Preview\\XBitmap"
+        "OC\\Preview\\HEIC"
+      ];
+    };
+
+    notify_push.enable = true;
+    enableImagemagick = true;
+    configureRedis = true;
+    maxUploadSize = "4G";
+  };
+  services.nginx.virtualHosts.${config.services.nextcloud.hostName} = {
+    forceSSL = true;
+    enableACME = true;
   };
 }
