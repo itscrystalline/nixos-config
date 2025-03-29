@@ -3,10 +3,16 @@
 
   security.acme = {
     acceptTerms = true;
-    defaults.email = "real@iw2tryhard.dev";
-    # certs.${config.services.nextcloud.hostName} = {
-    #   group = "nginx";
-    #   webroot = "/var/lib/acme/.challenges";
-    # };
+    defaults = {
+      dnsProvider = "cloudflare";
+      credentialFiles = {
+        "CLOUDFLARE_API_KEY_FILE" = "${builtins.toPath ../../../secrets/cf_api_key}";
+      };
+    };
+    certs.${config.services.nextcloud.hostName} = {
+      email = "real@iw2tryhard.dev";
+      group = "nginx";
+      webroot = "/var/lib/acme/.challenges";
+    };
   };
 }
