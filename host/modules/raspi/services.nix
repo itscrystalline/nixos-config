@@ -62,7 +62,9 @@
       };
     };
   };
-  services.nextcloud = {
+  services.nextcloud = let
+    pass = builtins.toPath ../../../secrets/nc_password.txt;
+  in {
     enable = true;
     package = pkgs.nextcloud30;
     home = "/mnt/main/nextcloud/nextcloud";
@@ -70,6 +72,7 @@
     https = true;
     config = {
       dbtype = "mysql";
+      adminpassFile = "${pass}";
     };
 
     extraApps = with config.services.nextcloud.package.packages.apps; {
