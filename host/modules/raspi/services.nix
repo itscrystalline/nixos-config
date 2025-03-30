@@ -74,6 +74,16 @@
       dbtype = "mysql";
       adminpassFile = "${pass}";
     };
+    nginx.recommendedHttpHeaders = true;
+
+    # https://spot13.com/pmcalculator/
+    poolSettings = {
+      pm = "dynamic";
+      "pm.max_children" = "182";
+      "pm.max_spare_servers" = "136";
+      "pm.min_spare_servers" = "45";
+      "pm.start_servers" = "45";
+    };
 
     extraApps = with config.services.nextcloud.package.packages.apps; {
       inherit news contacts calendar tasks recognize phonetrack memories previewgenerator notes groupfolders;
@@ -96,6 +106,7 @@
         "OC\\Preview\\XBitmap"
         "OC\\Preview\\HEIC"
       ];
+      preview_imaginary_url = "http://127.0.0.1:${config.services.imaginary.port}";
       trusted_domains = [
         "nc.iw2tryhard.dev"
         "100.125.37.13"
@@ -109,6 +120,9 @@
     configureRedis = true;
     database.createLocally = true;
     maxUploadSize = "4G";
+  };
+  services.imaginary = {
+    enable = true;
   };
   services.nginx.virtualHosts.${config.services.nextcloud.hostName} = {
     forceSSL = true;
