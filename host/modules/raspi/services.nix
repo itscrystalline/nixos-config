@@ -124,7 +124,7 @@
   services.imaginary = {
     enable = true;
     settings = {
-      return-size = 128;
+      return-size = true;
     };
   };
   services.nginx.virtualHosts.${config.services.nextcloud.hostName} = {
