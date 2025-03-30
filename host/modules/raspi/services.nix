@@ -123,6 +123,9 @@
   };
   services.imaginary = {
     enable = true;
+    settings = {
+      return-size = 128;
+    };
   };
   services.nginx.virtualHosts.${config.services.nextcloud.hostName} = {
     forceSSL = true;
