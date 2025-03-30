@@ -106,7 +106,7 @@
         "OC\\Preview\\XBitmap"
         "OC\\Preview\\HEIC"
       ];
-      preview_imaginary_url = "http://127.0.0.1:${config.services.imaginary.port}";
+      preview_imaginary_url = "http://127.0.0.1:${builtins.toString config.services.imaginary.port}";
       trusted_domains = [
         "nc.iw2tryhard.dev"
         "100.125.37.13"
