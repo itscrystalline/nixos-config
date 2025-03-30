@@ -7,6 +7,8 @@
 
   environment.systemPackages = with pkgs; [
     libraspberrypi
+
+    doas-sudo-shim
   ];
 
   # SMTP for Nextcloud
