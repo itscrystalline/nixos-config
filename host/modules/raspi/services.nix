@@ -2,6 +2,7 @@
   config,
   inputs,
   pkgs,
+  lib,
   ...
 }: {
   imports = [
@@ -113,6 +114,9 @@
         "192.128.1.61"
         "cwystaws-raspi"
       ];
+      "memories.exiftool" = "${lib.getExe pkgs.exiftool}";
+      "memories.vod.ffmpeg" = "${lib.getExe pkgs.ffmpeg-headless}";
+      "memories.vod.ffprobe" = "${pkgs.ffmpeg-headless}/bin/ffprobe";
     };
 
     notify_push.enable = true;
