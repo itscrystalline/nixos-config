@@ -52,6 +52,16 @@
     ];
   };
 
+  programs.ssh = {
+    enable = true;
+    matchBlocks = {
+      "cwystaws-raspi" = {
+        hostname = "cwystaws-raspi";
+        identityFile = "/home/itscrystalline/.ssh/crystal";
+      };
+    };
+  };
+
   # fetches
   programs.fastfetch.enable = true;
   programs.hyfetch = {
