@@ -37,6 +37,10 @@
   services.power-profiles-daemon.enable = false;
   services.thermald.enable = true;
 
+  services.earlyoom = {
+    enableNotifications = true;
+  };
+
   services.tlp = {
     enable = true;
     settings = {
