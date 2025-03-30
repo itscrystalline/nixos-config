@@ -80,10 +80,10 @@
     # https://spot13.com/pmcalculator/
     poolSettings = {
       pm = "dynamic";
-      "pm.max_children" = "182";
-      "pm.max_spare_servers" = "136";
-      "pm.min_spare_servers" = "45";
-      "pm.start_servers" = "45";
+      "pm.max_children" = "115";
+      "pm.max_spare_servers" = "86";
+      "pm.min_spare_servers" = "28";
+      "pm.start_servers" = "28";
     };
 
     extraApps = with config.services.nextcloud.package.packages.apps; {
