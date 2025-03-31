@@ -34,6 +34,7 @@
         "bash"
         "zsh"
         "mosh-server"
+        "tailscaled"
         "sshd"
         "systemd"
         "systemd-logind"
