@@ -164,7 +164,8 @@ in {
   programs.nvchad = {
     enable = true;
     extraPackages = with pkgs; [
-      nixd
+      # nixd
+      nil
       alejandra
       vimPlugins.rustaceanvim
       vimPlugins.nvim-dap
@@ -210,7 +211,7 @@ in {
 
       local lspconfig = require "lspconfig"
 
-      local servers = { "pylsp", "nixd", "clangd", "phpactor" }
+      local servers = { "pylsp", "nil_ls", "clangd", "phpactor" }
       local nvlsp = require "nvchad.configs.lspconfig"
 
       for _, lsp in ipairs(servers) do
@@ -224,24 +225,19 @@ in {
             return vim.loop.cwd()
           end
         end
-        if lsp == "nixd" then
+        if lsp == "nil_ls" then
           config["settings"] = {
-            nixd = {
-              nixpkgs = {
-                expr = "import <nixpkgs> { }",
-              },
+            ["nil"] = {
               formatting = {
                 command = { "alejandra" },
               },
-              options = {
-                nixos = {
-                  expr = '(builtins.getFlake "git+file:///home/itscrystalline/nixos-config").nixosConfigurations.cwystaws-meowchine.options',
-                },
-                home_manager = {
-                  expr = '(builtins.getFlake "git+file:///home/itscrystalline/nixos-config").homeConfigurations."itscrystalline@cwystaws-meowchine".options',
+              nix = {
+                flake = {
+                  autoArchive = true,
+                  -- autoEvalInputs = true,
                 },
               },
-            }
+            },
           }
         end
 
