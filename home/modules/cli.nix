@@ -34,7 +34,6 @@
     autocd = true;
     history = {
       append = true;
-      path = "${config.xdg.dataHome}/zsh/zsh_history";
     };
     initExtraFirst = ''
       export _ZO_EXCLUDE_DIRS=$HOME:$HOME/Nextcloud/*
