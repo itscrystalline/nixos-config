@@ -1,15 +1,15 @@
-{ ... }: {
+{...}: {
   programs.nixvim.plugins = {
     cmp = {
       enable = true;
       autoEnableSources = true;
       settings.sources = [
-        { name = "nvim_lsp"; }
-        { name = "path"; }
-        { name = "buffer"; }
-        { name = "dap"; }
-        { name = "luasnip"; }
-        { name = "nvim_lua"; }
+        {name = "nvim_lsp";}
+        {name = "path";}
+        {name = "buffer";}
+        {name = "dap";}
+        {name = "luasnip";}
+        {name = "nvim_lua";}
       ];
     };
 
@@ -38,7 +38,7 @@
       ];
     };
 
-    dap = { 
+    dap = {
       enable = true;
     };
     dap-ui = {

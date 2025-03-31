@@ -1,4 +1,4 @@
-{ ... }: {
+{...}: {
   programs.nixvim.globals = {
     neovide_padding_top = 16;
     neovide_padding_bottom = 16;

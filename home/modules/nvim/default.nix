@@ -1,6 +1,5 @@
-{config, ...}: 
-let 
-  helpers = config.lib.nixvim; 
+{config, ...}: let
+  helpers = config.lib.nixvim;
 in {
   imports = [
     ./neovide.nix
@@ -27,8 +26,8 @@ in {
                 vim.lsp.buf.format {async = false, id = args.data.client_id }
               end,
             })
-          end        
-        ''; 
+          end
+        '';
         group = "lsp";
       }
     ];
@@ -51,7 +50,7 @@ in {
     opts.smartindent = true;
 
     extraConfigLua = ''
-      
+
     '';
   };
 }
