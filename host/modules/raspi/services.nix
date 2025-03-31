@@ -64,8 +64,8 @@
     };
   };
   services.nextcloud = let
-    pass = builtins.toPath ../../../secrets/nc_password.txt;
-  in {
+    pass = ./. + "../../../secrets/nc_password.txt";
+  in rec {
     enable = true;
     package = pkgs.nextcloud30;
     home = "/mnt/main/nextcloud";
@@ -115,7 +115,7 @@
       ];
       preview_imaginary_url = "http://127.0.0.1:${builtins.toString config.services.imaginary.port}";
       trusted_domains = [
-        "nc.iw2tryhard.dev"
+        "${config.services.nextcloud.hostName}"
         "100.125.37.13"
         "192.128.1.61"
         "cwystaws-raspi"
@@ -131,12 +131,12 @@
     database.createLocally = true;
     maxUploadSize = "4G";
   };
-  services.imaginary = {
-    enable = true;
-    settings = {
-      return-size = true;
-    };
-  };
+  # services.imaginary = {
+  #   enable = true;
+  #   settings = {
+  #     return-size = true;
+  #   };
+  # };
   services.collabora-online = {
     enable = true;
     port = 9980; # default
@@ -156,7 +156,7 @@
       # Restrict loading documents from WOPI Host nextcloud.example.com
       storage.wopi = {
         "@allow" = true;
-        host = ["nc.iw2tryhard.dev"];
+        host = ["${config.services.nextcloud.hostName}"];
       };
 
       # Set FQDN of server
