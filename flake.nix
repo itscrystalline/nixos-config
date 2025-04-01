@@ -100,12 +100,6 @@
         ./nix-settings.nix
         ./host/devices/cwystaws-meowchine/host.nix
 
-        {
-          nixpkgs.crossSystem = {
-            system = "aarch64-linux";
-          };
-        }
-
         home-manager.nixosModules.home-manager
         {
           home-manager.useGlobalPkgs = true;
@@ -156,25 +150,6 @@
         ./vars.nix
         ./nix-settings.nix
         ./host/devices/cwystaws-raspi/host.nix
-
-        {
-          nix.buildMachines = [
-            {
-              hostName = "cwystaws-meowchine";
-              systems = ["aarch64-linux"];
-              protocol = "ssh-ng";
-              maxJobs = 6;
-              speedFactor = 2;
-              supportedFeatures = [
-                "benchmark"
-                "big-parallel"
-                "kvm"
-                "nixos-test"
-              ];
-              mandatoryFeatures = [];
-            }
-          ];
-        }
 
         home-manager.nixosModules.home-manager
         {
