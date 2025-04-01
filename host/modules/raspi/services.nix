@@ -64,7 +64,7 @@
     };
   };
   services.nextcloud = let
-    pass = ./. + "../../../secrets/nc_password.txt";
+    pass = builtins.toPath ../../../secrets/nc_password.txt;
   in {
     enable = true;
     package = pkgs.nextcloud30;
