@@ -131,12 +131,12 @@
     database.createLocally = true;
     maxUploadSize = "4G";
   };
-  # services.imaginary = {
-  #   enable = true;
-  #   settings = {
-  #     return-size = true;
-  #   };
-  # };
+  services.imaginary = {
+    enable = true;
+    settings = {
+      return-size = true;
+    };
+  };
   services.collabora-online = {
     enable = true;
     port = 9980; # default
