@@ -100,6 +100,12 @@
         ./nix-settings.nix
         ./host/devices/cwystaws-meowchine/host.nix
 
+        {
+          nixpkgs.crossSystem = {
+            system = "aarch64-linux";
+          };
+        }
+
         home-manager.nixosModules.home-manager
         {
           home-manager.useGlobalPkgs = true;
@@ -149,12 +155,13 @@
         # so the old configuration file still takes effect
         ./vars.nix
         ./nix-settings.nix
+        ./host/devices/cwystaws-raspi/host.nix
 
         {
           nix.buildMachines = [
             {
               hostName = "cwystaws-meowchine";
-              systems = ["x86_64-linux" "aarch64-linux"];
+              systems = ["aarch64-linux"];
               protocol = "ssh-ng";
               maxJobs = 6;
               speedFactor = 2;
@@ -168,8 +175,6 @@
             }
           ];
         }
-
-        ./host/devices/cwystaws-raspi/host.nix
 
         home-manager.nixosModules.home-manager
         {
