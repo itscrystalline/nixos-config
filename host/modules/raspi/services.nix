@@ -190,7 +190,7 @@
     inherit (config.services.nextcloud) occ;
 
     wopi_url = "http://[::1]:${toString config.services.collabora-online.port}";
-    public_wopi_url = "https://collabora.example.com";
+    public_wopi_url = "http://${config.services.collabora-online.settings.server_name}";
     wopi_allowlist = lib.concatStringsSep "," [
       "127.0.0.1"
       "::1"
