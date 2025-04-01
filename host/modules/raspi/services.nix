@@ -65,7 +65,7 @@
   };
   services.nextcloud = let
     pass = ./. + "../../../secrets/nc_password.txt";
-  in rec {
+  in {
     enable = true;
     package = pkgs.nextcloud30;
     home = "/mnt/main/nextcloud";
@@ -115,7 +115,7 @@
       ];
       preview_imaginary_url = "http://127.0.0.1:${builtins.toString config.services.imaginary.port}";
       trusted_domains = [
-        "${config.services.nextcloud.hostName}"
+        "nc.iw2tryhard.dev"
         "100.125.37.13"
         "192.128.1.61"
         "cwystaws-raspi"
