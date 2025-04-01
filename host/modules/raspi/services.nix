@@ -142,10 +142,10 @@
     port = 9980; # default
     settings = {
       # Rely on reverse proxy for SSL
-      ssl = {
-        enable = true;
-        termination = true;
-      };
+      # ssl = {
+      #   enable = true;
+      #   termination = true;
+      # };
 
       # Listen on loopback interface only, and accept requests from ::1
       net = {
@@ -175,7 +175,7 @@
       enableACME = true;
       forceSSL = true;
       locations."/" = {
-        proxyPass = "https://[::1]:${toString config.services.collabora-online.port}";
+        proxyPass = "http://[::1]:${toString config.services.collabora-online.port}";
         proxyWebsockets = true; # collabora uses websockets
       };
     };
@@ -189,7 +189,7 @@
   systemd.services.nextcloud-config-collabora = let
     inherit (config.services.nextcloud) occ;
 
-    wopi_url = "https://[::1]:${toString config.services.collabora-online.port}";
+    wopi_url = "http://[::1]:${toString config.services.collabora-online.port}";
     public_wopi_url = "https://${config.services.collabora-online.settings.server_name}";
     wopi_allowlist = lib.concatStringsSep "," [
       "127.0.0.1"
