@@ -93,7 +93,7 @@
     };
 
     extraApps = with config.services.nextcloud.package.packages.apps; {
-      inherit news contacts calendar tasks recognize phonetrack memories previewgenerator notes groupfolders richdocuments notify-push;
+      inherit news contacts calendar tasks recognize phonetrack memories previewgenerator notes groupfolders richdocuments notify_push;
     };
     extraAppsEnable = true;
 
