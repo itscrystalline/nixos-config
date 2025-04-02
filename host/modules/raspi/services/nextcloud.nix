@@ -71,13 +71,15 @@
         "OC\\Preview\\HEIC"
       ];
       preview_imaginary_url = "http://127.0.0.1:${builtins.toString config.services.imaginary.port}";
-      trusted_domains = [
-        "${domain}"
-        "${config.networking.hostName}"
-        "nc.crys"
-        "100.125.37.13"
-        "192.128.1.61"
-      ];
+      trusted_domains =
+        [
+          "${domain}"
+          "${config.networking.hostName}"
+          "nc.crys"
+          "100.125.37.13"
+          "192.128.1.61"
+        ]
+        ++ config.services.nginx.virtualHosts.${domain}.serverAliases;
       trusted_proxies = [
         "127.0.0.1"
         "::1"
@@ -134,7 +136,7 @@
     };
   };
   services.nginx = {
-    virtualHosts.${config.services.nextcloud.hostName}.serverAliases = "nc.crys";
+    virtualHosts.${config.services.nextcloud.hostName}.serverAliases = ["nc.crys"];
     virtualHosts.${config.services.collabora-online.settings.server_name} = {
       locations."/" = {
         proxyPass = "http://[::1]:${toString config.services.collabora-online.port}";
