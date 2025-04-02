@@ -10,7 +10,7 @@
 in {
   boot = {
     # NTFS support
-    supportedFilesystems = ["ntfs"];
+    supportedFilesystems = ["ntfs" "nfs"];
 
     # remote building from pi
     # binfmt.emulatedSystems = ["aarch64-linux"];
