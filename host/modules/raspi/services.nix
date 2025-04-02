@@ -12,6 +12,7 @@
     (inputs.nixpkgs-unstable + "/nixos/modules/services/hardware/scanservjs.nix")
 
     ./services/nextcloud.nix
+    ./services/grafana.nix
   ];
 
   services.avahi = {
