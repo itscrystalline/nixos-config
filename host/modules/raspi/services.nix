@@ -52,6 +52,13 @@
     '';
   };
 
+  services.nfs.server = {
+    enable = true;
+    exports = ''
+      /export 192.168.1.0/24(rw,sync,no_subtree_check) 100.0.0.0/8(rw,sync,no_subtree_check)
+    '';
+  };
+
   services.cloudflared = let
     secret_path = builtins.toPath ../../../secrets/cfd_creds.json;
   in {

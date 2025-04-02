@@ -12,7 +12,7 @@
 
   networking.firewall = {
     enable = true;
-    allowedTCPPorts = [80 443 8080];
+    allowedTCPPorts = [80 443 2049 8080];
   };
 
   # nextcloud - collabora loopback
