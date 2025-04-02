@@ -27,4 +27,8 @@
     #   fsType = "ext4";
     # };
   };
+
+  systemd.tmpfiles.rules = [
+    "Z /export 0777 - - - -"
+  ];
 }

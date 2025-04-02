@@ -192,10 +192,9 @@
     # recommendedProxySettings = true;
     # recommendedTlsSettings = true;
 
-    # virtualHosts.${config.services.nextcloud.hostName} = {
-    #   forceSSL = true;
-    #   enableACME = true;
-    # };
+    # virtualHosts.${config.services.nextcloud.hostName}.extraConfig = ''
+    # client_max_body_size ${config.services.nextcloud.maxUploadSize};
+    # '';
     virtualHosts.${config.services.collabora-online.settings.server_name} = {
       locations."/" = {
         proxyPass = "http://[::1]:${toString config.services.collabora-online.port}";
@@ -207,6 +206,7 @@
   # SSH auto restart
   systemd.services.sshd.serviceConfig.Restart = lib.mkForce "always";
   systemd.services.tailscaled.serviceConfig.Restart = lib.mkForce "always";
+  systemd.services.mysql.serviceConfig.Restart = lib.mkForce "always";
 
   # collabora setup; https://diogotc.com/blog/collabora-nextcloud-nixos/
   systemd.services.nextcloud-config-collabora = let
