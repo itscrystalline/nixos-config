@@ -16,8 +16,8 @@
   };
 
   # nextcloud - collabora loopback
-  networking.hosts = {
-    "127.0.0.1" = ["${config.services.nextcloud.hostName}" "${config.services.collabora-online.settings.server_name}"];
-    "::1" = ["${config.services.nextcloud.hostName}" "${config.services.collabora-online.settings.server_name}"];
-  };
+  # networking.hosts = {
+  #   "127.0.0.1" = ["${config.services.nextcloud.hostName}" "${config.services.collabora-online.settings.server_name}"];
+  #   "::1" = ["${config.services.nextcloud.hostName}" "${config.services.collabora-online.settings.server_name}"];
+  # };
 }

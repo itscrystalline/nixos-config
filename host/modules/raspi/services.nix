@@ -65,17 +65,17 @@
   };
   services.nextcloud = let
     pass = builtins.toPath ../../../secrets/nc_password.txt;
+    domain = "nc.iw2tryhard.dev";
   in {
     enable = true;
     package = pkgs.nextcloud30;
     home = "/mnt/main/nextcloud";
-    hostName = "nc.iw2tryhard.dev";
+    hostName = domain;
     https = true;
     config = {
       dbtype = "mysql";
-      adminpassFile = "${pass}";
+      adminpassFile = pass;
     };
-    nginx.recommendedHttpHeaders = true;
 
     # https://spot13.com/pmcalculator/
     poolSettings = {
@@ -87,28 +87,33 @@
       "pm.max_requests" = "750";
     };
     phpOptions = {
+      "opcache.interned_strings_buffer" = "16";
       "opcache.enabled" = "true";
       "opcache.jit" = "on";
       "opcache.jit_buffer_size" = "128M";
     };
 
     extraApps = with config.services.nextcloud.package.packages.apps; {
-      inherit news contacts calendar tasks recognize phonetrack memories previewgenerator notes groupfolders richdocuments notify_push;
+      inherit news contacts calendar tasks recognize phonetrack memories previewgenerator notes groupfolders notify_push richdocuments;
     };
     extraAppsEnable = true;
 
     settings = {
-      # mail_smtpmode = "sendmail";
-      # mail_sendmailmode = "pipe";
+      updatechecker = false;
+      default_phone_region = "TH";
+      mail_smtpmode = "sendmail";
+      mail_sendmailmode = "pipe";
       enabledPreviewProviders = [
-        "OC\\Preview\\BMP"
-        "OC\\Preview\\GIF"
-        "OC\\Preview\\JPEG"
+        # "OC\\Preview\\BMP"
+        # "OC\\Preview\\GIF"
+        # "OC\\Preview\\JPEG"
+        # "OC\\Preview\\PNG"
+        "OC\\Preview\\Image"
+        "OC\\Preview\\Movie"
         "OC\\Preview\\Krita"
         "OC\\Preview\\MarkDown"
         "OC\\Preview\\MP3"
         "OC\\Preview\\OpenDocument"
-        "OC\\Preview\\PNG"
         "OC\\Preview\\TXT"
         "OC\\Preview\\XBitmap"
         "OC\\Preview\\HEIC"
@@ -120,12 +125,24 @@
         "192.128.1.61"
         "cwystaws-raspi"
       ];
+      trusted_proxies = [
+        "127.0.0.1"
+        "::1"
+        "2001:fb1:139:87b0:33d6:4f2:97b9:481e"
+      ];
+      # "overwrite.cli.url" = "https://${domain}/";
       "memories.exiftool" = "${lib.getExe pkgs.exiftool}";
+      "memories.exiftool_no_local" = true;
+      "preview_ffmpeg_path" = "${lib.getExe pkgs.ffmpeg-headless}";
       "memories.vod.ffmpeg" = "${lib.getExe pkgs.ffmpeg-headless}";
       "memories.vod.ffprobe" = "${pkgs.ffmpeg-headless}/bin/ffprobe";
+      "maintenance_window_start" = 7;
     };
 
-    notify_push.enable = true;
+    notify_push = {
+      enable = true;
+      # bendDomainToLocalhost = true;
+    };
     enableImagemagick = true;
     configureRedis = true;
     database.createLocally = true;
@@ -142,10 +159,10 @@
     port = 9980; # default
     settings = {
       # Rely on reverse proxy for SSL
-      # ssl = {
-      #   enable = true;
-      #   termination = true;
-      # };
+      ssl = {
+        enable = false;
+        termination = false;
+      };
 
       # Listen on loopback interface only, and accept requests from ::1
       net = {
@@ -164,16 +181,15 @@
     };
   };
   services.nginx = {
-    recommendedProxySettings = true;
-    recommendedTlsSettings = true;
+    enable = true;
+    # recommendedProxySettings = true;
+    # recommendedTlsSettings = true;
 
-    virtualHosts.${config.services.nextcloud.hostName} = {
-      forceSSL = true;
-      enableACME = true;
-    };
+    # virtualHosts.${config.services.nextcloud.hostName} = {
+    #   forceSSL = true;
+    #   enableACME = true;
+    # };
     virtualHosts.${config.services.collabora-online.settings.server_name} = {
-      enableACME = true;
-      forceSSL = true;
       locations."/" = {
         proxyPass = "http://[::1]:${toString config.services.collabora-online.port}";
         proxyWebsockets = true; # collabora uses websockets
