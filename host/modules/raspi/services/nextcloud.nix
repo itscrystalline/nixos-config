@@ -5,7 +5,7 @@
   ...
 }: {
   services.cloudflared = let
-    secret_path = builtins.toPath ../../../secrets/cfd_creds.json;
+    secret_path = builtins.toPath ../../../../secrets/cfd_creds.json;
   in {
     enable = true;
     tunnels = {
@@ -16,7 +16,7 @@
     };
   };
   services.nextcloud = let
-    pass = builtins.toPath ../../../secrets/nc_password.txt;
+    pass = builtins.toPath ../../../../secrets/nc_password.txt;
     domain = "nc.iw2tryhard.dev";
   in {
     enable = true;
