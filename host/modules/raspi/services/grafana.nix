@@ -4,7 +4,7 @@
 
     settings.server = {
       http_port = 9000;
-      http_addr = "127.0.0.1";
+      http_addr = "0.0.0.0";
       protocol = "http";
       domain = "grafana.crys";
       enforce_domain = true;
@@ -13,7 +13,7 @@
 
     provision = {
       enable = true;
-      datasources = [
+      datasources.settings.datasources = [
         {
           name = "Prometheus";
           type = "prometheus";
@@ -31,13 +31,18 @@
   };
   services.prometheus = {
     enable = true;
-    port = 9001;
+    port = 9010;
 
     exporters = {
       node = {
         enable = true;
         enabledCollectors = ["systemd"];
-        port = 9002;
+        port = 9011;
+      };
+      smartctl = {
+        enable = true;
+        port = 9012;
+        devices = ["/dev/sda"];
       };
     };
 
@@ -46,7 +51,7 @@
         job_name = "raspi";
         static_configs = [
           {
-            targets = ["127.0.0.1:${toString config.services.prometheus.exporters.node.port}"];
+            targets = ["127.0.0.1:${toString config.services.prometheus.exporters.node.port}" "127.0.0.1:${toString config.services.prometheus.exporters.smartctl.port}"];
           }
         ];
       }
@@ -55,7 +60,7 @@
   services.loki = {
     enable = true;
     configuration = {
-      server.http_listen_port = 9003;
+      server.http_listen_port = 9020;
       auth_enabled = false;
 
       ingester = {
@@ -72,7 +77,7 @@
         max_chunk_age = "1h";
         chunk_target_size = 999999;
         chunk_retain_period = "30s";
-        max_transfer_retries = 0;
+        # max_retries = 0;
       };
 
       schema_config = {
@@ -81,7 +86,7 @@
             from = "2025-04-02";
             store = "tsdb";
             object_store = "filesystem";
-            schema = "v12";
+            schema = "v13";
             index = {
               prefix = "index_";
               period = "24h";
@@ -91,13 +96,12 @@
       };
 
       storage_config = {
-        tsdb = {
+        tsdb_shipper = {
           active_index_directory = "/var/lib/loki/tsdb-active";
           cache_location = "/var/lib/loki/tsdb-cache";
           cache_ttl = "24h";
-          shared_store = "filesystem";
+          # shared_store = "filesystem";
         };
-
         filesystem = {
           directory = "/var/lib/loki/chunks";
         };
@@ -108,10 +112,6 @@
         reject_old_samples_max_age = "168h";
       };
 
-      chunk_store_config = {
-        max_look_back_period = "0s";
-      };
-
       table_manager = {
         retention_deletes_enabled = false;
         retention_period = "0s";
@@ -119,7 +119,7 @@
 
       compactor = {
         working_directory = "/var/lib/loki";
-        shared_store = "filesystem";
+        # shared_store = "filesystem";
         compactor_ring = {
           kvstore = {
             store = "inmemory";
@@ -133,7 +133,7 @@
     enable = true;
     configuration = {
       server = {
-        http_listen_port = 9004;
+        http_listen_port = 9040;
         grpc_listen_port = 0;
       };
       positions = {
@@ -171,7 +171,7 @@
     upstreams = {
       "grafana" = {
         servers = {
-          "127.0.0.1:${toString config.services.grafana.port}" = {};
+          "127.0.0.1:${toString config.services.grafana.settings.server.http_port}" = {};
         };
       };
       "prometheus" = {
@@ -196,6 +196,7 @@
         proxyPass = "http://grafana";
         proxyWebsockets = true;
       };
+      serverName = "grafana.crys";
       # listen = [
       #   {
       #     addr = "192.168.1.10";
@@ -206,6 +207,7 @@
 
     virtualHosts.prometheus = {
       locations."/".proxyPass = "http://prometheus";
+      serverName = "prometheus.crys";
       # listen = [
       #   {
       #     addr = "192.168.1.10";
@@ -218,6 +220,7 @@
     #     (or)     /config /metrics /ready
     virtualHosts.loki = {
       locations."/".proxyPass = "http://loki";
+      serverName = "loki.crys";
       # listen = [
       #   {
       #     addr = "192.168.1.10";
@@ -228,6 +231,7 @@
 
     virtualHosts.promtail = {
       locations."/".proxyPass = "http://promtail";
+      serverName = "promtail.crys";
       # listen = [
       #   {
       #     addr = "192.168.1.10";
