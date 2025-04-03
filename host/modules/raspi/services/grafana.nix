@@ -36,7 +36,7 @@
     exporters = {
       node = {
         enable = true;
-        enabledCollectors = ["systemd"];
+        enabledCollectors = ["systemd" "processes" "pressure" "tcpstat" "interrupts"];
         port = 9011;
       };
       smartctl = {

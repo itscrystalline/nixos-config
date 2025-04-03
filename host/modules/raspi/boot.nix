@@ -14,5 +14,8 @@
       grub.enable = false;
       generic-extlinux-compatible.enable = true;
     };
+    kernelParams = [
+      "psi=1"
+    ];
   };
 }

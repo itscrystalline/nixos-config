@@ -48,8 +48,8 @@
   services.hardware.argonone.enable = true;
   environment.etc = {
     "argononed.conf".text = ''
-      fans = 30, 50, 70, 100
-      temps = 45, 55, 65, 70
+      fans = 30, 60, 100
+      temps = 45, 60, 70
 
       hysteresis = 5
     '';

@@ -56,6 +56,8 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     nixvim.url = "github:nix-community/nixvim";
+
+    iw2tryhard-dev.url = "github:itscrystalline/iw2tryhard-dev-3.0";
   };
 
   outputs = inputs @ {
@@ -74,6 +76,7 @@
     lix-module,
     binaryninja,
     nixvim,
+    iw2tryhard-dev,
     ...
   }: {
     # Please replace my-nixos with your hostname
