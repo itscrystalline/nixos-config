@@ -14,7 +14,7 @@ in {
         image = "iw2tryhard-dev";
         imageFile = site;
         ports = ["127.0.0.1:${port}:3000"];
-        extraOptions = ["--network=bridge"];
+        extraOptions = ["--network=bridge" "--dns=1.1.1.1"];
       };
     };
   };

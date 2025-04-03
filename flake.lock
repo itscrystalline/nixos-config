@@ -316,11 +316,11 @@
         "nixpkgs": "nixpkgs_4"
       },
       "locked": {
-        "lastModified": 1743674405,
-        "narHash": "sha256-q6s8ZgTXrX3qBfAVoCV0X9FlTkrC2bt1uEI+ShavVyE=",
+        "lastModified": 1743687542,
+        "narHash": "sha256-p0DInyAQk+sS5q2SYKSbfjz/qfkqZwZXT75wUIGUkjc=",
         "owner": "itscrystalline",
         "repo": "iw2tryhard-dev-3.0",
-        "rev": "e93979c4dacd7bbca942c0befb7277005139a71d",
+        "rev": "297717e249657ee9c0f8ff25c227ff85fea9c9a6",
         "type": "github"
       },
       "original": {
