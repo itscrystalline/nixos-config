@@ -171,4 +171,5 @@
   };
 
   systemd.services.mysql.serviceConfig.Restart = lib.mkForce "always";
+  systemd.services.nextcloud-cron.path = [pkgs.perl];
 }
