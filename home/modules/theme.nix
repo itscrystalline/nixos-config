@@ -89,7 +89,8 @@
     "ghostty/config".text = ''
       config-file = catppuccin-mocha
       font-family = JetBrainsMono Nerd Font
-      font-size = 11
+      font-family = Noto Sans CJK JP
+      font-size = 12
     '';
   };
 
