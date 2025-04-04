@@ -191,6 +191,12 @@ in {
       delta
       rust-analyzer
       jdt-language-server
+      vue-language-server
+      typescript-language-server
+      typescript
+      vscode-langservers-extracted
+      # pkgs.nodePackages."cssmodules-language-server"
+      # pkgs.nodePackages."css-variables-language-server"
       lldb
       zoxide
     ];
@@ -211,7 +217,7 @@ in {
 
       local lspconfig = require "lspconfig"
 
-      local servers = { "pylsp", "nil_ls", "clangd", "phpactor" }
+      local servers = {"pylsp", "nil_ls", "clangd", "phpactor", "volar", "ts_ls", "cssls"}
       local nvlsp = require "nvchad.configs.lspconfig"
 
       for _, lsp in ipairs(servers) do
@@ -238,6 +244,22 @@ in {
                 },
               },
             },
+          }
+        end
+        if lsp == "ts_ls" then
+          config["init_options"] = {
+            plugins = {
+              {
+                name = "@vue/typescript-plugin",
+                location = "${pkgs.vue-language-server}/lib/node_modules/@vue/language-server/node_modules/@vue/typescript-plugin",
+                languages = {"javascript", "typescript", "vue"},
+              },
+            },
+          }
+          config["filetypes"] = {
+            "javascript",
+            "typescript",
+            "vue",
           }
         end
 
