@@ -7,6 +7,7 @@
     url = "https://raw.githubusercontent.com/NixOS/nixos-artwork/refs/heads/master/logo/nixos-white.svg";
     sha256 = "sha256-Ly4jHvtxlnOe1CsZ5+f+K7pclUF4S0HS4Vgs5U8Ofl4=";
   };
+  generations = config.keep_generations;
 in {
   boot = {
     # NTFS support
@@ -49,7 +50,7 @@ in {
 
     loader = {
       systemd-boot.enable = true;
-      systemd-boot.configurationLimit = 10;
+      systemd-boot.configurationLimit = generations;
       efi.canTouchEfiVariables = true;
     };
 

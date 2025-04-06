@@ -151,6 +151,7 @@
         # Import the previous configuration.nix we used,
         # so the old configuration file still takes effect
         ./vars.nix
+        {config.keep_generations = 3;}
         ./nix-settings.nix
         ./host/devices/cwystaws-raspi/host.nix
 
@@ -162,11 +163,7 @@
           home-manager.users.itscrystalline = {
             imports = [
               ./vars.nix
-
-              {
-                config.gui = false;
-              }
-
+              {config.gui = false;}
               ./home/home.nix
 
               catppuccin.homeManagerModules.catppuccin
