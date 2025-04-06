@@ -17,9 +17,18 @@
       fsType = "ext4";
       options = ["noatime" "nodiratime" "data=writeback" "commit=60" "barrier=1"];
     };
+    # "/mnt/backup" = {
+    #   device = "/dev/";
+    #   fsType = "ext4";
+    # };
 
     "/export" = {
       device = "/mnt/main/nfs";
+      options = ["bind"];
+    };
+
+    "/var/lib/prometheus2" = {
+      device = "/mnt/main/services/prometheus2";
       options = ["bind"];
     };
     # "/mnt/bkup" = {
