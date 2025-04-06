@@ -35,7 +35,7 @@
     };
 
     "/mnt/nfs" = {
-      device = "cwystaws-raspi:/";
+      device = "cwystaws-raspi:/export";
       fsType = "nfs";
       options = ["x-systemd.automount" "x-systemd.requires=network-online.target" "noauto" "_netdev" "x-systemd.idle-timeout=600" "rsize=1048576" "wsize=1048576" "nconnect=8"];
     };
