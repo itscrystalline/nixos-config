@@ -4,7 +4,14 @@
   pkgs,
   lib,
   ...
-}: {
+}: let
+  mkLocalNginx = name: port: alsoWs: {
+    services.nginx.virtualHosts."${name}.crys".locations."/" = {
+      proxyPass = "http://127.0.0.1:${builtins.toString port}";
+      proxyWebsockets = alsoWs;
+    };
+  };
+in {
   imports = [
     ../common/services.nix
     ./docker.nix
@@ -12,7 +19,9 @@
     (inputs.nixpkgs-unstable + "/nixos/modules/services/hardware/scanservjs.nix")
 
     ./services/nextcloud.nix
-    ./services/grafana.nix
+    (./services/grafana.nix {inherit mkLocalNginx;})
+
+    (mkLocalNginx "scan" 8080 false)
   ];
 
   services.avahi = {
