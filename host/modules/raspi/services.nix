@@ -81,6 +81,11 @@ in {
 
   services.cockpit = {
     enable = true;
+    settings = {
+      WebService = {
+        AllowUnencrypted = true;
+      };
+    };
   };
 
   # SSH auto restart
