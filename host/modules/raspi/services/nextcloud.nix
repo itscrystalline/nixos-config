@@ -96,7 +96,7 @@
 
     notify_push = {
       enable = true;
-      bendDomainToLocalhost = true;
+      # bendDomainToLocalhost = true;
     };
     enableImagemagick = true;
     configureRedis = true;
