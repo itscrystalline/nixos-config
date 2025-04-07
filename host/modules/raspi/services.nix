@@ -19,7 +19,7 @@ in {
     (inputs.nixpkgs-unstable + "/nixos/modules/services/hardware/scanservjs.nix")
 
     ./services/nextcloud.nix
-    (import ./services/grafana.nix {inherit mkLocalNginx;})
+    (import ./services/grafana.nix {inherit config mkLocalNginx;})
 
     (mkLocalNginx "scan" 8080 false)
   ];
