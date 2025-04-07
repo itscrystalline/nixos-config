@@ -57,6 +57,12 @@
         port = 9012;
         devices = ["/dev/sda"];
       };
+      nextcloud = {
+        enable = true;
+        port = 9013;
+        url = "https://${config.services.nextcloud.hostName}";
+        tokenFile = "${builtins.toPath ../../../../secrets/nc_admin_token}";
+      };
     };
 
     scrapeConfigs = [
@@ -64,7 +70,7 @@
         job_name = "raspi";
         static_configs = [
           {
-            targets = ["127.0.0.1:${toString config.services.prometheus.exporters.node.port}" "127.0.0.1:${toString config.services.prometheus.exporters.smartctl.port}"];
+            targets = map (port: "127.0.0.1:${toString port}") (with config.services.prometheus.exporters; [node.port smartctl.port nextcloud.port]);
           }
         ];
       }
