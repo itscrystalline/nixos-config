@@ -21,7 +21,8 @@ in {
     ./services/nextcloud.nix
     (import ./services/grafana.nix {inherit config mkLocalNginx;})
 
-    (mkLocalNginx "scan" 8080 false)
+    (mkLocalNginx "scan" config.services.scanservjs.settings.port false)
+    (mkLocalNginx "cock" config.services.cockpit.port false)
   ];
 
   services.avahi = {
@@ -76,6 +77,10 @@ in {
     recommendedProxySettings = true;
     recommendedTlsSettings = true;
     recommendedOptimisation = true;
+  };
+
+  services.cockpit = {
+    enable = true;
   };
 
   # SSH auto restart
