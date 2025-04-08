@@ -17,10 +17,12 @@
       fsType = "ext4";
       options = ["noatime" "nodiratime" "data=writeback" "commit=60" "barrier=1"];
     };
-    # "/mnt/backup" = {
-    #   device = "/dev/";
-    #   fsType = "ext4";
-    # };
+    "/mnt/backup" = {
+      device = "/dev/disk/by-uuid/5F4E-AE27";
+      fsType = "exfat";
+      neededForBoot = false;
+      options = ["nofail"];
+    };
 
     "/export" = {
       device = "/mnt/main/nfs";
@@ -31,10 +33,6 @@
       device = "/mnt/main/services/prometheus2";
       options = ["bind"];
     };
-    # "/mnt/bkup" = {
-    #   device = "/dev/disk/by-uuid/...";
-    #   fsType = "ext4";
-    # };
   };
 
   systemd.tmpfiles.rules = [

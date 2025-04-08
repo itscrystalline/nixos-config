@@ -8,8 +8,28 @@
 
   environment.systemPackages = with pkgs; [
     libraspberrypi
-
     doas-sudo-shim
+
+    (pkgs.writeShellScriptBin "backup-full" ''
+      set -x
+      if [ "$EUID" -ne 0 ]
+        then echo "Please run as root"
+        exit
+      fi
+
+      rm /mnt/backup/backups/snapshot.snar || true
+      rm /mnt/backup/backups/incremental-*.tar || true
+      ${pkgs.gnutar}/bin/tar --verbose --create --acls --xattrs --preserve-permissions --same-owner --file=/mnt/backup/backups/full-$(${pkgs.coreutils}/bin/date -I).tar --listed-incrementals=/mnt/backup/backups/snapshot.snar /mnt/main
+    '')
+    (pkgs.writeShellScriptBin "backup-incremental" ''
+      set -x
+      if [ "$EUID" -ne 0 ]
+        then echo "Please run as root"
+        exit
+      fi
+
+      ${pkgs.gnutar}/bin/tar --verbose --create --acls --xattrs --preserve-permissions --same-owner --file=/mnt/backup/backups/incremental-$(${pkgs.coreutils}/bin/date -I).tar --listed-incrementals=/mnt/backup/backups/snapshot.snar /mnt/main
+    '')
   ];
 
   # SMTP for Nextcloud
