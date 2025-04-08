@@ -63,7 +63,7 @@
         enable = true;
         port = 9013;
         url = "https://${config.services.nextcloud.hostName}";
-        tokenFile = pkgs.writeText "nc_token" secrets.nextcloud.admin.stats_token;
+        tokenFile = "${pkgs.writeText "nc_token" secrets.nextcloud.admin.stats_token}";
       };
     };
 
