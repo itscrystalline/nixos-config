@@ -17,7 +17,7 @@
     };
   };
   services.nextcloud = let
-    pass = pkgs.writeText "nc_password" secrets.nextcloud.admin.password;
+    pass = "${pkgs.writeText "nc_password" secrets.nextcloud.admin.password}";
     domain = "nc.iw2tryhard.dev";
   in {
     enable = true;
