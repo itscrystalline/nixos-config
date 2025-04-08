@@ -124,65 +124,54 @@ in {
             enabled = true;
             url = "https://adblock-thai.github.io/thai-ads-filter/annoyance.txt";
           };
-
-          "NoCoin Filter List" = {
-            enabled = true;
-            url = "https://adguardteam.github.io/HostlistsRegistry/assets/filter_8.txt";
-          };
-
-          "HaGeZi's Windows/Office Tracker Blocklist" = {
-            enabled = true;
-            url = "https://adguardteam.github.io/HostlistsRegistry/assets/filter_63.txt";
-          };
-
-          "Dandelion Sprout's Anti Push Notifications" = {
-            enabled = true;
-            url = "https://adguardteam.github.io/HostlistsRegistry/assets/filter_39.txt";
-          };
-
           "Thai Blocklist" = {
             enabled = true;
             url = "https://adblock-thai.github.io/thai-ads-filter/subscription.txt";
-          };
-
-          "Scam Blocklist by DurableNapkin" = {
-            enabled = true;
-            url = "https://adguardteam.github.io/HostlistsRegistry/assets/filter_10.txt";
-          };
-
-          "uBlock₀ filters – Badware risks" = {
-            enabled = true;
-            url = "https://adguardteam.github.io/HostlistsRegistry/assets/filter_50.txt";
-          };
-
-          "Peter Lowe's Blocklist" = {
-            enabled = true;
-            url = "https://adguardteam.github.io/HostlistsRegistry/assets/filter_3.txt";
-          };
-
-          "The Big List of Hacked Malware Web Sites" = {
-            enabled = true;
-            url = "https://adguardteam.github.io/HostlistsRegistry/assets/filter_9.txt";
-          };
-
-          "Phishing URL Blocklist (PhishTank and OpenPhish)" = {
-            enabled = true;
-            url = "https://adguardteam.github.io/HostlistsRegistry/assets/filter_30.txt";
           };
 
           "AdGuard DNS filter" = {
             enabled = true;
             url = "https://adguardteam.github.io/HostlistsRegistry/assets/filter_1.txt";
           };
-
+          "Peter Lowe's Blocklist" = {
+            enabled = true;
+            url = "https://adguardteam.github.io/HostlistsRegistry/assets/filter_3.txt";
+          };
+          "NoCoin Filter List" = {
+            enabled = true;
+            url = "https://adguardteam.github.io/HostlistsRegistry/assets/filter_8.txt";
+          };
+          "The Big List of Hacked Malware Web Sites" = {
+            enabled = true;
+            url = "https://adguardteam.github.io/HostlistsRegistry/assets/filter_9.txt";
+          };
+          "Scam Blocklist by DurableNapkin" = {
+            enabled = true;
+            url = "https://adguardteam.github.io/HostlistsRegistry/assets/filter_10.txt";
+          };
+          "Phishing URL Blocklist (PhishTank and OpenPhish)" = {
+            enabled = true;
+            url = "https://adguardteam.github.io/HostlistsRegistry/assets/filter_30.txt";
+          };
           "Steven Black's List" = {
             enabled = true;
             url = "https://adguardteam.github.io/HostlistsRegistry/assets/filter_33.txt";
           };
-
+          "Dandelion Sprout's Anti Push Notifications" = {
+            enabled = true;
+            url = "https://adguardteam.github.io/HostlistsRegistry/assets/filter_39.txt";
+          };
           "HaGeZi's Gambling Blocklist" = {
             enabled = true;
             url = "https://adguardteam.github.io/HostlistsRegistry/assets/filter_47.txt";
+          };
+          "uBlock₀ filters – Badware risks" = {
+            enabled = true;
+            url = "https://adguardteam.github.io/HostlistsRegistry/assets/filter_50.txt";
+          };
+          "HaGeZi's Windows/Office Tracker Blocklist" = {
+            enabled = true;
+            url = "https://adguardteam.github.io/HostlistsRegistry/assets/filter_63.txt";
           };
         };
       user_rules = [
