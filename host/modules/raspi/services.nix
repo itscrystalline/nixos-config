@@ -112,10 +112,10 @@ in {
         port = 53;
         upstream_dns = ["https://cloudflare-dns.com/dns-query" "https://dns.google/dns-query"];
         bootstrap_dns = ["1.1.1.1" "8.8.8.8"];
-        rewrites = mkRewriteList {
-          "*.crys".answer = "100.125.37.13";
-          "home.crys".answer = "100.127.3.111";
-        };
+      };
+      filtering.rewrites = mkRewriteList {
+        "*.crys".answer = "100.125.37.13";
+        "home.crys".answer = "100.127.3.111";
       };
       filters =
         mkFilterList
