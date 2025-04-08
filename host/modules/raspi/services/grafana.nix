@@ -1,5 +1,7 @@
 {
   config,
+  pkgs,
+  secrets,
   mkLocalNginx,
 }: {
   imports = [
@@ -61,7 +63,7 @@
         enable = true;
         port = 9013;
         url = "https://${config.services.nextcloud.hostName}";
-        tokenFile = "${builtins.toPath ../../../../secrets/nc_admin_token}";
+        tokenFile = pkgs.writeText "nc_token" secrets.nextcloud.admin.stats_token;
       };
     };
 

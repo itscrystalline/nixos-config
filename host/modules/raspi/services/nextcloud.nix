@@ -2,6 +2,7 @@
   config,
   pkgs,
   lib,
+  secrets,
   ...
 }: {
   services.cloudflared = let
@@ -16,7 +17,7 @@
     };
   };
   services.nextcloud = let
-    pass = builtins.toPath ../../../../secrets/nc_password.txt;
+    pass = pkgs.writeText "nc_password" secrets.nextcloud.admin.password;
     domain = "nc.iw2tryhard.dev";
   in {
     enable = true;
@@ -154,7 +155,7 @@
       "127.0.0.1"
       "::1"
     ];
-    admin_token = builtins.readFile ../../../../secrets/nc_admin_token;
+    admin_token = secrets.nextcloud.admin.stats_token;
   in {
     wantedBy = ["multi-user.target"];
     after = ["nextcloud-setup.service" "coolwsd.service"];

@@ -3,6 +3,7 @@
   inputs,
   pkgs,
   lib,
+  secrets,
   ...
 }: let
   mkLocalNginx = name: port: alsoWs: {
@@ -19,10 +20,11 @@ in {
     (inputs.nixpkgs-unstable + "/nixos/modules/services/hardware/scanservjs.nix")
 
     ./services/nextcloud.nix
-    (import ./services/grafana.nix {inherit config mkLocalNginx;})
+    (import ./services/grafana.nix {inherit config pkgs secrets mkLocalNginx;})
 
     (mkLocalNginx "scan" config.services.scanservjs.settings.port false)
     (mkLocalNginx "cock" config.services.cockpit.port false)
+    (mkLocalNginx "dns" config.services.adguardhome.port false)
   ];
 
   services.avahi = {
@@ -85,6 +87,21 @@ in {
       WebService = {
         AllowUnencrypted = true;
       };
+    };
+  };
+
+  services.adguardhome = with secrets.adguard; {
+    enable = true;
+    port = 5000;
+    mutableSettings = true;
+    settings = {
+      http.session_ttl = "3h";
+      users = [
+        {
+          name = user;
+          password = pass;
+        }
+      ];
     };
   };
 

@@ -1,4 +1,4 @@
-{config, ...}: {
+{secrets, ...}: {
   imports = [../common/security.nix];
 
   security.acme = {
@@ -6,7 +6,7 @@
     defaults = {
       dnsProvider = "cloudflare";
       credentialFiles = {
-        "CLOUDFLARE_API_KEY_FILE" = "${builtins.toPath ../../../secrets/cf_api_key}";
+        "CLOUDFLARE_API_KEY_FILE" = secrets.cloudflare.api_key;
       };
       email = "real@iw2tryhard.dev";
       # group = "nginx";

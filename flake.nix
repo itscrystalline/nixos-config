@@ -82,7 +82,10 @@
     # Please replace my-nixos with your hostname
     nixosConfigurations.cwystaws-meowchine = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
-      specialArgs = {inherit inputs blender-flake;};
+      specialArgs = {
+        inherit inputs blender-flake;
+        secrets = builtins.fromJSON (builtins.readFile ./secrets/secrets.json);
+      };
       modules = [
         # NUR, catppuccin, nix-flatpak, chaotic-nyx, lix
         nur.modules.nixos.default
@@ -128,6 +131,7 @@
             inherit nur;
             inherit blender-flake;
             inherit binaryninja;
+            secrets = builtins.fromJSON (builtins.readFile ./secrets/secrets.json);
           };
         }
       ];
@@ -135,7 +139,10 @@
 
     nixosConfigurations.cwystaws-raspi = nixpkgs.lib.nixosSystem {
       system = "aarch64-linux";
-      specialArgs = {inherit inputs blender-flake;};
+      specialArgs = {
+        inherit inputs blender-flake;
+        secrets = builtins.fromJSON (builtins.readFile ./secrets/secrets.json);
+      };
       modules = [
         # NUR, catppuccin, nix-flatpak, chaotic-nyx, lix
         nur.modules.nixos.default
@@ -177,6 +184,7 @@
             inherit nixpkgs;
             inherit inputs;
             inherit nur;
+            secrets = builtins.fromJSON (builtins.readFile ./secrets/secrets.json);
           };
         }
       ];

@@ -1,19 +1,18 @@
 {
   config,
   pkgs,
+  secrets,
   ...
-} @ inputs: let
-  nc_user = builtins.readFile ../../secrets/nc_user;
-  nc_pass_obscured = builtins.readFile ../../secrets/nc_user_password;
-in {
+} @ inputs:
+with secrets.nextcloud.rclone; {
   xdg.configFile = pkgs.lib.mkIf config.gui {
     "rclone/nextcloud.conf".text = ''
       [nextcloud]
       type = webdav
-      url = https://nc.iw2tryhard.dev/remote.php/dav/files/${nc_user}
+      url = https://nc.iw2tryhard.dev/remote.php/dav/files/${user}
       vendor = nextcloud
-      user = ${nc_user}
-      pass = ${nc_pass_obscured}
+      user = ${user}
+      pass = ${password}
     '';
   };
 
