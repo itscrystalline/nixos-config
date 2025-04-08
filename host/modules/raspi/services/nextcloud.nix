@@ -96,7 +96,7 @@
     };
 
     notify_push = {
-      enable = true;
+      # enable = true;
       # bendDomainToLocalhost = true;
     };
     enableImagemagick = true;
