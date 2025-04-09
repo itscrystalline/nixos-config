@@ -78,13 +78,14 @@
     nixvim,
     iw2tryhard-dev,
     ...
-  }: {
+  }: let
+    secrets = builtins.fromJSON (builtins.readFile ./secrets/secrets.json);
+  in {
     # Please replace my-nixos with your hostname
     nixosConfigurations.cwystaws-meowchine = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
       specialArgs = {
-        inherit inputs blender-flake;
-        secrets = builtins.fromJSON (builtins.readFile ./secrets/secrets.json);
+        inherit inputs blender-flake secrets;
       };
       modules = [
         # NUR, catppuccin, nix-flatpak, chaotic-nyx, lix
@@ -124,14 +125,16 @@
           };
 
           home-manager.extraSpecialArgs = {
-            inherit nixpkgs;
-            inherit inputs;
-            inherit zen-browser;
-            inherit nix-jebrains-plugins;
-            inherit nur;
-            inherit blender-flake;
-            inherit binaryninja;
-            secrets = builtins.fromJSON (builtins.readFile ./secrets/secrets.json);
+            inherit
+              nixpkgs
+              inputs
+              zen-browser
+              nix-jebrains-plugins
+              nur
+              blender-flake
+              binaryninja
+              secrets
+              ;
           };
         }
       ];
@@ -140,8 +143,7 @@
     nixosConfigurations.cwystaws-raspi = nixpkgs.lib.nixosSystem {
       system = "aarch64-linux";
       specialArgs = {
-        inherit inputs blender-flake;
-        secrets = builtins.fromJSON (builtins.readFile ./secrets/secrets.json);
+        inherit inputs blender-flake secrets;
       };
       modules = [
         # NUR, catppuccin, nix-flatpak, chaotic-nyx, lix
@@ -181,10 +183,12 @@
           };
 
           home-manager.extraSpecialArgs = {
-            inherit nixpkgs;
-            inherit inputs;
-            inherit nur;
-            secrets = builtins.fromJSON (builtins.readFile ./secrets/secrets.json);
+            inherit
+              nixpkgs
+              inputs
+              nur
+              secrets
+              ;
           };
         }
       ];
