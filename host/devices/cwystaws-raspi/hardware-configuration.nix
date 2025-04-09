@@ -21,7 +21,7 @@
       device = "/dev/disk/by-uuid/5F4E-AE27";
       fsType = "exfat";
       neededForBoot = false;
-      options = ["nofail"];
+      options = ["nofail" "x-systemd.automount"];
     };
 
     "/export" = {
