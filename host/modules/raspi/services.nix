@@ -22,6 +22,7 @@ in {
 
     (inputs.nixpkgs-unstable + "/nixos/modules/services/hardware/scanservjs.nix")
 
+    ./services/cloudflared.nix
     ./services/nextcloud.nix
     (import ./services/grafana.nix {inherit config pkgs secrets mkLocalNginx;})
 

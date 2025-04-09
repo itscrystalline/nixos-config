@@ -5,17 +5,6 @@
   secrets,
   ...
 }: {
-  services.cloudflared = let
-    secret_path = builtins.toPath ../../../../secrets/cfd_creds.json;
-  in {
-    enable = true;
-    tunnels = {
-      "fc4d0058-a84e-4ef5-b66f-56c2a1a7eb7f" = {
-        credentialsFile = "${secret_path}";
-        default = "http_status:404";
-      };
-    };
-  };
   services.nextcloud = let
     pass = "${pkgs.writeText "nc_password" secrets.nextcloud.admin.password}";
     domain = "nc.iw2tryhard.dev";
