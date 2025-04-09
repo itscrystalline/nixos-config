@@ -57,7 +57,7 @@
       smartctl = {
         enable = true;
         port = 9012;
-        devices = ["/dev/disk/by-uuid/a12bd288-6c9b-45f4-94ff-9cdbd1c474e6"];
+        devices = ["/dev/disk/by-id/ata-TOSHIBA_MQ04UBF100_15QPP0JDT"];
       };
       nextcloud = {
         enable = true;

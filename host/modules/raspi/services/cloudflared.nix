@@ -24,7 +24,7 @@
           "v2" = {};
           "nc".originRequest = {
             disableChunkedEncoding = true;
-            http2Origin = true;
+            # http2Origin = true;
             noHappyEyeballs = true;
             noTLSVerify = true;
           };
