@@ -57,7 +57,7 @@
       smartctl = {
         enable = true;
         port = 9012;
-        devices = ["/dev/sda"];
+        devices = ["/dev/disk/by-uuid/a12bd288-6c9b-45f4-94ff-9cdbd1c474e6"];
       };
       nextcloud = {
         enable = true;
