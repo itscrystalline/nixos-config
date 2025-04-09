@@ -44,6 +44,14 @@
     enableNotifications = true;
   };
 
+  services.sunshine = {
+    package = pkgs.unstable.sunshine;
+    enable = true;
+    autoStart = true;
+    capSysAdmin = true;
+    openFirewall = true;
+  };
+
   services.tlp = {
     enable = true;
     settings = {
