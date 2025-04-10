@@ -16,6 +16,7 @@
     ../../modules/main/hw-misc.nix
     ../../modules/main/localization.nix
     ../../modules/common/security.nix
+    ../../modules/main/mounts.nix
     ../../modules/common/theming.nix
     ../../modules/common/compat.nix
     ../../modules/main/users/nixremote.nix
