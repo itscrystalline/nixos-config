@@ -1,12 +1,9 @@
-{
-  config,
-  pkgs,
-  ...
-} @ inputs: {
+{lib, ...} @ inputs: {
   imports = [
     ../common/network.nix
   ];
 
+  networking.useDHCP = lib.mkDefault true;
   networking.hostName = "cwystaws-meowchine";
 
   # Valent (KDE Connect)

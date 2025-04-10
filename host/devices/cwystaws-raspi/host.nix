@@ -1,8 +1,4 @@
-{
-  config,
-  pkgs,
-  ...
-} @ inputs: {
+{lib, ...} @ inputs: {
   imports = [
     ./hardware-configuration.nix
     ../../modules/raspi/boot.nix
@@ -16,4 +12,5 @@
     ../../modules/common/theming.nix
     ../../modules/raspi/users/itscrystalline.nix
   ];
+  nixpkgs.hostPlatform = lib.mkDefault "aarch64-linux";
 }

@@ -1,8 +1,4 @@
-{
-  config,
-  pkgs,
-  ...
-} @ inputs: {
+{lib, ...} @ inputs: {
   imports = [
     ./hardware-configuration.nix
     ../../modules/main/boot.nix
@@ -25,4 +21,5 @@
     ../../modules/main/users/nixremote.nix
     ../../modules/main/users/itscrystalline.nix
   ];
+  nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
 }
