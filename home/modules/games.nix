@@ -20,6 +20,7 @@ lib.mkIf config.gui {
         nur.legacyPackages."${pkgs.system}".repos."7mind".graalvm-legacy-packages.graalvm17-ce
       ];
     })
+    itch
   ];
 
   services.flatpak.packages = [
