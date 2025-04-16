@@ -53,6 +53,8 @@ lib.mkIf config.gui {
     fuzzel
     lsof
     material-symbols
+    swappy
+    qrtool
 
     # shell script deps
     socat
