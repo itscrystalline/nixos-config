@@ -10,25 +10,49 @@
     libraspberrypi
     doas-sudo-shim
 
-    (pkgs.writeShellScriptBin "backup-full" ''
+    (pkgs.writeShellScriptBin "backup" ''
       set -x
       if [ "$EUID" -ne 0 ]
         then echo "Please run as root"
         exit
       fi
 
-      rm /mnt/backup/backups/snapshot.snar || true
-      rm /mnt/backup/backups/incremental-*.tar || true
-      ${pkgs.gnutar}/bin/tar --verbose --create --acls --xattrs --preserve-permissions --same-owner --file=/mnt/backup/backups/full-$(${pkgs.coreutils}/bin/date -I).tar --listed-incremental=/mnt/backup/backups/snapshot.snar /mnt/main
+      MODE=$1
+      SOURCE=${"\${2:-/mnt/main}"}
+      DEST=${"\${3:-/mnt/backup/backups}"}
+      NAME=$MODE
+
+      case $MODE in
+        full)
+          echo "Starting full backup at $DEST/$NAME-$(${pkgs.coreutils}/bin/date -I).tar"
+          rm $DEST/snapshot.snar || true
+          rm $DEST/incremental-*.tar || true
+          ;;
+
+        incremental)
+          echo "Starting incremental backup at $DEST/$NAME-$(${pkgs.coreutils}/bin/date -I).tar"
+          ;;
+
+        *)
+          echo "Invalid mode specified. Choose from `full` or `incremental`."
+          exit
+          ;;
+
+      ${pkgs.gnutar}/bin/tar --verbose --create --acls --xattrs --preserve-permissions --same-owner --listed-incremental=$DEST/snapshot.snar -C $SOURCE . | ${pkgs.pv}/bin/pv > $DEST/$NAME-$(${pkgs.coreutils}/bin/date -I).tar
     '')
-    (pkgs.writeShellScriptBin "backup-incremental" ''
+    (pkgs.writeShellScriptBin "restore" ''
       set -x
       if [ "$EUID" -ne 0 ]
         then echo "Please run as root"
         exit
       fi
 
-      ${pkgs.gnutar}/bin/tar --verbose --create --acls --xattrs --preserve-permissions --same-owner --file=/mnt/backup/backups/incremental-$(${pkgs.coreutils}/bin/date -I).tar --listed-incremental=/mnt/backup/backups/snapshot.snar /mnt/main
+      DEST=${"\${1:-/mnt/main}"}
+      SOURCES=(${"\${@:2}"})
+
+      for SRC in $SOURCES; do
+        ${pkgs.gnutar}/bin/tar --directory=$DEST --extract --verbose --acls --xattrs --preserve-permissions --same-owner --file=$SRC --listed-incremental=/dev/null
+      done
     '')
   ];
 
