@@ -73,7 +73,7 @@ in {
 
   programs.zed-editor = pkgs.lib.mkIf config.gui {
     enable = true;
-    package = pkgs.zed-editor.fhsWithPackages (pkgs: [pkgs.zlib]);
+    package = pkgs.zed-editor.fhsWithPackages (pkgs: with pkgs; [zlib nil]);
     extensions = ["nix" "toml" "make" "git-firefly" "discord-presence"];
 
     ## everything inside of these brackets are Zed options.
@@ -176,6 +176,7 @@ in {
       vimPlugins.telescope-zoxide
       vimPlugins.zoxide-vim
       vimPlugins.clangd_extensions-nvim
+      vimPlugins.firenvim
       vimPlugins.nvim-jdtls
       php
       php82Packages.composer
@@ -481,9 +482,9 @@ in {
                 },
               },
             }
-          require('cmp').setup.buffer({
+            require('cmp').setup.buffer({
               sources = { { name = "crates" }}
-              })
+            })
           end
         },
         {
@@ -545,8 +546,35 @@ in {
         {
           'IogaMaster/neocord',
           event = "VeryLazy",
+          enabled = not vim.g.started_by_firenvim,
           config = function()
             require("neocord").setup()
+          end
+        },
+        {
+          'glacambre/firenvim',
+          lazy = false,
+          build = ":call firenvim#install(0)",
+          config = function()
+            vim.g.firenvim_config = {
+              localSettings = {
+                ['https:\\/\\/labs\\.cognitiveclass\\.ai*'] = { selector = 'textarea:not([class=xterm-helper-textarea])' }
+              }
+            }
+            if vim.g.started_by_firenvim then
+              vim.api.nvim_create_autocmd({ 'TextChanged', 'TextChangedI' }, {
+                callback = function(e)
+                  if vim.g.timer_started == true then
+                    return
+                  end
+                  vim.g.timer_started = true
+                  vim.fn.timer_start(3000, function()
+                    vim.g.timer_started = false
+                    vim.cmd('silent write')
+                  end)
+                end
+              })
+            end
           end
         }
       }
