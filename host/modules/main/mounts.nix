@@ -6,7 +6,7 @@
       type = "nfs";
       what = "100.125.37.13:/export";
       where = "/mnt/nfs";
-      mountConfig.Options = "noauto,_netdev,rsize=1048576,wsize=1048576,nconnect=8";
+      mountConfig.Options = "noauto,nofail,_netdev,rsize=1048576,wsize=1048576,nconnect=8";
       unitConfig.TimeoutStopSec = "20s";
       unitConfig.TimeoutStartSec = "10s";
       upheldBy = ["tailscaled.service"];
