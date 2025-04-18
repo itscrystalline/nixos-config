@@ -68,7 +68,7 @@
       shift
       SOURCES=(${"\${@}"})
 
-      for SRC in "''${SOURCES[@]}"}"; do
+      for SRC in "${"\${SOURCES[@]}"}"; do
         echo "Restoring from $SRC into $DEST"
         SIZE=$(${pkgs.coreutils}/bin/stat -c%s "$SRC")
 
