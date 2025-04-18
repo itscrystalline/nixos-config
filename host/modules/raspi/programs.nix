@@ -37,8 +37,9 @@
           echo "Invalid mode specified. Choose from `full` or `incremental`."
           exit
           ;;
+      esac
 
-      ${pkgs.gnutar}/bin/tar --verbose --create --acls --xattrs --preserve-permissions --same-owner --listed-incremental=$DEST/snapshot.snar -C $SOURCE . | ${pkgs.pv}/bin/pv > $DEST/$NAME-$(${pkgs.coreutils}/bin/date -I).tar
+      ${pkgs.gnutar}/bin/tar --create --acls --xattrs --preserve-permissions --same-owner --listed-incremental=$DEST/snapshot.snar -C $SOURCE . | ${pkgs.pv}/bin/pv > $DEST/$NAME-$(${pkgs.coreutils}/bin/date -I).tar
     '')
     (pkgs.writeShellScriptBin "restore" ''
       set -x
@@ -51,7 +52,7 @@
       SOURCES=(${"\${@:2}"})
 
       for SRC in $SOURCES; do
-        ${pkgs.gnutar}/bin/tar --directory=$DEST --extract --verbose --acls --xattrs --preserve-permissions --same-owner --file=$SRC --listed-incremental=/dev/null
+        ${pkgs.pv}/bin/pv $SRC | ${pkgs.gnutar}/bin/tar --directory=$DEST --extract --verbose --acls --xattrs --preserve-permissions --same-owner --listed-incremental=/dev/null
       done
     '')
   ];
