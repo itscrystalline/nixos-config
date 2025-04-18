@@ -19,6 +19,7 @@
       MODE=$1
       SOURCE=${"\${2:-/mnt/main}"}
       DEST=${"\${3:-/mnt/backup/backups}"}
+      COMPRESSION=${"\${4:-5}"}
       NAME=$MODE
 
       DATE=$(${pkgs.coreutils}/bin/date -I)
@@ -55,7 +56,7 @@
 
       ${pkgs.gnutar}/bin/tar --create --acls --xattrs --preserve-permissions --same-owner --listed-incremental="$DEST/snapshot.snar" -C "$SOURCE" . \
       | ${pkgs.pv}/bin/pv -s "$SIZE" \
-      | ${pkgs.zstd}/bin/zstd -T0 -19 \
+      | ${pkgs.zstd}/bin/zstd -T0 -"$COMPRESSION" \
       > "$DEST/$NAME-$DATE.tar.zst"
     '')
     (pkgs.writeShellScriptBin "restore" ''
