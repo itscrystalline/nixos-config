@@ -11,10 +11,9 @@
     doas-sudo-shim
 
     (pkgs.writeShellScriptBin "backup" ''
-      set -x
       if [ "$EUID" -ne 0 ]
         then echo "Please run as root"
-        exit
+        exit 1
       fi
 
       MODE=$1
@@ -22,37 +21,81 @@
       DEST=${"\${3:-/mnt/backup/backups}"}
       NAME=$MODE
 
-      case $MODE in
+      DATE=$(${pkgs.coreutils}/bin/date -I)
+
+      case "$MODE" in
         full)
-          echo "Starting full backup at $DEST/$NAME-$(${pkgs.coreutils}/bin/date -I).tar"
-          rm $DEST/snapshot.snar || true
-          rm $DEST/incremental-*.tar || true
+          echo "Starting full backup at $DEST/$NAME-$DATE.tar"
+          rm "$DEST/snapshot.snar" || true
+          rm "$DEST"/incremental-*.tar || true
           ;;
 
         incremental)
-          echo "Starting incremental backup at $DEST/$NAME-$(${pkgs.coreutils}/bin/date -I).tar"
+          echo "Starting incremental backup at $DEST/$NAME-$DATE.tar"
           ;;
 
         *)
           echo "Invalid mode specified. Choose from `full` or `incremental`."
-          exit
+          exit 1
           ;;
       esac
 
-      ${pkgs.gnutar}/bin/tar --create --acls --xattrs --preserve-permissions --same-owner --listed-incremental=$DEST/snapshot.snar -C $SOURCE . | ${pkgs.pv}/bin/pv > $DEST/$NAME-$(${pkgs.coreutils}/bin/date -I).tar
+      if [ -f $DEST ]; then
+        read -r -p "Backup at $DEST aleady exists! overwrite? [y/N] " response
+        response=${"\${response,,}"}
+        if [[ ! "$response" =~ ^(yes|y)$ ]]
+          exit
+        fi
+      fi
+
+
+      echo "Discovering size of $SOURCE... This may take some time."
+      SIZE=$(${pkgs.coreutils}/bin/du -sb "$SOURCE" | ${pkgs.coreutils}/bin/awk '{print $1}')
+      echo "Size of $SOURCE is $SIZE bytes."
+
+      ${pkgs.gnutar}/bin/tar --create --acls --xattrs --preserve-permissions --same-owner --listed-incremental="$DEST/snapshot.snar" -C "$SOURCE" . \
+      | ${pkgs.pv}/bin/pv -s "$SIZE" \
+      | ${pkgs.zstd}/bin/zstd -T0 -19 \
+      > "$DEST/$NAME-$DATE.tar.zst"
     '')
     (pkgs.writeShellScriptBin "restore" ''
-      set -x
       if [ "$EUID" -ne 0 ]
         then echo "Please run as root"
         exit
       fi
 
       DEST=${"\${1:-/mnt/main}"}
-      SOURCES=(${"\${@:2}"})
+      shift
+      SOURCES=(${"\${@}"})
 
-      for SRC in $SOURCES; do
-        ${pkgs.pv}/bin/pv $SRC | ${pkgs.gnutar}/bin/tar --directory=$DEST --extract --verbose --acls --xattrs --preserve-permissions --same-owner --listed-incremental=/dev/null
+      for SRC in "''${SOURCES[@]}"}"; do
+        echo "Restoring from $SRC into $DEST"
+        SIZE=$(${pkgs.coreutils}/bin/stat -c%s "$SRC")
+
+        if [[ "$SRC" == *.tar.zst ]]; then
+          ${pkgs.pv}/bin/pv -s "$SIZE" "$SRC" \
+          | ${pkgs.zstd}/bin/zstd -d --stdout \
+          | ${pkgs.gnutar}/bin/tar \
+              --directory="$DEST" \
+              --extract \
+              --verbose \
+              --acls \
+              --xattrs \
+              --preserve-permissions \
+              --same-owner \
+              --listed-incremental=/dev/null
+        else
+          ${pkgs.pv}/bin/pv -s "$SIZE" "$SRC" \
+          | ${pkgs.gnutar}/bin/tar \
+              --directory="$DEST" \
+              --extract \
+              --verbose \
+              --acls \
+              --xattrs \
+              --preserve-permissions \
+              --same-owner \
+              --listed-incremental=/dev/null
+        fi
       done
     '')
   ];
