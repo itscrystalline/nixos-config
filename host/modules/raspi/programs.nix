@@ -40,10 +40,10 @@
           ;;
       esac
 
-      if [ -f $DEST ]; then
+      if [ -f "$DEST" ]; then
         read -r -p "Backup at $DEST aleady exists! overwrite? [y/N] " response
         response=${"\${response,,}"}
-        if [[ ! "$response" =~ ^(yes|y)$ ]]
+        if [[ ! "$response" =~ ^(yes|y)$ ]]; then
           exit
         fi
       fi
