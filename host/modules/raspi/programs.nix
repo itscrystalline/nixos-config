@@ -17,9 +17,9 @@
       fi
 
       MODE=$1
-      SOURCE=${"\${2:-/mnt/main}"}
-      DEST=${"\${3:-/mnt/backup/backups}"}
-      COMPRESSION=${"\${4:-5}"}
+      COMPRESSION=${"\${2:-5}"}
+      SOURCE=${"\${3:-/mnt/main}"}
+      DEST=${"\${4:-/mnt/backup/backups}"}
       NAME=$MODE
 
       DATE=$(${pkgs.coreutils}/bin/date -I)
