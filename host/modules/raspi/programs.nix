@@ -36,7 +36,7 @@
           ;;
 
         *)
-          echo "Invalid mode specified. Choose from `full` or `incremental`."
+          echo "Invalid mode specified. Choose from 'full' or 'incremental'."
           exit 1
           ;;
       esac
