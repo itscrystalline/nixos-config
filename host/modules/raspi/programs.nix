@@ -25,13 +25,13 @@
 
       case "$MODE" in
         full)
-          echo "Starting full backup at $DEST/$NAME-$DATE.tar"
+          echo "Starting full backup at $DEST/$NAME-$DATE.tar.zst"
           rm "$DEST/snapshot.snar" || true
-          rm "$DEST"/incremental-*.tar || true
+          rm "$DEST"/incremental-*.tar.zst || true
           ;;
 
         incremental)
-          echo "Starting incremental backup at $DEST/$NAME-$DATE.tar"
+          echo "Starting incremental backup at $DEST/$NAME-$DATE.tar.zst"
           ;;
 
         *)
@@ -40,8 +40,8 @@
           ;;
       esac
 
-      if [ -f "$DEST" ]; then
-        read -r -p "Backup at $DEST aleady exists! overwrite? [y/N] " response
+      if [ -f "$DEST/$NAME-$DATE.tar.zst" ]; then
+        read -r -p "Backup at $DEST/$NAME-$DATE.tar.zst aleady exists! overwrite? [y/N] " response
         response=${"\${response,,}"}
         if [[ ! "$response" =~ ^(yes|y)$ ]]; then
           exit
