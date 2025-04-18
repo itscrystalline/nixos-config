@@ -50,7 +50,7 @@
 
 
       echo "Discovering size of $SOURCE... This may take some time."
-      SIZE=$(${pkgs.coreutils}/bin/du -sb "$SOURCE" | ${pkgs.coreutils}/bin/awk '{print $1}')
+      SIZE=$(${pkgs.coreutils}/bin/du -sb "$SOURCE" | ${pkgs.gawk}/bin/awk '{print $1}')
       echo "Size of $SOURCE is $SIZE bytes."
 
       ${pkgs.gnutar}/bin/tar --create --acls --xattrs --preserve-permissions --same-owner --listed-incremental="$DEST/snapshot.snar" -C "$SOURCE" . \
