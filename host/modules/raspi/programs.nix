@@ -50,8 +50,15 @@
     FULL_NAME="$FULL_NAME.tar.zst"
 
     ${pkgs.coreutils}/bin/echo "Discovering size of $SOURCE... This may take some time."
-    PREV_SIZE=$(${pkgs.coreutils}/bin/cat "$DEST/size.prev")
+
+    if [[ -s "$DEST/size.prev" ]]; then
+      PREV_SIZE=$(<"$DEST/size.prev")
+    else
+      PREV_SIZE=0
+    fi
+
     SIZE=$(${pkgs.coreutils}/bin/du -sb "$SOURCE" | ${pkgs.gawk}/bin/awk '{print $1}')
+    ${pkgs.coreutils}/bin/echo "$SIZE" > "$DEST/size.prev"
     DELTA_SIZE=$(($SIZE - $PREV_SIZE))
     ${pkgs.coreutils}/bin/echo "Size of $SOURCE is $SIZE bytes."
     if [ "$PREV_SIZE" != 0 ]; then
