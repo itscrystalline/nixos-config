@@ -62,11 +62,11 @@
     DELTA_SIZE=$(($SIZE - $PREV_SIZE))
     ${pkgs.coreutils}/bin/echo "Size of $SOURCE is $SIZE bytes."
 
-    if [ "$PREV_SIZE" != 0 ] && [ "$DELTA_SIZE" > 0 ]; then
+    if [ "$PREV_SIZE" != 0 ] && [ "$DELTA_SIZE" -gt 0 ]; then
       ${pkgs.coreutils}/bin/echo "(only backing up an additional $DELTA_SIZE bytes.)"
     fi
 
-    if [ "$DELTA_SIZE" < 0 ]; then
+    if [ "$DELTA_SIZE" -lt 0 ]; then
       PV_ARGS=""
     else
       PV_ARGS="-s $DELTA_SIZE"
