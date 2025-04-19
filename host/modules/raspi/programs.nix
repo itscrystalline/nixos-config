@@ -61,14 +61,21 @@
     ${pkgs.coreutils}/bin/echo "$SIZE" > "$DEST/size.prev"
     DELTA_SIZE=$(($SIZE - $PREV_SIZE))
     ${pkgs.coreutils}/bin/echo "Size of $SOURCE is $SIZE bytes."
-    if [ "$PREV_SIZE" != 0 ]; then
+
+    if [ "$PREV_SIZE" != 0 ] && [ "$DELTA_SIZE" > 0 ]; then
       ${pkgs.coreutils}/bin/echo "(only backing up an additional $DELTA_SIZE bytes.)"
+    fi
+
+    if [ "$DELTA_SIZE" < 0 ]; then
+      PV_ARGS=""
+    else
+      PV_ARGS="-s $DELTA_SIZE"
     fi
 
     ${pkgs.coreutils}/bin/echo "Starting $MODE backup at $FULL_NAME"
 
     ${pkgs.gnutar}/bin/tar --create --acls --xattrs --preserve-permissions --same-owner --listed-incremental="$DEST/snapshot.snar" -C "$SOURCE" . \
-    | ${pkgs.pv}/bin/pv -s "$DELTA_SIZE" \
+    | ${pkgs.pv}/bin/pv $PV_ARGS \
     | ${pkgs.zstd}/bin/zstd -T0 -"$COMPRESSION" \
     > "$FULL_NAME"
   '';
