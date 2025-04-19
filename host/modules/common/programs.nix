@@ -4,6 +4,11 @@
   ...
 } @ inputs: {
   programs.zsh.enable = true;
+  programs.bash = {
+    completion.enable = true;
+    enableLsColors = true;
+    vteIntegration = true;
+  };
   # ZSH system completion
   environment.pathsToLink = ["/share/zsh" "/share/nautilus-python/extensions"];
 

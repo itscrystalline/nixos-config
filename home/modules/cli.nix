@@ -43,9 +43,20 @@
     '';
   };
 
+  programs.bash = {
+    enable = true;
+    enableCompletion = true;
+    enableVteIntegration = true;
+    sessionVariables."_ZO_EXCLUDE_DIRS" = "$HOME:$HOME/Nextcloud/*";
+    initExtra = ''
+      hyfetch
+    '';
+  };
+
   programs.zoxide = {
     enable = true;
     enableZshIntegration = true;
+    enableBashIntegration = true;
     options = [
       "--cmd cd"
     ];
