@@ -89,6 +89,24 @@
     shift
     SOURCES=(${"\${@}"})
 
+    # timestamp sanity check
+    LAST_TIMESTAMP=0
+    LAST_FILE=""
+    for FILE in "${"\${SOURCES[@]}"}"; do
+      created=$(${pkgs.coreutils}/bin/stat -c%W "$FILE")
+      if [ "$LAST_TIMESTAMP" > "$created" ]; then
+        ${pkgs.coreutils}/bin/echo "WARNING: file $FILE is older than the previous file $LAST_FILE!"
+        ${pkgs.coreutils}/bin/echo "WARNING:  This usually means the order of the arguments is off."
+        read -r -p "WARNING:  Do you still want to continue in the original order? [y/N] " response
+        response=${"\${response,,}"}
+        if [[ ! "$response" =~ ^(yes|y)$ ]]; then
+          exit 1
+        fi
+      fi
+      LAST_TIMESTAMP="$created"
+      LAST_FILE="$FILE"
+    done
+
     for SRC in "${"\${SOURCES[@]}"}"; do
       ${pkgs.coreutils}/bin/echo "Restoring from $SRC into $DEST"
       SIZE=$(${pkgs.coreutils}/bin/stat -c%s "$SRC")
