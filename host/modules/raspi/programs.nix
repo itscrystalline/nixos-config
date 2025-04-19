@@ -94,7 +94,7 @@
     LAST_FILE=""
     for FILE in "${"\${SOURCES[@]}"}"; do
       created=$(${pkgs.coreutils}/bin/stat -c%W "$FILE")
-      if [ "$LAST_TIMESTAMP" > "$created" ]; then
+      if [ "$LAST_TIMESTAMP" -gt "$created" ]; then
         ${pkgs.coreutils}/bin/echo "WARNING: file $FILE is older than the previous file $LAST_FILE!"
         ${pkgs.coreutils}/bin/echo "WARNING:  This usually means the order of the arguments is off."
         read -r -p "WARNING:  Do you still want to continue in the original order? [y/N] " response
