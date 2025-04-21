@@ -24,7 +24,7 @@ in {
     ./services/adguardhome.nix
     ./services/iw2tryhard-dev.nix
     (import ./services/grafana.nix {inherit config pkgs secrets mkLocalNginx;})
-    (import ./services/kavita.nix {inherit config mkLocalNginx;})
+    (import ./services/kavita.nix {inherit config secrets mkLocalNginx;})
 
     (mkLocalNginx "scan" config.services.scanservjs.settings.port false)
     (mkLocalNginx "cock" config.services.cockpit.port false)
