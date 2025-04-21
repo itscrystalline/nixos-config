@@ -1,6 +1,5 @@
 {...}: {
-  imports = [./services/iw2tryhard-dev.nix];
-
+  virtualisation.oci-containers.backend = "docker";
   virtualisation.docker = {
     enable = true;
     daemon.settings = {

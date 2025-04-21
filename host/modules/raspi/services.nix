@@ -22,12 +22,13 @@ in {
     ./services/cloudflared.nix
     ./services/nextcloud.nix
     ./services/adguardhome.nix
+    ./services/iw2tryhard-dev.nix
     (import ./services/grafana.nix {inherit config pkgs secrets mkLocalNginx;})
+    (import ./services/kavita.nix {inherit config mkLocalNginx;})
 
     (mkLocalNginx "scan" config.services.scanservjs.settings.port false)
     (mkLocalNginx "cock" config.services.cockpit.port false)
     (mkLocalNginx "dns" config.services.adguardhome.port false)
-    (mkLocalNginx "manga" config.services.kavita.settings.Port false)
   ];
 
   services.avahi = {
@@ -90,16 +91,6 @@ in {
       WebService = {
         AllowUnencrypted = true;
       };
-    };
-  };
-
-  services.kavita = {
-    enable = true;
-    dataDir = "/mnt/main/services/kavita";
-    tokenKeyFile = ../../../secrets/kavita_token_key;
-    settings = {
-      Port = 10000;
-      IpAddresses = "127.0.0.1";
     };
   };
 
