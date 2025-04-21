@@ -11,7 +11,7 @@
   services.kavita = {
     enable = true;
     dataDir = "/mnt/main/services/kavita";
-    tokenKeyFile = ../../../secrets/kavita_token_key;
+    tokenKeyFile = ../../../../secrets/kavita_token_key;
     settings.Port = 10000;
   };
   virtualisation.oci-containers.containers = {
@@ -22,13 +22,14 @@
       extraOptions = ["--network=bridge" "--dns=1.1.1.1"];
       autoStart = true;
       environment = {
-        KOMF_KAVITA_BASE_URI = "http://127.0.0.1:${config.services.kavita.settings.Port}";
+        KOMF_KAVITA_BASE_URI = "http://127.0.0.1:${builtins.toString config.services.kavita.settings.Port}";
         KOMF_KAVITA_API_KEY = secrets.kavita_api_key;
         KOMF_LOG_LEVEL = "INFO";
         JAVA_TOOL_OPTIONS = "-XX:+UnlockExperimentalVMOptions -XX:+UseShenandoahGC -XX:ShenandoahGCHeuristics=compact -XX:ShenandoahGuaranteedGCInterval=3600000 -XX:TrimNativeHeapInterval=3600000";
       };
       volumes = [
         "/mnt/main/services/komf:/config"
+        "${builtins.toPath ./komf.yml}:/config/application.yml"
       ];
     };
   };
