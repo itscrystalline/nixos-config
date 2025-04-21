@@ -5,7 +5,7 @@
   ...
 }: {
   imports = [
-    (mkLocalNginx "manga" config.services.kavita.settings.Port false)
+    (mkLocalNginx "manga" config.services.kavita.settings.Port true)
   ];
 
   services.kavita = {
