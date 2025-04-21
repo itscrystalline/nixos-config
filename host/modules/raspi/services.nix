@@ -27,7 +27,7 @@ in {
     (mkLocalNginx "scan" config.services.scanservjs.settings.port false)
     (mkLocalNginx "cock" config.services.cockpit.port false)
     (mkLocalNginx "dns" config.services.adguardhome.port false)
-    (mkLocalNginx "manga" config.services.komga.port false)
+    (mkLocalNginx "manga" config.services.kavita.settings.Port false)
   ];
 
   services.avahi = {
@@ -93,10 +93,14 @@ in {
     };
   };
 
-  services.komga = {
+  services.kavita = {
     enable = true;
-    port = 5498;
-    stateDir = "/mnt/main/services/komga";
+    dataDir = "/mnt/main/services/kavita";
+    tokenKeyFile = ../../../secrets/kavita_token_key;
+    settings = {
+      Port = 10000;
+      IpAddresses = "127.0.0.1";
+    };
   };
 
   # SSH auto restart
