@@ -72,7 +72,6 @@
 
       # wine
       wineWowPackages.waylandFull
-      winetricks
 
       # fwupd
       gnome-firmware
@@ -83,6 +82,7 @@
     ++ (with pkgs.unstable; [
       valent
       ghostty
+      winetricks
     ]));
 
   programs.obs-studio = pkgs.lib.mkIf config.gui {
