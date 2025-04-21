@@ -96,7 +96,7 @@ in {
   services.komga = {
     enable = true;
     port = 5498;
-    stateDir = "/mnt/main/komga";
+    stateDir = "/mnt/main/services/komga";
   };
 
   # SSH auto restart
