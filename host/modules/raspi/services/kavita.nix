@@ -6,6 +6,7 @@
 }: {
   imports = [
     (mkLocalNginx "manga" config.services.kavita.settings.Port true)
+    (mkLocalNginx "komf" 8085 true)
   ];
 
   services.kavita = {
@@ -17,7 +18,7 @@
   virtualisation.oci-containers.containers = {
     komf = {
       image = "sndxr/komf:latest";
-      ports = ["127.0.0.1::8085"];
+      ports = ["127.0.0.1:8085:8085"];
       user = "1000:1000";
       extraOptions = ["--network=bridge" "--dns=100.100.100.100"];
       autoStart = true;
