@@ -196,6 +196,7 @@ in {
       typescript-language-server
       typescript
       vscode-langservers-extracted
+      yaml-language-server
       # pkgs.nodePackages."cssmodules-language-server"
       # pkgs.nodePackages."css-variables-language-server"
       lldb
@@ -218,7 +219,7 @@ in {
 
       local lspconfig = require "lspconfig"
 
-      local servers = {"pylsp", "nil_ls", "clangd", "phpactor", "volar", "ts_ls", "cssls"}
+      local servers = {"pylsp", "nil_ls", "clangd", "phpactor", "volar", "ts_ls", "cssls", "yamlls", "jsonls"}
       local nvlsp = require "nvchad.configs.lspconfig"
 
       for _, lsp in ipairs(servers) do
@@ -261,6 +262,21 @@ in {
             "javascript",
             "typescript",
             "vue",
+          }
+        end
+        if lsp == "yamlls" then
+          config["settings"] = {
+            redhat = {
+              telemetry = {
+                enabled = false
+              }
+            },
+            yaml = {
+              schemas = {
+                ["https://json.schemastore.org/github-workflow.json"] = "/.github/workflows/*",
+                ["https://raw.githubusercontent.com/yannh/kubernetes-json-schema/refs/heads/master/v1.32.1-standalone-strict/all.json"] = "/*.k8s.yaml",
+              }
+            }
           }
         end
 
