@@ -56,6 +56,7 @@ lib.mkIf config.gui {
     swappy
     qrtool
     playerctl
+    ydotool
 
     # shell script deps
     socat

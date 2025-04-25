@@ -26,4 +26,5 @@
     nautilus-python
   ];
   # powerManagement.powertop.enable = true;
+  programs.ydotool.enable = true;
 }
