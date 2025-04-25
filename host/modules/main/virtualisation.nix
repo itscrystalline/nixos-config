@@ -10,12 +10,16 @@
   virtualisation.spiceUSBRedirection.enable = true;
 
   environment.systemPackages = [pkgs.distrobox];
-  virtualisation.podman = {
-    enable = true;
-    dockerCompat = true;
-  };
+  # virtualisation.podman = {
+  #   enable = true;
+  #   dockerCompat = true;
+  #   defaultNetwork.settings.dns_enabled = true;
+  # };
   virtualisation.docker.rootless = {
     enable = true;
     setSocketVariable = true;
+    daemon.settings = {
+      dns = ["1.1.1.1" "1.0.0.1" "8.8.8.8"];
+    };
   };
 }
