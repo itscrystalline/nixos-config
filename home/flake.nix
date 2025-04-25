@@ -42,50 +42,49 @@
   }: let
     system = "aarch64-linux";
     pkgs = nixpkgs.legacyPackages.${system};
-    home_config = 
-      username: 
-    home-manager.lib.homeManagerConfiguration {
-      inherit pkgs;
+    home_config = username:
+      home-manager.lib.homeManagerConfiguration {
+        inherit pkgs;
 
-      # Specify your home configuration modules here, for example,
-      # the path to your home.nix.
-      modules = [
-        ./../vars.nix
+        # Specify your home configuration modules here, for example,
+        # the path to your home.nix.
+        modules = [
+          ./../vars.nix
 
-        {
-          config.gui = false;
-          config.username = username;
-        }
-        ({inputs, ...}: {
-          nixpkgs.overlays = [
-            (final: prev: {
-              unstable = import inputs.nixpkgs {
-                config.allowUnfree = true;
-                system = prev.system;
-              };
-            })
-          ];
-        })
+          {
+            config.gui = false;
+            config.username = username;
+          }
+          ({inputs, ...}: {
+            nixpkgs.overlays = [
+              (final: prev: {
+                unstable = import inputs.nixpkgs {
+                  config.allowUnfree = true;
+                  system = prev.system;
+                };
+              })
+            ];
+          })
 
-        ./home.nix
+          ./home.nix
 
-        catppuccin.homeManagerModules.catppuccin
-        nix-flatpak.homeManagerModules.nix-flatpak
-        nvchad4nix.homeManagerModule
-        nixvim.homeManagerModules.nixvim
-      ];
-      # Optionally use extraSpecialArgs
-      # to pass through arguments to home.nix
-      extraSpecialArgs = {
-        inherit inputs;
-        inherit nixpkgs;
-        inherit zen-browser;
-        inherit nix-jebrains-plugins;
-        inherit nur;
-        inherit blender-flake;
-        inherit nixvim;
+          catppuccin.homeManagerModules.catppuccin
+          nix-flatpak.homeManagerModules.nix-flatpak
+          nvchad4nix.homeManagerModule
+          nixvim.homeManagerModules.nixvim
+        ];
+        # Optionally use extraSpecialArgs
+        # to pass through arguments to home.nix
+        extraSpecialArgs = {
+          inherit inputs;
+          inherit nixpkgs;
+          inherit zen-browser;
+          inherit nix-jebrains-plugins;
+          inherit nur;
+          inherit blender-flake;
+          inherit nixvim;
+        };
       };
-    };
   in {
     homeConfigurations."opc" = home_config "opc";
     homeConfigurations."ubuntu" = home_config "ubuntu";
