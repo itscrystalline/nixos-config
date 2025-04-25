@@ -197,6 +197,7 @@ in {
       typescript
       vscode-langservers-extracted
       yaml-language-server
+      taplo
       # pkgs.nodePackages."cssmodules-language-server"
       # pkgs.nodePackages."css-variables-language-server"
       lldb
@@ -219,7 +220,7 @@ in {
 
       local lspconfig = require "lspconfig"
 
-      local servers = {"pylsp", "nil_ls", "clangd", "phpactor", "volar", "ts_ls", "cssls", "yamlls", "jsonls"}
+      local servers = {"pylsp", "nil_ls", "clangd", "phpactor", "volar", "ts_ls", "cssls", "yamlls", "jsonls", "taplo"}
       local nvlsp = require "nvchad.configs.lspconfig"
 
       for _, lsp in ipairs(servers) do
