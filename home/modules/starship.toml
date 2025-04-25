@@ -1,23 +1,23 @@
+"$schema" = 'https://starship.rs/config-schema.json'
 # Don't print a new line at the start of the prompt
 add_newline = false
 # Pipes ╰─ ╭─
 # Powerline symbols                                     
 # Wedges 🭧🭒 🭣🭧🭓
 # Random noise 🬖🬥🬔🬗
-"$schema" = 'https://starship.rs/config-schema.json'
-
 
 
 format = """
-[](color_orange)\
+[](flamingo)\
 $os\
+[](bg:pink fg:flamingo)\
 $username\
-[](bg:color_yellow fg:color_orange)\
+[](bg:mauve fg:pink)\
 $directory\
-[](fg:color_yellow bg:color_aqua)\
+[](bg:lavender fg:mauve)\
 $git_branch\
 $git_status\
-[](fg:color_aqua bg:color_blue)\
+[](bg:blue fg:lavender)\
 $c\
 $rust\
 $golang\
@@ -27,15 +27,25 @@ $java\
 $kotlin\
 $haskell\
 $python\
-[](fg:color_blue bg:color_bg3)\
+[](fg:blue)\
 $docker_context\
 $conda\
-[](fg:color_bg3 bg:color_bg1)\
+$fill\
+[](fg:blue)\
+$custom\
+[](bg:blue fg:sapphire)\
+$nix_shell\
+[](bg:sapphire fg:sky)\
+$hostname\
+[](bg:sky fg:teal)\
+$cmd_duration\
 $time\
-[ ](fg:color_bg1)\
-$line_break$character"""
+[ ](fg:teal)\
+$line_break$character
+"""
 
-palette = 'gruvbox_dark'
+
+palette = 'catppuccin_mocha'
 
 [palettes.gruvbox_dark]
 color_fg0 = '#251624'
@@ -77,9 +87,13 @@ base = "#1e1e2e"
 mantle = "#181825"
 crust = "#11111b"
 
+[fill]
+symbol = ''
+style = "fg:surface0"
+
 [os]
 disabled = false
-style = "bg:color_orange fg:color_fg0"
+style = "bg:flamingo fg:base"
 
 [os.symbols]
 Windows = "󰍲"
@@ -101,15 +115,23 @@ CentOS = ""
 Debian = "󰣚"
 Redhat = "󱄛"
 RedHatEnterprise = "󱄛"
+NixOS = " "
 
 [username]
 show_always = true
-style_user = "bg:color_orange fg:color_fg0"
-style_root = "bg:color_orange fg:color_fg0"
+style_user = "bg:pink fg:base"
+style_root = "bg:red fg:base"
 format = '[ $user ]($style)'
 
+[hostname]
+ssh_only = false
+ssh_symbol = "󰱠 "
+format = '[ $ssh_symbol$hostname ](fg:base bg:sky)'
+disabled = false
+aliases = { "cwystaws-meowchine" = "laptop" }
+
 [directory]
-style = "fg:color_fg0 bg:color_yellow"
+style = "fg:base bg:mauve"
 format = "[ $path ]($style)"
 truncation_length = 3
 truncation_symbol = "…/"
@@ -123,81 +145,104 @@ truncation_symbol = "…/"
 
 [git_branch]
 symbol = ""
-style = "bg:color_aqua"
-format = '[[ $symbol $branch ](fg:color_fg0 bg:color_aqua)]($style)'
+style = "bg:lavender"
+format = '[[ $symbol $branch ](fg:base bg:lavender)]($style)'
 
 [git_status]
-style = "bg:color_aqua"
-format = '[[($all_status$ahead_behind )](fg:color_fg0 bg:color_aqua)]($style)'
+style = "bg:lavender"
+format = '[[($all_status$ahead_behind )](fg:base bg:lavender)]($style)'
 
 [nodejs]
 symbol = ""
-style = "bg:color_blue"
-format = '[[ $symbol( $version) ](fg:color_fg0 bg:color_blue)]($style)'
+style = "bg:blue"
+format = '[[ $symbol( $version) ](fg:base bg:blue)]($style)'
 
 [c]
 symbol = " "
-style = "bg:color_blue"
-format = '[[ $symbol( $version) ](fg:color_fg0 bg:color_blue)]($style)'
+style = "bg:blue"
+format = '[[ $symbol( $version) ](fg:base bg:blue)]($style)'
 
 [rust]
 symbol = ""
-style = "bg:color_blue"
-format = '[[ $symbol( $version) ](fg:color_fg0 bg:color_blue)]($style)'
+style = "bg:blue"
+format = '[[ $symbol( $version) ](fg:base bg:blue)]($style)'
 
 [golang]
 symbol = ""
-style = "bg:color_blue"
-format = '[[ $symbol( $version) ](fg:color_fg0 bg:color_blue)]($style)'
+style = "bg:blue"
+format = '[[ $symbol( $version) ](fg:base bg:blue)]($style)'
 
 [php]
 symbol = ""
-style = "bg:color_blue"
-format = '[[ $symbol( $version) ](fg:color_fg0 bg:color_blue)]($style)'
+style = "bg:blue"
+format = '[[ $symbol( $version) ](fg:base bg:blue)]($style)'
 
 [java]
 symbol = " "
-style = "bg:color_blue"
-format = '[[ $symbol( $version) ](fg:color_fg0 bg:color_blue)]($style)'
+style = "bg:blue"
+format = '[[ $symbol( $version) ](fg:base bg:blue)]($style)'
 
 [kotlin]
 symbol = ""
-style = "bg:color_blue"
-format = '[[ $symbol( $version) ](fg:color_fg0 bg:color_blue)]($style)'
+style = "bg:blue"
+format = '[[ $symbol( $version) ](fg:base bg:blue)]($style)'
 
 [haskell]
 symbol = ""
-style = "bg:color_blue"
-format = '[[ $symbol( $version) ](fg:color_fg0 bg:color_blue)]($style)'
+style = "bg:blue"
+format = '[[ $symbol( $version) ](fg:base bg:blue)]($style)'
 
 [python]
 symbol = ""
-style = "bg:color_blue"
-format = '[[ $symbol( $version) ](fg:color_fg0 bg:color_blue)]($style)'
+style = "bg:blue"
+format = '[[ $symbol( $version) ](fg:base bg:blue)]($style)'
 
 [docker_context]
 symbol = ""
-style = "bg:color_bg3"
+style = "bg:blue"
 format = '[[ $symbol( $context) ](fg:#83a598 bg:color_bg3)]($style)'
 
 [conda]
-style = "bg:color_bg3"
+style = "bg:blue"
 format = '[[ $symbol( $environment) ](fg:#83a598 bg:color_bg3)]($style)'
 
 [time]
 disabled = false
 time_format = "%R"
-style = "bg:color_bg1"
-format = '[[  $time ](fg:color_fg0 bg:color_bg1)]($style)'
+style = "bg:teal"
+format = '[[  $time ](fg:base bg:teal)]($style)'
+
+[cmd_duration]
+min_time = 1000
+style = "bg:teal fg:base"
+format = '[[ took](bold $style) $duration]($style)'
 
 [line_break]
 disabled = false
 
 [character]
 disabled = false
-success_symbol = '[ ╰─→](bold fg:color_orange)'
-error_symbol = '[ ╰─→](bold fg:color_red)'
-vimcmd_symbol = '[](bold fg:color_green)'
-vimcmd_replace_one_symbol = '[](bold fg:color_purple)'
-vimcmd_replace_symbol = '[](bold fg:color_purple)'
-vimcmd_visual_symbol = '[](bold fg:color_yellow)'
+success_symbol = '[ ╰─→](bold fg:flamingo)'
+error_symbol = '[ ╰─→](bold fg:red)'
+vimcmd_symbol = '[](bold fg:green)'
+vimcmd_replace_one_symbol = '[](bold fg:lavender)'
+vimcmd_replace_symbol = '[](bold fg:lavender)'
+vimcmd_visual_symbol = '[](bold fg:yellow)'
+
+[nix_shell]
+disabled = false
+style = "bold bg:sapphire fg:base"
+impure_msg = '[  ]($style)'
+pure_msg = '[ ]($style)'
+unknown_msg = '[ ?]($style)'
+format = '[ $state $name ]($style)'
+# heuristic = true
+
+[custom.player]
+command = '''
+STATUS="$(playerctl status)"; SYMBOL=""; case "$STATUS" in Playing) SYMBOL="▶";; Paused) SYMBOL="";; Stopped) SYMBOL="";; *) SYMBOL="";; esac; TITLE="$(playerctl metadata xesam:title)"; ARTIST="$(playerctl metadata xesam:artist)"; OUTPUT="$TITLE - $ARTIST"; echo "$SYMBOL $(echo "$OUTPUT" | awk '{out=substr($0, 1, 19); gsub(/[[:space:]]+$/, "", out); print (length($0) > 20 ? out "…" : $0)}')"
+'''
+when = ''' which playerctl > /dev/null && [[ $(playerctl status) != "No players found" ]] > /dev/null '''
+style = "bg:blue fg:base"
+format = '[ $output ]($style)'
+# use_stdin = false

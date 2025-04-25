@@ -55,6 +55,7 @@ lib.mkIf config.gui {
     material-symbols
     swappy
     qrtool
+    playerctl
 
     # shell script deps
     socat
