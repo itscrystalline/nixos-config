@@ -42,7 +42,9 @@
   }: let
     system = "aarch64-linux";
     pkgs = nixpkgs.legacyPackages.${system};
-    home_config = home-manager.lib.homeManagerConfiguration {
+    home_config = 
+      username: 
+    home-manager.lib.homeManagerConfiguration {
       inherit pkgs;
 
       # Specify your home configuration modules here, for example,
@@ -50,7 +52,10 @@
       modules = [
         ./../vars.nix
 
-        {config.gui = false;}
+        {
+          config.gui = false;
+          config.username = username;
+        }
         ({inputs, ...}: {
           nixpkgs.overlays = [
             (final: prev: {
@@ -82,8 +87,8 @@
       };
     };
   in {
-    # homeConfigurations."opc" = home_config;
-    # homeConfigurations."ubuntu" = home_config;
-    homeConfigurations."itscrystalline" = home_config;
+    homeConfigurations."opc" = home_config "opc";
+    homeConfigurations."ubuntu" = home_config "ubuntu";
+    homeConfigurations."itscrystalline" = home_config "itscrystalline";
   };
 }

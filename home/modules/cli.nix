@@ -18,7 +18,7 @@
     update = "sudo nh os switch ~/nixos-config -R";
     nuke-cache = "sudo rm -rf ~/.cache/nix";
     gc = "sudo nh clean all";
-    clean-hmbkups = "find /home/itscrystalline/.config -name \"*.hmbkup\" -type f -delete";
+    clean-hmbkups = "find /home/${config.username}/.config -name \"*.hmbkup\" -type f -delete";
     gssh = "TERM=xterm-256color ssh";
     ":q" = "exit";
 
@@ -67,7 +67,7 @@
     matchBlocks = {
       "cwystaws-raspi" = {
         hostname = "cwystaws-raspi";
-        identityFile = "/home/itscrystalline/.ssh/crystal";
+        identityFile = "/home/${config.username}/.ssh/crystal";
       };
     };
   };

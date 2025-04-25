@@ -473,7 +473,7 @@ in {
             dap.adapters.cppdbg = {
               id = 'cppdbg',
               type = 'executable',
-              command = '/home/itscrystalline/.local/share/nvim/mason/bin/OpenDebugAD7',
+              command = '/home/${config.username}/.local/share/nvim/mason/bin/OpenDebugAD7',
             }
           dap.configurations.rust = dap.configurations.cpp
             end,

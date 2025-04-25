@@ -1,6 +1,6 @@
-{pkgs, ...} @ inputs: {
-  home.username = "itscrystalline";
-  home.homeDirectory = "/home/itscrystalline";
+{pkgs, config, ...} @ inputs: {
+  home.username = config.username;
+  home.homeDirectory = "/home/${config.username}";
 
   imports = [
     ./modules/cli.nix
