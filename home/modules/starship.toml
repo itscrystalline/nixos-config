@@ -199,11 +199,11 @@ format = '[[ $symbol( $version) ](bg:surface0 fg:blue)]($style)'
 [docker_context]
 symbol = ""
 style = "fg:blue"
-format = '[[ $symbol( $context) ](fg:#83a598 bg:surface0)]($style)'
+format = '[[ $symbol( $context) ](fg:blue bg:surface0)]($style)'
 
 [conda]
 style = "fg:blue"
-format = '[[ $symbol( $environment) ](fg:#83a598 bg:surface0)]($style)'
+format = '[[ $symbol( $environment) ](fg:blue bg:surface0)]($style)'
 
 [time]
 disabled = false
@@ -214,7 +214,7 @@ format = '[[  $time ](bg:overlay0 fg:teal)]($style)'
 [cmd_duration]
 min_time = 1000
 style = "fg:teal bg:overlay0"
-format = '[[ took](bold $style) $duration]($style)'
+format = '[[ ](bold $style) $duration]($style)'
 
 [line_break]
 disabled = false
@@ -234,7 +234,7 @@ style = "bold fg:sapphire bg:surface1"
 impure_msg = '[  ]($style)'
 pure_msg = '[ ]($style)'
 unknown_msg = '[ ?]($style)'
-format = '[ $state $name ]($style)'
+format = '[ $state ]($style)'
 # heuristic = true
 
 [custom.player]
