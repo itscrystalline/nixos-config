@@ -42,7 +42,7 @@
   }: let
     system = "aarch64-linux";
     pkgs = nixpkgs.legacyPackages.${system};
-    home_config = username:
+    home_config = username: extraConfig:
       home-manager.lib.homeManagerConfiguration {
         inherit pkgs;
 
@@ -55,6 +55,8 @@
             config.gui = false;
             config.username = username;
           }
+          extraConfig
+
           ({inputs, ...}: {
             nixpkgs.overlays = [
               (final: prev: {
@@ -86,8 +88,8 @@
         };
       };
   in {
-    homeConfigurations."opc" = home_config "opc";
-    homeConfigurations."ubuntu" = home_config "ubuntu";
+    homeConfigurations."opc" = home_config "opc" {config.doas = false;};
+    homeConfigurations."ubuntu" = home_config "ubuntu" {config.doas = false;};
     homeConfigurations."itscrystalline" = home_config "itscrystalline";
   };
 }

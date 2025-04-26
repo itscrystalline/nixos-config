@@ -1,20 +1,22 @@
 {
   config,
   pkgs,
+  lib,
   home,
   ...
 } @ inputs: {
-  home.packages = with pkgs; [
-    blahaj
-    zoxide
-    sshfs
-    nh
-    doas-sudo-shim
-  ];
+  home.packages = with pkgs;
+    [
+      blahaj
+      zoxide
+      sshfs
+      nh
+    ]
+    ++ lib.optionals config.doas [doas-sudo-shim];
 
   home.shellAliases = {
     # sudo = "doas";
-    svim = "doas nvim";
+    svim = "sudo nvim";
     update = "sudo nh os switch ~/nixos-config -R";
     nuke-cache = "sudo rm -rf ~/.cache/nix";
     gc = "sudo nh clean all";
