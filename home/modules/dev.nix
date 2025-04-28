@@ -8,7 +8,7 @@
 
   home.packages = with pkgs;
     [
-      devenv
+      unstable.devenv
       nixd
       gh
       cargo-mommy
