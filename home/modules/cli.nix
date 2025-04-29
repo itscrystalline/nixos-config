@@ -115,5 +115,25 @@
     package = pkgs.unstable.yt-dlp;
   };
 
+  programs.occasion = {
+    enable = true;
+    package = inputs.occasion.packages.${pkgs.system}.occasion-latest;
+    settings = {
+      dates = [
+        {
+          message = "test";
+          time = {
+            day_of = {
+              week = ["Tuesday"];
+            };
+          };
+        }
+      ];
+      multiple_behavior = {
+        all = {seperator = "";};
+      };
+    };
+  };
+
   programs.lazygit.enable = true;
 }
