@@ -10,6 +10,7 @@ add_newline = false
 format = """
 [](overlay0)\
 $os\
+${custom.occasion}\
 $username\
 [](bg:surface2 fg:overlay0)\
 $directory\
@@ -31,7 +32,7 @@ $conda\
 [](fg:surface0)\
 $fill\
 [](fg:surface0)\
-$custom\
+${custom.player}\
 [](bg:surface0 fg:surface1)\
 $nix_shell\
 [](bg:surface1 fg:surface2)\
@@ -245,3 +246,9 @@ when = ''' which playerctl && playerctl status '''
 style = "fg:blue bg:surface0"
 format = '[ $output ]($style)'
 # use_stdin = false
+
+[custom.occasion]
+command = "occasion"
+when = true
+style = "fg:pink bg:overlay0"
+format = '[ $output ]($style)'

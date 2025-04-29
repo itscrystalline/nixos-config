@@ -121,16 +121,70 @@
     settings = {
       dates = [
         {
-          message = "test";
+          message = "🏳️‍⚧️";
           time = {
-            day_of = {
-              week = ["Tuesday"];
-            };
+            day_of.month = [20 31];
+            month = ["March" "November"];
+          };
+        }
+        {
+          message = "🏳️‍🌈";
+          time = {
+            month = ["June"];
+          };
+        }
+        {
+          message = "❤️🧡🤍🩷💜";
+          time = {
+            day_of.month = [21 22 23 24 25 26 27];
+            month = ["April"];
+          };
+        }
+        {
+          message = "🖤🩶🤍💜";
+          time = {
+            day_of.month = [4];
+            month = ["April"];
+          };
+        }
+        {
+          message = "🖤🩶🤍💜";
+          time = {
+            day_of.month = [19 20 21 22 23 24 25];
+            month = ["October"];
+          };
+        }
+        {
+          message = "👨";
+          time = {
+            day_of.month = [13];
+            month = ["September"];
+          };
+        }
+        {
+          message = "👩";
+          time = {
+            day_of.month = [10];
+            month = ["October"];
+          };
+        }
+        {
+          message = "🧒";
+          time = {
+            day_of.month = [22];
+            month = ["May"];
+          };
+        }
+        {
+          message = "🎂";
+          time = {
+            day_of.month = [4];
+            month = ["June"];
           };
         }
       ];
       multiple_behavior = {
-        all = {seperator = "";};
+        all = {seperator = " ";};
       };
     };
   };

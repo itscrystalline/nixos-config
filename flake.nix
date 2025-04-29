@@ -58,7 +58,7 @@
     nixvim.url = "github:nix-community/nixvim";
 
     iw2tryhard-dev.url = "github:itscrystalline/iw2tryhard-dev-3.0";
-    occasion.url = "github:itscrystalline/occasion/nix-flake";
+    occasion.url = "github:itscrystalline/occasion";
   };
 
   outputs = inputs @ {
@@ -137,6 +137,7 @@
               blender-flake
               binaryninja
               secrets
+              occasion
               ;
           };
         }

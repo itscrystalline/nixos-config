@@ -910,16 +910,15 @@
         "nixpkgs": "nixpkgs_8"
       },
       "locked": {
-        "lastModified": 1745938222,
-        "narHash": "sha256-5iAGwUmOJKJ0S1tq8Xn74Ox2cR+d7N9wKgRQ+WzEc0o=",
+        "lastModified": 1745939780,
+        "narHash": "sha256-JYyTWBJ/fYaqD7pulHaISg9mEj7AF2SGjF2QlPQsVxc=",
         "owner": "itscrystalline",
         "repo": "occasion",
-        "rev": "ceabd5836db474d4f2644ddd49d77be5d1e48671",
+        "rev": "06d814f01d1eb0f7257a217f325787688bd5c9a0",
         "type": "github"
       },
       "original": {
         "owner": "itscrystalline",
-        "ref": "nix-flake",
         "repo": "occasion",
         "type": "github"
       }
