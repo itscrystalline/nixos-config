@@ -251,4 +251,4 @@ format = '[ $output ]($style)'
 command = "occasion"
 when = true
 style = "fg:pink bg:overlay0"
-format = '[ $output ]($style)'
+format = '[$output]($style)'
