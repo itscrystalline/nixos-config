@@ -38,7 +38,7 @@
       append = true;
     };
     initExtraFirst = ''
-      export _ZO_EXCLUDE_DIRS=$HOME:$HOME/Nextcloud/*
+      export _ZO_EXCLUDE_DIRS=$HOME:$HOME/Nextcloud/*:/mnt/nfs
     '';
     initExtra = ''
       hyfetch
@@ -49,7 +49,7 @@
     enable = true;
     enableCompletion = true;
     enableVteIntegration = true;
-    sessionVariables."_ZO_EXCLUDE_DIRS" = "$HOME:$HOME/Nextcloud/*";
+    sessionVariables."_ZO_EXCLUDE_DIRS" = "$HOME:$HOME/Nextcloud/*:/mnt/nfs";
     initExtra = ''
       hyfetch
     '';
