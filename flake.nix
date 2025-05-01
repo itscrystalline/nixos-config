@@ -59,6 +59,7 @@
 
     iw2tryhard-dev.url = "github:itscrystalline/iw2tryhard-dev-3.0";
     occasion.url = "github:itscrystalline/occasion";
+    suwayomi.url = "github:NixOS/nixpkgs?ref=pull/400589/head";
   };
 
   outputs = inputs @ {
@@ -79,6 +80,7 @@
     nixvim,
     iw2tryhard-dev,
     occasion,
+    suwayomi,
     ...
   }: let
     secrets = builtins.fromJSON (builtins.readFile ./secrets/secrets.json);
