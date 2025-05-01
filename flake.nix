@@ -185,6 +185,7 @@
               nix-flatpak.homeManagerModules.nix-flatpak
               nvchad4nix.homeManagerModule
               nixvim.homeManagerModules.nixvim
+              occasion.homeManagerModule
             ];
           };
 
@@ -194,6 +195,7 @@
               inputs
               nur
               secrets
+              occasion
               ;
           };
         }

@@ -117,7 +117,7 @@
 
   programs.occasion = {
     enable = true;
-    package = inputs.occasion.packages.${pkgs.system}.occasion-latest;
+    # package = inputs.occasion.packages.${pkgs.system}.occasion-latest;
     settings = {
       dates = [
         {
