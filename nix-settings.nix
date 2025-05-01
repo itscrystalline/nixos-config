@@ -52,10 +52,10 @@
         config.allowUnfree = true;
         system = prev.system;
       };
-      bluez-5-75 = import inputs.nixpkgs-bluez-5-75 {
+      bluez-5-75 = (import inputs.nixpkgs-bluez-5-75 {
         config.allowUnfree = true;
         system = prev.system;
-      };
+      }).bluez;
     })
 
     # blender
