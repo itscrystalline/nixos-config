@@ -28,9 +28,12 @@
       device = "/mnt/main/nfs";
       options = ["bind"];
     };
-
     "/var/lib/prometheus2" = {
       device = "/mnt/main/services/prometheus2";
+      options = ["bind"];
+    };
+    "/nix" = {
+      device = "/mnt/main/nix";
       options = ["bind"];
     };
   };
