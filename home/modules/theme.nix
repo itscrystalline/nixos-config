@@ -91,6 +91,7 @@
       font-family = JetBrainsMono Nerd Font
       font-family = Noto Sans Thai
       font-family = Noto Sans CJK JP
+      font-family = Noto Color Emoji
       font-size = 12
     '';
   };

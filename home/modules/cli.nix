@@ -122,7 +122,6 @@
       dates = [
         {
           message = "🏳️‍⚧️";
-          time.month = ["March" "November"];
           condition.predicate = "(MONTH == 3 && DAY_OF_MONTH == 31) || (MONTH == 11 && DAY_OF_MONTH == 20)";
         }
         {
