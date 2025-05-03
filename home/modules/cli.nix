@@ -122,10 +122,8 @@
       dates = [
         {
           message = "🏳️‍⚧️";
-          time = {
-            day_of.month = [20 31];
-            month = ["March" "November"];
-          };
+          time.month = ["March" "November"];
+          condition.predicate = "(MONTH == 3 && DAY_OF_MONTH == 31) || (MONTH == 11 && DAY_OF_MONTH == 20)";
         }
         {
           message = "🏳️‍🌈";
@@ -136,8 +134,15 @@
         {
           message = "❤️🧡🤍🩷💜";
           time = {
-            day_of.month = [21 22 23 24 25 26 27];
+            day_of.month = [9 21 22 23 24 25 26 27];
             month = ["April"];
+          };
+        }
+        {
+          message = "❤️🧡🤍🩷💜";
+          time = {
+            day_of.month = [8];
+            month = ["October"];
           };
         }
         {
@@ -149,10 +154,9 @@
         }
         {
           message = "🖤🩶🤍💜";
-          time = {
-            day_of.month = [19 20 21 22 23 24 25];
-            month = ["October"];
-          };
+          time.month = ["October"];
+          condition.predicate = "DAY_OF_MONTH + 6 + (6 - DAY_IN_WEEK) == 31";
+          merge_strategy = "AND";
         }
         {
           message = "👨";
