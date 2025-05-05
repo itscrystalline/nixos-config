@@ -20,7 +20,7 @@
     };
   };
 
-  networking.networkmanager.unmanaged = ["interface-name:wlp*" "interface-name:${config.services.hostapd.interface}"];
+  networking.networkmanager.unmanaged = ["interface-name:wlp*" "interface-name:wlan-ap0"];
 
   services.hostapd = {
     enable = true;
