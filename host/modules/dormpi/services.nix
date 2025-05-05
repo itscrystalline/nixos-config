@@ -14,7 +14,27 @@
   adguard = {
     enable = true;
     rewriteList = {
-      # "dorm.crys".answer = "100.125.37.13";
+      "*.dorm".answer = "100.122.114.13";
+    };
+  };
+  services.adguardhome.settings.dhcp = {
+    enabled = true;
+    interface_name = "wlan-ap0";
+    local_domain_name = "dorm";
+    dhcpv4 = {
+      gateway_ip = "192.168.12.1";
+      subnet_mask = "255.255.255.0";
+      range_start = "192.168.12.10";
+      range_end = "192.168.12.254";
+      lease_duration = 86400;
+      icmp_timeout_msec = 1000;
+      options = [];
+    };
+    dhcpv6 = {
+      range_start = "";
+      lease_duration = 86400;
+      ra_slaac_only = false;
+      ra_allow_slaac = false;
     };
   };
 

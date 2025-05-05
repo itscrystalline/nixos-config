@@ -21,7 +21,7 @@ in {
       '';
     };
     rewriteList = mkOption {
-      type = types.nullOr (types.attrsOf types.str);
+      type = types.nullOr (types.attrs);
       default = null;
       description = "Mapping of DNS entries to IP addresses.";
       example = {
