@@ -26,11 +26,19 @@
     enable = true;
     radios.wlan-ap0 = {
       countryCode = "TH";
+      channel = 11;
+      settings = {
+        ieee80211n = true;
+        wmm_enabled = true;
+      };
       networks.wlan-ap0 = {
         ssid = "dormpi";
-        authentication.saePasswords = with secrets; [{password = homeassistant.wifi-password;}]; # Use saePasswordsFile if possible.
+        authentication = {
+          mode = "wpa3-sae-transition";
+          saePasswords = [{password = secrets.homeassistant.wifi-password;}];
+          wpaPassword = secrets.homeassistant.wifi-password;
+        };
       };
-      channel = 6;
     };
   };
 
