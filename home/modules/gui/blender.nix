@@ -2,6 +2,7 @@
   config,
   pkgs,
   lib,
+  blender-flake,
   ...
 }: let
   blender_addons_zip_path = "~/.config/blender/4.3/extensions/zips";
@@ -17,9 +18,9 @@
   blenderkit_version = "3.13.0.241112";
   blenderkit_sha256 = "wrMUz6OzTBDe0rbqXqiizWo72jRdM7ut4TXVV/3KmzA==";
 in
-  lib.mkIf config.gui {
+  lib.mkIf (config.gui && pkgs.system == "x86_64-linux") {
     home.packages = with pkgs; [
-      (blender_4_3.overrideAttrs (oldAttrs: newAttrs: let
+      (blender-flake.packages.${pkgs.system}.default.overrideAttrs (oldAttrs: newAttrs: let
         libs = [
           wayland
           libdecor

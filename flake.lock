@@ -910,11 +910,11 @@
         "nixpkgs": "nixpkgs_8"
       },
       "locked": {
-        "lastModified": 1746355169,
-        "narHash": "sha256-AWmmaFKS0KMZXDM8hoSMf180+Shgbjkf0R68Y1gIj2E=",
+        "lastModified": 1746357252,
+        "narHash": "sha256-JrgUndg/EnxYxowk1T2BIuXJ0qIQW1wJ0BFOQAf/Lyk=",
         "owner": "itscrystalline",
         "repo": "occasion",
-        "rev": "983709b9abd2b558c7582b077861cd7c9bdf76b1",
+        "rev": "8c9040430862c0fa8daaac3e98ffc36538d4bae8",
         "type": "github"
       },
       "original": {

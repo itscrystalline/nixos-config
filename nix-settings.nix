@@ -3,9 +3,7 @@
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 {
   config,
-  pkgs,
   inputs,
-  blender-flake,
   ...
 }: {
   # Nix Flakes
@@ -21,19 +19,18 @@
     "catppuccin=${inputs.catppuccin}"
     "zen-browser=${inputs.zen-browser}"
     "nix-jebrains-plugins=${inputs.nix-jebrains-plugins}"
-    "blender-flake=${inputs.blender-flake}"
     "nix-flatpak=${inputs.nix-flatpak}"
   ];
 
   # Cachixes
   nix.settings = {
     substituters = [
-      "https://hyprland.cachix.org"
+      # "https://hyprland.cachix.org"
       "https://devenv.cachix.org"
       "https://nixpkgs-python.cachix.org"
     ];
     trusted-public-keys = [
-      "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="
+      # "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="
       "devenv.cachix.org-1:w1cLUi8dv3hnoSPGAuibQv+f9TZLr6cv/Hm9XgU50cw="
       "nixpkgs-python.cachix.org-1:hxjI7pFxTyuTHn2NkvWCrAUcNZLNS3ZAvfYNuYifcEU= devenv.cachix.org-1:w1cLUi8dv3hnoSPGAuibQv+f9TZLr6cv/Hm9XgU50cw="
     ];
@@ -52,14 +49,7 @@
         config.allowUnfree = true;
         system = prev.system;
       };
-      bluez-5-75 = (import inputs.nixpkgs-bluez-5-75 {
-        config.allowUnfree = true;
-        system = prev.system;
-      }).bluez;
     })
-
-    # blender
-    blender-flake.overlays.default
   ];
 
   programs.nh = {

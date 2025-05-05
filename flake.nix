@@ -149,15 +149,12 @@
     nixosConfigurations.cwystaws-raspi = nixpkgs.lib.nixosSystem {
       system = "aarch64-linux";
       specialArgs = {
-        inherit inputs blender-flake secrets;
+        inherit inputs secrets;
       };
       modules = [
         # NUR, catppuccin, nix-flatpak, chaotic-nyx, lix
         nur.modules.nixos.default
         catppuccin.nixosModules.catppuccin
-        chaotic.nixosModules.nyx-cache
-        chaotic.nixosModules.nyx-overlay
-        chaotic.nixosModules.nyx-registry
         lix-module.nixosModules.default
 
         # HW
@@ -166,9 +163,66 @@
         # Import the previous configuration.nix we used,
         # so the old configuration file still takes effect
         ./vars.nix
-        {config.keep_generations = 3;}
+        {
+          config.keep_generations = 3;
+        }
         ./nix-settings.nix
         ./host/devices/cwystaws-raspi/host.nix
+
+        home-manager.nixosModules.home-manager
+        {
+          home-manager.useGlobalPkgs = true;
+          home-manager.useUserPackages = true;
+          home-manager.backupFileExtension = "hmbkup";
+          home-manager.users.itscrystalline = {
+            imports = [
+              ./vars.nix
+              {config.gui = false;}
+              ./home/home.nix
+
+              catppuccin.homeManagerModules.catppuccin
+              nix-flatpak.homeManagerModules.nix-flatpak
+              nvchad4nix.homeManagerModule
+              nixvim.homeManagerModules.nixvim
+              occasion.homeManagerModule
+            ];
+          };
+
+          home-manager.extraSpecialArgs = {
+            inherit
+              nixpkgs
+              inputs
+              nur
+              secrets
+              occasion
+              ;
+          };
+        }
+      ];
+    };
+
+    nixosConfigurations.cwystaws-dormpi = nixpkgs.lib.nixosSystem {
+      system = "aarch64-linux";
+      specialArgs = {
+        inherit inputs secrets;
+      };
+      modules = [
+        # NUR, catppuccin, nix-flatpak, chaotic-nyx, lix
+        nur.modules.nixos.default
+        catppuccin.nixosModules.catppuccin
+        lix-module.nixosModules.default
+
+        # HW
+        nixos-hardware.nixosModules.raspberry-pi-4
+
+        # Import the previous configuration.nix we used,
+        # so the old configuration file still takes effect
+        ./vars.nix
+        {
+          config.keep_generations = 3;
+        }
+        ./nix-settings.nix
+        ./host/devices/cwystaws-dormpi/host.nix
 
         home-manager.nixosModules.home-manager
         {

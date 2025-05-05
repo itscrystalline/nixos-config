@@ -15,13 +15,13 @@
 in {
   imports = [
     ../common/services.nix
+    ../../services/adguardhome.nix
     ./docker.nix
 
     (inputs.nixpkgs-unstable + "/nixos/modules/services/hardware/scanservjs.nix")
 
     ./services/cloudflared.nix
     ./services/nextcloud.nix
-    ./services/adguardhome.nix
     ./services/iw2tryhard-dev.nix
     (import ./services/grafana.nix {inherit config pkgs secrets mkLocalNginx;})
     (import ./services/manga.nix {inherit inputs config secrets mkLocalNginx;})
@@ -30,6 +30,13 @@ in {
     (mkLocalNginx "cock" config.services.cockpit.port false)
     (mkLocalNginx "dns" config.services.adguardhome.port false)
   ];
+
+  adguard = {
+    enable = true;
+    rewriteList = {
+      "*.crys".answer = "100.125.37.13";
+    };
+  };
 
   services.avahi = {
     publish = {
