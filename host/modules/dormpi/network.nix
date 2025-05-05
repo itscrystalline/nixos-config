@@ -52,5 +52,5 @@
     # dhcp-range=192.168.12.10,192.168.12.254,24h
   };
   networking.firewall.allowedUDPPorts = [53 67]; # DNS & DHCP
-  # services.haveged.enable = config.services.hostapd.enable;
+  services.haveged.enable = config.services.hostapd.enable;
 }
