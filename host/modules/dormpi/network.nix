@@ -30,6 +30,7 @@
         ssid = "dormpi";
         authentication.saePasswords = with secrets; [{password = homeassistant.wifi-password;}]; # Use saePasswordsFile if possible.
       };
+      channel = 11;
     };
   };
 
