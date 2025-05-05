@@ -12,15 +12,15 @@
   networking.networkmanager.wifi.powersave = false;
 
   # "wlan0" is the hardware device, "wlan-station0" is for wifi-client managed by network manager, "wlan-ap0" is for hostap
-  # networking.wlanInterfaces = {
-  #   "wlan-station0" = {device = "wlan0";};
-  #   "wlan-ap0" = {
-  #     device = "wlan0";
-  #     mac = "08:11:96:0e:08:0a";
-  #   };
-  # };
+  networking.wlanInterfaces = {
+    "wlan-station0" = {device = "wlan0";};
+    "wlan-ap0" = {
+      device = "wlan0";
+      mac = "08:11:96:0e:08:0a";
+    };
+  };
   #
-  # networking.networkmanager.unmanaged = ["interface-name:wlp*" "interface-name:wlan-ap0"];
+  networking.networkmanager.unmanaged = ["interface-name:wlp*" "interface-name:wlan-ap0"];
   #
   # services.hostapd = {
   #   enable = true;
@@ -55,6 +55,6 @@
   #   # bind-interfaces
   #   # dhcp-range=192.168.12.10,192.168.12.254,24h
   # };
-  # networking.firewall.allowedUDPPorts = [53 67]; # DNS & DHCP
+  networking.firewall.allowedUDPPorts = [53 67]; # DNS & DHCP
   # services.haveged.enable = config.services.hostapd.enable;
 }
