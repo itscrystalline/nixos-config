@@ -44,7 +44,7 @@
     enable = true;
     settings = {
       interface = "wlan-ap0";
-      bind-interfaces = true;
+      # bind-interfaces = true;
       dhcp-range = ["192.168.12.10,192.168.12.254"];
     };
     # interface=wlan-ap0
