@@ -1,7 +1,7 @@
 {lib, ...} @ inputs: {
   imports = [
     ./hardware-configuration.nix
-    ../../modules/raspi/boot.nix
+    ../../modules/dormpi/boot.nix
     ../../modules/dormpi/network.nix
     ../../modules/dormpi/services.nix
     ../../modules/dormpi/programs.nix
