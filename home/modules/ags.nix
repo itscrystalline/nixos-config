@@ -66,8 +66,8 @@ lib.mkIf config.gui {
   home.file.".scripts/monitorconnect.sh".source = pkgs.writeShellScript "monitorconnect.sh" ''
     handle() {
         case $1 in
-        monitoradded*) killall .ags-wrapped ydotool; ags & ;;
-        monitorremoved*) killall .ags-wrapped ydotool; ags & ;;
+        monitoradded*) killall .ags-wrapped ydotool; swww img /home/itscrystalline/bg.gif --filter=Nearest; ags & ;;
+        monitorremoved*) killall .ags-wrapped ydotool; swww img /home/itscrystalline/bg.gif --filter=Nearest; ags & ;;
         esac
     }
 

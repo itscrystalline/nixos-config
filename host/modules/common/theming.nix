@@ -1,6 +1,6 @@
 {
-  config,
   pkgs,
+  lib,
   ...
 } @ inputs: {
   environment.systemPackages = with pkgs; [
@@ -35,8 +35,10 @@
   catppuccin = {
     flavor = "mocha";
     accent = "pink";
+    enable = true;
 
-    tty.enable = true;
-    fcitx5.enable = true;
+    plymouth.enable = lib.mkForce false;
+    # tty.enable = true;
+    # fcitx5.enable = true;
   };
 }

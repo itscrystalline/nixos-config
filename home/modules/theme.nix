@@ -99,20 +99,22 @@
   catppuccin = {
     flavor = "mocha";
     accent = "pink";
+    enable = true;
 
     gtk.enable = true;
-    kitty.enable = true;
-    zed.enable = true;
-    kvantum = {
-      enable = true;
-      apply = true;
-    };
-
-    lazygit.enable = true;
-    fuzzel.enable = true;
-    btop.enable = true;
-    zsh-syntax-highlighting.enable = true;
-    nvim.enable = true;
-    cava.enable = true;
+    # kitty.enable = true;
+    # zed.enable = true;
+    # kvantum = {
+    #   enable = true;
+    #   apply = true;
+    # };
+    #
+    # lazygit.enable = true;
+    # fuzzel.enable = true;
+    # btop.enable = true;
+    # zsh-syntax-highlighting.enable = true;
+    # nvim.enable = true;
+    # cava.enable = true;
+    # obs.enable = true;
   };
 }
