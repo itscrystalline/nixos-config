@@ -19,6 +19,8 @@
     };
     kernelParams = [
       "psi=1"
+      "brcmfmac.roamoff=1"
+      "brcmfmac.feature_disable=0x282000"
     ];
   };
 }
