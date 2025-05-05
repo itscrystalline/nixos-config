@@ -39,18 +39,18 @@
       prefixLength = 24;
     }
   ];
-  #
-  # services.dnsmasq = {
-  #   enable = true;
-  #   settings = {
-  #     interface = "wlan-ap0";
-  #     bind-interfaces = true;
-  #     dhcp-range = ["192.168.12.10,192.168.12.254"];
-  #   };
-  #   # interface=wlan-ap0
-  #   # bind-interfaces
-  #   # dhcp-range=192.168.12.10,192.168.12.254,24h
-  # };
+
+  services.dnsmasq = {
+    enable = true;
+    settings = {
+      interface = "wlan-ap0";
+      bind-interfaces = true;
+      dhcp-range = ["192.168.12.10,192.168.12.254"];
+    };
+    # interface=wlan-ap0
+    # bind-interfaces
+    # dhcp-range=192.168.12.10,192.168.12.254,24h
+  };
   networking.firewall.allowedUDPPorts = [53 67]; # DNS & DHCP
   # services.haveged.enable = config.services.hostapd.enable;
 }
