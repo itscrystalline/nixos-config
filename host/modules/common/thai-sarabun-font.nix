@@ -1,17 +1,17 @@
 {pkgs, ...}:
 pkgs.stdenvNoCC.mkDerivation {
-  name = "sipa-th-fonts";
+  pname = "sipa-th-fonts";
   version = "1.0.0";
 
   src = pkgs.fetchzip {
-    url = "https://www.kruploy.com/md/00100/3/13ThaiFont.zip";
-    sha256 = "sha256-o/2yv9KuWcnqwXJtP9p437vaif+LFI++RWrNCB45aoY=";
+    url = "https://oer.learn.in.th/search_detail/ZipDownload/220410";
+    sha256 = "sha256-oVNhnxskjUO6QUUzeYTAm4yjdbpjGdjNeApVAt9bcg0=";
     stripRoot = false;
   };
 
   buildPhase = ''
     mkdir -p $out/share/fonts/truetype
 
-    cp $src/Font/*.ttf $out/share/fonts/truetype
+    cp $src/Fonts/*.ttf $out/share/fonts/truetype
   '';
 }

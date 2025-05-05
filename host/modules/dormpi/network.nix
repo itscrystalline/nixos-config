@@ -7,7 +7,7 @@
     ../common/network.nix
   ];
 
-  networking.hostName = "cwystaws-raspi";
+  networking.hostName = "cwystaws-dormpi";
   networking.networkmanager.wifi.powersave = false;
 
   # "wlan0" is the hardware device, "wlan-station0" is for wifi-client managed by network manager, "wlan-ap0" is for hostap
