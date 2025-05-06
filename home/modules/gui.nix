@@ -75,6 +75,8 @@
 
       # fwupd
       gnome-firmware
+
+      logisim-evolution
     ]
     ++ [
       zen-browser.packages.${pkgs.system}.default
