@@ -220,7 +220,7 @@ in {
 
       local lspconfig = require "lspconfig"
 
-      local servers = {"pylsp", "nil_ls", "clangd", "phpactor", "volar", "ts_ls", "cssls", "yamlls", "jsonls", "taplo"}
+      local servers = {"pylsp", "nil_ls", "clangd", "phpactor", "volar", "ts_ls", "cssls", "yamlls", "jsonls", "taplo", "jdtls"}
       local nvlsp = require "nvchad.configs.lspconfig"
 
       for _, lsp in ipairs(servers) do
