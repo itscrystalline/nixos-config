@@ -20,7 +20,7 @@
     };
   };
   #
-  networking.networkmanager.unmanaged = ["interface-name:wlp*"];
+  # networking.networkmanager.unmanaged = ["interface-name:wlp*"];
   #
   # services.hostapd = {
   #   enable = true;
