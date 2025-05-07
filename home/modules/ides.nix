@@ -402,7 +402,10 @@ in {
       map("n", "gs", '<cmd>lua require("telescope.builtin").lsp_document_symbols()<CR>', { desc = "List all symbols in buffer", silent = true, noremap = true })
 
       map("n", "gS", '<cmd>lua require("telescope.builtin").lsp_dynamic_workspace_symbols()<CR>', { desc = "List all symbols in buffer", silent = true, noremap = true })
-      map("n", "<Leader>ra", "<cmd>lua vim.lsp.buf.rename()<CR>", { desc = "Rename Symbol", silent = true, noremap = true })
+      map("n", "<Leader>ra", "<cmd>Lspsaga lsp_rename ++project<CR>", { desc = "Rename Symbol", silent = true, noremap = true })
+      map("n", "<Leader>cc", "<cmd>Lspsaga code_action<CR>", { desc = "Code actions", silent = true, noremap = true })
+      map("n", "<C-]>", "<cmd>Lspsaga peek_definition<CR>", { desc = "Peek Definition", silent = true, noremap = true })
+      map("n", "<C-}>", "<cmd>Lspsaga peek_type_definition<CR>", { desc = "Peek Type Definition", silent = true, noremap = true })
 
 
       --neovide
