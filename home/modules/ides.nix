@@ -12,6 +12,7 @@
     plugins."io.github.pandier.intellijdiscordrp"
     plugins."nix-idea"
     plugins."systems.fehn.intellijdirenv"
+    plugins."IdeaVIM"
   ];
 
   idea_pluginList = let
@@ -198,6 +199,7 @@ in {
       vscode-langservers-extracted
       yaml-language-server
       taplo
+      vscode-extensions.vscjava.vscode-gradle
       # pkgs.nodePackages."cssmodules-language-server"
       # pkgs.nodePackages."css-variables-language-server"
       lldb
@@ -220,7 +222,7 @@ in {
 
       local lspconfig = require "lspconfig"
 
-      local servers = {"pylsp", "nil_ls", "clangd", "phpactor", "volar", "ts_ls", "cssls", "yamlls", "jsonls", "taplo", "jdtls"}
+      local servers = {"pylsp", "nil_ls", "clangd", "phpactor", "volar", "ts_ls", "cssls", "yamlls", "jsonls", "taplo", "jdtls", "gradle_ls"}
       local nvlsp = require "nvchad.configs.lspconfig"
 
       for _, lsp in ipairs(servers) do
