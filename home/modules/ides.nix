@@ -280,6 +280,33 @@ in {
             }
           }
         end
+        if lsp == "jdtls" then
+          config["settings"] = {
+            java = {
+              eclipse = {
+                downloadSources = true,
+              },
+              configuration = {
+                updateBuildConfiguration = "automatic",
+              },
+              maven = {
+                downloadSources = true,
+              },
+              implementationsCodeLens = {
+                enabled = true,
+              },
+              referencesCodeLens = {
+                enabled = true,
+              },
+              references = {
+                includeDecompiledSources = true,
+              },
+              format = {
+                enabled = true,
+              },
+            }
+          }
+        end
 
         lspconfig[lsp].setup(config)
       end
@@ -448,6 +475,17 @@ in {
               },
             }
           end
+        },
+        {
+          'nvimdev/lspsaga.nvim',
+          event = 'LspAttach',
+          config = function()
+            require('lspsaga').setup({})
+          end,
+          dependencies = {
+            'nvim-treesitter/nvim-treesitter', -- optional
+            'nvim-tree/nvim-web-devicons',     -- optional
+          }
         },
         {
           'mfussenegger/nvim-jdtls',
