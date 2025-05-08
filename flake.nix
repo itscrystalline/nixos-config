@@ -46,7 +46,6 @@
     # nvchad4nix = {
     # };
     neve.url = "github:itscrystalline/Neve";
-    nixvim.url = "github:nix-community/nixvim";
 
     # binary ninja
     binaryninja = {

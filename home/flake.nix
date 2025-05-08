@@ -8,10 +8,6 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    nvchad4nix = {
-      url = "github:nix-community/nix4nvchad";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
     catppuccin.url = "github:catppuccin/nix";
     zen-browser = {
       url = "github:youwen5/zen-browser-flake";
@@ -24,7 +20,7 @@
     };
     blender-flake.url = "github:edolstra/nix-warez?dir=blender";
     nix-flatpak.url = "github:gmodena/nix-flatpak";
-    nixvim.url = "github:nix-community/nixvim";
+    neve.url = "github:itscrystalline/Neve";
 
     occasion.url = "github:itscrystalline/occasion";
   };
@@ -32,14 +28,13 @@
   outputs = inputs @ {
     nixpkgs,
     home-manager,
-    nvchad4nix,
+    neve,
     catppuccin,
     zen-browser,
     nix-jebrains-plugins,
     nur,
     blender-flake,
     nix-flatpak,
-    nixvim,
     occasion,
     ...
   }: let
@@ -75,8 +70,6 @@
 
           catppuccin.homeManagerModules.catppuccin
           nix-flatpak.homeManagerModules.nix-flatpak
-          nvchad4nix.homeManagerModule
-          nixvim.homeManagerModules.nixvim
           occasion.homeManagerModule
         ];
         # Optionally use extraSpecialArgs
@@ -88,8 +81,8 @@
           inherit nix-jebrains-plugins;
           inherit nur;
           inherit blender-flake;
-          inherit nixvim;
           inherit occasion;
+          inherit neve;
         };
       };
   in {
