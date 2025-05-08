@@ -43,10 +43,10 @@
     };
 
     #nvchad
-    nvchad4nix = {
-      url = "github:nix-community/nix4nvchad";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    # nvchad4nix = {
+    # };
+    neve.url = "github:itscrystalline/Neve";
+    nixvim.url = "github:nix-community/nixvim";
 
     # binary ninja
     binaryninja = {
@@ -55,7 +55,6 @@
       # Optional, but recommended.
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    nixvim.url = "github:nix-community/nixvim";
 
     iw2tryhard-dev.url = "github:itscrystalline/iw2tryhard-dev-3.0";
     occasion.url = "github:itscrystalline/occasion";
@@ -74,7 +73,8 @@
     nix-jebrains-plugins,
     blender-flake,
     nix-flatpak,
-    nvchad4nix,
+    # nvchad4nix,
+    neve,
     lix-module,
     binaryninja,
     nixvim,
@@ -123,7 +123,7 @@
 
               catppuccin.homeManagerModules.catppuccin
               nix-flatpak.homeManagerModules.nix-flatpak
-              nvchad4nix.homeManagerModule
+              # nvchad4nix.homeManagerModule
               nixvim.homeManagerModules.nixvim
               occasion.homeManagerModule
             ];
@@ -140,6 +140,7 @@
               binaryninja
               secrets
               occasion
+              neve
               ;
           };
         }
@@ -182,7 +183,7 @@
 
               catppuccin.homeManagerModules.catppuccin
               nix-flatpak.homeManagerModules.nix-flatpak
-              nvchad4nix.homeManagerModule
+              # nvchad4nix.homeManagerModule
               nixvim.homeManagerModules.nixvim
               occasion.homeManagerModule
             ];
@@ -195,6 +196,7 @@
               nur
               secrets
               occasion
+              neve
               ;
           };
         }
@@ -237,7 +239,7 @@
 
               catppuccin.homeManagerModules.catppuccin
               nix-flatpak.homeManagerModules.nix-flatpak
-              nvchad4nix.homeManagerModule
+              # nvchad4nix.homeManagerModule
               nixvim.homeManagerModules.nixvim
               occasion.homeManagerModule
             ];
@@ -250,6 +252,7 @@
               nur
               secrets
               occasion
+              neve
               ;
           };
         }
