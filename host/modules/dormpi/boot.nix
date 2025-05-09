@@ -11,6 +11,7 @@
     extraModulePackages = with config.boot.kernelPackages; [
       rtw88
     ];
+    kernelModules = ["rtw88"];
     loader = {
       grub.enable = false;
       generic-extlinux-compatible.enable = true;
