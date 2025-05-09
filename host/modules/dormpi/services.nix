@@ -19,7 +19,7 @@
   };
   services.adguardhome.settings.dhcp = {
     enabled = true;
-    interface_name = "wlan-ap0";
+    interface_name = "wlan0";
     local_domain_name = "dorm";
     dhcpv4 = {
       gateway_ip = "192.168.12.1";
@@ -61,9 +61,8 @@
     extraComponents = ["wiz" "matter"];
     config = {
       homeassistant = {
+        inherit latitude longitude;
         name = "Dormitory";
-        latitude = latitude;
-        longitude = longitude;
       };
       http.server_port = 8000;
     };
