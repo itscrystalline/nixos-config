@@ -58,7 +58,7 @@
   services.home-assistant = with secrets.homeassistant; {
     enable = true;
     openFirewall = true;
-    extraComponents = ["wiz" "matter" "mobile_app"];
+    extraComponents = ["wiz" "matter" "mobile_app" "bluetooth"];
     extraPackages = python3Packages:
       (with python3Packages; [
         # postgresql support
@@ -80,6 +80,8 @@
         name = "Dormitory";
       };
       http.server_port = 8000;
+      mobile_app = {};
+      bluetooth = {};
     };
     configWritable = true;
   };
