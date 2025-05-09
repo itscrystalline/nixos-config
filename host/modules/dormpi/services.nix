@@ -60,13 +60,20 @@
     openFirewall = true;
     extraComponents = ["wiz" "matter"];
     extraPackages = python3Packages:
-      with python3Packages; [
+      (with python3Packages; [
         # postgresql support
         psycopg2
         numpy
         zeroconf
         aiohomekit
-      ];
+
+        aiohttp-zlib-ng
+        pyturbojpeg
+      ])
+      ++ (with pkgs; [
+        zlib-ng
+        libjpeg
+      ]);
     config = {
       homeassistant = {
         inherit latitude longitude;
