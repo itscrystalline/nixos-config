@@ -12,13 +12,13 @@
   ];
 
   adguard = {
-    enable = true;
+    enable = false;
     rewriteList = {
       "*.dorm".answer = "100.122.114.13";
     };
   };
   services.adguardhome.settings.dhcp = {
-    enabled = true;
+    enabled = false;
     interface_name = "wlan0";
     local_domain_name = "dorm";
     dhcpv4 = {
