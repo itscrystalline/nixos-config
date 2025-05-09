@@ -8,7 +8,9 @@
     initrd = {
       availableKernelModules = ["xhci_pci"];
     };
-    extraModulePackages = with config.boot.kernelPackages; [rtl8192eu rtl88x2bu];
+    extraModulePackages = with config.boot.kernelPackages; [
+      rtl8188eus-aircrack
+    ];
     loader = {
       grub.enable = false;
       generic-extlinux-compatible.enable = true;
