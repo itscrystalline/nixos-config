@@ -58,7 +58,7 @@
   services.home-assistant = with secrets.homeassistant; {
     enable = true;
     openFirewall = true;
-    extraComponents = ["wiz" "matter"];
+    extraComponents = ["wiz" "matter" "mobile_app"];
     extraPackages = python3Packages:
       (with python3Packages; [
         # postgresql support
