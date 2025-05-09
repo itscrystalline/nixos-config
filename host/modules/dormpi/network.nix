@@ -12,7 +12,7 @@
     hostName = "cwystaws-dormpi";
     networkmanager = {
       wifi.powersave = false;
-      # unmanaged = ["interface-name:wlan0"];
+      unmanaged = ["interface-name:wlan0"];
     };
     # bridges.br0.interfaces = ["wlp1s0u1u1"];
     # interfaces = {
@@ -71,5 +71,5 @@
   #   };
   # };
 
-  # services.haveged.enable = config.services.hostapd.enable;
+  services.haveged.enable = true;
 }

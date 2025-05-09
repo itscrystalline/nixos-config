@@ -59,6 +59,12 @@
     enable = true;
     openFirewall = true;
     extraComponents = ["wiz" "matter"];
+    extraPackages = python3Packages:
+      with python3Packages; [
+        # postgresql support
+        psycopg2
+        numpy
+      ];
     config = {
       homeassistant = {
         inherit latitude longitude;
