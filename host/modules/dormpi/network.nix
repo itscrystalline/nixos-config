@@ -36,7 +36,7 @@
   services.create_ap = {
     enable = true;
     settings = {
-      INTERNET_IFACE = "wlp1s0u1u1";
+      INTERNET_IFACE = "wlp1s0u1u2";
       PASSPHRASE = secrets.homeassistant.wifi-password;
       SSID = "dormpi";
       WIFI_IFACE = "wlan0";
