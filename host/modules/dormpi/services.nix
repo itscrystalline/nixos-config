@@ -83,6 +83,10 @@
         name = "Dormitory";
       };
       http.server_port = 8000;
+      frontend = {
+        themes = "!include_dir_merge_named themes";
+      };
+      automation = "!include automations.yaml";
       mobile_app = {};
       bluetooth = {};
     };
