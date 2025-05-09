@@ -87,6 +87,8 @@
         themes = "!include_dir_merge_named themes";
       };
       automation = "!include automations.yaml";
+      script = "!include scripts.yaml";
+      scene = "!include scenes.yaml";
       mobile_app = {};
       bluetooth = {};
     };
