@@ -14,7 +14,7 @@
       wifi.powersave = false;
       unmanaged = ["interface-name:wlan0"];
     };
-    bridges.br0.interfaces = ["wlp1s0u1u1"];
+    # bridges.br0.interfaces = ["wlp1s0u1u1"];
     interfaces = {
       "wlan0".ipv4.addresses = [
         {
@@ -23,7 +23,7 @@
         }
       ];
       wlp1s0u1u1.macAddress = "ec:75:0c:af:44:6e";
-      br0.macAddress = "ec:75:0c:af:44:6f";
+      # br0.macAddress = "ec:75:0c:af:44:6f";
     };
     firewall.allowedUDPPorts = [53 67]; # DNS & DHCP
   };
@@ -51,7 +51,7 @@
       networks.wlan0 = {
         ssid = "dormpi";
         bssid = "eA:5f:01:76:93:a1";
-        settings.bridge = "br0";
+        settings.bridge = "wlp1s0u1u1";
         authentication = {
           mode = "wpa2-sha1";
           wpaPassword = secrets.homeassistant.wifi-password;
