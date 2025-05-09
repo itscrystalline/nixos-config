@@ -33,6 +33,20 @@
     "net.ipv4.conf.all.forwarding" = 1;
   };
 
+  nixpkgs.overlays = [
+    (final: prev: {
+      linux-wifi-hotspot = prev.linux-wifi-hotspot.overrideAttrs (
+        final: prev: {
+          src = pkgs.fetchFromGitHub {
+            owner = "lakinduakash";
+            repo = "linux-wifi-hotspot";
+            rev = "c0f153bff954542c5f0e551bfcad791f44ac345e";
+            hash = "sha256-20yhcBhVlObl/aZKH4P2tdAeutTpZo+R0//i0/uAPFw=";
+          };
+        }
+      );
+    })
+  ];
   services.create_ap = {
     enable = true;
     settings = {
@@ -42,6 +56,7 @@
       SSID = "dormpi";
       WIFI_IFACE = "wlan0";
       DHCP_HOSTS = "cc:40:85:b3:c9:a4,wiz-light1,192.168.12.136,infinite";
+      COUNTRY = "TH";
     };
   };
 
