@@ -38,6 +38,7 @@
     settings = {
       INTERNET_IFACE = "wlp1s0u1u2";
       PASSPHRASE = secrets.homeassistant.wifi-password;
+      NO_VIRT = true;
       SSID = "dormpi";
       WIFI_IFACE = "wlan0";
     };
