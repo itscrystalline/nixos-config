@@ -83,6 +83,9 @@
     };
     configWritable = true;
   };
+  services.matter-server = {
+    enable = true;
+  };
 
   # SSH auto restart
   systemd.services.sshd.serviceConfig.Restart = lib.mkForce "always";
