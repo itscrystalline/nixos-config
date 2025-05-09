@@ -24,8 +24,8 @@
       networks.wlan0 = {
         ssid = "dormpi";
         authentication = {
-          mode = "wpa2-sha256";
-          # saePasswords = [{password = secrets.homeassistant.wifi-password;}];
+          mode = "wpa3-sae-transition";
+          saePasswords = [{password = secrets.homeassistant.wifi-password;}];
           wpaPassword = secrets.homeassistant.wifi-password;
         };
       };
