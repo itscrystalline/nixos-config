@@ -9,7 +9,7 @@
       availableKernelModules = ["xhci_pci"];
     };
     extraModulePackages = with config.boot.kernelPackages; [
-      rtl8188eus-aircrack
+      rtw88
     ];
     loader = {
       grub.enable = false;
