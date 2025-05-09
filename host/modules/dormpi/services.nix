@@ -66,6 +66,9 @@
         numpy
         zeroconf
         aiohomekit
+        aiodhcpwatcher
+        pywizlight
+        aiodiscover
 
         aiohttp-zlib-ng
         pyturbojpeg
