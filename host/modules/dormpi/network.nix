@@ -41,6 +41,7 @@
       NO_VIRT = true;
       SSID = "dormpi";
       WIFI_IFACE = "wlan0";
+      DHCP_HOSTS = "cc:40:85:b3:c9:a4,wiz-light1,192.168.12.136,infinite";
     };
   };
 
