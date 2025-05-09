@@ -64,6 +64,8 @@
         # postgresql support
         psycopg2
         numpy
+        zeroconf
+        aiohomekit
       ];
     config = {
       homeassistant = {
