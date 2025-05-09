@@ -17,10 +17,10 @@
     radios.wlan0 = {
       countryCode = "TH";
       channel = 11;
-      settings = {
-        ieee80211n = true;
-        wmm_enabled = true;
-      };
+      # settings = {
+      #   ieee80211n = true;
+      #   wmm_enabled = true;
+      # };
       networks.wlan0 = {
         ssid = "dormpi";
         authentication = {
