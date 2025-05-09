@@ -46,6 +46,7 @@
     # nvchad4nix = {
     # };
     neve.url = "github:itscrystalline/Neve";
+    # nixvim.url = "github:nix-community/nixvim";
 
     # binary ninja
     binaryninja = {
@@ -76,7 +77,7 @@
     neve,
     lix-module,
     binaryninja,
-    nixvim,
+    # nixvim,
     iw2tryhard-dev,
     occasion,
     suwayomi,
@@ -123,7 +124,7 @@
               catppuccin.homeManagerModules.catppuccin
               nix-flatpak.homeManagerModules.nix-flatpak
               # nvchad4nix.homeManagerModule
-              nixvim.homeManagerModules.nixvim
+              # nixvim.homeManagerModules.nixvim
               occasion.homeManagerModule
             ];
           };
@@ -183,7 +184,7 @@
               catppuccin.homeManagerModules.catppuccin
               nix-flatpak.homeManagerModules.nix-flatpak
               # nvchad4nix.homeManagerModule
-              nixvim.homeManagerModules.nixvim
+              # nixvim.homeManagerModules.nixvim
               occasion.homeManagerModule
             ];
           };
@@ -239,7 +240,7 @@
               catppuccin.homeManagerModules.catppuccin
               nix-flatpak.homeManagerModules.nix-flatpak
               # nvchad4nix.homeManagerModule
-              nixvim.homeManagerModules.nixvim
+              # nixvim.homeManagerModules.nixvim
               occasion.homeManagerModule
             ];
           };

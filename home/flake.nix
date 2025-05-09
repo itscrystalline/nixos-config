@@ -21,6 +21,7 @@
     blender-flake.url = "github:edolstra/nix-warez?dir=blender";
     nix-flatpak.url = "github:gmodena/nix-flatpak";
     neve.url = "github:itscrystalline/Neve";
+    # nixvim.url = "github:nix-community/nixvim";
 
     occasion.url = "github:itscrystalline/occasion";
   };
