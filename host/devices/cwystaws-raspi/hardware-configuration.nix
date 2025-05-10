@@ -16,6 +16,7 @@
       device = "/dev/disk/by-uuid/a12bd288-6c9b-45f4-94ff-9cdbd1c474e6";
       fsType = "ext4";
       options = ["noatime" "nodiratime" "data=writeback" "commit=60" "barrier=1"];
+      # neededForBoot = true;
     };
     "/mnt/backup" = {
       device = "/dev/disk/by-uuid/5F4E-AE27";
@@ -32,10 +33,10 @@
       device = "/mnt/main/services/prometheus2";
       options = ["bind"];
     };
-    "/nix" = {
-      device = "/mnt/main/nix";
-      options = ["bind"];
-    };
+    # "/nix" = {
+    #   device = "/mnt/main/nix";
+    #   options = ["bind"];
+    # };
   };
 
   systemd.tmpfiles.rules = [
