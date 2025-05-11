@@ -7,7 +7,7 @@
 } @ inputs: {
   home.packages = with pkgs;
     [
-      neovim
+      # neovim
       blahaj
       zoxide
       sshfs

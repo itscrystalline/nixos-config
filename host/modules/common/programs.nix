@@ -46,8 +46,6 @@
     lsof
     tmux
 
-    neovim
-
     linuxKernel.packages.linux_6_12.usbip
   ];
   # powerManagement.powertop.enable = true;
