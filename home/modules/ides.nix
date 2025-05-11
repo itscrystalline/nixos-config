@@ -1,6 +1,7 @@
 {
   config,
   pkgs,
+  lib,
   nix-jebrains-plugins,
   neve,
   ...
@@ -34,7 +35,7 @@
   '';
 in {
   home.packages = with pkgs;
-    pkgs.lib.optionals config.gui [
+    lib.optionals config.gui [
       (jetbrains.plugins.addPlugins unstable.jetbrains.idea-ultimate (pluginList ++ idea_pluginList))
       (jetbrains.plugins.addPlugins unstable.jetbrains.rust-rover (pluginList ++ rustrover_pluginList))
       (jetbrains.plugins.addPlugins unstable.jetbrains.pycharm-professional pluginList)
@@ -57,7 +58,7 @@ in {
       arduino-cli
     ];
 
-  xdg.configFile = {
+  xdg.configFile = lib.mkIf config.gui {
     "JetBrains/RustRover2024.3/rustrover64.vmoptions".text = jetbrainsWayland;
     "JetBrains/IntelliJIdea2024.3/idea64.vmoptions".text = jetbrainsWayland;
     "JetBrains/PyCharm2024.3/pycharm64.vmoptions".text = jetbrainsWayland;
@@ -77,11 +78,11 @@ in {
     '';
   };
 
-  # programs.binary-ninja = pkgs.lib.mkIf config.gui {
+  # programs.binary-ninja = lib.mkIf config.gui {
   #   enable = true;
   # };
 
-  programs.zed-editor = pkgs.lib.mkIf config.gui {
+  programs.zed-editor = lib.mkIf config.gui {
     enable = true;
     package = pkgs.zed-editor.fhsWithPackages (pkgs: with pkgs; [zlib nil]);
     extensions = ["nix" "toml" "make" "git-firefly" "discord-presence"];
