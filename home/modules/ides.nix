@@ -42,8 +42,10 @@ in {
       (jetbrains.plugins.addPlugins unstable.jetbrains.webstorm pluginList)
       ida-free
       arduino-ide
+      neovide
+    ]
+    ++ [
       neve.packages.${pkgs.system}.default
-
       statix
       alejandra
       prettierd
@@ -52,9 +54,7 @@ in {
       rustfmt
       checkstyle
       google-java-format
-    ]
-    ++ [
-      neovide
+
       arduino-cli
     ];
 
