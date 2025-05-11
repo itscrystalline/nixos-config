@@ -46,6 +46,7 @@ in {
     ]
     ++ [
       neve.packages.${pkgs.system}.default
+      gcc
       statix
       alejandra
       prettierd
