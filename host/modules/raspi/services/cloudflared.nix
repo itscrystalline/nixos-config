@@ -28,7 +28,7 @@
             noHappyEyeballs = true;
             noTLSVerify = true;
           };
-          "collabora" = {};
+          # "collabora" = {};
         };
         warp-routing.enabled = false;
         default = "http_status:404";

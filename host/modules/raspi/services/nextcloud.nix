@@ -36,7 +36,7 @@
     };
 
     extraApps = with config.services.nextcloud.package.packages.apps; {
-      inherit news contacts calendar tasks recognize phonetrack memories previewgenerator notes groupfolders notify_push richdocuments;
+      inherit news contacts calendar tasks recognize phonetrack memories previewgenerator notes groupfolders;
     };
     extraAppsEnable = true;
 
@@ -99,51 +99,18 @@
       return-size = true;
     };
   };
-  services.collabora-online = {
-    enable = true;
-    port = 9980; # default
-    settings = {
-      # Rely on reverse proxy for SSL
-      ssl = {
-        enable = false;
-        termination = false;
-      };
-
-      # Listen on loopback interface only, and accept requests from ::1
-      net = {
-        listen = "loopback";
-        post_allow.host = ["::1"];
-      };
-
-      # Restrict loading documents from WOPI Host nextcloud.example.com
-      storage.wopi = {
-        "@allow" = true;
-        host = ["${config.services.nextcloud.hostName}"];
-      };
-
-      # Set FQDN of server
-      server_name = "collabora.iw2tryhard.dev";
-    };
-  };
   services.nginx = {
     virtualHosts.${config.services.nextcloud.hostName}.serverAliases = ["nc.crys"];
-    virtualHosts.${config.services.collabora-online.settings.server_name} = {
-      locations."/" = {
-        proxyPass = "http://[::1]:${toString config.services.collabora-online.port}";
-        proxyWebsockets = true; # collabora uses websockets
-      };
-    };
+    # virtualHosts.${config.services.collabora-online.settings.server_name} = {
+    #   locations."/" = {
+    #     proxyPass = "http://[::1]:${toString config.services.collabora-online.port}";
+    #     proxyWebsockets = true; # collabora uses websockets
+    #   };
+    # };
   };
   # collabora setup; https://diogotc.com/blog/collabora-nextcloud-nixos/
   systemd.services.nextcloud-config = let
     inherit (config.services.nextcloud) occ;
-
-    wopi_url = "http://[::1]:${toString config.services.collabora-online.port}";
-    public_wopi_url = "https://${config.services.collabora-online.settings.server_name}";
-    wopi_allowlist = lib.concatStringsSep "," [
-      "127.0.0.1"
-      "::1"
-    ];
     admin_token = secrets.nextcloud.admin.stats_token;
   in {
     wantedBy = ["multi-user.target"];
@@ -151,11 +118,6 @@
     requires = ["coolwsd.service"];
     script = ''
       ${occ}/bin/nextcloud-occ config:app:set serverinfo token --value ${admin_token}
-
-      ${occ}/bin/nextcloud-occ config:app:set richdocuments wopi_url --value ${lib.escapeShellArg wopi_url}
-      ${occ}/bin/nextcloud-occ config:app:set richdocuments public_wopi_url --value ${lib.escapeShellArg public_wopi_url}
-      ${occ}/bin/nextcloud-occ config:app:set richdocuments wopi_allowlist --value ${lib.escapeShellArg wopi_allowlist}
-      ${occ}/bin/nextcloud-occ richdocuments:setup
     '';
     serviceConfig = {
       Type = "oneshot";
