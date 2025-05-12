@@ -72,6 +72,10 @@
         hostname = "cwystaws-raspi";
         identityFile = "/home/${config.username}/.ssh/crystal";
       };
+      "cwystaws-dormpi" = {
+        hostname = "cwystaws-dormpi";
+        identityFile = "/home/${config.username}/.ssh/dormpi";
+      };
     };
   };
 
