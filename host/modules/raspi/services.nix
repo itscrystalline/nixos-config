@@ -34,6 +34,7 @@ in {
   adguard = {
     enable = true;
     rewriteList = {
+      "dorm.crys".answer = "100.122.114.13";
       "*.crys".answer = "100.125.37.13";
     };
   };

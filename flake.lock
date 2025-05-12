@@ -460,11 +460,11 @@
         "nixvim": "nixvim"
       },
       "locked": {
-        "lastModified": 1746717554,
-        "narHash": "sha256-Elha28hFTEeR1dHbyQFUQNA1LxWEb7jnisaBn9n9e7E=",
+        "lastModified": 1746950650,
+        "narHash": "sha256-zYD+hwfyEjX3Fu/W/baUmYke7j7VbwdQJ+AjDWqGCQ4=",
         "owner": "itscrystalline",
         "repo": "Neve",
-        "rev": "179e1cf06bce2ca7dd8e6789dbacc6a10bded17c",
+        "rev": "5073f7986948a9220c1ca11ac5305a3ec7251c57",
         "type": "github"
       },
       "original": {
