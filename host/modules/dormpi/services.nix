@@ -63,18 +63,19 @@
     openFirewall = true;
     extraComponents = ["wiz" "matter" "mobile_app" "bluetooth" "tplink" "tplink_tapo" "accuweather"];
     customComponents = with pkgs.home-assistant-custom-components; [
-      (localtuya.overrideAttrs
-        (final: prev: rec {
-          owner = "xZetsubou";
-          domain = "hass-localtuya";
-          version = "2025.5.1";
-          src = pkgs.fetchFromGitHub {
-            inherit owner;
-            repo = domain;
-            rev = version;
-            hash = "sha256-cYaMHh16dmjO8UrpBZScGoHDNqvmQ5ceAq/lP6qazxA=";
-          };
-        }))
+      localtuya
+      # (localtuya.overrideAttrs
+      #   (final: prev: rec {
+      #     owner = "xZetsubou";
+      #     domain = "hass-localtuya";
+      #     version = "2025.5.1";
+      #     src = pkgs.fetchFromGitHub {
+      #       inherit owner;
+      #       repo = domain;
+      #       rev = version;
+      #       hash = "sha256-cYaMHh16dmjO8UrpBZScGoHDNqvmQ5ceAq/lP6qazxA=";
+      #     };
+      #   }))
     ];
     extraPackages = python3Packages:
       (with python3Packages; [
