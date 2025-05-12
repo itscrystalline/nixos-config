@@ -55,10 +55,13 @@
     '';
   };
 
+  hardware.bluetooth = {
+    enable = true;
+  };
   services.home-assistant = with secrets.homeassistant; {
     enable = true;
     openFirewall = true;
-    extraComponents = ["wiz" "matter" "mobile_app" "bluetooth" "tplink" "tplink-tapo"];
+    extraComponents = ["wiz" "matter" "mobile_app" "bluetooth" "tplink" "tplink_tapo" "accuweather"];
     customComponents = with pkgs.home-assistant-custom-components; [
       (localtuya.overrideAttrs
         (final: prev: rec {
