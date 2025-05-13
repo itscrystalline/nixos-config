@@ -55,29 +55,41 @@ in {
       rustfmt
       checkstyle
       google-java-format
+      cpplint
+      golangci-lint
+      selene
+      python312Packages.flake8
+      eslint_d
+      nodePackages.jsonlint
+      checkstyle
+      shellcheck
 
       arduino-cli
+      delta
     ];
 
-  xdg.configFile = lib.mkIf config.gui {
-    "JetBrains/RustRover2024.3/rustrover64.vmoptions".text = jetbrainsWayland;
-    "JetBrains/IntelliJIdea2024.3/idea64.vmoptions".text = jetbrainsWayland;
-    "JetBrains/PyCharm2024.3/pycharm64.vmoptions".text = jetbrainsWayland;
-    "JetBrains/WebStorm2024.3/webstorm64.vmoptions".text = jetbrainsWayland;
-    "neovide/config.toml".text = ''
-      fork = true
+  xdg.configFile =
+    lib.mkIf config.gui {
+      "JetBrains/RustRover2024.3/rustrover64.vmoptions".text = jetbrainsWayland;
+      "JetBrains/IntelliJIdea2024.3/idea64.vmoptions".text = jetbrainsWayland;
+      "JetBrains/PyCharm2024.3/pycharm64.vmoptions".text = jetbrainsWayland;
+      "JetBrains/WebStorm2024.3/webstorm64.vmoptions".text = jetbrainsWayland;
+      "neovide/config.toml".text = ''
+        fork = true
 
-      [font]
-      normal = ["JetBrainsMono Nerd Font", "Noto Sans CJK JP", "Noto Color Emoji" ]
-      size = 12
-    '';
-    "lazygit/config.yml".text = ''
-      git:
-        paging:
-          colorArg: always
-          pager: delta --dark --paging=never --line-numbers --hyperlinks --hyperlinks-file-link-format="lazygit-edit://{path}:{line}"
-    '';
-  };
+        [font]
+        normal = ["JetBrainsMono Nerd Font", "Noto Sans CJK JP", "Noto Color Emoji" ]
+        size = 12
+      '';
+    }
+    // {
+      "lazygit/config.yml".text = ''
+        git:
+          paging:
+            colorArg: always
+            pager: delta --dark --paging=never --line-numbers --hyperlinks --hyperlinks-file-link-format="lazygit-edit://{path}:{line}"
+      '';
+    };
 
   # programs.binary-ninja = lib.mkIf config.gui {
   #   enable = true;
