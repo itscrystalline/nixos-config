@@ -5,7 +5,14 @@
   lib,
   secrets,
   ...
-}: {
+}: let
+  catppuccin-homeassistant = pkgs.fetchFromGitHub {
+    owner = "catppuccin";
+    repo = "home-assistant";
+    rev = "0277ab8a42751bcf97c49082e4b743ec32304571";
+    hash = "sha256-+pVH2Ee7xII6B+rR5tu/9XoRzYdhnWGFvEpBLpvkyI8=";
+  };
+in {
   imports = [
     ../common/services.nix
     ../../services/adguardhome.nix
@@ -113,6 +120,12 @@
     };
     configWritable = true;
   };
+  system.activationScripts.catppuccin-homeassistant = ''
+    mkdir -p /var/lib/hass/themes
+    cp ${catppuccin-homeassistant}/themes/catppuccin.yaml /var/lib/hass/themes/catppuccin.yaml
+    chmod 0700 /var/lib/hass/themes
+    chown hass:hass /var/lib/hass/themes
+  '';
   services.matter-server = {
     enable = true;
   };
