@@ -60,6 +60,7 @@
   };
   services.home-assistant = with secrets.homeassistant; {
     enable = true;
+    package = pkgs.unstable.home-assistant.overrideAttrs (oldAttrs: {doInstallCheck = false;});
     openFirewall = true;
     extraComponents = ["wiz" "matter" "mobile_app" "bluetooth" "tplink" "tplink_tapo" "accuweather" "my" "analytics"];
     customComponents = with pkgs.home-assistant-custom-components; [
