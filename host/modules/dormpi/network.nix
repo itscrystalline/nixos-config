@@ -1,9 +1,19 @@
 {
   config,
   pkgs,
+  lib,
   secrets,
   ...
-} @ inputs: {
+} @ inputs: let
+  mkDhcpLocks = list:
+    lib.concatStringsSep " " (map ({
+      mac,
+      ip,
+      hostname,
+      lease ? "infinite",
+    }: "${mac},${ip},${hostname},${lease}")
+    list);
+in {
   imports = [
     ../common/network.nix
   ];
@@ -14,18 +24,6 @@
       wifi.powersave = false;
       unmanaged = ["interface-name:wlan0"];
     };
-    # bridges.br0.interfaces = ["wlp1s0u1u1"];
-    # interfaces = {
-    #   "wlan0".ipv4.addresses = [
-    #     {
-    #       address = "192.168.12.1";
-    #       prefixLength = 24;
-    #     }
-    #   ];
-    #   wlp1s0u1u1.macAddress = "ec:75:0c:af:44:6e";
-    #   # br0.macAddress = "ec:75:0c:af:44:6f";
-    # };
-    # firewall.allowedUDPPorts = [53 67]; # DNS & DHCP
   };
 
   boot.kernel.sysctl = {
@@ -55,37 +53,21 @@
       NO_VIRT = true;
       SSID = "dormpi";
       WIFI_IFACE = "wlan0";
-      DHCP_HOSTS = "cc:40:85:b3:c9:a4,wiz-light1,192.168.12.136,infinite";
+      DHCP_HOSTS = mkDhcpLocks [
+        {
+          mac = "cc:40:85:b3:c9:a4";
+          ip = "192.168.12.136";
+          hostname = "desk-light";
+        }
+        {
+          mac = "3c:6a:d2:be:4e:57";
+          ip = "192.168.12.216";
+          hostname = "kettle-switch";
+        }
+      ];
       COUNTRY = "TH";
     };
   };
-
-  # services.hostapd = {
-  #   enable = true;
-  #   radios.wlan0 = {
-  #     countryCode = "TH";
-  #     band = "2g";
-  #     channel = 11;
-  #     wifi4.capabilities = [
-  #       "HT40+"
-  #       "HT40-"
-  #       "SHORT-GI-20"
-  #       "SHORT-GI-40"
-  #       "DSSS_CCK-40"
-  #       "MAX-AMSDU-3839"
-  #       "SMPS-STATIC"
-  #     ];
-  #     networks.wlan0 = {
-  #       ssid = "dormpi";
-  #       bssid = "eA:5f:01:76:93:a1";
-  #       settings.bridge = "wlp1s0u1u1";
-  #       authentication = {
-  #         mode = "wpa2-sha1";
-  #         wpaPassword = secrets.homeassistant.wifi-password;
-  #       };
-  #     };
-  #   };
-  # };
 
   services.haveged.enable = true;
 }
