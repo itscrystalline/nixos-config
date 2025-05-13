@@ -89,7 +89,7 @@
         pywizlight
         aiodiscover
 
-        aiohttp-zlib-ng
+        aiohttp-fast-zlib
         pyturbojpeg
       ])
       ++ (with pkgs; [
