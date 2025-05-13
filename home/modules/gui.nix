@@ -77,6 +77,8 @@
       gnome-firmware
 
       logisim-evolution
+
+      mission-center
     ]
     ++ [
       zen-browser.packages.${pkgs.system}.default

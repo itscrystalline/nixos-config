@@ -12,6 +12,8 @@
       zoxide
       sshfs
       nh
+
+      nix-output-monitor
     ]
     ++ lib.optionals config.doas [doas-sudo-shim];
 
