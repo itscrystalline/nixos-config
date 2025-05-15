@@ -26,6 +26,9 @@
       url = "github:nix-community/NUR";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    my-nur = {
+      url = "github:itscrystalline/nur-packages";
+    };
     lix-module = {
       url = "https://git.lix.systems/lix-project/nixos-module/archive/2.92.0-2.tar.gz";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -67,6 +70,7 @@
     nixos-hardware,
     nix-on-droid,
     nur,
+    my-nur,
     home-manager,
     catppuccin,
     zen-browser,

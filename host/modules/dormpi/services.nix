@@ -70,20 +70,9 @@ in {
     package = pkgs.unstable.home-assistant.overrideAttrs (oldAttrs: {doInstallCheck = false;});
     openFirewall = true;
     extraComponents = ["wiz" "matter" "mobile_app" "bluetooth" "tplink" "tplink_tapo" "accuweather"];
-    customComponents = with pkgs.home-assistant-custom-components; [
-      localtuya
-      # (localtuya.overrideAttrs
-      #   (final: prev: rec {
-      #     owner = "xZetsubou";
-      #     domain = "hass-localtuya";
-      #     version = "2025.5.1";
-      #     src = pkgs.fetchFromGitHub {
-      #       inherit owner;
-      #       repo = domain;
-      #       rev = version;
-      #       hash = "sha256-cYaMHh16dmjO8UrpBZScGoHDNqvmQ5ceAq/lP6qazxA=";
-      #     };
-      #   }))
+    customComponents = [
+      inputs.my-nur.packages.${pkgs.system}.ha_tuya_ble
+      inputs.my-nur.packages.${pkgs.system}.hass-localtuya
     ];
     extraPackages = python3Packages:
       (with python3Packages; [
@@ -95,6 +84,11 @@ in {
         aiodhcpwatcher
         pywizlight
         aiodiscover
+        pyatv
+        getmac
+        samsungctl
+        samsungtvws
+        tuya-device-sharing-sdk
 
         aiohttp-fast-zlib
         pyturbojpeg
@@ -108,7 +102,7 @@ in {
         inherit latitude longitude;
         name = "Dormitory";
       };
-      zones = [
+      zone = [
         {
           inherit latitude longitude;
           name = "Home";
