@@ -69,7 +69,7 @@ in {
     enable = true;
     package = pkgs.unstable.home-assistant.overrideAttrs (oldAttrs: {doInstallCheck = false;});
     openFirewall = true;
-    extraComponents = ["wiz" "matter" "mobile_app" "bluetooth" "tplink" "tplink_tapo" "accuweather" "my" "analytics"];
+    extraComponents = ["wiz" "matter" "mobile_app" "bluetooth" "tplink" "tplink_tapo" "accuweather"];
     customComponents = with pkgs.home-assistant-custom-components; [
       localtuya
       # (localtuya.overrideAttrs
@@ -108,6 +108,14 @@ in {
         inherit latitude longitude;
         name = "Dormitory";
       };
+      zones = [
+        {
+          inherit latitude longitude;
+          name = "Home";
+          radius = 25;
+          icon = "mdi:home";
+        }
+      ];
       http.server_port = 8000;
       frontend = {
         themes = "!include_dir_merge_named themes";
@@ -115,16 +123,15 @@ in {
       automation = "!include automations.yaml";
       script = "!include scripts.yaml";
       scene = "!include scenes.yaml";
-      mobile_app = {};
-      bluetooth = {};
+      default_config = {};
     };
     configWritable = true;
   };
   system.activationScripts.catppuccin-homeassistant = ''
     mkdir -p /var/lib/hass/themes
     cp ${catppuccin-homeassistant}/themes/catppuccin.yaml /var/lib/hass/themes/catppuccin.yaml
-    chmod 0700 /var/lib/hass/themes
-    chown hass:hass /var/lib/hass/themes
+    chmod -R 0700 /var/lib/hass/themes
+    chown -R hass:hass /var/lib/hass/themes
   '';
   services.matter-server = {
     enable = true;
