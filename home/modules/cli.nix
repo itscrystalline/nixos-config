@@ -12,7 +12,7 @@
       zoxide
       sshfs
       nh
-
+      git-crypt
       nix-output-monitor
     ]
     ++ lib.optionals config.doas [doas-sudo-shim];
