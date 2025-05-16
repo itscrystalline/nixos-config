@@ -89,7 +89,13 @@ in {
         samsungctl
         samsungtvws
         tuya-device-sharing-sdk
-
+        tuya-iot-py-sdk
+        xiaomi-ble
+        websockets
+        kegtron-ble
+        ibeacon-ble
+        spotifyaio
+        aioelectricitymaps
         aiohttp-fast-zlib
         pyturbojpeg
       ])
