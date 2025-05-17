@@ -98,6 +98,7 @@ in {
         aioelectricitymaps
         aiohttp-fast-zlib
         pyturbojpeg
+        pycountry
       ])
       ++ (with pkgs; [
         zlib-ng
@@ -135,6 +136,7 @@ in {
   '';
   services.matter-server = {
     enable = true;
+    port = 5590;
   };
 
   # SSH auto restart
