@@ -17,6 +17,7 @@ lib.mkIf config.gui {
       jdks = [
         graalvm-ce
         zulu8
+        zulu21
         nur.legacyPackages."${pkgs.system}".repos."7mind".graalvm-legacy-packages.graalvm17-ce
       ];
     })
