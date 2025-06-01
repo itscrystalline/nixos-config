@@ -2,14 +2,14 @@
   description = "System Flake";
 
   inputs = {
-    # NixOS official package source, using the nixos-24.11 branch here
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-24.11";
+    # NixOS official package source, using the nixos-25.05 branch here
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.05";
     nixpkgs-unstable.url = "nixpkgs/nixos-unstable";
     nixpkgs-bluez-5-75.url = "github:NixOS/nixpkgs/038fb464fcfa79b4f08131b07f2d8c9a6bcc4160";
     chaotic.url = "github:chaotic-cx/nyx/nyxpkgs-unstable"; # chaotic-nyx: cachyos kernel
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
     home-manager = {
-      url = "github:nix-community/home-manager/release-24.11";
+      url = "github:nix-community/home-manager/release-25.05";
       # The `follows` keyword in inputs is used for inheritance.
       # Here, `inputs.nixpkgs` of home-manager is kept consistent with
       # the `inputs.nixpkgs` of the current flake,
@@ -36,7 +36,7 @@
     blender-flake.url = "github:edolstra/nix-warez?dir=blender";
     nix-flatpak.url = "github:gmodena/nix-flatpak";
     # hyprland.url = "github:hyprwm/Hyprland";
-    # ags.url = "github:Aylur/ags/v1";
+    ags.url = "github:Aylur/ags/v1";
 
     # nix-on-droid
     nix-on-droid = {
@@ -125,7 +125,7 @@
               ./vars.nix
               ./home/home.nix
 
-              catppuccin.homeManagerModules.catppuccin
+              catppuccin.homeModules.catppuccin
               nix-flatpak.homeManagerModules.nix-flatpak
               # nvchad4nix.homeManagerModule
               # nixvim.homeManagerModules.nixvim
@@ -185,7 +185,7 @@
               {config.gui = false;}
               ./home/home.nix
 
-              catppuccin.homeManagerModules.catppuccin
+              catppuccin.homeModules.catppuccin
               nix-flatpak.homeManagerModules.nix-flatpak
               # nvchad4nix.homeManagerModule
               # nixvim.homeManagerModules.nixvim
@@ -241,7 +241,7 @@
               {config.gui = false;}
               ./home/home.nix
 
-              catppuccin.homeManagerModules.catppuccin
+              catppuccin.homeModules.catppuccin
               nix-flatpak.homeManagerModules.nix-flatpak
               # nvchad4nix.homeManagerModule
               # nixvim.homeManagerModules.nixvim

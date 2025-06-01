@@ -64,6 +64,11 @@ in {
           ip = "192.168.12.216";
           hostname = "kettle-switch";
         }
+        {
+          mac = "bc:07:1d:c4:0c:63";
+          ip = "192.168.12.10";
+          hostname = "fan-switch";
+        }
       ];
       COUNTRY = "TH";
     };

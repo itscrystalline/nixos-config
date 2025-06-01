@@ -40,10 +40,8 @@
     history = {
       append = true;
     };
-    initExtraFirst = ''
+    initContent = lib.mkBefore ''
       export _ZO_EXCLUDE_DIRS=$HOME:$HOME/Nextcloud/*:/mnt/nfs
-    '';
-    initExtra = ''
       hyfetch
     '';
   };

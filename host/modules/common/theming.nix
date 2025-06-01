@@ -4,7 +4,8 @@
   ...
 } @ inputs: {
   environment.systemPackages = with pkgs; [
-    libsForQt5.qtstyleplugin-kvantum
+    kdePackages.qtstyleplugin-kvantum
+    kdePackages.qt6ct
     libsForQt5.qt5ct
   ];
 
@@ -14,7 +15,7 @@
       noto-fonts-cjk-sans
       noto-fonts-emoji
       inter
-      (nerdfonts.override {fonts = ["JetBrainsMono"];})
+      nerd-fonts.jetbrains-mono
       material-symbols
       sarabun-font
       (import ./thai-sarabun-font.nix {inherit pkgs;})

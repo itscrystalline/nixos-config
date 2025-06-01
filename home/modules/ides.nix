@@ -40,7 +40,7 @@ in {
       (jetbrains.plugins.addPlugins unstable.jetbrains.rust-rover (pluginList ++ rustrover_pluginList))
       (jetbrains.plugins.addPlugins unstable.jetbrains.pycharm-professional pluginList)
       (jetbrains.plugins.addPlugins unstable.jetbrains.webstorm pluginList)
-      ida-free
+      # ida-free
       arduino-ide
       neovide
     ]
@@ -63,6 +63,7 @@ in {
       nodePackages.jsonlint
       checkstyle
       shellcheck
+      ktlint
 
       arduino-cli
       delta

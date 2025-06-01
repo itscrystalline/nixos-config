@@ -17,9 +17,6 @@ in {
     ../common/services.nix
     ../../services/adguardhome.nix
     ./docker.nix
-
-    (inputs.nixpkgs-unstable + "/nixos/modules/services/hardware/scanservjs.nix")
-
     ./services/cloudflared.nix
     ./services/nextcloud.nix
     ./services/iw2tryhard-dev.nix
@@ -58,12 +55,6 @@ in {
     '';
   };
 
-  # REMOVE: once scanservjs gits into stable
-  nixpkgs.overlays = [
-    (final: prev: {
-      scanservjs = pkgs.unstable.scanservjs;
-    })
-  ];
   services.scanservjs = {
     enable = true;
     settings.host = "0.0.0.0";

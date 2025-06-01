@@ -62,7 +62,7 @@
       gnome-network-displays
 
       # video, audio, and image editing
-      kdenlive
+      kdePackages.kdenlive
       gimp
       davinci-resolve
       audacity
@@ -77,6 +77,8 @@
       gnome-firmware
 
       logisim-evolution
+      wireshark
+      # ciscoPacketTracer8
 
       mission-center
     ]
