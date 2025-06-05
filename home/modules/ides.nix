@@ -47,6 +47,7 @@ in {
     ++ [
       neve.packages.${pkgs.system}.default
       gcc
+      clang-tools
       statix
       alejandra
       prettierd
@@ -58,7 +59,6 @@ in {
       cpplint
       golangci-lint
       selene
-      python312Packages.flake8
       eslint_d
       nodePackages.jsonlint
       checkstyle

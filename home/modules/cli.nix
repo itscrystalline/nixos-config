@@ -190,6 +190,10 @@
             month = ["June"];
           };
         }
+        {
+          message = "🔄";
+          time.day_of.month = [1];
+        }
       ];
       multiple_behavior.all.seperator = " ";
     };

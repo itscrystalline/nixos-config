@@ -19,9 +19,9 @@
   };
 
   services.earlyoom = {
-    enable = true;
+    enable = false;
     extraArgs = let
-      catPatterns = patterns: builtins.concatStringsSep "|" patterns;
+      catPatterns = patterns: lib.escapeShellArg "^(${builtins.concatStringsSep "|" patterns})$";
       # preferPatterns = [
       #   ".firefox-wrappe"
       #   "hercules-ci-age"
@@ -45,7 +45,7 @@
       ];
     in [
       # "--prefer '^(${catPatterns preferPatterns})$'"
-      "--avoid '^(${catPatterns avoidPatterns})$'"
+      "--avoid ${catPatterns avoidPatterns}"
     ];
   };
 }

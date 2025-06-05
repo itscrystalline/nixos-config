@@ -22,6 +22,7 @@ lib.mkIf config.gui {
       ];
     })
     itch
+    mcpelauncher-ui-qt
   ];
 
   services.flatpak.packages = [

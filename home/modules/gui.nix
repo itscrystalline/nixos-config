@@ -175,6 +175,24 @@
   };
   home.sessionVariables.DEFAULT_BROWSER = pkgs.lib.optionalString config.gui "${zen-browser.packages.${pkgs.system}.default}/bin/zen";
 
+  home.file = pkgs.lib.mkIf config.gui {
+    ".config/uwsm/env-hyprland".text = ''
+      export AQ_DRM_DEVICES="/dev/dri/card1:/dev/dri/card0"
+    '';
+    ".config/uwsm/env".text = ''
+      export QT_IM_MODULE=fcitx
+      export XMODIFIERS=@im=fcitx
+      export SDL_IM_MODULE=fcitx
+      export GLFW_IM_MODULE=ibus
+      export INPUT_METHOD=fcitx
+
+      export QT_QPA_PLATFORM=wayland
+      export QT_QPA_PLATFORMTHEME=qt6ct
+
+      export ILLOGICAL_IMPULSE_VIRTUAL_ENV=~/.local/state/ags/.venv
+    '';
+  };
+
   services.flatpak.packages = pkgs.lib.optionals config.gui [
     "com.github.tchx84.Flatseal"
   ];

@@ -37,6 +37,7 @@
     file
     fd
     unzip
+    tree
     hydra-check
 
     htop
