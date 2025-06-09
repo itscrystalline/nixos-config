@@ -26,6 +26,7 @@
     clean-hmbkups = "find /home/${config.username}/.config -name \"*.hmbkup\" -type f -delete";
     gssh = "TERM=xterm-256color ssh";
     ":q" = "exit";
+    lg = "lazygit";
 
     # :3
     cargo = "cargo mommy";
@@ -200,4 +201,9 @@
   };
 
   programs.lazygit.enable = true;
+
+  programs.nix-index = {
+    enable = true;
+    enableZshIntegration = true;
+  };
 }

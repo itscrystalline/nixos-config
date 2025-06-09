@@ -62,6 +62,17 @@
     iw2tryhard-dev.url = "github:itscrystalline/iw2tryhard-dev-3.0";
     occasion.url = "github:itscrystalline/occasion";
     suwayomi.url = "github:NixOS/nixpkgs?ref=pull/400589/head";
+
+    nix-index-database = {
+      url = "github:nix-community/nix-index-database";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    quickshell = {
+      url = "git+https://git.outfoxxed.me/outfoxxed/quickshell";
+      # THIS IS IMPORTANT
+      # Mismatched system dependencies will lead to crashes and other issues.
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = inputs @ {
@@ -85,6 +96,8 @@
     iw2tryhard-dev,
     occasion,
     suwayomi,
+    nix-index-database,
+    quickshell,
     ...
   }: let
     secrets = builtins.fromJSON (builtins.readFile ./secrets/secrets.json);
@@ -127,6 +140,7 @@
 
               catppuccin.homeModules.catppuccin
               nix-flatpak.homeManagerModules.nix-flatpak
+              nix-index-database.hmModules.nix-index
               # nvchad4nix.homeManagerModule
               # nixvim.homeManagerModules.nixvim
               occasion.homeManagerModule
@@ -145,6 +159,7 @@
               secrets
               occasion
               neve
+              quickshell
               ;
           };
         }
@@ -187,6 +202,7 @@
 
               catppuccin.homeModules.catppuccin
               nix-flatpak.homeManagerModules.nix-flatpak
+              nix-index-database.hmModules.nix-index
               # nvchad4nix.homeManagerModule
               # nixvim.homeManagerModules.nixvim
               occasion.homeManagerModule
@@ -243,6 +259,7 @@
 
               catppuccin.homeModules.catppuccin
               nix-flatpak.homeManagerModules.nix-flatpak
+              nix-index-database.hmModules.nix-index
               # nvchad4nix.homeManagerModule
               # nixvim.homeManagerModules.nixvim
               occasion.homeManagerModule

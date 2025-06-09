@@ -77,6 +77,7 @@ in {
       "JetBrains/WebStorm2024.3/webstorm64.vmoptions".text = jetbrainsWayland;
       "neovide/config.toml".text = ''
         fork = true
+        neovim-bin = "${neve.packages.${pkgs.system}.default}/bin/nvim"
 
         [font]
         normal = ["JetBrainsMono Nerd Font", "Noto Sans CJK JP", "Noto Color Emoji" ]

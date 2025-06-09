@@ -3,6 +3,7 @@
   pkgs,
   zen-browser,
   blender-flake,
+  quickshell,
   ...
 } @ inputs: {
   imports = [
@@ -28,6 +29,8 @@
 
   home.packages = pkgs.lib.mkIf config.gui (with pkgs.stable;
     [
+      quickshell.packages.${pkgs.system}.default
+
       vesktop # discor
       teams-for-linux # teams :vomit:
       beeper # others
@@ -185,6 +188,7 @@
       export SDL_IM_MODULE=fcitx
       export GLFW_IM_MODULE=ibus
       export INPUT_METHOD=fcitx
+      export GTK_IM_MODULE=fcitx
 
       export QT_QPA_PLATFORM=wayland
       export QT_QPA_PLATFORMTHEME=qt6ct
