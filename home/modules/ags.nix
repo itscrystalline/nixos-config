@@ -10,14 +10,14 @@ in {
   imports = [inputs.ags.homeManagerModules.default];
   config = lib.mkIf gui {
     programs.ags = {
-      enable = true;
+      enable = false;
       extraPackages = with pkgs; [
         libdbusmenu-gtk3
         libnotify
         gtkmm3
         sassc
         pywal
-        webkitgtk
+        webkitgtk_4_1
         ydotool
         webp-pixbuf-loader
         cairomm

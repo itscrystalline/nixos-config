@@ -4,23 +4,27 @@
 {
   config,
   inputs,
+  lib,
   ...
 }: {
   # Nix Flakes
   nix.settings.experimental-features = ["nix-command" "flakes"];
 
   # NIX_PATH
-  nix.nixPath = [
-    "nixpkgs=${inputs.nixpkgs}"
-    "nixpkgs-unstable=${inputs.nixpkgs-unstable}"
-    "nixos-hardware=${inputs.nixos-hardware}"
-    "nur=${inputs.nur}"
-    "home-manager=${inputs.home-manager}"
-    "catppuccin=${inputs.catppuccin}"
-    "zen-browser=${inputs.zen-browser}"
-    "nix-jebrains-plugins=${inputs.nix-jebrains-plugins}"
-    "nix-flatpak=${inputs.nix-flatpak}"
-  ];
+  nix.nixPath =
+    [
+      "nixpkgs=${inputs.nixpkgs}"
+      "nixpkgs-unstable=${inputs.nixpkgs-unstable}"
+      "nixos-hardware=${inputs.nixos-hardware}"
+      "nur=${inputs.nur}"
+      "home-manager=${inputs.home-manager}"
+      "catppuccin=${inputs.catppuccin}"
+    ]
+    ++ lib.optionals config.gui [
+      "zen-browser=${inputs.zen-browser}"
+      "nix-jebrains-plugins=${inputs.nix-jebrains-plugins}"
+      "nix-flatpak=${inputs.nix-flatpak}"
+    ];
 
   # Cachixes
   nix.settings = {

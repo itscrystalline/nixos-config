@@ -15,11 +15,15 @@
   #   dockerCompat = true;
   #   defaultNetwork.settings.dns_enabled = true;
   # };
-  virtualisation.docker.rootless = {
+  virtualisation.docker = {
     enable = true;
-    setSocketVariable = true;
-    # daemon.settings = {
-    #   dns = ["1.1.1.1" "1.0.0.1" "8.8.8.8"];
+    enableOnBoot = true;
+    # rootless = {
+    #   enable = true;
+    #   setSocketVariable = true;
+    #   # daemon.settings = {
+    #   #   dns = ["1.1.1.1" "1.0.0.1" "8.8.8.8"];
+    #   # };
     # };
   };
 }

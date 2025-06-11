@@ -20,6 +20,7 @@
       };
     };
   };
+  programs.dconf.enable = true;
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
@@ -48,6 +49,8 @@
     tmux
 
     linuxKernel.packages.linux_6_12.usbip
+
+    lm_sensors
   ];
   # powerManagement.powertop.enable = true;
 }
