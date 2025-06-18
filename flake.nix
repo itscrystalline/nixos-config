@@ -101,6 +101,21 @@
     ...
   }: let
     secrets = builtins.fromJSON (builtins.readFile ./secrets/secrets.json);
+    configs = {
+      cwystaws-meowchine.config = {
+        gui = true;
+        doas = true;
+        keep_generations = 5;
+        username = "itscrystalline";
+      };
+
+      raspi.config = {
+        gui = false;
+        doas = true;
+        keep_generations = 3;
+        username = "itscrystalline";
+      };
+    };
   in {
     # Please replace my-nixos with your hostname
     nixosConfigurations.cwystaws-meowchine = nixpkgs.lib.nixosSystem {
@@ -109,6 +124,7 @@
         inherit inputs blender-flake secrets;
       };
       modules = [
+        configs.cwystaws-meowchine
         # NUR, catppuccin, nix-flatpak, chaotic-nyx, lix
         nur.modules.nixos.default
         catppuccin.nixosModules.catppuccin
@@ -138,6 +154,7 @@
               ./vars.nix
               ./home/home.nix
 
+              configs.cwystaws-meowchine
               catppuccin.homeModules.catppuccin
               nix-flatpak.homeManagerModules.nix-flatpak
               nix-index-database.hmModules.nix-index
@@ -160,6 +177,7 @@
               occasion
               neve
               quickshell
+              my-nur
               ;
           };
         }
@@ -172,6 +190,7 @@
         inherit inputs secrets;
       };
       modules = [
+        configs.raspi
         # NUR, catppuccin, nix-flatpak, chaotic-nyx, lix
         nur.modules.nixos.default
         catppuccin.nixosModules.catppuccin
@@ -183,9 +202,7 @@
         # Import the previous configuration.nix we used,
         # so the old configuration file still takes effect
         ./vars.nix
-        {
-          config.keep_generations = 3;
-        }
+        # NUR, catppuccin, nix-flatpak, chaotic-nyx, lix
         ./nix-settings.nix
         ./host/devices/cwystaws-raspi/host.nix
 
@@ -197,9 +214,9 @@
           home-manager.users.itscrystalline = {
             imports = [
               ./vars.nix
-              {config.gui = false;}
               ./home/home.nix
 
+              configs.raspi
               catppuccin.homeModules.catppuccin
               nix-flatpak.homeManagerModules.nix-flatpak
               nix-index-database.hmModules.nix-index
@@ -229,6 +246,7 @@
         inherit inputs secrets;
       };
       modules = [
+        configs.raspi
         # NUR, catppuccin, nix-flatpak, chaotic-nyx, lix
         nur.modules.nixos.default
         catppuccin.nixosModules.catppuccin
@@ -240,9 +258,6 @@
         # Import the previous configuration.nix we used,
         # so the old configuration file still takes effect
         ./vars.nix
-        {
-          config.keep_generations = 3;
-        }
         ./nix-settings.nix
         ./host/devices/cwystaws-dormpi/host.nix
 
@@ -254,9 +269,9 @@
           home-manager.users.itscrystalline = {
             imports = [
               ./vars.nix
-              {config.gui = false;}
               ./home/home.nix
 
+              configs.raspi
               catppuccin.homeModules.catppuccin
               nix-flatpak.homeManagerModules.nix-flatpak
               nix-index-database.hmModules.nix-index

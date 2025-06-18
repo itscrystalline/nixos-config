@@ -18,6 +18,9 @@
       url = "github:nix-community/NUR";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    my-nur = {
+      url = "github:itscrystalline/nur-packages";
+    };
     blender-flake.url = "github:edolstra/nix-warez?dir=blender";
     nix-flatpak.url = "github:gmodena/nix-flatpak";
     neve.url = "github:itscrystalline/Neve";
@@ -51,11 +54,20 @@
     nix-index-database,
     quickshell,
     ags,
+    my-nur,
     ...
   }: let
     system = "aarch64-linux";
     pkgs = nixpkgs.legacyPackages.${system};
-    home_config = username: extraConfig:
+    oracle-cloud = username: doas: {
+      config = {
+        gui = false;
+        doas = doas;
+        keep_generations = 5;
+        username = username;
+      };
+    };
+    home_config = username: doas:
       home-manager.lib.homeManagerConfiguration {
         inherit pkgs;
 
@@ -64,11 +76,7 @@
         modules = [
           ./../vars.nix
 
-          {
-            config.gui = false;
-            config.username = username;
-          }
-          extraConfig
+          (oracle-cloud username doas)
 
           ({inputs, ...}: {
             nixpkgs.overlays = [
@@ -101,11 +109,12 @@
           inherit neve;
           inherit quickshell;
           inherit ags;
+          inherit my-nur;
         };
       };
   in {
-    homeConfigurations."opc" = home_config "opc" {config.doas = false;};
-    homeConfigurations."ubuntu" = home_config "ubuntu" {config.doas = false;};
-    homeConfigurations."itscrystalline" = home_config "itscrystalline";
+    homeConfigurations."opc" = home_config "opc" false;
+    homeConfigurations."ubuntu" = home_config "ubuntu" false;
+    homeConfigurations."itscrystalline" = home_config "itscrystalline" true;
   };
 }

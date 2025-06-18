@@ -11,8 +11,6 @@
       NVD_BACKEND = "direct";
       ELECTRON_OZONE_PLATFORM_HINT = "auto";
       GSK_RENDERER = "ngl";
-
-      QT_STYLE_OVERRIDE = "kvantum";
     };
 
     # Steam Theme

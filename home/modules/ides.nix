@@ -64,6 +64,8 @@ in {
       checkstyle
       shellcheck
       ktlint
+      typescript-language-server
+      vue-language-server
 
       arduino-cli
       delta
