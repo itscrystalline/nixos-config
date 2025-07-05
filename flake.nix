@@ -191,7 +191,7 @@
       };
       modules = [
         # sd card image
-        "${nixpkgs}/nixos/modules/installer/sd-card/sd-image-raspberrypi.nix"
+        "${nixpkgs}/nixos/modules/installer/sd-card/sd-image-aarch64.nix"
         {nixpkgs.config.allowUnsupportedSystem = true;}
 
         configs.raspi
@@ -253,8 +253,10 @@
       };
       modules = [
         # sd card image
-        "${nixpkgs}/nixos/modules/installer/sd-card/sd-image-raspberrypi.nix"
-        {nixpkgs.config.allowUnsupportedSystem = true;}
+        "${nixpkgs}/nixos/modules/installer/sd-card/sd-image-aarch64.nix"
+        {
+          nixpkgs.config.allowUnsupportedSystem = true;
+        }
 
         configs.raspi
         # NUR, catppuccin, nix-flatpak, chaotic-nyx, lix
