@@ -75,7 +75,8 @@
       # video, audio, and image editing
       kdePackages.kdenlive
       gimp
-      davinci-resolve
+      # FUCK YOU WHY ARE YOU SO BIG !!!!! I HAT EYOU!!!!
+      # davinci-resolve
       audacity
       aseprite
       blockbench
