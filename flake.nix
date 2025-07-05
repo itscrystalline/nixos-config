@@ -237,6 +237,7 @@
               secrets
               occasion
               neve
+              quickshell
               ;
           };
         }
@@ -296,6 +297,7 @@
               secrets
               occasion
               neve
+              quickshell
               ;
           };
         }

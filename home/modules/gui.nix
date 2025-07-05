@@ -11,16 +11,16 @@
   imports = [
     ./gui/blender.nix
   ];
-  home.sessionVariables.QML2_IMPORT_PATH = "${pkgs.kdePackages.qtdeclarative}/lib/qt-6/qml:${inputs.quickshell.packages.${pkgs.system}.default}/lib/qt-6/qml";
+  home.sessionVariables.QML2_IMPORT_PATH = lib.optionalString config.gui "${pkgs.kdePackages.qtdeclarative}/lib/qt-6/qml:${inputs.quickshell.packages.${pkgs.system}.default}/lib/qt-6/qml";
   # chromium with LINE extension
-  programs.chromium = pkgs.lib.mkIf config.gui {
+  programs.chromium = lib.mkIf config.gui {
     enable = true;
     extensions = [
       "ophjlpahpchlmihnnnihgmmeilfjmjjc" # LINE
     ];
   };
   # desktop file
-  xdg.desktopEntries.LINE = pkgs.lib.mkIf config.gui {
+  xdg.desktopEntries.LINE = lib.mkIf config.gui {
     name = "LINE";
     exec = "${pkgs.chromium}/bin/chromium --app=chrome-extension://ophjlpahpchlmihnnnihgmmeilfjmjjc/index.html";
     terminal = false;
@@ -29,7 +29,7 @@
     mimeType = ["x-scheme-handler/org-protocol"];
   };
 
-  home.packages = pkgs.lib.mkIf config.gui (with pkgs.stable;
+  home.packages = lib.mkIf config.gui (with pkgs.stable;
     [
       quickshell.packages.${pkgs.system}.default
       (python313.withPackages (p: [
@@ -102,7 +102,7 @@
       winetricks
     ]));
 
-  programs.obs-studio = pkgs.lib.mkIf config.gui {
+  programs.obs-studio = lib.mkIf config.gui {
     enable = true;
     plugins = with pkgs.stable.obs-studio-plugins; [
       obs-composite-blur
@@ -111,7 +111,7 @@
     ];
   };
 
-  programs.kitty = pkgs.lib.mkIf config.gui {
+  programs.kitty = lib.mkIf config.gui {
     enable = true;
     shellIntegration = {
       enableZshIntegration = true;
@@ -121,7 +121,7 @@
   programs.fuzzel.enable = config.gui;
 
   # Default Apps
-  xdg.mimeApps = pkgs.lib.mkIf config.gui {
+  xdg.mimeApps = lib.mkIf config.gui {
     enable = true;
     defaultApplications = (
       let
@@ -184,7 +184,7 @@
       }
     );
   };
-  home.sessionVariables.DEFAULT_BROWSER = pkgs.lib.optionalString config.gui "${zen-browser.packages.${pkgs.system}.default}/bin/zen";
+  home.sessionVariables.DEFAULT_BROWSER = lib.optionalString config.gui "${zen-browser.packages.${pkgs.system}.default}/bin/zen";
 
   xdg.configFile = lib.mkIf config.gui {
     "uwsm/env".text = ''
@@ -218,7 +218,7 @@
     '';
   };
 
-  services.flatpak.packages = pkgs.lib.optionals config.gui [
+  services.flatpak.packages = lib.optionals config.gui [
     "com.github.tchx84.Flatseal"
   ];
 }
