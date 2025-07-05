@@ -37,6 +37,7 @@
       # Mismatched system dependencies will lead to crashes and other issues.
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    ags.url = "github:Aylur/ags/v1";
   };
 
   outputs = inputs @ {
@@ -52,6 +53,7 @@
     occasion,
     nix-index-database,
     quickshell,
+    ags,
     my-nur,
     ...
   }: let
@@ -106,6 +108,7 @@
           inherit occasion;
           inherit neve;
           inherit quickshell;
+          inherit ags;
           inherit my-nur;
         };
       };
