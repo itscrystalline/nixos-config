@@ -23,17 +23,9 @@ in {
         cairomm
         gtksourceview
         gtksourceview4
-        python311Packages.material-color-utilities
-        python311Packages.pywayland
-        python311Packages.materialyoucolor
       ];
     };
     home.packages = with pkgs; [
-      (python311.withPackages (p: [
-        p.material-color-utilities
-        p.pywayland
-        p.materialyoucolor
-      ]))
       adwaita-icon-theme
       axel
       bc

@@ -498,11 +498,11 @@
         "nixvim": "nixvim"
       },
       "locked": {
-        "lastModified": 1749458906,
-        "narHash": "sha256-23Bu1qj+5s5AOpQHlcD4gNOiAguz+Yk4rEUg5AVIXB4=",
+        "lastModified": 1751528196,
+        "narHash": "sha256-75nPjnvrU6tB1GIJ7LTJ7ctSeXmgQcT1F5+p1172ZAA=",
         "owner": "itscrystalline",
         "repo": "Neve",
-        "rev": "f960975a19907adfa86411bbd1e57c39ef35cd67",
+        "rev": "ee29bca6869f7f715aa36eaf4281834ebf7d9f3d",
         "type": "github"
       },
       "original": {
@@ -1040,11 +1040,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1749292015,
-        "narHash": "sha256-y2rhYVVmetiNCg3UdN6qy/MpOTY8Mu2uOiJhfgdatsI=",
+        "lastModified": 1750535835,
+        "narHash": "sha256-XnVSY70rW3DsMdftazi0xr0rMGnyclBlG7sSTLwktI4=",
         "ref": "refs/heads/master",
-        "rev": "ee570ec623a59561c96de2eea5a4af51385db38e",
-        "revCount": 567,
+        "rev": "9b31823c780bfd84ceac91030f46ef422521c066",
+        "revCount": 594,
         "type": "git",
         "url": "https://git.outfoxxed.me/outfoxxed/quickshell"
       },

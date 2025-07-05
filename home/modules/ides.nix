@@ -66,6 +66,8 @@ in {
       ktlint
       typescript-language-server
       vue-language-server
+      yaml-language-server
+      vscode-langservers-extracted
 
       arduino-cli
       delta

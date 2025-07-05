@@ -5,6 +5,7 @@
   blender-flake,
   quickshell,
   my-nur,
+  lib,
   ...
 } @ inputs: {
   imports = [
@@ -31,6 +32,11 @@
   home.packages = pkgs.lib.mkIf config.gui (with pkgs.stable;
     [
       quickshell.packages.${pkgs.system}.default
+      (python313.withPackages (p: [
+        p.pyaudio
+        p.aubio
+      ]))
+
       my-nur.packages.${pkgs.system}.app2nix
 
       vesktop # discor
@@ -180,11 +186,8 @@
   };
   home.sessionVariables.DEFAULT_BROWSER = pkgs.lib.optionalString config.gui "${zen-browser.packages.${pkgs.system}.default}/bin/zen";
 
-  home.file = pkgs.lib.mkIf config.gui {
-    ".config/uwsm/env-hyprland".text = ''
-      export AQ_DRM_DEVICES="/dev/dri/card1:/dev/dri/card0"
-    '';
-    ".config/uwsm/env".text = ''
+  xdg.configFile = lib.mkIf config.gui {
+    "uwsm/env".text = ''
       export QT_IM_MODULE=fcitx
       export XMODIFIERS=@im=fcitx
       export SDL_IM_MODULE=fcitx
@@ -193,9 +196,25 @@
       export GTK_IM_MODULE=fcitx
 
       export QT_QPA_PLATFORM=wayland
-      export QT_QPA_PLATFORMTHEME=qt6ct
 
       export ILLOGICAL_IMPULSE_VIRTUAL_ENV=~/.local/state/ags/.venv
+    '';
+    "uwsm/env-hyprland".text = ''
+      export AQ_DRM_DEVICES="/dev/dri/card1:/dev/dri/card0"
+    '';
+    "swapy/config".text = ''
+      [Default]
+      save_dir=$HOME/Pictures/Screenshots
+      save_filename_format=Screenshot_%Y-%m-%d_%H.%M.%S.png
+      show_panel=false
+      line_size=5
+      text_size=20
+      text_font=sans-serif
+      paint_mode=brush
+      early_exit=false
+      fill_shape=false
+      auto_save=false
+      custom_color=rgba(193,125,17,1)
     '';
   };
 
