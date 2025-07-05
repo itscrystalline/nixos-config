@@ -116,7 +116,7 @@
         username = "itscrystalline";
       };
     };
-  in {
+  in rec {
     # Please replace my-nixos with your hostname
     nixosConfigurations.cwystaws-meowchine = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
@@ -190,6 +190,9 @@
         inherit inputs secrets;
       };
       modules = [
+        # sd card image
+        "${nixpkgs}/nixos/modules/installer/sd-card/sd-image-raspberrypi.nix"
+
         configs.raspi
         # NUR, catppuccin, nix-flatpak, chaotic-nyx, lix
         nur.modules.nixos.default
@@ -239,6 +242,7 @@
         }
       ];
     };
+    images.cwystaws-raspi = nixosConfigurations.cwystaws-raspi.config.system.build.sdImage;
 
     nixosConfigurations.cwystaws-dormpi = nixpkgs.lib.nixosSystem {
       system = "aarch64-linux";
@@ -246,6 +250,9 @@
         inherit inputs secrets;
       };
       modules = [
+        # sd card image
+        "${nixpkgs}/nixos/modules/installer/sd-card/sd-image-raspberrypi.nix"
+
         configs.raspi
         # NUR, catppuccin, nix-flatpak, chaotic-nyx, lix
         nur.modules.nixos.default
@@ -294,6 +301,7 @@
         }
       ];
     };
+    images.cwystaws-dormpi = nixosConfigurations.cwystaws-dormpi.config.system.build.sdImage;
 
     # nix-on-droid
     nixOnDroidConfigurations.cwystaw-the-neko = nix-on-droid.lib.nixOnDroidConfiguration {
