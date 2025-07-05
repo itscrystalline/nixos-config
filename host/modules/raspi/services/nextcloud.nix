@@ -10,7 +10,7 @@
     domain = "nc.iw2tryhard.dev";
   in {
     enable = true;
-    package = pkgs.nextcloud30;
+    package = pkgs.nextcloud31;
     home = "/mnt/main/nextcloud";
     hostName = domain;
     https = true;
