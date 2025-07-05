@@ -59,6 +59,14 @@
       pavucontrol
       vlc
       gparted
+      # https://github.com/ghostty-org/ghostty/discussions/7720#discussioncomment-13608668
+      (ghostty.overrideAttrs (_: {
+        preBuild = ''
+          shopt -s globstar
+          sed -i 's/^const xev = @import("xev");$/const xev = @import("xev").Epoll;/' **/*.zig
+          shopt -u globstar
+        '';
+      }))
 
       # cli that depend on gui
       copyq
@@ -99,7 +107,6 @@
     ]
     ++ (with pkgs.unstable; [
       valent
-      ghostty
       winetricks
     ]));
 
