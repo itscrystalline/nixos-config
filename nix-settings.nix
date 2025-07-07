@@ -5,6 +5,7 @@
   config,
   inputs,
   lib,
+  pkgs,
   ...
 }: {
   # Nix Flakes
@@ -15,16 +16,21 @@
     [
       "nixpkgs=${inputs.nixpkgs}"
       "nixpkgs-unstable=${inputs.nixpkgs-unstable}"
-      "nixos-hardware=${inputs.nixos-hardware}"
       "nur=${inputs.nur}"
-      "home-manager=${inputs.home-manager}"
-      "catppuccin=${inputs.catppuccin}"
     ]
-    ++ lib.optionals config.gui [
-      "zen-browser=${inputs.zen-browser}"
-      "nix-jebrains-plugins=${inputs.nix-jebrains-plugins}"
-      "nix-flatpak=${inputs.nix-flatpak}"
-    ];
+    ++ lib.optionals pkgs.stdenv.isDarwin [
+      "darwin=${inputs.nix-darwin}"
+    ]
+    ++ lib.optionals pkgs.stdenv.isLinux ([
+        "nixos-hardware=${inputs.nixos-hardware}"
+        "home-manager=${inputs.home-manager}"
+        "catppuccin=${inputs.catppuccin}"
+      ]
+      ++ lib.optionals config.gui [
+        "zen-browser=${inputs.zen-browser}"
+        "nix-jebrains-plugins=${inputs.nix-jebrains-plugins}"
+        "nix-flatpak=${inputs.nix-flatpak}"
+      ]);
 
   # Cachixes
   nix.settings = {
@@ -70,7 +76,7 @@
   nix.settings.trusted-users = ["root" "itscrystalline" "nixremote" "opc" "ubuntu"];
 
   # remote buliders
-  nix.buildMachines = [
+  nix.buildMachines = lib.optionals pkgs.stdenv.isLinux [
     {
       hostName = "cwystaws-siwwybowox";
       system = "aarch64-linux";
@@ -96,7 +102,7 @@
       mandatoryFeatures = [];
     }
   ];
-  nix.distributedBuilds = true;
+  nix.distributedBuilds = pkgs.stdenv.isLinux;
 
   # Optimize storage
   # You can also manually optimize the store via:

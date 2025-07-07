@@ -89,7 +89,7 @@
             ];
           })
 
-          ./home.nix
+          ./home-linux.nix
 
           catppuccin.homeModules.catppuccin
           nix-flatpak.homeManagerModules.nix-flatpak

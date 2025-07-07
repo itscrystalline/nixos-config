@@ -33,11 +33,7 @@
 
     extraConfig = {
       safe = {
-        directory = "/${
-          if pkgs.stdenv.isDarwin
-          then "Users"
-          else "home"
-        }/${config.username}/nixos-config";
+        directory = "${config.home.homeDirectory}/nixos-config";
       };
     };
   };

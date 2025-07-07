@@ -147,7 +147,7 @@
         # so the old configuration file still takes effect
         ./vars.nix
         ./nix-settings.nix
-        ./host/devices/cwystaws-mac/host.nix
+        ./host/devices/cwystaws-meowchine/host.nix
 
         home-manager.nixosModules.home-manager
         {
@@ -157,7 +157,7 @@
           home-manager.users.itscrystalline = {
             imports = [
               ./vars.nix
-              ./home/home.nix
+              ./home/home-linux.nix
 
               configs.cwystaws-meowchine
               catppuccin.homeModules.catppuccin
@@ -189,7 +189,7 @@
       ];
     };
 
-    darwinConfigurations."cwystaws-mac" = nix-darwin.lib.darwinSystem {
+    darwinConfigurations."cwystaws-macbook" = nix-darwin.lib.darwinSystem {
       specialArgs = {
         inherit inputs blender-flake secrets;
       };
@@ -198,7 +198,7 @@
 
         ./vars.nix
         ./nix-settings.nix
-        ./host/devices/cwystaws-meowchine/host.nix
+        ./host/devices/cwystaws-macbook/host.nix
 
         home-manager.darwinModules.home-manager
         {
@@ -271,7 +271,7 @@
           home-manager.users.itscrystalline = {
             imports = [
               ./vars.nix
-              ./home/home.nix
+              ./home/home-linux.nix
 
               configs.raspi
               catppuccin.homeModules.catppuccin
@@ -334,7 +334,7 @@
           home-manager.users.itscrystalline = {
             imports = [
               ./vars.nix
-              ./home/home.nix
+              ./home/home-linux.nix
 
               configs.raspi
               catppuccin.homeModules.catppuccin
