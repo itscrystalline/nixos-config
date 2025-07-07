@@ -32,10 +32,6 @@
   home.packages = lib.mkIf config.gui (with pkgs.stable;
     [
       quickshell.packages.${pkgs.system}.default
-      (python313.withPackages (p: [
-        p.pyaudio
-        p.aubio
-      ]))
 
       my-nur.packages.${pkgs.system}.app2nix
 

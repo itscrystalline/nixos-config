@@ -51,6 +51,13 @@ in {
     loader = {
       systemd-boot.enable = true;
       systemd-boot.configurationLimit = generations;
+      systemd-boot.extraEntries = {
+        "macOS.conf" = ''
+          title macOS (OpenCore)
+          efi /efi/OC/OpenCore.efi
+          sort-key macos
+        '';
+      };
       efi.canTouchEfiVariables = true;
     };
 

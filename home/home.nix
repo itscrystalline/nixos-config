@@ -4,7 +4,11 @@
   ...
 } @ inputs: {
   home.username = config.username;
-  home.homeDirectory = "/home/${config.username}";
+  home.homeDirectory = "/${
+    if pkgs.stdenv.isDarwin
+    then "Users"
+    else "home"
+  }/${config.username}";
 
   imports = [
     ./modules/cli.nix

@@ -16,6 +16,10 @@
       # to avoid problems caused by different versions of nixpkgs.
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    nix-darwin = {
+      url = "github:nix-darwin/nix-darwin/nix-darwin-25.05";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     catppuccin.url = "github:catppuccin/nix";
     zen-browser = {
       url = "github:youwen5/zen-browser-flake";
@@ -83,6 +87,7 @@
     nur,
     my-nur,
     home-manager,
+    nix-darwin,
     catppuccin,
     zen-browser,
     nix-jebrains-plugins,
@@ -142,7 +147,7 @@
         # so the old configuration file still takes effect
         ./vars.nix
         ./nix-settings.nix
-        ./host/devices/cwystaws-meowchine/host.nix
+        ./host/devices/cwystaws-mac/host.nix
 
         home-manager.nixosModules.home-manager
         {
@@ -160,6 +165,54 @@
               nix-index-database.hmModules.nix-index
               # nvchad4nix.homeManagerModule
               # nixvim.homeManagerModules.nixvim
+              occasion.homeManagerModule
+            ];
+          };
+
+          home-manager.extraSpecialArgs = {
+            inherit
+              nixpkgs
+              inputs
+              zen-browser
+              nix-jebrains-plugins
+              nur
+              blender-flake
+              binaryninja
+              secrets
+              occasion
+              neve
+              quickshell
+              my-nur
+              ;
+          };
+        }
+      ];
+    };
+
+    darwinConfigurations."cwystaws-mac" = nix-darwin.lib.darwinSystem {
+      specialArgs = {
+        inherit inputs blender-flake secrets;
+      };
+      modules = [
+        configs.cwystaws-meowchine
+
+        ./vars.nix
+        ./nix-settings.nix
+        ./host/devices/cwystaws-meowchine/host.nix
+
+        home-manager.darwinModules.home-manager
+        {
+          home-manager.useGlobalPkgs = true;
+          home-manager.useUserPackages = true;
+          home-manager.backupFileExtension = "hmbkup";
+          home-manager.users.itscrystalline = {
+            imports = [
+              ./vars.nix
+              ./home/home.nix
+
+              configs.cwystaws-meowchine
+              catppuccin.homeModules.catppuccin
+              nix-index-database.hmModules.nix-index
               occasion.homeManagerModule
             ];
           };
