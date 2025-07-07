@@ -3,6 +3,12 @@
   pkgs,
   ...
 } @ inputs: {
+  programs.nh = {
+    enable = true;
+    clean.enable = true;
+    clean.extraArgs = "--keep-since 1w --keep ${builtins.toString config.keep_generations}";
+  };
+
   programs.zsh.enable = true;
   programs.bash = {
     completion.enable = true;

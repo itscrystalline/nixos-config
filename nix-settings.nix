@@ -62,12 +62,6 @@
     })
   ];
 
-  programs.nh = {
-    enable = true;
-    clean.enable = true;
-    clean.extraArgs = "--keep-since 1w --keep ${builtins.toString config.keep_generations}";
-  };
-
   # make devenv shut up
   nix.extraOptions = ''
     builders-use-substitutes = true
