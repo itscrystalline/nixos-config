@@ -54,6 +54,7 @@
       tesseract
 
       gnome-network-displays
+      gparted
 
       figma-linux
 
