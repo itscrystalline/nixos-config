@@ -73,6 +73,7 @@
     fi
 
     ${pkgs.coreutils}/bin/echo "Starting $MODE backup at $FULL_NAME"
+    ${pkgs.coreutils}/bin/cp $DEST/snapshot.snar $DEST/snapshot.snar.bak
 
     ${pkgs.gnutar}/bin/tar --create --acls --xattrs --preserve-permissions --same-owner --listed-incremental="$DEST/snapshot.snar" -C "$SOURCE" . \
     | ${pkgs.pv}/bin/pv $PV_ARGS \
