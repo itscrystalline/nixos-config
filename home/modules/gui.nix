@@ -22,13 +22,14 @@
         beeper # others
         keepassxc
         vlc
-        (ghostty.overrideAttrs (_: {
-          preBuild = ''
-            shopt -s globstar
-            sed -i 's/^const xev = @import("xev");$/const xev = @import("xev").Epoll;/' **/*.zig
-            shopt -u globstar
-          '';
-        }))
+        # (ghostty.overrideAttrs (_: {
+        #   preBuild = ''
+        #     shopt -s globstar
+        #     sed -i 's/^const xev = @import("xev");$/const xev = @import("xev").Epoll;/' **/*.zig
+        #     shopt -u globstar
+        #   '';
+        # }))
+        ghostty
 
         # video, audio, and image editing
         kdePackages.kdenlive
