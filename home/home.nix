@@ -1,18 +1,16 @@
-{pkgs, config, ...} @ inputs: {
+{
+  pkgs,
+  config,
+  ...
+} @ inputs: {
   home.username = config.username;
-  home.homeDirectory = "/home/${config.username}";
 
   imports = [
     ./modules/cli.nix
     ./modules/dev.nix
     ./modules/theme.nix
-    ./modules/nextcloud.nix
-    ./modules/ags.nix
     ./modules/gui.nix
     ./modules/games.nix
-    ./modules/flatpak.nix
-    ./modules/virtualisation.nix
-    ./modules/services.nix
   ];
 
   # Home Manager needs a bit of information about you and the
@@ -26,7 +24,7 @@
   # You can update Home Manager without changing this value. See
   # the Home Manager release notes for a list of state version
   # changes in each release.
-  home.stateVersion = "24.11";
+  home.stateVersion = "25.05";
 
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;

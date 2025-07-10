@@ -6,47 +6,47 @@
   neve,
   ...
 } @ inputs: let
-  pluginList = let
-    plugins = nix-jebrains-plugins.plugins."${pkgs.system}".idea-ultimate."2024.3";
-  in [
-    plugins."com.github.catppuccin.jetbrains"
-    plugins."com.github.catppuccin.jetbrains_icons"
-    plugins."io.github.pandier.intellijdiscordrp"
-    plugins."nix-idea"
-    plugins."systems.fehn.intellijdirenv"
-    plugins."IdeaVIM"
-  ];
-
-  idea_pluginList = let
-    plugins = nix-jebrains-plugins.plugins."${pkgs.system}".idea-ultimate."2024.3";
-  in [
-    plugins."com.demonwav.minecraft-dev"
-    plugins."com.github.tth05.minecraft-nbt-intellij-plugin"
-  ];
-
-  rustrover_pluginList = let
-    plugins = nix-jebrains-plugins.plugins."${pkgs.system}".rust-rover."2024.3";
-  in [
-    plugins."PythonCore"
-  ];
-
+  # pluginList = let
+  #   plugins = nix-jebrains-plugins.plugins."${pkgs.system}".idea-ultimate."2024.3";
+  # in [
+  #   plugins."com.github.catppuccin.jetbrains"
+  #   plugins."com.github.catppuccin.jetbrains_icons"
+  #   plugins."io.github.pandier.intellijdiscordrp"
+  #   plugins."nix-idea"
+  #   plugins."systems.fehn.intellijdirenv"
+  #   plugins."IdeaVIM"
+  # ];
+  #
+  # idea_pluginList = let
+  #   plugins = nix-jebrains-plugins.plugins."${pkgs.system}".idea-ultimate."2024.3";
+  # in [
+  #   plugins."com.demonwav.minecraft-dev"
+  #   plugins."com.github.tth05.minecraft-nbt-intellij-plugin"
+  # ];
+  #
+  # rustrover_pluginList = let
+  #   plugins = nix-jebrains-plugins.plugins."${pkgs.system}".rust-rover."2024.3";
+  # in [
+  #   plugins."PythonCore"
+  # ];
   jetbrainsWayland = ''
     -Dawt.toolkit.name=WLToolkit
   '';
 in {
   home.packages = with pkgs;
     lib.optionals config.gui [
-      (jetbrains.plugins.addPlugins unstable.jetbrains.idea-ultimate (pluginList ++ idea_pluginList))
-      (jetbrains.plugins.addPlugins unstable.jetbrains.rust-rover (pluginList ++ rustrover_pluginList))
-      (jetbrains.plugins.addPlugins unstable.jetbrains.pycharm-professional pluginList)
-      (jetbrains.plugins.addPlugins unstable.jetbrains.webstorm pluginList)
-      ida-free
+      # (jetbrains.plugins.addPlugins unstable.jetbrains.idea-ultimate (pluginList ++ idea_pluginList))
+      # (jetbrains.plugins.addPlugins unstable.jetbrains.rust-rover (pluginList ++ rustrover_pluginList))
+      # (jetbrains.plugins.addPlugins unstable.jetbrains.pycharm-professional pluginList)
+      # (jetbrains.plugins.addPlugins unstable.jetbrains.webstorm pluginList)
+      # ida-free
       arduino-ide
       neovide
     ]
     ++ [
       neve.packages.${pkgs.system}.default
       gcc
+      clang-tools
       statix
       alejandra
       prettierd
@@ -55,29 +55,46 @@ in {
       rustfmt
       checkstyle
       google-java-format
+      cpplint
+      golangci-lint
+      selene
+      eslint_d
+      nodePackages.jsonlint
+      checkstyle
+      shellcheck
+      ktlint
+      typescript-language-server
+      vue-language-server
+      yaml-language-server
+      vscode-langservers-extracted
 
       arduino-cli
+      delta
     ];
 
-  xdg.configFile = lib.mkIf config.gui {
-    "JetBrains/RustRover2024.3/rustrover64.vmoptions".text = jetbrainsWayland;
-    "JetBrains/IntelliJIdea2024.3/idea64.vmoptions".text = jetbrainsWayland;
-    "JetBrains/PyCharm2024.3/pycharm64.vmoptions".text = jetbrainsWayland;
-    "JetBrains/WebStorm2024.3/webstorm64.vmoptions".text = jetbrainsWayland;
-    "neovide/config.toml".text = ''
-      fork = true
+  xdg.configFile =
+    lib.mkIf config.gui {
+      "JetBrains/RustRover2024.3/rustrover64.vmoptions".text = jetbrainsWayland;
+      "JetBrains/IntelliJIdea2024.3/idea64.vmoptions".text = jetbrainsWayland;
+      "JetBrains/PyCharm2024.3/pycharm64.vmoptions".text = jetbrainsWayland;
+      "JetBrains/WebStorm2024.3/webstorm64.vmoptions".text = jetbrainsWayland;
+      "neovide/config.toml".text = ''
+        fork = true
+        neovim-bin = "${neve.packages.${pkgs.system}.default}/bin/nvim"
 
-      [font]
-      normal = ["JetBrainsMono Nerd Font", "Noto Sans CJK JP", "Noto Color Emoji" ]
-      size = 12
-    '';
-    "lazygit/config.yml".text = ''
-      git:
-        paging:
-          colorArg: always
-          pager: delta --dark --paging=never --line-numbers --hyperlinks --hyperlinks-file-link-format="lazygit-edit://{path}:{line}"
-    '';
-  };
+        [font]
+        normal = ["JetBrainsMono Nerd Font", "Noto Sans CJK JP", "Noto Color Emoji" ]
+        size = 12
+      '';
+    }
+    // {
+      "lazygit/config.yml".text = ''
+        git:
+          paging:
+            colorArg: always
+            pager: ${pkgs.delta}/bin/delta --dark --paging=never --line-numbers --hyperlinks --hyperlinks-file-link-format="lazygit-edit://{path}:{line}"
+      '';
+    };
 
   # programs.binary-ninja = lib.mkIf config.gui {
   #   enable = true;

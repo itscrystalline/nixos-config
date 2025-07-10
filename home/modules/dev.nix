@@ -1,6 +1,7 @@
 {
   config,
   pkgs,
+  lib,
   nix-jebrains-plugins,
   ...
 } @ inputs: {
@@ -12,10 +13,18 @@
       nixd
       gh
       cargo-mommy
+      (python313Full.withPackages (p: [
+        p.pyaudio
+        p.aubio
+      ]))
     ]
     ++ pkgs.lib.optionals config.gui [
       filezilla
       renode
+    ]
+    ++ lib.optionals pkgs.stdenv.isDarwin [
+      darwin.xcode
+      mas
     ];
 
   programs.git = {
@@ -24,7 +33,7 @@
 
     extraConfig = {
       safe = {
-        directory = "/home/${config.username}/nixos-config";
+        directory = "${config.home.homeDirectory}/nixos-config";
       };
     };
   };

@@ -12,6 +12,8 @@
       zoxide
       sshfs
       nh
+      git-crypt
+      nix-output-monitor
     ]
     ++ lib.optionals config.doas [doas-sudo-shim];
 
@@ -21,9 +23,10 @@
     update = "sudo nh os switch ~/nixos-config -R";
     nuke-cache = "sudo rm -rf ~/.cache/nix";
     gc = "sudo nh clean all";
-    clean-hmbkups = "find /home/${config.username}/.config -name \"*.hmbkup\" -type f -delete";
+    clean-hmbkups = "find ${config.home.homeDirectory}/.config -name \"*.hmbkup\" -type f -delete";
     gssh = "TERM=xterm-256color ssh";
     ":q" = "exit";
+    lg = "lazygit";
 
     # :3
     cargo = "cargo mommy";
@@ -38,10 +41,8 @@
     history = {
       append = true;
     };
-    initExtraFirst = ''
+    initContent = lib.mkBefore ''
       export _ZO_EXCLUDE_DIRS=$HOME:$HOME/Nextcloud/*:/mnt/nfs
-    '';
-    initExtra = ''
       hyfetch
     '';
   };
@@ -55,6 +56,7 @@
       hyfetch
     '';
   };
+  programs.fish.enable = true;
 
   programs.zoxide = {
     enable = true;
@@ -70,7 +72,11 @@
     matchBlocks = {
       "cwystaws-raspi" = {
         hostname = "cwystaws-raspi";
-        identityFile = "/home/${config.username}/.ssh/crystal";
+        identityFile = "${config.home.homeDirectory}/.ssh/crystal";
+      };
+      "cwystaws-dormpi" = {
+        hostname = "cwystaws-dormpi";
+        identityFile = "${config.home.homeDirectory}/.ssh/dormpi";
       };
     };
   };
@@ -186,10 +192,19 @@
             month = ["June"];
           };
         }
+        {
+          message = "🔄";
+          time.day_of.month = [1];
+        }
       ];
       multiple_behavior.all.seperator = " ";
     };
   };
 
   programs.lazygit.enable = true;
+
+  programs.nix-index = {
+    enable = true;
+    enableZshIntegration = true;
+  };
 }

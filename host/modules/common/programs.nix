@@ -3,6 +3,12 @@
   pkgs,
   ...
 } @ inputs: {
+  programs.nh = {
+    enable = true;
+    clean.enable = true;
+    clean.extraArgs = "--keep-since 1w --keep ${builtins.toString config.keep_generations}";
+  };
+
   programs.zsh.enable = true;
   programs.bash = {
     completion.enable = true;
@@ -20,6 +26,7 @@
       };
     };
   };
+  programs.dconf.enable = true;
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
@@ -37,6 +44,7 @@
     file
     fd
     unzip
+    tree
     hydra-check
 
     htop
@@ -47,6 +55,8 @@
     tmux
 
     linuxKernel.packages.linux_6_12.usbip
+
+    lm_sensors
   ];
   # powerManagement.powertop.enable = true;
 }

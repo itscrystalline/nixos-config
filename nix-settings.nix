@@ -4,23 +4,33 @@
 {
   config,
   inputs,
+  lib,
+  pkgs,
   ...
 }: {
   # Nix Flakes
   nix.settings.experimental-features = ["nix-command" "flakes"];
 
   # NIX_PATH
-  nix.nixPath = [
-    "nixpkgs=${inputs.nixpkgs}"
-    "nixpkgs-unstable=${inputs.nixpkgs-unstable}"
-    "nixos-hardware=${inputs.nixos-hardware}"
-    "nur=${inputs.nur}"
-    "home-manager=${inputs.home-manager}"
-    "catppuccin=${inputs.catppuccin}"
-    "zen-browser=${inputs.zen-browser}"
-    "nix-jebrains-plugins=${inputs.nix-jebrains-plugins}"
-    "nix-flatpak=${inputs.nix-flatpak}"
-  ];
+  nix.nixPath =
+    [
+      "nixpkgs=${inputs.nixpkgs}"
+      "nixpkgs-unstable=${inputs.nixpkgs-unstable}"
+      "nur=${inputs.nur}"
+    ]
+    ++ lib.optionals pkgs.stdenv.isDarwin [
+      "darwin=${inputs.nix-darwin}"
+    ]
+    ++ lib.optionals pkgs.stdenv.isLinux ([
+        "nixos-hardware=${inputs.nixos-hardware}"
+        "home-manager=${inputs.home-manager}"
+        "catppuccin=${inputs.catppuccin}"
+      ]
+      ++ lib.optionals config.gui [
+        "zen-browser=${inputs.zen-browser}"
+        "nix-jebrains-plugins=${inputs.nix-jebrains-plugins}"
+        "nix-flatpak=${inputs.nix-flatpak}"
+      ]);
 
   # Cachixes
   nix.settings = {
@@ -52,12 +62,6 @@
     })
   ];
 
-  programs.nh = {
-    enable = true;
-    clean.enable = true;
-    clean.extraArgs = "--keep-since 1w --keep ${builtins.toString config.keep_generations}";
-  };
-
   # make devenv shut up
   nix.extraOptions = ''
     builders-use-substitutes = true
@@ -66,7 +70,7 @@
   nix.settings.trusted-users = ["root" "itscrystalline" "nixremote" "opc" "ubuntu"];
 
   # remote buliders
-  nix.buildMachines = [
+  nix.buildMachines = lib.optionals pkgs.stdenv.isLinux [
     {
       hostName = "cwystaws-siwwybowox";
       system = "aarch64-linux";
@@ -92,7 +96,7 @@
       mandatoryFeatures = [];
     }
   ];
-  nix.distributedBuilds = true;
+  nix.distributedBuilds = pkgs.stdenv.isLinux;
 
   # Optimize storage
   # You can also manually optimize the store via:
@@ -107,5 +111,5 @@
   # this value at the release version of the first install of this system.
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
-  system.stateVersion = "24.11"; # Did you read the comment?
+  system.stateVersion = "25.05"; # Did you read the comment?
 }

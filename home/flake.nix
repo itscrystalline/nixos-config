@@ -18,12 +18,26 @@
       url = "github:nix-community/NUR";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    my-nur = {
+      url = "github:itscrystalline/nur-packages";
+    };
     blender-flake.url = "github:edolstra/nix-warez?dir=blender";
     nix-flatpak.url = "github:gmodena/nix-flatpak";
     neve.url = "github:itscrystalline/Neve";
     # nixvim.url = "github:nix-community/nixvim";
 
     occasion.url = "github:itscrystalline/occasion";
+    nix-index-database = {
+      url = "github:nix-community/nix-index-database";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    quickshell = {
+      url = "git+https://git.outfoxxed.me/outfoxxed/quickshell";
+      # THIS IS IMPORTANT
+      # Mismatched system dependencies will lead to crashes and other issues.
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    ags.url = "github:Aylur/ags/v1";
   };
 
   outputs = inputs @ {
@@ -37,11 +51,23 @@
     blender-flake,
     nix-flatpak,
     occasion,
+    nix-index-database,
+    quickshell,
+    ags,
+    my-nur,
     ...
   }: let
     system = "aarch64-linux";
     pkgs = nixpkgs.legacyPackages.${system};
-    home_config = username: extraConfig:
+    oracle-cloud = username: doas: {
+      config = {
+        gui = false;
+        doas = doas;
+        keep_generations = 5;
+        username = username;
+      };
+    };
+    home_config = username: doas:
       home-manager.lib.homeManagerConfiguration {
         inherit pkgs;
 
@@ -50,11 +76,7 @@
         modules = [
           ./../vars.nix
 
-          {
-            config.gui = false;
-            config.username = username;
-          }
-          extraConfig
+          (oracle-cloud username doas)
 
           ({inputs, ...}: {
             nixpkgs.overlays = [
@@ -67,11 +89,12 @@
             ];
           })
 
-          ./home.nix
+          ./home-linux.nix
 
-          catppuccin.homeManagerModules.catppuccin
+          catppuccin.homeModules.catppuccin
           nix-flatpak.homeManagerModules.nix-flatpak
           occasion.homeManagerModule
+          nix-index-database.hmModules.nix-index
         ];
         # Optionally use extraSpecialArgs
         # to pass through arguments to home.nix
@@ -84,11 +107,14 @@
           inherit blender-flake;
           inherit occasion;
           inherit neve;
+          inherit quickshell;
+          inherit ags;
+          inherit my-nur;
         };
       };
   in {
-    homeConfigurations."opc" = home_config "opc" {config.doas = false;};
-    homeConfigurations."ubuntu" = home_config "ubuntu" {config.doas = false;};
-    homeConfigurations."itscrystalline" = home_config "itscrystalline";
+    homeConfigurations."opc" = home_config "opc" false;
+    homeConfigurations."ubuntu" = home_config "ubuntu" false;
+    homeConfigurations."itscrystalline" = home_config "itscrystalline" true;
   };
 }

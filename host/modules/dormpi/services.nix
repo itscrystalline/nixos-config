@@ -5,7 +5,14 @@
   lib,
   secrets,
   ...
-}: {
+}: let
+  catppuccin-homeassistant = pkgs.fetchFromGitHub {
+    owner = "catppuccin";
+    repo = "home-assistant";
+    rev = "0277ab8a42751bcf97c49082e4b743ec32304571";
+    hash = "sha256-+pVH2Ee7xII6B+rR5tu/9XoRzYdhnWGFvEpBLpvkyI8=";
+  };
+in {
   imports = [
     ../common/services.nix
     ../../services/adguardhome.nix
@@ -55,10 +62,18 @@
     '';
   };
 
+  hardware.bluetooth = {
+    enable = true;
+  };
   services.home-assistant = with secrets.homeassistant; {
     enable = true;
+    package = pkgs.unstable.home-assistant.overrideAttrs (oldAttrs: {doInstallCheck = false;});
     openFirewall = true;
-    extraComponents = ["wiz" "matter" "mobile_app" "bluetooth"];
+    extraComponents = ["wiz" "matter" "mobile_app" "bluetooth" "tplink" "tplink_tapo" "accuweather"];
+    customComponents = [
+      inputs.my-nur.packages.${pkgs.system}.ha_tuya_ble
+      inputs.my-nur.packages.${pkgs.system}.hass-localtuya
+    ];
     extraPackages = python3Packages:
       (with python3Packages; [
         # postgresql support
@@ -69,9 +84,21 @@
         aiodhcpwatcher
         pywizlight
         aiodiscover
-
-        aiohttp-zlib-ng
+        pyatv
+        getmac
+        samsungctl
+        samsungtvws
+        tuya-device-sharing-sdk
+        tuya-iot-py-sdk
+        xiaomi-ble
+        websockets
+        kegtron-ble
+        ibeacon-ble
+        spotifyaio
+        aioelectricitymaps
+        aiohttp-fast-zlib
         pyturbojpeg
+        pycountry
       ])
       ++ (with pkgs; [
         zlib-ng
@@ -82,6 +109,14 @@
         inherit latitude longitude;
         name = "Dormitory";
       };
+      zone = [
+        {
+          inherit latitude longitude;
+          name = "Home";
+          radius = 25;
+          icon = "mdi:home";
+        }
+      ];
       http.server_port = 8000;
       frontend = {
         themes = "!include_dir_merge_named themes";
@@ -89,13 +124,19 @@
       automation = "!include automations.yaml";
       script = "!include scripts.yaml";
       scene = "!include scenes.yaml";
-      mobile_app = {};
-      bluetooth = {};
+      default_config = {};
     };
     configWritable = true;
   };
+  system.activationScripts.catppuccin-homeassistant = ''
+    mkdir -p /var/lib/hass/themes
+    cp ${catppuccin-homeassistant}/themes/catppuccin.yaml /var/lib/hass/themes/catppuccin.yaml
+    chmod -R 0700 /var/lib/hass/themes
+    chown -R hass:hass /var/lib/hass/themes
+  '';
   services.matter-server = {
     enable = true;
+    port = 5590;
   };
 
   # SSH auto restart

@@ -1,12 +1,20 @@
 {
   pkgs,
   lib,
+  config,
+  inputs,
   ...
-} @ inputs: {
+}:
+lib.mkIf config.gui {
   environment.systemPackages = with pkgs; [
-    libsForQt5.qtstyleplugin-kvantum
+    kdePackages.qtstyleplugin-kvantum
+    kdePackages.qt6ct
     libsForQt5.qt5ct
+
+    inputs.quickshell.packages.${pkgs.system}.default
   ];
+
+  qt.enable = true;
 
   fonts = {
     packages = with pkgs; [
@@ -14,7 +22,7 @@
       noto-fonts-cjk-sans
       noto-fonts-emoji
       inter
-      (nerdfonts.override {fonts = ["JetBrainsMono"];})
+      nerd-fonts.jetbrains-mono
       material-symbols
       sarabun-font
       (import ./thai-sarabun-font.nix {inherit pkgs;})
