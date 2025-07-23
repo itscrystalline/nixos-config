@@ -10,7 +10,7 @@
   imports = [
     ./gui/blender.nix
   ];
-  home.sessionVariables.QML2_IMPORT_PATH = "${pkgs.kdePackages.qtdeclarative}/lib/qt-6/qml:${inputs.quickshell.packages.${pkgs.system}.default}/lib/qt-6/qml";
+  home.sessionVariables.QML2_IMPORT_PATH = pkgs.lib.optionalString config.gui "${pkgs.kdePackages.qtdeclarative}/lib/qt-6/qml:${inputs.quickshell.packages.${pkgs.system}.default}/lib/qt-6/qml";
   # chromium with LINE extension
   programs.chromium = pkgs.lib.mkIf config.gui {
     enable = true;
