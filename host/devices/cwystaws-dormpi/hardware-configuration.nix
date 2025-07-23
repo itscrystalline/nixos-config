@@ -12,4 +12,6 @@
       options = ["noatime"];
     };
   };
+
+  zramSwap.enable = true;
 }

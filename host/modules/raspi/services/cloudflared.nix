@@ -1,6 +1,6 @@
 {lib, ...}: {
   services.cloudflared = let
-    secret_path = builtins.toPath ../../../../secrets/cfd_creds.json;
+    secret_path = "${../../../../secrets/cfd_creds.json}";
     mkDomains = attrs:
       lib.mergeAttrsList (map (key: {
         "${key}${

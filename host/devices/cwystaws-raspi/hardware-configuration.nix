@@ -43,4 +43,6 @@
   systemd.tmpfiles.rules = [
     "Z /export 0777 - - - -"
   ];
+
+  zramSwap.enable = true;
 }

@@ -73,6 +73,7 @@
     fi
 
     ${pkgs.coreutils}/bin/echo "Starting $MODE backup at $FULL_NAME"
+    ${pkgs.coreutils}/bin/cp $DEST/snapshot.snar $DEST/snapshot.snar.bak
 
     ${pkgs.gnutar}/bin/tar --create --acls --xattrs --preserve-permissions --same-owner --listed-incremental="$DEST/snapshot.snar" -C "$SOURCE" . \
     | ${pkgs.pv}/bin/pv $PV_ARGS \
@@ -150,16 +151,16 @@ in {
   ];
 
   # SMTP for Nextcloud
-  programs.msmtp = with secrets.mailjet; {
+  programs.msmtp = with secrets.mail; {
     enable = true;
     accounts = {
       default = {
         auth = true;
         tls = true;
         # try setting `tls_starttls` to `false` if sendmail hangs
-        user = api_key;
-        password = secret_key;
-        host = "in-v3.mailjet.com";
+        user = username;
+        password = password;
+        host = "smtp.gmail.com";
         port = 587;
         from = "nc@iw2tryhard.dev";
       };

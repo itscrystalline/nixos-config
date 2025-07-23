@@ -23,7 +23,7 @@
     update = "sudo nh os switch ~/nixos-config -R";
     nuke-cache = "sudo rm -rf ~/.cache/nix";
     gc = "sudo nh clean all";
-    clean-hmbkups = "find /home/${config.username}/.config -name \"*.hmbkup\" -type f -delete";
+    clean-hmbkups = "find ${config.home.homeDirectory}/.config -name \"*.hmbkup\" -type f -delete";
     gssh = "TERM=xterm-256color ssh";
     ":q" = "exit";
     lg = "lazygit";
@@ -72,11 +72,11 @@
     matchBlocks = {
       "cwystaws-raspi" = {
         hostname = "cwystaws-raspi";
-        identityFile = "/home/${config.username}/.ssh/crystal";
+        identityFile = "${config.home.homeDirectory}/.ssh/crystal";
       };
       "cwystaws-dormpi" = {
         hostname = "cwystaws-dormpi";
-        identityFile = "/home/${config.username}/.ssh/dormpi";
+        identityFile = "${config.home.homeDirectory}/.ssh/dormpi";
       };
     };
   };

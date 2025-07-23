@@ -16,6 +16,10 @@
       # to avoid problems caused by different versions of nixpkgs.
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    nix-darwin = {
+      url = "github:nix-darwin/nix-darwin/nix-darwin-25.05";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     catppuccin.url = "github:catppuccin/nix";
     zen-browser = {
       url = "github:youwen5/zen-browser-flake";
@@ -83,6 +87,7 @@
     nur,
     my-nur,
     home-manager,
+    nix-darwin,
     catppuccin,
     zen-browser,
     nix-jebrains-plugins,
@@ -116,7 +121,7 @@
         username = "itscrystalline";
       };
     };
-  in {
+  in rec {
     # Please replace my-nixos with your hostname
     nixosConfigurations.cwystaws-meowchine = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
@@ -152,7 +157,7 @@
           home-manager.users.itscrystalline = {
             imports = [
               ./vars.nix
-              ./home/home.nix
+              ./home/home-linux.nix
 
               configs.cwystaws-meowchine
               catppuccin.homeModules.catppuccin
@@ -184,12 +189,64 @@
       ];
     };
 
+    darwinConfigurations."cwystaws-macbook" = nix-darwin.lib.darwinSystem {
+      specialArgs = {
+        inherit inputs blender-flake secrets;
+      };
+      modules = [
+        configs.cwystaws-meowchine
+
+        ./vars.nix
+        ./nix-settings.nix
+        ./host/devices/cwystaws-macbook/host.nix
+
+        home-manager.darwinModules.home-manager
+        {
+          home-manager.useGlobalPkgs = true;
+          home-manager.useUserPackages = true;
+          home-manager.backupFileExtension = "hmbkup";
+          home-manager.users.itscrystalline = {
+            imports = [
+              ./vars.nix
+              ./home/home.nix
+
+              configs.cwystaws-meowchine
+              catppuccin.homeModules.catppuccin
+              nix-index-database.hmModules.nix-index
+              occasion.homeManagerModule
+            ];
+          };
+
+          home-manager.extraSpecialArgs = {
+            inherit
+              nixpkgs
+              inputs
+              zen-browser
+              nix-jebrains-plugins
+              nur
+              blender-flake
+              binaryninja
+              secrets
+              occasion
+              neve
+              quickshell
+              my-nur
+              ;
+          };
+        }
+      ];
+    };
+
     nixosConfigurations.cwystaws-raspi = nixpkgs.lib.nixosSystem {
       system = "aarch64-linux";
       specialArgs = {
         inherit inputs secrets;
       };
       modules = [
+        # sd card image
+        # "${nixpkgs}/nixos/modules/installer/sd-card/sd-image-aarch64.nix"
+        # {nixpkgs.config.allowUnsupportedSystem = true;}
+
         configs.raspi
         # NUR, catppuccin, nix-flatpak, chaotic-nyx, lix
         nur.modules.nixos.default
@@ -214,7 +271,7 @@
           home-manager.users.itscrystalline = {
             imports = [
               ./vars.nix
-              ./home/home.nix
+              ./home/home-linux.nix
 
               configs.raspi
               catppuccin.homeModules.catppuccin
@@ -234,11 +291,13 @@
               secrets
               occasion
               neve
+              quickshell
               ;
           };
         }
       ];
     };
+    # images.cwystaws-raspi = nixosConfigurations.cwystaws-raspi.config.system.build.sdImage;
 
     nixosConfigurations.cwystaws-dormpi = nixpkgs.lib.nixosSystem {
       system = "aarch64-linux";
@@ -246,6 +305,12 @@
         inherit inputs secrets;
       };
       modules = [
+        # sd card image
+        "${nixpkgs}/nixos/modules/installer/sd-card/sd-image-aarch64.nix"
+        {
+          nixpkgs.config.allowUnsupportedSystem = true;
+        }
+
         configs.raspi
         # NUR, catppuccin, nix-flatpak, chaotic-nyx, lix
         nur.modules.nixos.default
@@ -269,7 +334,7 @@
           home-manager.users.itscrystalline = {
             imports = [
               ./vars.nix
-              ./home/home.nix
+              ./home/home-linux.nix
 
               configs.raspi
               catppuccin.homeModules.catppuccin
@@ -289,11 +354,13 @@
               secrets
               occasion
               neve
+              quickshell
               ;
           };
         }
       ];
     };
+    images.cwystaws-dormpi = nixosConfigurations.cwystaws-dormpi.config.system.build.sdImage;
 
     # nix-on-droid
     nixOnDroidConfigurations.cwystaw-the-neko = nix-on-droid.lib.nixOnDroidConfiguration {

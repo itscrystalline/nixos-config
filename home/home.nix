@@ -4,19 +4,13 @@
   ...
 } @ inputs: {
   home.username = config.username;
-  home.homeDirectory = "/home/${config.username}";
 
   imports = [
     ./modules/cli.nix
     ./modules/dev.nix
     ./modules/theme.nix
-    ./modules/nextcloud.nix
-    ./modules/ags.nix
     ./modules/gui.nix
     ./modules/games.nix
-    ./modules/flatpak.nix
-    ./modules/virtualisation.nix
-    ./modules/services.nix
   ];
 
   # Home Manager needs a bit of information about you and the
