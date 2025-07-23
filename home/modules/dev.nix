@@ -13,7 +13,7 @@
       nixd
       gh
       cargo-mommy
-      (python313Full.withPackages (p: [
+      (python313.withPackages (p: [
         p.pyaudio
         p.aubio
       ]))
