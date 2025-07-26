@@ -7,7 +7,6 @@
   imports = [
     ./gui/blender.nix
   ];
-
   programs.chromium = lib.mkIf config.gui {
     enable = true;
     extensions = [

@@ -3,6 +3,7 @@
   config,
   ...
 } @ inputs: {
+  home.homeDirectory = "/home/itscrystalline";
   imports = [
     ./home.nix
 
