@@ -9,6 +9,8 @@
   virtualisation.libvirtd.qemu.vhostUserPackages = with pkgs; [virtiofsd];
   virtualisation.spiceUSBRedirection.enable = true;
 
+  virtualisation.virtualbox.host.enable = true;
+
   # OSX-KVM
   boot.extraModprobeConfig = ''
     options kvm_intel nested=1

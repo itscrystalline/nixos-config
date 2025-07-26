@@ -2,7 +2,7 @@
   config,
   pkgs,
   lib,
-  nix-jebrains-plugins,
+  my-nur,
   neve,
   ...
 } @ inputs: let
@@ -67,6 +67,9 @@ in {
       vue-language-server
       yaml-language-server
       vscode-langservers-extracted
+      verilator
+      verible
+      my-nur.packages.${pkgs.system}.veridian
 
       arduino-cli
       delta
