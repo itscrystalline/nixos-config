@@ -38,6 +38,7 @@
         audacity
         aseprite
         blockbench
+        libreoffice
 
         logisim-evolution
         wireshark

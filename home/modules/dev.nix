@@ -9,6 +9,7 @@
 
   home.packages = with pkgs;
     [
+      gnumake
       unstable.devenv
       nixd
       gh
