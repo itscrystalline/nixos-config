@@ -251,11 +251,11 @@
         "nixvim": "nixvim"
       },
       "locked": {
-        "lastModified": 1753148622,
-        "narHash": "sha256-ZnVvFiaQPLcHr3pqjM0zxjPz89r7qodEWzfKCc7g4dQ=",
+        "lastModified": 1753510321,
+        "narHash": "sha256-guderYXNE67MxEjLeyP0Kf0CBOz7RpFh/Qv5KwNERKY=",
         "owner": "itscrystalline",
         "repo": "Neve",
-        "rev": "0233be31974193c62f4e2d9c387995af178889b2",
+        "rev": "b30b4acc003523a13386791f90b5d84d1d5d5dcd",
         "type": "github"
       },
       "original": {
