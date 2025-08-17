@@ -3,7 +3,7 @@
   config,
   ...
 } @ inputs: {
-  home.homeDirectory = "/home/itscrystalline";
+  home.homeDirectory = "/home/${config.username}";
   imports = [
     ./home.nix
 

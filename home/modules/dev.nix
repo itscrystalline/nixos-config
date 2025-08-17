@@ -29,7 +29,7 @@
     ];
 
   programs.git = {
-    userName = config.username;
+    userName = "itscrystalline";
     userEmail = "pvpthadgaming@gmail.com";
 
     extraConfig = {

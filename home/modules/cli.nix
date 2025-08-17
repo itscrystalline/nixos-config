@@ -14,6 +14,8 @@
       nh
       git-crypt
       nix-output-monitor
+      tmux
+      byobu
     ]
     ++ lib.optionals config.doas [doas-sudo-shim];
 
