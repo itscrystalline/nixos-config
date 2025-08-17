@@ -3,7 +3,7 @@
   pkgs,
   lib,
   my-nur,
-  neve,
+  sanzenvim,
   ...
 } @ inputs: let
   # pluginList = let
@@ -42,12 +42,12 @@ in {
       # ida-free
       arduino-ide
       neovide
+      unityhub
     ]
     ++ [
-      neve.packages.${pkgs.system}.default
+      sanzenvim.packages.${pkgs.system}.default
       gcc
       clang-tools
-      statix
       alejandra
       prettierd
       stylua
@@ -83,7 +83,7 @@ in {
       "JetBrains/WebStorm2024.3/webstorm64.vmoptions".text = jetbrainsWayland;
       "neovide/config.toml".text = ''
         fork = true
-        neovim-bin = "${neve.packages.${pkgs.system}.default}/bin/nvim"
+        neovim-bin = "${sanzenvim.packages.${pkgs.system}.default}/bin/nvim"
 
         [font]
         normal = ["JetBrainsMono Nerd Font", "Noto Sans CJK JP", "Noto Color Emoji" ]
