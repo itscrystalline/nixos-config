@@ -92,6 +92,25 @@
       font-family = Noto Color Emoji
       font-size = 12
     '';
+    "vicinae/themes/custom.json".text = builtins.toJSON {
+      version = "1.0.0";
+      appearance = "dark";
+      icon = "";
+      name = "Custom Theme";
+      description = "Theme generated from NixOS defaults colorScheme";
+      palette = {
+        background = "#11111b";
+        foreground = "#cdd6f4";
+        blue = "#89b4fa";
+        green = "#a6e3a1";
+        magenta = "#cba6f7";
+        orange = "#fab387";
+        purple = "#f5c2e7";
+        red = "#f38ba8";
+        yellow = "#f9e2af";
+        cyan = "#94e2d5";
+      };
+    };
   };
 
   catppuccin = {

@@ -66,6 +66,9 @@
 
       mission-center
       zen-browser.packages.${pkgs.system}.default
+
+      # vicinae
+      my-nur.packages.${pkgs.system}.vicinae
     ]
     ++ (with pkgs.unstable; [
       valent
