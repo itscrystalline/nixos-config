@@ -220,11 +220,11 @@
         "nixpkgs": "nixpkgs_4"
       },
       "locked": {
-        "lastModified": 1753018577,
-        "narHash": "sha256-6EGdiuJz3xv6mwKwEsc1Od07eVlEkFDgdxvVMzOyYG0=",
+        "lastModified": 1755410927,
+        "narHash": "sha256-w2JY2PnQ/NzVFadR+gW8TWIjErCh36eT55cf1J/tHvs=",
         "owner": "itscrystalline",
         "repo": "nur-packages",
-        "rev": "0616bee3ef54b82a93fe30f950ea0b7e80af1f95",
+        "rev": "26c44f3e36413ddbbe057d3df9e002776ba509f0",
         "type": "github"
       },
       "original": {
