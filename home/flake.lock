@@ -561,11 +561,11 @@
         "nvf": "nvf"
       },
       "locked": {
-        "lastModified": 1755407023,
-        "narHash": "sha256-Zcp+PJvG2dfoMJRdDPmMdbYciDQgmMdGVVrk9ndUvMM=",
+        "lastModified": 1755483699,
+        "narHash": "sha256-SFT1mdX74anbxvJN1vRlSe8GBsV4JPGZWJJnzn+kByU=",
         "owner": "itscrystalline",
         "repo": "sanzenvim",
-        "rev": "46f49c0112a9d06554f0db122fcf64eee205e723",
+        "rev": "077059750f10f41f4be6e58c5b6931e777633197",
         "type": "github"
       },
       "original": {
