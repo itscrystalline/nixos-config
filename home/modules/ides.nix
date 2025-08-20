@@ -104,7 +104,7 @@ in {
   # };
 
   programs.zed-editor = lib.mkIf config.gui {
-    enable = true;
+    enable = false;
     package = pkgs.zed-editor.fhsWithPackages (pkgs: with pkgs; [zlib nil]);
     extensions = ["nix" "toml" "make" "git-firefly" "discord-presence"];
 
