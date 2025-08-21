@@ -1077,11 +1077,11 @@
         "nvf": "nvf"
       },
       "locked": {
-        "lastModified": 1755591081,
-        "narHash": "sha256-sFWGDljsGcqeI9sU1F7kM4lBdg9WerAj7AqVyPY2Blk=",
+        "lastModified": 1755755405,
+        "narHash": "sha256-nLldoBuDabZTEcgip7mMdcMBE7k3u7x4JgSZgzM2v1s=",
         "owner": "itscrystalline",
         "repo": "sanzenvim",
-        "rev": "e88c81968e30bdbb3e4e4a8d07da79d2906606db",
+        "rev": "1429cac5439c5bd00bb87889fb876905cf73a8a9",
         "type": "github"
       },
       "original": {
