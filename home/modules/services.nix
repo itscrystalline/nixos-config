@@ -30,7 +30,7 @@
   services.mpris-proxy.enable = config.gui;
 
   # vicinae server
-  systemd.user.services.vicinae = {
+  systemd.user.services.vicinae = lib.mkIf config.gui {
     Unit = {
       Description = "Vicinae launcher daemon";
       After = ["graphical-session-pre.target"];
