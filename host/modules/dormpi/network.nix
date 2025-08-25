@@ -23,6 +23,9 @@ in {
     networkmanager = {
       wifi.powersave = false;
       unmanaged = ["interface-name:wlan0"];
+      settings = {
+        connection.autoconnect-retries = -1;
+      };
     };
   };
 
