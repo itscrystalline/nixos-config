@@ -2,6 +2,7 @@
   pkgs,
   lib,
   config,
+  my-nur,
   ...
 }: {
   # gnome polkit
@@ -27,4 +28,24 @@
 
   # MPRIS Proxy (Bluetooth Audio)
   services.mpris-proxy.enable = config.gui;
+
+  # vicinae server
+  systemd.user.services.vicinae = lib.mkIf config.gui {
+    Unit = {
+      Description = "Vicinae launcher daemon";
+      After = ["graphical-session-pre.target"];
+      PartOf = ["graphical-session.target"];
+    };
+
+    Service = {
+      Type = "simple";
+      ExecStart = "${my-nur.packages.${pkgs.system}.vicinae}/bin/vicinae server";
+      Restart = "on-failure";
+      RestartSec = 3;
+    };
+
+    Install = {
+      WantedBy = ["graphical-session.target"];
+    };
+  };
 }

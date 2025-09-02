@@ -2,8 +2,8 @@
   config,
   pkgs,
   lib,
-  nix-jebrains-plugins,
-  neve,
+  my-nur,
+  sanzenvim,
   ...
 } @ inputs: let
   # pluginList = let
@@ -42,12 +42,12 @@ in {
       # ida-free
       arduino-ide
       neovide
+      unityhub
     ]
     ++ [
-      neve.packages.${pkgs.system}.default
+      sanzenvim.packages.${pkgs.system}.default
       gcc
       clang-tools
-      statix
       alejandra
       prettierd
       stylua
@@ -67,6 +67,9 @@ in {
       vue-language-server
       yaml-language-server
       vscode-langservers-extracted
+      verilator
+      verible
+      my-nur.packages.${pkgs.system}.veridian
 
       arduino-cli
       delta
@@ -80,7 +83,7 @@ in {
       "JetBrains/WebStorm2024.3/webstorm64.vmoptions".text = jetbrainsWayland;
       "neovide/config.toml".text = ''
         fork = true
-        neovim-bin = "${neve.packages.${pkgs.system}.default}/bin/nvim"
+        neovim-bin = "${sanzenvim.packages.${pkgs.system}.default}/bin/nvim"
 
         [font]
         normal = ["JetBrainsMono Nerd Font", "Noto Sans CJK JP", "Noto Color Emoji" ]
@@ -101,7 +104,7 @@ in {
   # };
 
   programs.zed-editor = lib.mkIf config.gui {
-    enable = true;
+    enable = false;
     package = pkgs.zed-editor.fhsWithPackages (pkgs: with pkgs; [zlib nil]);
     extensions = ["nix" "toml" "make" "git-firefly" "discord-presence"];
 

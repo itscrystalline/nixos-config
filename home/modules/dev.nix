@@ -9,11 +9,12 @@
 
   home.packages = with pkgs;
     [
+      gnumake
       unstable.devenv
       nixd
       gh
       cargo-mommy
-      (python313Full.withPackages (p: [
+      (python313.withPackages (p: [
         p.pyaudio
         p.aubio
       ]))
@@ -28,7 +29,7 @@
     ];
 
   programs.git = {
-    userName = config.username;
+    userName = "itscrystalline";
     userEmail = "pvpthadgaming@gmail.com";
 
     extraConfig = {

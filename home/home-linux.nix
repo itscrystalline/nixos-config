@@ -3,6 +3,7 @@
   config,
   ...
 } @ inputs: {
+  home.homeDirectory = "/home/${config.username}";
   imports = [
     ./home.nix
 

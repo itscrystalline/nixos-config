@@ -23,7 +23,7 @@
     };
     blender-flake.url = "github:edolstra/nix-warez?dir=blender";
     nix-flatpak.url = "github:gmodena/nix-flatpak";
-    neve.url = "github:itscrystalline/Neve";
+    sanzenvim.url = "github:itscrystalline/sanzenvim";
     # nixvim.url = "github:nix-community/nixvim";
 
     occasion.url = "github:itscrystalline/occasion";
@@ -43,7 +43,7 @@
   outputs = inputs @ {
     nixpkgs,
     home-manager,
-    neve,
+    sanzenvim,
     catppuccin,
     zen-browser,
     nix-jebrains-plugins,
@@ -106,7 +106,7 @@
           inherit nur;
           inherit blender-flake;
           inherit occasion;
-          inherit neve;
+          inherit sanzenvim;
           inherit quickshell;
           inherit ags;
           inherit my-nur;

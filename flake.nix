@@ -52,7 +52,8 @@
     #nvchad
     # nvchad4nix = {
     # };
-    neve.url = "github:itscrystalline/Neve";
+    # neve.url = "github:itscrystalline/Neve";
+    sanzenvim.url = "github:itscrystalline/sanzenvim";
     # nixvim.url = "github:nix-community/nixvim";
 
     # binary ninja
@@ -94,13 +95,11 @@
     blender-flake,
     nix-flatpak,
     # nvchad4nix,
-    neve,
+    sanzenvim,
     lix-module,
     binaryninja,
     # nixvim,
-    iw2tryhard-dev,
     occasion,
-    suwayomi,
     nix-index-database,
     quickshell,
     ...
@@ -180,7 +179,7 @@
               binaryninja
               secrets
               occasion
-              neve
+              sanzenvim
               quickshell
               my-nur
               ;
@@ -228,7 +227,7 @@
               binaryninja
               secrets
               occasion
-              neve
+              sanzenvim
               quickshell
               my-nur
               ;
@@ -290,7 +289,7 @@
               nur
               secrets
               occasion
-              neve
+              sanzenvim
               quickshell
               ;
           };
@@ -353,7 +352,7 @@
               nur
               secrets
               occasion
-              neve
+              sanzenvim
               quickshell
               ;
           };
