@@ -46,11 +46,11 @@ in {
         ];
         auth_attempts = 10;
         block_auth_min = 10;
-        dns = {
+        dns = rec {
           bind_hosts = ["0.0.0.0"];
           port = 53;
-          upstream_dns = ["https://cloudflare-dns.com/dns-query" "https://dns.google/dns-query"];
           bootstrap_dns = ["1.1.1.1" "8.8.8.8"];
+          upstream_dns = bootstrap_dns ++ ["https://cloudflare-dns.com/dns-query" "https://dns.google/dns-query"];
         };
         filtering.rewrites = mkRewriteList cfg.rewriteList;
         filters =
