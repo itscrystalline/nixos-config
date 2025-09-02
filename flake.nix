@@ -78,6 +78,8 @@
       # Mismatched system dependencies will lead to crashes and other issues.
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    vicinae.url = "github:vicinaehq/vicinae";
   };
 
   outputs = inputs @ {
@@ -102,6 +104,7 @@
     occasion,
     nix-index-database,
     quickshell,
+    vicinae,
     ...
   }: let
     secrets = builtins.fromJSON (builtins.readFile ./secrets/secrets.json);
@@ -165,6 +168,7 @@
               # nvchad4nix.homeManagerModule
               # nixvim.homeManagerModules.nixvim
               occasion.homeManagerModule
+              vicinae.homeManagerModules.default
             ];
           };
 
@@ -182,6 +186,7 @@
               sanzenvim
               quickshell
               my-nur
+              vicinae
               ;
           };
         }
@@ -213,6 +218,7 @@
               catppuccin.homeModules.catppuccin
               nix-index-database.hmModules.nix-index
               occasion.homeManagerModule
+              vicinae.homeManagerModules.default
             ];
           };
 
@@ -230,6 +236,7 @@
               sanzenvim
               quickshell
               my-nur
+              vicinae
               ;
           };
         }
@@ -279,6 +286,7 @@
               # nvchad4nix.homeManagerModule
               # nixvim.homeManagerModules.nixvim
               occasion.homeManagerModule
+              vicinae.homeManagerModules.default
             ];
           };
 
@@ -291,6 +299,8 @@
               occasion
               sanzenvim
               quickshell
+              my-nur
+              vicinae
               ;
           };
         }
@@ -305,10 +315,10 @@
       };
       modules = [
         # sd card image
-        "${nixpkgs}/nixos/modules/installer/sd-card/sd-image-aarch64.nix"
-        {
-          nixpkgs.config.allowUnsupportedSystem = true;
-        }
+        # "${nixpkgs}/nixos/modules/installer/sd-card/sd-image-aarch64.nix"
+        # {
+        #   nixpkgs.config.allowUnsupportedSystem = true;
+        # }
 
         configs.raspi
         # NUR, catppuccin, nix-flatpak, chaotic-nyx, lix
@@ -342,6 +352,7 @@
               # nvchad4nix.homeManagerModule
               # nixvim.homeManagerModules.nixvim
               occasion.homeManagerModule
+              vicinae.homeManagerModules.default
             ];
           };
 
@@ -354,6 +365,8 @@
               occasion
               sanzenvim
               quickshell
+              my-nur
+              vicinae
               ;
           };
         }

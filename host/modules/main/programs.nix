@@ -31,5 +31,12 @@ in {
     ];
     # powerManagement.powertop.enable = true;
     programs.ydotool.enable = true;
+
+    programs.obs-studio = {
+      enableVirtualCamera = true;
+      plugins = with pkgs.obs-studio-plugins; [
+        droidcam-obs
+      ];
+    };
   };
 }

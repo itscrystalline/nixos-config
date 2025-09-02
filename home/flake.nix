@@ -38,6 +38,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     ags.url = "github:Aylur/ags/v1";
+    vicinae.url = "github:vicinaehq/vicinae";
   };
 
   outputs = inputs @ {
@@ -55,6 +56,7 @@
     quickshell,
     ags,
     my-nur,
+    vicinae,
     ...
   }: let
     system = "aarch64-linux";
@@ -95,6 +97,7 @@
           nix-flatpak.homeManagerModules.nix-flatpak
           occasion.homeManagerModule
           nix-index-database.hmModules.nix-index
+          vicinae.homeManagerModules.default
         ];
         # Optionally use extraSpecialArgs
         # to pass through arguments to home.nix
@@ -110,6 +113,7 @@
           inherit quickshell;
           inherit ags;
           inherit my-nur;
+          inherit vicinae;
         };
       };
   in {

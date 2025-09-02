@@ -68,7 +68,7 @@
       zen-browser.packages.${pkgs.system}.default
 
       # vicinae
-      my-nur.packages.${pkgs.system}.vicinae
+      # my-nur.packages.${pkgs.system}.vicinae
     ]
     ++ (with pkgs.unstable; [
       valent
@@ -163,6 +163,7 @@
     "uwsm/env-hyprland".text = ''
       export AQ_DRM_DEVICES="/dev/dri/card1:/dev/dri/card0"
       export GRIMBLAST_HIDE_CURSOR=0
+      export GSK_RENDERER=ngl
     '';
     "swapy/config".text = ''
       [Default]
@@ -183,4 +184,9 @@
   services.flatpak.packages = lib.optionals config.gui [
     "com.github.tchx84.Flatseal"
   ];
+
+  services.vicinae = lib.mkIf config.gui {
+    enable = true; # default: false
+    autoStart = true; # default: true
+  };
 }

@@ -53,6 +53,7 @@
     plugins = with pkgs.stable.obs-studio-plugins; [
       obs-composite-blur
       obs-backgroundremoval
+      droidcam-obs
     ];
   };
 

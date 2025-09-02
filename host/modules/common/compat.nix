@@ -12,6 +12,7 @@
       [
         (runCommand "steamrun-lib" {} "mkdir $out; ln -s ${steam-run.fhsenv}/usr/lib64 $out/lib")
         zlib
+        libz
         zstd
         stdenv.cc.cc
         curl
