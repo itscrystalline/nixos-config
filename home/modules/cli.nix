@@ -31,6 +31,8 @@
     lg = "lazygit";
     ls = "eza";
     cat = "bat --paging=never";
+    cm = "sudo loadkeys colemak";
+    qw = "sudo loadkeys us";
 
     # :3
     cargo = "cargo mommy";

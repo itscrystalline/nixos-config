@@ -21,5 +21,5 @@
     LC_TIME = "ja_JP.UTF-8";
   };
 
-  console.keyMap = "colemak";
+  console.keyMap = "us";
 }
