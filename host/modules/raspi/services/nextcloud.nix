@@ -90,6 +90,7 @@
     };
     enableImagemagick = true;
     configureRedis = true;
+    caching.redis = true;
     database.createLocally = true;
     maxUploadSize = "4G";
   };
@@ -100,7 +101,11 @@
     };
   };
   services.nginx = {
-    virtualHosts.${config.services.nextcloud.hostName}.serverAliases = ["nc.crys"];
+    virtualHosts.${config.services.nextcloud.hostName} = {
+      serverAliases = ["nc.crys"];
+      sslCertificate = "/mnt/main/cwystaws-raspi.snake-rudd.ts.net.crt";
+      sslCertificateKey = "/mnt/main/cwystaws-raspi.snake-rudd.ts.net.key";
+    };
     # virtualHosts.${config.services.collabora-online.settings.server_name} = {
     #   locations."/" = {
     #     proxyPass = "http://[::1]:${toString config.services.collabora-online.port}";
