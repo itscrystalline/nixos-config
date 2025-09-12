@@ -102,6 +102,20 @@
         "type": "github"
       }
     },
+    "flake-compat": {
+      "locked": {
+        "lastModified": 1696426674,
+        "narHash": "sha256-kvjfFW7WAETZlt09AgDn1MrtKzP7t90Vf7vypd3OL1U=",
+        "rev": "0f9255e01c2351cc7d116c072cb317785dd33b33",
+        "revCount": 57,
+        "type": "tarball",
+        "url": "https://api.flakehub.com/f/pinned/edolstra/flake-compat/1.0.1/018afb31-abd1-7bff-a5e4-cff7e18efb7a/source.tar.gz"
+      },
+      "original": {
+        "type": "tarball",
+        "url": "https://flakehub.com/f/edolstra/flake-compat/1.tar.gz"
+      }
+    },
     "flake-parts": {
       "inputs": {
         "nixpkgs-lib": [
@@ -310,6 +324,24 @@
         "type": "github"
       }
     },
+    "flake-utils_9": {
+      "inputs": {
+        "systems": "systems_10"
+      },
+      "locked": {
+        "lastModified": 1710146030,
+        "narHash": "sha256-SZ5L6eA7HJ/nmkzGG7/ISclqe6oZdOZTNoesiInkXPQ=",
+        "owner": "numtide",
+        "repo": "flake-utils",
+        "rev": "b1d9ab70662946ef0850d488da1c9019f3a9752a",
+        "type": "github"
+      },
+      "original": {
+        "owner": "numtide",
+        "repo": "flake-utils",
+        "type": "github"
+      }
+    },
     "flakey-profile": {
       "locked": {
         "lastModified": 1712898590,
@@ -463,11 +495,11 @@
         "nixpkgs": "nixpkgs_6"
       },
       "locked": {
-        "lastModified": 1755410927,
-        "narHash": "sha256-w2JY2PnQ/NzVFadR+gW8TWIjErCh36eT55cf1J/tHvs=",
+        "lastModified": 1757674302,
+        "narHash": "sha256-Lxof1rJvru3Of0vxD0WtQcorXsS+KR0UnyrU78pFzos=",
         "owner": "itscrystalline",
         "repo": "nur-packages",
-        "rev": "26c44f3e36413ddbbe057d3df9e002776ba509f0",
+        "rev": "d23b1468e9a1d9cd19a2ccfdb0b163efb765ee46",
         "type": "github"
       },
       "original": {
@@ -512,6 +544,21 @@
         "owner": "nix-darwin",
         "ref": "nix-darwin-25.05",
         "repo": "nix-darwin",
+        "type": "github"
+      }
+    },
+    "nix-filter": {
+      "locked": {
+        "lastModified": 1731533336,
+        "narHash": "sha256-oRam5PS1vcrr5UPgALW0eo1m/5/pls27Z/pabHNy2Ms=",
+        "owner": "numtide",
+        "repo": "nix-filter",
+        "rev": "f7653272fd234696ae94229839a99b73c9ab7de0",
+        "type": "github"
+      },
+      "original": {
+        "owner": "numtide",
+        "repo": "nix-filter",
         "type": "github"
       }
     },
@@ -1080,6 +1127,7 @@
         "sanzenvim": "sanzenvim",
         "suwayomi": "suwayomi",
         "vicinae": "vicinae",
+        "winapps": "winapps",
         "zen-browser": "zen-browser"
       }
     },
@@ -1169,6 +1217,21 @@
       "original": {
         "owner": "nix-systems",
         "repo": "default-linux",
+        "type": "github"
+      }
+    },
+    "systems_10": {
+      "locked": {
+        "lastModified": 1681028828,
+        "narHash": "sha256-Vy1rq5AaRuLzOxct8nz4T6wlgyUR7zLU309k9mBC768=",
+        "owner": "nix-systems",
+        "repo": "default",
+        "rev": "da67096a3b9bf56a91d16901293e51ba5b49a27e",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nix-systems",
+        "repo": "default",
         "type": "github"
       }
     },
@@ -1298,16 +1361,39 @@
         "nixpkgs": "nixpkgs_12"
       },
       "locked": {
-        "lastModified": 1756652161,
-        "narHash": "sha256-WFZcvCo9ekfdBrmcFn+05Q+q9PV8s3iJowAx2GDXimw=",
+        "lastModified": 1757226583,
+        "narHash": "sha256-fj4Is/0wogI87yqrUtEwr845n2iEaajEZZjlZpjwaI4=",
         "owner": "vicinaehq",
         "repo": "vicinae",
-        "rev": "4f5933af48efdac529c48d9b42f2d489c962b312",
+        "rev": "e2aaa0270088a5eeaae5936677053c108d4e88b1",
         "type": "github"
       },
       "original": {
         "owner": "vicinaehq",
         "repo": "vicinae",
+        "type": "github"
+      }
+    },
+    "winapps": {
+      "inputs": {
+        "flake-compat": "flake-compat",
+        "flake-utils": "flake-utils_9",
+        "nix-filter": "nix-filter",
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1756989875,
+        "narHash": "sha256-BP50EzLDbl9Jc61q/TTE7ja3oP9Oi1x9q1la49S7Zx0=",
+        "owner": "winapps-org",
+        "repo": "winapps",
+        "rev": "5104e0d4009cac508a3748783fd02ea735b892a1",
+        "type": "github"
+      },
+      "original": {
+        "owner": "winapps-org",
+        "repo": "winapps",
         "type": "github"
       }
     },

@@ -39,6 +39,10 @@
     };
     ags.url = "github:Aylur/ags/v1";
     vicinae.url = "github:vicinaehq/vicinae";
+    winapps = {
+      url = "github:winapps-org/winapps";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = inputs @ {
@@ -57,6 +61,7 @@
     ags,
     my-nur,
     vicinae,
+    winapps,
     ...
   }: let
     system = "aarch64-linux";
@@ -114,6 +119,7 @@
           inherit ags;
           inherit my-nur;
           inherit vicinae;
+          inherit winapps;
         };
       };
   in {

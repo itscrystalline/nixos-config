@@ -80,6 +80,10 @@
     };
 
     vicinae.url = "github:vicinaehq/vicinae";
+    winapps = {
+      url = "github:winapps-org/winapps";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = inputs @ {
@@ -105,6 +109,7 @@
     nix-index-database,
     quickshell,
     vicinae,
+    winapps,
     ...
   }: let
     secrets = builtins.fromJSON (builtins.readFile ./secrets/secrets.json);
@@ -187,6 +192,7 @@
               quickshell
               my-nur
               vicinae
+              winapps
               ;
           };
         }
@@ -237,6 +243,7 @@
               quickshell
               my-nur
               vicinae
+              winapps
               ;
           };
         }
@@ -301,6 +308,7 @@
               quickshell
               my-nur
               vicinae
+              winapps
               ;
           };
         }
@@ -367,6 +375,7 @@
               quickshell
               my-nur
               vicinae
+              winapps
               ;
           };
         }
