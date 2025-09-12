@@ -16,6 +16,34 @@
       nix-output-monitor
       tmux
       byobu
+
+      adwaita-icon-theme
+      axel
+      bc
+      cliphist
+      cmake
+      fuzzel
+      meson
+      tinyxml-2
+      brightnessctl
+      ddcutil
+      swww
+      mpvpaper
+      sass
+      sassc
+      libnotify
+      cava
+      yad
+      jq
+      pywal
+      fuzzel
+      lsof
+      material-symbols
+      swappy
+      qrtool
+      playerctl
+      ydotool
+      socat
     ]
     ++ lib.optionals config.doas [doas-sudo-shim];
 
