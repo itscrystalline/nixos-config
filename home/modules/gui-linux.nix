@@ -160,8 +160,6 @@
       export GTK_IM_MODULE=fcitx
 
       export QT_QPA_PLATFORM=wayland
-
-      export ILLOGICAL_IMPULSE_VIRTUAL_ENV=~/.local/state/ags/.venv
     '';
     "uwsm/env-hyprland".text = ''
       export AQ_DRM_DEVICES="/dev/dri/card1:/dev/dri/card0"

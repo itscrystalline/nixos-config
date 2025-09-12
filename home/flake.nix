@@ -37,7 +37,6 @@
       # Mismatched system dependencies will lead to crashes and other issues.
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    ags.url = "github:Aylur/ags/v1";
     vicinae.url = "github:vicinaehq/vicinae";
     winapps = {
       url = "github:winapps-org/winapps";
@@ -58,7 +57,6 @@
     occasion,
     nix-index-database,
     quickshell,
-    ags,
     my-nur,
     vicinae,
     winapps,
@@ -116,7 +114,6 @@
           inherit occasion;
           inherit sanzenvim;
           inherit quickshell;
-          inherit ags;
           inherit my-nur;
           inherit vicinae;
           inherit winapps;

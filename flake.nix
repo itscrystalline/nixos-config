@@ -40,7 +40,6 @@
     blender-flake.url = "github:edolstra/nix-warez?dir=blender";
     nix-flatpak.url = "github:gmodena/nix-flatpak";
     # hyprland.url = "github:hyprwm/Hyprland";
-    ags.url = "github:Aylur/ags/v1";
 
     # nix-on-droid
     nix-on-droid = {
