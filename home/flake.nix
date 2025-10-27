@@ -8,7 +8,7 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    catppuccin.url = "github:catppuccin/nix";
+    catppuccin.url = "github:catppuccin/nix/release-25.05";
     zen-browser = {
       url = "github:youwen5/zen-browser-flake";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -99,7 +99,7 @@
           catppuccin.homeModules.catppuccin
           nix-flatpak.homeManagerModules.nix-flatpak
           occasion.homeManagerModule
-          nix-index-database.hmModules.nix-index
+          nix-index-database.homeModules.nix-index
           vicinae.homeManagerModules.default
         ];
         # Optionally use extraSpecialArgs

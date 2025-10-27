@@ -20,7 +20,7 @@
       url = "github:nix-darwin/nix-darwin/nix-darwin-25.05";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    catppuccin.url = "github:catppuccin/nix";
+    catppuccin.url = "github:catppuccin/nix/release-25.05";
     zen-browser = {
       url = "github:youwen5/zen-browser-flake";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -168,7 +168,7 @@
               configs.cwystaws-meowchine
               catppuccin.homeModules.catppuccin
               nix-flatpak.homeManagerModules.nix-flatpak
-              nix-index-database.hmModules.nix-index
+              nix-index-database.homeModules.nix-index
               # nvchad4nix.homeManagerModule
               # nixvim.homeManagerModules.nixvim
               occasion.homeManagerModule
@@ -221,7 +221,7 @@
 
               configs.cwystaws-meowchine
               catppuccin.homeModules.catppuccin
-              nix-index-database.hmModules.nix-index
+              nix-index-database.homeModules.nix-index
               occasion.homeManagerModule
               vicinae.homeManagerModules.default
             ];
@@ -288,7 +288,7 @@
               configs.raspi
               catppuccin.homeModules.catppuccin
               nix-flatpak.homeManagerModules.nix-flatpak
-              nix-index-database.hmModules.nix-index
+              nix-index-database.homeModules.nix-index
               # nvchad4nix.homeManagerModule
               # nixvim.homeManagerModules.nixvim
               occasion.homeManagerModule
@@ -355,7 +355,7 @@
               configs.raspi
               catppuccin.homeModules.catppuccin
               nix-flatpak.homeManagerModules.nix-flatpak
-              nix-index-database.hmModules.nix-index
+              nix-index-database.homeModules.nix-index
               # nvchad4nix.homeManagerModule
               # nixvim.homeManagerModules.nixvim
               occasion.homeManagerModule

@@ -9,7 +9,7 @@ in {
   imports = [../common/programs.nix];
 
   config = lib.mkIf gui {
-    programs.firefox.enable = true;
+    # programs.firefox.enable = true;
 
     programs.binary-ninja.enable = true;
 

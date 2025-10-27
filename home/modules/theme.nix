@@ -47,7 +47,15 @@
 
   gtk = lib.mkIf config.gui {
     enable = true;
-    iconTheme = {
+    theme = {
+      name = "Colloid-gtk-theme";
+      package = pkgs.colloid-gtk-theme.override {
+        themeVariants = ["pink"];
+        colorVariants = ["dark"];
+        tweaks = ["catppuccin"];
+      };
+    };
+    iconTheme = lib.mkForce {
       package = pkgs.morewaita-icon-theme;
       name = "MoreWaita";
     };
@@ -71,6 +79,10 @@
   };
 
   xdg.configFile = lib.mkIf config.gui {
+    "gtk-4.0/assets".source = "${config.gtk.theme.package}/share/themes/${config.gtk.theme.name}/gtk-4.0/assets";
+    "gtk-4.0/gtk.css".source = "${config.gtk.theme.package}/share/themes/${config.gtk.theme.name}/gtk-4.0/gtk.css";
+    "gtk-4.0/gtk-dark.css".source = "${config.gtk.theme.package}/share/themes/${config.gtk.theme.name}/gtk-4.0/gtk-dark.css";
+
     "blender/4.3/scripts/presets/interface_theme/mocha_pink.xml".source = pkgs.fetchurl {
       url = "https://github.com/Dalibor-P/blender/releases/download/v1.1/mocha_pink.xml";
       sha256 = "sha256-bEmn7pne5q0Cebyq6UKkluuMfGkfGf+uUMQzLUikUaU=";
@@ -118,7 +130,7 @@
     accent = "pink";
     enable = true;
 
-    gtk.enable = true;
+    # gtk.enable = true;
     # kitty.enable = true;
     # zed.enable = true;
     # kvantum = {

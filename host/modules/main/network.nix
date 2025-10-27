@@ -15,7 +15,7 @@
         to = 1764;
       }
     ];
-    allowedTCPPorts = [7236 7250 8475];
+    allowedTCPPorts = [7236 7250 8475 3000];
     allowedUDPPortRanges = allowedTCPPortRanges;
     allowedUDPPorts = allowedTCPPorts;
   };
