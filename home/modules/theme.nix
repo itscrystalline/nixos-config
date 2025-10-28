@@ -48,7 +48,7 @@
   gtk = lib.mkIf config.gui {
     enable = true;
     theme = {
-      name = "Colloid-gtk-theme";
+      name = "Colloid-Pink-Dark-Catppuccin";
       package = pkgs.colloid-gtk-theme.override {
         themeVariants = ["pink"];
         colorVariants = ["dark"];
