@@ -2,7 +2,6 @@
   config,
   pkgs,
   lib,
-  home,
   ...
 } @ inputs: {
   home.packages = with pkgs;
@@ -50,9 +49,9 @@
   home.shellAliases = {
     # sudo = "doas";
     svim = "sudo nvim";
-    update = "sudo nh os switch ~/nixos-config -R";
-    nuke-cache = "sudo rm -rf ~/.cache/nix";
-    gc = "sudo nh clean all";
+    update = "nh os switch ~/nixos-config";
+    nuke-cache = "rm -rf ~/.cache/nix";
+    gc = "nh clean all";
     clean-hmbkups = "find ${config.home.homeDirectory}/.config -name \"*.hmbkup\" -type f -delete";
     gssh = "TERM=xterm-256color ssh";
     ":q" = "exit";

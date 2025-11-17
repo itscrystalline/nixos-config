@@ -4,7 +4,7 @@
   ...
 } @ inputs: {
   # Set your time zone.
-  time.timeZone = "Asia/Tokyo";
+  time.timeZone = "Asia/Bangkok";
 
   # Select internationalisation properties.
   i18n.defaultLocale = "ja_JP.UTF-8";
