@@ -9,61 +9,106 @@
   secrets,
   ...
 }: {
-  # Nix Flakes
-  nix.settings.experimental-features = ["nix-command" "flakes"];
+  nix = {
+    settings = {
+      # Nix Flakes
+      experimental-features = ["nix-command" "flakes"];
 
-  # NIX_PATH
-  nix.nixPath =
-    [
-      "nixpkgs=${inputs.nixpkgs}"
-      "nixpkgs-unstable=${inputs.nixpkgs-unstable}"
-      "nur=${inputs.nur}"
-    ]
-    ++ lib.optionals pkgs.stdenv.isDarwin [
-      "darwin=${inputs.nix-darwin}"
-    ]
-    ++ lib.optionals pkgs.stdenv.isLinux ([
-        "nixos-hardware=${inputs.nixos-hardware}"
-        "home-manager=${inputs.home-manager}"
-        "catppuccin=${inputs.catppuccin}"
+      # Cachixes
+
+      substituters = [
+        "https://devenv.cachix.org"
+        "https://sanzenvim.cachix.org"
+        "https://nix-community.cachix.org"
+        "https://nixpkgs-python.cachix.org"
+      ];
+      trusted-public-keys = [
+        "devenv.cachix.org-1:w1cLUi8dv3hnoSPGAuibQv+f9TZLr6cv/Hm9XgU50cw="
+        "sanzenvim.cachix.org-1:zNf9OhUUfJ/NM55vbjx9fSM6O/Q3L6JDoFwU1VCEohc="
+        "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
+        "nixpkgs-python.cachix.org-1:hxjI7pFxTyuTHn2NkvWCrAUcNZLNS3ZAvfYNuYifcEU="
+      ];
+      access-tokens = "github.com=${secrets.ghToken}";
+
+      trusted-users = ["root" "itscrystalline" "nixremote" "opc" "ubuntu"];
+
+      # Optimize storage
+      # You can also manually optimize the store via:
+      #    nix-store --optimise
+      # Refer to the following link for more details:
+      # https://nixos.org/manual/nix/stable/command-ref/conf-file.html#conf-auto-optimise-store
+      auto-optimise-store = true;
+    };
+
+    # NIX_PATH
+    nixPath =
+      [
+        "nixpkgs=${inputs.nixpkgs}"
+        "nixpkgs-unstable=${inputs.nixpkgs-unstable}"
+        "nur=${inputs.nur}"
       ]
-      ++ lib.optionals config.gui [
-        "zen-browser=${inputs.zen-browser}"
-        "nix-jebrains-plugins=${inputs.nix-jebrains-plugins}"
-        "nix-flatpak=${inputs.nix-flatpak}"
-      ]);
+      ++ lib.optionals pkgs.stdenv.isDarwin [
+        "darwin=${inputs.nix-darwin}"
+      ]
+      ++ lib.optionals pkgs.stdenv.isLinux ([
+          "nixos-hardware=${inputs.nixos-hardware}"
+          "home-manager=${inputs.home-manager}"
+          "catppuccin=${inputs.catppuccin}"
+        ]
+        ++ lib.optionals config.gui [
+          "zen-browser=${inputs.zen-browser}"
+          "nix-jebrains-plugins=${inputs.nix-jebrains-plugins}"
+          "nix-flatpak=${inputs.nix-flatpak}"
+        ]);
+    package = pkgs.lixPackageSets.stable.lix;
 
-  # Cachixes
-  nix.settings = {
-    substituters = [
-      # "https://hyprland.cachix.org"
-      "https://devenv.cachix.org"
-      "https://sanzenvim.cachix.org"
-      "https://nix-community.cachix.org"
-      "https://nixpkgs-python.cachix.org"
+    # make devenv shut up
+    extraOptions = ''
+      builders-use-substitutes = true
+    '';
+
+    # remote buliders
+    buildMachines = lib.optionals pkgs.stdenv.isLinux [
+      {
+        hostName = "cwystaws-siwwybowox";
+        system = "aarch64-linux";
+        protocol = "ssh-ng";
+        # if the builder supports building for multiple architectures,
+        # replace the previous line by, e.g.
+        # systems = ["x86_64-linux" "aarch64-linux"];
+        maxJobs = 8;
+        speedFactor = 2;
+        supportedFeatures = [];
+        mandatoryFeatures = [];
+      }
+      # {
+      #   hostName = "cwystaws-grass-box";
+      #   system = "aarch64-linux";
+      #   protocol = "ssh-ng";
+      #   # if the builder supports building for multiple architectures,
+      #   # replace the previous line by, e.g.
+      #   # systems = ["x86_64-linux" "aarch64-linux"];
+      #   maxJobs = 8;
+      #   speedFactor = 2;
+      #   supportedFeatures = [];
+      #   mandatoryFeatures = [];
+      # }
     ];
-    trusted-public-keys = [
-      # "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="
-      "devenv.cachix.org-1:w1cLUi8dv3hnoSPGAuibQv+f9TZLr6cv/Hm9XgU50cw="
-      "sanzenvim.cachix.org-1:zNf9OhUUfJ/NM55vbjx9fSM6O/Q3L6JDoFwU1VCEohc="
-      "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
-      "nixpkgs-python.cachix.org-1:hxjI7pFxTyuTHn2NkvWCrAUcNZLNS3ZAvfYNuYifcEU= devenv.cachix.org-1:w1cLUi8dv3hnoSPGAuibQv+f9TZLr6cv/Hm9XgU50cw="
-    ];
-    access-tokens = "github.com=${secrets.ghToken}";
+    distributedBuilds = pkgs.stdenv.isLinux;
   };
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
   # unstable overlay
   nixpkgs.overlays = [
-    (final: prev: {
+    (_: prev: {
       stable = import inputs.nixpkgs {
         config.allowUnfree = true;
-        system = prev.system;
+        inherit (prev) system;
       };
       unstable = import inputs.nixpkgs-unstable {
         config.allowUnfree = true;
-        system = prev.system;
+        inherit (prev) system;
       };
 
       inherit
@@ -75,50 +120,6 @@
         ;
     })
   ];
-  nix.package = pkgs.lixPackageSets.stable.lix;
-
-  # make devenv shut up
-  nix.extraOptions = ''
-    builders-use-substitutes = true
-  '';
-
-  nix.settings.trusted-users = ["root" "itscrystalline" "nixremote" "opc" "ubuntu"];
-
-  # remote buliders
-  nix.buildMachines = lib.optionals pkgs.stdenv.isLinux [
-    {
-      hostName = "cwystaws-siwwybowox";
-      system = "aarch64-linux";
-      protocol = "ssh-ng";
-      # if the builder supports building for multiple architectures,
-      # replace the previous line by, e.g.
-      # systems = ["x86_64-linux" "aarch64-linux"];
-      maxJobs = 8;
-      speedFactor = 2;
-      supportedFeatures = [];
-      mandatoryFeatures = [];
-    }
-    # {
-    #   hostName = "cwystaws-grass-box";
-    #   system = "aarch64-linux";
-    #   protocol = "ssh-ng";
-    #   # if the builder supports building for multiple architectures,
-    #   # replace the previous line by, e.g.
-    #   # systems = ["x86_64-linux" "aarch64-linux"];
-    #   maxJobs = 8;
-    #   speedFactor = 2;
-    #   supportedFeatures = [];
-    #   mandatoryFeatures = [];
-    # }
-  ];
-  nix.distributedBuilds = pkgs.stdenv.isLinux;
-
-  # Optimize storage
-  # You can also manually optimize the store via:
-  #    nix-store --optimise
-  # Refer to the following link for more details:
-  # https://nixos.org/manual/nix/stable/command-ref/conf-file.html#conf-auto-optimise-store
-  nix.settings.auto-optimise-store = true;
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
