@@ -12,13 +12,13 @@
     pulse.enable = true;
 
     configPackages = [
-      (pkgs.writeTextDir "share/pipewire/pipewire.conf.d/10-virtual-surround-sink.conf" (builtins.readFile ./pipewire.conf.d/10-virtual-surround-sink.conf))
-      (pkgs.runCommand "copy-atmos" {
-          buildInputs = [pkgs.coreutils]; # This ensures coreutils are available for mv or cp commands
-        } ''
-          mkdir -p $out/share/pipewire/pipewire.conf.d
-          cp ${./pipewire.conf.d/atmos.wav} $out/share/pipewire/pipewire.conf.d/atmos.wav
-        '')
+      # (pkgs.writeTextDir "share/pipewire/pipewire.conf.d/10-virtual-surround-sink.conf" (builtins.readFile ./pipewire.conf.d/10-virtual-surround-sink.conf))
+      # (pkgs.runCommand "copy-atmos" {
+      #     buildInputs = [pkgs.coreutils]; # This ensures coreutils are available for mv or cp commands
+      #   } ''
+      #     mkdir -p $out/share/pipewire/pipewire.conf.d
+      #     cp ${./pipewire.conf.d/atmos.wav} $out/share/pipewire/pipewire.conf.d/atmos.wav
+      #   '')
     ];
 
     # extraConfig = {

@@ -2,6 +2,7 @@
   config,
   pkgs,
   nur,
+  my-nur,
   lib,
   ...
 }:
@@ -23,5 +24,7 @@ lib.mkIf config.gui {
     })
     itch
     mcpelauncher-ui-qt
+
+    my-nur.packages.${pkgs.system}.irony-mod-manager
   ];
 }

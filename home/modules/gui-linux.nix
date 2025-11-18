@@ -2,8 +2,8 @@
   config,
   pkgs,
   zen-browser,
-  blender-flake,
   quickshell,
+  winapps,
   my-nur,
   lib,
   ...
@@ -26,6 +26,9 @@
       quickshell.packages.${pkgs.system}.default
 
       my-nur.packages.${pkgs.system}.app2nix
+
+      winapps.packages."${pkgs.system}".winapps
+      winapps.packages."${pkgs.system}".winapps-launcher
 
       teams-for-linux # teams :vomit:
       (youtube-music.overrideAttrs (finalAttrs: previousAttrs: {
@@ -157,8 +160,6 @@
       export GTK_IM_MODULE=fcitx
 
       export QT_QPA_PLATFORM=wayland
-
-      export ILLOGICAL_IMPULSE_VIRTUAL_ENV=~/.local/state/ags/.venv
     '';
     "uwsm/env-hyprland".text = ''
       export AQ_DRM_DEVICES="/dev/dri/card1:/dev/dri/card0"

@@ -20,7 +20,7 @@
       url = "github:nix-darwin/nix-darwin/nix-darwin-25.05";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    catppuccin.url = "github:catppuccin/nix";
+    catppuccin.url = "github:catppuccin/nix/release-25.05";
     zen-browser = {
       url = "github:youwen5/zen-browser-flake";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -33,14 +33,9 @@
     my-nur = {
       url = "github:itscrystalline/nur-packages";
     };
-    lix-module = {
-      url = "https://git.lix.systems/lix-project/nixos-module/archive/2.92.0-2.tar.gz";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
     blender-flake.url = "github:edolstra/nix-warez?dir=blender";
     nix-flatpak.url = "github:gmodena/nix-flatpak";
     # hyprland.url = "github:hyprwm/Hyprland";
-    ags.url = "github:Aylur/ags/v1";
 
     # nix-on-droid
     nix-on-droid = {
@@ -80,6 +75,10 @@
     };
 
     vicinae.url = "github:vicinaehq/vicinae";
+    winapps = {
+      url = "github:winapps-org/winapps";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = inputs @ {
@@ -98,13 +97,13 @@
     nix-flatpak,
     # nvchad4nix,
     sanzenvim,
-    lix-module,
     binaryninja,
     # nixvim,
     occasion,
     nix-index-database,
     quickshell,
     vicinae,
+    winapps,
     ...
   }: let
     secrets = builtins.fromJSON (builtins.readFile ./secrets/secrets.json);
@@ -139,7 +138,6 @@
         chaotic.nixosModules.nyx-cache
         chaotic.nixosModules.nyx-overlay
         chaotic.nixosModules.nyx-registry
-        lix-module.nixosModules.default
         binaryninja.nixosModules.binaryninja
 
         # HW
@@ -164,7 +162,7 @@
               configs.cwystaws-meowchine
               catppuccin.homeModules.catppuccin
               nix-flatpak.homeManagerModules.nix-flatpak
-              nix-index-database.hmModules.nix-index
+              nix-index-database.homeModules.nix-index
               # nvchad4nix.homeManagerModule
               # nixvim.homeManagerModules.nixvim
               occasion.homeManagerModule
@@ -187,6 +185,7 @@
               quickshell
               my-nur
               vicinae
+              winapps
               ;
           };
         }
@@ -216,7 +215,7 @@
 
               configs.cwystaws-meowchine
               catppuccin.homeModules.catppuccin
-              nix-index-database.hmModules.nix-index
+              nix-index-database.homeModules.nix-index
               occasion.homeManagerModule
               vicinae.homeManagerModules.default
             ];
@@ -237,6 +236,7 @@
               quickshell
               my-nur
               vicinae
+              winapps
               ;
           };
         }
@@ -257,7 +257,6 @@
         # NUR, catppuccin, nix-flatpak, chaotic-nyx, lix
         nur.modules.nixos.default
         catppuccin.nixosModules.catppuccin
-        lix-module.nixosModules.default
 
         # HW
         nixos-hardware.nixosModules.raspberry-pi-4
@@ -282,7 +281,7 @@
               configs.raspi
               catppuccin.homeModules.catppuccin
               nix-flatpak.homeManagerModules.nix-flatpak
-              nix-index-database.hmModules.nix-index
+              nix-index-database.homeModules.nix-index
               # nvchad4nix.homeManagerModule
               # nixvim.homeManagerModules.nixvim
               occasion.homeManagerModule
@@ -301,6 +300,7 @@
               quickshell
               my-nur
               vicinae
+              winapps
               ;
           };
         }
@@ -324,7 +324,6 @@
         # NUR, catppuccin, nix-flatpak, chaotic-nyx, lix
         nur.modules.nixos.default
         catppuccin.nixosModules.catppuccin
-        lix-module.nixosModules.default
 
         # HW
         nixos-hardware.nixosModules.raspberry-pi-4
@@ -348,7 +347,7 @@
               configs.raspi
               catppuccin.homeModules.catppuccin
               nix-flatpak.homeManagerModules.nix-flatpak
-              nix-index-database.hmModules.nix-index
+              nix-index-database.homeModules.nix-index
               # nvchad4nix.homeManagerModule
               # nixvim.homeManagerModules.nixvim
               occasion.homeManagerModule
@@ -367,6 +366,7 @@
               quickshell
               my-nur
               vicinae
+              winapps
               ;
           };
         }

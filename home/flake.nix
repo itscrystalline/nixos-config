@@ -8,7 +8,7 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    catppuccin.url = "github:catppuccin/nix";
+    catppuccin.url = "github:catppuccin/nix/release-25.05";
     zen-browser = {
       url = "github:youwen5/zen-browser-flake";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -37,8 +37,11 @@
       # Mismatched system dependencies will lead to crashes and other issues.
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    ags.url = "github:Aylur/ags/v1";
     vicinae.url = "github:vicinaehq/vicinae";
+    winapps = {
+      url = "github:winapps-org/winapps";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = inputs @ {
@@ -54,9 +57,9 @@
     occasion,
     nix-index-database,
     quickshell,
-    ags,
     my-nur,
     vicinae,
+    winapps,
     ...
   }: let
     system = "aarch64-linux";
@@ -96,7 +99,7 @@
           catppuccin.homeModules.catppuccin
           nix-flatpak.homeManagerModules.nix-flatpak
           occasion.homeManagerModule
-          nix-index-database.hmModules.nix-index
+          nix-index-database.homeModules.nix-index
           vicinae.homeManagerModules.default
         ];
         # Optionally use extraSpecialArgs
@@ -111,9 +114,9 @@
           inherit occasion;
           inherit sanzenvim;
           inherit quickshell;
-          inherit ags;
           inherit my-nur;
           inherit vicinae;
+          inherit winapps;
         };
       };
   in {

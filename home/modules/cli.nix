@@ -2,7 +2,6 @@
   config,
   pkgs,
   lib,
-  home,
   ...
 } @ inputs: {
   home.packages = with pkgs;
@@ -16,6 +15,35 @@
       nix-output-monitor
       tmux
       byobu
+
+      adwaita-icon-theme
+      axel
+      bc
+      cliphist
+      cmake
+      fuzzel
+      meson
+      tinyxml-2
+      brightnessctl
+      ddcutil
+      swww
+      mpvpaper
+      sass
+      sassc
+      libnotify
+      cava
+      yad
+      jq
+      pywal
+      fuzzel
+      lsof
+      material-symbols
+      swappy
+      qrtool
+      playerctl
+      ydotool
+      socat
+      unstable.jocalsend
     ]
     ++ lib.optionals config.doas [doas-sudo-shim];
 
@@ -23,8 +51,8 @@
     # sudo = "doas";
     svim = "sudo nvim";
     update = "sudo nh os switch ~/nixos-config -R";
-    nuke-cache = "sudo rm -rf ~/.cache/nix";
-    gc = "sudo nh clean all";
+    nuke-cache = "rm -rf ~/.cache/nix";
+    gc = "nh clean all";
     clean-hmbkups = "find ${config.home.homeDirectory}/.config -name \"*.hmbkup\" -type f -delete";
     gssh = "TERM=xterm-256color ssh";
     ":q" = "exit";
@@ -90,6 +118,7 @@
   # fetches
   programs.fastfetch.enable = true;
   programs.hyfetch = {
+    package = pkgs.unstable.hyfetch;
     enable = true;
     settings = {
       preset = "transfeminine";

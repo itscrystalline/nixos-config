@@ -1,6 +1,7 @@
 {
   config,
   pkgs,
+  lib,
   ...
 } @ inputs: let
   nixos_logo = pkgs.fetchurl {
@@ -8,7 +9,9 @@
     sha256 = "sha256-Ly4jHvtxlnOe1CsZ5+f+K7pclUF4S0HS4Vgs5U8Ofl4=";
   };
   generations = config.keep_generations;
+  kernel = pkgs.linuxPackages_cachyos-gcc;
 in {
+  system.modulesTree = [(lib.getOutput "modules" kernel.kernel)];
   boot = {
     # NTFS support
     supportedFilesystems = ["ntfs" "nfs"];
@@ -17,7 +20,7 @@ in {
     binfmt.emulatedSystems = ["aarch64-linux"];
 
     # CachyOS Kernel
-    kernelPackages = pkgs.linuxPackages_cachyos;
+    kernelPackages = kernel;
     kernel.sysctl."kernel.sysrq" = 1;
 
     #plymouth

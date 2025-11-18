@@ -8,7 +8,6 @@
     ./home.nix
 
     ./modules/nextcloud.nix
-    ./modules/ags.nix
     ./modules/gui-linux.nix
     ./modules/games-linux.nix
     ./modules/flatpak.nix

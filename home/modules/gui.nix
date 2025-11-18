@@ -36,7 +36,7 @@
         # FUCK YOU WHY ARE YOU SO BIG !!!!! I HAT EYOU!!!!
         # davinci-resolve
         audacity
-        aseprite
+        # aseprite
         blockbench
         libreoffice
 
