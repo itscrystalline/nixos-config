@@ -38,11 +38,13 @@
     substituters = [
       # "https://hyprland.cachix.org"
       "https://devenv.cachix.org"
+      "https://sanzenvim.cachix.org"
       "https://nixpkgs-python.cachix.org"
     ];
     trusted-public-keys = [
       # "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="
       "devenv.cachix.org-1:w1cLUi8dv3hnoSPGAuibQv+f9TZLr6cv/Hm9XgU50cw="
+      "sanzenvim.cachix.org-1:zNf9OhUUfJ/NM55vbjx9fSM6O/Q3L6JDoFwU1VCEohc="
       "nixpkgs-python.cachix.org-1:hxjI7pFxTyuTHn2NkvWCrAUcNZLNS3ZAvfYNuYifcEU= devenv.cachix.org-1:w1cLUi8dv3hnoSPGAuibQv+f9TZLr6cv/Hm9XgU50cw="
     ];
     access-tokens = "github.com=${secrets.ghToken}";
@@ -61,8 +63,17 @@
         config.allowUnfree = true;
         system = prev.system;
       };
+
+      inherit
+        (prev.lixPackageSets.stable)
+        nixpkgs-review
+        nix-eval-jobs
+        nix-fast-build
+        colmena
+        ;
     })
   ];
+  nix.package = pkgs.lixPackageSets.stable.lix;
 
   # make devenv shut up
   nix.extraOptions = ''

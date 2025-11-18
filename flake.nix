@@ -33,10 +33,6 @@
     my-nur = {
       url = "github:itscrystalline/nur-packages";
     };
-    lix-module = {
-      url = "https://git.lix.systems/lix-project/nixos-module/archive/2.92.0-2.tar.gz";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
     blender-flake.url = "github:edolstra/nix-warez?dir=blender";
     nix-flatpak.url = "github:gmodena/nix-flatpak";
     # hyprland.url = "github:hyprwm/Hyprland";
@@ -101,7 +97,6 @@
     nix-flatpak,
     # nvchad4nix,
     sanzenvim,
-    lix-module,
     binaryninja,
     # nixvim,
     occasion,
@@ -143,7 +138,6 @@
         chaotic.nixosModules.nyx-cache
         chaotic.nixosModules.nyx-overlay
         chaotic.nixosModules.nyx-registry
-        lix-module.nixosModules.default
         binaryninja.nixosModules.binaryninja
 
         # HW
@@ -263,7 +257,6 @@
         # NUR, catppuccin, nix-flatpak, chaotic-nyx, lix
         nur.modules.nixos.default
         catppuccin.nixosModules.catppuccin
-        lix-module.nixosModules.default
 
         # HW
         nixos-hardware.nixosModules.raspberry-pi-4
@@ -331,7 +324,6 @@
         # NUR, catppuccin, nix-flatpak, chaotic-nyx, lix
         nur.modules.nixos.default
         catppuccin.nixosModules.catppuccin
-        lix-module.nixosModules.default
 
         # HW
         nixos-hardware.nixosModules.raspberry-pi-4

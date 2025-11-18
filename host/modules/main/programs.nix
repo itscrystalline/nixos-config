@@ -38,5 +38,10 @@ in {
         droidcam-obs
       ];
     };
+
+    programs.localsend = {
+      enable = true;
+      openFirewall = true;
+    };
   };
 }

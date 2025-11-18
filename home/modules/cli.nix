@@ -43,13 +43,14 @@
       playerctl
       ydotool
       socat
+      unstable.jocalsend
     ]
     ++ lib.optionals config.doas [doas-sudo-shim];
 
   home.shellAliases = {
     # sudo = "doas";
     svim = "sudo nvim";
-    update = "nh os switch ~/nixos-config";
+    update = "sudo nh os switch ~/nixos-config -R";
     nuke-cache = "rm -rf ~/.cache/nix";
     gc = "nh clean all";
     clean-hmbkups = "find ${config.home.homeDirectory}/.config -name \"*.hmbkup\" -type f -delete";
@@ -117,6 +118,7 @@
   # fetches
   programs.fastfetch.enable = true;
   programs.hyfetch = {
+    package = pkgs.unstable.hyfetch;
     enable = true;
     settings = {
       preset = "transfeminine";
