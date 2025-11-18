@@ -22,6 +22,7 @@ in {
     ./services/iw2tryhard-dev.nix
     (import ./services/grafana.nix {inherit config pkgs secrets mkLocalNginx;})
     (import ./services/manga.nix {inherit inputs config secrets mkLocalNginx;})
+    (import ./services/ncps.nix {inherit config mkLocalNginx;})
 
     (mkLocalNginx "scan" config.services.scanservjs.settings.port false)
     (mkLocalNginx "cock" config.services.cockpit.port false)
