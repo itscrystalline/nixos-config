@@ -30,7 +30,7 @@
         "cwystaws-raspi:2xuwbE44tVXZdoV8OJYaTXJT1PoKF3nD0fc9dDix41s="
       ];
       access-tokens = "github.com=${secrets.ghToken}";
-      post-build-hook = "${./post-build-hook.sh}";
+      # post-build-hook = "${./post-build-hook.sh}";
       trusted-users = ["root" "itscrystalline" "nixremote" "opc" "ubuntu"];
 
       # Optimize storage
