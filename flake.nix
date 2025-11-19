@@ -133,7 +133,7 @@
         inherit inputs blender-flake secrets;
       };
       modules = [
-        nixos-generators.nixosModules.formats.iso
+        nixos-generators.nixosModules.iso
 
         configs.cwystaws-meowchine
         # NUR, catppuccin, nix-flatpak, chaotic-nyx, lix
@@ -253,7 +253,7 @@
       };
       modules = [
         # sd card image
-        nixos-generators.nixosModules.formats.sd-aarch64
+        nixos-generators.nixosModules.sd-aarch64
 
         configs.raspi
         # NUR, catppuccin, nix-flatpak, chaotic-nyx, lix
@@ -317,7 +317,7 @@
       };
       modules = [
         # sd card image
-        nixos-generators.nixosModules.formats.sd-aarch64
+        nixos-generators.nixosModules.sd-aarch64
 
         configs.raspi
         # NUR, catppuccin, nix-flatpak, chaotic-nyx, lix
