@@ -1,5 +1,7 @@
 set -eu
-set -f # disable globbing
+set -f
 
-echo "Uploading paths" $OUT_PATHS
-exec nix copy --to "http://cache.crys" $OUT_PATHS || true
+if [ -n "$OUT_PATHS" ]; then
+  echo "Uploading paths" $OUT_PATHS
+  nix copy --to "http://cache.crys" $OUT_PATHS
+fi
