@@ -64,6 +64,7 @@
   }: let
     system = "aarch64-linux";
     pkgs = nixpkgs.legacyPackages.${system};
+    secrets = builtins.fromJSON (builtins.readFile ../secrets/secrets.json);
     oracle-cloud = username: doas: {
       config = {
         gui = false;
@@ -96,6 +97,8 @@
 
           ./home-linux.nix
 
+          ./nix-settings.nix
+
           catppuccin.homeModules.catppuccin
           nix-flatpak.homeManagerModules.nix-flatpak
           occasion.homeManagerModule
@@ -117,6 +120,7 @@
           inherit my-nur;
           inherit vicinae;
           inherit winapps;
+          inherit secrets;
         };
       };
   in {
