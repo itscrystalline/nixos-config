@@ -29,6 +29,12 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v4
 
+    - name: Write secrets file & decrypt
+      run: |
+        sudo apt-get install -y git-crypt 
+        echo ${{ secrets.REPO_SECRETS_KEY }} | base64 -di | zcat > /tmp/repo-key
+        git-crypt unlock /tmp/repo-key
+
     - name: Write post build hook
       run: |
           cat > /tmp/post-build-hook.sh << EOF
@@ -41,6 +47,13 @@ jobs:
 
           chmod +x /tmp/post-build-hook.sh 
 
+    - name: Connect to Tailscale
+      uses: tailscale/github-action@v4
+      with:
+        oauth-client-id: ${{ secrets.TS_OAUTH_CLIENT_ID }}
+        oauth-secret: ${{ secrets.TS_OAUTH_SECRET }}
+        tags: tag:ci
+
     - name: Install Nix
       uses: cachix/install-nix-action@v30
       with:
@@ -50,17 +63,6 @@ jobs:
           trusted-public-keys = cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY= devenv.cachix.org-1:w1cLUi8dv3hnoSPGAuibQv+f9TZLr6cv/Hm9XgU50cw= sanzenvim.cachix.org-1:zNf9OhUUfJ/NM55vbjx9fSM6O/Q3L6JDoFwU1VCEohc= nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs= nixpkgs-python.cachix.org-1:hxjI7pFxTyuTHn2NkvWCrAUcNZLNS3ZAvfYNuYifcEU= cwystaws-raspi:2xuwbE44tVXZdoV8OJYaTXJT1PoKF3nD0fc9dDix41s=
           post-build-hook = /tmp/post-build-hook.sh
 
-    - name: Connect to Tailscale
-      uses: tailscale/github-action@v4
-      with:
-        oauth-client-id: ${{ secrets.TS_OAUTH_CLIENT_ID }}
-        oauth-secret: ${{ secrets.TS_OAUTH_SECRET }}
-        tags: tag:ci
-
-    - name: netmap
-      run: |
-        tailscale status
-        ping -c 4 cwystaws-raspi
 
     - name: "Build Image ${{ matrix.derivation }}"
       run: |
