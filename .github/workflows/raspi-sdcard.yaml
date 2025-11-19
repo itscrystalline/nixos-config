@@ -57,6 +57,11 @@ jobs:
         oauth-secret: ${{ secrets.TS_OAUTH_SECRET }}
         tags: tag:ci
 
+    - name: netmap
+      run: |
+        tailscale status
+        ping -c 4 cwystaws-raspi
+
     - name: "Build Image ${{ matrix.derivation }}"
       run: |
         nix build .#${{ matrix.derivation }} -L 2>&1
