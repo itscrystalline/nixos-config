@@ -83,6 +83,7 @@ in {
     recommendedProxySettings = true;
     recommendedTlsSettings = true;
     recommendedOptimisation = true;
+    clientMaxBodySize = "100G";
   };
 
   services.cockpit = {
