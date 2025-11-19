@@ -125,18 +125,58 @@
         username = "itscrystalline";
       };
     };
-  in rec {
-    # Please replace my-nixos with your hostname
-    nixosConfigurations.cwystaws-meowchine = nixpkgs.lib.nixosSystem {
+
+    home = raspi: {
+      home-manager = {
+        useGlobalPkgs = true;
+        useUserPackages = true;
+        backupFileExtension = "hmbkup";
+        users.itscrystalline = {
+          imports = [
+            ./vars.nix
+            ./home/home-linux.nix
+
+            (
+              if raspi
+              then configs.raspi
+              else configs.cwystaws-meowchine
+            )
+            catppuccin.homeModules.catppuccin
+            nix-flatpak.homeManagerModules.nix-flatpak
+            nix-index-database.homeModules.nix-index
+            occasion.homeManagerModule
+            vicinae.homeManagerModules.default
+          ];
+        };
+
+        extraSpecialArgs = {
+          inherit
+            nixpkgs
+            inputs
+            zen-browser
+            nix-jebrains-plugins
+            nur
+            blender-flake
+            binaryninja
+            secrets
+            occasion
+            sanzenvim
+            quickshell
+            my-nur
+            vicinae
+            winapps
+            ;
+        };
+      };
+    };
+
+    cwystaws-meowchine = {
       system = "x86_64-linux";
       specialArgs = {
         inherit inputs blender-flake secrets;
       };
       modules = [
-        nixos-generators.nixosModules.iso
-
         configs.cwystaws-meowchine
-        # NUR, catppuccin, nix-flatpak, chaotic-nyx, lix
         nur.modules.nixos.default
         catppuccin.nixosModules.catppuccin
         nix-flatpak.nixosModules.nix-flatpak
@@ -144,55 +184,45 @@
         chaotic.nixosModules.nyx-overlay
         chaotic.nixosModules.nyx-registry
         binaryninja.nixosModules.binaryninja
-
-        # HW
         nixos-hardware.nixosModules.asus-fx506hm
 
-        # Import the previous configuration.nix we used,
-        # so the old configuration file still takes effect
         ./vars.nix
         ./nix-settings.nix
         ./host/devices/cwystaws-meowchine/host.nix
 
         home-manager.nixosModules.home-manager
-        {
-          home-manager.useGlobalPkgs = true;
-          home-manager.useUserPackages = true;
-          home-manager.backupFileExtension = "hmbkup";
-          home-manager.users.itscrystalline = {
-            imports = [
-              ./vars.nix
-              ./home/home-linux.nix
-
-              configs.cwystaws-meowchine
-              catppuccin.homeModules.catppuccin
-              nix-flatpak.homeManagerModules.nix-flatpak
-              nix-index-database.homeModules.nix-index
-              occasion.homeManagerModule
-              vicinae.homeManagerModules.default
-            ];
-          };
-
-          home-manager.extraSpecialArgs = {
-            inherit
-              nixpkgs
-              inputs
-              zen-browser
-              nix-jebrains-plugins
-              nur
-              blender-flake
-              binaryninja
-              secrets
-              occasion
-              sanzenvim
-              quickshell
-              my-nur
-              vicinae
-              winapps
-              ;
-          };
-        }
+        (home false)
       ];
+    };
+    raspis = module: {
+      system = "aarch64-linux";
+      specialArgs = {
+        inherit inputs secrets;
+      };
+      modules = [
+        configs.raspi
+        nur.modules.nixos.default
+        catppuccin.nixosModules.catppuccin
+        nixos-hardware.nixosModules.raspberry-pi-4
+
+        ./vars.nix
+        ./nix-settings.nix
+        module
+
+        home-manager.nixosModules.home-manager
+        (home true)
+      ];
+    };
+  in {
+    nixosConfigurations = {
+      cwystaws-meowchine = nixpkgs.lib.nixosSystem cwystaws-meowchine;
+      cwystaws-raspi = nixpkgs.lib.nixosSystem (raspis ./host/devices/cwystaws-raspi/host.nix);
+      cwystaws-dormpi = nixpkgs.lib.nixosSystem (raspis ./host/devices/cwystaws-dormpi/host.nix);
+    };
+
+    packages.aarch64-linux = {
+      cwystaws-raspi = nixos-generators.nixosGenerate ((raspis ./host/devices/cwystaws-raspi/host.nix) // {format = "sd-aarch64";});
+      cwystaws-dormpi = nixos-generators.nixosGenerate ((raspis ./host/devices/cwystaws-dormpi/host.nix) // {format = "sd-aarch64";});
     };
 
     darwinConfigurations."cwystaws-macbook" = nix-darwin.lib.darwinSystem {
@@ -207,169 +237,9 @@
         ./host/devices/cwystaws-macbook/host.nix
 
         home-manager.darwinModules.home-manager
-        {
-          home-manager.useGlobalPkgs = true;
-          home-manager.useUserPackages = true;
-          home-manager.backupFileExtension = "hmbkup";
-          home-manager.users.itscrystalline = {
-            imports = [
-              ./vars.nix
-              ./home/home.nix
-
-              configs.cwystaws-meowchine
-              catppuccin.homeModules.catppuccin
-              nix-index-database.homeModules.nix-index
-              occasion.homeManagerModule
-              vicinae.homeManagerModules.default
-            ];
-          };
-
-          home-manager.extraSpecialArgs = {
-            inherit
-              nixpkgs
-              inputs
-              zen-browser
-              nix-jebrains-plugins
-              nur
-              blender-flake
-              binaryninja
-              secrets
-              occasion
-              sanzenvim
-              quickshell
-              my-nur
-              vicinae
-              winapps
-              ;
-          };
-        }
+        (home false)
       ];
     };
-
-    nixosConfigurations.cwystaws-raspi = nixpkgs.lib.nixosSystem {
-      system = "aarch64-linux";
-      specialArgs = {
-        inherit inputs secrets;
-      };
-      modules = [
-        # sd card image
-        nixos-generators.nixosModules.sd-aarch64
-
-        configs.raspi
-        # NUR, catppuccin, nix-flatpak, chaotic-nyx, lix
-        nur.modules.nixos.default
-        catppuccin.nixosModules.catppuccin
-
-        # HW
-        nixos-hardware.nixosModules.raspberry-pi-4
-
-        # Import the previous configuration.nix we used,
-        # so the old configuration file still takes effect
-        ./vars.nix
-        # NUR, catppuccin, nix-flatpak, chaotic-nyx, lix
-        ./nix-settings.nix
-        ./host/devices/cwystaws-raspi/host.nix
-
-        home-manager.nixosModules.home-manager
-        {
-          home-manager.useGlobalPkgs = true;
-          home-manager.useUserPackages = true;
-          home-manager.backupFileExtension = "hmbkup";
-          home-manager.users.itscrystalline = {
-            imports = [
-              ./vars.nix
-              ./home/home-linux.nix
-
-              configs.raspi
-              catppuccin.homeModules.catppuccin
-              nix-flatpak.homeManagerModules.nix-flatpak
-              nix-index-database.homeModules.nix-index
-              # nvchad4nix.homeManagerModule
-              # nixvim.homeManagerModules.nixvim
-              occasion.homeManagerModule
-              vicinae.homeManagerModules.default
-            ];
-          };
-
-          home-manager.extraSpecialArgs = {
-            inherit
-              nixpkgs
-              inputs
-              nur
-              secrets
-              occasion
-              sanzenvim
-              quickshell
-              my-nur
-              vicinae
-              winapps
-              ;
-          };
-        }
-      ];
-    };
-    # images.cwystaws-raspi = nixosConfigurations.cwystaws-raspi.config.system.build.sdImage;
-
-    nixosConfigurations.cwystaws-dormpi = nixpkgs.lib.nixosSystem {
-      system = "aarch64-linux";
-      specialArgs = {
-        inherit inputs secrets;
-      };
-      modules = [
-        # sd card image
-        nixos-generators.nixosModules.sd-aarch64
-
-        configs.raspi
-        # NUR, catppuccin, nix-flatpak, chaotic-nyx, lix
-        nur.modules.nixos.default
-        catppuccin.nixosModules.catppuccin
-
-        # HW
-        nixos-hardware.nixosModules.raspberry-pi-4
-
-        # Import the previous configuration.nix we used,
-        # so the old configuration file still takes effect
-        ./vars.nix
-        ./nix-settings.nix
-        ./host/devices/cwystaws-dormpi/host.nix
-
-        home-manager.nixosModules.home-manager
-        {
-          home-manager.useGlobalPkgs = true;
-          home-manager.useUserPackages = true;
-          home-manager.backupFileExtension = "hmbkup";
-          home-manager.users.itscrystalline = {
-            imports = [
-              ./vars.nix
-              ./home/home-linux.nix
-
-              configs.raspi
-              catppuccin.homeModules.catppuccin
-              nix-flatpak.homeManagerModules.nix-flatpak
-              nix-index-database.homeModules.nix-index
-              occasion.homeManagerModule
-              vicinae.homeManagerModules.default
-            ];
-          };
-
-          home-manager.extraSpecialArgs = {
-            inherit
-              nixpkgs
-              inputs
-              nur
-              secrets
-              occasion
-              sanzenvim
-              quickshell
-              my-nur
-              vicinae
-              winapps
-              ;
-          };
-        }
-      ];
-    };
-    images.cwystaws-dormpi = nixosConfigurations.cwystaws-dormpi.config.system.build.sdImage;
 
     # nix-on-droid
     nixOnDroidConfigurations.cwystaw-the-neko = nix-on-droid.lib.nixOnDroidConfiguration {
