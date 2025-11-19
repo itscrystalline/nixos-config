@@ -57,17 +57,14 @@ jobs:
           set -eu
           set -f # disable globbing
 
-          if [[ -n "${OUT_PATHS}" ]]; then
-            echo "Uploading paths" $OUT_PATHS
-            nix copy --to "http://cache.crys" $OUT_PATHS
-          fi
+          echo "Uploading paths" $OUT_PATHS
+          exec nix copy --to "http://cache.crys" $OUT_PATHS || true
           EOF
 
           sed -i "s+nix+`which nix`+g" /tmp/post-build-hook.sh
           chmod +x /tmp/post-build-hook.sh 
 
-
     - name: "Build Image ${{ matrix.derivation }}"
       run: |
-        nix build .#${{ matrix.derivation }} -L 2>&1
+        nix build --no-link .#${{ matrix.derivation }} -L 2>&1
 
