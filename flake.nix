@@ -8,6 +8,10 @@
     nixpkgs-bluez-5-75.url = "github:NixOS/nixpkgs/038fb464fcfa79b4f08131b07f2d8c9a6bcc4160";
     chaotic.url = "github:chaotic-cx/nyx/nyxpkgs-unstable"; # chaotic-nyx: cachyos kernel
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
+    nixos-generators = {
+      url = "github:nix-community/nixos-generators";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     home-manager = {
       url = "github:nix-community/home-manager/release-25.05";
       # The `follows` keyword in inputs is used for inheritance.
@@ -86,6 +90,7 @@
     chaotic,
     nixos-hardware,
     nix-on-droid,
+    nixos-generators,
     nur,
     my-nur,
     home-manager,
@@ -95,10 +100,8 @@
     nix-jebrains-plugins,
     blender-flake,
     nix-flatpak,
-    # nvchad4nix,
     sanzenvim,
     binaryninja,
-    # nixvim,
     occasion,
     nix-index-database,
     quickshell,
@@ -130,6 +133,8 @@
         inherit inputs blender-flake secrets;
       };
       modules = [
+        nixos-generators.nixosModules.formats.iso
+
         configs.cwystaws-meowchine
         # NUR, catppuccin, nix-flatpak, chaotic-nyx, lix
         nur.modules.nixos.default
@@ -163,8 +168,6 @@
               catppuccin.homeModules.catppuccin
               nix-flatpak.homeManagerModules.nix-flatpak
               nix-index-database.homeModules.nix-index
-              # nvchad4nix.homeManagerModule
-              # nixvim.homeManagerModules.nixvim
               occasion.homeManagerModule
               vicinae.homeManagerModules.default
             ];
@@ -250,8 +253,7 @@
       };
       modules = [
         # sd card image
-        # "${nixpkgs}/nixos/modules/installer/sd-card/sd-image-aarch64.nix"
-        # {nixpkgs.config.allowUnsupportedSystem = true;}
+        nixos-generators.nixosModules.formats.sd-aarch64
 
         configs.raspi
         # NUR, catppuccin, nix-flatpak, chaotic-nyx, lix
@@ -315,10 +317,7 @@
       };
       modules = [
         # sd card image
-        # "${nixpkgs}/nixos/modules/installer/sd-card/sd-image-aarch64.nix"
-        # {
-        #   nixpkgs.config.allowUnsupportedSystem = true;
-        # }
+        nixos-generators.nixosModules.formats.sd-aarch64
 
         configs.raspi
         # NUR, catppuccin, nix-flatpak, chaotic-nyx, lix
@@ -348,8 +347,6 @@
               catppuccin.homeModules.catppuccin
               nix-flatpak.homeManagerModules.nix-flatpak
               nix-index-database.homeModules.nix-index
-              # nvchad4nix.homeManagerModule
-              # nixvim.homeManagerModules.nixvim
               occasion.homeManagerModule
               vicinae.homeManagerModules.default
             ];

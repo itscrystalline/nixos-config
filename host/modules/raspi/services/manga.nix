@@ -1,7 +1,6 @@
 {
   inputs,
   config,
-  secrets,
   mkLocalNginx,
   ...
 }: {
@@ -10,11 +9,14 @@
   ];
 
   nixpkgs.overlays = [
-    (final: prev: {
-      suwayomi-server = (import inputs.suwayomi {
-        config.allowUnfree = true;
-        system = prev.system;
-      }).suwayomi-server;
+    (_: prev: {
+      inherit
+        ((import inputs.suwayomi {
+          config.allowUnfree = true;
+          inherit (prev) system;
+        }))
+        suwayomi-server
+        ;
     })
   ];
   services.suwayomi-server = {

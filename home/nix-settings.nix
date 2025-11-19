@@ -30,7 +30,7 @@
         "cwystaws-raspi:2xuwbE44tVXZdoV8OJYaTXJT1PoKF3nD0fc9dDix41s="
       ];
       access-tokens = "github.com=${secrets.ghToken}";
-      post-build-hook = "${./post-build-hook.sh}";
+      post-build-hook = "${../post-build-hook.sh}";
       trusted-users = ["root" "itscrystalline" "nixremote" "opc" "ubuntu"];
 
       # Optimize storage
@@ -45,21 +45,15 @@
     nixPath =
       [
         "nixpkgs=${inputs.nixpkgs}"
-        "nixpkgs-unstable=${inputs.nixpkgs-unstable}"
         "nur=${inputs.nur}"
       ]
-      ++ lib.optionals pkgs.stdenv.isDarwin [
-        "darwin=${inputs.nix-darwin}"
-      ]
       ++ lib.optionals pkgs.stdenv.isLinux ([
-          "nixos-hardware=${inputs.nixos-hardware}"
           "home-manager=${inputs.home-manager}"
           "catppuccin=${inputs.catppuccin}"
         ]
         ++ lib.optionals config.gui [
           "zen-browser=${inputs.zen-browser}"
           "nix-jebrains-plugins=${inputs.nix-jebrains-plugins}"
-          "nix-flatpak=${inputs.nix-flatpak}"
         ]);
     package = pkgs.lixPackageSets.stable.lix;
 
@@ -67,35 +61,6 @@
     extraOptions = ''
       builders-use-substitutes = true
     '';
-
-    # remote buliders
-    buildMachines = lib.optionals pkgs.stdenv.isLinux [
-      {
-        hostName = "cwystaws-siwwybowox";
-        system = "aarch64-linux";
-        protocol = "ssh-ng";
-        # if the builder supports building for multiple architectures,
-        # replace the previous line by, e.g.
-        # systems = ["x86_64-linux" "aarch64-linux"];
-        maxJobs = 8;
-        speedFactor = 2;
-        supportedFeatures = [];
-        mandatoryFeatures = [];
-      }
-      # {
-      #   hostName = "cwystaws-grass-box";
-      #   system = "aarch64-linux";
-      #   protocol = "ssh-ng";
-      #   # if the builder supports building for multiple architectures,
-      #   # replace the previous line by, e.g.
-      #   # systems = ["x86_64-linux" "aarch64-linux"];
-      #   maxJobs = 8;
-      #   speedFactor = 2;
-      #   supportedFeatures = [];
-      #   mandatoryFeatures = [];
-      # }
-    ];
-    distributedBuilds = pkgs.stdenv.isLinux;
   };
 
   # Allow unfree packages
@@ -121,12 +86,4 @@
         ;
     })
   ];
-
-  # This value determines the NixOS release from which the default
-  # settings for stateful data, like file locations and database versions
-  # on your system were taken. It‘s perfectly fine and recommended to leave
-  # this value at the release version of the first install of this system.
-  # Before changing this value read the documentation for this option
-  # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
-  system.stateVersion = "25.05"; # Did you read the comment?
 }
