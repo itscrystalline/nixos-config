@@ -22,10 +22,10 @@
     # https://spot13.com/pmcalculator/
     poolSettings = {
       pm = "dynamic";
-      "pm.max_children" = "75";
-      "pm.max_spare_servers" = "50";
-      "pm.min_spare_servers" = "25";
-      "pm.start_servers" = "25";
+      "pm.max_children" = "48";
+      "pm.max_spare_servers" = "38";
+      "pm.min_spare_servers" = "12";
+      "pm.start_servers" = "12";
       "pm.max_requests" = "750";
     };
     phpOptions = {
