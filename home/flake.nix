@@ -47,19 +47,6 @@
   outputs = inputs @ {
     nixpkgs,
     home-manager,
-    sanzenvim,
-    catppuccin,
-    zen-browser,
-    nix-jebrains-plugins,
-    nur,
-    blender-flake,
-    nix-flatpak,
-    occasion,
-    nix-index-database,
-    quickshell,
-    my-nur,
-    vicinae,
-    winapps,
     ...
   }: let
     system = "aarch64-linux";
@@ -67,10 +54,9 @@
     secrets = builtins.fromJSON (builtins.readFile ../secrets/secrets.json);
     oracle-cloud = username: doas: {
       config = {
+        inherit doas username;
         gui = false;
-        doas = doas;
         keep_generations = 5;
-        username = username;
       };
     };
     home_config = username: doas:
@@ -86,10 +72,10 @@
 
           ({inputs, ...}: {
             nixpkgs.overlays = [
-              (final: prev: {
+              (_: prev: {
                 unstable = import inputs.nixpkgs {
                   config.allowUnfree = true;
-                  system = prev.system;
+                  inherit (prev) system;
                 };
               })
             ];
@@ -99,28 +85,16 @@
 
           ./nix-settings.nix
 
-          catppuccin.homeModules.catppuccin
-          nix-flatpak.homeManagerModules.nix-flatpak
-          occasion.homeManagerModule
-          nix-index-database.homeModules.nix-index
-          vicinae.homeManagerModules.default
+          inputs.catppuccin.homeModules.catppuccin
+          inputs.nix-flatpak.homeManagerModules.nix-flatpak
+          inputs.occasion.homeManagerModule
+          inputs.nix-index-database.homeModules.nix-index
+          inputs.vicinae.homeManagerModules.default
         ];
         # Optionally use extraSpecialArgs
         # to pass through arguments to home.nix
         extraSpecialArgs = {
-          inherit inputs;
-          inherit nixpkgs;
-          inherit zen-browser;
-          inherit nix-jebrains-plugins;
-          inherit nur;
-          inherit blender-flake;
-          inherit occasion;
-          inherit sanzenvim;
-          inherit quickshell;
-          inherit my-nur;
-          inherit vicinae;
-          inherit winapps;
-          inherit secrets;
+          inherit inputs nixpkgs secrets;
         };
       };
   in {

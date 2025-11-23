@@ -2,10 +2,10 @@
   config,
   pkgs,
   lib,
-  my-nur,
-  sanzenvim,
+  inputs,
   ...
-} @ inputs: let
+}: let
+  inherit (inputs) sanzenvim my-nur;
   # pluginList = let
   #   plugins = nix-jebrains-plugins.plugins."${pkgs.system}".idea-ultimate."2024.3";
   # in [

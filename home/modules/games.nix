@@ -1,30 +1,31 @@
 {
   config,
   pkgs,
-  nur,
-  my-nur,
   lib,
+  inputs,
   ...
-}:
-lib.mkIf config.gui {
-  home.packages = with pkgs; [
-    (prismlauncher.override {
-      # Add binary required by some mod
-      additionalPrograms = [ffmpeg];
+}: let
+  inherit (inputs) nur my-nur;
+in
+  lib.mkIf config.gui {
+    home.packages = with pkgs; [
+      (prismlauncher.override {
+        # Add binary required by some mod
+        additionalPrograms = [ffmpeg];
 
-      gamemodeSupport = true;
+        gamemodeSupport = true;
 
-      # Change Java runtimes available to Prism Launcher
-      jdks = [
-        graalvm-ce
-        zulu8
-        zulu21
-        nur.legacyPackages."${pkgs.system}".repos."7mind".graalvm-legacy-packages.graalvm17-ce
-      ];
-    })
-    itch
-    mcpelauncher-ui-qt
+        # Change Java runtimes available to Prism Launcher
+        jdks = [
+          graalvm-ce
+          zulu8
+          zulu21
+          nur.legacyPackages."${pkgs.system}".repos."7mind".graalvm-legacy-packages.graalvm17-ce
+        ];
+      })
+      itch
+      mcpelauncher-ui-qt
 
-    my-nur.packages.${pkgs.system}.irony-mod-manager
-  ];
-}
+      my-nur.packages.${pkgs.system}.irony-mod-manager
+    ];
+  }

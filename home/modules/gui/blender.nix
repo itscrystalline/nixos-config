@@ -2,9 +2,10 @@
   config,
   pkgs,
   lib,
-  blender-flake,
+  inputs,
   ...
 }: let
+  inherit (inputs) blender-flake;
   blender_addons_zip_path = "~/.config/blender/4.3/extensions/zips";
   blender_addons_path = "~/.config/blender/4.3/extensions/user_default";
   blender_addons_script = ''

@@ -1,16 +1,15 @@
 {
   config,
   pkgs,
-  zen-browser,
-  quickshell,
-  winapps,
-  my-nur,
+  inputs,
   lib,
   ...
-} @ inputs: {
+}: let
+  inherit (inputs) zen-browser my-nur quickshell winapps;
+in {
   imports = [./gui.nix];
 
-  home.sessionVariables.QML2_IMPORT_PATH = lib.optionalString config.gui "${pkgs.kdePackages.qtdeclarative}/lib/qt-6/qml:${inputs.quickshell.packages.${pkgs.system}.default}/lib/qt-6/qml";
+  home.sessionVariables.QML2_IMPORT_PATH = lib.optionalString config.gui "${pkgs.kdePackages.qtdeclarative}/lib/qt-6/qml:${quickshell.packages.${pkgs.system}.default}/lib/qt-6/qml";
   # desktop file
   xdg.desktopEntries.LINE = lib.mkIf config.gui {
     name = "LINE";
@@ -31,7 +30,7 @@
       winapps.packages."${pkgs.system}".winapps-launcher
 
       teams-for-linux # teams :vomit:
-      (youtube-music.overrideAttrs (finalAttrs: previousAttrs: {
+      (youtube-music.overrideAttrs {
         desktopItems = [
           (makeDesktopItem {
             name = "youtube-music";
@@ -42,7 +41,7 @@
             categories = ["AudioVideo"];
           })
         ];
-      })) # YT Music
+      }) # YT Music
       teamviewer
       pavucontrol
 
