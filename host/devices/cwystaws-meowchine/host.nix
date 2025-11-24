@@ -1,4 +1,4 @@
-{lib, ...} @ inputs: {
+{lib, ...}: {
   imports = [
     ./hardware-configuration.nix
     ../../modules/main/boot.nix
@@ -9,6 +9,7 @@
     ../../modules/main/network.nix
     ../../modules/main/asus.nix
     ../../modules/main/hyprland.nix
+    ../../modules/main/niri.nix
     ../../modules/main/pipewire/pipewire.nix
     ../../modules/main/games.nix
     ../../modules/main/flatpak.nix

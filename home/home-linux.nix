@@ -1,8 +1,4 @@
-{
-  pkgs,
-  config,
-  ...
-} @ inputs: {
+{config, ...}: {
   home.homeDirectory = "/home/${config.username}";
   imports = [
     ./home.nix
@@ -13,5 +9,8 @@
     ./modules/flatpak.nix
     ./modules/virtualisation.nix
     ./modules/services.nix
+
+    ./modules/niri.nix
+    ./modules/ignis.nix
   ];
 }

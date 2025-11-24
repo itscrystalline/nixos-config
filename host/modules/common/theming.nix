@@ -15,7 +15,6 @@ lib.mkIf config.gui {
   ];
 
   qt.enable = true;
-
   fonts = {
     packages = with pkgs; [
       noto-fonts
@@ -35,18 +34,36 @@ lib.mkIf config.gui {
         monospace = ["JetbrainsMono Nerd Font Mono" "Material Symbols Rounded" "Noto Color Emoji"];
       };
     };
+
+    fontDir.enable = true;
   };
 
-  # flatpak compat
-  fonts.fontDir.enable = true;
-
-  catppuccin = {
-    flavor = "mocha";
-    accent = "pink";
+  stylix = {
     enable = true;
+    base16Scheme = "${pkgs.base16-schemes}/share/themes/catppuccin-mocha.yaml";
+    polarity = "dark";
+    autoEnable = true;
+    fonts = rec {
+      serif = {
+        package = pkgs.inter;
+        name = "Inter";
+      };
+      sansSerif = serif;
+      monospace = {
+        package = pkgs.nerd-fonts.jetbrains-mono;
+        name = "JetbrainsMono Nerd Font Mono";
+      };
+      emoji = {
+        package = pkgs.noto-fonts-color-emoji;
+        name = "Noto Color Emoji";
+      };
+    };
+    cursor = {
+      name = "catppuccin-mocha-pink-cursors";
+      package = pkgs.catppuccin-cursors.mochaPink;
+      size = 48;
+    };
 
-    plymouth.enable = lib.mkForce false;
-    # tty.enable = true;
-    # fcitx5.enable = true;
+    targets.plymouth.enable = false;
   };
 }

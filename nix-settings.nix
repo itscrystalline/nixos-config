@@ -54,12 +54,14 @@
       ++ lib.optionals pkgs.stdenv.isLinux ([
           "nixos-hardware=${inputs.nixos-hardware}"
           "home-manager=${inputs.home-manager}"
-          "catppuccin=${inputs.catppuccin}"
+          "stylix-2505=${inputs.stylix-2505}"
+          "stylix-unstable=${inputs.stylix-unstable}"
         ]
         ++ lib.optionals config.gui [
           "zen-browser=${inputs.zen-browser}"
-          "nix-jebrains-plugins=${inputs.nix-jebrains-plugins}"
           "nix-flatpak=${inputs.nix-flatpak}"
+          "niri=${inputs.niri}"
+          "ignis=${inputs.ignis}"
         ]);
     package = pkgs.lixPackageSets.stable.lix;
 
@@ -120,6 +122,7 @@
         colmena
         ;
     })
+    inputs.niri.overlays.niri
   ];
 
   # This value determines the NixOS release from which the default

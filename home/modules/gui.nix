@@ -3,16 +3,10 @@
   pkgs,
   lib,
   ...
-} @ inputs: {
+}: {
   imports = [
     ./gui/blender.nix
   ];
-  programs.chromium = lib.mkIf config.gui {
-    enable = true;
-    extensions = [
-      "ophjlpahpchlmihnnnihgmmeilfjmjjc" # LINE
-    ];
-  };
 
   home.packages = lib.mkIf config.gui (
     with pkgs.stable;
@@ -21,14 +15,6 @@
         beeper # others
         keepassxc
         vlc
-        # (ghostty.overrideAttrs (_: {
-        #   preBuild = ''
-        #     shopt -s globstar
-        #     sed -i 's/^const xev = @import("xev");$/const xev = @import("xev").Epoll;/' **/*.zig
-        #     shopt -u globstar
-        #   '';
-        # }))
-        ghostty
 
         # video, audio, and image editing
         kdePackages.kdenlive
@@ -47,22 +33,37 @@
         youtube-music
       ]
   );
+  programs = lib.mkIf config.gui {
+    chromium = {
+      enable = true;
+      extensions = [
+        "ophjlpahpchlmihnnnihgmmeilfjmjjc" # LINE
+      ];
+    };
 
-  programs.obs-studio = lib.mkIf config.gui {
-    enable = true;
-    plugins = with pkgs.stable.obs-studio-plugins; [
-      obs-composite-blur
-      obs-backgroundremoval
-      droidcam-obs
-    ];
-  };
+    obs-studio = {
+      enable = true;
+      plugins = with pkgs.stable.obs-studio-plugins; [
+        obs-composite-blur
+        obs-backgroundremoval
+        droidcam-obs
+      ];
+    };
 
-  programs.kitty = lib.mkIf config.gui {
-    enable = true;
-    shellIntegration = {
+    kitty = {
+      enable = true;
+      shellIntegration = {
+        enableZshIntegration = true;
+      };
+    };
+
+    fuzzel.enable = true;
+
+    ghostty = {
+      enable = true;
       enableZshIntegration = true;
+      enableBashIntegration = true;
+      settings.font-size = 12;
     };
   };
-
-  programs.fuzzel.enable = config.gui;
 }

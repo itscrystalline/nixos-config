@@ -2,9 +2,8 @@
   config,
   pkgs,
   lib,
-  nix-jebrains-plugins,
   ...
-} @ inputs: {
+}: {
   imports = [./ides.nix];
 
   home.packages = with pkgs;

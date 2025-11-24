@@ -18,12 +18,13 @@
       url = "github:nix-darwin/nix-darwin/nix-darwin-25.05";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    catppuccin.url = "github:catppuccin/nix/release-25.05";
     zen-browser = {
-      url = "github:youwen5/zen-browser-flake";
-      inputs.nixpkgs.follows = "nixpkgs";
+      url = "github:0xc000022070/zen-browser-flake";
+      inputs = {
+        nixpkgs.follows = "nixpkgs";
+        home-manager.follows = "home-manager";
+      };
     };
-    nix-jebrains-plugins.url = "github:theCapypara/nix-jebrains-plugins";
     nur = {
       url = "github:nix-community/NUR";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -45,14 +46,24 @@
     };
     quickshell = {
       url = "git+https://git.outfoxxed.me/outfoxxed/quickshell";
-      # THIS IS IMPORTANT
-      # Mismatched system dependencies will lead to crashes and other issues.
       inputs.nixpkgs.follows = "nixpkgs";
     };
-
     vicinae.url = "github:vicinaehq/vicinae";
     winapps = {
       url = "github:winapps-org/winapps";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    stylix-2505.url = "github:nix-community/stylix/release-25.05";
+    stylix-unstable.url = "github:nix-community/stylix";
+    niri = {
+      url = "github:sodiboo/niri-flake";
+      inputs = {
+        nixpkgs.follows = "nixpkgs-unstable";
+        nixpkgs-stable.follows = "nixpkgs";
+      };
+    };
+    ignis = {
+      url = "github:ignis-sh/ignis";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
@@ -98,11 +109,18 @@
               then configs.raspi
               else configs.cwystaws-meowchine
             )
-            inputs.catppuccin.homeModules.catppuccin
             inputs.nix-flatpak.homeManagerModules.nix-flatpak
             inputs.nix-index-database.homeModules.nix-index
             inputs.occasion.homeManagerModule
             inputs.vicinae.homeManagerModules.default
+            inputs.zen-browser.homeModules.twilight
+            inputs.ignis.homeManagerModules.default
+
+            (
+              if raspi
+              then inputs.stylix-2505.homeModules.stylix
+              else {}
+            )
           ];
         };
 
@@ -120,8 +138,9 @@
       modules = [
         configs.cwystaws-meowchine
         inputs.nur.modules.nixos.default
-        inputs.catppuccin.nixosModules.catppuccin
+        inputs.stylix-2505.nixosModules.stylix
         inputs.nix-flatpak.nixosModules.nix-flatpak
+        inputs.niri.nixosModules.niri
         chaotic.nixosModules.nyx-cache
         chaotic.nixosModules.nyx-overlay
         chaotic.nixosModules.nyx-registry
@@ -144,7 +163,7 @@
       modules = [
         configs.raspi
         inputs.nur.modules.nixos.default
-        inputs.catppuccin.nixosModules.catppuccin
+        inputs.stylix-2505.nixosModules.stylix
         nixos-hardware.nixosModules.raspberry-pi-4
 
         ./vars.nix
@@ -178,6 +197,7 @@
         ./nix-settings.nix
         ./host/devices/cwystaws-macbook/host.nix
 
+        inputs.stylix.darwinModules.stylix
         home-manager.darwinModules.home-manager
         (home false)
       ];

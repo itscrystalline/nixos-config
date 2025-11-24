@@ -6,40 +6,12 @@
   ...
 }: let
   inherit (inputs) sanzenvim my-nur;
-  # pluginList = let
-  #   plugins = nix-jebrains-plugins.plugins."${pkgs.system}".idea-ultimate."2024.3";
-  # in [
-  #   plugins."com.github.catppuccin.jetbrains"
-  #   plugins."com.github.catppuccin.jetbrains_icons"
-  #   plugins."io.github.pandier.intellijdiscordrp"
-  #   plugins."nix-idea"
-  #   plugins."systems.fehn.intellijdirenv"
-  #   plugins."IdeaVIM"
-  # ];
-  #
-  # idea_pluginList = let
-  #   plugins = nix-jebrains-plugins.plugins."${pkgs.system}".idea-ultimate."2024.3";
-  # in [
-  #   plugins."com.demonwav.minecraft-dev"
-  #   plugins."com.github.tth05.minecraft-nbt-intellij-plugin"
-  # ];
-  #
-  # rustrover_pluginList = let
-  #   plugins = nix-jebrains-plugins.plugins."${pkgs.system}".rust-rover."2024.3";
-  # in [
-  #   plugins."PythonCore"
-  # ];
   jetbrainsWayland = ''
     -Dawt.toolkit.name=WLToolkit
   '';
 in {
   home.packages = with pkgs;
     lib.optionals config.gui [
-      # (jetbrains.plugins.addPlugins unstable.jetbrains.idea-ultimate (pluginList ++ idea_pluginList))
-      # (jetbrains.plugins.addPlugins unstable.jetbrains.rust-rover (pluginList ++ rustrover_pluginList))
-      # (jetbrains.plugins.addPlugins unstable.jetbrains.pycharm-professional pluginList)
-      # (jetbrains.plugins.addPlugins unstable.jetbrains.webstorm pluginList)
-      # ida-free
       arduino-ide
       neovide
       unityhub

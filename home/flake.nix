@@ -8,10 +8,12 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    catppuccin.url = "github:catppuccin/nix/release-25.05";
     zen-browser = {
-      url = "github:youwen5/zen-browser-flake";
-      inputs.nixpkgs.follows = "nixpkgs";
+      url = "github:0xc000022070/zen-browser-flake";
+      inputs = {
+        nixpkgs.follows = "nixpkgs";
+        home-manager.follows = "home-manager";
+      };
     };
     nix-jebrains-plugins.url = "github:theCapypara/nix-jebrains-plugins";
     nur = {
@@ -28,8 +30,11 @@
 
     occasion.url = "github:itscrystalline/occasion";
     nix-index-database = {
-      url = "github:nix-community/nix-index-database";
-      inputs.nixpkgs.follows = "nixpkgs";
+      url = "github:0xc000022070/zen-browser-flake/revert-155-fix/zen-symlink";
+      inputs = {
+        nixpkgs.follows = "nixpkgs";
+        home-manager.follows = "home-manager";
+      };
     };
     quickshell = {
       url = "git+https://git.outfoxxed.me/outfoxxed/quickshell";
@@ -40,6 +45,16 @@
     vicinae.url = "github:vicinaehq/vicinae";
     winapps = {
       url = "github:winapps-org/winapps";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    stylix.url = "github:nix-community/stylix";
+
+    niri = {
+      url = "github:sodiboo/niri-flake";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    ignis = {
+      url = "github:ignis-sh/ignis";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
@@ -85,11 +100,14 @@
 
           ./nix-settings.nix
 
-          inputs.catppuccin.homeModules.catppuccin
+          inputs.stylix.homeModules.stylix
           inputs.nix-flatpak.homeManagerModules.nix-flatpak
           inputs.occasion.homeManagerModule
           inputs.nix-index-database.homeModules.nix-index
           inputs.vicinae.homeManagerModules.default
+          inputs.zen-browser.homeModules.twilight
+          inputs.niri.homeModules.niri
+          inputs.ignis.homeManagerModules.default
         ];
         # Optionally use extraSpecialArgs
         # to pass through arguments to home.nix
