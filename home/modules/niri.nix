@@ -8,8 +8,8 @@
     if (builtins.hasAttr "niri" options.programs) && config.gui
     then {
       niri = {
-        enable = true;
-        package = pkgs.niri-stable;
+        # enable = true;
+        # package = pkgs.niri-stable;
         settings = {
           binds = with config.lib.niri.actions; let
             sh = spawn "sh" "-c";
@@ -37,8 +37,8 @@
             "Mod+2".action = focus-workspace-down;
             "Mod+Up".action = focus-window-up-or-column-right;
             "Mod+Down".action = focus-window-down-or-column-left;
-            "Mod+Left".action = focus-window-or-monitor-left;
-            "Mod+Right".action = focus-window-or-monitor-right;
+            "Mod+Left".action = focus-column-or-monitor-left;
+            "Mod+Right".action = focus-column-or-monitor-right;
             "Mod+WheelScrollUp".action = focus-column-right;
             "Mod+WheelScrollDown".action = focus-column-left;
             "Mod+TouchpadScrollUp".action = focus-column-right;
@@ -153,8 +153,8 @@
               position = {
                 x = 0;
                 y = 0;
-                scale = 1;
               };
+              scale = 1;
               variable-refresh-rate = "on-demand";
             };
             HDMI-A-1 = {
@@ -166,8 +166,8 @@
               position = {
                 x = 1920;
                 y = 0;
-                scale = 1;
               };
+              scale = 1;
               variable-refresh-rate = true;
             };
           };
