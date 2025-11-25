@@ -9,7 +9,7 @@
     then {
       niri = {
         # enable = true;
-        # package = pkgs.niri-stable;
+        package = pkgs.niri-stable;
         settings = {
           binds = with config.lib.niri.actions; let
             sh = spawn "sh" "-c";
@@ -72,13 +72,11 @@
             "Mod+Q".action = close-window;
             "Mod+Grave".action = toggle-overview;
             "Mod+Tab".action = switch-preset-window-height;
-            "Mod+Shift+S".action = screenshot;
+            "Mod+Shift+S".action.screenshot = {};
             "Mod+Shift+C".action = spawn "hyprpicker" "-a";
-            "Mod+Shift+Alt+S".action = screenshot-window {write-to-disk = true;};
-            "Print".action = {
-              screenshot-screen = 1;
-              write-to-disk = true;
-            };
+            "Mod+Shift+Alt+S".action.screenshot-window.write-to-disk = true;
+            "Print".action.screenshot-screen.write-to-disk = true;
+
             "Mod+Alt+R".action = spawn "ignis" "run-command" "recorder-record-region";
             "Mod+Alt+Shift+R".action = spawn "ignis" "run-command" "recorder-record-screen";
             "Mod+Alt+Control+R".action = spawn "ignis" "run-command" "recorder-record-portal";
