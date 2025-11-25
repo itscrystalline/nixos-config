@@ -89,7 +89,7 @@
             "Mod+B".action = spawn "neovide";
             "Mod+Return".action = spawn "ghostty";
             "Mod+L".action = spawn "hyprlock";
-            "Mod+Control+Alt".action = sh "pgrep youtube-music && niri msg action focus-workspace music || youtube-music --enable-features=UseOzonePlatform --ozone-platform=wayland --enable-wayland-ime &";
+            "Mod+Control+M".action = sh "pgrep youtube-music && niri msg action focus-workspace music || youtube-music --enable-features=UseOzonePlatform --ozone-platform=wayland --enable-wayland-ime &";
             "Control+Shift+Escape".action = spawn "missioncenter";
           };
           switch-events.lid-close.action.spawn = ["systemctl" "suspend"];
