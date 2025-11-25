@@ -71,6 +71,7 @@
 
             "Mod+Q".action = close-window;
             "Mod+Grave".action = toggle-overview;
+            "Mod+Tab".action = switch-preset-window-height;
             "Mod+Shift+S".action = screenshot;
             "Mod+Shift+C".action = spawn "hyprpicker" "-a";
             "Mod+Shift+Alt+S".action = screenshot_window {write-to-disk = true;};
@@ -139,6 +140,61 @@
               enable = true;
               mode = "center-xy";
             };
+          };
+
+          outputs = {
+            eDP-1 = {
+              mode = {
+                width = 1920;
+                height = 1080;
+                refresh = 144.0;
+              };
+              position = {
+                x = 0;
+                y = 0;
+                scale = 1;
+              };
+              variable-refresh-rate = "on-demand";
+            };
+            HDMI-A-1 = {
+              mode = {
+                width = 1920;
+                height = 1080;
+                refresh = 100.0;
+              };
+              position = {
+                x = 1920;
+                y = 0;
+                scale = 1;
+              };
+              variable-refresh-rate = true;
+            };
+          };
+
+          layout = {
+            gaps = 12;
+            border = {
+              enable = true;
+              width = 4;
+            };
+            focus-ring = {
+              enable = true;
+              width = 8;
+            };
+            shadow = {
+              enable = true;
+              draw-behind-window = true;
+              offset.x = 0;
+              offset.y = 0;
+              spread = 16;
+            };
+            preset-window-heights = [
+              {proportion = 1.0 / 3.0;}
+              {proportion = 1.0 / 2.0;}
+              {proportion = 2.0 / 3.0;}
+            ];
+            center-focused-column = "on-overflow";
+            default-column-width = {};
           };
         };
       };
