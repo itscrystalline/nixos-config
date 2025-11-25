@@ -99,6 +99,7 @@
           screenshot-path = "~/Pictures/Screenshots/Screenshot at %Y-%m-%d %H-%M-%S.png";
           workspaces = {
             social.open-on-output = "eDP-1";
+            keepass.open-on-output = "eDP-1";
             music = {};
           };
 
@@ -196,6 +197,32 @@
             center-focused-column = "on-overflow";
             default-column-width = {};
           };
+
+          window-rules = let
+            mkWorkspace = name: workspace: {
+              matches = [
+                {
+                  app-id = name;
+                  title = name;
+                }
+              ];
+              open-on-workspace = workspace;
+            };
+          in [
+            (mkWorkspace "vesktop" "social")
+            (mkWorkspace "teams-for-linux" "social")
+            (mkWorkspace "LINE" "social")
+            (mkWorkspace "valent" "social")
+
+            (mkWorkspace "org.keepassxc.KeePassXC" "keepass")
+
+            (mkWorkspace "com.github.th_ch.youtube_music" "music")
+
+            {
+              matches = [{title = "^(steam)$";}];
+              tiled-state = false;
+            }
+          ];
         };
       };
     }
