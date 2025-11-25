@@ -15,7 +15,6 @@
         home-manager.follows = "home-manager";
       };
     };
-    nix-jebrains-plugins.url = "github:theCapypara/nix-jebrains-plugins";
     nur = {
       url = "github:nix-community/NUR";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -26,7 +25,6 @@
     blender-flake.url = "github:edolstra/nix-warez?dir=blender";
     nix-flatpak.url = "github:gmodena/nix-flatpak";
     sanzenvim.url = "github:itscrystalline/sanzenvim";
-    # nixvim.url = "github:nix-community/nixvim";
 
     occasion.url = "github:itscrystalline/occasion";
     nix-index-database = {
@@ -35,8 +33,6 @@
     };
     quickshell = {
       url = "git+https://git.outfoxxed.me/outfoxxed/quickshell";
-      # THIS IS IMPORTANT
-      # Mismatched system dependencies will lead to crashes and other issues.
       inputs.nixpkgs.follows = "nixpkgs";
     };
     vicinae.url = "github:vicinaehq/vicinae";
