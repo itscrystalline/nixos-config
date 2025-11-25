@@ -20,6 +20,7 @@
         "https://sanzenvim.cachix.org"
         "https://nix-community.cachix.org"
         "https://nixpkgs-python.cachix.org"
+        "https://niri.cachix.org"
         "http://cache.crys"
       ];
       trusted-public-keys = [
@@ -27,6 +28,7 @@
         "sanzenvim.cachix.org-1:zNf9OhUUfJ/NM55vbjx9fSM6O/Q3L6JDoFwU1VCEohc="
         "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
         "nixpkgs-python.cachix.org-1:hxjI7pFxTyuTHn2NkvWCrAUcNZLNS3ZAvfYNuYifcEU="
+        "niri.cachix.org-1:Wv0OmO7PsuocRKzfDoJ3mulSl7Z6oezYhGhR+3W2964="
         "cwystaws-raspi:2xuwbE44tVXZdoV8OJYaTXJT1PoKF3nD0fc9dDix41s="
       ];
       access-tokens = "github.com=${secrets.ghToken}";
