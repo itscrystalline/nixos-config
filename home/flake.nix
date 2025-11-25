@@ -30,11 +30,8 @@
 
     occasion.url = "github:itscrystalline/occasion";
     nix-index-database = {
-      url = "github:0xc000022070/zen-browser-flake/revert-155-fix/zen-symlink";
-      inputs = {
-        nixpkgs.follows = "nixpkgs";
-        home-manager.follows = "home-manager";
-      };
+      url = "github:nix-community/nix-index-database";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
     quickshell = {
       url = "git+https://git.outfoxxed.me/outfoxxed/quickshell";
