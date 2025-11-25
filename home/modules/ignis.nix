@@ -1,6 +1,10 @@
-{pkgs, ...}: {
+{
+  pkgs,
+  config,
+  ...
+}: {
   programs.ignis = {
-    enable = true;
+    enable = config.gui;
     addToPythonEnv = true;
     services = {
       bluetooth.enable = true;

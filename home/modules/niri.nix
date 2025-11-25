@@ -5,7 +5,7 @@
   ...
 }: {
   programs =
-    if builtins.hasAttr "niri" options.programs
+    if (builtins.hasAttr "niri" options.programs) && config.gui
     then {
       niri = {
         enable = true;
