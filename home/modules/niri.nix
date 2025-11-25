@@ -74,7 +74,7 @@
             "Mod+Tab".action = switch-preset-window-height;
             "Mod+Shift+S".action = screenshot;
             "Mod+Shift+C".action = spawn "hyprpicker" "-a";
-            "Mod+Shift+Alt+S".action = screenshot_window {write-to-disk = true;};
+            "Mod+Shift+Alt+S".action = screenshot-window {write-to-disk = true;};
             "Print".action = {
               screenshot-screen = 1;
               write-to-disk = true;

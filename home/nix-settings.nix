@@ -51,8 +51,7 @@
       ]
       ++ lib.optionals pkgs.stdenv.isLinux ([
           "home-manager=${inputs.home-manager}"
-          "stylix-2505=${inputs.stylix-2505}"
-          "stylix-unstable=${inputs.stylix-unstable}"
+          "stylix=${inputs.stylix}"
         ]
         ++ lib.optionals config.gui [
           "zen-browser=${inputs.zen-browser}"
@@ -72,14 +71,13 @@
   # unstable overlay
   nixpkgs.overlays = [
     (_: prev: {
-      stable = import inputs.nixpkgs {
-        config.allowUnfree = true;
-        inherit (prev) system;
-      };
+      stable = prev;
       unstable = import inputs.nixpkgs-unstable {
         config.allowUnfree = true;
         inherit (prev) system;
       };
+
+      inherit (prev.stdenv.hostPlatform) system;
 
       inherit
         (prev.lixPackageSets.stable)

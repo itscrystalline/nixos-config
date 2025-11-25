@@ -62,8 +62,14 @@
       package = pkgs.catppuccin-cursors.mochaPink;
       size = 16;
     };
-    targets = {
-      starship.enable = false;
-    };
+    targets =
+      {
+        starship.enable = false;
+      }
+      // (
+        if builtins.hasAttr "zen-browser" config.stylix.targets
+        then {zen-browser.profileNames = ["crystal"];}
+        else {}
+      );
   };
 }

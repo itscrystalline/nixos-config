@@ -31,7 +31,6 @@ in {
       golangci-lint
       selene
       eslint_d
-      nodePackages.jsonlint
       checkstyle
       shellcheck
       ktlint
