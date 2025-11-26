@@ -122,7 +122,7 @@
       package = pkgs.unstable.hyfetch;
       enable = true;
       settings = {
-        preset = "transfeminine";
+        preset = "transbian";
         mode = "rgb";
         light_dark = "dark";
         lightness = 0.65;
