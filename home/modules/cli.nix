@@ -369,5 +369,12 @@
         broken_path_overlay = {foreground = "#585B70";};
       };
     };
+
+    zellij = {
+      enable = true;
+      attachExistingSession = true;
+      enableBashIntegration = true;
+      enableZshIntegration = true;
+    };
   };
 }
