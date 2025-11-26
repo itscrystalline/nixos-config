@@ -376,5 +376,12 @@
       enableBashIntegration = true;
       enableZshIntegration = true;
     };
+
+    fzf = {
+      enable = true;
+      enableBashIntegration = true;
+      enableZshIntegration = true;
+      tmux.enableShellIntegration = true;
+    };
   };
 }
