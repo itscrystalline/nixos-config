@@ -5,7 +5,7 @@
 }: {
   programs.ignis = {
     enable = config.gui;
-    addToPythonEnv = true;
+    # addToPythonEnv = true;
     services = {
       bluetooth.enable = true;
       recorder.enable = true;
@@ -18,8 +18,6 @@
     };
     extraPackages = with pkgs; [
       matugen
-      gpu-screen-recorder
-      gnome-bluetooth
     ];
   };
 }

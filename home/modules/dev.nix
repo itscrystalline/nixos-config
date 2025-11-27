@@ -13,10 +13,7 @@
       nixd
       gh
       cargo-mommy
-      (python313.withPackages (p: [
-        p.pyaudio
-        p.aubio
-      ]))
+      python3
     ]
     ++ pkgs.lib.optionals config.gui [
       filezilla

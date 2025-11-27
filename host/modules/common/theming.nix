@@ -22,9 +22,9 @@ lib.mkIf config.gui {
       noto-fonts-emoji
       inter
       nerd-fonts.jetbrains-mono
-      material-symbols
+      unstable.material-symbols
       sarabun-font
-      (import ./thai-sarabun-font.nix {inherit pkgs;})
+      inputs.my-nur.packages.${pkgs.system}.sipa-th-fonts
     ];
 
     fontconfig = {

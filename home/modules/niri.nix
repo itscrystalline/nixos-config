@@ -2,8 +2,11 @@
   options,
   config,
   pkgs,
+  lib,
   ...
-}: {
+}: let
+  inherit (config.lib.stylix) colors;
+in {
   programs =
     if (builtins.hasAttr "niri" options.programs) && config.gui
     then {
@@ -15,14 +18,15 @@
             sh = spawn "sh" "-c";
           in {
             "Mod+Shift+Q".action = quit;
+            "Mod+Slash".action = show-hotkey-overlay;
 
             "Mod+XF86AudioMute".action = spawn "wpctl" "set-mute" "@DEFAULT_SOURCE@" "toggle";
             "XF86AudioMute".action = spawn "wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "0%";
             "Mod+Shift+M".action = spawn "wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "0%";
             "XF86AudioRaiseVolume".action = spawn "wpctl" "set-volume" "-l" "1" "@DEFAULT_AUDIO_SINK@" "5%+";
             "XF86AudioLowerVolume".action = spawn "wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "5%-";
-            "XF86MonBrightnessUp".action = spawn "brightnessctl" "set" "12.75+";
-            "XF86MonBrightnessDown".action = spawn "brightnessctl" "set" "12.75-";
+            "XF86MonBrightnessUp".action = spawn "brightnessctl" "set" "10%+";
+            "XF86MonBrightnessDown".action = spawn "brightnessctl" "set" "10%-";
 
             "Mod+Control+Space".action = spawn "playerctl" "play-pause";
             "Mod+Control+Equal".action = spawn "playerctl" "next";
@@ -53,11 +57,18 @@
             "Mod+Shift+TouchpadScrollUp".action = move-window-up-or-to-workspace-up;
             "Mod+Shift+TouchpadScrollDown".action = move-window-down-or-to-workspace-down;
 
+            "Mod+Control+Left".action = focus-monitor-left;
+            "Mod+Control+Right".action = focus-monitor-right;
+            "Mod+Control+Shift+Left".action = move-window-to-monitor-left;
+            "Mod+Control+Shift+Right".action = move-window-to-monitor-right;
+
+            "Mod+J".action = consume-or-expel-window-right;
+
             "Mod+Minus".action = set-window-width "-10%";
             "Mod+Equal".action = set-window-width "+10%";
             "Mod+Underscore".action = set-window-height "-10%";
             "Mod+Plus".action = set-window-height "+10%";
-            "Mod+Control+Plus".action = expand-column-to-available-width;
+            "Mod+Control+0".action = expand-column-to-available-width;
             "Mod+F".action = fullscreen-window;
             "Mod+Alt+F".action = toggle-windowed-fullscreen;
             "Mod+Alt+Space".action = toggle-window-floating;
@@ -71,11 +82,14 @@
 
             "Mod+Q".action = close-window;
             "Mod+Grave".action = toggle-overview;
-            "Mod+Tab".action = switch-preset-window-height;
+            "Mod+Tab".action = switch-preset-window-width;
+            "Mod+Shift+Tab".action = switch-preset-window-height;
             "Mod+Shift+S".action.screenshot = {};
             "Mod+Shift+C".action = spawn "hyprpicker" "-a";
             "Mod+Shift+Alt+S".action.screenshot-window.write-to-disk = true;
             "Print".action.screenshot-screen.write-to-disk = true;
+
+            "Mod+F1".action = switch-layout "next";
 
             "Mod+Alt+R".action = spawn "ignis" "run-command" "recorder-record-region";
             "Mod+Alt+Shift+R".action = spawn "ignis" "run-command" "recorder-record-screen";
@@ -97,7 +111,6 @@
           screenshot-path = "~/Pictures/Screenshots/Screenshot at %Y-%m-%d %H-%M-%S.png";
           workspaces = {
             social.open-on-output = "eDP-1";
-            keepass.open-on-output = "eDP-1";
             music = {};
           };
 
@@ -120,20 +133,27 @@
           ];
 
           input = {
-            focus-follows-mouse.enable = true;
+            focus-follows-mouse = {
+              enable = true;
+              max-scroll-amount = "10%";
+            };
             keyboard = {
               repeat-delay = 400;
               repeat-rate = 30;
-              xkb.layout = "us";
+              xkb = {
+                layout = "us,us(colemak)";
+              };
             };
             mouse.accel-profile = "flat";
             touchpad = {
               accel-profile = "adaptive";
               click-method = "clickfinger";
-              disabled-on-external-mouse = true;
+              disabled-on-external-mouse = false;
+              scroll-method = "two-finger";
               drag = true;
-              dwt = true;
+              dwt = false;
               tap-button-map = "left-right-middle";
+              natural-scroll = true;
             };
             warp-mouse-to-focus = {
               enable = true;
@@ -171,14 +191,15 @@
           };
 
           layout = {
-            gaps = 12;
+            background-color = lib.mkForce null;
+            gaps = 16;
             border = {
               enable = true;
-              width = 4;
+              width = 2;
             };
             focus-ring = {
               enable = true;
-              width = 8;
+              width = 2;
             };
             shadow = {
               enable = true;
@@ -191,34 +212,76 @@
               {proportion = 1.0 / 3.0;}
               {proportion = 1.0 / 2.0;}
               {proportion = 2.0 / 3.0;}
+              {proportion = 1.0;}
             ];
-            center-focused-column = "on-overflow";
+            preset-column-widths = [
+              {proportion = 1.0 / 3.0;}
+              {proportion = 1.0 / 2.0;}
+              {proportion = 2.0 / 3.0;}
+              {proportion = 1.0;}
+            ];
+
             default-column-width = {};
           };
 
           window-rules = let
-            mkWorkspace = name: workspace: {
+            mkWorkspace = name: workspace: proportion: {
               matches = [
-                {
-                  app-id = name;
-                  title = name;
-                }
+                {app-id = name;}
+                {title = name;}
               ];
               open-on-workspace = workspace;
+              default-column-width.proportion = proportion;
             };
           in [
-            (mkWorkspace "vesktop" "social")
-            (mkWorkspace "teams-for-linux" "social")
-            (mkWorkspace "LINE" "social")
-            (mkWorkspace "valent" "social")
+            (mkWorkspace "vesktop" "social" 0.6667)
+            (mkWorkspace "teams-for-linux" "social" 0.6667)
+            (mkWorkspace "LINE" "social" 0.5)
+            (mkWorkspace "valent" "social" 0.5)
 
-            (mkWorkspace "org.keepassxc.KeePassXC" "keepass")
+            {
+              matches = [{app-id = "^org\.keepassxc\.KeePassXC$";}];
+              open-on-workspace = "social";
+              default-column-width.proportion = 0.5;
+              block-out-from = "screencast";
+            }
+            {
+              matches = [{app-id = "^org\.keepassxc\.KeePassXC$";} {title = "^データベースのロックを解除 - KeePassXC$";}];
+              open-focused = true;
+              block-out-from = "screencast";
+              open-on-workspace = null;
+            }
 
-            (mkWorkspace "com.github.th_ch.youtube_music" "music")
+            (mkWorkspace "com.github.th_ch.youtube_music" "music" 0.6667)
 
             {
               matches = [{title = "^(steam)$";}];
-              tiled-state = false;
+              tiled-state = true;
+            }
+
+            {
+              matches = [{app-id = "zen-twilight";}];
+              open-maximized = true;
+            }
+
+            {
+              matches = [{is-window-cast-target = true;}];
+
+              focus-ring = {
+                active.color = "#f38ba8";
+                inactive.color = "#7d0d2d";
+                width = 6;
+              };
+              border = {
+                inactive.color = "#7d0d2d";
+              };
+
+              shadow.color = "#7d0d2d70";
+
+              tab-indicator = {
+                active.color = "#f38ba8";
+                inactive.color = "#7d0d2d";
+              };
             }
           ];
         };

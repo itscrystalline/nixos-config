@@ -2,6 +2,7 @@
   config,
   pkgs,
   lib,
+  inputs,
   ...
 }: {
   imports = [
@@ -28,6 +29,16 @@
 
         logisim-evolution
         wireshark
+
+        # fonts
+        noto-fonts
+        noto-fonts-cjk-sans
+        noto-fonts-emoji
+        inter
+        nerd-fonts.jetbrains-mono
+        pkgs.unstable.material-symbols
+        sarabun-font
+        inputs.my-nur.packages.${pkgs.system}.sipa-th-fonts
       ]
       ++ lib.optionals pkgs.stdenv.isDarwin [
         youtube-music

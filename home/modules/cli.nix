@@ -38,7 +38,6 @@
       pywal
       fuzzel
       lsof
-      material-symbols
       swappy
       qrtool
       playerctl
@@ -372,9 +371,9 @@
 
     zellij = {
       enable = true;
-      attachExistingSession = true;
-      enableBashIntegration = true;
-      enableZshIntegration = true;
+      attachExistingSession = false;
+      # enableBashIntegration = true;
+      # enableZshIntegration = true;
     };
 
     fzf = {
