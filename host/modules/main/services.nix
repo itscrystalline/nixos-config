@@ -23,9 +23,7 @@
   services.teamviewer.enable = true;
 
   # Suspend on power button click
-  services.logind.extraConfig = ''
-    HandlePowerKey=suspend
-  '';
+  services.logind.powerKey = "suspend";
 
   # ananicy: an auto nice daemon
   services.ananicy = {

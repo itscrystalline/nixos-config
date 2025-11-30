@@ -5,11 +5,18 @@
   lib,
   ...
 }: let
-  inherit (config.lib.stylix) colors;
+  # inherit (config.lib.stylix) colors;
+  enable = config.gui;
 in {
+  home.packages = lib.optionals enable [pkgs.xwayland-satellite pkgs.wl-mirror];
+  services = {
+    swayidle.enable = enable; # idle management daemon
+    polkit-gnome.enable = enable;
+  }; # polkit
   programs =
     if (builtins.hasAttr "niri" options.programs) && config.gui
     then {
+      swaylock.enable = true;
       niri = {
         # enable = true;
         package = pkgs.niri-stable;
@@ -102,11 +109,11 @@ in {
             "Mod+W".action = spawn "zen";
             "Mod+B".action = spawn "neovide";
             "Mod+Return".action = spawn "ghostty";
-            "Mod+L".action = spawn "hyprlock";
+            "Mod+L".action = spawn "swaylock";
             "Mod+Control+M".action = sh "pgrep youtube-music && niri msg action focus-workspace music || youtube-music --enable-features=UseOzonePlatform --ozone-platform=wayland --enable-wayland-ime &";
             "Control+Shift+Escape".action = spawn "missioncenter";
           };
-          switch-events.lid-close.action.spawn = ["systemctl" "suspend"];
+          switch-events.lid-close.action.spawn = ["sh" "-c" "pidof steam || systemctl suspend || loginctl suspend"];
 
           screenshot-path = "~/Pictures/Screenshots/Screenshot at %Y-%m-%d %H-%M-%S.png";
           workspaces = {
@@ -119,7 +126,6 @@ in {
           spawn-at-startup = [
             {argv = ["swww-daemon" "--format" "xrgb"];}
             {argv = ["fcitx5"];}
-            {argv = ["hypridle"];}
             {argv = ["gnome-keyring-daemon" "--start" "--components=secrets"];}
             {argv = ["xhost" "+SI:localuser:root"];}
             {argv = ["swww" "img" "/home/itscrystalline/bg.gif" "--filter=Nearest"];}
@@ -159,6 +165,8 @@ in {
               enable = true;
               mode = "center-xy";
             };
+
+            power-key-handling.enable = false;
           };
 
           outputs = {
@@ -258,9 +266,16 @@ in {
               matches = [{title = "^(steam)$";}];
               tiled-state = true;
             }
-
             {
               matches = [{app-id = "zen-twilight";}];
+              open-maximized = true;
+            }
+            {
+              matches = [{app-id = "org.gnome.Nautilus";}];
+              default-column-width.proportion = 0.333;
+            }
+            {
+              matches = [{app-id = "neovide";}];
               open-maximized = true;
             }
 
