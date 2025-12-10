@@ -2,7 +2,7 @@
   description = "System Flake";
 
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.05";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.11";
     nixpkgs-unstable.url = "nixpkgs/nixos-unstable";
     chaotic.url = "github:chaotic-cx/nyx/nyxpkgs-unstable"; # chaotic-nyx: cachyos kernel
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
@@ -11,15 +11,15 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     home-manager = {
-      url = "github:nix-community/home-manager/release-25.05";
+      url = "github:nix-community/home-manager/release-25.11";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     nix-darwin = {
-      url = "github:nix-darwin/nix-darwin/nix-darwin-25.05";
+      url = "github:nix-darwin/nix-darwin/nix-darwin-25.11";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     zen-browser = {
-      url = "github:0xc000022070/zen-browser-flake";
+      url = "github:0xc000022070/zen-browser-flake/fix/audio-codecs";
       inputs = {
         nixpkgs.follows = "nixpkgs";
         home-manager.follows = "home-manager";
@@ -53,7 +53,7 @@
       url = "github:winapps-org/winapps";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    stylix-2505.url = "github:nix-community/stylix/release-25.05";
+    stylix.url = "github:nix-community/stylix/release-25.11";
     stylix-unstable.url = "github:nix-community/stylix";
     niri = {
       url = "github:sodiboo/niri-flake";
@@ -118,7 +118,7 @@
 
             (
               if raspi
-              then inputs.stylix-2505.homeModules.stylix
+              then inputs.stylix.homeModules.stylix
               else {}
             )
           ];
@@ -138,7 +138,7 @@
       modules = [
         configs.cwystaws-meowchine
         inputs.nur.modules.nixos.default
-        inputs.stylix-2505.nixosModules.stylix
+        inputs.stylix.nixosModules.stylix
         inputs.nix-flatpak.nixosModules.nix-flatpak
         inputs.niri.nixosModules.niri
         chaotic.nixosModules.nyx-cache
@@ -155,30 +155,36 @@
         (home false)
       ];
     };
-    raspis = module: {
+    raspis = module: withHome: {
       system = "aarch64-linux";
       specialArgs = {
         inherit inputs secrets;
       };
-      modules = [
-        configs.raspi
-        inputs.nur.modules.nixos.default
-        inputs.stylix-2505.nixosModules.stylix
-        nixos-hardware.nixosModules.raspberry-pi-4
+      modules =
+        [
+          configs.raspi
+          inputs.nur.modules.nixos.default
+          inputs.stylix.nixosModules.stylix
+          nixos-hardware.nixosModules.raspberry-pi-4
 
-        ./vars.nix
-        ./nix-settings.nix
-        module
-
-        home-manager.nixosModules.home-manager
-        (home true)
-      ];
+          ./vars.nix
+          ./nix-settings.nix
+          module
+        ]
+        ++ (
+          if withHome
+          then [
+            home-manager.nixosModules.home-manager
+            (home true)
+          ]
+          else []
+        );
     };
   in {
     nixosConfigurations = {
       cwystaws-meowchine = nixpkgs.lib.nixosSystem cwystaws-meowchine;
-      cwystaws-raspi = nixpkgs.lib.nixosSystem (raspis ./host/devices/cwystaws-raspi/host.nix);
-      cwystaws-dormpi = nixpkgs.lib.nixosSystem (raspis ./host/devices/cwystaws-dormpi/host.nix);
+      cwystaws-raspi = nixpkgs.lib.nixosSystem (raspis ./host/devices/cwystaws-raspi/host.nix true);
+      cwystaws-dormpi = nixpkgs.lib.nixosSystem (raspis ./host/devices/cwystaws-dormpi/host.nix false);
     };
 
     packages.aarch64-linux = {

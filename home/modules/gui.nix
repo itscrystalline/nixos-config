@@ -33,7 +33,7 @@
         # fonts
         noto-fonts
         noto-fonts-cjk-sans
-        noto-fonts-emoji
+        noto-fonts-color-emoji
         inter
         nerd-fonts.jetbrains-mono
         pkgs.unstable.material-symbols
@@ -56,7 +56,7 @@
       enable = true;
       plugins = with pkgs.stable.obs-studio-plugins; [
         obs-composite-blur
-        obs-backgroundremoval
+        # obs-backgroundremoval
         droidcam-obs
       ];
     };

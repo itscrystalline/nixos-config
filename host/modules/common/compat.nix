@@ -112,7 +112,7 @@
         glew110
         libidn
         tbb
-        libsForQt5.full
+        # libsForQt5.full
 
         SDL_image
         SDL_ttf

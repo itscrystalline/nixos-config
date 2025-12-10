@@ -5,7 +5,7 @@
   inputs,
   ...
 }: let
-  inherit (inputs) nur my-nur;
+  inherit (inputs) my-nur;
 in
   lib.mkIf config.gui {
     home.packages = with pkgs; [
@@ -17,10 +17,10 @@ in
 
         # Change Java runtimes available to Prism Launcher
         jdks = [
-          graalvm-ce
+          graalvmPackages.graalvm-ce
           zulu8
           zulu21
-          nur.legacyPackages."${pkgs.system}".repos."7mind".graalvm-legacy-packages.graalvm17-ce
+          # nur.legacyPackages."${pkgs.system}".repos."7mind".graalvm-legacy-packages.graalvm17-ce
         ];
       })
       itch

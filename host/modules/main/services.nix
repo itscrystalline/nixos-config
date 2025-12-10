@@ -5,8 +5,7 @@
 } @ inputs: {
   imports = [../common/services.nix];
 
-  systemd.extraConfig = "DefaultTimeoutStopSec=20s";
-  systemd.user.extraConfig = "DefaultTimeoutStopSec=20s";
+  systemd.settings.Manager.DefaultTimeoutStopSec = "20s";
 
   # fwupd
   services.fwupd.enable = true;

@@ -56,7 +56,7 @@
       ++ lib.optionals pkgs.stdenv.isLinux ([
           "nixos-hardware=${inputs.nixos-hardware}"
           "home-manager=${inputs.home-manager}"
-          "stylix-2505=${inputs.stylix-2505}"
+          "stylix=${inputs.stylix}"
           "stylix-unstable=${inputs.stylix-unstable}"
         ]
         ++ lib.optionals config.gui [
@@ -131,5 +131,5 @@
   # this value at the release version of the first install of this system.
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
-  system.stateVersion = "25.05"; # Did you read the comment?
+  system.stateVersion = "25.11"; # Did you read the comment?
 }

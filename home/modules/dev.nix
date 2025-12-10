@@ -17,7 +17,6 @@
     ]
     ++ pkgs.lib.optionals config.gui [
       filezilla
-      renode
     ]
     ++ lib.optionals pkgs.stdenv.isDarwin [
       darwin.xcode
