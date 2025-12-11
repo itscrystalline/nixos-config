@@ -112,6 +112,7 @@ in {
             "Mod+L".action = spawn "swaylock";
             "Mod+Control+M".action = sh "pgrep youtube-music && niri msg action focus-workspace music || youtube-music --enable-features=UseOzonePlatform --ozone-platform=wayland --enable-wayland-ime &";
             "Control+Shift+Escape".action = spawn "missioncenter";
+            "XF86Calculator".action = spawn "gnome-calculator";
           };
           # switch-events.lid-close.action.spawn = ["sh" "-c" "pidof steam || systemctl suspend || loginctl suspend"];
 
@@ -124,7 +125,7 @@ in {
           prefer-no-csd = true;
 
           spawn-at-startup = [
-            {argv = ["swww-daemon" "--format" "xrgb"];}
+            {argv = ["swww-daemon" "--format" "argb"];}
             {argv = ["fcitx5"];}
             {argv = ["gnome-keyring-daemon" "--start" "--components=secrets"];}
             {argv = ["xhost" "+SI:localuser:root"];}

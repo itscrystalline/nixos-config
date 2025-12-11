@@ -115,7 +115,11 @@ in {
     };
   };
   home = {
-    sessionVariables.QML2_IMPORT_PATH = lib.optionalString config.gui "${pkgs.kdePackages.qtdeclarative}/lib/qt-6/qml:${quickshell.packages.${pkgs.system}.default}/lib/qt-6/qml";
+    sessionVariables = {
+      QML2_IMPORT_PATH = lib.optionalString config.gui "${pkgs.kdePackages.qtdeclarative}/lib/qt-6/qml:${quickshell.packages.${pkgs.system}.default}/lib/qt-6/qml";
+      MOZ_LEGACY_PROFILES = 1;
+      DEFAULT_BROWSER = lib.optionalString config.gui "${zen-browser.packages.${pkgs.system}.twilight}/bin/zen";
+    };
 
     packages = lib.mkIf config.gui (with pkgs.stable;
       [
@@ -169,7 +173,6 @@ in {
         valent
         winetricks
       ]));
-    sessionVariables.DEFAULT_BROWSER = lib.optionalString config.gui "${zen-browser.packages.${pkgs.system}.twilight}/bin/zen";
   };
 
   programs.obs-studio = lib.mkIf config.gui {

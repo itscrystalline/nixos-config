@@ -64,6 +64,7 @@
     };
     targets = {
       starship.enable = false;
+      # zen-browser.enable = false;
       zen-browser.profileNames = ["crystal"];
     };
   };
