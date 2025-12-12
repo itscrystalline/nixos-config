@@ -188,8 +188,8 @@
     };
 
     packages.aarch64-linux = {
-      cwystaws-raspi = nixos-generators.nixosGenerate ((raspis ./host/devices/cwystaws-raspi/host.nix) // {format = "sd-aarch64";});
-      cwystaws-dormpi = nixos-generators.nixosGenerate ((raspis ./host/devices/cwystaws-dormpi/host.nix) // {format = "sd-aarch64";});
+      cwystaws-raspi = nixos-generators.nixosGenerate ((raspis ./host/devices/cwystaws-raspi/host.nix true) // {format = "sd-aarch64";});
+      cwystaws-dormpi = nixos-generators.nixosGenerate ((raspis ./host/devices/cwystaws-dormpi/host.nix false) // {format = "sd-aarch64";});
     };
 
     darwinConfigurations."cwystaws-macbook" = nix-darwin.lib.darwinSystem {
