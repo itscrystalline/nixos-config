@@ -106,12 +106,12 @@
   nixpkgs.config.allowUnfree = true;
   # unstable overlay
   nixpkgs.overlays = [
-    (_: prev: rec {
+    (_: prev: {
       stable = prev;
       hostsys = prev.stdenv.hostPlatform.system;
       unstable = import inputs.nixpkgs-unstable {
         config.allowUnfree = true;
-        inherit hostsys;
+        inherit (prev.stdenv.hostPlatform) system;
       };
 
       inherit
