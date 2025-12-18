@@ -50,7 +50,7 @@
   home.shellAliases = {
     # sudo = "doas";
     svim = "sudo nvim";
-    update = "sudo nh os switch ~/nixos-config -R";
+    update = "nh os switch ~/nixos-config";
     nuke-cache = "rm -rf ~/.cache/nix";
     gc = "nh clean all";
     clean-hmbkups = "find ${config.home.homeDirectory}/.config -name \"*.hmbkup\" -type f -delete";
@@ -159,7 +159,7 @@
 
     occasion = {
       enable = true;
-      package = inputs.occasion.packages.${pkgs.system}.occasion;
+      package = inputs.occasion.packages.${pkgs.hostsys}.occasion;
       settings = {
         dates = [
           {

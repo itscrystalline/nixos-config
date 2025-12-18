@@ -71,8 +71,8 @@ in {
     openFirewall = true;
     extraComponents = ["wiz" "matter" "mobile_app" "bluetooth" "tplink" "tplink_tapo" "accuweather"];
     customComponents = [
-      inputs.my-nur.packages.${pkgs.system}.ha_tuya_ble
-      inputs.my-nur.packages.${pkgs.system}.hass-localtuya
+      inputs.my-nur.packages.${pkgs.hostsys}.ha_tuya_ble
+      inputs.my-nur.packages.${pkgs.hostsys}.hass-localtuya
     ];
     extraPackages = python3Packages:
       (with python3Packages; [

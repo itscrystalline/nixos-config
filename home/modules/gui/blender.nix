@@ -19,9 +19,9 @@
   blenderkit_version = "3.13.0.241112";
   blenderkit_sha256 = "wrMUz6OzTBDe0rbqXqiizWo72jRdM7ut4TXVV/3KmzA==";
 in
-  lib.mkIf (config.gui && pkgs.system == "x86_64-linux") {
+  lib.mkIf (config.gui && pkgs.hostsys == "x86_64-linux") {
     home.packages = with pkgs; [
-      (blender-flake.packages.${pkgs.system}.default.overrideAttrs (oldAttrs: newAttrs: let
+      (blender-flake.packages.${pkgs.hostsys}.default.overrideAttrs (oldAttrs: newAttrs: let
         libs = [
           wayland
           libdecor

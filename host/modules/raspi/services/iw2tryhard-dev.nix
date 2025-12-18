@@ -3,8 +3,8 @@
   pkgs,
   ...
 }: let
-  site = inputs.iw2tryhard-dev.packages.${pkgs.system}.docker;
-  # site_v2 = inputs.iw2tryhard-dev.packages.${pkgs.system}.docker_v2;
+  site = inputs.iw2tryhard-dev.packages.${pkgs.hostsys}.docker;
+  # site_v2 = inputs.iw2tryhard-dev.packages.${pkgs.hostsys}.docker_v2;
   domain = "iw2tryhard.dev";
   port = "3000";
   port_v2 = "3001";

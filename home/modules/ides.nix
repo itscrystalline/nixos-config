@@ -17,7 +17,7 @@ in {
       unityhub
     ]
     ++ [
-      sanzenvim.packages.${pkgs.system}.default
+      sanzenvim.packages.${pkgs.hostsys}.default
       gcc
       clang-tools
       alejandra
@@ -40,7 +40,7 @@ in {
       vscode-langservers-extracted
       verilator
       verible
-      my-nur.packages.${pkgs.system}.veridian
+      my-nur.packages.${pkgs.hostsys}.veridian
 
       arduino-cli
       delta
@@ -54,7 +54,7 @@ in {
       "JetBrains/WebStorm2024.3/webstorm64.vmoptions".text = jetbrainsWayland;
       "neovide/config.toml".text = ''
         fork = true
-        neovim-bin = "${sanzenvim.packages.${pkgs.system}.default}/bin/nvim"
+        neovim-bin = "${sanzenvim.packages.${pkgs.hostsys}.default}/bin/nvim"
 
         [font]
         normal = ["JetBrainsMono Nerd Font", "Noto Sans CJK JP", "Noto Color Emoji" ]
@@ -118,7 +118,7 @@ in {
         line_height = "comfortable";
         option_as_meta = false;
         button = false;
-        shell = "system";
+        shell = "hostsys";
         toolbar = {
           title = true;
         };
@@ -155,7 +155,7 @@ in {
       load_direnv = "shell_hook";
       base_keymap = "JetBrains";
       theme = {
-        mode = "system";
+        mode = "hostsys";
       };
       show_whitespaces = "all";
       ui_font_family = "Inter Display";
