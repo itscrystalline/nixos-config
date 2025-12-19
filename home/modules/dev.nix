@@ -24,13 +24,13 @@
     ];
 
   programs.git = {
-    userName = "itscrystalline";
-    userEmail = "pvpthadgaming@gmail.com";
-
-    extraConfig = {
-      safe = {
-        directory = "${config.home.homeDirectory}/nixos-config";
+    enable = true;
+    settings = {
+      user = {
+        name = "itscrystalline";
+        email = "pvpthadgaming@gmail.com";
       };
+      safe.directory = "${config.home.homeDirectory}/nixos-config";
     };
   };
 

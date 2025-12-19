@@ -74,12 +74,11 @@
   nixpkgs.overlays = [
     (_: prev: {
       stable = prev;
+      hostsys = prev.stdenv.hostPlatform.system;
       unstable = import inputs.nixpkgs-unstable {
         config.allowUnfree = true;
-        inherit (prev) system;
+        inherit (prev.stdenv.hostPlatform) system;
       };
-
-      inherit (prev.stdenv.hostPlatform) system;
 
       inherit
         (prev.lixPackageSets.stable)

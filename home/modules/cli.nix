@@ -50,7 +50,7 @@
   home.shellAliases = {
     # sudo = "doas";
     svim = "sudo nvim";
-    update = "sudo nh os switch ~/nixos-config -R";
+    update = "nh os switch ~/nixos-config";
     nuke-cache = "rm -rf ~/.cache/nix";
     gc = "nh clean all";
     clean-hmbkups = "find ${config.home.homeDirectory}/.config -name \"*.hmbkup\" -type f -delete";
@@ -103,7 +103,20 @@
 
     ssh = {
       enable = true;
+      enableDefaultConfig = false;
       matchBlocks = {
+        "*" = {
+          forwardAgent = false;
+          addKeysToAgent = "no";
+          compression = false;
+          serverAliveInterval = 0;
+          serverAliveCountMax = 3;
+          hashKnownHosts = false;
+          userKnownHostsFile = "~/.ssh/known_hosts";
+          controlMaster = "no";
+          controlPath = "~/.ssh/master-%r@%n:%p";
+          controlPersist = "no";
+        };
         "cwystaws-raspi" = {
           hostname = "cwystaws-raspi";
           identityFile = "${config.home.homeDirectory}/.ssh/crystal";
@@ -159,7 +172,7 @@
 
     occasion = {
       enable = true;
-      package = inputs.occasion.packages.${pkgs.system}.occasion;
+      package = inputs.occasion.packages.${pkgs.hostsys}.occasion;
       settings = {
         dates = [
           {

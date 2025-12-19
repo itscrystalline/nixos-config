@@ -38,7 +38,7 @@
         nerd-fonts.jetbrains-mono
         pkgs.unstable.material-symbols
         sarabun-font
-        inputs.my-nur.packages.${pkgs.system}.sipa-th-fonts
+        inputs.my-nur.packages.${pkgs.hostsys}.sipa-th-fonts
       ]
       ++ lib.optionals pkgs.stdenv.isDarwin [
         youtube-music

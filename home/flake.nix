@@ -78,17 +78,6 @@
 
           (oracle-cloud username doas)
 
-          ({inputs, ...}: {
-            nixpkgs.overlays = [
-              (_: prev: {
-                unstable = import inputs.nixpkgs {
-                  config.allowUnfree = true;
-                  inherit (prev) system;
-                };
-              })
-            ];
-          })
-
           ./home-linux.nix
 
           ./nix-settings.nix

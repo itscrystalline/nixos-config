@@ -11,7 +11,7 @@ lib.mkIf config.gui {
     kdePackages.qt6ct
     libsForQt5.qt5ct
 
-    inputs.quickshell.packages.${pkgs.system}.default
+    inputs.quickshell.packages.${pkgs.hostsys}.default
   ];
 
   qt.enable = true;
@@ -24,7 +24,7 @@ lib.mkIf config.gui {
       nerd-fonts.jetbrains-mono
       unstable.material-symbols
       sarabun-font
-      inputs.my-nur.packages.${pkgs.system}.sipa-th-fonts
+      inputs.my-nur.packages.${pkgs.hostsys}.sipa-th-fonts
     ];
 
     fontconfig = {

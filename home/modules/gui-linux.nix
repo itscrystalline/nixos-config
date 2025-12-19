@@ -119,19 +119,19 @@ in {
   };
   home = {
     sessionVariables = {
-      QML2_IMPORT_PATH = lib.optionalString config.gui "${pkgs.kdePackages.qtdeclarative}/lib/qt-6/qml:${quickshell.packages.${pkgs.system}.default}/lib/qt-6/qml";
+      QML2_IMPORT_PATH = lib.optionalString config.gui "${pkgs.kdePackages.qtdeclarative}/lib/qt-6/qml:${quickshell.packages.${pkgs.hostsys}.default}/lib/qt-6/qml";
       MOZ_LEGACY_PROFILES = 1;
-      DEFAULT_BROWSER = lib.optionalString config.gui "${zen-browser.packages.${pkgs.system}.twilight}/bin/zen";
+      DEFAULT_BROWSER = lib.optionalString config.gui "${zen-browser.packages.${pkgs.hostsys}.twilight}/bin/zen";
     };
 
     packages = lib.mkIf config.gui (with pkgs.stable;
       [
-        quickshell.packages.${pkgs.system}.default
+        quickshell.packages.${pkgs.hostsys}.default
 
-        my-nur.packages.${pkgs.system}.app2nix
+        my-nur.packages.${pkgs.hostsys}.app2nix
 
-        winapps.packages."${pkgs.system}".winapps
-        winapps.packages."${pkgs.system}".winapps-launcher
+        winapps.packages."${pkgs.hostsys}".winapps
+        winapps.packages."${pkgs.hostsys}".winapps-launcher
 
         teams-for-linux # teams :vomit:
         (youtube-music.overrideAttrs {
@@ -243,7 +243,7 @@ in {
     # profiles.crystal = {
     #   id = 0;
     #   isDefault = true;
-    #   extensions.packages = with nur.legacyPackages."${pkgs.system}".repos.rycee.firefox-addons; [
+    #   extensions.packages = with nur.legacyPackages."${pkgs.hostsys}".repos.rycee.firefox-addons; [
     #     dearrow
     #     decentraleyes
     #     auth-helper

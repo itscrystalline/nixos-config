@@ -20,12 +20,12 @@ in
           graalvmPackages.graalvm-ce
           zulu8
           zulu21
-          # nur.legacyPackages."${pkgs.system}".repos."7mind".graalvm-legacy-packages.graalvm17-ce
+          # nur.legacyPackages."${pkgs.hostsys}".repos."7mind".graalvm-legacy-packages.graalvm17-ce
         ];
       })
       itch
       mcpelauncher-ui-qt
 
-      my-nur.packages.${pkgs.system}.irony-mod-manager
+      my-nur.packages.${pkgs.hostsys}.irony-mod-manager
     ];
   }
