@@ -64,8 +64,10 @@
     };
     targets = {
       starship.enable = false;
-      # zen-browser.enable = false;
-      zen-browser.profileNames = ["crystal"];
+      zen-browser = {
+        enable = config.gui;
+        profileNames = ["crystal"];
+      };
     };
   };
 }

@@ -23,7 +23,10 @@ in {
     mimeApps = lib.mkIf config.gui {
       enable = true;
       defaultApplications = let
-        browser = zen-browser.packages.${pkgs.system}.twilight.meta.desktopFileName;
+        browser =
+          if config.gui
+          then zen-browser.packages.${pkgs.system}.twilight.meta.desktopFileName
+          else "";
         image_viewer = "org.gnome.Loupe.desktop";
         pdf_viewer = "org.gnome.Evince.desktop";
         text_editor = "org.gnome.TextEditor.desktop";
@@ -182,7 +185,7 @@ in {
   };
 
   programs.zen-browser = {
-    enable = true;
+    enable = config.gui;
 
     policies = let
       mkLockedAttrs = builtins.mapAttrs (_: value: {
