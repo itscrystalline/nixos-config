@@ -110,7 +110,7 @@ in {
             "Mod+W".action = spawn (lib.getExe inputs.zen-browser.packages.${pkgs.hostsys}.twilight) "-p" "crystal";
             "Mod+B".action = spawn "neovide";
             "Mod+Return".action = spawn "ghostty";
-            "Mod+L".action = spawn "swaylock";
+            "Mod+L".action = spawn "${pkgs.hyprlock}";
             "Mod+Control+M".action = sh "pgrep youtube-music && niri msg action focus-workspace music || youtube-music --enable-features=UseOzonePlatform --ozone-platform=wayland --enable-wayland-ime &";
             "Control+Shift+Escape".action = spawn "missioncenter";
             "XF86Calculator".action = spawn "gnome-calculator";
