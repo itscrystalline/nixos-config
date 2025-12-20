@@ -75,11 +75,7 @@
     (_: prev: {
       stable = prev;
       hostsys = prev.stdenv.hostPlatform.system;
-      unstable = import inputs.nixpkgs-unstable {
-        config.allowUnfree = true;
-        inherit (prev.stdenv.hostPlatform) system;
-      };
-
+      unstable = prev;
       inherit
         (prev.lixPackageSets.stable)
         nixpkgs-review
