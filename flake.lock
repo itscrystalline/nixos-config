@@ -1814,16 +1814,15 @@
         ]
       },
       "locked": {
-        "lastModified": 1764767484,
-        "narHash": "sha256-YoqPb0Fln3wTusaUR0+X3T2yi7BA0H5ny4L4FDv89LQ=",
+        "lastModified": 1766179188,
+        "narHash": "sha256-Y6yhFDjfwk4JOltCx0zjc552gJHn7eJHQEwyj73KXOQ=",
         "owner": "0xc000022070",
         "repo": "zen-browser-flake",
-        "rev": "6d96d1e3b0f6bfcfe40f8cfc2b50f39230bfb724",
+        "rev": "8212a2bbb2586fa79b9807026e15ebb52cf849eb",
         "type": "github"
       },
       "original": {
         "owner": "0xc000022070",
-        "ref": "fix/audio-codecs",
         "repo": "zen-browser-flake",
         "type": "github"
       }

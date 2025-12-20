@@ -25,7 +25,7 @@ in {
       defaultApplications = let
         browser =
           if config.gui
-          then zen-browser.packages.${pkgs.system}.twilight.meta.desktopFileName
+          then zen-browser.packages.${pkgs.hostsys}.twilight.meta.desktopFileName
           else "";
         image_viewer = "org.gnome.Loupe.desktop";
         pdf_viewer = "org.gnome.Evince.desktop";
@@ -120,7 +120,7 @@ in {
   home = {
     sessionVariables = {
       QML2_IMPORT_PATH = lib.optionalString config.gui "${pkgs.kdePackages.qtdeclarative}/lib/qt-6/qml:${quickshell.packages.${pkgs.hostsys}.default}/lib/qt-6/qml";
-      MOZ_LEGACY_PROFILES = 1;
+      # MOZ_LEGACY_PROFILES = 1;
       DEFAULT_BROWSER = lib.optionalString config.gui "${zen-browser.packages.${pkgs.hostsys}.twilight}/bin/zen";
     };
 
@@ -206,7 +206,7 @@ in {
       DisableTelemetry = true;
       DontCheckDefaultBrowser = true;
       NoDefaultBookmarks = true;
-      OfferToSaveLogins = true;
+      OfferToSaveLogins = false;
       EnableTrackingProtection = {
         Value = true;
         Locked = true;

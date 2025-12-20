@@ -3,6 +3,7 @@
   config,
   pkgs,
   lib,
+  inputs,
   ...
 }: let
   # inherit (config.lib.stylix) colors;
@@ -106,7 +107,7 @@ in {
             "Mod+E".action = spawn "nautilus" "--new-window";
             "Mod+I".action = sh ''XDG_CURRENT_DESKTOP="gnome" gnome-control-center'';
             "Mod+V".action = spawn "pavucontrol";
-            "Mod+W".action = spawn "zen";
+            "Mod+W".action = spawn (lib.getExe inputs.zen-browser.packages.${pkgs.hostsys}.twilight) "-p" "crystal";
             "Mod+B".action = spawn "neovide";
             "Mod+Return".action = spawn "ghostty";
             "Mod+L".action = spawn "swaylock";
