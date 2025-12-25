@@ -48,7 +48,7 @@ in {
         };
         upstreams = {
           init.strategy = "fast";
-          groups.default = ["https://cloudflare-dns.com/dns-query" "https://dns.google/dns-query" "1.1.1.1" "1.0.0.1" "8.8.8.8" " 8.8.4.4"];
+          groups.default = ["https://cloudflare-dns.com/dns-query" "https://dns.google/dns-query" "1.1.1.1" "1.0.0.1" "8.8.8.8" "8.8.4.4"];
         };
         bootstrapDns = [
           {

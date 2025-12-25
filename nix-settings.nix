@@ -88,18 +88,18 @@
         supportedFeatures = [];
         mandatoryFeatures = [];
       }
-      # {
-      #   hostName = "cwystaws-grass-box";
-      #   system = "aarch64-linux";
-      #   protocol = "ssh-ng";
-      #   # if the builder supports building for multiple architectures,
-      #   # replace the previous line by, e.g.
-      #   # systems = ["x86_64-linux" "aarch64-linux"];
-      #   maxJobs = 8;
-      #   speedFactor = 2;
-      #   supportedFeatures = [];
-      #   mandatoryFeatures = [];
-      # }
+      {
+        hostName = "cwystaws-raspi";
+        system = "aarch64-linux";
+        protocol = "ssh-ng";
+        # if the builder supports building for multiple architectures,
+        # replace the previous line by, e.g.
+        # systems = ["x86_64-linux" "aarch64-linux"];
+        maxJobs = 4;
+        speedFactor = 1;
+        supportedFeatures = [];
+        mandatoryFeatures = [];
+      }
     ];
     distributedBuilds = pkgs.stdenv.isLinux;
   };
