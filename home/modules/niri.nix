@@ -256,7 +256,12 @@ in {
               block-out-from = "screencast";
             }
             {
-              matches = [{app-id = "^org\.keepassxc\.KeePassXC$";} {title = "^データベースのロックを解除 - KeePassXC$";}];
+              matches = [
+                {
+                  app-id = "^org\.keepassxc\.KeePassXC$";
+                  title = "^データベースのロックを解除 - KeePassXC$";
+                }
+              ];
               open-focused = true;
               block-out-from = "screencast";
               open-on-workspace = null;
@@ -271,6 +276,17 @@ in {
             {
               matches = [{app-id = "zen-twilight";}];
               open-maximized = true;
+            }
+            {
+              matches = [
+                {
+                  app-id = "zen-twilight$";
+                  title = "^ピクチャーインピクチャー$";
+                }
+              ];
+              open-floating = true;
+              default-column-width.proportion = 0.333;
+              default-window-height.proportion = 0.333;
             }
             {
               matches = [{app-id = "org.gnome.Nautilus";}];
