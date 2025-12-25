@@ -72,9 +72,17 @@
         job_name = "raspi";
         static_configs = [
           {
-            targets = map (port: "127.0.0.1:${toString port}") (with config.services.prometheus.exporters; [node.port smartctl.port nextcloud.port]);
+            targets = map (port: "127.0.0.1:${toString port}") (with config.services.prometheus.exporters; [node.port smartctl.port]);
           }
         ];
+      }
+      {
+        job_name = "nextcloud";
+        static_configs = [{targets = ["127.0.0.1:${toString config.services.prometheus.exporters.nextcloud.port}"];}];
+      }
+      {
+        job_name = "blocky";
+        static_configs = [{targets = ["127.0.0.1:${toString config.services.blocky.settings.ports.http}"];}];
       }
     ];
   };
