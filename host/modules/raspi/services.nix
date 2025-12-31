@@ -68,12 +68,13 @@ in {
 
         blocking = rec {
           denylists = {
-            thai = [
-              # Thai-specific ad, popup, and annoyance filters
-              "https://adblock-thai.github.io/thai-ads-filter/annoyance.txt"
-              # Main Thai ads and tracking domains blocklist
-              "https://adblock-thai.github.io/thai-ads-filter/subscription.txt"
-            ];
+            # nvm these are ubo blocklists
+            # thai = [
+            #   # Thai-specific ad, popup, and annoyance filters
+            #   "https://adblock-thai.github.io/thai-ads-filter/annoyance.txt"
+            #   # Main Thai ads and tracking domains blocklist
+            #   "https://adblock-thai.github.io/thai-ads-filter/subscription.txt"
+            # ];
 
             ads = [
               # AdGuard DNS filter – general ad and tracking domains

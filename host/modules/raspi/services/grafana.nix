@@ -14,14 +14,18 @@
   services.grafana = {
     enable = true;
 
-    settings.server = {
-      http_port = 9000;
-      http_addr = "0.0.0.0";
-      protocol = "http";
-      domain = "grafana.crys";
-      enforce_domain = true;
+    declarativePlugins = with pkgs.grafanaPlugins; [grafana-piechart-panel];
+    settings = {
+      server = {
+        http_port = 9000;
+        http_addr = "0.0.0.0";
+        protocol = "http";
+        domain = "grafana.crys";
+        enforce_domain = true;
+      };
+      analytics.reporting_enabled = false;
+      panels.disable_sanitize_html = true;
     };
-    settings.analytics.reporting_enabled = false;
 
     provision = {
       enable = true;
