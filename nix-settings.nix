@@ -23,6 +23,8 @@
         "https://nixpkgs-python.cachix.org"
         "https://niri.cachix.org"
         "http://cache.crys"
+        "https://cuda-maintainers.cachix.org"
+        "https://attic.xuyh0120.win/lantian"
       ];
       trusted-public-keys = [
         "hydra.nixos.org-1:CNHJZBh9K4tP3EKF6FkkgeVYsS3ohTl+oS0Qa8bezVs="
@@ -32,6 +34,8 @@
         "nixpkgs-python.cachix.org-1:hxjI7pFxTyuTHn2NkvWCrAUcNZLNS3ZAvfYNuYifcEU="
         "niri.cachix.org-1:Wv0OmO7PsuocRKzfDoJ3mulSl7Z6oezYhGhR+3W2964="
         "cwystaws-raspi:2xuwbE44tVXZdoV8OJYaTXJT1PoKF3nD0fc9dDix41s="
+        "cuda-maintainers.cachix.org-1:0dq3bujKpuEPMCX6U4WylrUDZ9JyUG0VpVZa7CNfq5E="
+        "lantian:EeAUQ+W+6r7EtwnmYjeVwx5kOGEBpjlBfPlzGlTNvHc="
       ];
       access-tokens = "github.com=${secrets.ghToken}";
       # post-build-hook = "${./post-build-hook.sh}";
@@ -125,6 +129,7 @@
         ;
     })
     inputs.niri.overlays.niri
+    inputs.nix-cachyos-kernel.overlays.pinned
   ];
 
   # This value determines the NixOS release from which the default

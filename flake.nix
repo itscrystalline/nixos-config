@@ -4,7 +4,7 @@
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.11";
     nixpkgs-unstable.url = "nixpkgs/nixos-unstable";
-    chaotic.url = "github:chaotic-cx/nyx/nyxpkgs-unstable"; # chaotic-nyx: cachyos kernel
+    nix-cachyos-kernel.url = "github:xddxdd/nix-cachyos-kernel/release";
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
     nixos-generators = {
       url = "github:nix-community/nixos-generators";
@@ -39,7 +39,6 @@
     };
     iw2tryhard-dev.url = "github:itscrystalline/iw2tryhard-dev-3.0";
     occasion.url = "github:itscrystalline/occasion";
-    suwayomi.url = "github:NixOS/nixpkgs?ref=pull/400589/head";
     nix-index-database = {
       url = "github:nix-community/nix-index-database";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -70,7 +69,6 @@
 
   outputs = inputs @ {
     nixpkgs,
-    chaotic,
     nixos-hardware,
     nixos-generators,
     home-manager,
@@ -141,9 +139,6 @@
         inputs.stylix.nixosModules.stylix
         inputs.nix-flatpak.nixosModules.nix-flatpak
         inputs.niri.nixosModules.niri
-        chaotic.nixosModules.nyx-cache
-        chaotic.nixosModules.nyx-overlay
-        chaotic.nixosModules.nyx-registry
         inputs.binaryninja.nixosModules.binaryninja
         nixos-hardware.nixosModules.asus-fx506hm
 

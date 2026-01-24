@@ -1,5 +1,4 @@
 {
-  inputs,
   config,
   mkLocalNginx,
   ...
@@ -8,17 +7,6 @@
     (mkLocalNginx "manga" config.services.suwayomi-server.settings.server.port true)
   ];
 
-  nixpkgs.overlays = [
-    (_: prev: {
-      inherit
-        ((import inputs.suwayomi {
-          config.allowUnfree = true;
-          inherit (prev) system;
-        }))
-        suwayomi-server
-        ;
-    })
-  ];
   services.suwayomi-server = {
     enable = true;
     dataDir = "/mnt/main/services/suwayomi";

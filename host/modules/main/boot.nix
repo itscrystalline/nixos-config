@@ -9,7 +9,7 @@
     sha256 = "sha256-Ly4jHvtxlnOe1CsZ5+f+K7pclUF4S0HS4Vgs5U8Ofl4=";
   };
   generations = config.keep_generations;
-  kernel = pkgs.linuxPackages_cachyos-gcc;
+  kernel = pkgs.cachyosKernels.linuxPackages-cachyos-latest-lto-x86_64-v4;
 in {
   system.modulesTree = [(lib.getOutput "modules" kernel.kernel)];
   boot = {
@@ -56,13 +56,13 @@ in {
         enable = true;
         configurationLimit = generations;
         memtest86.enable = true;
-        extraEntries = {
-          "macOS.conf" = ''
-            title macOS (OpenCore)
-            efi /efi/OC/OpenCore.efi
-            sort-key macos
-          '';
-        };
+        # extraEntries = {
+        #   "macOS.conf" = ''
+        #     title macOS (OpenCore)
+        #     efi /efi/OC/OpenCore.efi
+        #     sort-key macos
+        #   '';
+        # };
       };
 
       efi.canTouchEfiVariables = true;

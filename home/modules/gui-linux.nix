@@ -284,7 +284,10 @@ in {
   ];
 
   services.vicinae = lib.mkIf config.gui {
-    enable = true; # default: false
-    autoStart = true; # default: true
+    enable = true;
+    systemd = {
+      enable = true;
+      autoStart = true;
+    };
   };
 }
