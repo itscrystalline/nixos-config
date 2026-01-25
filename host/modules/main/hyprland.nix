@@ -1,6 +1,6 @@
 _: {
   programs.hyprland = {
-    enable = true;
+    enable = false;
     # set the flake package
     # package = hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
     # make sure to also set the portal package, so that they are in sync
