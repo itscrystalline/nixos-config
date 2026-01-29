@@ -5,7 +5,7 @@
 } @ inputs: {
   imports = [../../common/users/itscrystalline.nix];
 
-  users.users.itscrystalline.extraGroups = ["libvirtd" "dialout" "ydotool" "dumpcap" "wireshark" "docker" "vboxusers"];
+  users.users.itscrystalline.extraGroups = ["libvirtd" "dialout" "ydotool" "dumpcap" "wireshark" "docker" "vboxusers" "battery_ctl"];
   # PFP
   system.activationScripts.script.text = ''
     mkdir -p /var/lib/AccountsService/{icons,users}

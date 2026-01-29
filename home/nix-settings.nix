@@ -61,7 +61,6 @@
         ++ lib.optionals config.gui [
           "zen-browser=${inputs.zen-browser}"
           "niri=${inputs.niri}"
-          "ignis=${inputs.ignis}"
         ]);
     package = pkgs.lixPackageSets.stable.lix;
 

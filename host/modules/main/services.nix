@@ -36,6 +36,7 @@
   services.scx.scheduler = "scx_bpfland";
 
   services.power-profiles-daemon.enable = false;
+  services.upower.enable = false;
   services.thermald.enable = true;
 
   services.earlyoom = {

@@ -31,23 +31,18 @@
       url = "github:nix-community/nix-index-database";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    quickshell = {
-      url = "git+https://git.outfoxxed.me/outfoxxed/quickshell";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
     vicinae.url = "github:vicinaehq/vicinae";
     winapps = {
       url = "github:winapps-org/winapps";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     stylix.url = "github:nix-community/stylix";
-
     niri = {
       url = "github:sodiboo/niri-flake";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    ignis = {
-      url = "github:ignis-sh/ignis";
+    noctalia = {
+      url = "github:noctalia-dev/noctalia-shell";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
@@ -89,7 +84,7 @@
           inputs.vicinae.homeManagerModules.default
           inputs.zen-browser.homeModules.twilight
           inputs.niri.homeModules.niri
-          inputs.ignis.homeManagerModules.default
+          inputs.noctalia.homeModules.default
         ];
         # Optionally use extraSpecialArgs
         # to pass through arguments to home.nix

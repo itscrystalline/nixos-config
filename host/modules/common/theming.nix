@@ -10,8 +10,6 @@ lib.mkIf config.gui {
     kdePackages.qtstyleplugin-kvantum
     kdePackages.qt6ct
     libsForQt5.qt5ct
-
-    inputs.quickshell.packages.${pkgs.hostsys}.default
   ];
 
   qt.enable = true;

@@ -69,7 +69,6 @@
           "zen-browser=${inputs.zen-browser}"
           "nix-flatpak=${inputs.nix-flatpak}"
           "niri=${inputs.niri}"
-          "ignis=${inputs.ignis}"
         ]);
     package = pkgs.lixPackageSets.stable.lix;
 

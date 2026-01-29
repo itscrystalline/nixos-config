@@ -5,7 +5,7 @@
   lib,
   ...
 }: let
-  inherit (inputs) zen-browser my-nur quickshell winapps nur;
+  inherit (inputs) zen-browser my-nur winapps;
 in {
   imports = [./gui.nix];
   xdg = {
@@ -28,7 +28,7 @@ in {
           then zen-browser.packages.${pkgs.hostsys}.twilight.meta.desktopFileName
           else "";
         image_viewer = "org.gnome.Loupe.desktop";
-        pdf_viewer = "org.gnome.Evince.desktop";
+        pdf_viewer = "org.gnome.Papers.desktop";
         text_editor = "org.gnome.TextEditor.desktop";
         video_player = "org.gnome.Totem.desktop";
         archiver = "org.gnome.FileRoller.desktop";
@@ -119,15 +119,12 @@ in {
   };
   home = {
     sessionVariables = {
-      QML2_IMPORT_PATH = lib.optionalString config.gui "${pkgs.kdePackages.qtdeclarative}/lib/qt-6/qml:${quickshell.packages.${pkgs.hostsys}.default}/lib/qt-6/qml";
       # MOZ_LEGACY_PROFILES = 1;
       DEFAULT_BROWSER = lib.optionalString config.gui "${zen-browser.packages.${pkgs.hostsys}.twilight}/bin/zen";
     };
 
     packages = lib.mkIf config.gui (with pkgs.stable;
       [
-        quickshell.packages.${pkgs.hostsys}.default
-
         my-nur.packages.${pkgs.hostsys}.app2nix
 
         winapps.packages."${pkgs.hostsys}".winapps
@@ -285,6 +282,24 @@ in {
 
   services.vicinae = lib.mkIf config.gui {
     enable = true;
+    settings = {
+      favicon_service = "twenty";
+      font.normal.size = 10;
+      pop_to_root_on_close = false;
+      search_files_in_root = false;
+      launcher_window.client_side_decorations = {
+        enabled = true;
+        rounding = 10;
+      };
+      favorites = [
+        "clipboard:history"
+        "core:search-emojis"
+        "nix:packages"
+        "nix:options"
+        "nix:home-manager-options"
+        "homeassistant:lights"
+      ];
+    };
     systemd = {
       enable = true;
       autoStart = true;

@@ -43,10 +43,6 @@
       url = "github:nix-community/nix-index-database";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    quickshell = {
-      url = "git+https://git.outfoxxed.me/outfoxxed/quickshell";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
     vicinae.url = "github:vicinaehq/vicinae";
     winapps = {
       url = "github:winapps-org/winapps";
@@ -61,9 +57,9 @@
         nixpkgs-stable.follows = "nixpkgs";
       };
     };
-    ignis = {
-      url = "github:ignis-sh/ignis";
-      inputs.nixpkgs.follows = "nixpkgs";
+    noctalia = {
+      url = "github:noctalia-dev/noctalia-shell";
+      inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
   };
 
@@ -112,7 +108,7 @@
             inputs.occasion.homeManagerModule
             inputs.vicinae.homeManagerModules.default
             inputs.zen-browser.homeModules.twilight
-            inputs.ignis.homeManagerModules.default
+            inputs.noctalia.homeModules.default
 
             (
               if raspi

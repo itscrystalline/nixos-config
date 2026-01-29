@@ -11,6 +11,6 @@
     ./modules/services.nix
 
     ./modules/niri.nix
-    ./modules/ignis.nix
+    ./modules/shell.nix
   ];
 }

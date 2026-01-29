@@ -24,26 +24,26 @@ in {
         settings = {
           binds = with config.lib.niri.actions; let
             sh = spawn "sh" "-c";
+            noctalia = spawn "noctalia-shell" "ipc" "call";
           in {
-            "Mod+Shift+Q".action = quit;
+            "Mod+Shift+Q".action = noctalia "sessionMenu" "toggle";
             "Mod+Slash".action = show-hotkey-overlay;
 
-            "Mod+XF86AudioMute".action = spawn "wpctl" "set-mute" "@DEFAULT_SOURCE@" "toggle";
-            "XF86AudioMute".action = spawn "wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "0%";
-            "Mod+Shift+M".action = spawn "wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "0%";
-            "XF86AudioRaiseVolume".action = spawn "wpctl" "set-volume" "-l" "1" "@DEFAULT_AUDIO_SINK@" "5%+";
-            "XF86AudioLowerVolume".action = spawn "wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "5%-";
-            "XF86MonBrightnessUp".action = spawn "brightnessctl" "set" "10%+";
-            "XF86MonBrightnessDown".action = spawn "brightnessctl" "set" "10%-";
+            "XF86AudioMute".action = noctalia "volume" "muteOutput";
+            "Mod+Shift+M".action = noctalia "volume" "muteOutput";
+            "XF86AudioRaiseVolume".action = noctalia "volume" "increase";
+            "XF86AudioLowerVolume".action = noctalia "volume" "decrease";
+            "XF86MonBrightnessUp".action = noctalia "brightness" "increase";
+            "XF86MonBrightnessDown".action = noctalia "brightness" "decrease";
 
-            "Mod+Control+Space".action = spawn "playerctl" "play-pause";
-            "Mod+Control+Equal".action = spawn "playerctl" "next";
-            "Mod+Control+Minus".action = spawn "playerctl" "previous";
-            "XF86AudioPlay".action = spawn "playerctl" "play-pause";
-            "XF86AudioPause".action = spawn "playerctl" "play-pause";
-            "XF86AudioNext".action = spawn "playerctl" "next";
-            "XF86AudioPrev".action = spawn "playerctl" "previous";
-            "XF86AudioStop".action = spawn "playerctl" "stop";
+            "Mod+Control+Space".action = noctalia "media" "playPause";
+            "Mod+Control+Equal".action = noctalia "media" "next";
+            "Mod+Control+Minus".action = noctalia "media" "previous";
+            "XF86AudioPlay".action = noctalia "media" "playPause";
+            "XF86AudioPause".action = noctalia "media" "playPause";
+            "XF86AudioNext".action = noctalia "media" "next";
+            "XF86AudioPrev".action = noctalia "media" "previous";
+            "XF86AudioStop".action = noctalia "media" "pause";
 
             "Mod+1".action = focus-workspace-up;
             "Mod+2".action = focus-workspace-down;
@@ -99,18 +99,15 @@ in {
 
             "Mod+F1".action = switch-layout "next";
 
-            "Mod+Alt+R".action = spawn "ignis" "run-command" "recorder-record-region";
-            "Mod+Alt+Shift+R".action = spawn "ignis" "run-command" "recorder-record-screen";
-            "Mod+Alt+Control+R".action = spawn "ignis" "run-command" "recorder-record-portal";
-
             "Mod+Space".action = spawn "vicinae" "toggle";
+            "Mod+Comma".action = noctalia "settings" "toggle";
             "Mod+E".action = spawn "nautilus" "--new-window";
             "Mod+I".action = sh ''XDG_CURRENT_DESKTOP="gnome" gnome-control-center'';
             "Mod+V".action = spawn "pavucontrol";
             "Mod+W".action = spawn (lib.getExe inputs.zen-browser.packages.${pkgs.hostsys}.twilight) "-p" "crystal";
             "Mod+B".action = spawn "neovide";
             "Mod+Return".action = spawn "ghostty";
-            "Mod+L".action = spawn "${pkgs.hyprlock}";
+            "Mod+L".action = noctalia "lockScreen" "lock";
             "Mod+Control+M".action = sh "pgrep youtube-music && niri msg action focus-workspace music || youtube-music --enable-features=UseOzonePlatform --ozone-platform=wayland --enable-wayland-ime &";
             "Control+Shift+Escape".action = spawn "missioncenter";
             "XF86Calculator".action = spawn "gnome-calculator";
@@ -131,7 +128,7 @@ in {
             {argv = ["gnome-keyring-daemon" "--start" "--components=secrets"];}
             {argv = ["xhost" "+SI:localuser:root"];}
             {argv = ["swww" "img" "/home/itscrystalline/bg.gif" "--filter=Nearest"];}
-            {argv = ["ignis" "init"];}
+            {argv = ["noctalia-shell"];}
 
             {argv = ["vesktop" "--enable-features=UseOzonePlatform" "--ozone-platform=wayland" "--enable-wayland-ime"];}
             {argv = ["teams-for-linux" "--enable-features=UseOzonePlatform" "--ozone-platform=wayland" "--enable-features=WebRTCPipeWireCapturer" "--enable-wayland-ime"];}
