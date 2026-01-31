@@ -8,7 +8,6 @@
     ../../modules/main/graphics.nix
     ../../modules/main/network.nix
     ../../modules/main/asus.nix
-    ../../modules/main/hyprland.nix
     ../../modules/main/niri.nix
     ../../modules/main/pipewire/pipewire.nix
     ../../modules/main/games.nix

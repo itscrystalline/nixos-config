@@ -11,13 +11,43 @@
 in {
   home.packages = lib.optionals enable [pkgs.xwayland-satellite pkgs.wl-mirror];
   services = {
-    swayidle.enable = enable; # idle management daemon
     polkit-gnome.enable = enable;
+    hypridle = {
+      enable = true;
+      settings = let
+        lock = "noctalia-shell ipc call lockScreen lock";
+        screen_on = "niri msg action power-on-monitors";
+        screen_off = "niri msg action power-off-monitors";
+      in {
+        general = {
+          after_sleep_cmd = screen_on;
+          ignore_dbus_inhibit = false;
+          lock_cmd = lock;
+          before_sleep_cmd = lock;
+        };
+
+        listener = [
+          {
+            timeout = 300;
+            on-timeout = lock;
+          }
+          {
+            timeout = 600;
+            on-timeout = screen_off;
+            on-resume = screen_on;
+          }
+          {
+            timeout = 900;
+            on-timeout = "systemctl suspend";
+            on-resume = screen_on;
+          }
+        ];
+      };
+    };
   }; # polkit
   programs =
     if (builtins.hasAttr "niri" options.programs) && config.gui
     then {
-      swaylock.enable = true;
       niri = {
         # enable = true;
         package = pkgs.niri-stable;
@@ -113,6 +143,7 @@ in {
             "XF86Calculator".action = spawn "gnome-calculator";
           };
           # switch-events.lid-close.action.spawn = ["sh" "-c" "pidof steam || systemctl suspend || loginctl suspend"];
+          overview.backdrop-color = config.lib.stylix.colors.withHashtag.base00;
 
           screenshot-path = "~/Pictures/Screenshots/Screenshot at %Y-%m-%d %H-%M-%S.png";
           workspaces = {
@@ -241,6 +272,16 @@ in {
               default-column-width.proportion = proportion;
             };
           in [
+            {
+              geometry-corner-radius = {
+                top-left = 20.0;
+                bottom-left = 20.0;
+                top-right = 20.0;
+                bottom-right = 20.0;
+              };
+              clip-to-geometry = true;
+            }
+
             (mkWorkspace "vesktop" "social" 0.6667)
             (mkWorkspace "teams-for-linux" "social" 0.6667)
             (mkWorkspace "LINE" "social" 0.5)
@@ -314,6 +355,7 @@ in {
               };
             }
           ];
+          debug.honor-xdg-activation-with-invalid-serial = [];
         };
       };
     }

@@ -22,6 +22,7 @@ in {
     # CachyOS Kernel
     kernelPackages = kernel;
     kernel.sysctl."kernel.sysrq" = 1;
+    resumeDevice = "/dev/nvme1n1p1";
 
     #plymouth
     plymouth = {

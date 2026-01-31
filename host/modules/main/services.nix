@@ -23,6 +23,7 @@
 
   # Suspend on power button click
   services.logind.settings.Login.HandlePowerKey = "suspend";
+  systemd.sleep.extraConfig = ''HibernateDelaySec=1h'';
 
   # ananicy: an auto nice daemon
   services.ananicy = {
@@ -36,7 +37,7 @@
   services.scx.scheduler = "scx_bpfland";
 
   services.power-profiles-daemon.enable = false;
-  services.upower.enable = false;
+  services.upower.enable = true;
   services.thermald.enable = true;
 
   services.earlyoom = {
