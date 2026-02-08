@@ -2,10 +2,11 @@
   config,
   pkgs,
   inputs,
+  secrets,
   lib,
   ...
 }: let
-  inherit (inputs) zen-browser my-nur winapps;
+  inherit (inputs) zen-browser;
 in {
   imports = [./gui.nix];
   xdg = {
@@ -84,38 +85,6 @@ in {
         "application/x-7z-compressed" = archiver;
       };
     };
-
-    configFile = lib.mkIf config.gui {
-      "uwsm/env".text = ''
-        export QT_IM_MODULE=fcitx
-        export XMODIFIERS=@im=fcitx
-        export SDL_IM_MODULE=fcitx
-        export GLFW_IM_MODULE=ibus
-        export INPUT_METHOD=fcitx
-        export GTK_IM_MODULE=fcitx
-
-        export QT_QPA_PLATFORM=wayland
-      '';
-      "uwsm/env-hyprland".text = ''
-        export AQ_DRM_DEVICES="/dev/dri/card1:/dev/dri/card0"
-        export GRIMBLAST_HIDE_CURSOR=0
-        export GSK_RENDERER=ngl
-      '';
-      "swapy/config".text = ''
-        [Default]
-        save_dir=$HOME/Pictures/Screenshots
-        save_filename_format=Screenshot_%Y-%m-%d_%H.%M.%S.png
-        show_panel=false
-        line_size=5
-        text_size=20
-        text_font=sans-serif
-        paint_mode=brush
-        early_exit=false
-        fill_shape=false
-        auto_save=false
-        custom_color=rgba(193,125,17,1)
-      '';
-    };
   };
   home = {
     sessionVariables = {
@@ -125,11 +94,6 @@ in {
 
     packages = lib.mkIf config.gui (with pkgs.stable;
       [
-        my-nur.packages.${pkgs.hostsys}.app2nix
-
-        winapps.packages."${pkgs.hostsys}".winapps
-        winapps.packages."${pkgs.hostsys}".winapps-launcher
-
         teams-for-linux # teams :vomit:
         (youtube-music.overrideAttrs {
           desktopItems = [
@@ -143,35 +107,17 @@ in {
             })
           ];
         }) # YT Music
-        teamviewer
         pavucontrol
 
         # cli that depend on gui
-        copyq
-        grim
         hyprpicker
-        slurp
-        wl-clipboard
         alsa-utils
-        bemoji
         tesseract
-
-        gnome-network-displays
         gparted
-
-        figma-linux
-
-        # wine
-        wineWowPackages.waylandFull
-
-        # fwupd
-        gnome-firmware
-
         mission-center
       ]
       ++ (with pkgs.unstable; [
         valent
-        winetricks
       ]));
   };
 
@@ -278,11 +224,17 @@ in {
 
   services.flatpak.packages = lib.optionals config.gui [
     "com.github.tchx84.Flatseal"
+    "us.zoom.Zoom"
   ];
 
-  services.vicinae = lib.mkIf config.gui {
-    enable = true;
+  services.vicinae = {
+    enable = config.gui;
     settings = {
+      theme = {
+        light.name = "stylix";
+        dark.name = "stylix";
+      };
+
       favicon_service = "twenty";
       font.normal.size = 10;
       pop_to_root_on_close = false;
@@ -294,15 +246,93 @@ in {
       favorites = [
         "clipboard:history"
         "core:search-emojis"
-        "nix:packages"
-        "nix:options"
-        "nix:home-manager-options"
-        "homeassistant:lights"
+        "@knoopx/store.vicinae.nix:packages"
+        "@knoopx/store.vicinae.nix:options"
+        "@knoopx/store.vicinae.nix:home-manager-options"
+        "@tonka3000/0a3cf1ce-7de6-415c-9e37-91a892d1747e:lights"
       ];
+      providers = {
+        "@knoopx/store.vicinae.nix".preferences.githubToken = secrets.ghToken;
+        "@tonka3000/0a3cf1ce-7de6-415c-9e37-91a892d1747e".preferences.instance = secrets.homeassistant.instance;
+      };
     };
     systemd = {
       enable = true;
       autoStart = true;
     };
+    extensions = let
+      # https://github.com/nix-community/home-manager/blob/0d782ee42c86b196acff08acfbf41bb7d13eed5b/modules/programs/vicinae.nix#L162-L180
+      mkExtension = {
+        name,
+        src,
+      }: (pkgs.buildNpmPackage {
+        inherit name src;
+        installPhase = ''
+          runHook preInstall
+
+          mkdir -p $out
+          cp -r /build/.local/share/vicinae/extensions/${name}/* $out/
+
+          runHook postInstall
+        '';
+        npmDeps = pkgs.importNpmLock {npmRoot = src;};
+        inherit (pkgs.importNpmLock) npmConfigHook;
+      });
+
+      extensions = names:
+        map (ext:
+          mkExtension {
+            name = ext;
+            src =
+              pkgs.fetchFromGitHub {
+                owner = "vicinaehq";
+                repo = "extensions";
+                rev = "ffbb04567d5108a0fb197aedb7642a0aa6ae7aad";
+                hash = "sha256-1Q/vrarA1M5rIIOZeSmqpC2e33ncpI7dL8AkNIHgtVo=";
+              }
+              + "/extensions/${ext}";
+          })
+        names;
+      raycastExtensions = names: let
+        rayCli = pkgs.fetchurl {
+          url = "https://cli.raycast.com/1.86.0-alpha.65/linux/ray";
+          sha256 = "sha256-UgDA2hIH7HwKl3j4UEGIlvh6eE+IWUlSML0wloHFPQw=";
+        };
+        sources = pkgs.fetchgit {
+          rev = "4a6e46f1dae389a4f8c52f12eb5722542cdfe6f3";
+          sha256 = "sha256-B1zyPp/5nbMh9SG7e6LyDePNjoE6abP2WtCFZ2odi0I=";
+          url = "https://github.com/raycast/extensions";
+          sparseCheckout = map (e: "/extensions/${e}") names;
+        };
+      in
+        map (
+          ext:
+            pkgs.buildNpmPackage {
+              name = ext;
+              src = "${sources}/extensions/${ext}";
+              buildPhase = ''
+                runHook preBuild
+                mkdir -p node_modules/@raycast/api/bin/linux
+                cp ${rayCli} node_modules/@raycast/api/bin/linux/ray
+                chmod +x node_modules/@raycast/api/bin/linux/ray
+                npm run build
+                runHook postBuild
+              '';
+              installPhase = ''
+                set -x
+                runHook preInstall
+                mkdir -p $out/
+                echo
+                cp -r /build/.config/*/extensions/${ext}/* $out/
+                runHook postInstall
+              '';
+              npmDeps = pkgs.importNpmLock {npmRoot = "${sources}/extensions/${ext}";};
+              inherit (pkgs.importNpmLock) npmConfigHook;
+            }
+        )
+        names;
+    in
+      (extensions ["wifi-commander" "nix" "it-tools" "niri" "bluetooth"]) # `systemd` fails to build
+      ++ (raycastExtensions ["bintools" "github" "latex-math-symbols" "gif-search" "devdocs" "homeassistant" "wikipedia" "speedtest"]);
   };
 }
