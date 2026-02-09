@@ -300,7 +300,7 @@ in {
         };
         sources = pkgs.fetchgit {
           rev = "4a6e46f1dae389a4f8c52f12eb5722542cdfe6f3";
-          sha256 = "sha256-B1zyPp/5nbMh9SG7e6LyDePNjoE6abP2WtCFZ2odi0I=";
+          sha256 = "sha256-600VVV8DrKgL+Wk5wJGpVG/ckwvzEV948/qXj9q6vKE=";
           url = "https://github.com/raycast/extensions";
           sparseCheckout = map (e: "/extensions/${e}") names;
         };

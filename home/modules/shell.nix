@@ -1,4 +1,8 @@
-{config, ...}: {
+{
+  config,
+  lib,
+  ...
+}: {
   programs.noctalia-shell = {
     enable = true;
     plugins = {
@@ -8,19 +12,24 @@
           name = "Official Noctalia Plugins";
           url = "https://github.com/noctalia-dev/noctalia-plugins";
         }
+        {
+          enabled = true;
+          name = "Crystal's Noctalia Plugins";
+          url = "https://github.com/itscrystalline/noctalia-plugins";
+        }
       ];
       states = let
-        mkEnable = plugins:
+        mkEnable = host: plugins:
           builtins.listToAttrs (map (plugin: {
               name = "${plugin}";
               value = {
                 enabled = true;
-                sourceUrl = "https://github.com/noctalia-dev/noctalia-plugins";
+                sourceUrl = "https://github.com/${host}/noctalia-plugins";
               };
             })
             plugins);
       in
-        mkEnable ["privacy-indicator" "battery-threshold" "tailscale" "keybind-cheatsheet"];
+        (mkEnable "noctalia-dev" ["privacy-indicator" "tailscale" "keybind-cheatsheet"]) // (mkEnable "itscrystalline" ["battery-threshold" "battery-actions"]);
       version = 1;
     };
     pluginSettings = {
@@ -39,9 +48,21 @@
         iconSpacing = 4;
         removeMargins = false;
       };
+      battery-threshold = {
+        chargeThreshold = 85;
+        batteryDevice = "/sys/class/power_supply/BAT1";
+      };
+      battery-actions = {
+        pluggedInScript = "niri msg output eDP-1 mode 1920x1080@144.003; noctalia-shell ipc call brightness set 100%; brightnessctl -d asus::kbd_backlight set 3; asusctl profile -P Balanced";
+        onBatteryScript = "niri msg output eDP-1 mode 1920x1080@60.004; noctalia-shell ipc call brightness set 65%; brightnessctl -d asus::kbd_backlight set 0; asusctl profile -P LowPower";
+      };
     };
     settings = {
       # configure noctalia here
+      ui = {
+        fontDefault = "Inter";
+        fontFixed = lib.mkForce "JetbrainsMono NF";
+      };
       bar = {
         # density = "compact";
         position = "left";
@@ -175,24 +196,8 @@
           ];
         };
       };
-      colors = with config.lib.stylix.colors.withHashtag; {
-        mPrimary = base0E;
-        mOnPrimary = base05;
-        mSecondary = base0F;
-        mOnSecondary = base05;
-        mTertiary = base0D;
-        mOnTertiary = base05;
-        mError = base08;
-        mOnError = base05;
-        mSurface = base00;
-        mOnSurface = base05;
-        mHover = base02;
-        mOnHover = base05;
-        mSurfaceVariant = base01;
-        mOnSurfaceVariant = base05;
-        mOutline = base04;
-        mShadow = base03;
-      };
+      colorSchemes.predefinedScheme = "Catppuccin";
+      plugins.autoUpdate = true;
       general = {
         language = "en";
         avatarImage = "${config.home.homeDirectory}/.face";
