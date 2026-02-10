@@ -95,7 +95,7 @@
               inputs.noctalia.homeModules.default
             ]
             ++ hostCfg.hm
-            ++ nixpkgs.lib.optionals (hostCfg.extraHmConfig != {}) [hostCfg.extraHmConfig];
+            ++ hostCfg.extraHmConfig;
         };
 
         extraSpecialArgs = {
@@ -127,7 +127,7 @@
           ./nix-settings.nix
           hostCfg.hostModule
         ]
-        ++ nixpkgs.lib.optionals (hostCfg.extraNixosConfig != {}) [hostCfg.extraNixosConfig]
+        ++ hostCfg.extraNixosConfig
         ++ nixpkgs.lib.optionals withHome [
           home-manager.nixosModules.home-manager
           (mkHome hostCfg)
@@ -172,7 +172,7 @@
         inputs.stylix.homeModules.stylix
       ]
       ++ hostCfg.hm
-      ++ nixpkgs.lib.optionals (hostCfg.extraHmConfig != {}) [hostCfg.extraHmConfig];
+      ++ hostCfg.extraHmConfig;
 
     # Build a standalone homeManagerConfiguration
     mkStandaloneHome = {
@@ -243,7 +243,7 @@
           home-manager.darwinModules.home-manager
           (mkHome hosts.cwystaws-macbook)
         ]
-        ++ nixpkgs.lib.optionals (hosts.cwystaws-macbook.extraNixosConfig != {}) [hosts.cwystaws-macbook.extraNixosConfig];
+        ++ hosts.cwystaws-macbook.extraNixosConfig;
     };
   };
 }

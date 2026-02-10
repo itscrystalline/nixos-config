@@ -2,8 +2,8 @@
 # `vars`    — options from vars.nix (gui, doas, keep_generations, username)
 # `hostModule` — path to the device's host.nix (controls NixOS module imports)
 # `hm`      — list of additional HM module paths to import
-# `extraNixosConfig` — escape hatch: arbitrary NixOS config attrset
-# `extraHmConfig`    — escape hatch: arbitrary HM config attrset
+# `extraNixosConfig` — escape hatch: list of NixOS config modules
+# `extraHmConfig`    — escape hatch: list of HM config modules
 #
 # Module defaults: core system, full HM, and device-specific modules are
 # enabled by default.  Desktop / GUI / extra-service modules default to
@@ -58,13 +58,15 @@ in {
     };
     hostModule = ./host/devices/cwystaws-meowchine/host.nix;
     hm = [];
-    extraNixosConfig =
+    extraNixosConfig = [
       desktopNixos
-      // gamingNixos
-      // {
-        crystal.asus.enable = true;
-      };
-    extraHmConfig = desktopHm // gamingHm;
+      gamingNixos
+      {crystal.asus.enable = true;}
+    ];
+    extraHmConfig = [
+      desktopHm
+      gamingHm
+    ];
   };
 
   cwystaws-raspi = {
@@ -76,8 +78,8 @@ in {
     };
     hostModule = ./host/devices/cwystaws-raspi/host.nix;
     hm = [];
-    extraNixosConfig = {};
-    extraHmConfig = {};
+    extraNixosConfig = [];
+    extraHmConfig = [];
   };
 
   cwystaws-dormpi = {
@@ -89,8 +91,8 @@ in {
     };
     hostModule = ./host/devices/cwystaws-dormpi/host.nix;
     hm = [];
-    extraNixosConfig = {};
-    extraHmConfig = {};
+    extraNixosConfig = [];
+    extraHmConfig = [];
   };
 
   cwystaws-macbook = {
@@ -102,10 +104,14 @@ in {
     };
     hostModule = ./host/devices/cwystaws-macbook/host.nix;
     hm = [];
-    extraNixosConfig = {
-      crystal.mac.homebrew.enable = true;
-      crystal.users.mac.itscrystalline.enable = true;
-    };
-    extraHmConfig = desktopHm;
+    extraNixosConfig = [
+      {
+        crystal.mac.homebrew.enable = true;
+        crystal.users.mac.itscrystalline.enable = true;
+      }
+    ];
+    extraHmConfig = [
+      desktopHm
+    ];
   };
 }
