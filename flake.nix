@@ -81,18 +81,21 @@
         useUserPackages = true;
         backupFileExtension = "hmbkup";
         users.itscrystalline = {
-          imports = [
-            ./vars.nix
-            ./home/home-linux.nix
+          imports =
+            [
+              ./vars.nix
+              ./home/home-linux.nix
 
-            {config = hostCfg;}
-            inputs.nix-flatpak.homeManagerModules.nix-flatpak
-            inputs.nix-index-database.homeModules.nix-index
-            inputs.occasion.homeManagerModule
-            inputs.vicinae.homeManagerModules.default
-            inputs.zen-browser.homeModules.twilight
-            inputs.noctalia.homeModules.default
-          ];
+              {config = hostCfg.vars;}
+              inputs.nix-flatpak.homeManagerModules.nix-flatpak
+              inputs.nix-index-database.homeModules.nix-index
+              inputs.occasion.homeManagerModule
+              inputs.vicinae.homeManagerModules.default
+              inputs.zen-browser.homeModules.twilight
+              inputs.noctalia.homeModules.default
+            ]
+            ++ hostCfg.hm
+            ++ [hostCfg.extraHmConfig];
         };
 
         extraSpecialArgs = {
@@ -103,7 +106,6 @@
 
     # Build a NixOS system configuration
     mkNixos = {
-      hostModule,
       hostCfg,
       system,
       extraModules ? [],
@@ -115,14 +117,15 @@
       };
       modules =
         [
-          {config = hostCfg;}
+          {config = hostCfg.vars;}
           inputs.nur.modules.nixos.default
           inputs.stylix.nixosModules.stylix
 
           ./vars.nix
           ./nix-settings.nix
-          hostModule
         ]
+        ++ hostCfg.modules
+        ++ [hostCfg.extraNixosConfig]
         ++ extraModules
         ++ nixpkgs.lib.optionals withHome [
           home-manager.nixosModules.home-manager
@@ -131,7 +134,6 @@
     };
 
     cwystaws-meowchine = mkNixos {
-      hostModule = ./host/devices/cwystaws-meowchine/host.nix;
       hostCfg = hosts.cwystaws-meowchine;
       system = "x86_64-linux";
       extraModules = [
@@ -143,11 +145,10 @@
     };
 
     mkRaspi = {
-      hostModule,
       hostCfg,
       withHome,
     }: mkNixos {
-      inherit hostModule hostCfg withHome;
+      inherit hostCfg withHome;
       system = "aarch64-linux";
       extraModules = [
         nixos-hardware.nixosModules.raspberry-pi-4
@@ -156,30 +157,32 @@
   in {
     nixosConfigurations = {
       cwystaws-meowchine = nixpkgs.lib.nixosSystem cwystaws-meowchine;
-      cwystaws-raspi = nixpkgs.lib.nixosSystem (mkRaspi {hostModule = ./host/devices/cwystaws-raspi/host.nix; hostCfg = hosts.cwystaws-raspi; withHome = true;});
-      cwystaws-dormpi = nixpkgs.lib.nixosSystem (mkRaspi {hostModule = ./host/devices/cwystaws-dormpi/host.nix; hostCfg = hosts.cwystaws-dormpi; withHome = false;});
+      cwystaws-raspi = nixpkgs.lib.nixosSystem (mkRaspi {hostCfg = hosts.cwystaws-raspi; withHome = true;});
+      cwystaws-dormpi = nixpkgs.lib.nixosSystem (mkRaspi {hostCfg = hosts.cwystaws-dormpi; withHome = false;});
     };
 
     packages.aarch64-linux = {
-      cwystaws-raspi = nixos-generators.nixosGenerate ((mkRaspi {hostModule = ./host/devices/cwystaws-raspi/host.nix; hostCfg = hosts.cwystaws-raspi; withHome = true;}) // {format = "sd-aarch64";});
-      cwystaws-dormpi = nixos-generators.nixosGenerate ((mkRaspi {hostModule = ./host/devices/cwystaws-dormpi/host.nix; hostCfg = hosts.cwystaws-dormpi; withHome = false;}) // {format = "sd-aarch64";});
+      cwystaws-raspi = nixos-generators.nixosGenerate ((mkRaspi {hostCfg = hosts.cwystaws-raspi; withHome = true;}) // {format = "sd-aarch64";});
+      cwystaws-dormpi = nixos-generators.nixosGenerate ((mkRaspi {hostCfg = hosts.cwystaws-dormpi; withHome = false;}) // {format = "sd-aarch64";});
     };
 
     darwinConfigurations."cwystaws-macbook" = nix-darwin.lib.darwinSystem {
       specialArgs = {
         inherit inputs secrets;
       };
-      modules = [
-        {config = hosts.cwystaws-macbook;}
+      modules =
+        [
+          {config = hosts.cwystaws-macbook.vars;}
 
-        ./vars.nix
-        ./nix-settings.nix
-        ./host/devices/cwystaws-macbook/host.nix
+          ./vars.nix
+          ./nix-settings.nix
 
-        inputs.stylix.darwinModules.stylix
-        home-manager.darwinModules.home-manager
-        (mkHome hosts.cwystaws-macbook)
-      ];
+          inputs.stylix.darwinModules.stylix
+          home-manager.darwinModules.home-manager
+          (mkHome hosts.cwystaws-macbook)
+        ]
+        ++ hosts.cwystaws-macbook.modules
+        ++ [hosts.cwystaws-macbook.extraNixosConfig];
     };
   };
 }
