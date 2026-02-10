@@ -28,15 +28,19 @@ in {
       mimeApps = lib.mkIf config.gui {
         enable = true;
         defaultApplications = let
+          # Derive desktop file names from the packages themselves
+          desktopFile = pkg:
+            builtins.head (builtins.filter (f: lib.hasSuffix ".desktop" f)
+              (builtins.attrNames (builtins.readDir "${pkg}/share/applications")));
           browser =
             if config.gui
             then zen-browser.packages.${pkgs.hostsys}.twilight.meta.desktopFileName
             else "";
-          image_viewer = "org.gnome.Loupe.desktop";
-          pdf_viewer = "org.gnome.Papers.desktop";
-          text_editor = "org.gnome.TextEditor.desktop";
-          video_player = "org.gnome.Totem.desktop";
-          archiver = "org.gnome.FileRoller.desktop";
+          image_viewer = desktopFile pkgs.loupe;
+          pdf_viewer = desktopFile pkgs.papers;
+          text_editor = desktopFile pkgs.gnome-text-editor;
+          video_player = desktopFile pkgs.totem;
+          archiver = desktopFile pkgs.file-roller;
         in {
           # Browser-related MIME types
           "text/html" = browser;
