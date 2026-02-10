@@ -13,9 +13,8 @@ in {
     virtualisation.libvirtd.qemu.vhostUserPackages = with pkgs; [virtiofsd];
     virtualisation.spiceUSBRedirection.enable = true;
 
-    # NOTE: VirtualBox adds ~100-200 packages. If KVM/QEMU covers your needs,
-    # consider disabling this to reduce the closure.
-    virtualisation.virtualbox.host.enable = true;
+    # VirtualBox removed — KVM/QEMU covers virtualisation needs
+    # virtualisation.virtualbox.host.enable = true;
     # virtualisation.virtualbox.host.enableKvm = true;
     # virtualisation.virtualbox.host.addNetworkInterface = false;
 

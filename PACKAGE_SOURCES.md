@@ -8,82 +8,68 @@ configuration come from. Packages come from both **direct** declarations and
 
 ## Summary: Estimated Package Breakdown
 
-| Source | Est. Closure Packages | Module / File |
-|---|---|---|
-| **GNOME Desktop Environment** | ~2000–2500 | `host/modules/main/services.nix` |
-| **CUDA Toolkit** | ~400–600 | `host/modules/main/graphics.nix` |
-| **Steam + Proton** | ~250–400 | `host/modules/main/games.nix` |
-| **Chromium** | ~200–300 | `home/modules/gui.nix` |
-| **LibreOffice** | ~150–250 | `home/modules/gui.nix` |
-| **KDE/Qt packages (kdenlive, qt5ct, qt6ct, kvantum)** | ~200–300 | `home/modules/gui.nix`, `host/modules/common/theming.nix` |
-| **VirtualBox** | ~100–200 | `host/modules/main/virtualisation.nix` |
-| **Docker** | ~50–100 | `host/modules/main/virtualisation.nix` |
-| **libvirtd + QEMU + virt-manager** | ~100–200 | `host/modules/main/virtualisation.nix` |
-| **Blender (custom-built from flake)** | ~100–200 | `home/modules/gui/blender.nix` |
-| **OBS Studio + plugins** | ~50–100 | `home/modules/gui.nix` |
-| **nix-ld library set** | ~50–150 | `host/modules/common/compat.nix` |
-| **Zen Browser (Firefox fork)** | ~100–150 | `home/modules/gui-linux.nix` |
-| **IDEs & language tooling** | ~100–200 | `home/modules/ides.nix` |
-| **CLI tools (zsh, starship, bat, eza, etc.)** | ~50–100 | `home/modules/cli.nix` |
-| **Fonts** | ~30–50 | `host/modules/common/theming.nix`, `home/modules/gui.nix` |
-| **Stylix theming** | ~20–50 | `host/modules/common/theming.nix` |
-| **Flatpak + nix-flatpak** | ~10–30 | `host/modules/main/flatpak.nix` |
-| **Sunshine (remote desktop)** | ~20–40 | `host/modules/main/services.nix` |
-| **Vicinae extensions (npm builds)** | ~30–80 | `home/modules/gui-linux.nix` |
-| **Niri window manager** | ~20–40 | niri flake + `home/modules/niri.nix` |
-| **Misc services & tools** | ~50–100 | Various |
-| **NixOS base system + kernel** | ~500–700 | Implicit |
-| **NVIDIA drivers** | ~30–50 | `host/modules/main/graphics.nix` |
-| **Home Manager infrastructure** | ~30–50 | Implicit |
+| Source | Est. Closure Packages | Module / File | Status |
+|---|---|---|---|
+| **~~GNOME Desktop Environment~~** | ~~~2000–2500~~ | `host/modules/main/services.nix` | **REMOVED** — replaced with GDM-only + individual GNOME apps |
+| **~~CUDA Toolkit~~** | ~~~400–600~~ | `host/modules/main/graphics.nix` | **REMOVED** — use devenv/nix-shell when needed |
+| **~~VirtualBox~~** | ~~~100–200~~ | `host/modules/main/virtualisation.nix` | **REMOVED** — KVM/QEMU covers virtualisation |
+| **Steam + Proton** | ~250–400 | `host/modules/main/games.nix` | Kept |
+| **Chromium** | ~200–300 | `home/modules/gui.nix` | Kept |
+| **LibreOffice** | ~150–250 | `home/modules/gui.nix` | Kept |
+| **KDE/Qt packages (kdenlive, qt5ct, qt6ct, kvantum)** | ~200–300 | `home/modules/gui.nix`, `host/modules/common/theming.nix` | Kept |
+| **Docker** | ~50–100 | `host/modules/main/virtualisation.nix` | Kept |
+| **libvirtd + QEMU + virt-manager** | ~100–200 | `host/modules/main/virtualisation.nix` | Kept |
+| **Blender (custom-built from flake)** | ~100–200 | `home/modules/gui/blender.nix` | Kept |
+| **OBS Studio + plugins** | ~50–100 | `home/modules/gui.nix` | Kept |
+| **nix-ld library set** | ~50–150 | `host/modules/common/compat.nix` | Kept |
+| **Zen Browser (Firefox fork)** | ~100–150 | `home/modules/gui-linux.nix` | Kept |
+| **IDEs & language tooling** | ~100–200 | `home/modules/ides.nix` | Kept |
+| **CLI tools (zsh, starship, bat, eza, etc.)** | ~50–100 | `home/modules/cli.nix` | Kept |
+| **Fonts** | ~30–50 | `host/modules/common/theming.nix`, `home/modules/gui.nix` | Kept |
+| **Stylix theming** | ~20–50 | `host/modules/common/theming.nix` | Kept |
+| **Flatpak + nix-flatpak** | ~10–30 | `host/modules/main/flatpak.nix` | Kept |
+| **Sunshine (remote desktop)** | ~20–40 | `host/modules/main/services.nix` | Kept |
+| **Vicinae extensions (npm builds)** | ~30–80 | `home/modules/gui-linux.nix` | Kept |
+| **Niri window manager** | ~20–40 | niri flake + `home/modules/niri.nix` | Kept |
+| **GNOME apps (nautilus, text-editor, loupe, totem, papers, disks, file-roller)** | ~50–100 | `host/modules/main/services.nix` | **NEW** — individual apps instead of full desktop |
+| **Misc services & tools** | ~50–100 | Various | Kept |
+| **NixOS base system + kernel** | ~500–700 | Implicit | Kept |
+| **NVIDIA drivers** | ~30–50 | `host/modules/main/graphics.nix` | Kept |
+| **Home Manager infrastructure** | ~30–50 | Implicit | Kept |
 
 > **Note:** Closure sizes overlap heavily — many packages are shared dependencies.
 > The total won't equal the sum of these rows.
+>
+> **Estimated savings:** ~2500–3300 packages removed (GNOME desktop ~2000–2500,
+> CUDA ~400–600, VirtualBox ~100–200, minus shared-dependency overlap).
 
 ---
 
 ## Top 5 Biggest Contributors (in order)
 
-### 1. GNOME Desktop Environment (~2000–2500 packages)
+### 1. ~~GNOME Desktop Environment~~ — REMOVED
 
 **File:** `host/modules/main/services.nix`
-```nix
-services.desktopManager.gnome.enable = true;
-services.displayManager.gdm.enable = true;
-```
 
-GNOME is by far the largest single contributor. Enabling it pulls in the full
-GNOME shell, Mutter, GDM, Evolution Data Server, GNOME Settings, Tracker,
-Nautilus, and dozens of GNOME apps and libraries — each with deep dependency
-trees (GTK 4, GLib, WebKitGTK, GStreamer, etc.).
+Previously, `services.desktopManager.gnome.enable = true` pulled in ~2000–2500
+packages. Since niri is the actual window manager, GNOME was only providing GDM
+and supporting services.
 
-**Possible actions to reduce:**
-- The config already uses **niri** as the window manager, not GNOME Shell.
-  GNOME is only used for GDM (login manager) and supporting services.
-- Consider switching to a lighter display manager (e.g. `greetd` + `tuigreet`
-  or `regreet`) and disabling `services.desktopManager.gnome.enable` entirely.
-- If GNOME services like `gvfs`, Nautilus, or GNOME Keyring are still needed,
-  they can be enabled individually without the full desktop.
-- Use `environment.gnome.excludePackages` to remove unused GNOME apps if the
-  full desktop is still desired.
+**What changed:** Disabled `services.desktopManager.gnome.enable`. GDM is kept
+as the display manager. Essential GNOME apps (Nautilus, GNOME Text Editor,
+Loupe, Totem, Papers, GNOME Disks, File Roller) are now installed individually
+as `environment.systemPackages` since they serve as default file handlers.
 
-### 2. CUDA Toolkit (~400–600 packages)
+### 2. ~~CUDA Toolkit~~ — REMOVED
 
 **File:** `host/modules/main/graphics.nix`
-```nix
-nixpkgs.config.cudaSupport = true;
-environment.systemPackages = with pkgs; [ cudatoolkit ... ];
-```
 
-`cudatoolkit` brings in the full NVIDIA CUDA compiler toolchain, cuBLAS, cuDNN
-(if referenced), and supporting libraries. The `cudaSupport = true` flag also
-causes other packages (like Blender) to be rebuilt with CUDA, further increasing
-the closure.
+Previously, `nixpkgs.config.cudaSupport = true` and `cudatoolkit` added
+~400–600 packages and caused CUDA-capable packages (e.g. Blender) to rebuild
+with CUDA support.
 
-**Possible actions to reduce:**
-- If CUDA is only needed occasionally, consider moving it to a `nix-shell` /
-  `devenv` environment rather than the system profile.
-- Use `cudaPackages.cudatoolkit-trimmed` or only install specific CUDA
-  libraries that are actually needed.
+**What changed:** Both `cudaSupport` and `cudatoolkit` removed. Use
+`nix develop` or `devenv` for CUDA projects when needed.
 
 ### 3. Steam + Gaming (~250–400 packages)
 
@@ -93,11 +79,7 @@ programs.steam.enable = true;
 ```
 
 Steam uses an FHS environment with a large set of 32-bit and 64-bit libraries,
-plus Proton/Wine dependencies.
-
-**Possible actions to reduce:**
-- This is hard to trim — Steam needs its FHS environment. The package count is
-  largely unavoidable if Steam is desired.
+plus Proton/Wine dependencies. Hard to trim — kept as-is.
 
 ### 4. Chromium (~200–300 packages)
 
@@ -112,21 +94,12 @@ Chromium has a massive build closure. It's used here only for the LINE webapp.
 - If the LINE extension can run in Zen Browser (Firefox-based), Chromium could
   potentially be removed entirely.
 
-### 5. LibreOffice (~150–250 packages)
+### 5. ~~VirtualBox~~ — REMOVED
 
-**File:** `home/modules/gui.nix`
-```nix
-home.packages = [ ... libreoffice ... ];
-```
+**File:** `host/modules/main/virtualisation.nix`
 
-LibreOffice pulls in Java (for some components), numerous font rendering
-libraries, and a wide set of document format support libraries.
-
-**Possible actions to reduce:**
-- Use `libreoffice-still` (stable branch) if not already — it may have a
-  slightly smaller closure.
-- If only specific components are needed, `libreoffice-fresh` subpackages
-  might help, though NixOS doesn't split these easily.
+Previously added ~100–200 packages. KVM/QEMU + virt-manager (which are kept)
+cover virtualisation needs.
 
 ---
 
@@ -135,9 +108,11 @@ libraries, and a wide set of document format support libraries.
 ### NixOS System Modules (enabled for cwystaws-meowchine)
 
 #### `host/modules/main/services.nix` — Desktop Services
-- `services.desktopManager.gnome.enable` → **GNOME desktop** (HUGE)
 - `services.displayManager.gdm.enable` → GDM login manager
+- ~~`services.desktopManager.gnome.enable`~~ → **REMOVED**
 - `services.gvfs.enable` → GNOME Virtual File System
+- Essential GNOME apps installed individually: nautilus, gnome-text-editor,
+  loupe, totem, papers, gnome-disk-utility, file-roller
 - `services.teamviewer.enable` → TeamViewer
 - `services.sunshine` → Remote desktop (Sunshine)
 - `services.fwupd` → Firmware updater
@@ -146,11 +121,11 @@ libraries, and a wide set of document format support libraries.
 - `services.thermald`, `services.upower`, `services.earlyoom`
 
 #### `host/modules/main/graphics.nix` — Graphics & NVIDIA
-- `cudatoolkit` → **CUDA toolkit** (LARGE)
+- ~~`cudatoolkit`~~ → **REMOVED**
+- ~~`nixpkgs.config.cudaSupport = true`~~ → **REMOVED**
 - `nvtopPackages.nvidia`, `nvtopPackages.intel` → GPU monitors
 - `intel-gpu-tools`, `libva-utils` → Intel GPU utilities
 - NVIDIA Optimus configuration + proprietary drivers
-- `nixpkgs.config.cudaSupport = true` → Rebuilds CUDA-capable packages
 
 #### `host/modules/main/games.nix` — Gaming
 - `programs.steam.enable` → **Steam** (LARGE, FHS environment)
@@ -158,7 +133,7 @@ libraries, and a wide set of document format support libraries.
 - `protonup-qt` → Proton version manager
 
 #### `host/modules/main/virtualisation.nix` — Virtualisation
-- `virtualisation.virtualbox.host.enable` → **VirtualBox** (LARGE)
+- ~~`virtualisation.virtualbox.host.enable`~~ → **REMOVED**
 - `virtualisation.libvirtd` + `virtiofsd` → KVM/QEMU
 - `virtualisation.docker` → Docker
 - `programs.virt-manager` → VM manager GUI
@@ -286,22 +261,15 @@ libraries, and a wide set of document format support libraries.
 
 ---
 
-## Recommendations for Reducing Package Count
+## Recommendations for Further Reducing Package Count
 
-### High Impact (save 1000+ packages)
-1. **Replace GNOME with a minimal display manager.** Since niri is already the
-   window manager, GNOME is only providing GDM and some services. Switch to
-   `greetd` + `tuigreet` (or `regreet` for a GUI greeter) and enable only the
-   specific GNOME services needed (gvfs, keyring, etc.). This alone could
-   remove ~1500–2000 packages.
+### Already Done ✅
+1. ~~**Replace GNOME with GDM-only + individual apps.**~~ ✅ Done — saved ~2000+ packages.
+2. ~~**Remove CUDA.**~~ ✅ Done — saved ~400–600 packages.
+3. ~~**Remove VirtualBox.**~~ ✅ Done — saved ~100–200 packages.
 
 ### Medium Impact (save 100–500 packages each)
-2. **Move CUDA to a dev shell.** If CUDA isn't needed system-wide, use
-   `nix develop` or `devenv` for CUDA projects instead of
-   `nixpkgs.config.cudaSupport = true` + `cudatoolkit` in the system profile.
-3. **Drop Chromium** if LINE can work in Zen Browser, or use a PWA approach.
-4. **Evaluate VirtualBox necessity.** If KVM/QEMU covers virtualisation needs,
-   removing VirtualBox saves significant packages.
+4. **Drop Chromium** if LINE can work in Zen Browser, or use a PWA approach.
 5. **Deduplicate fonts.** Fonts are declared in both `host/modules/common/theming.nix`
    and `home/modules/gui.nix`. Consolidate to one location.
 

@@ -73,13 +73,8 @@ in {
       boot.blacklistedKernelModules = ["nouveau" "nvidia" "nvidia_drm" "nvidia_modeset"];
     };
 
-    # CUDA & utilities
-    # NOTE: cudaSupport + cudatoolkit add ~400-600 packages to the closure.
-    # Also causes other packages (e.g. Blender) to rebuild with CUDA.
-    # Consider moving to a devenv/nix-shell if only needed occasionally.
-    nixpkgs.config.cudaSupport = true;
+    # GPU utilities (CUDA removed — use a devenv/nix-shell when needed)
     environment.systemPackages = with pkgs; [
-      cudatoolkit
       libva-utils
       nvtopPackages.nvidia
       nvtopPackages.intel
