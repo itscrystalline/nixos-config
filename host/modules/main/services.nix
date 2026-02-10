@@ -18,10 +18,20 @@ in {
     # Enable the X11 windowing system.
     services.xserver.enable = true;
 
-    # Enable the GNOME Desktop Environment.
+    # GDM display manager (GNOME desktop is NOT enabled — niri is the WM)
     services.displayManager.gdm.enable = true;
-    services.desktopManager.gnome.enable = true;
     services.gvfs.enable = true;
+
+    # Essential GNOME apps kept as default-app handlers (see gui-linux.nix mimeApps)
+    environment.systemPackages = with pkgs; [
+      nautilus
+      gnome-text-editor # default text editor
+      loupe # default image viewer
+      totem # default video player
+      papers # default PDF viewer
+      gnome-disk-utility # disks
+      file-roller # default archiver
+    ];
 
     # TeamViewer service
     services.teamviewer.enable = true;

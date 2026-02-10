@@ -73,10 +73,8 @@ in {
       boot.blacklistedKernelModules = ["nouveau" "nvidia" "nvidia_drm" "nvidia_modeset"];
     };
 
-    # CUDA & utilities
-    nixpkgs.config.cudaSupport = true;
+    # GPU utilities (CUDA removed — use a devenv/nix-shell when needed)
     environment.systemPackages = with pkgs; [
-      cudatoolkit
       libva-utils
       nvtopPackages.nvidia
       nvtopPackages.intel

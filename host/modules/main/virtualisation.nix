@@ -13,7 +13,8 @@ in {
     virtualisation.libvirtd.qemu.vhostUserPackages = with pkgs; [virtiofsd];
     virtualisation.spiceUSBRedirection.enable = true;
 
-    virtualisation.virtualbox.host.enable = true;
+    # VirtualBox removed — KVM/QEMU covers virtualisation needs
+    # virtualisation.virtualbox.host.enable = true;
     # virtualisation.virtualbox.host.enableKvm = true;
     # virtualisation.virtualbox.host.addNetworkInterface = false;
 
