@@ -4,6 +4,7 @@
   lib,
   ...
 } @ inputs: let
+  cfg = config.crystal.boot;
   nixos_logo = pkgs.fetchurl {
     url = "https://raw.githubusercontent.com/NixOS/nixos-artwork/refs/heads/master/logo/nixos-white.svg";
     sha256 = "sha256-Ly4jHvtxlnOe1CsZ5+f+K7pclUF4S0HS4Vgs5U8Ofl4=";
@@ -11,6 +12,8 @@
   generations = config.keep_generations;
   kernel = pkgs.cachyosKernels.linuxPackages-cachyos-latest-lto-x86_64-v4;
 in {
+  options.crystal.boot.enable = lib.mkEnableOption "boot configuration" // {default = true;};
+  config = lib.mkIf cfg.enable {
   system.modulesTree = [(lib.getOutput "modules" kernel.kernel)];
   boot = {
     # NTFS support
@@ -80,5 +83,6 @@ in {
       "rd.udev.log_level=3"
       "udev.log_priority=3"
     ];
+  };
   };
 }

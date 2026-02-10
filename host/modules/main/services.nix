@@ -1,10 +1,15 @@
 {
   config,
   pkgs,
+  lib,
   ...
-} @ inputs: {
+} @ inputs: let
+  cfg = config.crystal.desktop.services;
+in {
   imports = [../common/services.nix];
+  options.crystal.desktop.services.enable = lib.mkEnableOption "desktop services" // {default = true;};
 
+  config = lib.mkIf cfg.enable {
   systemd.settings.Manager.DefaultTimeoutStopSec = "20s";
 
   # fwupd
@@ -86,5 +91,6 @@
       INTEL_GPU_BOOST_FREQ_ON_AC = 1050;
       INTEL_GPU_BOOST_FREQ_ON_BAT = 1050;
     };
+  };
   };
 }

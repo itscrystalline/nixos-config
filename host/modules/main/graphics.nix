@@ -1,8 +1,13 @@
 {
   config,
   pkgs,
+  lib,
   ...
-} @ inputs: {
+} @ inputs: let
+  cfg = config.crystal.graphics;
+in {
+  options.crystal.graphics.enable = lib.mkEnableOption "graphics" // {default = true;};
+  config = lib.mkIf cfg.enable {
   hardware.graphics.enable = true;
   hardware.graphics.enable32Bit = true;
 
@@ -77,4 +82,5 @@
     nvtopPackages.intel
     intel-gpu-tools
   ];
+  };
 }

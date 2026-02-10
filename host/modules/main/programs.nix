@@ -4,11 +4,13 @@
   lib,
   ...
 } @ inputs: let
+  cfg = config.crystal.desktop.programs;
   inherit (config) gui;
 in {
   imports = [../common/programs.nix];
+  options.crystal.desktop.programs.enable = lib.mkEnableOption "desktop programs" // {default = true;};
 
-  config = lib.mkIf gui {
+  config = lib.mkIf cfg.enable (lib.mkIf gui {
     # programs.firefox.enable = true;
 
     # programs.binary-ninja.enable = true;
@@ -43,5 +45,5 @@ in {
       enable = true;
       openFirewall = true;
     };
-  };
+  });
 }

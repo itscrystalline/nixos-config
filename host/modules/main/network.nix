@@ -1,8 +1,12 @@
-{lib, ...} @ inputs: {
+{config, lib, ...} @ inputs: let
+  cfg = config.crystal.desktop.network;
+in {
   imports = [
     ../common/network.nix
   ];
+  options.crystal.desktop.network.enable = lib.mkEnableOption "desktop network" // {default = true;};
 
+  config = lib.mkIf cfg.enable {
   networking.useDHCP = lib.mkDefault true;
   networking.hostName = "cwystaws-meowchine";
 
@@ -18,5 +22,6 @@
     allowedTCPPorts = [7236 7250 8475 3000];
     allowedUDPPortRanges = allowedTCPPortRanges;
     allowedUDPPorts = allowedTCPPorts;
+  };
   };
 }

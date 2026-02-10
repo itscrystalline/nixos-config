@@ -1,8 +1,13 @@
 {
   config,
   pkgs,
+  lib,
   ...
-} @ inputs: {
+} @ inputs: let
+  cfg = config.crystal.pipewire;
+in {
+  options.crystal.pipewire.enable = lib.mkEnableOption "pipewire" // {default = true;};
+  config = lib.mkIf cfg.enable {
   security.rtkit.enable = true;
 
   services.pipewire = {
@@ -70,5 +75,6 @@
     # use the example session manager (no others are packaged yet so this is enabled by default,
     # no need to redefine it in your config for now)
     #media-session.enable = true;
+  };
   };
 }

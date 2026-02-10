@@ -1,4 +1,8 @@
-{...}: {
+{config, lib, ...}: let
+  cfg = config.crystal.mounts;
+in {
+  options.crystal.mounts.enable = lib.mkEnableOption "mounts" // {default = true;};
+  config = lib.mkIf cfg.enable {
   services.rpcbind.enable = true;
 
   systemd.mounts = [
@@ -25,4 +29,5 @@
       where = "/mnt/nfs";
     }
   ];
+  };
 }

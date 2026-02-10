@@ -3,7 +3,11 @@
   pkgs,
   lib,
   ...
-}: {
+}: let
+  cfg = config.crystal.virtualisation;
+in {
+  options.crystal.virtualisation.enable = lib.mkEnableOption "virtualisation" // {default = true;};
+  config = lib.mkIf cfg.enable {
   programs.virt-manager.enable = true;
   virtualisation.libvirtd.enable = true;
   virtualisation.libvirtd.qemu.vhostUserPackages = with pkgs; [virtiofsd];
@@ -36,5 +40,6 @@
     #   #   dns = ["1.1.1.1" "1.0.0.1" "8.8.8.8"];
     #   # };
     # };
+  };
   };
 }
