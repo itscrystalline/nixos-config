@@ -1,46 +1,53 @@
 {
   config,
+  lib,
   pkgs,
   ...
-} @ inputs: {
-  environment.systemPackages = with pkgs; [
-    git-crypt
-  ];
+} @ inputs: let
+  cfg = config.crystal.security;
+in {
+  options.crystal.security.enable = lib.mkEnableOption "security settings" // {default = true;};
 
-  security.doas.enable = true;
-  security.sudo.enable = false;
-  security.doas.extraRules = [
-    {
-      users = ["itscrystalline"];
-      # Optional, retains environment variables while running commands
-      # e.g. retains your NIX_PATH when applying your config
-      keepEnv = true;
-      persist = true; # Optional, only require password verification a single time
-    }
-  ];
+  config = lib.mkIf cfg.enable {
+    environment.systemPackages = with pkgs; [
+      git-crypt
+    ];
 
-  # use gnome polkit (req. for hyprland)
-  security.polkit = {
-    enable = true;
+    security.doas.enable = true;
+    security.sudo.enable = false;
+    security.doas.extraRules = [
+      {
+        users = ["itscrystalline"];
+        # Optional, retains environment variables while running commands
+        # e.g. retains your NIX_PATH when applying your config
+        keepEnv = true;
+        persist = true; # Optional, only require password verification a single time
+      }
+    ];
+
+    # use gnome polkit (req. for hyprland)
+    security.polkit = {
+      enable = true;
+    };
+
+    # Some programs need SUID wrappers, can be configured further or are
+    # started in user sessions.
+    # programs.mtr.enable = true;
+    # programs.gnupg.agent = {
+    #   enable = true;
+    #   enableSSHSupport = true;
+    # };
+
+    # List services that you want to enable:
+
+    # Enable the OpenSSH daemon.
+    services.openssh.enable = true;
+    services.openssh.settings.SetEnv = "PATH=/nix/var/nix/profiles/default/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin";
+
+    # Open ports in the firewall.
+    # networking.firewall.allowedTCPPorts = [ ... ];
+    # networking.firewall.allowedUDPPorts = [ ... ];
+    # Or disable the firewall altogether.
+    # networking.firewall.enable = false;
   };
-
-  # Some programs need SUID wrappers, can be configured further or are
-  # started in user sessions.
-  # programs.mtr.enable = true;
-  # programs.gnupg.agent = {
-  #   enable = true;
-  #   enableSSHSupport = true;
-  # };
-
-  # List services that you want to enable:
-
-  # Enable the OpenSSH daemon.
-  services.openssh.enable = true;
-  services.openssh.settings.SetEnv = "PATH=/nix/var/nix/profiles/default/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin";
-
-  # Open ports in the firewall.
-  # networking.firewall.allowedTCPPorts = [ ... ];
-  # networking.firewall.allowedUDPPorts = [ ... ];
-  # Or disable the firewall altogether.
-  # networking.firewall.enable = false;
 }
