@@ -75,26 +75,30 @@
     hosts = import ./hosts.nix;
 
     # Shared home-manager configuration
-    # stylix NixOS/Darwin modules already provide HM integration,
-    # so no standalone stylix HM module is needed here.
     mkHome = hostCfg: {
+      stylixHmModule ? false,
+    }: {
       home-manager = {
         useGlobalPkgs = true;
         useUserPackages = true;
         backupFileExtension = "hmbkup";
         users.itscrystalline = {
-          imports = [
-            ./vars.nix
-            ./home/home-linux.nix
+          imports =
+            [
+              ./vars.nix
+              ./home/home-linux.nix
 
-            {config = hostCfg;}
-            inputs.nix-flatpak.homeManagerModules.nix-flatpak
-            inputs.nix-index-database.homeModules.nix-index
-            inputs.occasion.homeManagerModule
-            inputs.vicinae.homeManagerModules.default
-            inputs.zen-browser.homeModules.twilight
-            inputs.noctalia.homeModules.default
-          ];
+              {config = hostCfg;}
+              inputs.nix-flatpak.homeManagerModules.nix-flatpak
+              inputs.nix-index-database.homeModules.nix-index
+              inputs.occasion.homeManagerModule
+              inputs.vicinae.homeManagerModules.default
+              inputs.zen-browser.homeModules.twilight
+              inputs.noctalia.homeModules.default
+            ]
+            ++ nixpkgs.lib.optionals stylixHmModule [
+              inputs.stylix.homeModules.stylix
+            ];
         };
 
         extraSpecialArgs = {
@@ -110,6 +114,7 @@
       system,
       extraModules ? [],
       withHome ? true,
+      stylixHmModule ? false,
     }: {
       inherit system;
       specialArgs = {
@@ -128,7 +133,7 @@
         ++ extraModules
         ++ nixpkgs.lib.optionals withHome [
           home-manager.nixosModules.home-manager
-          (mkHome hostCfg)
+          (mkHome hostCfg {inherit stylixHmModule;})
         ];
     };
 
@@ -151,6 +156,7 @@
     }: mkNixos {
       inherit hostModule hostCfg withHome;
       system = "aarch64-linux";
+      stylixHmModule = true;
       extraModules = [
         nixos-hardware.nixosModules.raspberry-pi-4
       ];
@@ -180,7 +186,7 @@
 
         inputs.stylix.darwinModules.stylix
         home-manager.darwinModules.home-manager
-        (mkHome hosts.cwystaws-macbook)
+        (mkHome hosts.cwystaws-macbook {})
       ];
     };
   };
