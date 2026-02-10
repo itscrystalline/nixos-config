@@ -7,7 +7,7 @@
   cfg = config.crystal.desktop.localization;
 in {
   imports = [../common/localization.nix];
-  options.crystal.desktop.localization.enable = lib.mkEnableOption "desktop localization" // {default = true;};
+  options.crystal.desktop.localization.enable = lib.mkEnableOption "desktop localization";
 
   config = lib.mkIf cfg.enable {
     i18n.inputMethod = {

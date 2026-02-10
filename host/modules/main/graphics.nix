@@ -6,7 +6,7 @@
 } @ inputs: let
   cfg = config.crystal.graphics;
 in {
-  options.crystal.graphics.enable = lib.mkEnableOption "graphics" // {default = true;};
+  options.crystal.graphics.enable = lib.mkEnableOption "graphics";
   config = lib.mkIf cfg.enable {
     hardware.graphics.enable = true;
     hardware.graphics.enable32Bit = true;

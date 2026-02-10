@@ -7,7 +7,7 @@
   cfg = config.crystal.desktop.services;
 in {
   imports = [../common/services.nix];
-  options.crystal.desktop.services.enable = lib.mkEnableOption "desktop services" // {default = true;};
+  options.crystal.desktop.services.enable = lib.mkEnableOption "desktop services";
 
   config = lib.mkIf cfg.enable {
     systemd.settings.Manager.DefaultTimeoutStopSec = "20s";

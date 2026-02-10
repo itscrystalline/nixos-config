@@ -11,7 +11,7 @@ in {
     ./gui/blender.nix
   ];
 
-  options.crystal.hm.gui.enable = lib.mkEnableOption "GUI applications" // {default = true;};
+  options.crystal.hm.gui.enable = lib.mkEnableOption "GUI applications";
   config = lib.mkIf cfg.enable {
     home.packages = lib.mkIf config.gui (
       with pkgs.stable;

@@ -8,7 +8,7 @@
   inherit (inputs) my-nur;
   cfg = config.crystal.hm.games;
 in {
-  options.crystal.hm.games.enable = lib.mkEnableOption "games" // {default = true;};
+  options.crystal.hm.games.enable = lib.mkEnableOption "games";
   config = lib.mkIf cfg.enable (lib.mkIf config.gui {
     home.packages = with pkgs; [
       (prismlauncher.override {

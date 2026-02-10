@@ -10,7 +10,7 @@
   enable = config.gui;
   cfg = config.crystal.hm.niri;
 in {
-  options.crystal.hm.niri.enable = lib.mkEnableOption "Niri window manager" // {default = true;};
+  options.crystal.hm.niri.enable = lib.mkEnableOption "Niri window manager";
   config = lib.mkIf cfg.enable {
     home.packages = lib.optionals enable [pkgs.xwayland-satellite pkgs.wl-mirror];
     services = {

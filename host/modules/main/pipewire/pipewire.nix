@@ -6,7 +6,7 @@
 } @ inputs: let
   cfg = config.crystal.pipewire;
 in {
-  options.crystal.pipewire.enable = lib.mkEnableOption "pipewire" // {default = true;};
+  options.crystal.pipewire.enable = lib.mkEnableOption "pipewire";
   config = lib.mkIf cfg.enable {
     security.rtkit.enable = true;
 

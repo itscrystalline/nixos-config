@@ -8,7 +8,7 @@
   inherit (config) gui;
 in {
   imports = [../common/programs.nix];
-  options.crystal.desktop.programs.enable = lib.mkEnableOption "desktop programs" // {default = true;};
+  options.crystal.desktop.programs.enable = lib.mkEnableOption "desktop programs";
 
   config = lib.mkIf cfg.enable (lib.mkIf gui {
     # programs.firefox.enable = true;

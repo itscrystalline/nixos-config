@@ -20,7 +20,7 @@
   blenderkit_version = "3.13.0.241112";
   blenderkit_sha256 = "wrMUz6OzTBDe0rbqXqiizWo72jRdM7ut4TXVV/3KmzA==";
 in {
-  options.crystal.hm.blender.enable = lib.mkEnableOption "Blender" // {default = true;};
+  options.crystal.hm.blender.enable = lib.mkEnableOption "Blender";
   config = lib.mkIf cfg.enable (lib.mkIf (config.gui && pkgs.hostsys == "x86_64-linux") {
     home.packages = with pkgs; [
       (blender-flake.packages.${pkgs.hostsys}.default.overrideAttrs (oldAttrs: newAttrs: let

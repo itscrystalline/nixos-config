@@ -5,7 +5,7 @@
 }: let
   cfg = config.crystal.users.nixremote;
 in {
-  options.crystal.users.nixremote.enable = lib.mkEnableOption "nixremote user" // {default = true;};
+  options.crystal.users.nixremote.enable = lib.mkEnableOption "nixremote user";
   config = lib.mkIf cfg.enable {
     users.users.nixremote = {
       isNormalUser = true;

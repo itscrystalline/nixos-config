@@ -6,7 +6,7 @@
 }: let
   cfg = config.crystal.asus;
 in {
-  options.crystal.asus.enable = lib.mkEnableOption "asus" // {default = true;};
+  options.crystal.asus.enable = lib.mkEnableOption "asus";
   config = lib.mkIf cfg.enable {
     hardware.asus.battery = {
       chargeUpto = 85; # Maximum level of charge for your battery, as a percentage.

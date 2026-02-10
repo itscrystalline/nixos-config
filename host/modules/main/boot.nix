@@ -12,7 +12,7 @@
   generations = config.keep_generations;
   kernel = pkgs.cachyosKernels.linuxPackages-cachyos-latest-lto-x86_64-v4;
 in {
-  options.crystal.boot.enable = lib.mkEnableOption "boot configuration" // {default = true;};
+  options.crystal.boot.enable = lib.mkEnableOption "boot configuration";
   config = lib.mkIf cfg.enable {
     system.modulesTree = [(lib.getOutput "modules" kernel.kernel)];
     boot = {

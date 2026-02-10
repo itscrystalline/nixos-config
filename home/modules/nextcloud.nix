@@ -8,7 +8,7 @@
 with secrets.nextcloud.rclone; let
   cfg = config.crystal.hm.nextcloud;
 in {
-  options.crystal.hm.nextcloud.enable = lib.mkEnableOption "Nextcloud integration" // {default = true;};
+  options.crystal.hm.nextcloud.enable = lib.mkEnableOption "Nextcloud integration";
   config = lib.mkIf cfg.enable {
     xdg.configFile = pkgs.lib.mkIf config.gui {
       "rclone/nextcloud.conf".text = ''

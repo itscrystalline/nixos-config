@@ -8,7 +8,7 @@ in {
   imports = [
     ../common/network.nix
   ];
-  options.crystal.desktop.network.enable = lib.mkEnableOption "desktop network" // {default = true;};
+  options.crystal.desktop.network.enable = lib.mkEnableOption "desktop network";
 
   config = lib.mkIf cfg.enable {
     networking.useDHCP = lib.mkDefault true;

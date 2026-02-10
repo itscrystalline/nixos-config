@@ -11,7 +11,7 @@
 in {
   imports = [./gui.nix];
 
-  options.crystal.hm.guiLinux.enable = lib.mkEnableOption "Linux GUI applications" // {default = true;};
+  options.crystal.hm.guiLinux.enable = lib.mkEnableOption "Linux GUI applications";
   config = lib.mkIf cfg.enable {
     xdg = {
       # desktop file

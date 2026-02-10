@@ -6,7 +6,7 @@
 }: let
   cfg = config.crystal.games;
 in {
-  options.crystal.games.enable = lib.mkEnableOption "games" // {default = true;};
+  options.crystal.games.enable = lib.mkEnableOption "games";
   config = lib.mkIf cfg.enable {
     environment.systemPackages = with pkgs; [
       gamemode

@@ -6,7 +6,7 @@
 }: let
   cfg = config.crystal.hm.virtualisation;
 in {
-  options.crystal.hm.virtualisation.enable = lib.mkEnableOption "virtualisation" // {default = true;};
+  options.crystal.hm.virtualisation.enable = lib.mkEnableOption "virtualisation";
   config = lib.mkIf cfg.enable (lib.mkIf config.gui {
     dconf.settings = {
       "org/virt-manager/virt-manager/connections" = {

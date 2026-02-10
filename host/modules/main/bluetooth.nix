@@ -6,7 +6,7 @@
 }: let
   cfg = config.crystal.bluetooth;
 in {
-  options.crystal.bluetooth.enable = lib.mkEnableOption "bluetooth" // {default = true;};
+  options.crystal.bluetooth.enable = lib.mkEnableOption "bluetooth";
   config = lib.mkIf cfg.enable {
     hardware.bluetooth = {
       enable = true; # enables support for Bluetooth

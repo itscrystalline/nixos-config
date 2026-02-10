@@ -6,7 +6,7 @@
 } @ inputs: let
   cfg = config.crystal.users.mac.itscrystalline;
 in {
-  options.crystal.users.mac.itscrystalline.enable = lib.mkEnableOption "mac itscrystalline user configuration" // {default = true;};
+  options.crystal.users.mac.itscrystalline.enable = lib.mkEnableOption "mac itscrystalline user configuration";
 
   config = lib.mkIf cfg.enable {
     users.users.itscrystalline = {

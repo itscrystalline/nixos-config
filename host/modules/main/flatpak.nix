@@ -6,7 +6,7 @@
 }: let
   cfg = config.crystal.flatpak;
 in {
-  options.crystal.flatpak.enable = lib.mkEnableOption "flatpak" // {default = true;};
+  options.crystal.flatpak.enable = lib.mkEnableOption "flatpak";
   config = lib.mkIf cfg.enable {
     services.flatpak.enable = true;
 

@@ -6,7 +6,7 @@
 }: let
   cfg = config.crystal.virtualisation;
 in {
-  options.crystal.virtualisation.enable = lib.mkEnableOption "virtualisation" // {default = true;};
+  options.crystal.virtualisation.enable = lib.mkEnableOption "virtualisation";
   config = lib.mkIf cfg.enable {
     programs.virt-manager.enable = true;
     virtualisation.libvirtd.enable = true;

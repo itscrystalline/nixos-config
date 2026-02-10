@@ -6,7 +6,7 @@
 }: let
   cfg = config.crystal.niri;
 in {
-  options.crystal.niri.enable = lib.mkEnableOption "niri" // {default = true;};
+  options.crystal.niri.enable = lib.mkEnableOption "niri";
   config = lib.mkIf cfg.enable {
     programs.niri = {
       enable = true;

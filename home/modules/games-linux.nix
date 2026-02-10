@@ -8,7 +8,7 @@
   cfg = config.crystal.hm.gamesLinux;
 in {
   imports = [./games.nix];
-  options.crystal.hm.gamesLinux.enable = lib.mkEnableOption "Linux games" // {default = true;};
+  options.crystal.hm.gamesLinux.enable = lib.mkEnableOption "Linux games";
   config = lib.mkIf cfg.enable (lib.mkIf gui {
     home.packages = with pkgs; [bottles];
     services.flatpak.packages = [

@@ -5,7 +5,7 @@
 }: let
   cfg = config.crystal.mounts;
 in {
-  options.crystal.mounts.enable = lib.mkEnableOption "mounts" // {default = true;};
+  options.crystal.mounts.enable = lib.mkEnableOption "mounts";
   config = lib.mkIf cfg.enable {
     services.rpcbind.enable = true;
 

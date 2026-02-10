@@ -7,7 +7,7 @@
   cfg = config.crystal.users.desktop.itscrystalline;
 in {
   imports = [../../common/users/itscrystalline.nix];
-  options.crystal.users.desktop.itscrystalline.enable = lib.mkEnableOption "desktop itscrystalline user" // {default = true;};
+  options.crystal.users.desktop.itscrystalline.enable = lib.mkEnableOption "desktop itscrystalline user";
 
   config = lib.mkIf cfg.enable {
     users.users.itscrystalline.extraGroups = ["libvirtd" "dialout" "ydotool" "dumpcap" "wireshark" "docker" "vboxusers" "battery_ctl"];

@@ -5,7 +5,7 @@
 }: let
   cfg = config.crystal.mac.homebrew;
 in {
-  options.crystal.mac.homebrew.enable = lib.mkEnableOption "mac homebrew configuration" // {default = true;};
+  options.crystal.mac.homebrew.enable = lib.mkEnableOption "mac homebrew configuration";
 
   config = lib.mkIf cfg.enable {
     homebrew = {
