@@ -95,7 +95,7 @@
               inputs.noctalia.homeModules.default
             ]
             ++ hostCfg.hm
-            ++ [hostCfg.extraHmConfig];
+            ++ nixpkgs.lib.optionals (hostCfg.extraHmConfig != {}) [hostCfg.extraHmConfig];
         };
 
         extraSpecialArgs = {
@@ -120,13 +120,14 @@
           {config = hostCfg.vars;}
           inputs.nur.modules.nixos.default
           inputs.stylix.nixosModules.stylix
-
+        ]
+        ++ extraModules
+        ++ [
           ./vars.nix
           ./nix-settings.nix
+          hostCfg.hostModule
         ]
-        ++ hostCfg.modules
-        ++ [hostCfg.extraNixosConfig]
-        ++ extraModules
+        ++ nixpkgs.lib.optionals (hostCfg.extraNixosConfig != {}) [hostCfg.extraNixosConfig]
         ++ nixpkgs.lib.optionals withHome [
           home-manager.nixosModules.home-manager
           (mkHome hostCfg)
@@ -176,13 +177,13 @@
 
           ./vars.nix
           ./nix-settings.nix
+          hosts.cwystaws-macbook.hostModule
 
           inputs.stylix.darwinModules.stylix
           home-manager.darwinModules.home-manager
           (mkHome hosts.cwystaws-macbook)
         ]
-        ++ hosts.cwystaws-macbook.modules
-        ++ [hosts.cwystaws-macbook.extraNixosConfig];
+        ++ nixpkgs.lib.optionals (hosts.cwystaws-macbook.extraNixosConfig != {}) [hosts.cwystaws-macbook.extraNixosConfig];
     };
   };
 }
