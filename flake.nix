@@ -146,7 +146,11 @@
       ];
     };
 
-    mkRaspi = hostModule: hostCfg: withHome: mkNixos {
+    mkRaspi = {
+      hostModule,
+      hostCfg,
+      withHome,
+    }: mkNixos {
       inherit hostModule hostCfg withHome;
       system = "aarch64-linux";
       stylixHmModule = true;
@@ -157,13 +161,13 @@
   in {
     nixosConfigurations = {
       cwystaws-meowchine = nixpkgs.lib.nixosSystem cwystaws-meowchine;
-      cwystaws-raspi = nixpkgs.lib.nixosSystem (mkRaspi ./host/devices/cwystaws-raspi/host.nix hosts.cwystaws-raspi true);
-      cwystaws-dormpi = nixpkgs.lib.nixosSystem (mkRaspi ./host/devices/cwystaws-dormpi/host.nix hosts.cwystaws-dormpi false);
+      cwystaws-raspi = nixpkgs.lib.nixosSystem (mkRaspi {hostModule = ./host/devices/cwystaws-raspi/host.nix; hostCfg = hosts.cwystaws-raspi; withHome = true;});
+      cwystaws-dormpi = nixpkgs.lib.nixosSystem (mkRaspi {hostModule = ./host/devices/cwystaws-dormpi/host.nix; hostCfg = hosts.cwystaws-dormpi; withHome = false;});
     };
 
     packages.aarch64-linux = {
-      cwystaws-raspi = nixos-generators.nixosGenerate ((mkRaspi ./host/devices/cwystaws-raspi/host.nix hosts.cwystaws-raspi true) // {format = "sd-aarch64";});
-      cwystaws-dormpi = nixos-generators.nixosGenerate ((mkRaspi ./host/devices/cwystaws-dormpi/host.nix hosts.cwystaws-dormpi false) // {format = "sd-aarch64";});
+      cwystaws-raspi = nixos-generators.nixosGenerate ((mkRaspi {hostModule = ./host/devices/cwystaws-raspi/host.nix; hostCfg = hosts.cwystaws-raspi; withHome = true;}) // {format = "sd-aarch64";});
+      cwystaws-dormpi = nixos-generators.nixosGenerate ((mkRaspi {hostModule = ./host/devices/cwystaws-dormpi/host.nix; hostCfg = hosts.cwystaws-dormpi; withHome = false;}) // {format = "sd-aarch64";});
     };
 
     darwinConfigurations."cwystaws-macbook" = nix-darwin.lib.darwinSystem {
