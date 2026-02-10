@@ -55,46 +55,50 @@
     system = "aarch64-linux";
     pkgs = nixpkgs.legacyPackages.${system};
     secrets = builtins.fromJSON (builtins.readFile ../secrets/secrets.json);
-    oracle-cloud = username: doas: {
-      config = {
-        inherit doas username;
-        gui = false;
-        keep_generations = 5;
-      };
-    };
-    home_config = username: doas:
+
+    # Shared HM module imports
+    hmModules = [
+      ./../vars.nix
+      ./home-linux.nix
+      ./nix-settings.nix
+
+      inputs.stylix.homeModules.stylix
+      inputs.nix-flatpak.homeManagerModules.nix-flatpak
+      inputs.occasion.homeManagerModule
+      inputs.nix-index-database.homeModules.nix-index
+      inputs.vicinae.homeManagerModules.default
+      inputs.zen-browser.homeModules.twilight
+      inputs.niri.homeModules.niri
+      inputs.noctalia.homeModules.default
+    ];
+
+    mkHome = {
+      username,
+      doas ? false,
+    }:
       home-manager.lib.homeManagerConfiguration {
         inherit pkgs;
-
-        # Specify your home configuration modules here, for example,
-        # the path to your home.nix.
-        modules = [
-          ./../vars.nix
-
-          (oracle-cloud username doas)
-
-          ./home-linux.nix
-
-          ./nix-settings.nix
-
-          inputs.stylix.homeModules.stylix
-          inputs.nix-flatpak.homeManagerModules.nix-flatpak
-          inputs.occasion.homeManagerModule
-          inputs.nix-index-database.homeModules.nix-index
-          inputs.vicinae.homeManagerModules.default
-          inputs.zen-browser.homeModules.twilight
-          inputs.niri.homeModules.niri
-          inputs.noctalia.homeModules.default
-        ];
-        # Optionally use extraSpecialArgs
-        # to pass through arguments to home.nix
+        modules =
+          hmModules
+          ++ [
+            {
+              config = {
+                inherit doas username;
+                gui = false;
+                keep_generations = 5;
+              };
+            }
+          ];
         extraSpecialArgs = {
           inherit inputs nixpkgs secrets;
         };
       };
   in {
-    homeConfigurations."opc" = home_config "opc" false;
-    homeConfigurations."ubuntu" = home_config "ubuntu" false;
-    homeConfigurations."itscrystalline" = home_config "itscrystalline" true;
+    homeConfigurations."opc" = mkHome {username = "opc";};
+    homeConfigurations."ubuntu" = mkHome {username = "ubuntu";};
+    homeConfigurations."itscrystalline" = mkHome {
+      username = "itscrystalline";
+      doas = true;
+    };
   };
 }

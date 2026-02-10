@@ -5,9 +5,11 @@
   ...
 }: let
   inherit (config) gui;
+  cfg = config.crystal.hm.gamesLinux;
 in {
   imports = [./games.nix];
-  config = lib.mkIf gui {
+  options.crystal.hm.gamesLinux.enable = lib.mkEnableOption "Linux games";
+  config = lib.mkIf cfg.enable (lib.mkIf gui {
     home.packages = with pkgs; [bottles];
     services.flatpak.packages = [
       {
@@ -15,5 +17,5 @@ in {
         sha256 = "1pj8y1xhiwgbnhrr3yr3ybpfis9slrl73i0b1lc9q89vhip6ym2l";
       }
     ];
-  };
+  });
 }

@@ -1,9 +1,11 @@
 {
   config,
   pkgs,
+  lib,
   secrets,
   ...
 }: let
+  cfg = config.crystal.raspi.programs;
   backup-script = pkgs.writeShellScriptBin "backup" ''
     if [ "$EUID" -ne 0 ]
       then ${pkgs.coreutils}/bin/echo "Please run as root"
@@ -141,28 +143,32 @@
 in {
   imports = [../common/programs.nix];
 
-  environment.systemPackages = with pkgs; [
-    libraspberrypi
-    raspberrypi-eeprom
-    doas-sudo-shim
+  options.crystal.raspi.programs.enable = lib.mkEnableOption "raspi programs configuration" // {default = true;};
 
-    backup-script
-    restore-script
-  ];
+  config = lib.mkIf cfg.enable {
+    environment.systemPackages = with pkgs; [
+      libraspberrypi
+      raspberrypi-eeprom
+      doas-sudo-shim
 
-  # SMTP for Nextcloud
-  programs.msmtp = with secrets.mail; {
-    enable = true;
-    accounts = {
-      default = {
-        auth = true;
-        tls = true;
-        # try setting `tls_starttls` to `false` if sendmail hangs
-        user = username;
-        password = password;
-        host = "smtp.gmail.com";
-        port = 587;
-        from = "nc@iw2tryhard.dev";
+      backup-script
+      restore-script
+    ];
+
+    # SMTP for Nextcloud
+    programs.msmtp = with secrets.mail; {
+      enable = true;
+      accounts = {
+        default = {
+          auth = true;
+          tls = true;
+          # try setting `tls_starttls` to `false` if sendmail hangs
+          user = username;
+          password = password;
+          host = "smtp.gmail.com";
+          port = 587;
+          from = "nc@iw2tryhard.dev";
+        };
       };
     };
   };
