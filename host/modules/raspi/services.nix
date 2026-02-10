@@ -6,6 +6,7 @@
   secrets,
   ...
 }: let
+  cfg = config.crystal.raspi.services;
   mkLocalNginx = name: port: alsoWs: {
     services.nginx.virtualHosts."${name}.crys".locations."/" = {
       proxyPass = "http://127.0.0.1:${builtins.toString port}";
@@ -29,6 +30,9 @@ in {
     # (mkLocalNginx "dns" config.services.adguardhome.port false)
   ];
 
+  options.crystal.raspi.services.enable = lib.mkEnableOption "raspi services configuration" // {default = true;};
+
+  config = lib.mkIf cfg.enable {
   adguard = {
     enable = false;
     rewriteList = {
@@ -208,4 +212,5 @@ in {
   # SSH auto restart
   systemd.services.sshd.serviceConfig.Restart = lib.mkForce "always";
   systemd.services.tailscaled.serviceConfig.Restart = lib.mkForce "always";
+  };
 }
