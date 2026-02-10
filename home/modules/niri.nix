@@ -8,8 +8,11 @@
 }: let
   # inherit (config.lib.stylix) colors;
   enable = config.gui;
+  cfg = config.crystal.hm.niri;
 in {
-  home.packages = lib.optionals enable [pkgs.xwayland-satellite pkgs.wl-mirror];
+  options.crystal.hm.niri.enable = lib.mkEnableOption "Niri window manager" // {default = true;};
+  config = lib.mkIf cfg.enable {
+    home.packages = lib.optionals enable [pkgs.xwayland-satellite pkgs.wl-mirror];
   services = {
     polkit-gnome.enable = enable;
     hypridle = {
@@ -360,4 +363,5 @@ in {
       };
     }
     else {};
+  };
 }

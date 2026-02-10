@@ -7,9 +7,13 @@
   ...
 }: let
   inherit (inputs) zen-browser;
+  cfg = config.crystal.hm.guiLinux;
 in {
   imports = [./gui.nix];
-  xdg = {
+
+  options.crystal.hm.guiLinux.enable = lib.mkEnableOption "Linux GUI applications" // {default = true;};
+  config = lib.mkIf cfg.enable {
+    xdg = {
     # desktop file
     desktopEntries.LINE = lib.mkIf config.gui {
       name = "LINE";
@@ -334,5 +338,6 @@ in {
     in
       (extensions ["wifi-commander" "nix" "it-tools" "niri" "bluetooth"]) # `systemd` fails to build
       ++ (raycastExtensions ["bintools" "github" "latex-math-symbols" "gif-search" "devdocs" "homeassistant" "wikipedia" "speedtest"]);
+  };
   };
 }

@@ -4,8 +4,13 @@
   lib,
   # inputs,
   ...
-}: {
+}: let
+  cfg = config.crystal.hm.theme;
+in {
   # imports = ["${inputs.stylix-unstable}/modules/zen-browser/hm.nix"];
+
+  options.crystal.hm.theme.enable = lib.mkEnableOption "theme configuration" // {default = true;};
+  config = lib.mkIf cfg.enable {
 
   home = lib.mkIf config.gui {
     sessionVariables = {
@@ -69,5 +74,6 @@
         profileNames = ["crystal"];
       };
     };
+  };
   };
 }

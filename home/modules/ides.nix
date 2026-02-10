@@ -6,11 +6,14 @@
   ...
 }: let
   inherit (inputs) sanzenvim my-nur;
+  cfg = config.crystal.hm.ides;
   jetbrainsWayland = ''
     -Dawt.toolkit.name=WLToolkit
   '';
 in {
-  home.packages = with pkgs;
+  options.crystal.hm.ides.enable = lib.mkEnableOption "IDEs and editors" // {default = true;};
+  config = lib.mkIf cfg.enable {
+    home.packages = with pkgs;
     lib.optionals config.gui [
       arduino-ide
       neovide
@@ -665,4 +668,5 @@ in {
   #     }
   #   '';
   # };
+  };
 }

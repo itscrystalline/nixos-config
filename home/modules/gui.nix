@@ -4,12 +4,16 @@
   lib,
   inputs,
   ...
-}: {
+}: let
+  cfg = config.crystal.hm.gui;
+in {
   imports = [
     ./gui/blender.nix
   ];
 
-  home.packages = lib.mkIf config.gui (
+  options.crystal.hm.gui.enable = lib.mkEnableOption "GUI applications" // {default = true;};
+  config = lib.mkIf cfg.enable {
+    home.packages = lib.mkIf config.gui (
     with pkgs.stable;
       [
         vesktop # discor
@@ -76,5 +80,6 @@
       enableBashIntegration = true;
       settings.font-size = 12;
     };
+  };
   };
 }

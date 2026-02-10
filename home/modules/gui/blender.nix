@@ -6,6 +6,7 @@
   ...
 }: let
   inherit (inputs) blender-flake;
+  cfg = config.crystal.hm.blender;
   blender_addons_zip_path = "~/.config/blender/4.3/extensions/zips";
   blender_addons_path = "~/.config/blender/4.3/extensions/user_default";
   blender_addons_script = ''
@@ -18,8 +19,9 @@
 
   blenderkit_version = "3.13.0.241112";
   blenderkit_sha256 = "wrMUz6OzTBDe0rbqXqiizWo72jRdM7ut4TXVV/3KmzA==";
-in
-  lib.mkIf (config.gui && pkgs.hostsys == "x86_64-linux") {
+in {
+  options.crystal.hm.blender.enable = lib.mkEnableOption "Blender" // {default = true;};
+  config = lib.mkIf cfg.enable (lib.mkIf (config.gui && pkgs.hostsys == "x86_64-linux") {
     home.packages = with pkgs; [
       (blender-flake.packages.${pkgs.hostsys}.default.overrideAttrs (oldAttrs: newAttrs: let
         libs = [
@@ -78,4 +80,5 @@ in
         sha256 = "sha256-${blenderkit_sha256}";
       };
     };
-  }
+  });
+}

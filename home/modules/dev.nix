@@ -3,10 +3,14 @@
   pkgs,
   lib,
   ...
-}: {
+}: let
+  cfg = config.crystal.hm.dev;
+in {
   imports = [./ides.nix];
 
-  home.packages = with pkgs;
+  options.crystal.hm.dev.enable = lib.mkEnableOption "development tools" // {default = true;};
+  config = lib.mkIf cfg.enable {
+    home.packages = with pkgs;
     [
       gnumake
       unstable.devenv
@@ -38,5 +42,6 @@
     enable = true;
     enableZshIntegration = true;
     enableBashIntegration = true;
+  };
   };
 }

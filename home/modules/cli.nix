@@ -4,8 +4,12 @@
   lib,
   inputs,
   ...
-}: {
-  home.packages = with pkgs;
+}: let
+  cfg = config.crystal.hm.cli;
+in {
+  options.crystal.hm.cli.enable = lib.mkEnableOption "CLI tools" // {default = true;};
+  config = lib.mkIf cfg.enable {
+    home.packages = with pkgs;
     [
       # neovim
       blahaj
@@ -395,5 +399,6 @@
       enableZshIntegration = true;
       tmux.enableShellIntegration = true;
     };
+  };
   };
 }

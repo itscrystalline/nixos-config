@@ -2,8 +2,12 @@
   config,
   lib,
   ...
-}: {
-  programs.noctalia-shell = {
+}: let
+  cfg = config.crystal.hm.shell;
+in {
+  options.crystal.hm.shell.enable = lib.mkEnableOption "shell configuration" // {default = true;};
+  config = lib.mkIf cfg.enable {
+    programs.noctalia-shell = {
     enable = true;
     plugins = {
       sources = [
@@ -287,5 +291,6 @@
         ];
       };
     };
+  };
   };
 }

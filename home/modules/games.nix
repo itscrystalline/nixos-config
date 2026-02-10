@@ -6,8 +6,10 @@
   ...
 }: let
   inherit (inputs) my-nur;
-in
-  lib.mkIf config.gui {
+  cfg = config.crystal.hm.games;
+in {
+  options.crystal.hm.games.enable = lib.mkEnableOption "games" // {default = true;};
+  config = lib.mkIf cfg.enable (lib.mkIf config.gui {
     home.packages = with pkgs; [
       (prismlauncher.override {
         # Add binary required by some mod
@@ -28,4 +30,5 @@ in
 
       my-nur.packages.${pkgs.hostsys}.irony-mod-manager
     ];
-  }
+  });
+}

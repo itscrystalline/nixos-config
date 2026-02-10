@@ -1,10 +1,15 @@
 {
   config,
   pkgs,
+  lib,
   secrets,
   ...
 } @ inputs:
-with secrets.nextcloud.rclone; {
+with secrets.nextcloud.rclone; let
+  cfg = config.crystal.hm.nextcloud;
+in {
+  options.crystal.hm.nextcloud.enable = lib.mkEnableOption "Nextcloud integration" // {default = true;};
+  config = lib.mkIf cfg.enable {
   xdg.configFile = pkgs.lib.mkIf config.gui {
     "rclone/nextcloud.conf".text = ''
       [nextcloud]
@@ -28,5 +33,6 @@ with secrets.nextcloud.rclone; {
       Restart = "always";
     };
     Install.WantedBy = ["default.target"];
+  };
   };
 }
