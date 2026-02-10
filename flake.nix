@@ -75,7 +75,9 @@
     hosts = import ./hosts.nix;
 
     # Shared home-manager configuration
-    mkHome = hostCfg: stylixHmModule: {
+    # stylix NixOS/Darwin modules already provide HM integration,
+    # so no standalone stylix HM module is needed here.
+    mkHome = hostCfg: {
       home-manager = {
         useGlobalPkgs = true;
         useUserPackages = true;
@@ -92,9 +94,6 @@
             inputs.vicinae.homeManagerModules.default
             inputs.zen-browser.homeModules.twilight
             inputs.noctalia.homeModules.default
-          ]
-          ++ nixpkgs.lib.optionals stylixHmModule [
-            inputs.stylix.homeModules.stylix
           ];
         };
 
@@ -111,7 +110,6 @@
       system,
       extraModules ? [],
       withHome ? true,
-      stylixHmModule ? false,
     }: {
       inherit system;
       specialArgs = {
@@ -130,7 +128,7 @@
         ++ extraModules
         ++ nixpkgs.lib.optionals withHome [
           home-manager.nixosModules.home-manager
-          (mkHome hostCfg stylixHmModule)
+          (mkHome hostCfg)
         ];
     };
 
@@ -153,7 +151,6 @@
     }: mkNixos {
       inherit hostModule hostCfg withHome;
       system = "aarch64-linux";
-      stylixHmModule = true;
       extraModules = [
         nixos-hardware.nixosModules.raspberry-pi-4
       ];
@@ -183,7 +180,7 @@
 
         inputs.stylix.darwinModules.stylix
         home-manager.darwinModules.home-manager
-        (mkHome hosts.cwystaws-macbook false)
+        (mkHome hosts.cwystaws-macbook)
       ];
     };
   };
