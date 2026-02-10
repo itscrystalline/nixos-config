@@ -155,11 +155,54 @@
         nixos-hardware.nixosModules.raspberry-pi-4
       ];
     };
+    # Shared HM module imports for standalone homeManagerConfigurations
+    hmModules = hostCfg: [
+      ./vars.nix
+      ./home/home-linux.nix
+
+      {config = hostCfg.vars;}
+      inputs.nix-flatpak.homeManagerModules.nix-flatpak
+      inputs.nix-index-database.homeModules.nix-index
+      inputs.occasion.homeManagerModule
+      inputs.vicinae.homeManagerModules.default
+      inputs.zen-browser.homeModules.twilight
+      inputs.noctalia.homeModules.default
+      inputs.stylix.homeModules.stylix
+    ]
+    ++ hostCfg.hm
+    ++ nixpkgs.lib.optionals (hostCfg.extraHmConfig != {}) [hostCfg.extraHmConfig];
+
+    # Build a standalone homeManagerConfiguration
+    mkStandaloneHome = {
+      hostCfg,
+      system,
+    }: home-manager.lib.homeManagerConfiguration {
+      pkgs = nixpkgs.legacyPackages.${system};
+      modules = hmModules hostCfg;
+      extraSpecialArgs = {
+        inherit inputs secrets;
+      };
+    };
   in {
     nixosConfigurations = {
       cwystaws-meowchine = nixpkgs.lib.nixosSystem cwystaws-meowchine;
       cwystaws-raspi = nixpkgs.lib.nixosSystem (mkRaspi {hostCfg = hosts.cwystaws-raspi; withHome = true;});
       cwystaws-dormpi = nixpkgs.lib.nixosSystem (mkRaspi {hostCfg = hosts.cwystaws-dormpi; withHome = false;});
+    };
+
+    homeConfigurations = {
+      "itscrystalline@cwystaws-meowchine" = mkStandaloneHome {
+        hostCfg = hosts.cwystaws-meowchine;
+        system = "x86_64-linux";
+      };
+      "itscrystalline@cwystaws-raspi" = mkStandaloneHome {
+        hostCfg = hosts.cwystaws-raspi;
+        system = "aarch64-linux";
+      };
+      "itscrystalline@cwystaws-macbook" = mkStandaloneHome {
+        hostCfg = hosts.cwystaws-macbook;
+        system = "x86_64-darwin";
+      };
     };
 
     packages.aarch64-linux = {
