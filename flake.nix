@@ -72,23 +72,10 @@
     ...
   }: let
     secrets = builtins.fromJSON (builtins.readFile ./secrets/secrets.json);
-    configs = {
-      cwystaws-meowchine.config = {
-        gui = true;
-        doas = true;
-        keep_generations = 5;
-        username = "itscrystalline";
-      };
+    hosts = import ./hosts.nix;
 
-      raspi.config = {
-        gui = false;
-        doas = true;
-        keep_generations = 3;
-        username = "itscrystalline";
-      };
-    };
-
-    home = raspi: {
+    # Shared home-manager configuration
+    mkHome = hostCfg: stylixHmModule: {
       home-manager = {
         useGlobalPkgs = true;
         useUserPackages = true;
@@ -98,23 +85,16 @@
             ./vars.nix
             ./home/home-linux.nix
 
-            (
-              if raspi
-              then configs.raspi
-              else configs.cwystaws-meowchine
-            )
+            {config = hostCfg;}
             inputs.nix-flatpak.homeManagerModules.nix-flatpak
             inputs.nix-index-database.homeModules.nix-index
             inputs.occasion.homeManagerModule
             inputs.vicinae.homeManagerModules.default
             inputs.zen-browser.homeModules.twilight
             inputs.noctalia.homeModules.default
-
-            (
-              if raspi
-              then inputs.stylix.homeModules.stylix
-              else {}
-            )
+          ]
+          ++ nixpkgs.lib.optionals stylixHmModule [
+            inputs.stylix.homeModules.stylix
           ];
         };
 
@@ -124,63 +104,66 @@
       };
     };
 
-    cwystaws-meowchine = {
-      system = "x86_64-linux";
-      specialArgs = {
-        inherit inputs secrets;
-      };
-      modules = [
-        configs.cwystaws-meowchine
-        inputs.nur.modules.nixos.default
-        inputs.stylix.nixosModules.stylix
-        inputs.nix-flatpak.nixosModules.nix-flatpak
-        inputs.niri.nixosModules.niri
-        inputs.binaryninja.nixosModules.binaryninja
-        nixos-hardware.nixosModules.asus-fx506hm
-
-        ./vars.nix
-        ./nix-settings.nix
-        ./host/devices/cwystaws-meowchine/host.nix
-
-        home-manager.nixosModules.home-manager
-        (home false)
-      ];
-    };
-    raspis = module: withHome: {
-      system = "aarch64-linux";
+    # Build a NixOS system configuration
+    mkNixos = {
+      hostModule,
+      hostCfg,
+      system,
+      extraModules ? [],
+      withHome ? true,
+      stylixHmModule ? false,
+    }: {
+      inherit system;
       specialArgs = {
         inherit inputs secrets;
       };
       modules =
         [
-          configs.raspi
+          {config = hostCfg;}
           inputs.nur.modules.nixos.default
           inputs.stylix.nixosModules.stylix
-          nixos-hardware.nixosModules.raspberry-pi-4
 
           ./vars.nix
           ./nix-settings.nix
-          module
+          hostModule
         ]
-        ++ (
-          if withHome
-          then [
-            home-manager.nixosModules.home-manager
-            (home true)
-          ]
-          else []
-        );
+        ++ extraModules
+        ++ nixpkgs.lib.optionals withHome [
+          home-manager.nixosModules.home-manager
+          (mkHome hostCfg stylixHmModule)
+        ];
+    };
+
+    cwystaws-meowchine = mkNixos {
+      hostModule = ./host/devices/cwystaws-meowchine/host.nix;
+      hostCfg = hosts.cwystaws-meowchine;
+      system = "x86_64-linux";
+      extraModules = [
+        inputs.nix-flatpak.nixosModules.nix-flatpak
+        inputs.niri.nixosModules.niri
+        inputs.binaryninja.nixosModules.binaryninja
+        nixos-hardware.nixosModules.asus-fx506hm
+      ];
+    };
+
+    mkRaspi = hostModule: hostCfg: withHome: mkNixos {
+      inherit hostModule hostCfg withHome;
+      system = "aarch64-linux";
+      stylixHmModule = true;
+      extraModules = [
+        nixos-hardware.nixosModules.raspberry-pi-4
+      ];
     };
   in {
     nixosConfigurations = {
       cwystaws-meowchine = nixpkgs.lib.nixosSystem cwystaws-meowchine;
-      cwystaws-raspi = nixpkgs.lib.nixosSystem (raspis ./host/devices/cwystaws-raspi/host.nix true);
-      cwystaws-dormpi = nixpkgs.lib.nixosSystem (raspis ./host/devices/cwystaws-dormpi/host.nix false);
+      cwystaws-raspi = nixpkgs.lib.nixosSystem (mkRaspi ./host/devices/cwystaws-raspi/host.nix hosts.cwystaws-raspi true);
+      cwystaws-dormpi = nixpkgs.lib.nixosSystem (mkRaspi ./host/devices/cwystaws-dormpi/host.nix hosts.cwystaws-dormpi false);
     };
 
     packages.aarch64-linux = {
-      cwystaws-raspi = nixos-generators.nixosGenerate ((raspis ./host/devices/cwystaws-raspi/host.nix true) // {format = "sd-aarch64";});
-      cwystaws-dormpi = nixos-generators.nixosGenerate ((raspis ./host/devices/cwystaws-dormpi/host.nix false) // {format = "sd-aarch64";});
+      cwystaws-raspi = nixos-generators.nixosGenerate ((mkRaspi ./host/devices/cwystaws-raspi/host.nix hosts.cwystaws-raspi true) // {format = "sd-aarch64";});
+      cwystaws-dormpi = nixos-generators.nixosGenerate ((mkRaspi ./host/devices/cwystaws-dormpi/host.nix hosts.cwystaws-dormpi false) // {format = "sd-aarch64";});
     };
 
     darwinConfigurations."cwystaws-macbook" = nix-darwin.lib.darwinSystem {
@@ -188,7 +171,7 @@
         inherit inputs secrets;
       };
       modules = [
-        configs.cwystaws-meowchine
+        {config = hosts.cwystaws-macbook;}
 
         ./vars.nix
         ./nix-settings.nix
@@ -196,7 +179,7 @@
 
         inputs.stylix.darwinModules.stylix
         home-manager.darwinModules.home-manager
-        (home false)
+        (mkHome hosts.cwystaws-macbook false)
       ];
     };
   };
