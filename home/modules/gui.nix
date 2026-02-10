@@ -22,19 +22,19 @@ in {
           vlc
 
           # video, audio, and image editing
-          kdePackages.kdenlive
+          kdePackages.kdenlive # NOTE: pulls in KDE/Qt framework (~200-300 pkgs)
           gimp
           # FUCK YOU WHY ARE YOU SO BIG !!!!! I HAT EYOU!!!!
           # davinci-resolve
           audacity
           # aseprite
           blockbench
-          libreoffice
+          libreoffice # NOTE: pulls in ~150-250 packages (Java, fonts, format libs)
 
           logisim-evolution
           wireshark
 
-          # fonts
+          # fonts (NOTE: also declared in host/modules/common/theming.nix — consider deduplicating)
           noto-fonts
           noto-fonts-cjk-sans
           noto-fonts-color-emoji
@@ -49,6 +49,9 @@ in {
         ]
     );
     programs = lib.mkIf config.gui {
+      # NOTE: Chromium adds ~200-300 packages. It's only used for the LINE
+      # webapp extension. If LINE can run in Zen Browser, removing Chromium
+      # would significantly reduce the closure.
       chromium = {
         enable = true;
         extensions = [

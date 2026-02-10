@@ -19,6 +19,10 @@ in {
     services.xserver.enable = true;
 
     # Enable the GNOME Desktop Environment.
+    # NOTE: gnome.enable pulls in ~2000+ packages (largest single contributor).
+    # Since niri is used as the WM, consider switching to greetd + tuigreet and
+    # enabling only the specific GNOME services needed (gvfs, keyring, etc.).
+    # See PACKAGE_SOURCES.md for details.
     services.displayManager.gdm.enable = true;
     services.desktopManager.gnome.enable = true;
     services.gvfs.enable = true;
