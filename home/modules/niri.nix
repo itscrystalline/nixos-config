@@ -16,7 +16,7 @@ in {
     services = {
       polkit-gnome.enable = enable;
       hypridle = {
-        enable = true;
+        enable = enable;
         settings = let
           lock = "noctalia-shell ipc call lockScreen lock";
           screen_on = "niri msg action power-on-monitors";
@@ -47,7 +47,7 @@ in {
           ];
         };
       };
-    }; # polkit
+    };
     programs =
       if (builtins.hasAttr "niri" options.programs) && config.gui
       then {
