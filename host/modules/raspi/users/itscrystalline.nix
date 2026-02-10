@@ -1,4 +1,8 @@
-{config, lib, ...}: let
+{
+  config,
+  lib,
+  ...
+}: let
   cfg = config.crystal.users.raspi.itscrystalline;
 in {
   imports = [../../common/users/itscrystalline.nix];

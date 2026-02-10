@@ -1,4 +1,8 @@
-{config, lib, ...}: let
+{
+  config,
+  lib,
+  ...
+}: let
   cfg = config.crystal.raspi.hwMisc;
 in {
   imports = [../common/hw-misc.nix];

@@ -96,6 +96,9 @@
   in {
     homeConfigurations."opc" = mkHome {username = "opc";};
     homeConfigurations."ubuntu" = mkHome {username = "ubuntu";};
-    homeConfigurations."itscrystalline" = mkHome {username = "itscrystalline"; doas = true;};
+    homeConfigurations."itscrystalline" = mkHome {
+      username = "itscrystalline";
+      doas = true;
+    };
   };
 }

@@ -1,4 +1,9 @@
-{config, lib, secrets, ...}: let
+{
+  config,
+  lib,
+  secrets,
+  ...
+}: let
   cfg = config.crystal.raspi.security;
 in {
   imports = [../common/security.nix];

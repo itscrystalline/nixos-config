@@ -1,4 +1,8 @@
-{config, lib, ...}: let
+{
+  config,
+  lib,
+  ...
+}: let
   cfg = config.crystal.hm.services;
 in {
   options.crystal.hm.services.enable = lib.mkEnableOption "services" // {default = true;};

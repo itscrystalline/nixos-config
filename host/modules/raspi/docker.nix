@@ -1,4 +1,8 @@
-{config, lib, ...}: let
+{
+  config,
+  lib,
+  ...
+}: let
   cfg = config.crystal.raspi.docker;
 in {
   options.crystal.raspi.docker.enable = lib.mkEnableOption "raspi docker configuration" // {default = true;};

@@ -148,46 +148,55 @@
     mkRaspi = {
       hostCfg,
       withHome,
-    }: mkNixos {
-      inherit hostCfg withHome;
-      system = "aarch64-linux";
-      extraModules = [
-        nixos-hardware.nixosModules.raspberry-pi-4
-      ];
-    };
+    }:
+      mkNixos {
+        inherit hostCfg withHome;
+        system = "aarch64-linux";
+        extraModules = [
+          nixos-hardware.nixosModules.raspberry-pi-4
+        ];
+      };
     # Shared HM module imports for standalone homeManagerConfigurations
-    hmModules = hostCfg: [
-      ./vars.nix
-      ./home/home-linux.nix
+    hmModules = hostCfg:
+      [
+        ./vars.nix
+        ./home/home-linux.nix
 
-      {config = hostCfg.vars;}
-      inputs.nix-flatpak.homeManagerModules.nix-flatpak
-      inputs.nix-index-database.homeModules.nix-index
-      inputs.occasion.homeManagerModule
-      inputs.vicinae.homeManagerModules.default
-      inputs.zen-browser.homeModules.twilight
-      inputs.noctalia.homeModules.default
-      inputs.stylix.homeModules.stylix
-    ]
-    ++ hostCfg.hm
-    ++ nixpkgs.lib.optionals (hostCfg.extraHmConfig != {}) [hostCfg.extraHmConfig];
+        {config = hostCfg.vars;}
+        inputs.nix-flatpak.homeManagerModules.nix-flatpak
+        inputs.nix-index-database.homeModules.nix-index
+        inputs.occasion.homeManagerModule
+        inputs.vicinae.homeManagerModules.default
+        inputs.zen-browser.homeModules.twilight
+        inputs.noctalia.homeModules.default
+        inputs.stylix.homeModules.stylix
+      ]
+      ++ hostCfg.hm
+      ++ nixpkgs.lib.optionals (hostCfg.extraHmConfig != {}) [hostCfg.extraHmConfig];
 
     # Build a standalone homeManagerConfiguration
     mkStandaloneHome = {
       hostCfg,
       system,
-    }: home-manager.lib.homeManagerConfiguration {
-      pkgs = nixpkgs.legacyPackages.${system};
-      modules = hmModules hostCfg;
-      extraSpecialArgs = {
-        inherit inputs secrets;
+    }:
+      home-manager.lib.homeManagerConfiguration {
+        pkgs = nixpkgs.legacyPackages.${system};
+        modules = hmModules hostCfg;
+        extraSpecialArgs = {
+          inherit inputs secrets;
+        };
       };
-    };
   in {
     nixosConfigurations = {
       cwystaws-meowchine = nixpkgs.lib.nixosSystem cwystaws-meowchine;
-      cwystaws-raspi = nixpkgs.lib.nixosSystem (mkRaspi {hostCfg = hosts.cwystaws-raspi; withHome = true;});
-      cwystaws-dormpi = nixpkgs.lib.nixosSystem (mkRaspi {hostCfg = hosts.cwystaws-dormpi; withHome = false;});
+      cwystaws-raspi = nixpkgs.lib.nixosSystem (mkRaspi {
+        hostCfg = hosts.cwystaws-raspi;
+        withHome = true;
+      });
+      cwystaws-dormpi = nixpkgs.lib.nixosSystem (mkRaspi {
+        hostCfg = hosts.cwystaws-dormpi;
+        withHome = false;
+      });
     };
 
     homeConfigurations = {
@@ -206,8 +215,16 @@
     };
 
     packages.aarch64-linux = {
-      cwystaws-raspi = nixos-generators.nixosGenerate ((mkRaspi {hostCfg = hosts.cwystaws-raspi; withHome = true;}) // {format = "sd-aarch64";});
-      cwystaws-dormpi = nixos-generators.nixosGenerate ((mkRaspi {hostCfg = hosts.cwystaws-dormpi; withHome = false;}) // {format = "sd-aarch64";});
+      cwystaws-raspi = nixos-generators.nixosGenerate ((mkRaspi {
+          hostCfg = hosts.cwystaws-raspi;
+          withHome = true;
+        })
+        // {format = "sd-aarch64";});
+      cwystaws-dormpi = nixos-generators.nixosGenerate ((mkRaspi {
+          hostCfg = hosts.cwystaws-dormpi;
+          withHome = false;
+        })
+        // {format = "sd-aarch64";});
     };
 
     darwinConfigurations."cwystaws-macbook" = nix-darwin.lib.darwinSystem {
