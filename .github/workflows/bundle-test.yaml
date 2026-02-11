@@ -1,0 +1,61 @@
+name: Bundle & test sanzenvim unwrapped
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+    paths:
+      - flake.lock
+      - .github/workflows/bundle-test.yaml
+
+permissions:
+  contents: read
+
+jobs:
+  bundle-test:
+    name: "Bundle & test (${{ matrix.variant.label }})"
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        variant:
+          - pkg: unwrapped
+            label: full
+          - pkg: mini-unwrapped
+            label: mini
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Install Nix
+      uses: cachix/install-nix-action@v30
+      with:
+        nix_path: nixpkgs=channel:nixos-25.05
+        extra_nix_config: |
+          substituters = https://sanzenvim.cachix.org https://cache.nixos.org/
+          trusted-public-keys = cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY= sanzenvim.cachix.org-1:zNf9OhUUfJ/NM55vbjx9fSM6O/Q3L6JDoFwU1VCEohc=
+
+    - name: Bundle with nix-portable
+      run: |
+        nix bundle --bundler github:DavHau/nix-portable \
+          -o bundle \
+          github:itscrystalline/sanzenvim#${{ matrix.variant.pkg }} \
+          -L 2>&1
+
+    - name: Test outside nix shell
+      run: |
+        echo "=== Running bundled nvim outside nix shell ==="
+        ./bundle/bin/nvim --version
+        ./bundle/bin/nvim --headless -c 'echo "hello from outside nix shell"' -c 'qa!'
+        echo "=== Success ==="
+
+    - name: Test inside nix shell
+      run: |
+        echo "=== Running bundled nvim inside nix shell ==="
+        nix shell nixpkgs#coreutils --command bash -c '
+          ./bundle/bin/nvim --version
+          ./bundle/bin/nvim --headless -c "echo \"hello from inside nix shell\"" -c "qa!"
+        '
+        echo "=== Success ==="
