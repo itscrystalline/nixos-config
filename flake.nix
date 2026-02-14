@@ -33,10 +33,6 @@
     blender-flake.url = "github:edolstra/nix-warez?dir=blender";
     nix-flatpak.url = "github:gmodena/nix-flatpak";
     sanzenvim.url = "github:itscrystalline/sanzenvim";
-    binaryninja = {
-      url = "github:jchv/nix-binary-ninja";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
     iw2tryhard-dev.url = "github:itscrystalline/iw2tryhard-dev-3.0";
     occasion.url = "github:itscrystalline/occasion";
     nix-index-database = {

@@ -57,8 +57,8 @@ in {
           batteryDevice = "/sys/class/power_supply/BAT1";
         };
         battery-actions = {
-          pluggedInScript = "niri msg output eDP-1 mode 1920x1080@144.003; noctalia-shell ipc call brightness set 100%; brightnessctl -d asus::kbd_backlight set 3; asusctl profile -P Balanced";
-          onBatteryScript = "niri msg output eDP-1 mode 1920x1080@60.004; noctalia-shell ipc call brightness set 65%; brightnessctl -d asus::kbd_backlight set 0; asusctl profile -P LowPower";
+          pluggedInScript = "niri msg output eDP-1 mode 1920x1080@144.003; noctalia-shell ipc call brightness set 100%; noctalia-shell ipc call powerProfile disableNoctaliaPerformance; brightnessctl -d asus::kbd_backlight set 3; asusctl profile -P Balanced";
+          onBatteryScript = "niri msg output eDP-1 mode 1920x1080@60.004; noctalia-shell ipc call brightness set 65%; noctalia-shell ipc call powerProfile enableNoctaliaPerformance; brightnessctl -d asus::kbd_backlight set 0; asusctl profile -P LowPower";
         };
       };
       settings = {
@@ -181,7 +181,7 @@ in {
                 hideIfIdle = false;
                 hideIfNotDetected = true;
                 id = "Battery";
-                showNoctaliaPerformance = false;
+                showNoctaliaPerformance = true;
                 showPowerProfiles = false;
                 warningThreshold = 30;
               }
@@ -201,7 +201,7 @@ in {
           };
         };
         colorSchemes.predefinedScheme = "Catppuccin";
-        plugins.autoUpdate = true;
+        plugins.autoUpdate = false;
         general = {
           language = "en";
           avatarImage = "${config.home.homeDirectory}/.face";
