@@ -136,7 +136,6 @@
       extraModules = [
         inputs.nix-flatpak.nixosModules.nix-flatpak
         inputs.niri.nixosModules.niri
-        inputs.binaryninja.nixosModules.binaryninja
         nixos-hardware.nixosModules.asus-fx506hm
       ];
     };

@@ -73,10 +73,6 @@ in {
         '';
       };
 
-    # programs.binary-ninja = lib.mkIf config.gui {
-    #   enable = true;
-    # };
-
     programs.zed-editor = lib.mkIf config.gui {
       enable = false;
       package = pkgs.zed-editor.fhsWithPackages (pkgs: with pkgs; [zlib nil]);

@@ -21,11 +21,11 @@ in {
         };
 
         packages = [pkgs.adwsteamgtk];
-
-        file.".binaryninja/themes/catppuccin-mocha.bntheme".source = pkgs.fetchurl {
-          url = "https://raw.githubusercontent.com/catppuccin/binary-ninja/refs/heads/main/themes/catppuccin-mocha.bntheme";
-          sha256 = "sha256-VPWBEVIjcbbb7VB71KVPIjTBxr50nMpbizL5Xhuky48=";
-        };
+        activation.installSteamSkin = lib.hm.dag.entryAfter ["writeBoundary"] ''
+          if [ -d "$HOME/.local/share/Steam" ]; then
+             ${lib.getExe pkgs.adwsteamgtk} -o "color_theme:catppuccin-mocha;win_controls:adwaita;win_controls_layout:adwaita" -i || true
+          fi
+        '';
       };
 
       xdg.configFile = {
@@ -34,12 +34,19 @@ in {
           sha256 = "sha256-/O2ul4SQ//AU0bo1A0XAwOZAZ0R2zU0nPb6XZGOd6h8=";
           extension = "zip";
         };
+        "AdwSteamGtk/custom.css".text = with config.lib.stylix.colors; ''
+          :root {
+          	--adw-accent-bg-rgb: ${base0F-rgb-r}, ${base0F-rgb-g}, ${base0F-rgb-b};
+          	--adw-accent-rgb: ${base06-rgb-r}, ${base06-rgb-g}, ${base06-rgb-b};
+          }
+        '';
       };
 
       dconf.settings = {
         "org/gnome/desktop/interface" = {
           color-scheme = "prefer-dark";
         };
+        "io/github/Foldex/AdwSteamGtk".prefs-install-custom-css = true;
       };
     })
 

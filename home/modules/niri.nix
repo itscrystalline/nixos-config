@@ -174,7 +174,7 @@ in {
             input = {
               focus-follows-mouse = {
                 enable = true;
-                max-scroll-amount = "10%";
+                max-scroll-amount = "20%";
               };
               keyboard = {
                 repeat-delay = 400;

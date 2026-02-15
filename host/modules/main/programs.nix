@@ -11,10 +11,6 @@ in {
   options.crystal.desktop.programs.enable = lib.mkEnableOption "desktop programs";
 
   config = lib.mkIf cfg.enable (lib.mkIf gui {
-    # programs.firefox.enable = true;
-
-    # programs.binary-ninja.enable = true;
-
     environment.sessionVariables.NAUTILUS_4_EXTENSION_DIR = pkgs.lib.mkForce "${pkgs.nautilus-python}/lib/nautilus/extensions-4";
 
     # open any terminal in nautilus

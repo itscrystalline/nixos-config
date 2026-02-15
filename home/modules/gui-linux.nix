@@ -41,7 +41,10 @@ in {
           text_editor = desktopFile pkgs.gnome-text-editor;
           video_player = desktopFile pkgs.totem;
           archiver = desktopFile pkgs.file-roller;
+          file_manager = desktopFile pkgs.nautilus;
         in {
+          "inode/directory" = file_manager;
+
           # Browser-related MIME types
           "text/html" = browser;
           "text/xml" = browser;
