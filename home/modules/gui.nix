@@ -81,7 +81,12 @@ in {
         enable = true;
         enableZshIntegration = true;
         enableBashIntegration = true;
-        settings.font-size = 12;
+        settings = {
+          font-size = 12;
+          clipboard-paste-protection = false;
+          clipboard-trim-trailing-spaces = true;
+        };
+        systemd.enable = true;
       };
     };
   };

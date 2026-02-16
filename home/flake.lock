@@ -921,11 +921,11 @@
         "nvf": "nvf"
       },
       "locked": {
-        "lastModified": 1771066545,
-        "narHash": "sha256-wBDWXVTRrmYQqSSktuNKUpb0f0xXs9h13HQT58pwvQA=",
+        "lastModified": 1771225699,
+        "narHash": "sha256-pOMqbOrb9ttcj8WUMxKHfc5qLNSP8DTxEgAKjqe8F/8=",
         "owner": "itscrystalline",
         "repo": "sanzenvim",
-        "rev": "d687df80200c11262f52e8ba2c913b557522db91",
+        "rev": "c539583c66d4db394ec78b73df0ff737907528b9",
         "type": "github"
       },
       "original": {
