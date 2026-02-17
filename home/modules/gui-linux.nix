@@ -98,6 +98,7 @@ in {
       };
     };
     home = {
+      shellAliases.mirror = "${pkgs.wl-mirror}/bin/wl-mirror $(niri msg --json focused-output | ${pkgs.jq}/bin/jq -r .name)";
       sessionVariables = {
         # MOZ_LEGACY_PROFILES = 1;
         DEFAULT_BROWSER = lib.optionalString config.gui "${zen-browser.packages.${pkgs.hostsys}.twilight}/bin/zen";

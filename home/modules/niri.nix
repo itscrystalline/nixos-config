@@ -337,6 +337,11 @@ in {
                 matches = [{app-id = "neovide";}];
                 open-maximized = true;
               }
+              {
+                matches = [{app-id = "at.yrlf.wl_mirror";}];
+                open-fullscreen = true;
+                open-on-output = "HDMI-A-1";
+              }
 
               {
                 matches = [{is-window-cast-target = true;}];
