@@ -127,6 +127,7 @@ in {
           tesseract
           gparted
           mission-center
+          wl-clipboard
         ]
         ++ (with pkgs.unstable; [
           valent
