@@ -16,7 +16,9 @@ in {
 
     programs.steam = {
       enable = true;
+      package = pkgs.steam.override {extraArgs = "-system-composer";}; # for HW accel to work
       remotePlay.openFirewall = true; # Open ports in the firewall for Steam Remote Play
+      extest.enable = true;
     };
   };
 }
