@@ -5,7 +5,7 @@
 }: let
   cfg = config.crystal.hm.shell;
 in {
-  options.crystal.hm.shell.enable = lib.mkEnableOption "shell configuration" // {default = true;};
+  options.crystal.hm.shell.enable = lib.mkEnableOption "shell configuration" // {default = false;};
   config = lib.mkIf cfg.enable {
     programs.noctalia-shell = {
       enable = true;
