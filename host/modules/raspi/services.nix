@@ -114,6 +114,10 @@ in {
                 "https://adguardteam.github.io/HostlistsRegistry/assets/filter_63.txt"
               ];
 
+              ai = [
+                "https://raw.githubusercontent.com/laylavish/uBlockOrigin-HUGE-AI-Blocklist/main/noai_hosts.txt"
+              ];
+
               custom = [
                 ''
                   ocsp.apple.com

@@ -904,11 +904,11 @@
         "nvf": "nvf"
       },
       "locked": {
-        "lastModified": 1771484219,
-        "narHash": "sha256-jjxCrsQe5xFA8YeJiG7qS64qTybYmKRjsK3JUjyFPX0=",
+        "lastModified": 1771488119,
+        "narHash": "sha256-dp6aTGPQGX4gHDkcpnNpH2/sF5vqsUQzluikR/lX2AY=",
         "owner": "itscrystalline",
         "repo": "sanzenvim",
-        "rev": "a596c649ca39e4f1761a43afd46849273d72b06d",
+        "rev": "21e8b2ae3e15b04ffa5210866082210b45c0244e",
         "type": "github"
       },
       "original": {
