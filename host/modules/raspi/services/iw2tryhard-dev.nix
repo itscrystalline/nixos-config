@@ -1,9 +1,5 @@
-{
-  inputs,
-  pkgs,
-  ...
-}: let
-  site = inputs.iw2tryhard-dev.packages.${pkgs.hostsys}.docker;
+_: let
+  # site = inputs.iw2tryhard-dev.packages.${pkgs.hostsys}.docker;
   # site_v2 = inputs.iw2tryhard-dev.packages.${pkgs.hostsys}.docker_v2;
   domain = "iw2tryhard.dev";
   port = "3000";
@@ -11,8 +7,9 @@
 in {
   virtualisation.oci-containers.containers = {
     iw2tryhard-dev = {
-      image = "iw2tryhard-dev";
-      imageFile = site;
+      image = "ghcr.io/itscrystalline/iw2tryhard-dev-3.0:main";
+      # image = "iw2tryhard-dev";
+      # imageFile = site;
       ports = ["127.0.0.1:${port}:3000"];
       extraOptions = ["--network=bridge" "--dns=1.1.1.1"];
       autoStart = true;
