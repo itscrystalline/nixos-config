@@ -19,8 +19,16 @@ in {
         neovide
         unityhub
       ]
+      ++ (
+        if (pkgs.stdenv.buildPlatform.isx86_64 && pkgs.stdenv.hostPlaform.isAarch64)
+        then [
+          sanzenvim.packages.${pkgs.hostsys}.defaultCross
+        ]
+        else [
+          sanzenvim.packages.${pkgs.hostsys}.default
+        ]
+      )
       ++ [
-        sanzenvim.packages.${pkgs.hostsys}.default
         gcc
         clang-tools
         alejandra

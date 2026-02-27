@@ -26,7 +26,7 @@ in {
     (import ./services/ncps.nix {inherit config mkLocalNginx;})
 
     (mkLocalNginx "scan" config.services.scanservjs.settings.port false)
-    (mkLocalNginx "cock" config.services.cockpit.port false)
+    # (mkLocalNginx "cock" config.services.cockpit.port false)
     # (mkLocalNginx "dns" config.services.adguardhome.port false)
   ];
 
@@ -193,15 +193,6 @@ in {
         recommendedTlsSettings = true;
         recommendedOptimisation = true;
         clientMaxBodySize = "100G";
-      };
-
-      cockpit = {
-        enable = true;
-        settings = {
-          WebService = {
-            AllowUnencrypted = true;
-          };
-        };
       };
     };
     environment.etc = {
