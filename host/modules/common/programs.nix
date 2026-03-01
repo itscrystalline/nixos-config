@@ -63,6 +63,7 @@ in {
       linuxKernel.packages.linux_6_12.usbip
 
       lm_sensors
+      pciutils
     ];
     # powerManagement.powertop.enable = true;
   };

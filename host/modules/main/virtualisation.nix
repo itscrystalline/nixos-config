@@ -9,38 +9,42 @@ in {
   options.crystal.virtualisation.enable = lib.mkEnableOption "virtualisation";
   config = lib.mkIf cfg.enable {
     programs.virt-manager.enable = true;
-    virtualisation.libvirtd.enable = true;
-    virtualisation.libvirtd.qemu.vhostUserPackages = with pkgs; [virtiofsd];
-    virtualisation.spiceUSBRedirection.enable = true;
 
-    # VirtualBox removed — KVM/QEMU covers virtualisation needs
-    # virtualisation.virtualbox.host.enable = true;
-    # virtualisation.virtualbox.host.enableKvm = true;
-    # virtualisation.virtualbox.host.addNetworkInterface = false;
+    boot = {
+      # OSX-KVM
+      extraModprobeConfig = ''
+        options kvm_intel nested=1
+        options kvm_intel emulate_invalid_guest_state=0
+        options kvm ignore_msrs=1
+      '';
+      initrd.kernelModules = [
+        "vfio_pci"
+        "vfio"
+        "vfio_iommu_type1"
 
-    # OSX-KVM
-    boot.extraModprobeConfig = ''
-      options kvm_intel nested=1
-      options kvm_intel emulate_invalid_guest_state=0
-      options kvm ignore_msrs=1
-    '';
+        "i915"
+      ];
+      kernelParams = ["intel_iommu=on" "vfio-pci.ids=8086:9bc4"];
+    };
+
+    networking.firewall.trustedInterfaces = ["virbr0"];
 
     environment.systemPackages = [pkgs.distrobox];
-    # virtualisation.podman = {
-    #   enable = true;
-    #   dockerCompat = true;
-    #   defaultNetwork.settings.dns_enabled = true;
-    # };
-    virtualisation.docker = {
-      enable = true;
-      enableOnBoot = true;
-      # rootless = {
-      #   enable = true;
-      #   setSocketVariable = true;
-      #   # daemon.settings = {
-      #   #   dns = ["1.1.1.1" "1.0.0.1" "8.8.8.8"];
-      #   # };
-      # };
+
+    virtualisation = {
+      libvirtd = {
+        enable = true;
+        qemu = {
+          vhostUserPackages = with pkgs; [virtiofsd];
+          runAsRoot = true;
+          swtpm.enable = true;
+        };
+      };
+      spiceUSBRedirection.enable = true;
+      docker = {
+        enable = true;
+        enableOnBoot = true;
+      };
     };
   };
 }

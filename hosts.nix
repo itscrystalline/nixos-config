@@ -32,6 +32,7 @@ let
     crystal.hm.gui.enable = true;
     crystal.hm.guiLinux.enable = true;
     crystal.hm.niri.enable = true;
+    crystal.hm.shell.enable = true;
     crystal.hm.blender.enable = true;
     crystal.hm.flatpak.enable = true;
     crystal.hm.nextcloud.enable = true;

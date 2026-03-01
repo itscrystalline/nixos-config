@@ -20,7 +20,7 @@ in {
         unityhub
       ]
       ++ (
-        if (pkgs.stdenv.buildPlatform.isx86_64 && pkgs.stdenv.hostPlaform.isAarch64)
+        if (pkgs.stdenv.buildPlatform.isx86_64 && pkgs.stdenv.hostPlatform.isAarch64)
         then [
           sanzenvim.packages.${pkgs.hostsys}.defaultCross
         ]

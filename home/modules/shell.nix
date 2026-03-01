@@ -4,9 +4,10 @@
   ...
 }: let
   cfg = config.crystal.hm.shell;
+  inherit (config) gui;
 in {
   options.crystal.hm.shell.enable = lib.mkEnableOption "shell configuration" // {default = false;};
-  config = lib.mkIf cfg.enable {
+  config = lib.mkIf (cfg.enable && gui) {
     programs.noctalia-shell = {
       enable = true;
       plugins = {
