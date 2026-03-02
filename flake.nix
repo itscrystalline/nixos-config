@@ -1,21 +1,17 @@
 {
-  description = "System Flake";
+  description = "Crystal's NixOS Flake";
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.11";
     nixpkgs-unstable.url = "nixpkgs/nixos-unstable";
-    nix-cachyos-kernel.url = "github:xddxdd/nix-cachyos-kernel/release";
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
+    nix-cachyos-kernel.url = "github:xddxdd/nix-cachyos-kernel/release";
     nixos-generators = {
       url = "github:nix-community/nixos-generators";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     home-manager = {
       url = "github:nix-community/home-manager/release-25.11";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-    nix-darwin = {
-      url = "github:nix-darwin/nix-darwin/nix-darwin-25.11";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     zen-browser = {
@@ -29,23 +25,10 @@
       url = "github:nix-community/NUR";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    my-nur.url = "github:itscrystalline/nur-packages";
-    blender-flake.url = "github:edolstra/nix-warez?dir=blender";
-    nix-flatpak.url = "github:gmodena/nix-flatpak";
-    sanzenvim.url = "github:itscrystalline/sanzenvim";
-    iw2tryhard-dev.url = "github:itscrystalline/iw2tryhard-dev-3.0";
-    occasion.url = "github:itscrystalline/occasion";
     nix-index-database = {
       url = "github:nix-community/nix-index-database";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    vicinae.url = "github:vicinaehq/vicinae";
-    winapps = {
-      url = "github:winapps-org/winapps";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-    stylix.url = "github:nix-community/stylix/release-25.11";
-    stylix-unstable.url = "github:nix-community/stylix";
     niri = {
       url = "github:sodiboo/niri-flake";
       inputs = {
@@ -57,6 +40,15 @@
       url = "github:noctalia-dev/noctalia-shell";
       inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
+    my-nur.url = "github:itscrystalline/nur-packages";
+    blender-flake.url = "github:edolstra/nix-warez?dir=blender";
+    nix-flatpak.url = "github:gmodena/nix-flatpak";
+    sanzenvim.url = "github:itscrystalline/sanzenvim";
+    iw2tryhard-dev.url = "github:itscrystalline/iw2tryhard-dev-3.0";
+    occasion.url = "github:itscrystalline/occasion";
+    vicinae.url = "github:vicinaehq/vicinae";
+    stylix.url = "github:nix-community/stylix/release-25.11";
+    stylix-unstable.url = "github:nix-community/stylix";
   };
 
   outputs = inputs @ {
@@ -64,10 +56,8 @@
     nixos-hardware,
     nixos-generators,
     home-manager,
-    nix-darwin,
     ...
   }: let
-    secrets = builtins.fromJSON (builtins.readFile ./secrets/secrets.json);
     hosts = import ./hosts.nix;
 
     # Shared home-manager configuration
@@ -95,7 +85,7 @@
         };
 
         extraSpecialArgs = {
-          inherit inputs secrets;
+          inherit inputs;
         };
       };
     };
@@ -109,7 +99,7 @@
     }: {
       inherit system;
       specialArgs = {
-        inherit inputs secrets;
+        inherit inputs;
       };
       modules =
         [
@@ -178,20 +168,36 @@
         pkgs = nixpkgs.legacyPackages.${system};
         modules = hmModules hostCfg;
         extraSpecialArgs = {
-          inherit inputs secrets;
+          inherit inputs;
         };
+      };
+
+    mkHost = {
+      arch,
+      configModule,
+    }:
+      nixpkgs.lib.nixosSystem {
+        system = arch;
+        specialArgs.inputs = inputs;
+        modules = [
+          ./modules/nixos
+          configModule
+        ];
       };
   in {
     nixosConfigurations = {
-      cwystaws-meowchine = nixpkgs.lib.nixosSystem cwystaws-meowchine;
-      cwystaws-raspi = nixpkgs.lib.nixosSystem (mkRaspi {
-        hostCfg = hosts.cwystaws-raspi;
-        withHome = true;
-      });
-      cwystaws-dormpi = nixpkgs.lib.nixosSystem (mkRaspi {
-        hostCfg = hosts.cwystaws-dormpi;
-        withHome = false;
-      });
+      rhys = mkHost {
+        arch = "x86_64-linux";
+        configModule = ./hosts/rhys.nix;
+      };
+      raine = mkHost {
+        arch = "aarch64-linux";
+        configModule = ./hosts/raine.nix;
+      };
+      liriel = mkHost {
+        arch = "aarch64-linux";
+        configModule = ./hosts/liriel.nix;
+      };
     };
 
     homeConfigurations = {
@@ -202,10 +208,6 @@
       "itscrystalline@cwystaws-raspi" = mkStandaloneHome {
         hostCfg = hosts.cwystaws-raspi;
         system = "aarch64-linux";
-      };
-      "itscrystalline@cwystaws-macbook" = mkStandaloneHome {
-        hostCfg = hosts.cwystaws-macbook;
-        system = "x86_64-darwin";
       };
     };
 
@@ -220,25 +222,6 @@
           withHome = false;
         })
         // {format = "sd-aarch64";});
-    };
-
-    darwinConfigurations."cwystaws-macbook" = nix-darwin.lib.darwinSystem {
-      specialArgs = {
-        inherit inputs secrets;
-      };
-      modules =
-        [
-          {config = hosts.cwystaws-macbook.vars;}
-
-          ./vars.nix
-          ./nix-settings.nix
-          hosts.cwystaws-macbook.hostModule
-
-          inputs.stylix.darwinModules.stylix
-          home-manager.darwinModules.home-manager
-          (mkHome hosts.cwystaws-macbook)
-        ]
-        ++ hosts.cwystaws-macbook.extraNixosConfig;
     };
   };
 }
