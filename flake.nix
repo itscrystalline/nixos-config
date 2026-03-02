@@ -58,8 +58,6 @@
     home-manager,
     ...
   }: let
-    hosts = import ./hosts.nix;
-
     # Shared home-manager configuration
     mkHome = hostCfg: {
       home-manager = {
@@ -90,57 +88,6 @@
       };
     };
 
-    # Build a NixOS system configuration
-    mkNixos = {
-      hostCfg,
-      system,
-      extraModules ? [],
-      withHome ? true,
-    }: {
-      inherit system;
-      specialArgs = {
-        inherit inputs;
-      };
-      modules =
-        [
-          {config = hostCfg.vars;}
-          inputs.nur.modules.nixos.default
-          inputs.stylix.nixosModules.stylix
-        ]
-        ++ extraModules
-        ++ [
-          ./vars.nix
-          ./nix-settings.nix
-          hostCfg.hostModule
-        ]
-        ++ hostCfg.extraNixosConfig
-        ++ nixpkgs.lib.optionals withHome [
-          home-manager.nixosModules.home-manager
-          (mkHome hostCfg)
-        ];
-    };
-
-    cwystaws-meowchine = mkNixos {
-      hostCfg = hosts.cwystaws-meowchine;
-      system = "x86_64-linux";
-      extraModules = [
-        inputs.nix-flatpak.nixosModules.nix-flatpak
-        inputs.niri.nixosModules.niri
-        nixos-hardware.nixosModules.asus-fx506hm
-      ];
-    };
-
-    mkRaspi = {
-      hostCfg,
-      withHome,
-    }:
-      mkNixos {
-        inherit hostCfg withHome;
-        system = "aarch64-linux";
-        extraModules = [
-          nixos-hardware.nixosModules.raspberry-pi-4
-        ];
-      };
     # Shared HM module imports for standalone homeManagerConfigurations
     hmModules = hostCfg:
       [
@@ -175,53 +122,66 @@
     mkHost = {
       arch,
       configModule,
+      otherModules ? [],
     }:
       nixpkgs.lib.nixosSystem {
         system = arch;
         specialArgs.inputs = inputs;
-        modules = [
-          ./modules/nixos
-          configModule
-        ];
+        modules =
+          [
+            inputs.nur.modules.nixos.default
+            inputs.stylix.nixosModules.stylix
+            home-manager.nixosModules.home-manager
+          ]
+          ++ otherModules
+          ++ [
+            ./modules/nixos
+            ./secrets
+            configModule
+          ];
       };
+
+    rhys = mkHost {
+      arch = "x86_64-linux";
+      configModule = ./hosts/rhys.nix;
+      otherModules = [
+        inputs.nix-flatpak.nixosModules.nix-flatpak
+        inputs.niri.nixosModules.niri
+        nixos-hardware.nixosModules.asus-fx506hm
+      ];
+    };
+    raine = mkHost {
+      arch = "aarch64-linux";
+      configModule = ./hosts/raine.nix;
+      otherModules = [
+        nixos-hardware.nixosModules.raspberry-pi-4
+      ];
+    };
+    liriel = mkHost {
+      arch = "aarch64-linux";
+      configModule = ./hosts/liriel.nix;
+      otherModules = [
+        nixos-hardware.nixosModules.raspberry-pi-4
+      ];
+    };
   in {
     nixosConfigurations = {
-      rhys = mkHost {
-        arch = "x86_64-linux";
-        configModule = ./hosts/rhys.nix;
-      };
-      raine = mkHost {
-        arch = "aarch64-linux";
-        configModule = ./hosts/raine.nix;
-      };
-      liriel = mkHost {
-        arch = "aarch64-linux";
-        configModule = ./hosts/liriel.nix;
-      };
-    };
-
-    homeConfigurations = {
-      "itscrystalline@cwystaws-meowchine" = mkStandaloneHome {
-        hostCfg = hosts.cwystaws-meowchine;
-        system = "x86_64-linux";
-      };
-      "itscrystalline@cwystaws-raspi" = mkStandaloneHome {
-        hostCfg = hosts.cwystaws-raspi;
-        system = "aarch64-linux";
-      };
+      inherit rhys raine liriel;
     };
 
     packages.aarch64-linux = {
-      cwystaws-raspi = nixos-generators.nixosGenerate ((mkRaspi {
-          hostCfg = hosts.cwystaws-raspi;
-          withHome = true;
-        })
-        // {format = "sd-aarch64";});
-      cwystaws-dormpi = nixos-generators.nixosGenerate ((mkRaspi {
-          hostCfg = hosts.cwystaws-dormpi;
-          withHome = false;
-        })
-        // {format = "sd-aarch64";});
+      raine = nixos-generators.nixosGenerate (raine // {format = "sd-aarch64";});
+      liriel = nixos-generators.nixosGenerate (liriel // {format = "sd-aarch64";});
     };
+    # homeConfigurations = {
+    #   "itscrystalline@cwystaws-meowchine" = mkStandaloneHome {
+    #     hostCfg = hosts.cwystaws-meowchine;
+    #     system = "x86_64-linux";
+    #   };
+    #   "itscrystalline@cwystaws-raspi" = mkStandaloneHome {
+    #     hostCfg = hosts.cwystaws-raspi;
+    #     system = "aarch64-linux";
+    #   };
+    # };
   };
 }
