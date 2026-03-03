@@ -9,6 +9,8 @@ in {
     ./flatpak.nix
     ./steam.nix
     ./graphics.nix
+    ./niri.nix
+    ./obs.nix
   ];
 
   options.gui.enable = lib.mkEnableOption "GUI support";

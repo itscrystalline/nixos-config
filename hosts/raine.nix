@@ -40,6 +40,7 @@
     tailscale.enable = true;
     earlyoom.enable = true;
     avahi.enable = true;
+    localsend.enable = true;
   };
 
   nix = {

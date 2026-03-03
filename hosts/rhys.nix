@@ -38,6 +38,7 @@ in {
   programs.enable = true;
   gui.enable = true;
   theming.enable = true;
+  bluetooth.enable = true;
 
   network = {
     mounts = [
@@ -50,6 +51,7 @@ in {
     ];
     trustedInterfaces = ["virbr0" "p2p-wl+"];
     dhcp = true;
+    # KDE connect
     ports = rec {
       tcp = [7236 7250 8475 3000];
       udp = tcp;
@@ -66,8 +68,8 @@ in {
   crystals-services = {
     ssh.enable = true;
     tailscale.enable = true;
-    earlyoom.enable = true;
     avahi.enable = true;
+    localsend.enable = true;
   };
 
   nix = {

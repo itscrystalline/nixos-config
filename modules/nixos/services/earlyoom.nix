@@ -7,7 +7,8 @@
 in {
   options.crystals-services.earlyoom.enable = lib.mkEnableOption "EarlyOOM";
   config.services.earlyoom = lib.mkIf enabled {
-    enable = false;
+    enable = true;
+    enableNotifications = true;
     extraArgs = let
       catPatterns = patterns: lib.escapeShellArg "^(${builtins.concatStringsSep "|" patterns})$";
       avoidPatterns = [

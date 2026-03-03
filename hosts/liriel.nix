@@ -21,6 +21,7 @@
     ssh.enable = true;
     tailscale.enable = true;
     earlyoom.enable = true;
+    localsend.enable = true;
   };
 
   nix = {
