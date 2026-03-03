@@ -73,7 +73,7 @@ Boot loader\. ‘systemd-boot’ or ‘generic’\.
 one of “systemd-boot”, “generic”
 
 *Declared by:*
- - [/nix/store/kq08810irfgmgad1qr51fssnxvlhqv92-source/modules/nixos/kernel/boot\.nix](file:///nix/store/kq08810irfgmgad1qr51fssnxvlhqv92-source/modules/nixos/kernel/boot.nix)
+ - [/nix/store/rh2wvbw52zp4r4ad82j2dlnmf5zjyza6-source/modules/nixos/kernel/boot\.nix](file:///nix/store/rh2wvbw52zp4r4ad82j2dlnmf5zjyza6-source/modules/nixos/kernel/boot.nix)
 
 
 
@@ -88,8 +88,13 @@ Additional boot entries for systemd-boot\. Does nothing on ‘generic’\.
 *Type:*
 attribute set
 
+
+
+*Default:*
+` { } `
+
 *Declared by:*
- - [/nix/store/kq08810irfgmgad1qr51fssnxvlhqv92-source/modules/nixos/kernel/boot\.nix](file:///nix/store/kq08810irfgmgad1qr51fssnxvlhqv92-source/modules/nixos/kernel/boot.nix)
+ - [/nix/store/rh2wvbw52zp4r4ad82j2dlnmf5zjyza6-source/modules/nixos/kernel/boot\.nix](file:///nix/store/rh2wvbw52zp4r4ad82j2dlnmf5zjyza6-source/modules/nixos/kernel/boot.nix)
 
 
 
@@ -105,7 +110,7 @@ Kernel modules available during stage 1\.
 (attribute set of boolean) or (list of string) convertible to it
 
 *Declared by:*
- - [/nix/store/kq08810irfgmgad1qr51fssnxvlhqv92-source/modules/nixos/kernel/boot\.nix](file:///nix/store/kq08810irfgmgad1qr51fssnxvlhqv92-source/modules/nixos/kernel/boot.nix)
+ - [/nix/store/rh2wvbw52zp4r4ad82j2dlnmf5zjyza6-source/modules/nixos/kernel/boot\.nix](file:///nix/store/rh2wvbw52zp4r4ad82j2dlnmf5zjyza6-source/modules/nixos/kernel/boot.nix)
 
 
 
@@ -121,7 +126,7 @@ Kernel modules loaded during stage 1\.
 (attribute set of boolean) or (list of string) convertible to it
 
 *Declared by:*
- - [/nix/store/kq08810irfgmgad1qr51fssnxvlhqv92-source/modules/nixos/kernel/boot\.nix](file:///nix/store/kq08810irfgmgad1qr51fssnxvlhqv92-source/modules/nixos/kernel/boot.nix)
+ - [/nix/store/rh2wvbw52zp4r4ad82j2dlnmf5zjyza6-source/modules/nixos/kernel/boot\.nix](file:///nix/store/rh2wvbw52zp4r4ad82j2dlnmf5zjyza6-source/modules/nixos/kernel/boot.nix)
 
 
 
@@ -142,7 +147,7 @@ one of “silent”, “verbose” or (submodule)
 ` "verbose" `
 
 *Declared by:*
- - [/nix/store/kq08810irfgmgad1qr51fssnxvlhqv92-source/modules/nixos/kernel/boot\.nix](file:///nix/store/kq08810irfgmgad1qr51fssnxvlhqv92-source/modules/nixos/kernel/boot.nix)
+ - [/nix/store/rh2wvbw52zp4r4ad82j2dlnmf5zjyza6-source/modules/nixos/kernel/boot\.nix](file:///nix/store/rh2wvbw52zp4r4ad82j2dlnmf5zjyza6-source/modules/nixos/kernel/boot.nix)
 
 
 
@@ -168,7 +173,7 @@ boolean
 ` true `
 
 *Declared by:*
- - [/nix/store/kq08810irfgmgad1qr51fssnxvlhqv92-source/modules/nixos/compatibility/nix-ld\.nix](file:///nix/store/kq08810irfgmgad1qr51fssnxvlhqv92-source/modules/nixos/compatibility/nix-ld.nix)
+ - [/nix/store/rh2wvbw52zp4r4ad82j2dlnmf5zjyza6-source/modules/nixos/compatibility/nix-ld\.nix](file:///nix/store/rh2wvbw52zp4r4ad82j2dlnmf5zjyza6-source/modules/nixos/compatibility/nix-ld.nix)
 
 
 
@@ -194,7 +199,7 @@ boolean
 ` true `
 
 *Declared by:*
- - [/nix/store/kq08810irfgmgad1qr51fssnxvlhqv92-source/modules/nixos/compatibility/steam-run\.nix](file:///nix/store/kq08810irfgmgad1qr51fssnxvlhqv92-source/modules/nixos/compatibility/steam-run.nix)
+ - [/nix/store/rh2wvbw52zp4r4ad82j2dlnmf5zjyza6-source/modules/nixos/compatibility/steam-run\.nix](file:///nix/store/rh2wvbw52zp4r4ad82j2dlnmf5zjyza6-source/modules/nixos/compatibility/steam-run.nix)
 
 
 
@@ -215,7 +220,7 @@ string
 ` "x86_64-linux" `
 
 *Declared by:*
- - [/nix/store/kq08810irfgmgad1qr51fssnxvlhqv92-source/modules/nixos](file:///nix/store/kq08810irfgmgad1qr51fssnxvlhqv92-source/modules/nixos)
+ - [/nix/store/rh2wvbw52zp4r4ad82j2dlnmf5zjyza6-source/modules/nixos](file:///nix/store/rh2wvbw52zp4r4ad82j2dlnmf5zjyza6-source/modules/nixos)
 
 
 
@@ -231,7 +236,7 @@ Filesystems to configure in /etc/fstab\. Mirrors that of NixOS’s ow\.
 attribute set
 
 *Declared by:*
- - [/nix/store/kq08810irfgmgad1qr51fssnxvlhqv92-source/modules/nixos](file:///nix/store/kq08810irfgmgad1qr51fssnxvlhqv92-source/modules/nixos)
+ - [/nix/store/rh2wvbw52zp4r4ad82j2dlnmf5zjyza6-source/modules/nixos](file:///nix/store/rh2wvbw52zp4r4ad82j2dlnmf5zjyza6-source/modules/nixos)
 
 
 
@@ -247,7 +252,7 @@ The system’s localization settings\.
 attribute set of (submodule)
 
 *Declared by:*
- - [/nix/store/kq08810irfgmgad1qr51fssnxvlhqv92-source/modules/nixos](file:///nix/store/kq08810irfgmgad1qr51fssnxvlhqv92-source/modules/nixos)
+ - [/nix/store/rh2wvbw52zp4r4ad82j2dlnmf5zjyza6-source/modules/nixos](file:///nix/store/rh2wvbw52zp4r4ad82j2dlnmf5zjyza6-source/modules/nixos)
 
 
 
@@ -268,7 +273,7 @@ string
 ` "us" `
 
 *Declared by:*
- - [/nix/store/kq08810irfgmgad1qr51fssnxvlhqv92-source/modules/nixos](file:///nix/store/kq08810irfgmgad1qr51fssnxvlhqv92-source/modules/nixos)
+ - [/nix/store/rh2wvbw52zp4r4ad82j2dlnmf5zjyza6-source/modules/nixos](file:///nix/store/rh2wvbw52zp4r4ad82j2dlnmf5zjyza6-source/modules/nixos)
 
 
 
@@ -289,7 +294,7 @@ string
 ` "ja_JP.UTF-8" `
 
 *Declared by:*
- - [/nix/store/kq08810irfgmgad1qr51fssnxvlhqv92-source/modules/nixos](file:///nix/store/kq08810irfgmgad1qr51fssnxvlhqv92-source/modules/nixos)
+ - [/nix/store/rh2wvbw52zp4r4ad82j2dlnmf5zjyza6-source/modules/nixos](file:///nix/store/rh2wvbw52zp4r4ad82j2dlnmf5zjyza6-source/modules/nixos)
 
 
 
@@ -310,7 +315,7 @@ string
 ` "Asia/Bangkok" `
 
 *Declared by:*
- - [/nix/store/kq08810irfgmgad1qr51fssnxvlhqv92-source/modules/nixos](file:///nix/store/kq08810irfgmgad1qr51fssnxvlhqv92-source/modules/nixos)
+ - [/nix/store/rh2wvbw52zp4r4ad82j2dlnmf5zjyza6-source/modules/nixos](file:///nix/store/rh2wvbw52zp4r4ad82j2dlnmf5zjyza6-source/modules/nixos)
 
 
 
@@ -331,7 +336,7 @@ string
 ` "localhost" `
 
 *Declared by:*
- - [/nix/store/kq08810irfgmgad1qr51fssnxvlhqv92-source/modules/nixos](file:///nix/store/kq08810irfgmgad1qr51fssnxvlhqv92-source/modules/nixos)
+ - [/nix/store/rh2wvbw52zp4r4ad82j2dlnmf5zjyza6-source/modules/nixos](file:///nix/store/rh2wvbw52zp4r4ad82j2dlnmf5zjyza6-source/modules/nixos)
 
 
 
@@ -352,7 +357,7 @@ string
 ` "itscrystalline" `
 
 *Declared by:*
- - [/nix/store/kq08810irfgmgad1qr51fssnxvlhqv92-source/modules/nixos](file:///nix/store/kq08810irfgmgad1qr51fssnxvlhqv92-source/modules/nixos)
+ - [/nix/store/rh2wvbw52zp4r4ad82j2dlnmf5zjyza6-source/modules/nixos](file:///nix/store/rh2wvbw52zp4r4ad82j2dlnmf5zjyza6-source/modules/nixos)
 
 
 
@@ -378,7 +383,7 @@ boolean
 ` true `
 
 *Declared by:*
- - [/nix/store/kq08810irfgmgad1qr51fssnxvlhqv92-source/modules/nixos/services/avahi\.nix](file:///nix/store/kq08810irfgmgad1qr51fssnxvlhqv92-source/modules/nixos/services/avahi.nix)
+ - [/nix/store/rh2wvbw52zp4r4ad82j2dlnmf5zjyza6-source/modules/nixos/services/avahi\.nix](file:///nix/store/rh2wvbw52zp4r4ad82j2dlnmf5zjyza6-source/modules/nixos/services/avahi.nix)
 
 
 
@@ -404,7 +409,7 @@ boolean
 ` true `
 
 *Declared by:*
- - [/nix/store/kq08810irfgmgad1qr51fssnxvlhqv92-source/modules/nixos/services/earlyoom\.nix](file:///nix/store/kq08810irfgmgad1qr51fssnxvlhqv92-source/modules/nixos/services/earlyoom.nix)
+ - [/nix/store/rh2wvbw52zp4r4ad82j2dlnmf5zjyza6-source/modules/nixos/services/earlyoom\.nix](file:///nix/store/rh2wvbw52zp4r4ad82j2dlnmf5zjyza6-source/modules/nixos/services/earlyoom.nix)
 
 
 
@@ -430,7 +435,7 @@ boolean
 ` true `
 
 *Declared by:*
- - [/nix/store/kq08810irfgmgad1qr51fssnxvlhqv92-source/modules/nixos/services/ssh\.nix](file:///nix/store/kq08810irfgmgad1qr51fssnxvlhqv92-source/modules/nixos/services/ssh.nix)
+ - [/nix/store/rh2wvbw52zp4r4ad82j2dlnmf5zjyza6-source/modules/nixos/services/ssh\.nix](file:///nix/store/rh2wvbw52zp4r4ad82j2dlnmf5zjyza6-source/modules/nixos/services/ssh.nix)
 
 
 
@@ -456,7 +461,7 @@ boolean
 ` true `
 
 *Declared by:*
- - [/nix/store/kq08810irfgmgad1qr51fssnxvlhqv92-source/modules/nixos/services/tailscale\.nix](file:///nix/store/kq08810irfgmgad1qr51fssnxvlhqv92-source/modules/nixos/services/tailscale.nix)
+ - [/nix/store/rh2wvbw52zp4r4ad82j2dlnmf5zjyza6-source/modules/nixos/services/tailscale\.nix](file:///nix/store/rh2wvbw52zp4r4ad82j2dlnmf5zjyza6-source/modules/nixos/services/tailscale.nix)
 
 
 
@@ -482,7 +487,7 @@ boolean
 ` true `
 
 *Declared by:*
- - [/nix/store/kq08810irfgmgad1qr51fssnxvlhqv92-source/modules/nixos/gui](file:///nix/store/kq08810irfgmgad1qr51fssnxvlhqv92-source/modules/nixos/gui)
+ - [/nix/store/rh2wvbw52zp4r4ad82j2dlnmf5zjyza6-source/modules/nixos/gui](file:///nix/store/rh2wvbw52zp4r4ad82j2dlnmf5zjyza6-source/modules/nixos/gui)
 
 
 
@@ -498,7 +503,7 @@ Linux kernel package\.
 package
 
 *Declared by:*
- - [/nix/store/kq08810irfgmgad1qr51fssnxvlhqv92-source/modules/nixos/kernel/kernel\.nix](file:///nix/store/kq08810irfgmgad1qr51fssnxvlhqv92-source/modules/nixos/kernel/kernel.nix)
+ - [/nix/store/rh2wvbw52zp4r4ad82j2dlnmf5zjyza6-source/modules/nixos/kernel/kernel\.nix](file:///nix/store/rh2wvbw52zp4r4ad82j2dlnmf5zjyza6-source/modules/nixos/kernel/kernel.nix)
 
 
 
@@ -514,7 +519,7 @@ Linux kernel cmdline arguments\.
 list of string
 
 *Declared by:*
- - [/nix/store/kq08810irfgmgad1qr51fssnxvlhqv92-source/modules/nixos/kernel/kernel\.nix](file:///nix/store/kq08810irfgmgad1qr51fssnxvlhqv92-source/modules/nixos/kernel/kernel.nix)
+ - [/nix/store/rh2wvbw52zp4r4ad82j2dlnmf5zjyza6-source/modules/nixos/kernel/kernel\.nix](file:///nix/store/rh2wvbw52zp4r4ad82j2dlnmf5zjyza6-source/modules/nixos/kernel/kernel.nix)
 
 
 
@@ -530,7 +535,7 @@ Binfmt emulated architectures\.
 list of string
 
 *Declared by:*
- - [/nix/store/kq08810irfgmgad1qr51fssnxvlhqv92-source/modules/nixos/kernel/kernel\.nix](file:///nix/store/kq08810irfgmgad1qr51fssnxvlhqv92-source/modules/nixos/kernel/kernel.nix)
+ - [/nix/store/rh2wvbw52zp4r4ad82j2dlnmf5zjyza6-source/modules/nixos/kernel/kernel\.nix](file:///nix/store/rh2wvbw52zp4r4ad82j2dlnmf5zjyza6-source/modules/nixos/kernel/kernel.nix)
 
 
 
@@ -556,7 +561,7 @@ boolean
 ` true `
 
 *Declared by:*
- - [/nix/store/kq08810irfgmgad1qr51fssnxvlhqv92-source/modules/nixos/kernel/kernel\.nix](file:///nix/store/kq08810irfgmgad1qr51fssnxvlhqv92-source/modules/nixos/kernel/kernel.nix)
+ - [/nix/store/rh2wvbw52zp4r4ad82j2dlnmf5zjyza6-source/modules/nixos/kernel/kernel\.nix](file:///nix/store/rh2wvbw52zp4r4ad82j2dlnmf5zjyza6-source/modules/nixos/kernel/kernel.nix)
 
 
 
@@ -572,7 +577,7 @@ Device to hibernate to\.
 null or string
 
 *Declared by:*
- - [/nix/store/kq08810irfgmgad1qr51fssnxvlhqv92-source/modules/nixos/kernel/kernel\.nix](file:///nix/store/kq08810irfgmgad1qr51fssnxvlhqv92-source/modules/nixos/kernel/kernel.nix)
+ - [/nix/store/rh2wvbw52zp4r4ad82j2dlnmf5zjyza6-source/modules/nixos/kernel/kernel\.nix](file:///nix/store/rh2wvbw52zp4r4ad82j2dlnmf5zjyza6-source/modules/nixos/kernel/kernel.nix)
 
 
 
@@ -588,7 +593,7 @@ Kernel modules available during stage 2\.
 list of package
 
 *Declared by:*
- - [/nix/store/kq08810irfgmgad1qr51fssnxvlhqv92-source/modules/nixos/kernel/kernel\.nix](file:///nix/store/kq08810irfgmgad1qr51fssnxvlhqv92-source/modules/nixos/kernel/kernel.nix)
+ - [/nix/store/rh2wvbw52zp4r4ad82j2dlnmf5zjyza6-source/modules/nixos/kernel/kernel\.nix](file:///nix/store/rh2wvbw52zp4r4ad82j2dlnmf5zjyza6-source/modules/nixos/kernel/kernel.nix)
 
 
 
@@ -604,7 +609,7 @@ Kernel modules available during stage 2\.
 (attribute set of boolean) or (list of string) convertible to it
 
 *Declared by:*
- - [/nix/store/kq08810irfgmgad1qr51fssnxvlhqv92-source/modules/nixos/kernel/kernel\.nix](file:///nix/store/kq08810irfgmgad1qr51fssnxvlhqv92-source/modules/nixos/kernel/kernel.nix)
+ - [/nix/store/rh2wvbw52zp4r4ad82j2dlnmf5zjyza6-source/modules/nixos/kernel/kernel\.nix](file:///nix/store/rh2wvbw52zp4r4ad82j2dlnmf5zjyza6-source/modules/nixos/kernel/kernel.nix)
 
 
 
@@ -620,7 +625,7 @@ Supported Filesystems\.
 list of string
 
 *Declared by:*
- - [/nix/store/kq08810irfgmgad1qr51fssnxvlhqv92-source/modules/nixos/kernel/kernel\.nix](file:///nix/store/kq08810irfgmgad1qr51fssnxvlhqv92-source/modules/nixos/kernel/kernel.nix)
+ - [/nix/store/rh2wvbw52zp4r4ad82j2dlnmf5zjyza6-source/modules/nixos/kernel/kernel\.nix](file:///nix/store/rh2wvbw52zp4r4ad82j2dlnmf5zjyza6-source/modules/nixos/kernel/kernel.nix)
 
 
 
@@ -636,7 +641,7 @@ Linux kernel sysctl options\. Passed through to ` boot.kernel.sysctl `\.
 attribute set
 
 *Declared by:*
- - [/nix/store/kq08810irfgmgad1qr51fssnxvlhqv92-source/modules/nixos/kernel/kernel\.nix](file:///nix/store/kq08810irfgmgad1qr51fssnxvlhqv92-source/modules/nixos/kernel/kernel.nix)
+ - [/nix/store/rh2wvbw52zp4r4ad82j2dlnmf5zjyza6-source/modules/nixos/kernel/kernel\.nix](file:///nix/store/rh2wvbw52zp4r4ad82j2dlnmf5zjyza6-source/modules/nixos/kernel/kernel.nix)
 
 
 
@@ -652,7 +657,7 @@ Lists of ports to open, seperated by TCP/UDP/both\.
 attribute set of (submodule)
 
 *Declared by:*
- - [/nix/store/kq08810irfgmgad1qr51fssnxvlhqv92-source/modules/nixos/network](file:///nix/store/kq08810irfgmgad1qr51fssnxvlhqv92-source/modules/nixos/network)
+ - [/nix/store/rh2wvbw52zp4r4ad82j2dlnmf5zjyza6-source/modules/nixos/network](file:///nix/store/rh2wvbw52zp4r4ad82j2dlnmf5zjyza6-source/modules/nixos/network)
 
 
 
@@ -668,7 +673,7 @@ TCP ports to open\.
 list of 16 bit unsigned integer; between 0 and 65535 (both inclusive)
 
 *Declared by:*
- - [/nix/store/kq08810irfgmgad1qr51fssnxvlhqv92-source/modules/nixos/network](file:///nix/store/kq08810irfgmgad1qr51fssnxvlhqv92-source/modules/nixos/network)
+ - [/nix/store/rh2wvbw52zp4r4ad82j2dlnmf5zjyza6-source/modules/nixos/network](file:///nix/store/rh2wvbw52zp4r4ad82j2dlnmf5zjyza6-source/modules/nixos/network)
 
 
 
@@ -684,7 +689,7 @@ TCP port ranges to open\.
 list of attribute set of 16 bit unsigned integer; between 0 and 65535 (both inclusive)
 
 *Declared by:*
- - [/nix/store/kq08810irfgmgad1qr51fssnxvlhqv92-source/modules/nixos/network](file:///nix/store/kq08810irfgmgad1qr51fssnxvlhqv92-source/modules/nixos/network)
+ - [/nix/store/rh2wvbw52zp4r4ad82j2dlnmf5zjyza6-source/modules/nixos/network](file:///nix/store/rh2wvbw52zp4r4ad82j2dlnmf5zjyza6-source/modules/nixos/network)
 
 
 
@@ -700,7 +705,7 @@ UDP ports to open\.
 list of 16 bit unsigned integer; between 0 and 65535 (both inclusive)
 
 *Declared by:*
- - [/nix/store/kq08810irfgmgad1qr51fssnxvlhqv92-source/modules/nixos/network](file:///nix/store/kq08810irfgmgad1qr51fssnxvlhqv92-source/modules/nixos/network)
+ - [/nix/store/rh2wvbw52zp4r4ad82j2dlnmf5zjyza6-source/modules/nixos/network](file:///nix/store/rh2wvbw52zp4r4ad82j2dlnmf5zjyza6-source/modules/nixos/network)
 
 
 
@@ -716,7 +721,7 @@ UDP port ranges to open\.
 list of attribute set of 16 bit unsigned integer; between 0 and 65535 (both inclusive)
 
 *Declared by:*
- - [/nix/store/kq08810irfgmgad1qr51fssnxvlhqv92-source/modules/nixos/network](file:///nix/store/kq08810irfgmgad1qr51fssnxvlhqv92-source/modules/nixos/network)
+ - [/nix/store/rh2wvbw52zp4r4ad82j2dlnmf5zjyza6-source/modules/nixos/network](file:///nix/store/rh2wvbw52zp4r4ad82j2dlnmf5zjyza6-source/modules/nixos/network)
 
 
 
@@ -737,7 +742,7 @@ signed integer or floating point number
 ` 3 `
 
 *Declared by:*
- - [/nix/store/kq08810irfgmgad1qr51fssnxvlhqv92-source/modules/nixos/nix](file:///nix/store/kq08810irfgmgad1qr51fssnxvlhqv92-source/modules/nixos/nix)
+ - [/nix/store/rh2wvbw52zp4r4ad82j2dlnmf5zjyza6-source/modules/nixos/nix](file:///nix/store/rh2wvbw52zp4r4ad82j2dlnmf5zjyza6-source/modules/nixos/nix)
 
 
 
@@ -763,7 +768,7 @@ boolean
 ` true `
 
 *Declared by:*
- - [/nix/store/kq08810irfgmgad1qr51fssnxvlhqv92-source/modules/nixos/nix](file:///nix/store/kq08810irfgmgad1qr51fssnxvlhqv92-source/modules/nixos/nix)
+ - [/nix/store/rh2wvbw52zp4r4ad82j2dlnmf5zjyza6-source/modules/nixos/nix](file:///nix/store/rh2wvbw52zp4r4ad82j2dlnmf5zjyza6-source/modules/nixos/nix)
 
 
 
@@ -789,7 +794,7 @@ string
 ` "1w" `
 
 *Declared by:*
- - [/nix/store/kq08810irfgmgad1qr51fssnxvlhqv92-source/modules/nixos/nix](file:///nix/store/kq08810irfgmgad1qr51fssnxvlhqv92-source/modules/nixos/nix)
+ - [/nix/store/rh2wvbw52zp4r4ad82j2dlnmf5zjyza6-source/modules/nixos/nix](file:///nix/store/rh2wvbw52zp4r4ad82j2dlnmf5zjyza6-source/modules/nixos/nix)
 
 
 
@@ -815,7 +820,7 @@ boolean
 ` true `
 
 *Declared by:*
- - [/nix/store/kq08810irfgmgad1qr51fssnxvlhqv92-source/modules/nixos/programs](file:///nix/store/kq08810irfgmgad1qr51fssnxvlhqv92-source/modules/nixos/programs)
+ - [/nix/store/rh2wvbw52zp4r4ad82j2dlnmf5zjyza6-source/modules/nixos/programs](file:///nix/store/rh2wvbw52zp4r4ad82j2dlnmf5zjyza6-source/modules/nixos/programs)
 
 
 
@@ -841,6 +846,6 @@ boolean
 ` true `
 
 *Declared by:*
- - [/nix/store/kq08810irfgmgad1qr51fssnxvlhqv92-source/modules/nixos/theming](file:///nix/store/kq08810irfgmgad1qr51fssnxvlhqv92-source/modules/nixos/theming)
+ - [/nix/store/rh2wvbw52zp4r4ad82j2dlnmf5zjyza6-source/modules/nixos/theming](file:///nix/store/rh2wvbw52zp4r4ad82j2dlnmf5zjyza6-source/modules/nixos/theming)
 
 
