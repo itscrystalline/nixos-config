@@ -50,6 +50,7 @@ in {
 
   config.boot = {
     kernelPackages = kernel.package;
+    kernelParams = kernel.cmdline;
     kernel.sysctl = kernel.sysctl;
     resumeDevice = lib.optionalString kernel.hibernate.enable kernel.hibernate.device;
     inherit (kernel) supportedFilesystems;

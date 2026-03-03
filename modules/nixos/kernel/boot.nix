@@ -20,14 +20,56 @@ in {
     };
 
     verbosity = lib.mkOption {
-      type = types.enum ["silent" "verbose" "plymouth"];
-      description = "Boot logging verbosity.";
+      type = types.either (types.enum ["silent" "verbose"]) (types.submodule {
+        options.theme = lib.mkOption {
+          type = types.str;
+          description = "Plymouth theme name.";
+        };
+        options.package = lib.mkOption {
+          type = types.nullOr types.package;
+          description = "Additional Plymouth package.";
+        };
+      });
+      description = "Boot logging verbosity. Can be 'silent', 'verbose' or a plymouth package.";
       default = "verbose";
     };
-  };
 
-  config.boot.initrd = {
-    availableKernelModules = boot.stage1AvailableModules;
-    kernelModules = boot.stage1LoadedModules;
+    bootloader = lib.mkOption {
+      type = types.enum ["systemd-boot" "generic"];
+      description = "Boot loader. 'systemd-boot' or 'generic'.";
+    };
+    extraBootEntries = lib.mkOption {
+      type = types.attrs;
+      description = "Additional boot entries for systemd-boot. Does nothing on 'generic'.";
+    };
+  };
+  config.boot = {
+    initrd = {
+      availableKernelModules = boot.stage1AvailableModules;
+      kernelModules = boot.stage1LoadedModules;
+      verbose = boot.verbosity != "silent";
+    };
+    consoleLogLevel =
+      if boot.verbosity == "verbose"
+      then 3
+      else 0;
+
+    plymouth = lib.mkIf (builtins.isAttrs boot.verbosity) {
+      enable = true;
+      inherit (boot.verbosity) theme;
+      themePackages = lib.optional (boot.verbosity.package != null) boot.verbosity.package;
+    };
+
+    loader = {
+      efi.canTouchEfiVariables = true;
+      grub.enable = false;
+      generic-extlinux-compatible.enable = boot.bootloader == "generic";
+      systemd-boot = lib.mkIf (boot.bootloader == "systemd-boot") {
+        enable = true;
+        configurationLimit = config.nix.keepGenerations;
+        memtest86.enable = true;
+        inherit (boot) extraBootEntries;
+      };
+    };
   };
 }
