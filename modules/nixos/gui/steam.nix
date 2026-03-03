@@ -4,10 +4,10 @@
   lib,
   ...
 }: let
-  cfg = config.crystal.games;
+  enabled = config.gui.steam.enable && config.gui.enable;
 in {
-  options.crystal.games.enable = lib.mkEnableOption "games";
-  config = lib.mkIf cfg.enable {
+  options.crystal.gui.steam.enable = lib.mkEnableOption "steam";
+  config = lib.mkIf enabled {
     environment.systemPackages = with pkgs; [
       gamemode
       # Proton

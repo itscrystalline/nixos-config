@@ -3,36 +3,31 @@
   lib,
   ...
 }: {
+  imports = [./network-mounts.nix];
+
   options.network = {
+    dhcp = lib.mkEnableOption "DHCP" // {default = true;};
     trustedInterfaces = lib.mkOption {
       type = lib.types.listOf lib.types.str;
       description = "Trusted Network Interfaces.";
     };
-    ports = lib.mkOption {
-      type = lib.types.attrsOf (lib.types.submodule {
-        options = {
-          tcp = lib.mkOption {
-            type = lib.types.listOf lib.types.port;
-            description = "TCP ports to open.";
-          };
-
-          tcpRange = lib.mkOption {
-            type = lib.types.listOf (lib.types.attrsOf lib.types.port);
-            description = "TCP port ranges to open.";
-          };
-
-          udp = lib.mkOption {
-            type = lib.types.listOf lib.types.port;
-            description = "UDP ports to open.";
-          };
-
-          udpRange = lib.mkOption {
-            type = lib.types.listOf (lib.types.attrsOf lib.types.port);
-            description = "UDP port ranges to open.";
-          };
-        };
-      });
-      description = "Lists of ports to open, seperated by TCP/UDP/both.";
+    ports = {
+      tcp = lib.mkOption {
+        type = lib.types.listOf lib.types.port;
+        description = "TCP ports to open.";
+      };
+      tcpRange = lib.mkOption {
+        type = lib.types.listOf (lib.types.attrsOf lib.types.port);
+        description = "TCP port ranges to open.";
+      };
+      udp = lib.mkOption {
+        type = lib.types.listOf lib.types.port;
+        description = "UDP ports to open.";
+      };
+      udpRange = lib.mkOption {
+        type = lib.types.listOf (lib.types.attrsOf lib.types.port);
+        description = "UDP port ranges to open.";
+      };
     };
   };
   config = {
@@ -40,6 +35,7 @@
     networking = {
       networkmanager.enable = true;
       hostName = config.core.name;
+      useDHCP = config.network.dhcp;
       firewall = with config.network.ports; {
         enable = true;
         inherit (config.network) trustedInterfaces;

@@ -4,6 +4,8 @@
     sha256 = "sha256-Ly4jHvtxlnOe1CsZ5+f+K7pclUF4S0HS4Vgs5U8Ofl4=";
   };
 in {
+  imports = [./rhys];
+
   core = {
     name = "rhys";
     primaryUser = "itscrystalline";
@@ -37,7 +39,29 @@ in {
   gui.enable = true;
   theming.enable = true;
 
-  network.trustedInterfaces = ["virbr0"];
+  network = {
+    mounts = [
+      {
+        type = "nfs";
+        remote = "100.125.37.13:/export";
+        mountPoint = "/mnt/nfs";
+        automount = true;
+      }
+    ];
+    trustedInterfaces = ["virbr0" "p2p-wl+"];
+    dhcp = true;
+    ports = rec {
+      tcp = [7236 7250 8475 3000];
+      udp = tcp;
+      tcpRange = [
+        {
+          from = 1714;
+          to = 1764;
+        }
+      ];
+      udpRange = tcpRange;
+    };
+  };
 
   crystals-services = {
     ssh.enable = true;
@@ -102,5 +126,12 @@ in {
       enable = true;
       device = "/dev/nvme1n1p1";
     };
+    modprobeConfig = [
+      ''
+        options kvm_intel nested=1
+        options kvm_intel emulate_invalid_guest_state=0
+        options kvm ignore_msrs=1
+      ''
+    ];
   };
 }

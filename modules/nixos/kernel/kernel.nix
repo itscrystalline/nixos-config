@@ -46,14 +46,20 @@ in {
       type = types.listOf types.package;
       description = "Kernel modules available during stage 2.";
     };
+    moduleBlacklist = lib.mkOption {
+      type = attrNamesToTrue;
+      description = "Kernel modules blacklisted.";
+    };
 
     modprobeConfig = lib.mkOption {
-      type = types.str;
+      type = types.listOf types.str;
       description = "Extra modprobe config.";
     };
   };
 
-  config.boot = {
+  config.boot = let
+    finalModprobeConfig = lib.concatLines kernel.modprobeConfig;
+  in {
     kernelPackages = kernel.package;
     kernelParams =
       kernel.cmdline
@@ -68,6 +74,7 @@ in {
     binfmt.emulatedSystems = kernel.emulatedArchitectures;
     kernelModules = kernel.stage2Modules;
     extraModulePackages = kernel.stage2ModulePackages;
-    extraModprobeConfig = kernel.modprobeConfig;
+    extraModprobeConfig = finalModprobeConfig;
+    blacklistedKernelModules = kernel.moduleBlacklist;
   };
 }

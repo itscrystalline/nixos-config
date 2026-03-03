@@ -4,16 +4,15 @@
   lib,
   ...
 }: let
-  cfg = config.crystal.bluetooth;
+  enabled = config.bluetooth.enable;
 in {
-  options.crystal.bluetooth.enable = lib.mkEnableOption "bluetooth";
-  config = lib.mkIf cfg.enable {
+  options.bluetooth.enable = lib.mkEnableOption "bluetooth";
+  config = lib.mkIf enabled {
     hardware.bluetooth = {
       enable = true; # enables support for Bluetooth
       package = pkgs.bluez;
       powerOnBoot = true; # powers up the default Bluetooth controller on boot
       settings.General.Enable = "Source,Sink,Media,Socket";
     };
-    environment.systemPackages = [pkgs.blueberry];
   };
 }
