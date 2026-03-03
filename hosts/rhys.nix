@@ -36,7 +36,14 @@ in {
   };
 
   programs.enable = true;
-  gui.enable = true;
+  gui = {
+    enable = true;
+    graphics.prime = {
+      enable = true;
+      intelBusId = "PCI:0:2:0";
+      nvidiaBusId = "PCI:1:0:0";
+    };
+  };
   theming.enable = true;
   bluetooth.enable = true;
 
