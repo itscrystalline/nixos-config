@@ -21,13 +21,15 @@ in {
 
     verbosity = lib.mkOption {
       type = types.either (types.enum ["silent" "verbose"]) (types.submodule {
-        options.theme = lib.mkOption {
-          type = types.str;
-          description = "Plymouth theme name.";
-        };
-        options.package = lib.mkOption {
-          type = types.nullOr types.package;
-          description = "Additional Plymouth package.";
+        options.plymouth = {
+          theme = lib.mkOption {
+            type = types.str;
+            description = "Plymouth theme name.";
+          };
+          package = lib.mkOption {
+            type = types.nullOr types.package;
+            description = "Additional Plymouth package.";
+          };
         };
       });
       description = "Boot logging verbosity. Can be 'silent', 'verbose' or a plymouth package.";
@@ -41,6 +43,7 @@ in {
     extraBootEntries = lib.mkOption {
       type = types.attrs;
       description = "Additional boot entries for systemd-boot. Does nothing on 'generic'.";
+      default = {};
     };
   };
   config.boot = {
