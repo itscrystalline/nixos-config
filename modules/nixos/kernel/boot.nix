@@ -10,6 +10,7 @@
   ) (types.attrsOf types.bool);
 in {
   options.boot = {
+    network = lib.mkEnableOption "network in the initrd";
     stage1AvailableModules = lib.mkOption {
       type = attrNamesToTrue;
       description = "Kernel modules available during stage 1.";
@@ -46,33 +47,39 @@ in {
       default = {};
     };
   };
-  config.boot = {
-    initrd = {
-      availableKernelModules = boot.stage1AvailableModules;
-      kernelModules = boot.stage1LoadedModules;
-      verbose = boot.verbosity != "silent";
-    };
-    consoleLogLevel =
-      if boot.verbosity == "verbose"
-      then 3
-      else 0;
+  config = {
+    boot = {
+      initrd = {
+        availableKernelModules = boot.stage1AvailableModules;
+        kernelModules = boot.stage1LoadedModules;
+        verbose = boot.verbosity != "silent";
+        network.enable = boot.network;
+      };
+      consoleLogLevel =
+        if boot.verbosity == "verbose"
+        then 3
+        else 0;
 
-    plymouth = lib.mkIf (builtins.isAttrs boot.verbosity) {
-      enable = true;
-      inherit (boot.verbosity) theme;
-      themePackages = lib.optional (boot.verbosity.package != null) boot.verbosity.package;
-    };
-
-    loader = {
-      efi.canTouchEfiVariables = true;
-      grub.enable = false;
-      generic-extlinux-compatible.enable = boot.bootloader == "generic";
-      systemd-boot = lib.mkIf (boot.bootloader == "systemd-boot") {
+      plymouth = lib.mkIf (builtins.isAttrs boot.verbosity) {
         enable = true;
-        configurationLimit = config.nix.keepGenerations;
-        memtest86.enable = true;
-        inherit (boot) extraBootEntries;
+        inherit (boot.verbosity) theme;
+        themePackages = lib.optional (boot.verbosity.package != null) boot.verbosity.package;
+      };
+
+      loader = {
+        efi.canTouchEfiVariables = true;
+        grub.enable = false;
+        generic-extlinux-compatible.enable = boot.bootloader == "generic";
+        systemd-boot = lib.mkIf (boot.bootloader == "systemd-boot") {
+          enable = true;
+          configurationLimit = config.nix.keepGenerations;
+          memtest86.enable = true;
+          inherit (boot) extraBootEntries;
+        };
       };
     };
+    kernel.cmdline =
+      (lib.optional (boot.verbosity != "verbose") "quiet")
+      ++ (lib.optional (builtins.isAttrs boot.verbosity) "splash");
   };
 }

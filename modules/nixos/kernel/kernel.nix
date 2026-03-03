@@ -46,16 +46,30 @@ in {
       type = types.listOf types.package;
       description = "Kernel modules available during stage 2.";
     };
+
+    modprobeConfig = lib.mkOption {
+      type = types.str;
+      description = "Extra modprobe config.";
+    };
   };
 
   config.boot = {
     kernelPackages = kernel.package;
-    kernelParams = kernel.cmdline;
+    kernelParams =
+      kernel.cmdline
+      ++ [
+        "boot.shell_on_fail"
+        "rd.udev.log_level=3"
+        "udev.log_priority=3"
+      ];
     kernel.sysctl = kernel.sysctl;
     resumeDevice = lib.optionalString kernel.hibernate.enable kernel.hibernate.device;
     inherit (kernel) supportedFilesystems;
     binfmt.emulatedSystems = kernel.emulatedArchitectures;
     kernelModules = kernel.stage2Modules;
     extraModulePackages = kernel.stage2ModulePackages;
+    extraModprobeConfig = kernel.modprobeConfig;
   };
+
+  network.trustedInterfaces = ["virbr0"];
 }

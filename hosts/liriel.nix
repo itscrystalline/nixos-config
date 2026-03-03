@@ -1,4 +1,4 @@
-_: {
+{pkgs, ...}: {
   core = {
     name = "liriel";
     primaryUser = "itscrystalline";
@@ -26,5 +26,23 @@ _: {
   nix = {
     nh.enable = true;
     keepGenerations = 3;
+  };
+
+  boot = {
+    bootloader = "generic";
+    stage1AvailableModules = ["xhci_pci"];
+    verbosity = "verbose";
+    network = true;
+  };
+
+  kernel = rec {
+    package = pkgs.linuxKernel.packages.linux_rpi4;
+    stage2Modules = ["rtw88"];
+    stage2ModulePackages = package.rtw88;
+    cmdline = [
+      "psi=1"
+      "brcmfmac.roamoff=1"
+      "brcmfmac.feature_disable=0x282000"
+    ];
   };
 }

@@ -1,4 +1,9 @@
-_: {
+{pkgs, ...}: let
+  nixos_logo = pkgs.fetchurl {
+    url = "https://raw.githubusercontent.com/NixOS/nixos-artwork/refs/heads/master/logo/nixos-white.svg";
+    sha256 = "sha256-Ly4jHvtxlnOe1CsZ5+f+K7pclUF4S0HS4Vgs5U8Ofl4=";
+  };
+in {
   core = {
     name = "rhys";
     primaryUser = "itscrystalline";
@@ -42,5 +47,58 @@ _: {
   nix = {
     nh.enable = true;
     keepGenerations = 10;
+  };
+
+  boot = {
+    bootloader = "systemd-boot";
+    stage1AvailableModules = [
+      "xhci_pci"
+      "ahci"
+      "nvme"
+      "usb_storage"
+      "sd_mod"
+
+      "vfio_pci"
+      "vfio"
+      "vfio_iommu_type1"
+
+      "i915"
+    ];
+    verbosity.plymouth = {
+      theme = "blahaj";
+      package = pkgs.plymouth-blahaj-theme.overrideAttrs {
+        patchPhase = ''
+          runHook prePatch
+
+          shopt -s extglob
+
+          # deal with all the non ascii stuff
+          mv !(*([[:graph:]])) blahaj.plymouth
+          sed -i 's/\xc3\xa5/a/g' blahaj.plymouth
+          sed -i 's/\xc3\x85/A/g' blahaj.plymouth
+
+          # colors!
+          sed -i 's/0x000000/0x11111b/g' blahaj.plymouth
+
+          # watermark
+          ${pkgs.inkscape}/bin/inkscape --export-height=48 --export-type=png --export-filename="watermark.png" ${nixos_logo}
+
+          runHook postPatch
+        '';
+      };
+    };
+  };
+
+  kernel = {
+    package = pkgs.cachyosKernels.linuxPackages-cachyos-latest-lto-x86_64-v4;
+    stage2Modules = ["kvm-intel"];
+    cmdline = ["intel_iommu=on" "vfio-pci.ids=8086:9bc4"];
+    emulatedArchitectures = ["aarch64-linux"];
+    supportedFilesystems = ["ntfs" "nfs"];
+    sysctl."kernel.sysrq" = 1;
+    hibernate = {
+      enable = true;
+      device = "/dev/nvme1n1p1";
+    };
   };
 }

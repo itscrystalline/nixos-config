@@ -2,6 +2,8 @@ name: Build docs
 
 on:
   push:
+    paths:
+      - 'modules/**'
 
 permissions:
   contents: write

@@ -4,6 +4,10 @@
   ...
 }: {
   options.network = {
+    trustedInterfaces = lib.mkOption {
+      type = lib.types.listOf lib.types.str;
+      description = "Trusted Network Interfaces.";
+    };
     ports = lib.mkOption {
       type = lib.types.attrsOf (lib.types.submodule {
         options = {
@@ -38,6 +42,7 @@
       hostName = config.core.name;
       firewall = with config.network.ports; {
         enable = true;
+        inherit (config.network) trustedInterfaces;
         allowedTCPPorts = tcp;
         allowedUDPPorts = udp;
         allowedTCPPortRanges = tcpRange;

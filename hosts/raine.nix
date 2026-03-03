@@ -1,4 +1,4 @@
-_: {
+{pkgs, ...}: {
   core = {
     name = "raine";
     primaryUser = "itscrystalline";
@@ -45,5 +45,21 @@ _: {
   nix = {
     nh.enable = true;
     keepGenerations = 3;
+  };
+
+  boot = {
+    bootloader = "generic";
+    stage1AvailableModules = [
+      "xhci_pci"
+      "usb_storage"
+      "usbhid"
+    ];
+    verbosity = "verbose";
+    network = true;
+  };
+
+  kernel = {
+    package = pkgs.linuxKernel.packages.linux_rpi4;
+    cmdline = ["psi=1"];
   };
 }
