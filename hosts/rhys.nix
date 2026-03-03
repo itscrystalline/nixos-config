@@ -49,7 +49,7 @@ in {
         automount = true;
       }
     ];
-    trustedInterfaces = ["virbr0" "p2p-wl+"];
+    trustedInterfaces = ["p2p-wl+"];
     dhcp = true;
     # KDE connect
     ports = rec {
@@ -70,6 +70,7 @@ in {
     tailscale.enable = true;
     avahi.enable = true;
     localsend.enable = true;
+    docker.enable = true;
   };
 
   nix = {
@@ -85,12 +86,6 @@ in {
       "nvme"
       "usb_storage"
       "sd_mod"
-
-      "vfio_pci"
-      "vfio"
-      "vfio_iommu_type1"
-
-      "i915"
     ];
     verbosity.plymouth = {
       theme = "blahaj";
@@ -120,7 +115,6 @@ in {
   kernel = {
     package = pkgs.cachyosKernels.linuxPackages-cachyos-latest-lto-x86_64-v4;
     stage2Modules = ["kvm-intel"];
-    cmdline = ["intel_iommu=on" "vfio-pci.ids=8086:9bc4"];
     emulatedArchitectures = ["aarch64-linux"];
     supportedFilesystems = ["ntfs" "nfs"];
     sysctl."kernel.sysrq" = 1;
@@ -128,12 +122,5 @@ in {
       enable = true;
       device = "/dev/nvme1n1p1";
     };
-    modprobeConfig = [
-      ''
-        options kvm_intel nested=1
-        options kvm_intel emulate_invalid_guest_state=0
-        options kvm ignore_msrs=1
-      ''
-    ];
   };
 }

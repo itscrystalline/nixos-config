@@ -18,7 +18,6 @@ in {
     # Enable the X11 windowing system.
 
     # GDM display manager (GNOME desktop is NOT enabled — niri is the WM)
-    services.gvfs.enable = true;
 
     # TeamViewer service
     services.teamviewer.enable = true;

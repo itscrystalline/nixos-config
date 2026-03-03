@@ -20,6 +20,7 @@ in {
       };
     };
     services = {
+      gvfs.enable = true;
       displayManager.gdm.enable = true;
       xserver.enable = true;
     };

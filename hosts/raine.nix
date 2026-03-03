@@ -41,6 +41,7 @@
     earlyoom.enable = true;
     avahi.enable = true;
     localsend.enable = true;
+    docker.enable = true;
   };
 
   nix = {

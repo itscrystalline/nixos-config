@@ -4,5 +4,6 @@
     ./ssh.nix
     ./earlyoom.nix
     ./avahi.nix
+    ./docker.nix
   ];
 }
