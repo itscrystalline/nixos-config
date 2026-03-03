@@ -37,6 +37,8 @@ in {
   gui.enable = true;
   theming.enable = true;
 
+  network.trustedInterfaces = ["virbr0"];
+
   crystals-services = {
     ssh.enable = true;
     tailscale.enable = true;

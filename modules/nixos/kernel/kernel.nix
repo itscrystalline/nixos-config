@@ -70,6 +70,4 @@ in {
     extraModulePackages = kernel.stage2ModulePackages;
     extraModprobeConfig = kernel.modprobeConfig;
   };
-
-  network.trustedInterfaces = ["virbr0"];
 }
