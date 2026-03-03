@@ -1,4 +1,8 @@
-{pkgs, ...}: {
+{
+  pkgs,
+  config,
+  ...
+}: {
   hardware.asus.battery = {
     chargeUpto = 85; # Maximum level of charge for your battery, as a percentage.
     enableChargeUptoScript = true; # Whether to add charge-upto to environment.systemPackages. `charge-upto 85` temporarily sets the charge limit to 85%.
@@ -10,6 +14,7 @@
   };
 
   users.groups.battery_ctl = {};
+  users.users.${config.core.primaryUser}.extraGroups = ["battery_ctl"];
   services.udev.extraRules = ''
     # Battery Threshold Control - udev rule
     # Grants write access to charge_control_end_threshold for users in the

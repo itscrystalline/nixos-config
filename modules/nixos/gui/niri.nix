@@ -8,6 +8,7 @@
 in {
   options.gui.niri.enable = lib.mkEnableOption "niri & friends";
   config = lib.mkIf enabled {
+    users.users.${config.core.primaryUser}.extraGroups = ["ydotool"];
     programs = {
       niri.enable = true;
       niri.package = pkgs.niri-stable;

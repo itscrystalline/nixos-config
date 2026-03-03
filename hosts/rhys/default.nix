@@ -4,5 +4,6 @@
     ./hw-misc.nix
     ./services.nix
     ./virtualisation.nix
+    ./itscrystalline.nix
   ];
 }

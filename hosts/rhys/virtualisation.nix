@@ -1,4 +1,8 @@
-{pkgs, ...}: {
+{
+  pkgs,
+  config,
+  ...
+}: {
   programs.virt-manager.enable = true;
   kernel = {
     modprobeConfig = [
@@ -34,4 +38,6 @@
     };
     spiceUSBRedirection.enable = true;
   };
+
+  users.users.${config.core.primaryUser}.extraGroups = ["libvirtd"];
 }
