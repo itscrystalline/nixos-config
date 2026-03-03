@@ -177,6 +177,7 @@
       raine = nixos-generators.nixosGenerate (raine // {format = "sd-aarch64";});
       liriel = nixos-generators.nixosGenerate (liriel // {format = "sd-aarch64";});
     };
+    packages.x86_64-linux.docs = nixpkgs.legacyPackages.x86_64-linux.callPackage ./modules/docs.nix {};
     # homeConfigurations = {
     #   "itscrystalline@cwystaws-meowchine" = mkStandaloneHome {
     #     hostCfg = hosts.cwystaws-meowchine;
