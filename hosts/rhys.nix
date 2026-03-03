@@ -38,6 +38,9 @@ in {
   programs.enable = true;
   gui = {
     enable = true;
+    flatpak.enable = true;
+    obs.enable = true;
+    niri.enable = true;
     graphics.prime = {
       enable = true;
       intelBusId = "PCI:0:2:0";

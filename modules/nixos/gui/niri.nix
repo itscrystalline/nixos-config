@@ -6,7 +6,7 @@
 }: let
   enabled = config.gui.niri.enable && config.gui.enable;
 in {
-  options.crystal.niri.enable = lib.mkEnableOption "niri & friends";
+  options.gui.niri.enable = lib.mkEnableOption "niri & friends";
   config = lib.mkIf enabled {
     programs = {
       niri.enable = true;
@@ -20,8 +20,11 @@ in {
       };
     };
     services = {
+      displayManager = {
+        defaultSession = "niri";
+        gdm.enable = true;
+      };
       gvfs.enable = true;
-      displayManager.gdm.enable = true;
       xserver.enable = true;
     };
     environment.systemPackages = with pkgs; [
