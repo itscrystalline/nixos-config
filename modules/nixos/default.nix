@@ -12,6 +12,7 @@ in {
     ./security
     ./services
     ./theming
+    ./kernel
     ./nix
     ./gui
   ];

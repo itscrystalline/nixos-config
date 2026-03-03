@@ -122,6 +122,7 @@
     mkHost = {
       arch,
       configModule,
+      homeModule,
       otherModules ? [],
     }:
       nixpkgs.lib.nixosSystem {
@@ -131,14 +132,17 @@
           [
             inputs.nur.modules.nixos.default
             inputs.stylix.nixosModules.stylix
-            home-manager.nixosModules.home-manager
           ]
           ++ otherModules
           ++ [
             ./modules/nixos
             ./secrets
             configModule
-          ];
+          ]
+          (nixpkgs.lib.optional (homeModule != null) [
+            home-manager.nixosModules.home-manager
+            homeModule
+          ]);
       };
 
     rhys = mkHost {
