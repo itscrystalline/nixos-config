@@ -1,7 +1,6 @@
 {
   lib,
   config,
-  pkgs,
   ...
 }: let
   inherit (config) kernel;
@@ -14,10 +13,9 @@ in {
     package = lib.mkOption {
       type = types.package;
       description = "Linux kernel package.";
-      default = pkgs.linuxPackages;
     };
     cmdline = lib.mkOption {
-      type = types.listOf types.string;
+      type = types.listOf types.str;
       description = "Linux kernel cmdline arguments.";
     };
     sysctl = lib.mkOption {

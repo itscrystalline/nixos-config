@@ -9,18 +9,22 @@
         options = {
           tcp = lib.mkOption {
             type = lib.types.listOf lib.types.port;
+            description = "TCP ports to open.";
           };
 
           tcpRange = lib.mkOption {
             type = lib.types.listOf (lib.types.attrsOf lib.types.port);
+            description = "TCP port ranges to open.";
           };
 
           udp = lib.mkOption {
             type = lib.types.listOf lib.types.port;
+            description = "UDP ports to open.";
           };
 
           udpRange = lib.mkOption {
             type = lib.types.listOf (lib.types.attrsOf lib.types.port);
+            description = "UDP port ranges to open.";
           };
         };
       });

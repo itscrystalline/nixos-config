@@ -61,10 +61,13 @@ in {
           };
         };
       });
+      description = "The system's localization settings.";
     };
   };
 
   config = with core; {
+    _module.check = false;
+
     inherit fileSystems;
     zramSwap.enable = true;
     hardware.enableRedistributableFirmware = true;
