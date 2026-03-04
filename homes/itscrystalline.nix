@@ -7,6 +7,12 @@
     theming.enable = true;
     flatpak.enable = true;
 
+    gui = {
+      enable = true;
+      niri.enable = true;
+      shell.enable = true;
+    };
+
     programs = {
       gui.enable = true;
       gui.blender.enable = true;
@@ -15,8 +21,6 @@
       cli.dev.enable = true;
       ides.enable = true;
       games.enable = true;
-      niri.enable = true;
-      shell.enable = true;
     };
 
     services.nextcloud.enable = true;

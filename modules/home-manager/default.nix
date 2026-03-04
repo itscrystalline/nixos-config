@@ -53,7 +53,7 @@ in {
     (lib.mkIf (passthrough != null) {
       hm.programs.gui.enable = lib.mkForce passthrough.gui.enable;
       hm.bluetooth.enable = lib.mkForce passthrough.bluetooth.enable;
-      hm.programs.niri.enable = lib.mkForce passthrough.niri.enable;
+      hm.gui.niri.enable = lib.mkForce passthrough.niri.enable;
       hm.obs.enable = lib.mkForce passthrough.obs.enable;
       hm.flatpak.enable = lib.mkForce passthrough.flatpak.enable;
     })

@@ -3,12 +3,12 @@
   config,
   ...
 }: let
-  inherit (config.hm.programs) shell;
+  inherit (config.hm.gui) shell;
   enabled = shell.enable;
   guiEnabled = config.hm.gui.enable;
-  niriEnabled = config.hm.programs.niri.enable;
+  niriEnabled = config.hm.gui.niri.enable;
 in {
-  options.hm.programs.shell.enable = lib.mkEnableOption "Noctalia shell";
+  options.hm.gui.shell.enable = lib.mkEnableOption "Noctalia shell";
 
   config = lib.mkIf (enabled && guiEnabled) {
     programs.noctalia-shell = {
