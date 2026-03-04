@@ -1,6 +1,7 @@
 {
   lib,
   config,
+  pkgs,
   ...
 }: let
   enabled = config.hardware.crystals-rpi4.enable;
@@ -12,5 +13,9 @@ in {
       bluetooth.enable = true;
     };
     hardware.enableAllHardware = false;
+    environment.systemPackages = with pkgs; [
+      libraspberrypi
+      raspberrypi-eeprom
+    ];
   };
 }
