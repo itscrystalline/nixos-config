@@ -122,7 +122,7 @@
     mkHost = {
       arch,
       configModule,
-      homeModule,
+      homeModule ? null,
       otherModules ? [],
     }:
       nixpkgs.lib.nixosSystem {
@@ -139,7 +139,7 @@
             ./secrets
             configModule
           ]
-          (nixpkgs.lib.optional (homeModule != null) [
+          ++ (nixpkgs.lib.optional (homeModule != null) [
             home-manager.nixosModules.home-manager
             homeModule
           ]);
