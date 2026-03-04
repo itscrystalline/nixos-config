@@ -81,6 +81,7 @@ in {
     avahi.enable = true;
     localsend.enable = true;
     docker.enable = true;
+    pipewire.enable = true;
   };
 
   nix = {

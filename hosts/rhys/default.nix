@@ -5,5 +5,6 @@
     ./services.nix
     ./virtualisation.nix
     ./itscrystalline.nix
+    ./nixremote.nix
   ];
 }
