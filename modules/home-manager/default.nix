@@ -15,19 +15,11 @@
     else builtins.trace "WARNING: secrets.nix is encrypted, using dummy secrets." (import ../../secrets/dummy.nix);
 in {
   imports = [
-    ./nix-settings.nix
-    ./nix-remote-building.nix
-    ./cli.nix
-    ./dev
-    ./theme.nix
+    ./nix
+    ./programs
     ./gui
-    ./games
-    ./flatpak.nix
-    ./virtualisation.nix
-    ./services.nix
-    ./shell.nix
-    ./niri.nix
-    ./nextcloud.nix
+    ./services
+    ./theming
   ];
 
   options = {
@@ -39,6 +31,8 @@ in {
       };
 
       gui.enable = lib.mkEnableOption "GUI configuration";
+
+      bluetooth.enable = lib.mkEnableOption "Bluetooth";
 
       doas.enable = mkOption {
         type = types.bool;
@@ -65,6 +59,7 @@ in {
 
     (lib.mkIf (passthrough != null) {
       hm.gui.enable = lib.mkForce passthrough.gui.enable;
+      hm.bluetooth.enable = lib.mkForce passthrough.bluetooth.enable;
     })
 
     {
