@@ -62,13 +62,13 @@
     # Does NOT include stylix (NixOS provides it via nixosModules.stylix).
     hmModules = [
       ./modules/home-manager
+      ./secrets
       inputs.nix-flatpak.homeManagerModules.nix-flatpak
       inputs.nix-index-database.homeModules.nix-index
       inputs.occasion.homeManagerModule
       inputs.vicinae.homeManagerModules.default
       inputs.zen-browser.homeModules.twilight
       inputs.noctalia.homeModules.default
-      inputs.niri.homeModules.niri
     ];
 
     # Build a standalone homeManagerConfiguration (adds stylix HM module).
@@ -76,7 +76,13 @@
     mkStandaloneHome = system: userModules:
       home-manager.lib.homeManagerConfiguration {
         pkgs = nixpkgs.legacyPackages.${system};
-        modules = hmModules ++ [inputs.stylix.homeModules.stylix] ++ userModules;
+        modules =
+          hmModules
+          ++ [
+            inputs.stylix.homeModules.stylix
+            inputs.niri.homeModules.niri
+          ]
+          ++ userModules;
         extraSpecialArgs = {
           inherit inputs;
           passthrough = null;
@@ -99,7 +105,6 @@
       arch,
       configModule,
       otherModules ? [],
-      hmUserModules ? [],
       userHomeModules ? [],
     }:
       nixpkgs.lib.nixosSystem {
@@ -110,7 +115,7 @@
             inputs.nur.modules.nixos.default
             inputs.stylix.nixosModules.stylix
             home-manager.nixosModules.home-manager
-            (nixosHmConfig (userHomeModules ++ hmUserModules))
+            (nixosHmConfig userHomeModules)
           ]
           ++ [
             ./modules/nixos

@@ -1,4 +1,3 @@
-# itscrystalline's home-manager config.
 {...}: {
   hm = {
     core.username = "itscrystalline";
@@ -14,11 +13,15 @@
     };
 
     programs = {
-      gui.enable = true;
-      gui.blender.enable = true;
-      gui.vicinae.enable = true;
-      cli.enable = true;
-      cli.dev.enable = true;
+      gui = {
+        enable = true;
+        blender.enable = true;
+        vicinae.enable = true;
+      };
+      cli = {
+        enable = true;
+        dev.enable = true;
+      };
       ides.enable = true;
       games.enable = true;
     };

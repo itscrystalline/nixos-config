@@ -55,7 +55,7 @@ in {
     };
 
     programs =
-      if (builtins.hasAttr "niri" options.programs) && guiEnabled
+      if (options.programs ? niri) && guiEnabled
       then {
         niri = {
           package = pkgs.niri-stable;
@@ -215,7 +215,10 @@ in {
                   height = 1080;
                   refresh = 144.0;
                 };
-                position = {x = 0; y = 0;};
+                position = {
+                  x = 0;
+                  y = 0;
+                };
                 scale = 1;
                 variable-refresh-rate = "on-demand";
               };
@@ -225,7 +228,10 @@ in {
                   height = 1080;
                   refresh = 100.0;
                 };
-                position = {x = 1920; y = 0;};
+                position = {
+                  x = 1920;
+                  y = 0;
+                };
                 scale = 1;
                 variable-refresh-rate = true;
               };
@@ -234,8 +240,14 @@ in {
             layout = {
               background-color = lib.mkForce null;
               gaps = 16;
-              border = {enable = true; width = 2;};
-              focus-ring = {enable = true; width = 2;};
+              border = {
+                enable = true;
+                width = 2;
+              };
+              focus-ring = {
+                enable = true;
+                width = 2;
+              };
               shadow = {
                 enable = true;
                 draw-behind-window = true;
@@ -285,7 +297,12 @@ in {
                 block-out-from = "screencast";
               }
               {
-                matches = [{app-id = "^org\.keepassxc\.KeePassXC$"; title = "^データベースのロックを解除 - KeePassXC$";}];
+                matches = [
+                  {
+                    app-id = "^org\.keepassxc\.KeePassXC$";
+                    title = "^データベースのロックを解除 - KeePassXC$";
+                  }
+                ];
                 open-focused = true;
                 block-out-from = "screencast";
                 open-on-workspace = null;
@@ -300,7 +317,12 @@ in {
                 open-maximized = true;
               }
               {
-                matches = [{app-id = "zen-twilight$"; title = "^ピクチャーインピクチャー$";}];
+                matches = [
+                  {
+                    app-id = "zen-twilight$";
+                    title = "^ピクチャーインピクチャー$";
+                  }
+                ];
                 open-floating = true;
                 default-column-width.proportion = 0.333;
                 default-window-height.proportion = 0.333;
