@@ -52,9 +52,6 @@ in {
         ydotool
         valent
       ]
-      ++ lib.optionals (pkgs.stdenv.isLinux && config.hm.doas.enable) [
-        doas-sudo-shim
-      ]
       ++ lib.optionals (inputs ? occasion) [
         inputs.occasion.packages.${pkgs.hostsys}.occasion
       ];

@@ -35,12 +35,6 @@ in {
       bluetooth.enable = lib.mkEnableOption "Bluetooth";
 
       obs.enable = lib.mkEnableOption "OBS Studio";
-
-      doas.enable = mkOption {
-        type = types.bool;
-        description = "Whether doas-sudo-shim is installed (doas mode).";
-        default = false;
-      };
     };
 
     secrets = mkOption {

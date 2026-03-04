@@ -5,7 +5,6 @@
 
     gui.enable = true;
     bluetooth.enable = true;
-    doas.enable = false;
 
     cli.enable = true;
     dev.enable = true;
