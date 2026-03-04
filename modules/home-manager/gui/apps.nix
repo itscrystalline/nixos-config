@@ -8,26 +8,27 @@
   guiEnabled = config.hm.gui.enable;
 in
   lib.mkIf guiEnabled {
-    home.packages =
-      (with pkgs.stable; [
-        vesktop
-        beeper
-        keepassxc
-        vlc
-        kdePackages.kdenlive
-        gimp
-        audacity
-        blockbench
-        libreoffice
-        logisim-evolution
-        wireshark
-        noto-fonts
-        noto-fonts-cjk-sans
-        noto-fonts-color-emoji
-        inter
-        nerd-fonts.jetbrains-mono
-        sarabun-font
-      ])
+    home = {
+      packages =
+        (with pkgs.stable; [
+          vesktop
+          beeper
+          keepassxc
+          vlc
+          kdePackages.kdenlive
+          gimp
+          audacity
+          blockbench
+          libreoffice
+          logisim-evolution
+          wireshark
+          noto-fonts
+          noto-fonts-cjk-sans
+          noto-fonts-color-emoji
+          inter
+          nerd-fonts.jetbrains-mono
+          sarabun-font
+        ])
       ++ [pkgs.unstable.material-symbols]
       ++ lib.optionals (inputs ? my-nur) [
         inputs.my-nur.packages.${pkgs.hostsys}.sipa-th-fonts

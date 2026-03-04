@@ -60,6 +60,7 @@ in {
     (lib.mkIf (passthrough != null) {
       hm.gui.enable = lib.mkForce passthrough.gui.enable;
       hm.bluetooth.enable = lib.mkForce passthrough.bluetooth.enable;
+      hm.niri.enable = lib.mkForce passthrough.niri.enable;
     })
 
     {

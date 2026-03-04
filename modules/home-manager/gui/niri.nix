@@ -12,7 +12,7 @@
 in {
   options.hm.niri.enable = lib.mkEnableOption "Niri window manager";
 
-  config = lib.mkIf enabled {
+  config = lib.mkIf (enabled && pkgs.stdenv.isLinux) {
     home.packages = lib.optionals guiEnabled [
       pkgs.xwayland-satellite
       pkgs.wl-mirror
