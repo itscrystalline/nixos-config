@@ -25,13 +25,7 @@
     ssh.enable = true;
     tailscale.enable = true;
     earlyoom.enable = true;
-    avahi = {
-      enable = true;
-      publish = {
-        enable = true;
-        userServices = true;
-      };
-    };
+    avahi.enable = true;
     argonone.enable = true;
     home-assistant.enable = true;
     create-ap.enable = true;

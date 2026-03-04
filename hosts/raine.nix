@@ -49,13 +49,7 @@
     ssh.enable = true;
     tailscale.enable = true;
     earlyoom.enable = true;
-    avahi = {
-      enable = true;
-      publish = {
-        enable = true;
-        userServices = true;
-      };
-    };
+    avahi.enable = true;
     docker.enable = true;
     printing = {
       enable = true;
