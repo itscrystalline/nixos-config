@@ -6,7 +6,7 @@
 }: let
   enabled = config.gui.steam.enable && config.gui.enable;
 in {
-  options.crystal.gui.steam.enable = lib.mkEnableOption "steam";
+  options.gui.steam.enable = lib.mkEnableOption "steam";
   config = lib.mkIf enabled {
     environment.systemPackages = with pkgs; [
       gamemode

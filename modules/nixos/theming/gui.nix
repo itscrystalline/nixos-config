@@ -2,9 +2,10 @@
   lib,
   config,
   pkgs,
+  inputs,
   ...
 }: let
-  enabled = config.theming.enabled && config.gui.enabled;
+  enabled = config.theming.enable && config.gui.enable;
 in {
   config = lib.mkIf enabled {
     environment.systemPackages = with pkgs; [
