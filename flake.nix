@@ -133,12 +133,12 @@
             inputs.nur.modules.nixos.default
             inputs.stylix.nixosModules.stylix
           ]
-          ++ otherModules
           ++ [
             ./modules/nixos
             ./secrets
             configModule
           ]
+          ++ otherModules
           ++ (nixpkgs.lib.optional (homeModule != null) [
             home-manager.nixosModules.home-manager
             homeModule

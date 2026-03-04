@@ -6,7 +6,7 @@
 }: let
   inherit (config) nix;
 in {
-  imports = [./settings.nix];
+  imports = [./settings.nix ./remote-building.nix];
 
   options.nix = {
     nh = {

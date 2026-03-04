@@ -3,36 +3,41 @@
   inputs,
   lib,
   pkgs,
+  options,
   ...
 }: {
   nix = {
     settings = {
       experimental-features = ["nix-command" "flakes"];
 
-      substituters = [
-        "https://cache.nixos.org"
-        "https://devenv.cachix.org"
-        "https://sanzenvim.cachix.org"
-        "https://nix-community.cachix.org"
-        "https://nixpkgs-python.cachix.org"
-        "https://niri.cachix.org"
-        "http://cache${config.crystals-services.nginx.localSuffix}"
-        "https://cuda-maintainers.cachix.org"
-        "https://attic.xuyh0120.win/lantian"
-      ];
-      trusted-public-keys = [
-        "hydra.nixos.org-1:CNHJZBh9K4tP3EKF6FkkgeVYsS3ohTl+oS0Qa8bezVs="
-        "devenv.cachix.org-1:w1cLUi8dv3hnoSPGAuibQv+f9TZLr6cv/Hm9XgU50cw="
-        "sanzenvim.cachix.org-1:zNf9OhUUfJ/NM55vbjx9fSM6O/Q3L6JDoFwU1VCEohc="
-        "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
-        "nixpkgs-python.cachix.org-1:hxjI7pFxTyuTHn2NkvWCrAUcNZLNS3ZAvfYNuYifcEU="
-        "niri.cachix.org-1:Wv0OmO7PsuocRKzfDoJ3mulSl7Z6oezYhGhR+3W2964="
-        "cwystaws-raspi:2xuwbE44tVXZdoV8OJYaTXJT1PoKF3nD0fc9dDix41s="
-        "cuda-maintainers.cachix.org-1:0dq3bujKpuEPMCX6U4WylrUDZ9JyUG0VpVZa7CNfq5E="
-        "lantian:EeAUQ+W+6r7EtwnmYjeVwx5kOGEBpjlBfPlzGlTNvHc="
-      ];
+      substituters =
+        [
+          "https://cache.nixos.org"
+          "https://devenv.cachix.org"
+          "https://sanzenvim.cachix.org"
+          "https://nix-community.cachix.org"
+          "https://nixpkgs-python.cachix.org"
+          "https://cuda-maintainers.cachix.org"
+          "https://attic.xuyh0120.win/lantian"
+        ]
+        ++ lib.optional config.gui.niri.enable "https://niri.cachix.org"
+        ++ lib.optional config.crystals-services.ncps.enable "http://cache${config.crystals-services.nginx.localSuffix}";
+
+      trusted-public-keys =
+        [
+          "hydra.nixos.org-1:CNHJZBh9K4tP3EKF6FkkgeVYsS3ohTl+oS0Qa8bezVs="
+          "devenv.cachix.org-1:w1cLUi8dv3hnoSPGAuibQv+f9TZLr6cv/Hm9XgU50cw="
+          "sanzenvim.cachix.org-1:zNf9OhUUfJ/NM55vbjx9fSM6O/Q3L6JDoFwU1VCEohc="
+          "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
+          "nixpkgs-python.cachix.org-1:hxjI7pFxTyuTHn2NkvWCrAUcNZLNS3ZAvfYNuYifcEU="
+          "niri.cachix.org-1:Wv0OmO7PsuocRKzfDoJ3mulSl7Z6oezYhGhR+3W2964="
+          "cuda-maintainers.cachix.org-1:0dq3bujKpuEPMCX6U4WylrUDZ9JyUG0VpVZa7CNfq5E="
+          "lantian:EeAUQ+W+6r7EtwnmYjeVwx5kOGEBpjlBfPlzGlTNvHc="
+        ]
+        ++ lib.optional config.crystals-services.ncps.enable "cwystaws-raspi:2xuwbE44tVXZdoV8OJYaTXJT1PoKF3nD0fc9dDix41s=";
+
       access-tokens = "github.com=${config.secrets.ghToken}";
-      trusted-users = ["root" "itscrystalline" "nixremote" "opc" "ubuntu"];
+      trusted-users = ["root" "itscrystalline" "nixremote" "opc"];
       auto-optimise-store = true;
     };
 
@@ -42,10 +47,10 @@
         "nixpkgs-unstable=${inputs.nixpkgs-unstable}"
         "nur=${inputs.nur}"
         "nixos-hardware=${inputs.nixos-hardware}"
-        "home-manager=${inputs.home-manager}"
         "stylix=${inputs.stylix}"
         "stylix-unstable=${inputs.stylix-unstable}"
       ]
+      ++ lib.optional (options ? home-manager) "home-manager=${inputs.home-manager}"
       ++ lib.optionals config.gui.enable [
         "zen-browser=${inputs.zen-browser}"
         "nix-flatpak=${inputs.nix-flatpak}"
@@ -53,32 +58,6 @@
       ];
 
     package = pkgs.lixPackageSets.stable.lix;
-
-    extraOptions = ''
-      builders-use-substitutes = true
-    '';
-
-    buildMachines = [
-      {
-        hostName = "cwystaws-siwwybowox";
-        system = "aarch64-linux";
-        protocol = "ssh-ng";
-        maxJobs = 8;
-        speedFactor = 2;
-        supportedFeatures = [];
-        mandatoryFeatures = [];
-      }
-      {
-        hostName = "raine";
-        system = "aarch64-linux";
-        protocol = "ssh-ng";
-        maxJobs = 4;
-        speedFactor = 1;
-        supportedFeatures = [];
-        mandatoryFeatures = [];
-      }
-    ];
-    distributedBuilds = true;
   };
 
   nixpkgs.config.allowUnfree = true;
