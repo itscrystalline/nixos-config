@@ -80,7 +80,27 @@
       nginxVhost = "scan.crys";
     };
     nginx.enable = true;
-    blocky.enable = true;
+    blocky = {
+      enable = true;
+      denyList = ''
+        ocsp.apple.com
+        ocsp2.apple.com
+        valid.apple.com
+        crl.apple.com
+        certs.apple.com
+        appattest.apple.com
+        vpp.itunes.apple.com
+      '';
+      allowList = ''
+        t.co
+        urbandictionary.com
+        telegra.ph
+        s.youtube.com
+        pantip.com$important
+        app.localhost.direct
+        register.appattest.apple.com
+      '';
+    };
     cloudflared.enable = true;
     nextcloud = {
       enable = true;

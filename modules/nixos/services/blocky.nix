@@ -73,31 +73,9 @@ in {
             ai = [
               "https://raw.githubusercontent.com/laylavish/uBlockOrigin-HUGE-AI-Blocklist/main/noai_hosts.txt"
             ];
-            custom = [
-              ''
-                ocsp.apple.com
-                ocsp2.apple.com
-                valid.apple.com
-                crl.apple.com
-                certs.apple.com
-                appattest.apple.com
-                vpp.itunes.apple.com
-                ${blocky.denyList}
-              ''
-            ];
+            custom = lib.optional (blocky.denyList != "") blocky.denyList;
           };
-          allowlists.custom = [
-            ''
-              t.co
-              urbandictionary.com
-              telegra.ph
-              s.youtube.com
-              pantip.com$important
-              app.localhost.direct
-              register.appattest.apple.com
-              ${blocky.allowList}
-            ''
-          ];
+          allowlists.custom = lib.optional (blocky.allowList != "") blocky.allowList;
           clientGroupsBlock.default = builtins.attrNames denylists;
           loading = {
             concurrency = 8;
