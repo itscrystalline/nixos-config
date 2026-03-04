@@ -1,4 +1,4 @@
-{lib, ...}: {
+_: {
   users.users.nixremote = {
     isNormalUser = true;
     createHome = true;

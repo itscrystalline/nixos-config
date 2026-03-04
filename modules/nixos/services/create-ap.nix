@@ -1,0 +1,69 @@
+{
+  lib,
+  config,
+  pkgs,
+  ...
+}: let
+  inherit (config.crystals-services) create-ap;
+  enabled = create-ap.enable;
+  mkDhcpLocks = list:
+    lib.concatStringsSep " " (map ({
+      mac,
+      ip,
+      hostname,
+      lease ? "infinite",
+    }: "${mac},${ip},${hostname},${lease}")
+    list);
+in {
+  options.crystals-services.create-ap.enable = lib.mkEnableOption "create_ap WiFi hotspot";
+  config = lib.mkIf enabled {
+    boot.kernel.sysctl = {
+      "net.ipv6.conf.all.forwarding" = 1;
+      "net.ipv4.conf.all.forwarding" = 1;
+    };
+
+    nixpkgs.overlays = [
+      (_final: prev: {
+        linux-wifi-hotspot = prev.linux-wifi-hotspot.overrideAttrs (_final: _prev: {
+          src = pkgs.fetchFromGitHub {
+            owner = "lakinduakash";
+            repo = "linux-wifi-hotspot";
+            rev = "c0f153bff954542c5f0e551bfcad791f44ac345e";
+            hash = "sha256-20yhcBhVlObl/aZKH4P2tdAeutTpZo+R0//i0/uAPFw=";
+          };
+        });
+      })
+    ];
+
+    services.create_ap = {
+      enable = true;
+      settings = {
+        INTERNET_IFACE = "wlp1s0u1u2";
+        PASSPHRASE = config.secrets.homeassistant.wifi-password;
+        NO_VIRT = true;
+        SSID = "dormpi";
+        WIFI_IFACE = "wlan0";
+        DHCP_HOSTS = mkDhcpLocks [
+          {
+            mac = "cc:40:85:b3:c9:a4";
+            ip = "192.168.12.136";
+            hostname = "desk-light";
+          }
+          {
+            mac = "3c:6a:d2:be:4e:57";
+            ip = "192.168.12.216";
+            hostname = "kettle-switch";
+          }
+          {
+            mac = "bc:07:1d:c4:0c:63";
+            ip = "192.168.12.10";
+            hostname = "fan-switch";
+          }
+        ];
+        COUNTRY = "TH";
+      };
+    };
+
+    services.haveged.enable = true;
+  };
+}

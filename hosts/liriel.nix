@@ -1,18 +1,22 @@
 {pkgs, ...}: {
+  imports = [./liriel];
+
   core = {
     name = "liriel";
     primaryUser = "itscrystalline";
 
-    fileSystems = {
-      "/" = {
-        device = "/dev/disk/by-label/NIXOS_SD";
-        fsType = "ext4";
-        options = ["noatime"];
-      };
+    fileSystems."/" = {
+      device = "/dev/disk/by-label/NIXOS_SD";
+      fsType = "ext4";
+      options = ["noatime"];
     };
 
     arch = "aarch64-linux";
-    localization.timezone = "Asia/Bangkok";
+    localization = {
+      timezone = "Asia/Bangkok";
+      keymap = "colemak";
+      locale = "en_US.UTF-8";
+    };
   };
 
   programs.enable = true;
@@ -21,7 +25,16 @@
     ssh.enable = true;
     tailscale.enable = true;
     earlyoom.enable = true;
-    localsend.enable = true;
+    avahi = {
+      enable = true;
+      publish = {
+        enable = true;
+        userServices = true;
+      };
+    };
+    argonone.enable = true;
+    home-assistant.enable = true;
+    create-ap.enable = true;
   };
 
   nix = {

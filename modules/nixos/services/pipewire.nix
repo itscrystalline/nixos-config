@@ -3,7 +3,8 @@
   config,
   ...
 }: let
-  enabled = config.crystals-services.pipewire.enable;
+  inherit (config.crystals-services) pipewire;
+  enabled = pipewire.enable;
 in {
   options.crystals-services.pipewire.enable = lib.mkEnableOption "PipeWire audio";
   config = lib.mkIf enabled {
@@ -15,7 +16,7 @@ in {
       alsa.support32Bit = true;
       pulse.enable = true;
 
-      wireplumber.extraConfig = {
+      wireplumber.extraConfig = lib.mkIf config.bluetooth.enable {
         bluetoothEnhancements = {
           "monitor.bluez.properties" = {
             "bluez5.enable-sbc-xq" = true;
