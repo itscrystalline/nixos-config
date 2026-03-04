@@ -1,0 +1,99 @@
+{
+  lib,
+  config,
+  pkgs,
+  inputs ? {},
+  ...
+}: let
+  inherit (config.hm) theming;
+  enabled = theming.enable;
+  guiEnabled = config.hm.gui.enable;
+in {
+  options.hm.theming.enable = lib.mkEnableOption "theming configuration" // {default = true;};
+
+  config = lib.mkIf enabled (lib.mkMerge [
+    (lib.mkIf guiEnabled {
+      home = {
+        sessionVariables = {
+          NIXOS_OZONE_WL = "1";
+          NVD_BACKEND = "direct";
+          ELECTRON_OZONE_PLATFORM_HINT = "auto";
+          GSK_RENDERER = "ngl";
+        };
+        packages = with pkgs; [
+          adwsteamgtk
+          noto-fonts
+          noto-fonts-cjk-sans
+          noto-fonts-color-emoji
+          inter
+          nerd-fonts.jetbrains-mono
+          sarabun-font
+          unstable.material-symbols
+        ]
+        ++ lib.optionals (inputs ? my-nur) [
+          inputs.my-nur.packages.${pkgs.hostsys}.sipa-th-fonts
+        ];
+        activation.installSteamSkin = lib.hm.dag.entryAfter ["writeBoundary"] ''
+          if [ -d "$HOME/.local/share/Steam" ]; then
+            ${lib.getExe pkgs.adwsteamgtk} -o "color_theme:catppuccin-mocha;win_controls:adwaita;win_controls_layout:adwaita" -i || true
+          fi
+        '';
+      };
+
+      xdg.configFile = {
+        "aseprite/extensions/mocha".source = pkgs.fetchzip {
+          url = "https://github.com/catppuccin/aseprite/releases/download/v1.2.0/mocha.aseprite-extension";
+          sha256 = "sha256-/O2ul4SQ//AU0bo1A0XAwOZAZ0R2zU0nPb6XZGOd6h8=";
+          extension = "zip";
+        };
+        "AdwSteamGtk/custom.css".text = with config.lib.stylix.colors; ''
+          :root {
+          	--adw-accent-bg-rgb: ${base0F-rgb-r}, ${base0F-rgb-g}, ${base0F-rgb-b};
+          	--adw-accent-rgb: ${base06-rgb-r}, ${base06-rgb-g}, ${base06-rgb-b};
+          }
+        '';
+      };
+
+      dconf.settings = {
+        "org/gnome/desktop/interface".color-scheme = "prefer-dark";
+        "io/github/Foldex/AdwSteamGtk".prefs-install-custom-css = true;
+      };
+    })
+
+    {
+      stylix = {
+        enable = true;
+        base16Scheme = "${pkgs.base16-schemes}/share/themes/catppuccin-mocha.yaml";
+        polarity = "dark";
+        autoEnable = true;
+        fonts = rec {
+          serif = {
+            package = pkgs.inter;
+            name = "Inter";
+          };
+          sansSerif = serif;
+          monospace = {
+            package = pkgs.nerd-fonts.jetbrains-mono;
+            name = "JetbrainsMono Nerd Font Mono";
+          };
+          emoji = {
+            package = pkgs.noto-fonts-color-emoji;
+            name = "Noto Color Emoji";
+          };
+        };
+        cursor = {
+          name = "catppuccin-mocha-pink-cursors";
+          package = pkgs.catppuccin-cursors.mochaPink;
+          size = 16;
+        };
+        targets = {
+          starship.enable = false;
+          zen-browser = {
+            enable = guiEnabled;
+            profileNames = ["crystal"];
+          };
+        };
+      };
+    }
+  ]);
+}

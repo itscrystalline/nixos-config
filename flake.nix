@@ -58,71 +58,48 @@
     home-manager,
     ...
   }: let
-    # Shared home-manager configuration
-    mkHome = hostCfg: {
+    # All HM modules shared by both standalone and NixOS-embedded configs.
+    # Does NOT include stylix (NixOS provides it via nixosModules.stylix).
+    hmModules = [
+      ./modules/home-manager
+      inputs.nix-flatpak.homeManagerModules.nix-flatpak
+      inputs.nix-index-database.homeModules.nix-index
+      inputs.occasion.homeManagerModule
+      inputs.vicinae.homeManagerModules.default
+      inputs.zen-browser.homeModules.twilight
+      inputs.noctalia.homeModules.default
+      inputs.niri.homeModules.niri
+    ];
+
+    # Build a standalone homeManagerConfiguration (adds stylix HM module).
+    # userModules: per-user HM option files (e.g. ./homes/itscrystalline.nix).
+    mkStandaloneHome = system: userModules:
+      home-manager.lib.homeManagerConfiguration {
+        pkgs = nixpkgs.legacyPackages.${system};
+        modules = hmModules ++ [inputs.stylix.homeModules.stylix] ++ userModules;
+        extraSpecialArgs = {
+          inherit inputs;
+          passthrough = null;
+        };
+      };
+
+    # Inline NixOS module that wires up home-manager for the primary user.
+    # hmUserModules: additional per-host HM option files.
+    nixosHmConfig = hmUserModules: {config, ...}: {
       home-manager = {
         useGlobalPkgs = true;
         useUserPackages = true;
         backupFileExtension = "hmbkup";
-        users.itscrystalline = {
-          imports =
-            [
-              ./vars.nix
-              ./home/home-linux.nix
-
-              {config = hostCfg.vars;}
-              inputs.nix-flatpak.homeManagerModules.nix-flatpak
-              inputs.nix-index-database.homeModules.nix-index
-              inputs.occasion.homeManagerModule
-              inputs.vicinae.homeManagerModules.default
-              inputs.zen-browser.homeModules.twilight
-              inputs.noctalia.homeModules.default
-            ]
-            ++ hostCfg.hm
-            ++ hostCfg.extraHmConfig;
-        };
-
-        extraSpecialArgs = {
-          inherit inputs;
-        };
+        extraSpecialArgs = {inherit inputs;};
+        users.${config.core.primaryUser}.imports = hmModules ++ hmUserModules;
       };
     };
-
-    # Shared HM module imports for standalone homeManagerConfigurations
-    hmModules = hostCfg:
-      [
-        ./vars.nix
-        ./home/home-linux.nix
-
-        {config = hostCfg.vars;}
-        inputs.nix-flatpak.homeManagerModules.nix-flatpak
-        inputs.nix-index-database.homeModules.nix-index
-        inputs.occasion.homeManagerModule
-        inputs.vicinae.homeManagerModules.default
-        inputs.zen-browser.homeModules.twilight
-        inputs.noctalia.homeModules.default
-        inputs.stylix.homeModules.stylix
-      ]
-      ++ hostCfg.hm
-      ++ hostCfg.extraHmConfig;
-
-    # Build a standalone homeManagerConfiguration
-    mkStandaloneHome = {
-      hostCfg,
-      system,
-    }:
-      home-manager.lib.homeManagerConfiguration {
-        pkgs = nixpkgs.legacyPackages.${system};
-        modules = hmModules hostCfg;
-        extraSpecialArgs = {
-          inherit inputs;
-        };
-      };
 
     mkHost = {
       arch,
       configModule,
       otherModules ? [],
+      hmUserModules ? [],
       userHomeModules ? [],
     }:
       nixpkgs.lib.nixosSystem {
@@ -132,14 +109,15 @@
           [
             inputs.nur.modules.nixos.default
             inputs.stylix.nixosModules.stylix
+            home-manager.nixosModules.home-manager
+            (nixosHmConfig (userHomeModules ++ hmUserModules))
           ]
           ++ [
             ./modules/nixos
             ./secrets
             configModule
           ]
-          ++ otherModules
-          ++ (nixpkgs.lib.optional (userHomeModules != []) ([home-manager.nixosModules.home-manager] ++ userHomeModules));
+          ++ otherModules;
       };
 
     rhys = mkHost {
@@ -178,15 +156,8 @@
       liriel = nixos-generators.nixosGenerate (liriel // {format = "sd-aarch64";});
     };
     packages.x86_64-linux.docs = nixpkgs.legacyPackages.x86_64-linux.callPackage ./modules/docs.nix {};
-    # homeConfigurations = {
-    #   "itscrystalline@cwystaws-meowchine" = mkStandaloneHome {
-    #     hostCfg = hosts.cwystaws-meowchine;
-    #     system = "x86_64-linux";
-    #   };
-    #   "itscrystalline@cwystaws-raspi" = mkStandaloneHome {
-    #     hostCfg = hosts.cwystaws-raspi;
-    #     system = "aarch64-linux";
-    #   };
-    # };
+    homeConfigurations = {
+      "itscrystalline@rhys" = mkStandaloneHome "x86_64-linux" [./homes/itscrystalline.nix];
+    };
   };
 }
