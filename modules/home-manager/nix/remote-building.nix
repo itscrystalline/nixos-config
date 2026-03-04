@@ -170,13 +170,17 @@ in {
         fallback = true
       '';
 
-      programs.ssh.knownHosts = builtins.listToAttrs (
-        map (b: {
-          name = b.hostName;
-          value.publicKey = b.hostPublicKey;
-        })
-        remoteBuilders
-      );
+      home.activation.nixRemoteBuilderKnownHosts = lib.hm.dag.entryAfter ["writeBoundary"] ''
+        mkdir -p "$HOME/.ssh"
+        touch "$HOME/.ssh/known_hosts"
+        chmod 600 "$HOME/.ssh/known_hosts"
+        ${builtins.concatStringsSep "\n" (map (b: ''
+            if ! grep -qF ${lib.escapeShellArg b.hostName} "$HOME/.ssh/known_hosts" 2>/dev/null; then
+              echo ${lib.escapeShellArg "${b.hostName} ${b.hostPublicKey}"} >> "$HOME/.ssh/known_hosts"
+            fi
+          '')
+          remoteBuilders)}
+      '';
 
       home.activation.nixRemoteBuilderInfo = lib.hm.dag.entryAfter ["writeBoundary"] ''
         echo "Remote builders configured (${toString (builtins.length remoteBuilders)}):"

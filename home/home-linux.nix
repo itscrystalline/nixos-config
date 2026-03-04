@@ -1,14 +1,9 @@
-# Standalone Linux entry point.
-# Imports the full HM module system and enables the Linux-specific modules.
-# For NixOS-embedded use, see homes/itscrystalline.nix instead.
-{pkgs, ...}: {
-  imports = [../modules/home-manager];
-
+# Linux home configuration — only hm.* option values.
+# Module imports and infrastructure are managed in flake.nix.
+{...}: {
   hm = {
     core.username = "itscrystalline";
 
-    # These are overridden by passthrough when embedded in NixOS;
-    # set sensible standalone defaults here.
     gui.enable = true;
     bluetooth.enable = true;
     doas.enable = false;

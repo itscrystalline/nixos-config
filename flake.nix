@@ -58,8 +58,10 @@
     home-manager,
     ...
   }: let
-    # External HM modules required for standalone configurations
-    standaloneHmModules = [
+    # All HM modules shared by both standalone and NixOS-embedded configs.
+    # Does NOT include stylix (NixOS provides it via nixosModules.stylix).
+    hmModules = [
+      ./modules/home-manager
       ./home/home-linux.nix
       inputs.nix-flatpak.homeManagerModules.nix-flatpak
       inputs.nix-index-database.homeModules.nix-index
@@ -67,23 +69,37 @@
       inputs.vicinae.homeManagerModules.default
       inputs.zen-browser.homeModules.twilight
       inputs.noctalia.homeModules.default
-      inputs.stylix.homeModules.stylix
       inputs.niri.homeModules.niri
     ];
 
-    # Build a standalone homeManagerConfiguration
+    # Build a standalone homeManagerConfiguration (adds stylix HM module).
     mkStandaloneHome = system:
       home-manager.lib.homeManagerConfiguration {
         pkgs = nixpkgs.legacyPackages.${system};
-        modules = standaloneHmModules;
-        extraSpecialArgs = {inherit inputs;};
+        modules = hmModules ++ [inputs.stylix.homeModules.stylix];
+        extraSpecialArgs = {
+          inherit inputs;
+          passthrough = null;
+        };
       };
+
+    # Inline NixOS module that wires up home-manager for itscrystalline.
+    # hmUserModules: additional per-host HM option files.
+    nixosHmConfig = hmUserModules: {
+      home-manager = {
+        useGlobalPkgs = true;
+        useUserPackages = true;
+        backupFileExtension = "hmbkup";
+        extraSpecialArgs = {inherit inputs;};
+        users.itscrystalline.imports = hmModules ++ hmUserModules;
+      };
+    };
 
     mkHost = {
       arch,
       configModule,
       otherModules ? [],
-      userHomeModules ? [],
+      hmUserModules ? [],
     }:
       nixpkgs.lib.nixosSystem {
         system = arch;
@@ -92,14 +108,15 @@
           [
             inputs.nur.modules.nixos.default
             inputs.stylix.nixosModules.stylix
+            home-manager.nixosModules.home-manager
+            (nixosHmConfig ([./homes/itscrystalline.nix] ++ hmUserModules))
           ]
           ++ [
             ./modules/nixos
             ./secrets
             configModule
           ]
-          ++ otherModules
-          ++ (nixpkgs.lib.optional (userHomeModules != []) ([home-manager.nixosModules.home-manager] ++ userHomeModules));
+          ++ otherModules;
       };
 
     rhys = mkHost {
@@ -110,7 +127,6 @@
         inputs.niri.nixosModules.niri
         nixos-hardware.nixosModules.asus-fx506hm
       ];
-      userHomeModules = [./homes/itscrystalline.nix];
     };
     raine = mkHost {
       arch = "aarch64-linux";
@@ -118,7 +134,6 @@
       otherModules = [
         nixos-hardware.nixosModules.raspberry-pi-4
       ];
-      userHomeModules = [./homes/itscrystalline.nix];
     };
     liriel = mkHost {
       arch = "aarch64-linux";
@@ -126,7 +141,6 @@
       otherModules = [
         nixos-hardware.nixosModules.raspberry-pi-4
       ];
-      userHomeModules = [./homes/itscrystalline.nix];
     };
   in {
     nixosConfigurations = {

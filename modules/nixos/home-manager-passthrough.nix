@@ -9,7 +9,6 @@
       gui.enable = config.gui.enable;
       bluetooth.enable = config.bluetooth.enable;
       niri.enable = config.gui.niri.enable;
-      secrets = config.secrets;
     };
   };
 }

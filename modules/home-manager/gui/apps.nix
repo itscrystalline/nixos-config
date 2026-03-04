@@ -29,38 +29,47 @@ in
           nerd-fonts.jetbrains-mono
           sarabun-font
         ])
-      ++ [pkgs.unstable.material-symbols]
-      ++ lib.optionals (inputs ? my-nur) [
-        inputs.my-nur.packages.${pkgs.hostsys}.sipa-th-fonts
-      ]
-      ++ lib.optionals pkgs.stdenv.isDarwin (with pkgs.stable; [
-        youtube-music
-      ])
-      ++ lib.optionals pkgs.stdenv.isLinux (with pkgs.stable; [
-        teams-for-linux
-        (youtube-music.overrideAttrs {
-          desktopItems = [
-            (pkgs.makeDesktopItem {
-              name = "youtube-music";
-              exec = "youtube-music --enable-features=UseOzonePlatform --ozone-platform=wayland --enable-wayland-ime %u";
-              icon = "youtube-music";
-              desktopName = "Youtube Music";
-              startupWMClass = "Youtube Music";
-              categories = ["AudioVideo"];
-            })
-          ];
-        })
-        pavucontrol
-        hyprpicker
-        alsa-utils
-        tesseract
-        gparted
-        mission-center
-        wl-clipboard
-      ])
-      ++ lib.optionals pkgs.stdenv.isLinux (with pkgs.unstable; [
-        valent
-      ]);
+        ++ [pkgs.unstable.material-symbols]
+        ++ lib.optionals (inputs ? my-nur) [
+          inputs.my-nur.packages.${pkgs.hostsys}.sipa-th-fonts
+        ]
+        ++ lib.optionals pkgs.stdenv.isDarwin (with pkgs.stable; [
+          youtube-music
+        ])
+        ++ lib.optionals pkgs.stdenv.isLinux (with pkgs.stable; [
+          teams-for-linux
+          (youtube-music.overrideAttrs {
+            desktopItems = [
+              (pkgs.makeDesktopItem {
+                name = "youtube-music";
+                exec = "youtube-music --enable-features=UseOzonePlatform --ozone-platform=wayland --enable-wayland-ime %u";
+                icon = "youtube-music";
+                desktopName = "Youtube Music";
+                startupWMClass = "Youtube Music";
+                categories = ["AudioVideo"];
+              })
+            ];
+          })
+          pavucontrol
+          hyprpicker
+          alsa-utils
+          tesseract
+          gparted
+          mission-center
+          wl-clipboard
+        ])
+        ++ lib.optionals pkgs.stdenv.isLinux (with pkgs.unstable; [
+          valent
+        ]);
+
+      shellAliases = lib.mkIf pkgs.stdenv.isLinux {
+        mirror = "${pkgs.wl-mirror}/bin/wl-mirror $(niri msg --json focused-output | ${pkgs.jq}/bin/jq -r .name)";
+      };
+
+      sessionVariables = lib.mkIf pkgs.stdenv.isLinux {
+        DEFAULT_BROWSER = lib.optionalString (inputs ? zen-browser) "${inputs.zen-browser.packages.${pkgs.hostsys}.twilight}/bin/zen";
+      };
+    };
 
     programs = {
       chromium = {
@@ -199,13 +208,6 @@ in
           "application/vnd.rar" = archiver;
           "application/x-7z-compressed" = archiver;
         };
-      };
-    };
-
-    home = lib.mkIf pkgs.stdenv.isLinux {
-      shellAliases.mirror = "${pkgs.wl-mirror}/bin/wl-mirror $(niri msg --json focused-output | ${pkgs.jq}/bin/jq -r .name)";
-      sessionVariables = {
-        DEFAULT_BROWSER = lib.optionalString (inputs ? zen-browser) "${inputs.zen-browser.packages.${pkgs.hostsys}.twilight}/bin/zen";
       };
     };
 

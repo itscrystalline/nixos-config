@@ -50,11 +50,7 @@ in {
 
   config = lib.mkMerge [
     {
-      secrets = lib.mkDefault (
-        if passthrough != null
-        then passthrough.secrets
-        else fileSecrets
-      );
+      secrets = fileSecrets;
     }
 
     (lib.mkIf (passthrough != null) {
