@@ -9,6 +9,7 @@
   inherit (config.hm) niri;
   enabled = niri.enable;
   guiEnabled = config.hm.gui.enable;
+  shellEnabled = config.hm.shell.enable;
 in {
   options.hm.niri.enable = lib.mkEnableOption "Niri window manager";
 
@@ -62,92 +63,96 @@ in {
             binds = with config.lib.niri.actions; let
               sh = spawn "sh" "-c";
               noctalia = spawn "noctalia-shell" "ipc" "call";
-            in {
-              "Mod+Shift+Q".action = noctalia "sessionMenu" "toggle";
-              "Mod+Slash".action = show-hotkey-overlay;
+            in
+              (lib.optionalAttrs shellEnabled {
+                "Mod+Shift+Q".action = noctalia "sessionMenu" "toggle";
 
-              "XF86AudioMute".action = noctalia "volume" "muteOutput";
-              "Mod+Shift+M".action = noctalia "volume" "muteOutput";
-              "XF86AudioRaiseVolume".action = noctalia "volume" "increase";
-              "XF86AudioLowerVolume".action = noctalia "volume" "decrease";
-              "XF86MonBrightnessUp".action = noctalia "brightness" "increase";
-              "XF86MonBrightnessDown".action = noctalia "brightness" "decrease";
+                "XF86AudioMute".action = noctalia "volume" "muteOutput";
+                "Mod+Shift+M".action = noctalia "volume" "muteOutput";
+                "XF86AudioRaiseVolume".action = noctalia "volume" "increase";
+                "XF86AudioLowerVolume".action = noctalia "volume" "decrease";
+                "XF86MonBrightnessUp".action = noctalia "brightness" "increase";
+                "XF86MonBrightnessDown".action = noctalia "brightness" "decrease";
 
-              "Mod+Control+Space".action = noctalia "media" "playPause";
-              "Mod+Control+Equal".action = noctalia "media" "next";
-              "Mod+Control+Minus".action = noctalia "media" "previous";
-              "XF86AudioPlay".action = noctalia "media" "playPause";
-              "XF86AudioPause".action = noctalia "media" "playPause";
-              "XF86AudioNext".action = noctalia "media" "next";
-              "XF86AudioPrev".action = noctalia "media" "previous";
-              "XF86AudioStop".action = noctalia "media" "pause";
+                "Mod+Control+Space".action = noctalia "media" "playPause";
+                "Mod+Control+Equal".action = noctalia "media" "next";
+                "Mod+Control+Minus".action = noctalia "media" "previous";
+                "XF86AudioPlay".action = noctalia "media" "playPause";
+                "XF86AudioPause".action = noctalia "media" "playPause";
+                "XF86AudioNext".action = noctalia "media" "next";
+                "XF86AudioPrev".action = noctalia "media" "previous";
+                "XF86AudioStop".action = noctalia "media" "pause";
 
-              "Mod+1".action = focus-workspace-up;
-              "Mod+2".action = focus-workspace-down;
-              "Mod+Up".action = focus-window-up-or-column-right;
-              "Mod+Down".action = focus-window-down-or-column-left;
-              "Mod+Left".action = focus-column-or-monitor-left;
-              "Mod+Right".action = focus-column-or-monitor-right;
-              "Mod+WheelScrollUp".action = focus-column-right;
-              "Mod+WheelScrollDown".action = focus-column-left;
-              "Mod+TouchpadScrollUp".action = focus-column-right;
-              "Mod+TouchpadScrollDown".action = focus-column-left;
+                "Mod+Comma".action = noctalia "settings" "toggle";
+                "Mod+L".action = noctalia "lockScreen" "lock";
+              })
+              // {
+                "Mod+Slash".action = show-hotkey-overlay;
 
-              "Mod+Shift+1".action = move-window-up-or-to-workspace-up;
-              "Mod+Shift+2".action = move-window-down-or-to-workspace-down;
-              "Mod+Shift+Left".action = move-column-left;
-              "Mod+Shift+Right".action = move-column-right;
-              "Mod+Shift+WheelScrollUp".action = move-window-up-or-to-workspace-up;
-              "Mod+Shift+WheelScrollDown".action = move-window-down-or-to-workspace-down;
-              "Mod+Shift+TouchpadScrollUp".action = move-window-up-or-to-workspace-up;
-              "Mod+Shift+TouchpadScrollDown".action = move-window-down-or-to-workspace-down;
+                "Mod+1".action = focus-workspace-up;
+                "Mod+2".action = focus-workspace-down;
+                "Mod+Up".action = focus-window-up-or-column-right;
+                "Mod+Down".action = focus-window-down-or-column-left;
+                "Mod+Left".action = focus-column-or-monitor-left;
+                "Mod+Right".action = focus-column-or-monitor-right;
+                "Mod+WheelScrollUp".action = focus-column-right;
+                "Mod+WheelScrollDown".action = focus-column-left;
+                "Mod+TouchpadScrollUp".action = focus-column-right;
+                "Mod+TouchpadScrollDown".action = focus-column-left;
 
-              "Mod+Control+Left".action = focus-monitor-left;
-              "Mod+Control+Right".action = focus-monitor-right;
-              "Mod+Control+Shift+Left".action = move-window-to-monitor-left;
-              "Mod+Control+Shift+Right".action = move-window-to-monitor-right;
+                "Mod+Shift+1".action = move-window-up-or-to-workspace-up;
+                "Mod+Shift+2".action = move-window-down-or-to-workspace-down;
+                "Mod+Shift+Left".action = move-column-left;
+                "Mod+Shift+Right".action = move-column-right;
+                "Mod+Shift+WheelScrollUp".action = move-window-up-or-to-workspace-up;
+                "Mod+Shift+WheelScrollDown".action = move-window-down-or-to-workspace-down;
+                "Mod+Shift+TouchpadScrollUp".action = move-window-up-or-to-workspace-up;
+                "Mod+Shift+TouchpadScrollDown".action = move-window-down-or-to-workspace-down;
 
-              "Mod+J".action = consume-or-expel-window-right;
-              "Mod+Minus".action = set-window-width "-10%";
-              "Mod+Equal".action = set-window-width "+10%";
-              "Mod+Underscore".action = set-window-height "-10%";
-              "Mod+Plus".action = set-window-height "+10%";
-              "Mod+Control+0".action = expand-column-to-available-width;
-              "Mod+F".action = fullscreen-window;
-              "Mod+Alt+F".action = toggle-windowed-fullscreen;
-              "Mod+Alt+Space".action = toggle-window-floating;
+                "Mod+Control+Left".action = focus-monitor-left;
+                "Mod+Control+Right".action = focus-monitor-right;
+                "Mod+Control+Shift+Left".action = move-window-to-monitor-left;
+                "Mod+Control+Shift+Right".action = move-window-to-monitor-right;
 
-              "Mod+MouseMiddle".action = focus-workspace "social";
-              "Mod+Z".action = focus-workspace "social";
-              "Mod+MouseBack".action = focus-workspace "music";
-              "Mod+X".action = focus-workspace "music";
-              "Mod+MouseForward".action = focus-workspace-previous;
-              "Mod+C".action = focus-workspace-previous;
+                "Mod+J".action = consume-or-expel-window-right;
+                "Mod+Minus".action = set-window-width "-10%";
+                "Mod+Equal".action = set-window-width "+10%";
+                "Mod+Underscore".action = set-window-height "-10%";
+                "Mod+Plus".action = set-window-height "+10%";
+                "Mod+Control+0".action = expand-column-to-available-width;
+                "Mod+F".action = fullscreen-window;
+                "Mod+Alt+F".action = toggle-windowed-fullscreen;
+                "Mod+Alt+Space".action = toggle-window-floating;
 
-              "Mod+Q".action = close-window;
-              "Mod+Grave".action = toggle-overview;
-              "Mod+Tab".action = switch-preset-window-width;
-              "Mod+Shift+Tab".action = switch-preset-window-height;
-              "Mod+Shift+S".action.screenshot = {};
-              "Mod+Shift+C".action = spawn "hyprpicker" "-a";
-              "Mod+Shift+Alt+S".action.screenshot-window.write-to-disk = true;
-              "Print".action.screenshot-screen.write-to-disk = true;
+                "Mod+MouseMiddle".action = focus-workspace "social";
+                "Mod+Z".action = focus-workspace "social";
+                "Mod+MouseBack".action = focus-workspace "music";
+                "Mod+X".action = focus-workspace "music";
+                "Mod+MouseForward".action = focus-workspace-previous;
+                "Mod+C".action = focus-workspace-previous;
 
-              "Mod+F1".action = switch-layout "next";
+                "Mod+Q".action = close-window;
+                "Mod+Grave".action = toggle-overview;
+                "Mod+Tab".action = switch-preset-window-width;
+                "Mod+Shift+Tab".action = switch-preset-window-height;
+                "Mod+Shift+S".action.screenshot = {};
+                "Mod+Shift+C".action = spawn "hyprpicker" "-a";
+                "Mod+Shift+Alt+S".action.screenshot-window.write-to-disk = true;
+                "Print".action.screenshot-screen.write-to-disk = true;
 
-              "Mod+Space".action = spawn "vicinae" "toggle";
-              "Mod+Comma".action = noctalia "settings" "toggle";
-              "Mod+E".action = spawn "nautilus" "--new-window";
-              "Mod+I".action = sh ''XDG_CURRENT_DESKTOP="gnome" gnome-control-center'';
-              "Mod+V".action = spawn "pavucontrol";
-              "Mod+W".action = lib.mkIf (inputs ? zen-browser) (spawn (lib.getExe inputs.zen-browser.packages.${pkgs.hostsys}.twilight) "-p" "crystal");
-              "Mod+B".action = spawn "neovide";
-              "Mod+Return".action = spawn "ghostty";
-              "Mod+L".action = noctalia "lockScreen" "lock";
-              "Mod+Control+M".action = sh "pgrep youtube-music && niri msg action focus-workspace music || youtube-music --enable-features=UseOzonePlatform --ozone-platform=wayland --enable-wayland-ime &";
-              "Control+Shift+Escape".action = spawn "missioncenter";
-              "XF86Calculator".action = spawn "gnome-calculator";
-            };
+                "Mod+F1".action = switch-layout "next";
+
+                "Mod+Space".action = spawn "vicinae" "toggle";
+                "Mod+E".action = spawn "nautilus" "--new-window";
+                "Mod+I".action = sh ''XDG_CURRENT_DESKTOP="gnome" gnome-control-center'';
+                "Mod+V".action = spawn "pavucontrol";
+                "Mod+W".action = lib.mkIf (inputs ? zen-browser) (spawn (lib.getExe inputs.zen-browser.packages.${pkgs.hostsys}.twilight) "-p" "crystal");
+                "Mod+B".action = spawn "neovide";
+                "Mod+Return".action = spawn "ghostty";
+                "Mod+Control+M".action = sh "pgrep youtube-music && niri msg action focus-workspace music || youtube-music --enable-features=UseOzonePlatform --ozone-platform=wayland --enable-wayland-ime &";
+                "Control+Shift+Escape".action = spawn "missioncenter";
+                "XF86Calculator".action = spawn "gnome-calculator";
+              };
 
             overview.backdrop-color = config.lib.stylix.colors.withHashtag.base00;
             screenshot-path = "~/Pictures/Screenshots/Screenshot at %Y-%m-%d %H-%M-%S.png";
@@ -158,19 +163,22 @@ in {
             };
             prefer-no-csd = true;
 
-            spawn-at-startup = [
-              {argv = ["swww-daemon" "--format" "argb"];}
-              {argv = ["fcitx5"];}
-              {argv = ["gnome-keyring-daemon" "--start" "--components=secrets"];}
-              {argv = ["xhost" "+SI:localuser:root"];}
-              {argv = ["swww" "img" "/home/itscrystalline/bg.gif" "--filter=Nearest"];}
-              {argv = ["noctalia-shell"];}
-              {argv = ["vesktop" "--enable-features=UseOzonePlatform" "--ozone-platform=wayland" "--enable-wayland-ime"];}
-              {argv = ["teams-for-linux" "--enable-features=UseOzonePlatform" "--ozone-platform=wayland" "--enable-features=WebRTCPipeWireCapturer" "--enable-wayland-ime"];}
-              {argv = ["keepassxc"];}
-              {argv = ["rog-control-center"];}
-              {argv = ["valent" "--gapplication-service"];}
-            ];
+            spawn-at-startup =
+              [
+                {argv = ["swww-daemon" "--format" "argb"];}
+                {argv = ["fcitx5"];}
+                {argv = ["gnome-keyring-daemon" "--start" "--components=secrets"];}
+                {argv = ["xhost" "+SI:localuser:root"];}
+                {argv = ["swww" "img" "/home/itscrystalline/bg.gif" "--filter=Nearest"];}
+                {argv = ["vesktop" "--enable-features=UseOzonePlatform" "--ozone-platform=wayland" "--enable-wayland-ime"];}
+                {argv = ["teams-for-linux" "--enable-features=UseOzonePlatform" "--ozone-platform=wayland" "--enable-features=WebRTCPipeWireCapturer" "--enable-wayland-ime"];}
+                {argv = ["keepassxc"];}
+                {argv = ["rog-control-center"];}
+                {argv = ["valent" "--gapplication-service"];}
+              ]
+              ++ lib.optionals shellEnabled [
+                {argv = ["noctalia-shell"];}
+              ];
 
             input = {
               focus-follows-mouse = {

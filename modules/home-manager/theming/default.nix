@@ -2,13 +2,14 @@
   lib,
   config,
   pkgs,
+  inputs ? {},
   ...
 }: let
-  inherit (config.hm) theme;
-  enabled = theme.enable;
+  inherit (config.hm) theming;
+  enabled = theming.enable;
   guiEnabled = config.hm.gui.enable;
 in {
-  options.hm.theme.enable = lib.mkEnableOption "theme configuration" // {default = true;};
+  options.hm.theming.enable = lib.mkEnableOption "theming configuration" // {default = true;};
 
   config = lib.mkIf enabled (lib.mkMerge [
     (lib.mkIf guiEnabled {
@@ -19,7 +20,19 @@ in {
           ELECTRON_OZONE_PLATFORM_HINT = "auto";
           GSK_RENDERER = "ngl";
         };
-        packages = [pkgs.adwsteamgtk];
+        packages = with pkgs; [
+          adwsteamgtk
+          noto-fonts
+          noto-fonts-cjk-sans
+          noto-fonts-color-emoji
+          inter
+          nerd-fonts.jetbrains-mono
+          sarabun-font
+          unstable.material-symbols
+        ]
+        ++ lib.optionals (inputs ? my-nur) [
+          inputs.my-nur.packages.${pkgs.hostsys}.sipa-th-fonts
+        ];
         activation.installSteamSkin = lib.hm.dag.entryAfter ["writeBoundary"] ''
           if [ -d "$HOME/.local/share/Steam" ]; then
             ${lib.getExe pkgs.adwsteamgtk} -o "color_theme:catppuccin-mocha;win_controls:adwaita;win_controls_layout:adwaita" -i || true

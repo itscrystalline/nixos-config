@@ -4,10 +4,10 @@
   pkgs,
   ...
 }: let
-  inherit (config.hm) nextcloud;
+  inherit (config.hm.services) nextcloud;
   enabled = nextcloud.enable;
 in {
-  options.hm.nextcloud.enable = lib.mkEnableOption "Nextcloud integration";
+  options.hm.services.nextcloud.enable = lib.mkEnableOption "Nextcloud integration";
 
   config = lib.mkIf enabled {
     xdg.configFile = lib.mkIf config.hm.gui.enable {

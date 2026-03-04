@@ -1,5 +1,24 @@
-# Per-host HM option overrides for itscrystalline when embedded in NixOS.
-# Passthrough (gui.enable, bluetooth.enable, niri.enable, secrets) is set
-# automatically by modules/nixos/home-manager-passthrough.nix.
-# All base settings live in home/home-linux.nix.
-{...}: {}
+# itscrystalline's home-manager config.
+{...}: {
+  hm = {
+    core.username = "itscrystalline";
+
+    gui.enable = true;
+    bluetooth.enable = true;
+    doas.enable = false;
+
+    cli.enable = true;
+    dev.enable = true;
+    ides.enable = true;
+    theming.enable = true;
+
+    games.enable = true;
+    gui.blender.enable = true;
+    flatpak.enable = true;
+
+    niri.enable = true;
+    shell.enable = true;
+    services.nextcloud.enable = true;
+    services.enable = true;
+  };
+}

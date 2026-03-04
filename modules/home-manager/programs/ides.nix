@@ -8,9 +8,6 @@
   inherit (config.hm) ides;
   enabled = ides.enable;
   inherit (inputs) sanzenvim my-nur;
-  jetbrainsWayland = ''
-    -Dawt.toolkit.name=WLToolkit
-  '';
 in {
   options.hm.ides.enable = lib.mkEnableOption "IDEs and editors" // {default = true;};
 
@@ -55,29 +52,22 @@ in {
         my-nur.packages.${pkgs.hostsys}.veridian
       ];
 
-    xdg.configFile =
-      lib.mkIf config.hm.gui.enable {
-        "JetBrains/RustRover2024.3/rustrover64.vmoptions".text = jetbrainsWayland;
-        "JetBrains/IntelliJIdea2024.3/idea64.vmoptions".text = jetbrainsWayland;
-        "JetBrains/PyCharm2024.3/pycharm64.vmoptions".text = jetbrainsWayland;
-        "JetBrains/WebStorm2024.3/webstorm64.vmoptions".text = jetbrainsWayland;
-        "neovide/config.toml".text = lib.optionalString (inputs ? sanzenvim) ''
-          fork = true
-          neovim-bin = "${sanzenvim.packages.${pkgs.hostsys}.default}/bin/nvim"
+    xdg.configFile = lib.mkIf config.hm.gui.enable {
+      "neovide/config.toml".text = lib.optionalString (inputs ? sanzenvim) ''
+        fork = true
+        neovim-bin = "${sanzenvim.packages.${pkgs.hostsys}.default}/bin/nvim"
 
-          [font]
-          normal = ["JetBrainsMono Nerd Font", "Noto Sans CJK JP", "Noto Color Emoji"]
-          size = 12
-        '';
-      }
-      // {
-        "lazygit/config.yml".text = ''
-          git:
-            paging:
-              colorArg: always
-              pager: ${pkgs.delta}/bin/delta --dark --paging=never --line-numbers --hyperlinks --hyperlinks-file-link-format="lazygit-edit://{path}:{line}"
-        '';
-      };
+        [font]
+        normal = ["JetBrainsMono Nerd Font", "Noto Sans CJK JP", "Noto Color Emoji"]
+        size = 12
+      '';
+      "lazygit/config.yml".text = ''
+        git:
+          paging:
+            colorArg: always
+            pager: ${pkgs.delta}/bin/delta --dark --paging=never --line-numbers --hyperlinks --hyperlinks-file-link-format="lazygit-edit://{path}:{line}"
+      '';
+    };
 
     programs.zed-editor = lib.mkIf config.hm.gui.enable {
       enable = false;
@@ -93,7 +83,7 @@ in {
             model = "claude-3-5-sonnet-latest";
           };
         };
-        buffer_font_family = "JetBrainsMono Nerd Font";
+        buffer_font_family = lib.mkIf config.hm.theming.enable "JetBrainsMono Nerd Font";
         buffer_font_features.calt = true;
         hour_format = "hour24";
         auto_update = false;
@@ -107,7 +97,7 @@ in {
             activate_script = "default";
           };
           env.TERM = "ghostty";
-          font_family = "JetBrainsMono Nerd Font";
+          font_family = lib.mkIf config.hm.theming.enable "JetBrainsMono Nerd Font";
           font_features = null;
           font_size = null;
           line_height = "comfortable";
@@ -128,7 +118,7 @@ in {
         base_keymap = "JetBrains";
         theme.mode = "system";
         show_whitespaces = "all";
-        ui_font_family = "Inter Display";
+        ui_font_family = lib.mkIf config.hm.theming.enable "Inter Display";
         ui_font_size = 15;
         buffer_font_size = 15;
       };

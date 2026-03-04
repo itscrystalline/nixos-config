@@ -50,6 +50,7 @@ in {
         swappy
         playerctl
         ydotool
+        valent
       ]
       ++ lib.optionals (pkgs.stdenv.isLinux && config.hm.doas.enable) [
         doas-sudo-shim
@@ -132,7 +133,44 @@ in {
         };
       };
 
-      fastfetch.enable = true;
+      fastfetch = {
+        enable = true;
+        settings = {
+          "$schema" = "https://github.com/fastfetch-cli/fastfetch/raw/dev/doc/json_schema.json";
+          logo = {
+            source = ''$(find "''${XDG_CONFIG_HOME:-$HOME/.config}/fastfetch/pngs/" -name "*.png" | shuf -n 1)'';
+            height = 18;
+          };
+          display.separator = " : ";
+          modules = [
+            {type = "custom"; format = "\u001b[36m    コンピューター";}
+            {type = "custom"; format = "┌──────────────────────────────────────────┐";}
+            {type = "os"; key = "   OS"; keyColor = "red";}
+            {type = "kernel"; key = "   Kernel"; keyColor = "red";}
+            {type = "display"; key = "   Display"; keyColor = "green";}
+            {type = "wm"; key = "   WM"; keyColor = "yellow";}
+            {type = "terminal"; key = "   Terminal"; keyColor = "yellow";}
+            {type = "custom"; format = "└──────────────────────────────────────────┘";}
+            "break"
+            {type = "title"; key = "  ";}
+            {type = "custom"; format = "┌──────────────────────────────────────────┐";}
+            {type = "cpu"; format = "{1}"; key = "   CPU"; keyColor = "blue";}
+            {type = "gpu"; format = "{2}"; key = "   GPU"; keyColor = "blue";}
+            {type = "gpu"; format = "{3}"; key = "   GPU Driver"; keyColor = "magenta";}
+            {type = "memory"; key = "  ﬙ Memory"; keyColor = "magenta";}
+            {
+              type = "command";
+              key = "  󱦟 OS Age ";
+              keyColor = "31";
+              text = "birth_install=$(stat -c %W /); current=$(date +%s); time_progression=$((current - birth_install)); days_difference=$((time_progression / 86400)); echo $days_difference days";
+            }
+            {type = "uptime"; key = "  󱫐 Uptime "; keyColor = "red";}
+            {type = "custom"; format = "└──────────────────────────────────────────┘";}
+            {type = "colors"; paddingLeft = 2; symbol = "circle";}
+            "break"
+          ];
+        };
+      };
 
       hyfetch = {
         package = pkgs.unstable.hyfetch;
@@ -265,7 +303,7 @@ in {
         enableBashIntegration = true;
         icons = "auto";
         git = true;
-        theme = {
+        theme = lib.optionalAttrs config.hm.theming.enable {
           colourful = true;
           filekinds = {
             normal = {foreground = "#BAC2DE";};

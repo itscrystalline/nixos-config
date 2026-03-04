@@ -8,11 +8,11 @@
   inherit (lib) types mkOption;
   inherit (config.hm) core;
 
-  secretsResult = builtins.tryEval (import ../../secrets/secrets.nix);
+  unlocked = builtins.pathExists ../../secrets/unlocked;
   fileSecrets =
-    if secretsResult.success
-    then secretsResult.value
-    else builtins.trace "WARNING: secrets.nix is encrypted, using dummy secrets." (import ../../secrets/dummy.nix);
+    if unlocked
+    then import ../../secrets/secrets.nix
+    else builtins.trace "WARNING: secrets.nix is locked (no secrets/unlocked sentinel), using dummy secrets." (import ../../secrets/dummy.nix);
 in {
   imports = [
     ./nix
@@ -33,6 +33,8 @@ in {
       gui.enable = lib.mkEnableOption "GUI configuration";
 
       bluetooth.enable = lib.mkEnableOption "Bluetooth";
+
+      obs.enable = lib.mkEnableOption "OBS Studio";
 
       doas.enable = mkOption {
         type = types.bool;
@@ -57,6 +59,8 @@ in {
       hm.gui.enable = lib.mkForce passthrough.gui.enable;
       hm.bluetooth.enable = lib.mkForce passthrough.bluetooth.enable;
       hm.niri.enable = lib.mkForce passthrough.niri.enable;
+      hm.obs.enable = lib.mkForce passthrough.obs.enable;
+      hm.flatpak.enable = lib.mkForce passthrough.flatpak.enable;
     })
 
     {

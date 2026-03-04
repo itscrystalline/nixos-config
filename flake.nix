@@ -62,7 +62,6 @@
     # Does NOT include stylix (NixOS provides it via nixosModules.stylix).
     hmModules = [
       ./modules/home-manager
-      ./home/home-linux.nix
       inputs.nix-flatpak.homeManagerModules.nix-flatpak
       inputs.nix-index-database.homeModules.nix-index
       inputs.occasion.homeManagerModule
@@ -76,7 +75,7 @@
     mkStandaloneHome = system:
       home-manager.lib.homeManagerConfiguration {
         pkgs = nixpkgs.legacyPackages.${system};
-        modules = hmModules ++ [inputs.stylix.homeModules.stylix];
+        modules = hmModules ++ [inputs.stylix.homeModules.stylix ./homes/itscrystalline.nix];
         extraSpecialArgs = {
           inherit inputs;
           passthrough = null;
