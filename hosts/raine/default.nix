@@ -3,6 +3,5 @@ _: {
     ./hw-misc.nix
     ./docker.nix
     ./programs.nix
-    ./services.nix
   ];
 }

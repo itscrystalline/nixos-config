@@ -3,6 +3,5 @@ _: {
     ./hw-misc.nix
     ./programs.nix
     ./spinny.nix
-    ./services.nix
   ];
 }
