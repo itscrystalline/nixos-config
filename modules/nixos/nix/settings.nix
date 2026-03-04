@@ -16,7 +16,7 @@
         "https://nix-community.cachix.org"
         "https://nixpkgs-python.cachix.org"
         "https://niri.cachix.org"
-        "http://cache.crys"
+        "http://cache${config.crystals-services.nginx.localSuffix}"
         "https://cuda-maintainers.cachix.org"
         "https://attic.xuyh0120.win/lantian"
       ];
@@ -36,19 +36,21 @@
       auto-optimise-store = true;
     };
 
-    nixPath = [
-      "nixpkgs=${inputs.nixpkgs}"
-      "nixpkgs-unstable=${inputs.nixpkgs-unstable}"
-      "nur=${inputs.nur}"
-      "nixos-hardware=${inputs.nixos-hardware}"
-      "home-manager=${inputs.home-manager}"
-      "stylix=${inputs.stylix}"
-      "stylix-unstable=${inputs.stylix-unstable}"
-    ] ++ lib.optionals config.gui.enable [
-      "zen-browser=${inputs.zen-browser}"
-      "nix-flatpak=${inputs.nix-flatpak}"
-      "niri=${inputs.niri}"
-    ];
+    nixPath =
+      [
+        "nixpkgs=${inputs.nixpkgs}"
+        "nixpkgs-unstable=${inputs.nixpkgs-unstable}"
+        "nur=${inputs.nur}"
+        "nixos-hardware=${inputs.nixos-hardware}"
+        "home-manager=${inputs.home-manager}"
+        "stylix=${inputs.stylix}"
+        "stylix-unstable=${inputs.stylix-unstable}"
+      ]
+      ++ lib.optionals config.gui.enable [
+        "zen-browser=${inputs.zen-browser}"
+        "nix-flatpak=${inputs.nix-flatpak}"
+        "niri=${inputs.niri}"
+      ];
 
     package = pkgs.lixPackageSets.stable.lix;
 

@@ -5,6 +5,7 @@
   ...
 }: let
   inherit (config.crystals-services) nextcloud;
+  inherit (config.crystals-services.nginx) localSuffix;
   enabled = nextcloud.enable;
 in {
   options.crystals-services.nextcloud = {
@@ -79,7 +80,7 @@ in {
           [
             nextcloud.domain
             config.networking.hostName
-            "nc.crys"
+            "nc${localSuffix}"
             "100.125.37.13"
             "192.128.1.61"
           ]
@@ -110,7 +111,7 @@ in {
     };
 
     services.nginx.virtualHosts.${nextcloud.domain} = {
-      serverAliases = ["nc.crys"];
+      serverAliases = ["nc${localSuffix}"];
       sslCertificate = "/mnt/main/cwystaws-raspi.snake-rudd.ts.net.crt";
       sslCertificateKey = "/mnt/main/cwystaws-raspi.snake-rudd.ts.net.key";
     };

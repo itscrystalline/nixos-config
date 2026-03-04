@@ -1,4 +1,9 @@
-{pkgs, lib, config, ...}: {
+{
+  pkgs,
+  lib,
+  config,
+  ...
+}: {
   imports = [./raine];
 
   core = {
@@ -77,7 +82,7 @@
     };
     scanservjs = {
       enable = true;
-      nginxVhost = "scan.crys";
+      nginxVhost = "scan";
     };
     nginx.enable = true;
     blocky = {

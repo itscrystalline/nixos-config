@@ -5,6 +5,7 @@
   ...
 }: let
   inherit (config.crystals-services) monitoring;
+  inherit (config.crystals-services.nginx) localSuffix;
   enabled = monitoring.enable;
 in {
   options.crystals-services.monitoring.enable = lib.mkEnableOption "Grafana + Prometheus + Loki + Promtail monitoring stack";
@@ -17,7 +18,7 @@ in {
           http_port = 9000;
           http_addr = "0.0.0.0";
           protocol = "http";
-          domain = "grafana.crys";
+          domain = "grafana${localSuffix}";
           enforce_domain = true;
         };
         analytics.reporting_enabled = false;
@@ -173,17 +174,17 @@ in {
     };
 
     services.nginx.virtualHosts = {
-      "grafana.crys".locations."/" = {
+      "grafana${localSuffix}".locations."/" = {
         proxyPass = "http://127.0.0.1:${toString config.services.grafana.settings.server.http_port}";
         proxyWebsockets = true;
       };
-      "prometheus.crys".locations."/" = {
+      "prometheus${localSuffix}".locations."/" = {
         proxyPass = "http://127.0.0.1:${toString config.services.prometheus.port}";
       };
-      "loki.crys".locations."/" = {
+      "loki${localSuffix}".locations."/" = {
         proxyPass = "http://127.0.0.1:${toString config.services.loki.configuration.server.http_listen_port}";
       };
-      "promtail.crys".locations."/" = {
+      "promtail${localSuffix}".locations."/" = {
         proxyPass = "http://127.0.0.1:${toString config.services.promtail.configuration.server.http_listen_port}";
       };
     };
