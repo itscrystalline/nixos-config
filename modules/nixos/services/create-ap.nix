@@ -20,11 +20,21 @@ in {
     dhcpLocks = lib.mkOption {
       type = lib.types.listOf (lib.types.submodule {
         options = {
-          mac = lib.mkOption {type = lib.types.str;};
-          ip = lib.mkOption {type = lib.types.str;};
-          hostname = lib.mkOption {type = lib.types.str;};
+          mac = lib.mkOption {
+            type = lib.types.str;
+            description = "MAC address.";
+          };
+          ip = lib.mkOption {
+            type = lib.types.str;
+            description = "IP address.";
+          };
+          hostname = lib.mkOption {
+            type = lib.types.str;
+            description = "Hostname.";
+          };
           lease = lib.mkOption {
             type = lib.types.str;
+            description = "Lease time.";
             default = "infinite";
           };
         };
