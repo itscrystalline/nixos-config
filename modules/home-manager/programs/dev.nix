@@ -4,12 +4,12 @@
   pkgs,
   ...
 }: let
-  inherit (config.hm) dev;
+  inherit (config.hm.programs.cli) dev;
   enabled = dev.enable;
 in {
   imports = [];
 
-  options.hm.dev.enable = lib.mkEnableOption "development tools" // {default = true;};
+  options.hm.programs.cli.dev.enable = lib.mkEnableOption "development tools" // {default = true;};
 
   config = lib.mkIf enabled {
     home.packages = with pkgs;

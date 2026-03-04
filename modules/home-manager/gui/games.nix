@@ -5,11 +5,11 @@
   inputs ? {},
   ...
 }: let
-  inherit (config.hm) games;
+  inherit (config.hm.programs) games;
   enabled = games.enable;
   guiEnabled = config.hm.gui.enable;
 in {
-  options.hm.games.enable = lib.mkEnableOption "games";
+  options.hm.programs.games.enable = lib.mkEnableOption "games";
 
   config = lib.mkIf enabled (lib.mkIf guiEnabled {
     home.packages =

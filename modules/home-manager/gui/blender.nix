@@ -6,7 +6,7 @@
   ...
 }: let
   inherit (inputs) blender-flake;
-  inherit (config.hm.gui) blender;
+  inherit (config.hm.programs.gui) blender;
   enabled = blender.enable;
   blender_addons_zip_path = "~/.config/blender/4.3/extensions/zips";
   blender_addons_path = "~/.config/blender/4.3/extensions/user_default";
@@ -20,7 +20,7 @@
   blenderkit_version = "3.13.0.241112";
   blenderkit_sha256 = "wrMUz6OzTBDe0rbqXqiizWo72jRdM7ut4TXVV/3KmzA==";
 in {
-  options.hm.gui.blender.enable = lib.mkEnableOption "Blender";
+  options.hm.programs.gui.blender.enable = lib.mkEnableOption "Blender";
 
   config = lib.mkIf enabled (lib.mkIf (config.hm.gui.enable && pkgs.stdenv.isLinux && pkgs.hostsys == "x86_64-linux") {
     home.packages = lib.optionals (inputs ? blender-flake) (with pkgs; [

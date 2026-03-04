@@ -30,9 +30,9 @@ in {
         default = "";
       };
 
-      gui.enable = lib.mkEnableOption "GUI configuration";
-
       bluetooth.enable = lib.mkEnableOption "Bluetooth";
+
+      gui.enable = lib.mkEnableOption "GUI configuration";
 
       obs.enable = lib.mkEnableOption "OBS Studio";
     };
@@ -47,12 +47,13 @@ in {
   config = lib.mkMerge [
     {
       secrets = fileSecrets;
+      hm.gui.enable = lib.mkDefault config.hm.programs.gui.enable;
     }
 
     (lib.mkIf (passthrough != null) {
-      hm.gui.enable = lib.mkForce passthrough.gui.enable;
+      hm.programs.gui.enable = lib.mkForce passthrough.gui.enable;
       hm.bluetooth.enable = lib.mkForce passthrough.bluetooth.enable;
-      hm.niri.enable = lib.mkForce passthrough.niri.enable;
+      hm.programs.niri.enable = lib.mkForce passthrough.niri.enable;
       hm.obs.enable = lib.mkForce passthrough.obs.enable;
       hm.flatpak.enable = lib.mkForce passthrough.flatpak.enable;
     })

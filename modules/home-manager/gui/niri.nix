@@ -6,12 +6,12 @@
   inputs ? {},
   ...
 }: let
-  inherit (config.hm) niri;
+  inherit (config.hm.programs) niri;
   enabled = niri.enable;
   guiEnabled = config.hm.gui.enable;
-  shellEnabled = config.hm.shell.enable;
+  shellEnabled = config.hm.programs.shell.enable;
 in {
-  options.hm.niri.enable = lib.mkEnableOption "Niri window manager";
+  options.hm.programs.niri.enable = lib.mkEnableOption "Niri window manager";
 
   config = lib.mkIf (enabled && pkgs.stdenv.isLinux) {
     home.packages = lib.optionals guiEnabled [

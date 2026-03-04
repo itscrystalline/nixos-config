@@ -5,9 +5,11 @@
   inputs ? {},
   ...
 }: let
-  guiEnabled = config.hm.gui.enable;
-in
-  lib.mkIf guiEnabled {
+  guiEnabled = config.hm.programs.gui.enable;
+in {
+  options.hm.programs.gui.enable = lib.mkEnableOption "GUI apps";
+
+  config = lib.mkIf guiEnabled {
     home = {
       packages =
         (with pkgs.stable; [
@@ -202,4 +204,5 @@ in
       "com.github.tchx84.Flatseal"
       "us.zoom.Zoom"
     ];
-  }
+  };
+}

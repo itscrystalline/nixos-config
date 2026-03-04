@@ -5,8 +5,11 @@
   ...
 }: let
   guiEnabled = config.hm.gui.enable;
-in
-  lib.mkIf (guiEnabled && pkgs.stdenv.isLinux) {
+  vicinaeEnabled = config.hm.programs.gui.vicinae.enable;
+in {
+  options.hm.programs.gui.vicinae.enable = lib.mkEnableOption "Vicinae launcher";
+
+  config = lib.mkIf (guiEnabled && vicinaeEnabled && pkgs.stdenv.isLinux) {
     services.vicinae = {
       enable = true;
       settings = {
@@ -111,4 +114,5 @@ in
         (extensions ["wifi-commander" "nix" "it-tools" "niri" "bluetooth"])
         ++ (raycastExtensions ["bintools" "github" "latex-math-symbols" "gif-search" "devdocs" "homeassistant" "wikipedia" "speedtest"]);
     };
-  }
+  };
+}

@@ -5,11 +5,11 @@
   inputs ? {},
   ...
 }: let
-  inherit (config.hm) ides;
+  inherit (config.hm.programs) ides;
   enabled = ides.enable;
   inherit (inputs) sanzenvim my-nur;
 in {
-  options.hm.ides.enable = lib.mkEnableOption "IDEs and editors" // {default = true;};
+  options.hm.programs.ides.enable = lib.mkEnableOption "IDEs and editors" // {default = true;};
 
   config = lib.mkIf enabled {
     home.packages = with pkgs;
