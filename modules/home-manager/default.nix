@@ -16,6 +16,7 @@
 in {
   imports = [
     ./nix-settings.nix
+    ./nix-remote-building.nix
     ./cli.nix
     ./dev
     ./theme.nix
