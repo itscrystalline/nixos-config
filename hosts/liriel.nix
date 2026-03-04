@@ -20,6 +20,7 @@
   };
 
   programs.enable = true;
+  hardware.crystals-rpi4.enable = true;
 
   crystals-services = {
     ssh.enable = true;

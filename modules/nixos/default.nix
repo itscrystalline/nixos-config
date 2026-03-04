@@ -8,6 +8,7 @@ in {
   imports = [
     ./compatibility
     ./bluetooth
+    ./hardware
     ./network
     ./programs
     ./security
