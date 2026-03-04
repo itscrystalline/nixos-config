@@ -18,6 +18,8 @@ in {
     ./kernel
     ./nix
     ./gui
+
+    ./home-manager-passthrough.nix
   ];
 
   options.core = {
