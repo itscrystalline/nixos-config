@@ -34,7 +34,7 @@
     esac
 
     FULL_NAME="$DEST/$NAME-$DATE"
-    if ${pkgs.coreutils}/bin/ls "$FULL_NAME"*.tar.zst > /dev/null 2>$1; then
+    if ${pkgs.coreutils}/bin/ls "$FULL_NAME"*.tar.zst > /dev/null 2>/dev/null; then
       latest_file=$(${pkgs.coreutils}/bin/ls -Art "$FULL_NAME"*.tar.zst | ${pkgs.coreutils}/bin/tail -n 1)
       current_number=$(${pkgs.coreutils}/bin/echo "$latest_file" | ${pkgs.gawk}/bin/awk '{ split($0,names,"."); split(names[1],name_split,"-"); print (name_split[5] == "" ? 0 : name_split[5])}')
       if [ "$current_number" = 0 ]; then
