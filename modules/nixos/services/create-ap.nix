@@ -17,7 +17,7 @@
 in {
   options.crystals-services.create-ap.enable = lib.mkEnableOption "create_ap WiFi hotspot";
   config = lib.mkIf enabled {
-    boot.kernel.sysctl = {
+    kernel.sysctl = {
       "net.ipv6.conf.all.forwarding" = 1;
       "net.ipv4.conf.all.forwarding" = 1;
     };

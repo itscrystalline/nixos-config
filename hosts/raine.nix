@@ -1,4 +1,4 @@
-{pkgs, config, ...}: {
+{pkgs, lib, config, ...}: {
   imports = [./raine];
 
   core = {
@@ -56,6 +56,18 @@
       drivers = [pkgs.gutenprint];
       openFirewall = true;
       shared = true;
+      extraConf = "DefaultPaperSize A4";
+      sane = true;
+      ensurePrinters = [
+        {
+          name = "Canon_G2010_Series";
+          location = "Home";
+          deviceUri = "usb://Canon/G2010%20series?serial=0FEC28&interface=1";
+          model = "gutenprint.${lib.versions.majorMinor (lib.getVersion pkgs.gutenprint)}://bjc-G2000-series/expert";
+          ppdOptions.PageSize = "A4";
+        }
+      ];
+      ensureDefaultPrinter = "Canon_G2010_Series";
     };
     argonone.enable = true;
     nfs = {
