@@ -6,7 +6,19 @@
   inherit (config.crystals-services) blocky;
   enabled = blocky.enable;
 in {
-  options.crystals-services.blocky.enable = lib.mkEnableOption "Blocky DNS server";
+  options.crystals-services.blocky = {
+    enable = lib.mkEnableOption "Blocky DNS server";
+    allowList = lib.mkOption {
+      type = lib.types.lines;
+      default = "";
+      description = "Custom allowlist entries (one domain per line)";
+    };
+    denyList = lib.mkOption {
+      type = lib.types.lines;
+      default = "";
+      description = "Custom denylist entries (one domain per line)";
+    };
+  };
   config = lib.mkIf enabled {
     services.blocky = {
       enable = true;
@@ -70,6 +82,7 @@ in {
                 certs.apple.com
                 appattest.apple.com
                 vpp.itunes.apple.com
+                ${blocky.denyList}
               ''
             ];
           };
@@ -82,6 +95,7 @@ in {
               pantip.com$important
               app.localhost.direct
               register.appattest.apple.com
+              ${blocky.allowList}
             ''
           ];
           clientGroupsBlock.default = builtins.attrNames denylists;

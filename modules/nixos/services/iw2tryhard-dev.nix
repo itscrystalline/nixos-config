@@ -6,7 +6,7 @@
   inherit (config.crystals-services) iw2tryhard-dev;
   enabled = iw2tryhard-dev.enable;
 in {
-  options.crystals-services.iw2tryhard-dev.enable = lib.mkEnableOption "iw2tryhard.dev and thaddev.com container services";
+  options.crystals-services.iw2tryhard-dev.enable = lib.mkEnableOption "personal website services";
   config = lib.mkIf enabled {
     virtualisation.oci-containers.containers = {
       iw2tryhard-dev = {

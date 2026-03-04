@@ -15,7 +15,24 @@
     }: "${mac},${ip},${hostname},${lease}")
     list);
 in {
-  options.crystals-services.create-ap.enable = lib.mkEnableOption "create_ap WiFi hotspot";
+  options.crystals-services.create-ap = {
+    enable = lib.mkEnableOption "create_ap WiFi hotspot";
+    dhcpLocks = lib.mkOption {
+      type = lib.types.listOf (lib.types.submodule {
+        options = {
+          mac = lib.mkOption {type = lib.types.str;};
+          ip = lib.mkOption {type = lib.types.str;};
+          hostname = lib.mkOption {type = lib.types.str;};
+          lease = lib.mkOption {
+            type = lib.types.str;
+            default = "infinite";
+          };
+        };
+      });
+      default = [];
+      description = "List of static DHCP leases for the hotspot";
+    };
+  };
   config = lib.mkIf enabled {
     kernel.sysctl = {
       "net.ipv6.conf.all.forwarding" = 1;
@@ -43,23 +60,7 @@ in {
         NO_VIRT = true;
         SSID = "dormpi";
         WIFI_IFACE = "wlan0";
-        DHCP_HOSTS = mkDhcpLocks [
-          {
-            mac = "cc:40:85:b3:c9:a4";
-            ip = "192.168.12.136";
-            hostname = "desk-light";
-          }
-          {
-            mac = "3c:6a:d2:be:4e:57";
-            ip = "192.168.12.216";
-            hostname = "kettle-switch";
-          }
-          {
-            mac = "bc:07:1d:c4:0c:63";
-            ip = "192.168.12.10";
-            hostname = "fan-switch";
-          }
-        ];
+        DHCP_HOSTS = mkDhcpLocks create-ap.dhcpLocks;
         COUNTRY = "TH";
       };
     };

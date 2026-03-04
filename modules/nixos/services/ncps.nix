@@ -7,15 +7,22 @@
   enabled = ncps.enable;
   port = 8501;
 in {
-  options.crystals-services.ncps.enable = lib.mkEnableOption "ncps Nix cache proxy";
+  options.crystals-services.ncps = {
+    enable = lib.mkEnableOption "ncps Nix cache proxy";
+    basePath = lib.mkOption {
+      type = lib.types.str;
+      default = "/mnt/main/ncps";
+      description = "Base directory for ncps data, temp, and database files";
+    };
+  };
   config = lib.mkIf enabled {
     services.ncps = {
       enable = true;
       cache = {
         inherit (config.networking) hostName;
-        dataPath = "/mnt/main/ncps/data";
-        tempPath = "/mnt/main/ncps/temp";
-        databaseURL = "sqlite:/mnt/main/ncps/db/db.sqlite";
+        dataPath = "${ncps.basePath}/data";
+        tempPath = "${ncps.basePath}/temp";
+        databaseURL = "sqlite:${ncps.basePath}/db/db.sqlite";
         maxSize = "100G";
         lru.schedule = "0 2 * * *";
         allowPutVerb = true;

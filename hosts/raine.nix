@@ -34,7 +34,7 @@
 
   programs.enable = true;
   theming.enable = true;
-  hardware.crystals-rpi4.enable = true;
+  hardware.raspberrypi.enable = true;
 
   network = {
     trustedInterfaces = [];

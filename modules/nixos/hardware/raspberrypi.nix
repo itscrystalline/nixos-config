@@ -4,9 +4,9 @@
   pkgs,
   ...
 }: let
-  enabled = config.hardware.crystals-rpi4.enable;
+  enabled = config.hardware.raspberrypi.enable;
 in {
-  options.hardware.crystals-rpi4.enable = lib.mkEnableOption "Raspberry Pi 4 hardware support";
+  options.hardware.raspberrypi.enable = lib.mkEnableOption "Raspberry Pi 4 hardware support";
   config = lib.mkIf enabled {
     hardware.raspberry-pi."4" = {
       apply-overlays-dtmerge.enable = true;

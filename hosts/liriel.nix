@@ -20,7 +20,7 @@
   };
 
   programs.enable = true;
-  hardware.crystals-rpi4.enable = true;
+  hardware.raspberrypi.enable = true;
 
   crystals-services = {
     ssh.enable = true;
@@ -29,7 +29,26 @@
     avahi.enable = true;
     argonone.enable = true;
     home-assistant.enable = true;
-    create-ap.enable = true;
+    create-ap = {
+      enable = true;
+      dhcpLocks = [
+        {
+          mac = "cc:40:85:b3:c9:a4";
+          ip = "192.168.12.136";
+          hostname = "desk-light";
+        }
+        {
+          mac = "3c:6a:d2:be:4e:57";
+          ip = "192.168.12.216";
+          hostname = "kettle-switch";
+        }
+        {
+          mac = "bc:07:1d:c4:0c:63";
+          ip = "192.168.12.10";
+          hostname = "fan-switch";
+        }
+      ];
+    };
   };
 
   nix = {
