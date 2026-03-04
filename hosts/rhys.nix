@@ -35,10 +35,7 @@ in {
     steam-run.enable = true;
   };
 
-  programs = {
-    enable = true;
-    gui.wireshark.enable = true;
-  };
+  programs.enable = true;
   gui = {
     enable = true;
     flatpak.enable = true;

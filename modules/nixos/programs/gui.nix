@@ -3,10 +3,9 @@
   lib,
   ...
 }: let
-  wireshark = config.programs.gui.wireshark.enable;
+  enabled = config.programs.enable && config.gui.enable;
 in {
-  options.programs.gui.wireshark.enable = lib.mkEnableOption "Wireshark";
-  config = lib.mkIf wireshark {
+  config = lib.mkIf enabled {
     programs.wireshark = {
       enable = true;
       dumpcap.enable = true;
