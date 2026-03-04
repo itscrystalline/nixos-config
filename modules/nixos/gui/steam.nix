@@ -4,7 +4,7 @@
   lib,
   ...
 }: let
-  enabled = config.gui.steam.enable && config.gui.enable;
+  enabled = config.gui.steam.enable && config.gui.enable && config.programs.enable;
 in {
   options.gui.steam.enable = lib.mkEnableOption "steam";
   config = lib.mkIf enabled {
