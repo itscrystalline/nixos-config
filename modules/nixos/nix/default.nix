@@ -6,6 +6,8 @@
 }: let
   inherit (config) nix;
 in {
+  imports = [./settings.nix];
+
   options.nix = {
     nh = {
       enable = lib.mkEnableOption "nix-helper";

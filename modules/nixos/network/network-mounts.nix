@@ -56,6 +56,7 @@ in {
       };
     });
     description = "List of Network mounts.";
+    default = [];
   };
 
   config = lib.mkIf enabled {

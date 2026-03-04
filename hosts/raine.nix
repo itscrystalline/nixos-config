@@ -1,4 +1,6 @@
-{pkgs, ...}: {
+{pkgs, lib, config, ...}: {
+  imports = [./raine];
+
   core = {
     name = "raine";
     primaryUser = "itscrystalline";
@@ -9,7 +11,6 @@
         fsType = "ext4";
         options = ["noatime"];
       };
-
       "/mnt/main" = {
         device = "/dev/disk/by-uuid/a12bd288-6c9b-45f4-94ff-9cdbd1c474e6";
         fsType = "ext4";
@@ -21,27 +22,97 @@
         neededForBoot = false;
         options = ["nofail"];
       };
+      "/var/lib/prometheus2" = {
+        device = "/mnt/main/services/prometheus2";
+        options = ["bind" "x-systemd.requires-mounts-for=/mnt/main"];
+      };
     };
 
     arch = "aarch64-linux";
     localization.timezone = "Asia/Bangkok";
   };
 
-  compat = {
-    nix-ld.enable = false;
-    steam-run.enable = false;
-  };
-
   programs.enable = true;
   theming.enable = true;
+  hardware.raspberrypi.enable = true;
+
+  network = {
+    trustedInterfaces = [];
+    ports = {
+      tcp = [80 443 2049 8080];
+      udp = [];
+      tcpRange = [];
+      udpRange = [];
+    };
+  };
 
   crystals-services = {
     ssh.enable = true;
     tailscale.enable = true;
     earlyoom.enable = true;
     avahi.enable = true;
-    localsend.enable = true;
     docker.enable = true;
+    printing = {
+      enable = true;
+      drivers = [pkgs.gutenprint];
+      openFirewall = true;
+      shared = true;
+      printers = [
+        {
+          name = "Canon_G2010_Series";
+          location = "Home";
+          deviceUri = "usb://Canon/G2010%20series?serial=0FEC28&interface=1";
+          model = "gutenprint.${lib.versions.majorMinor (lib.getVersion pkgs.gutenprint)}://bjc-G2000-series/expert";
+          ppdOptions.PageSize = "A4";
+        }
+      ];
+      defaultPrinter = "Canon_G2010_Series";
+    };
+    argonone.enable = true;
+    nfs = {
+      enable = true;
+      exports = ''
+        /export 192.168.1.0/24(rw,sync,no_subtree_check) 100.0.0.0/8(rw,sync,no_subtree_check)
+      '';
+    };
+    scanservjs = {
+      enable = true;
+      nginxVhost = "scan.crys";
+    };
+    nginx.enable = true;
+    blocky = {
+      enable = true;
+      denyList = ''
+        ocsp.apple.com
+        ocsp2.apple.com
+        valid.apple.com
+        crl.apple.com
+        certs.apple.com
+        appattest.apple.com
+        vpp.itunes.apple.com
+      '';
+      allowList = ''
+        t.co
+        urbandictionary.com
+        telegra.ph
+        s.youtube.com
+        pantip.com$important
+        app.localhost.direct
+        register.appattest.apple.com
+      '';
+    };
+    cloudflared.enable = true;
+    nextcloud = {
+      enable = true;
+      domain = "nc.iw2tryhard.dev";
+      folder = "/mnt/main/nextcloud";
+      adminpassFile = config.secrets.nextcloud.admin.password;
+      statsToken = config.secrets.nextcloud.admin.stats_token;
+    };
+    monitoring.enable = true;
+    manga.enable = true;
+    ncps.enable = true;
+    iw2tryhard-dev.enable = true;
   };
 
   nix = {

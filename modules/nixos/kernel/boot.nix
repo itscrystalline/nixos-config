@@ -14,10 +14,12 @@ in {
     stage1AvailableModules = lib.mkOption {
       type = attrNamesToTrue;
       description = "Kernel modules available during stage 1.";
+      default = [];
     };
     stage1LoadedModules = lib.mkOption {
       type = attrNamesToTrue;
       description = "Kernel modules loaded during stage 1.";
+      default = [];
     };
 
     verbosity = lib.mkOption {
@@ -30,6 +32,7 @@ in {
           package = lib.mkOption {
             type = types.nullOr types.package;
             description = "Additional Plymouth package.";
+            default = null;
           };
         };
       });
@@ -62,8 +65,8 @@ in {
 
       plymouth = lib.mkIf (builtins.isAttrs boot.verbosity) {
         enable = true;
-        inherit (boot.verbosity) theme;
-        themePackages = lib.optional (boot.verbosity.package != null) boot.verbosity.package;
+        inherit (boot.verbosity.plymouth) theme;
+        themePackages = lib.optional (boot.verbosity.plymouth.package != null) boot.verbosity.plymouth.package;
       };
 
       loader = {

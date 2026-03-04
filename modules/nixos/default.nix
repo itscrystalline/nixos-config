@@ -1,6 +1,7 @@
 {
   lib,
   config,
+  pkgs,
   ...
 }: let
   inherit (config) core;
@@ -8,6 +9,7 @@ in {
   imports = [
     ./compatibility
     ./bluetooth
+    ./hardware
     ./network
     ./programs
     ./security
@@ -43,7 +45,7 @@ in {
     };
 
     localization = lib.mkOption {
-      type = lib.types.attrsOf (lib.types.submodule {
+      type = lib.types.submodule {
         options = {
           keymap = lib.mkOption {
             type = lib.types.str;
@@ -61,8 +63,9 @@ in {
             default = "ja_JP.UTF-8";
           };
         };
-      });
+      };
       description = "The system's localization settings.";
+      default = {};
     };
   };
 
@@ -94,7 +97,7 @@ in {
     users.users.${core.primaryUser} = {
       isNormalUser = true;
       home = lib.mkDefault "/home/${core.primaryUser}";
-      description = ":3";
+      description = "itscrystalline";
       shell = pkgs.zsh;
 
       hashedPassword = config.secrets.crystal_password;

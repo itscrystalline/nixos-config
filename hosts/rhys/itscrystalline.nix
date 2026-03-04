@@ -1,7 +1,7 @@
 {config, ...}: let
   inherit (config.core) primaryUser;
 in {
-  users.users.${primaryUser}.extraGroups = ["dialout" "dumpcap" "wireshark"];
+  users.users.${primaryUser}.extraGroups = ["dialout"];
   # PFP
   system.activationScripts.script.text = ''
     mkdir -p /var/lib/AccountsService/{icons,users}
