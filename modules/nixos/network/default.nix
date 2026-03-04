@@ -35,7 +35,7 @@
     networking = {
       networkmanager.enable = true;
       hostName = config.core.name;
-      useDHCP = config.network.dhcp;
+      useDHCP = lib.mkDefault config.network.dhcp;
       firewall = with config.network.ports; {
         enable = true;
         inherit (config.network) trustedInterfaces;
