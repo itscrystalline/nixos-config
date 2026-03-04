@@ -4,6 +4,5 @@ _: {
     ./docker.nix
     ./programs.nix
     ./services.nix
-    ./itscrystalline.nix
   ];
 }

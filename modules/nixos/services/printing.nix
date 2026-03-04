@@ -51,5 +51,6 @@ in {
       ensureDefaultPrinter = printing.defaultPrinter;
     });
     hardware.sane.enable = true;
+    users.users.${config.core.primaryUser}.extraGroups = ["scanner" "lp"];
   };
 }
