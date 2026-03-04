@@ -122,8 +122,8 @@
     mkHost = {
       arch,
       configModule,
-      homeModule ? null,
       otherModules ? [],
+      userHomeModules ? [],
     }:
       nixpkgs.lib.nixosSystem {
         system = arch;
@@ -139,10 +139,7 @@
             configModule
           ]
           ++ otherModules
-          ++ (nixpkgs.lib.optional (homeModule != null) [
-            home-manager.nixosModules.home-manager
-            homeModule
-          ]);
+          ++ (nixpkgs.lib.optional (userHomeModules != []) ([home-manager.nixosModules.home-manager] ++ userHomeModules));
       };
 
     rhys = mkHost {
@@ -153,6 +150,7 @@
         inputs.niri.nixosModules.niri
         nixos-hardware.nixosModules.asus-fx506hm
       ];
+      userHomeModules = [./homes/itscrystalline.nix];
     };
     raine = mkHost {
       arch = "aarch64-linux";
@@ -160,6 +158,7 @@
       otherModules = [
         nixos-hardware.nixosModules.raspberry-pi-4
       ];
+      userHomeModules = [./homes/itscrystalline.nix];
     };
     liriel = mkHost {
       arch = "aarch64-linux";
@@ -167,6 +166,7 @@
       otherModules = [
         nixos-hardware.nixosModules.raspberry-pi-4
       ];
+      userHomeModules = [./homes/itscrystalline.nix];
     };
   in {
     nixosConfigurations = {
