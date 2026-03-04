@@ -1,7 +1,6 @@
 {
   lib,
   config,
-  pkgs,
   ...
 }: let
   inherit (config.crystals-services) printing;
@@ -16,13 +15,7 @@ in {
     };
     openFirewall = lib.mkEnableOption "firewall port for CUPS";
     shared = lib.mkEnableOption "printer sharing over the network";
-    extraConf = lib.mkOption {
-      type = lib.types.lines;
-      description = "Extra CUPS configuration.";
-      default = "";
-    };
-    sane = lib.mkEnableOption "SANE scanning support";
-    ensurePrinters = lib.mkOption {
+    printers = lib.mkOption {
       type = lib.types.listOf (lib.types.submodule {
         options = {
           name = lib.mkOption {type = lib.types.str; description = "Printer name.";};
@@ -35,7 +28,7 @@ in {
       description = "Printers to configure via CUPS.";
       default = [];
     };
-    ensureDefaultPrinter = lib.mkOption {
+    defaultPrinter = lib.mkOption {
       type = lib.types.nullOr lib.types.str;
       description = "Default printer name.";
       default = null;
@@ -50,13 +43,13 @@ in {
       allowFrom = lib.mkIf printing.shared ["all"];
       browsing = printing.shared;
       defaultShared = printing.shared;
-      extraConf = printing.extraConf;
+      extraConf = "DefaultPaperSize A4";
     };
-    hardware.printers = lib.mkIf (printing.ensurePrinters != []) ({
-      ensurePrinters = printing.ensurePrinters;
-    } // lib.optionalAttrs (printing.ensureDefaultPrinter != null) {
-      ensureDefaultPrinter = printing.ensureDefaultPrinter;
+    hardware.printers = lib.mkIf (printing.printers != []) ({
+      ensurePrinters = printing.printers;
+    } // lib.optionalAttrs (printing.defaultPrinter != null) {
+      ensureDefaultPrinter = printing.defaultPrinter;
     });
-    hardware.sane.enable = lib.mkIf printing.sane true;
+    hardware.sane.enable = true;
   };
 }

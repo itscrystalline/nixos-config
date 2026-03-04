@@ -56,9 +56,7 @@
       drivers = [pkgs.gutenprint];
       openFirewall = true;
       shared = true;
-      extraConf = "DefaultPaperSize A4";
-      sane = true;
-      ensurePrinters = [
+      printers = [
         {
           name = "Canon_G2010_Series";
           location = "Home";
@@ -67,7 +65,7 @@
           ppdOptions.PageSize = "A4";
         }
       ];
-      ensureDefaultPrinter = "Canon_G2010_Series";
+      defaultPrinter = "Canon_G2010_Series";
     };
     argonone.enable = true;
     nfs = {
