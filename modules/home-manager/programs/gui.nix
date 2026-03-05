@@ -8,6 +8,7 @@
   guiEnabled = config.hm.programs.gui.enable;
 in {
   options.hm.programs.gui.enable = lib.mkEnableOption "GUI apps";
+  options.hm.programs.gui.obs.enable = lib.mkEnableOption "OBS Studio";
 
   config = lib.mkIf guiEnabled {
     home = {
@@ -68,7 +69,7 @@ in {
         ];
       };
 
-      obs-studio = lib.mkIf config.hm.obs.enable {
+      obs-studio = lib.mkIf config.hm.programs.gui.obs.enable {
         enable = true;
         plugins =
           (with pkgs.stable.obs-studio-plugins; [

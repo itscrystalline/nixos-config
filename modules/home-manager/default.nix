@@ -25,27 +25,26 @@ in {
       };
 
       bluetooth.enable = lib.mkEnableOption "Bluetooth";
-
       gui.enable = lib.mkEnableOption "GUI configuration";
-
-      obs.enable = lib.mkEnableOption "OBS Studio";
-    };
-
-    secrets = mkOption {
-      type = types.attrs;
-      description = "Secrets available to this home configuration.";
-      readOnly = true;
     };
   };
 
   config = lib.mkMerge [
     (lib.mkIf (passthrough != null) {
-      hm.programs.gui.enable = lib.mkForce (passthrough.gui.enable && passthrough.programs.enable);
-      hm.gui.enable = lib.mkForce passthrough.gui.enable;
-      hm.bluetooth.enable = lib.mkForce passthrough.bluetooth.enable;
-      hm.gui.niri.enable = lib.mkForce passthrough.niri.enable;
-      hm.obs.enable = lib.mkForce passthrough.obs.enable;
-      hm.flatpak.enable = lib.mkForce passthrough.flatpak.enable;
+      hm = {
+        programs = {
+          gui = {
+            enable = lib.mkForce (passthrough.gui.enable && passthrough.programs.enable);
+            obs.enable = lib.mkForce passthrough.obs.enable;
+          };
+        };
+        gui = {
+          enable = lib.mkForce passthrough.gui.enable;
+          niri.enable = lib.mkForce passthrough.niri.enable;
+        };
+        bluetooth.enable = lib.mkForce passthrough.bluetooth.enable;
+        flatpak.enable = lib.mkForce passthrough.flatpak.enable;
+      };
     })
 
     {

@@ -37,8 +37,8 @@ in {
               })
               plugins);
         in
-          (mkEnable "noctalia-dev" ["privacy-indicator" "tailscale" "keybind-cheatsheet"])
-          // (mkEnable "itscrystalline" ["battery-threshold" "battery-actions"]);
+          mkEnable "noctalia-dev" ["privacy-indicator" "tailscale" "keybind-cheatsheet" "battery-threshold" "battery-actions"];
+        # // (mkEnable "itscrystalline" []);
         version = 1;
       };
       pluginSettings = {
@@ -159,9 +159,18 @@ in {
                 id = "Volume";
                 middleClickCommand = "pwvucontrol || pavucontrol";
               }
-              {displayMode = "onhover"; id = "Brightness";}
-              {displayMode = "onhover"; id = "Network";}
-              {displayMode = "onhover"; id = "Bluetooth";}
+              {
+                displayMode = "onhover";
+                id = "Brightness";
+              }
+              {
+                displayMode = "onhover";
+                id = "Network";
+              }
+              {
+                displayMode = "onhover";
+                id = "Bluetooth";
+              }
               {
                 deviceNativePath = "";
                 displayMode = "onhover";

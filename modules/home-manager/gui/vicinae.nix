@@ -4,40 +4,60 @@
   pkgs,
   ...
 }: let
-  guiEnabled = config.hm.gui.enable;
-  vicinaeEnabled = config.hm.programs.gui.vicinae.enable;
+  inherit (lib) types;
+  inherit (config.hm.programs.gui) vicinae;
+  enabled = config.hm.gui.enable && vicinae.enable;
+  themeEnabled = config.hm.theming.enable;
 in {
-  options.hm.programs.gui.vicinae.enable = lib.mkEnableOption "Vicinae launcher";
+  options.hm.programs.gui.vicinae = {
+    enable = lib.mkEnableOption "Vicinae launcher";
+    plugins = {
+      own = lib.mkOption {
+        type = types.listOf types.str;
+        description = "List of vicinae plugins to install.";
+        default = [];
+      };
+      raycast = lib.mkOption {
+        type = types.listOf types.str;
+        description = "List of vicinae-compatable raycast plugins to install.";
+        default = [];
+      };
+    };
+  };
 
-  config = lib.mkIf (guiEnabled && vicinaeEnabled && pkgs.stdenv.isLinux) {
+  config = lib.mkIf (enabled && pkgs.stdenv.isLinux) {
     services.vicinae = {
       enable = true;
-      settings = {
-        theme = {
-          light.name = "stylix";
-          dark.name = "stylix";
-        };
-        favicon_service = "twenty";
-        font.normal.size = 10;
-        pop_to_root_on_close = false;
-        search_files_in_root = false;
-        launcher_window.client_side_decorations = {
-          enabled = true;
-          rounding = 10;
-        };
-        favorites = [
-          "clipboard:history"
-          "core:search-emojis"
-          "@knoopx/store.vicinae.nix:packages"
-          "@knoopx/store.vicinae.nix:options"
-          "@knoopx/store.vicinae.nix:home-manager-options"
-          "@tonka3000/0a3cf1ce-7de6-415c-9e37-91a892d1747e:lights"
-        ];
-        providers = {
-          "@knoopx/store.vicinae.nix".preferences.githubToken = config.secrets.ghToken;
-          "@tonka3000/0a3cf1ce-7de6-415c-9e37-91a892d1747e".preferences.instance = config.secrets.homeassistant.instance;
-        };
-      };
+      settings = lib.mkMerge [
+        (lib.mkIf themeEnabled {
+          theme = {
+            light.name = "stylix";
+            dark.name = "stylix";
+          };
+          font.normal.size = 10;
+          launcher_window.client_side_decorations = {
+            enabled = true;
+            rounding = 10;
+          };
+        })
+        {
+          favicon_service = "twenty";
+          pop_to_root_on_close = false;
+          search_files_in_root = false;
+          favorites = [
+            "clipboard:history"
+            "core:search-emojis"
+            "@knoopx/store.vicinae.nix:packages"
+            "@knoopx/store.vicinae.nix:options"
+            "@knoopx/store.vicinae.nix:home-manager-options"
+            "@tonka3000/0a3cf1ce-7de6-415c-9e37-91a892d1747e:lights"
+          ];
+          providers = {
+            "@knoopx/store.vicinae.nix".preferences.githubToken = config.secrets.ghToken;
+            "@tonka3000/0a3cf1ce-7de6-415c-9e37-91a892d1747e".preferences.instance = config.secrets.homeassistant.instance;
+          };
+        }
+      ];
       systemd = {
         enable = true;
         autoStart = true;
@@ -111,8 +131,7 @@ in {
           )
           names;
       in
-        (extensions ["wifi-commander" "nix" "it-tools" "niri" "bluetooth"])
-        ++ (raycastExtensions ["bintools" "github" "latex-math-symbols" "gif-search" "devdocs" "homeassistant" "wikipedia" "speedtest"]);
+        (extensions vicinae.plugins.own) ++ (raycastExtensions vicinae.plugins.raycast);
     };
   };
 }
