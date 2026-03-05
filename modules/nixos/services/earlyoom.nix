@@ -25,7 +25,8 @@ in {
         "tmux: server"
       ];
     in [
-      "--avoid ${catPatterns avoidPatterns}"
+      "--avoid"
+      "${catPatterns avoidPatterns}"
     ];
   };
 }
