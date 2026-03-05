@@ -164,12 +164,7 @@
       "opc" = mkStandaloneHome "aarch64-linux" [./homes/opc.nix];
     };
     packages = {
-      aarch64-linux = {
-        raine = nixos-generators.nixosGenerate (raine // {format = "sd-aarch64";});
-        liriel = nixos-generators.nixosGenerate (liriel // {format = "sd-aarch64";});
-
-        docs = nixpkgs.legacyPackages.aarch64-linux.callPackage ./modules/docs.nix {};
-      };
+      aarch64-linux.docs = nixpkgs.legacyPackages.aarch64-linux.callPackage ./modules/docs.nix {};
       x86_64-linux.docs = nixpkgs.legacyPackages.x86_64-linux.callPackage ./modules/docs.nix {};
     };
   };
