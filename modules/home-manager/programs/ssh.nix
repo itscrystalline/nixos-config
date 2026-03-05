@@ -31,10 +31,12 @@ in {
           hostname = mkOption {
             type = types.nullOr types.str;
             description = "Hostname to connect to via SSH.";
+            default = null;
           };
           user = mkOption {
             type = types.nullOr types.str;
             description = "User to connect to via SSH.";
+            default = null;
           };
           publicKeyPath = mkOption {
             type = types.str;
