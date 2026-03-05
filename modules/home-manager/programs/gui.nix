@@ -47,7 +47,7 @@ in {
           wireshark
           gimp
         ])
-        ++ [youtube-music]
+        ++ [youtube-music pkgs.stdenv.isLinux]
         ++ lib.optionals largePrograms (with pkgs.stable; [
           kdePackages.kdenlive
           audacity
@@ -65,7 +65,7 @@ in {
           wl-clipboard
         ]);
 
-      shellAliases = lib.mkIf (pkgs.stdenv.isLinux && config.gui.niri.enable) {
+      shellAliases = lib.mkIf (pkgs.stdenv.isLinux && config.hm.gui.niri.enable) {
         mirror = "${mirrorScript}";
       };
 
@@ -155,7 +155,7 @@ in {
           categories = [""];
           mimeType = ["x-scheme-handler/org-protocol"];
         };
-        niri-mirror-screen = lib.mkIf config.gui.niri.enable {
+        niri-mirror-screen = lib.mkIf config.hm.gui.niri.enable {
           name = "Start Screen Mirroring (Niri)";
           exec = "${mirrorScript}";
           terminal = false;
