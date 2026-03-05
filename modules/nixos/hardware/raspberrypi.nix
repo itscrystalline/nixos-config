@@ -8,6 +8,9 @@
 in {
   options.hardware.raspberrypi.enable = lib.mkEnableOption "Raspberry Pi 4 hardware support";
   config = lib.mkIf enabled {
+    image.modules.sd-card = {
+      sdImage.firmwareSize = 256; # 256MB /boot
+    };
     hardware.raspberry-pi."4" = {
       apply-overlays-dtmerge.enable = true;
       bluetooth.enable = true;
