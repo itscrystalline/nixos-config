@@ -163,7 +163,7 @@ in {
             mkModules (fastfetch.profile == "full") [
               {
                 type = "custom";
-                format = "\u001b[36m    コンピューター";
+                format = "\\u001b[36m    コンピューター";
               }
               {
                 type = "custom";
@@ -172,28 +172,28 @@ in {
               }
               {
                 type = "os";
-                key = "   OS";
+                key = "   OS";
                 keyColor = "red";
               }
               {
                 type = "kernel";
-                key = "   Kernel";
+                key = "   Kernel";
                 keyColor = "red";
               }
               {
                 type = "display";
-                key = "   Display";
+                key = "   Display";
                 keyColor = "green";
               }
               {
                 type = "wm";
-                key = "   WM";
+                key = "   WM";
                 keyColor = "yellow";
                 optional = true;
               }
               {
                 type = "terminal";
-                key = "   Terminal";
+                key = "   Terminal";
                 keyColor = "yellow";
               }
               {
@@ -204,7 +204,7 @@ in {
               "break"
               {
                 type = "title";
-                key = "  ";
+                key = "  ";
               }
               {
                 type = "custom";
@@ -214,19 +214,19 @@ in {
               {
                 type = "cpu";
                 format = "{1}";
-                key = "   CPU";
+                key = "   CPU";
                 keyColor = "blue";
               }
               {
                 type = "gpu";
                 format = "{2}";
-                key = "   GPU";
+                key = "   GPU";
                 keyColor = "blue";
               }
               {
                 type = "gpu";
                 format = "{3}";
-                key = "   GPU Driver";
+                key = "   GPU Driver";
                 keyColor = "magenta";
               }
               {
