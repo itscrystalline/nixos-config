@@ -160,8 +160,8 @@
       inherit rhys raine liriel;
     };
     homeConfigurations = {
-      "itscrystalline" = mkStandaloneHome "x86_64-linux" [server-itscrystalline];
-      "opc" = mkStandaloneHome "x86_64-linux" [server-itscrystalline];
+      # "itscrystalline" = mkStandaloneHome "aarch64-linux" [server-itscrystalline];
+      "opc" = mkStandaloneHome "aarch64-linux" [./homes/opc.nix];
     };
     packages = {
       aarch64-linux = {
