@@ -6,9 +6,34 @@
   ...
 }: let
   guiEnabled = config.hm.programs.gui.enable;
+  largePrograms = config.hm.programs.gui.largePrograms.enable;
+
+  youtube-music = isLinux:
+    if isLinux
+    then
+      (pkgs.youtube-music.overrideAttrs {
+        desktopItems = [
+          (pkgs.makeDesktopItem {
+            name = "youtube-music";
+            exec = "youtube-music --enable-features=UseOzonePlatform --ozone-platform=wayland --enable-wayland-ime %u";
+            icon = "youtube-music";
+            desktopName = "Youtube Music";
+            startupWMClass = "Youtube Music";
+            categories = ["AudioVideo"];
+          })
+        ];
+      })
+    else pkgs.youtube-music;
+
+  mirrorScript = pkgs.writeShellScript "niri-mirror.sh" ''
+    ${pkgs.wl-mirror}/bin/wl-mirror $(niri msg --json focused-output | ${pkgs.jq}/bin/jq -r .name)
+  '';
 in {
-  options.hm.programs.gui.enable = lib.mkEnableOption "GUI apps";
-  options.hm.programs.gui.obs.enable = lib.mkEnableOption "OBS Studio";
+  options.hm.programs.gui = {
+    enable = lib.mkEnableOption "GUI apps";
+    obs.enable = lib.mkEnableOption "OBS Studio";
+    largePrograms.enable = lib.mkEnableOption "Large GUI apps";
+  };
 
   config = lib.mkIf guiEnabled {
     home = {
@@ -18,31 +43,19 @@ in {
           beeper
           keepassxc
           vlc
-          kdePackages.kdenlive
-          gimp
-          audacity
           blockbench
+          wireshark
+          gimp
+        ])
+        ++ [youtube-music]
+        ++ lib.optionals largePrograms (with pkgs.stable; [
+          kdePackages.kdenlive
+          audacity
           libreoffice
           logisim-evolution
-          wireshark
-        ])
-        ++ lib.optionals pkgs.stdenv.isDarwin (with pkgs.stable; [
-          youtube-music
         ])
         ++ lib.optionals pkgs.stdenv.isLinux (with pkgs.stable; [
           teams-for-linux
-          (youtube-music.overrideAttrs {
-            desktopItems = [
-              (pkgs.makeDesktopItem {
-                name = "youtube-music";
-                exec = "youtube-music --enable-features=UseOzonePlatform --ozone-platform=wayland --enable-wayland-ime %u";
-                icon = "youtube-music";
-                desktopName = "Youtube Music";
-                startupWMClass = "Youtube Music";
-                categories = ["AudioVideo"];
-              })
-            ];
-          })
           pavucontrol
           hyprpicker
           alsa-utils
@@ -52,8 +65,8 @@ in {
           wl-clipboard
         ]);
 
-      shellAliases = lib.mkIf pkgs.stdenv.isLinux {
-        mirror = "${pkgs.wl-mirror}/bin/wl-mirror $(niri msg --json focused-output | ${pkgs.jq}/bin/jq -r .name)";
+      shellAliases = lib.mkIf (pkgs.stdenv.isLinux && config.gui.niri.enable) {
+        mirror = "${mirrorScript}";
       };
 
       sessionVariables = lib.mkIf pkgs.stdenv.isLinux {
@@ -133,13 +146,21 @@ in {
     };
 
     xdg = lib.mkIf pkgs.stdenv.isLinux {
-      desktopEntries.LINE = {
-        name = "LINE";
-        exec = "${pkgs.chromium}/bin/chromium --app=chrome-extension://ophjlpahpchlmihnnnihgmmeilfjmjjc/index.html";
-        terminal = false;
-        type = "Application";
-        categories = [""];
-        mimeType = ["x-scheme-handler/org-protocol"];
+      desktopEntries = {
+        LINE = {
+          name = "LINE";
+          exec = "${pkgs.chromium}/bin/chromium --app=chrome-extension://ophjlpahpchlmihnnnihgmmeilfjmjjc/index.html";
+          terminal = false;
+          type = "Application";
+          categories = [""];
+          mimeType = ["x-scheme-handler/org-protocol"];
+        };
+        niri-mirror-screen = lib.mkIf config.gui.niri.enable {
+          name = "Start Screen Mirroring (Niri)";
+          exec = "${mirrorScript}";
+          terminal = false;
+          type = "Application";
+        };
       };
 
       mimeApps = {
