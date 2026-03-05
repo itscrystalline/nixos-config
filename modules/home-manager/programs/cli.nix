@@ -163,10 +163,6 @@ in {
             mkModules (fastfetch.profile == "full") [
               {
                 type = "custom";
-                format = "\\u001b[36m    コンピューター";
-              }
-              {
-                type = "custom";
                 format = "┌──────────────────────────────────────────┐";
                 optional = true;
               }
