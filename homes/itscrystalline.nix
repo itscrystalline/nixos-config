@@ -46,14 +46,17 @@
 
         ssh.hosts = {
           rhys = {
+            user = "itscrystalline";
             publicKeyPath = "${config.home.homeDirectory}/.ssh/rhys.pub";
             privateKeyPath = "${config.home.homeDirectory}/.ssh/rhys";
           };
           liriel = {
+            user = "itscrystalline";
             publicKeyPath = "${config.home.homeDirectory}/.ssh/liriel.pub";
             privateKeyPath = "${config.home.homeDirectory}/.ssh/liriel";
           };
           raine = {
+            user = "itscrystalline";
             publicKeyPath = "${config.home.homeDirectory}/.ssh/raine.pub";
             privateKeyPath = "${config.home.homeDirectory}/.ssh/raine";
           };
