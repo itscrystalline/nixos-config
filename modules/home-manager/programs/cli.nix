@@ -146,10 +146,6 @@ in {
       fastfetch = {
         enable = true;
         settings = {
-          logo = {
-            source = ''$(find "''${XDG_CONFIG_HOME:-$HOME/.config}/fastfetch/pngs/" -name "*.png" | shuf -n 1)'';
-            height = 18;
-          };
           display.separator = " : ";
           modules = let
             mkModules = includeOptional: modules:
