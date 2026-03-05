@@ -39,7 +39,7 @@ jobs:
 
     - name: "Build Image for ${{ matrix.name }}"
       run: |
-        nix run nixpkgs#nixos-rebuild -- build-image --flake .#${{ matrix.name }} --image-variant sd-card -L 2>&1
+        nix run nixpkgs#nixos-rebuild -- build-image --flake .#${{ matrix.name }} --image-variant sd-card 2>&1
 
     - name: Upload
       uses: actions/upload-artifact@v6

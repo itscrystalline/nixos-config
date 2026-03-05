@@ -22,7 +22,7 @@ jobs:
 
     - name: Build docs
       run: |
-        nix build .#docs -L 2>&1
+        nix build .#docs 2>&1
 
     - name: Copy result
       run: | 

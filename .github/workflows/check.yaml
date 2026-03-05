@@ -29,5 +29,5 @@ jobs:
 
     - name: Check
       run: |
-        nix flake check --all-systems -L 2>&1
+        nix flake check --all-systems 2>&1
 
