@@ -6,9 +6,18 @@
   ...
 }: let
   inherit (config.hm.programs) cli;
+  inherit (cli) fastfetch;
+  inherit (lib) types;
   enabled = cli.enable;
 in {
-  options.hm.programs.cli.enable = lib.mkEnableOption "CLI tools" // {default = true;};
+  options.hm.programs.cli = {
+    enable = lib.mkEnableOption "CLI tools" // {default = true;};
+    fastfetch.profile = lib.mkOption {
+      type = types.enum ["full" "minimal"];
+      description = "How much info fastfetch should produce.";
+      default = "minimal";
+    };
+  };
 
   config = lib.mkIf enabled {
     home.packages = with pkgs;
@@ -138,33 +147,117 @@ in {
             height = 18;
           };
           display.separator = " : ";
-          modules = [
-            {type = "custom"; format = "\u001b[36m    コンピューター";}
-            {type = "custom"; format = "┌──────────────────────────────────────────┐";}
-            {type = "os"; key = "   OS"; keyColor = "red";}
-            {type = "kernel"; key = "   Kernel"; keyColor = "red";}
-            {type = "display"; key = "   Display"; keyColor = "green";}
-            {type = "wm"; key = "   WM"; keyColor = "yellow";}
-            {type = "terminal"; key = "   Terminal"; keyColor = "yellow";}
-            {type = "custom"; format = "└──────────────────────────────────────────┘";}
-            "break"
-            {type = "title"; key = "  ";}
-            {type = "custom"; format = "┌──────────────────────────────────────────┐";}
-            {type = "cpu"; format = "{1}"; key = "   CPU"; keyColor = "blue";}
-            {type = "gpu"; format = "{2}"; key = "   GPU"; keyColor = "blue";}
-            {type = "gpu"; format = "{3}"; key = "   GPU Driver"; keyColor = "magenta";}
-            {type = "memory"; key = "  ﬙ Memory"; keyColor = "magenta";}
-            {
-              type = "command";
-              key = "  󱦟 OS Age ";
-              keyColor = "31";
-              text = "birth_install=$(stat -c %W /); current=$(date +%s); time_progression=$((current - birth_install)); days_difference=$((time_progression / 86400)); echo $days_difference days";
-            }
-            {type = "uptime"; key = "  󱫐 Uptime "; keyColor = "red";}
-            {type = "custom"; format = "└──────────────────────────────────────────┘";}
-            {type = "colors"; paddingLeft = 2; symbol = "circle";}
-            "break"
-          ];
+          modules = let
+            mkModules = includeOptional: modules:
+              map (conf:
+                if (builtins.isAttrs conf)
+                then (builtins.removeAttrs conf ["optional"])
+                else conf)
+              (builtins.filter
+                (conf:
+                  if (builtins.isAttrs conf)
+                  then (({optional ? false, ...}: !optional || includeOptional) conf)
+                  else true)
+                modules);
+          in
+            mkModules (fastfetch.profile == "full") [
+              {
+                type = "custom";
+                format = "\u001b[36m    コンピューター";
+              }
+              {
+                type = "custom";
+                format = "┌──────────────────────────────────────────┐";
+                optional = true;
+              }
+              {
+                type = "os";
+                key = "   OS";
+                keyColor = "red";
+              }
+              {
+                type = "kernel";
+                key = "   Kernel";
+                keyColor = "red";
+              }
+              {
+                type = "display";
+                key = "   Display";
+                keyColor = "green";
+              }
+              {
+                type = "wm";
+                key = "   WM";
+                keyColor = "yellow";
+                optional = true;
+              }
+              {
+                type = "terminal";
+                key = "   Terminal";
+                keyColor = "yellow";
+              }
+              {
+                type = "custom";
+                format = "└──────────────────────────────────────────┘";
+                optional = true;
+              }
+              "break"
+              {
+                type = "title";
+                key = "  ";
+              }
+              {
+                type = "custom";
+                format = "┌──────────────────────────────────────────┐";
+                optional = true;
+              }
+              {
+                type = "cpu";
+                format = "{1}";
+                key = "   CPU";
+                keyColor = "blue";
+              }
+              {
+                type = "gpu";
+                format = "{2}";
+                key = "   GPU";
+                keyColor = "blue";
+              }
+              {
+                type = "gpu";
+                format = "{3}";
+                key = "   GPU Driver";
+                keyColor = "magenta";
+              }
+              {
+                type = "memory";
+                key = "  ﬙ Memory";
+                keyColor = "magenta";
+              }
+              {
+                type = "command";
+                key = "  󱦟 OS Age ";
+                keyColor = "31";
+                text = "birth_install=$(stat -c %W /); current=$(date +%s); time_progression=$((current - birth_install)); days_difference=$((time_progression / 86400)); echo $days_difference days";
+                optional = true;
+              }
+              {
+                type = "uptime";
+                key = "  󱫐 Uptime ";
+                keyColor = "red";
+              }
+              {
+                type = "custom";
+                format = "└──────────────────────────────────────────┘";
+                optional = true;
+              }
+              {
+                type = "colors";
+                paddingLeft = 2;
+                symbol = "circle";
+              }
+              "break"
+            ];
         };
       };
 
