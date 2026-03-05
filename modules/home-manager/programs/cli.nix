@@ -3,6 +3,7 @@
   config,
   pkgs,
   inputs ? {},
+  passthrough,
   ...
 }: let
   inherit (config.hm.programs) cli;
@@ -67,7 +68,10 @@ in {
 
     home.shellAliases = {
       svim = "sudo nvim";
-      update = "nh os switch ~/nixos-config";
+      update =
+        if passthrough == null # standalone home-manager
+        then "nh home switch ~/nixos-config"
+        else "nh os switch ~/nixos-config";
       nuke-cache = "rm -rf ~/.cache/nix";
       gc = "nh clean all";
       clean-hmbkups = "find ${config.home.homeDirectory}/.config -name \"*.hmbkup\" -type f -delete";
