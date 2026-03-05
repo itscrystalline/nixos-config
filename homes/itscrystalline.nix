@@ -1,8 +1,11 @@
 {
   headless ? false,
   nextcloudMount ? false,
+}: {
+  lib,
   config,
-}: {lib, ...}: {
+  ...
+}: {
   hm = lib.mkMerge [
     {
       core.username = "itscrystalline";
