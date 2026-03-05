@@ -10,18 +10,17 @@
     settings = {
       experimental-features = ["nix-command" "flakes"];
 
-      substituters =
-        [
-          "https://cache.nixos.org"
-          "https://devenv.cachix.org"
-          "https://sanzenvim.cachix.org"
-          "https://nix-community.cachix.org"
-          "https://nixpkgs-python.cachix.org"
-          "https://cuda-maintainers.cachix.org"
-          "https://attic.xuyh0120.win/lantian"
-          "http://cache${config.crystals-services.nginx.localSuffix}"
-        ]
-        ++ lib.optional config.gui.niri.enable "https://niri.cachix.org";
+      substituters = [
+        "https://cache.nixos.org"
+        "https://devenv.cachix.org"
+        "https://sanzenvim.cachix.org"
+        "https://nix-community.cachix.org"
+        "https://nixpkgs-python.cachix.org"
+        "https://cuda-maintainers.cachix.org"
+        "https://attic.xuyh0120.win/lantian"
+        "http://cache${config.crystals-services.nginx.localSuffix}"
+        "https://niri.cachix.org"
+      ];
 
       trusted-public-keys = [
         "hydra.nixos.org-1:CNHJZBh9K4tP3EKF6FkkgeVYsS3ohTl+oS0Qa8bezVs="
@@ -40,47 +39,43 @@
       auto-optimise-store = true;
     };
 
-    nixPath =
-      [
-        "nixpkgs=${inputs.nixpkgs}"
-        "nixpkgs-unstable=${inputs.nixpkgs-unstable}"
-        "nur=${inputs.nur}"
-        "nixos-hardware=${inputs.nixos-hardware}"
-        "stylix=${inputs.stylix}"
-        "stylix-unstable=${inputs.stylix-unstable}"
-      ]
-      ++ lib.optional (options ? home-manager) "home-manager=${inputs.home-manager}"
-      ++ lib.optionals config.gui.enable [
-        "zen-browser=${inputs.zen-browser}"
-        "nix-flatpak=${inputs.nix-flatpak}"
-        "niri=${inputs.niri}"
-      ];
+    nixPath = [
+      "nixpkgs=${inputs.nixpkgs}"
+      "nixpkgs-unstable=${inputs.nixpkgs-unstable}"
+      "nur=${inputs.nur}"
+      "nixos-hardware=${inputs.nixos-hardware}"
+      "stylix=${inputs.stylix}"
+      "stylix-unstable=${inputs.stylix-unstable}"
+      "home-manager=${inputs.home-manager}"
+      "zen-browser=${inputs.zen-browser}"
+      "nix-flatpak=${inputs.nix-flatpak}"
+      "niri=${inputs.niri}"
+    ];
 
     package = pkgs.lixPackageSets.stable.lix;
   };
 
   nixpkgs.config.allowUnfree = true;
-  nixpkgs.overlays =
-    [
-      (_: prev: {
-        stable = prev;
-        hostsys = prev.stdenv.hostPlatform.system;
-        unstable = import inputs.nixpkgs-unstable {
-          config.allowUnfree = true;
-          inherit (prev.stdenv.hostPlatform) system;
-        };
+  nixpkgs.overlays = [
+    (_: prev: {
+      stable = prev;
+      hostsys = prev.stdenv.hostPlatform.system;
+      unstable = import inputs.nixpkgs-unstable {
+        config.allowUnfree = true;
+        inherit (prev.stdenv.hostPlatform) system;
+      };
 
-        inherit
-          (prev.lixPackageSets.stable)
-          nixpkgs-review
-          nix-eval-jobs
-          nix-fast-build
-          colmena
-          ;
-      })
-      inputs.nix-cachyos-kernel.overlays.pinned
-    ]
-    ++ lib.optional config.gui.niri.enable inputs.niri.overlays.niri;
+      inherit
+        (prev.lixPackageSets.stable)
+        nixpkgs-review
+        nix-eval-jobs
+        nix-fast-build
+        colmena
+        ;
+    })
+    inputs.nix-cachyos-kernel.overlays.pinned
+    inputs.niri.overlays.niri
+  ];
 
   system.stateVersion = "24.11";
 }

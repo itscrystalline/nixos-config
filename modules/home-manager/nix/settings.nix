@@ -13,19 +13,16 @@ in
       settings = {
         experimental-features = ["nix-command" "flakes"];
 
-        substituters =
-          [
-            "https://cache.nixos.org"
-            "https://devenv.cachix.org"
-            "https://sanzenvim.cachix.org"
-            "https://nix-community.cachix.org"
-            "https://nixpkgs-python.cachix.org"
-            "https://niri.cachix.org"
-            "https://cuda-maintainers.cachix.org"
-          ]
-          ++ lib.optionals guiEnabled [
-            "http://cache.crys"
-          ];
+        substituters = [
+          "https://cache.nixos.org"
+          "https://devenv.cachix.org"
+          "https://sanzenvim.cachix.org"
+          "https://nix-community.cachix.org"
+          "https://nixpkgs-python.cachix.org"
+          "https://niri.cachix.org"
+          "https://cuda-maintainers.cachix.org"
+          "http://cache.crys"
+        ];
 
         trusted-public-keys = [
           "hydra.nixos.org-1:CNHJZBh9K4tP3EKF6FkkgeVYsS3ohTl+oS0Qa8bezVs="
@@ -44,17 +41,14 @@ in
         auto-optimise-store = true;
       };
 
-      nixPath =
-        [
-          "nixpkgs=${inputs.nixpkgs or ""}"
-          "nur=${inputs.nur or ""}"
-          "home-manager=${inputs.home-manager or ""}"
-          "stylix=${inputs.stylix or ""}"
-        ]
-        ++ lib.optionals guiEnabled [
-          "zen-browser=${inputs.zen-browser or ""}"
-          "niri=${inputs.niri or ""}"
-        ];
+      nixPath = [
+        "nixpkgs=${inputs.nixpkgs or ""}"
+        "nur=${inputs.nur or ""}"
+        "home-manager=${inputs.home-manager or ""}"
+        "stylix=${inputs.stylix or ""}"
+        "zen-browser=${inputs.zen-browser or ""}"
+        "niri=${inputs.niri or ""}"
+      ];
 
       package = pkgs.lixPackageSets.stable.lix;
 
@@ -77,6 +71,6 @@ in
           colmena
           ;
       })
-    ]
-    ++ lib.optional (inputs ? niri) inputs.niri.overlays.niri;
+      inputs.niri.overlays.niri
+    ];
   }
