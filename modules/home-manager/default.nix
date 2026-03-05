@@ -16,17 +16,13 @@ in {
     ./theming
   ];
 
-  options = {
-    hm = {
-      core.username = mkOption {
-        type = types.str;
-        description = "Username of this user.";
-        default = "";
-      };
-
-      bluetooth.enable = lib.mkEnableOption "Bluetooth";
-      gui.enable = lib.mkEnableOption "GUI configuration";
+  options.hm = {
+    core.username = mkOption {
+      type = types.str;
+      description = "Username of this user.";
+      default = "";
     };
+    bluetooth.enable = lib.mkEnableOption "Bluetooth";
   };
 
   config = lib.mkMerge [
