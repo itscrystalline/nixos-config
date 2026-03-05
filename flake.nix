@@ -1,21 +1,17 @@
 {
-  description = "System Flake";
+  description = "Crystal's NixOS Flake";
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.11";
     nixpkgs-unstable.url = "nixpkgs/nixos-unstable";
-    nix-cachyos-kernel.url = "github:xddxdd/nix-cachyos-kernel/release";
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
+    nix-cachyos-kernel.url = "github:xddxdd/nix-cachyos-kernel/release";
     nixos-generators = {
       url = "github:nix-community/nixos-generators";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     home-manager = {
       url = "github:nix-community/home-manager/release-25.11";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-    nix-darwin = {
-      url = "github:nix-darwin/nix-darwin/nix-darwin-25.11";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     zen-browser = {
@@ -29,23 +25,10 @@
       url = "github:nix-community/NUR";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    my-nur.url = "github:itscrystalline/nur-packages";
-    blender-flake.url = "github:edolstra/nix-warez?dir=blender";
-    nix-flatpak.url = "github:gmodena/nix-flatpak";
-    sanzenvim.url = "github:itscrystalline/sanzenvim";
-    iw2tryhard-dev.url = "github:itscrystalline/iw2tryhard-dev-3.0";
-    occasion.url = "github:itscrystalline/occasion";
     nix-index-database = {
       url = "github:nix-community/nix-index-database";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    vicinae.url = "github:vicinaehq/vicinae";
-    winapps = {
-      url = "github:winapps-org/winapps";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-    stylix.url = "github:nix-community/stylix/release-25.11";
-    stylix-unstable.url = "github:nix-community/stylix";
     niri = {
       url = "github:sodiboo/niri-flake";
       inputs = {
@@ -57,6 +40,15 @@
       url = "github:noctalia-dev/noctalia-shell";
       inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
+    my-nur.url = "github:itscrystalline/nur-packages";
+    blender-flake.url = "github:edolstra/nix-warez?dir=blender";
+    nix-flatpak.url = "github:gmodena/nix-flatpak";
+    sanzenvim.url = "github:itscrystalline/sanzenvim";
+    iw2tryhard-dev.url = "github:itscrystalline/iw2tryhard-dev-3.0";
+    occasion.url = "github:itscrystalline/occasion";
+    vicinae.url = "github:vicinaehq/vicinae";
+    stylix.url = "github:nix-community/stylix/release-25.11";
+    stylix-unstable.url = "github:nix-community/stylix";
   };
 
   outputs = inputs @ {
@@ -64,181 +56,116 @@
     nixos-hardware,
     nixos-generators,
     home-manager,
-    nix-darwin,
     ...
   }: let
-    secrets = builtins.fromJSON (builtins.readFile ./secrets/secrets.json);
-    hosts = import ./hosts.nix;
+    # All HM modules shared by both standalone and NixOS-embedded configs.
+    # Does NOT include stylix (NixOS provides it via nixosModules.stylix).
+    hmModules = [
+      ./modules/home-manager
+      ./secrets
+      inputs.nix-flatpak.homeManagerModules.nix-flatpak
+      inputs.nix-index-database.homeModules.nix-index
+      inputs.occasion.homeManagerModule
+      inputs.vicinae.homeManagerModules.default
+      inputs.zen-browser.homeModules.twilight
+      inputs.noctalia.homeModules.default
+    ];
 
-    # Shared home-manager configuration
-    mkHome = hostCfg: {
+    # Build a standalone homeManagerConfiguration (adds stylix HM module).
+    # userModules: per-user HM option files (e.g. ./homes/itscrystalline.nix).
+    mkStandaloneHome = system: userModules:
+      home-manager.lib.homeManagerConfiguration {
+        pkgs = nixpkgs.legacyPackages.${system};
+        modules =
+          hmModules
+          ++ [
+            inputs.stylix.homeModules.stylix
+            inputs.niri.homeModules.niri
+          ]
+          ++ userModules;
+        extraSpecialArgs = {
+          inherit inputs;
+          passthrough = null;
+        };
+      };
+
+    # Inline NixOS module that wires up home-manager for the primary user.
+    # hmUserModules: additional per-host HM option files.
+    nixosHmConfig = hmUserModules: {config, ...}: {
       home-manager = {
         useGlobalPkgs = true;
         useUserPackages = true;
         backupFileExtension = "hmbkup";
-        users.itscrystalline = {
-          imports =
-            [
-              ./vars.nix
-              ./home/home-linux.nix
-
-              {config = hostCfg.vars;}
-              inputs.nix-flatpak.homeManagerModules.nix-flatpak
-              inputs.nix-index-database.homeModules.nix-index
-              inputs.occasion.homeManagerModule
-              inputs.vicinae.homeManagerModules.default
-              inputs.zen-browser.homeModules.twilight
-              inputs.noctalia.homeModules.default
-            ]
-            ++ hostCfg.hm
-            ++ hostCfg.extraHmConfig;
-        };
-
-        extraSpecialArgs = {
-          inherit inputs secrets;
-        };
+        extraSpecialArgs = {inherit inputs;};
+        users.${config.core.primaryUser}.imports = hmModules ++ hmUserModules;
       };
     };
 
-    # Build a NixOS system configuration
-    mkNixos = {
-      hostCfg,
-      system,
-      extraModules ? [],
-      withHome ? true,
-    }: {
-      inherit system;
-      specialArgs = {
-        inherit inputs secrets;
+    mkHost = {
+      arch,
+      configModule,
+      otherModules ? [],
+      userHomeModules ? [],
+    }:
+      nixpkgs.lib.nixosSystem {
+        system = arch;
+        specialArgs.inputs = inputs;
+        modules =
+          [
+            inputs.nur.modules.nixos.default
+            inputs.stylix.nixosModules.stylix
+          ]
+          ++ nixpkgs.lib.optionals (userHomeModules != []) [
+            home-manager.nixosModules.home-manager
+            (nixosHmConfig userHomeModules)
+          ]
+          ++ [
+            ./modules/nixos
+            ./secrets
+            configModule
+          ]
+          ++ otherModules;
       };
-      modules =
-        [
-          {config = hostCfg.vars;}
-          inputs.nur.modules.nixos.default
-          inputs.stylix.nixosModules.stylix
-        ]
-        ++ extraModules
-        ++ [
-          ./vars.nix
-          ./nix-settings.nix
-          hostCfg.hostModule
-        ]
-        ++ hostCfg.extraNixosConfig
-        ++ nixpkgs.lib.optionals withHome [
-          home-manager.nixosModules.home-manager
-          (mkHome hostCfg)
-        ];
-    };
 
-    cwystaws-meowchine = mkNixos {
-      hostCfg = hosts.cwystaws-meowchine;
-      system = "x86_64-linux";
-      extraModules = [
+    server-itscrystalline = import ./homes/itscrystalline.nix {headless = true;};
+
+    rhys = mkHost {
+      arch = "x86_64-linux";
+      configModule = ./hosts/rhys.nix;
+      otherModules = [
         inputs.nix-flatpak.nixosModules.nix-flatpak
         inputs.niri.nixosModules.niri
         nixos-hardware.nixosModules.asus-fx506hm
       ];
+      userHomeModules = [(import ./homes/itscrystalline.nix {nextcloudMount = true;})];
     };
-
-    mkRaspi = {
-      hostCfg,
-      withHome,
-    }:
-      mkNixos {
-        inherit hostCfg withHome;
-        system = "aarch64-linux";
-        extraModules = [
-          nixos-hardware.nixosModules.raspberry-pi-4
-        ];
-      };
-    # Shared HM module imports for standalone homeManagerConfigurations
-    hmModules = hostCfg:
-      [
-        ./vars.nix
-        ./home/home-linux.nix
-
-        {config = hostCfg.vars;}
-        inputs.nix-flatpak.homeManagerModules.nix-flatpak
-        inputs.nix-index-database.homeModules.nix-index
-        inputs.occasion.homeManagerModule
-        inputs.vicinae.homeManagerModules.default
-        inputs.zen-browser.homeModules.twilight
-        inputs.noctalia.homeModules.default
-        inputs.stylix.homeModules.stylix
-      ]
-      ++ hostCfg.hm
-      ++ hostCfg.extraHmConfig;
-
-    # Build a standalone homeManagerConfiguration
-    mkStandaloneHome = {
-      hostCfg,
-      system,
-    }:
-      home-manager.lib.homeManagerConfiguration {
-        pkgs = nixpkgs.legacyPackages.${system};
-        modules = hmModules hostCfg;
-        extraSpecialArgs = {
-          inherit inputs secrets;
-        };
-      };
+    raine = mkHost {
+      arch = "aarch64-linux";
+      configModule = ./hosts/raine.nix;
+      otherModules = [
+        nixos-hardware.nixosModules.raspberry-pi-4
+      ];
+      userHomeModules = [server-itscrystalline];
+    };
+    liriel = mkHost {
+      arch = "aarch64-linux";
+      configModule = ./hosts/liriel.nix;
+      otherModules = [
+        nixos-hardware.nixosModules.raspberry-pi-4
+      ];
+      userHomeModules = [];
+    };
   in {
     nixosConfigurations = {
-      cwystaws-meowchine = nixpkgs.lib.nixosSystem cwystaws-meowchine;
-      cwystaws-raspi = nixpkgs.lib.nixosSystem (mkRaspi {
-        hostCfg = hosts.cwystaws-raspi;
-        withHome = true;
-      });
-      cwystaws-dormpi = nixpkgs.lib.nixosSystem (mkRaspi {
-        hostCfg = hosts.cwystaws-dormpi;
-        withHome = false;
-      });
+      inherit rhys raine liriel;
     };
-
     homeConfigurations = {
-      "itscrystalline@cwystaws-meowchine" = mkStandaloneHome {
-        hostCfg = hosts.cwystaws-meowchine;
-        system = "x86_64-linux";
-      };
-      "itscrystalline@cwystaws-raspi" = mkStandaloneHome {
-        hostCfg = hosts.cwystaws-raspi;
-        system = "aarch64-linux";
-      };
-      "itscrystalline@cwystaws-macbook" = mkStandaloneHome {
-        hostCfg = hosts.cwystaws-macbook;
-        system = "x86_64-darwin";
-      };
+      # "itscrystalline" = mkStandaloneHome "aarch64-linux" [server-itscrystalline];
+      "opc" = mkStandaloneHome "aarch64-linux" [./homes/opc.nix];
     };
-
-    packages.aarch64-linux = {
-      cwystaws-raspi = nixos-generators.nixosGenerate ((mkRaspi {
-          hostCfg = hosts.cwystaws-raspi;
-          withHome = true;
-        })
-        // {format = "sd-aarch64";});
-      cwystaws-dormpi = nixos-generators.nixosGenerate ((mkRaspi {
-          hostCfg = hosts.cwystaws-dormpi;
-          withHome = false;
-        })
-        // {format = "sd-aarch64";});
-    };
-
-    darwinConfigurations."cwystaws-macbook" = nix-darwin.lib.darwinSystem {
-      specialArgs = {
-        inherit inputs secrets;
-      };
-      modules =
-        [
-          {config = hosts.cwystaws-macbook.vars;}
-
-          ./vars.nix
-          ./nix-settings.nix
-          hosts.cwystaws-macbook.hostModule
-
-          inputs.stylix.darwinModules.stylix
-          home-manager.darwinModules.home-manager
-          (mkHome hosts.cwystaws-macbook)
-        ]
-        ++ hosts.cwystaws-macbook.extraNixosConfig;
+    packages = {
+      aarch64-linux.docs = nixpkgs.legacyPackages.aarch64-linux.callPackage ./modules/docs.nix {};
+      x86_64-linux.docs = nixpkgs.legacyPackages.x86_64-linux.callPackage ./modules/docs.nix {};
     };
   };
 }

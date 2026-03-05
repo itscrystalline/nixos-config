@@ -1,0 +1,65 @@
+{
+  lib,
+  config,
+  pkgs,
+  inputs,
+  ...
+}: let
+  enabled = config.theming.enable && config.gui.enable;
+in {
+  config = lib.mkIf enabled {
+    environment.systemPackages = with pkgs; [
+      kdePackages.qtstyleplugin-kvantum
+      kdePackages.qt6ct
+      libsForQt5.qt5ct
+    ];
+
+    qt.enable = true;
+
+    fonts = {
+      packages = with pkgs; [
+        noto-fonts
+        noto-fonts-cjk-sans
+        noto-fonts-color-emoji
+        inter
+        nerd-fonts.jetbrains-mono
+        unstable.material-symbols
+        sarabun-font
+        inputs.my-nur.packages.${pkgs.hostsys}.sipa-th-fonts
+      ];
+
+      fontconfig = {
+        defaultFonts = {
+          serif = ["Noto Serif" "Material Symbols Rounded" "Noto Sans Thai" "Noto Color Emoji"];
+          sansSerif = ["Inter" "Material Symbols Rounded" "Noto Sans Thai" "Noto Color Emoji"];
+          monospace = ["JetbrainsMono Nerd Font Mono" "Material Symbols Rounded" "Noto Color Emoji"];
+        };
+      };
+
+      fontDir.enable = true;
+    };
+
+    stylix = {
+      fonts = rec {
+        serif = {
+          package = pkgs.inter;
+          name = "Inter";
+        };
+        sansSerif = serif;
+        monospace = {
+          package = pkgs.nerd-fonts.jetbrains-mono;
+          name = "JetbrainsMono Nerd Font Mono";
+        };
+        emoji = {
+          package = pkgs.noto-fonts-color-emoji;
+          name = "Noto Color Emoji";
+        };
+      };
+      cursor = {
+        name = "catppuccin-mocha-pink-cursors";
+        package = pkgs.catppuccin-cursors.mochaPink;
+        size = 48;
+      };
+    };
+  };
+}

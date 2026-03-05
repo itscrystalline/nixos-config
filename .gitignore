@@ -8,3 +8,4 @@ result
 .git-hooks
 
 secret-key
+secrets/unlocked

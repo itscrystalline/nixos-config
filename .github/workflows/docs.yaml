@@ -1,0 +1,38 @@
+name: Build docs
+
+on:
+  push:
+    paths:
+      - 'modules/**'
+
+permissions:
+  contents: write
+
+jobs:
+  docs:
+    name: Build docs and commit
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Install Nix
+      uses: cachix/install-nix-action@v30
+
+    - name: Build docs
+      run: |
+        nix build .#docs -L 2>&1
+
+    - name: Copy result
+      run: | 
+        cp result options.md
+        rm result
+
+    - name: Commit
+      uses: EndBug/add-and-commit@v9
+      with:
+        default_author: github_actions
+        push: true
+        message: 'chore: update docs (automated)'
+
