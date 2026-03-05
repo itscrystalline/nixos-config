@@ -3,6 +3,7 @@
   config,
   pkgs,
   inputs ? {},
+  options,
   ...
 }: let
   inherit (config.hm) theming;
@@ -20,19 +21,20 @@ in {
           ELECTRON_OZONE_PLATFORM_HINT = "auto";
           GSK_RENDERER = "ngl";
         };
-        packages = with pkgs; [
-          adwsteamgtk
-          noto-fonts
-          noto-fonts-cjk-sans
-          noto-fonts-color-emoji
-          inter
-          nerd-fonts.jetbrains-mono
-          sarabun-font
-          unstable.material-symbols
-        ]
-        ++ lib.optionals (inputs ? my-nur) [
-          inputs.my-nur.packages.${pkgs.hostsys}.sipa-th-fonts
-        ];
+        packages = with pkgs;
+          [
+            adwsteamgtk
+            noto-fonts
+            noto-fonts-cjk-sans
+            noto-fonts-color-emoji
+            inter
+            nerd-fonts.jetbrains-mono
+            sarabun-font
+            unstable.material-symbols
+          ]
+          ++ lib.optionals (inputs ? my-nur) [
+            inputs.my-nur.packages.${pkgs.hostsys}.sipa-th-fonts
+          ];
         activation.installSteamSkin = lib.hm.dag.entryAfter ["writeBoundary"] ''
           if [ -d "$HOME/.local/share/Steam" ]; then
             ${lib.getExe pkgs.adwsteamgtk} -o "color_theme:catppuccin-mocha;win_controls:adwaita;win_controls_layout:adwaita" -i || true
@@ -60,7 +62,7 @@ in {
       };
     })
 
-    {
+    (lib.optionalAttrs (options ? stylix) {
       stylix = {
         enable = true;
         base16Scheme = "${pkgs.base16-schemes}/share/themes/catppuccin-mocha.yaml";
@@ -94,6 +96,6 @@ in {
           };
         };
       };
-    }
+    })
   ]);
 }

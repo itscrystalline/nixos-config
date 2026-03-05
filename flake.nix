@@ -114,6 +114,8 @@
           [
             inputs.nur.modules.nixos.default
             inputs.stylix.nixosModules.stylix
+          ]
+          ++ nixpkgs.lib.optionals (userHomeModules != []) [
             home-manager.nixosModules.home-manager
             (nixosHmConfig userHomeModules)
           ]
