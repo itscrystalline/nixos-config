@@ -1,32 +1,46 @@
-{...}: {
-  hm = {
-    core.username = "itscrystalline";
+{
+  headless ? false,
+  nextcloudMount ? false,
+}: {lib, ...}: {
+  hm = lib.mkMerge [
+    {
+      core.username = "itscrystalline";
+      theming.enable = true;
 
-    bluetooth.enable = true;
-    theming.enable = true;
-    flatpak.enable = true;
+      programs = {
+        cli = {
+          enable = true;
+          dev.enable = true;
+        };
+        ides.enable = true;
+      };
 
-    gui = {
-      enable = true;
-      niri.enable = true;
-      shell.enable = true;
-    };
-
-    programs = {
+      services.nextcloud.enable = nextcloudMount;
+    }
+    (lib.mkIf (!headless) {
+      bluetooth.enable = true;
+      flatpak.enable = true;
       gui = {
         enable = true;
-        blender.enable = true;
-        vicinae.enable = true;
+        niri.enable = true;
+        shell.enable = true;
       };
-      cli = {
-        enable = true;
-        dev.enable = true;
+      programs = {
+        gui = {
+          enable = true;
+          largePrograms.enable = true;
+          vicinae = {
+            enable = true;
+            plugins = {
+              own = ["wifi-commander" "nix" "it-tools" "niri" "bluetooth"];
+              raycast = ["bintools" "github" "latex-math-symbols" "gif-search" "devdocs" "homeassistant" "wikipedia" "speedtest"];
+            };
+          };
+        };
+        games.enable = true;
+        cli.fastfetch.profile = "full";
       };
-      ides.enable = true;
-      games.enable = true;
-    };
-
-    services.nextcloud.enable = true;
-    services.enable = true;
-  };
+      services.mpris-proxy.enable = true;
+    })
+  ];
 }

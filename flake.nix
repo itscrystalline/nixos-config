@@ -125,6 +125,8 @@
           ++ otherModules;
       };
 
+    server-itscrystalline = import ./homes/itscrystalline.nix {headless = true;};
+
     rhys = mkHost {
       arch = "x86_64-linux";
       configModule = ./hosts/rhys.nix;
@@ -133,7 +135,7 @@
         inputs.niri.nixosModules.niri
         nixos-hardware.nixosModules.asus-fx506hm
       ];
-      userHomeModules = [./homes/itscrystalline.nix];
+      userHomeModules = [(import ./homes/itscrystalline.nix {nextcloudMount = true;})];
     };
     raine = mkHost {
       arch = "aarch64-linux";
@@ -141,7 +143,7 @@
       otherModules = [
         nixos-hardware.nixosModules.raspberry-pi-4
       ];
-      userHomeModules = [./homes/itscrystalline.nix];
+      userHomeModules = [server-itscrystalline];
     };
     liriel = mkHost {
       arch = "aarch64-linux";
@@ -149,20 +151,24 @@
       otherModules = [
         nixos-hardware.nixosModules.raspberry-pi-4
       ];
-      userHomeModules = [./homes/itscrystalline.nix];
+      userHomeModules = [];
     };
   in {
     nixosConfigurations = {
       inherit rhys raine liriel;
     };
-
-    packages.aarch64-linux = {
-      raine = nixos-generators.nixosGenerate (raine // {format = "sd-aarch64";});
-      liriel = nixos-generators.nixosGenerate (liriel // {format = "sd-aarch64";});
-    };
-    packages.x86_64-linux.docs = nixpkgs.legacyPackages.x86_64-linux.callPackage ./modules/docs.nix {};
     homeConfigurations = {
-      "itscrystalline@rhys" = mkStandaloneHome "x86_64-linux" [./homes/itscrystalline.nix];
+      "itscrystalline" = mkStandaloneHome "x86_64-linux" [server-itscrystalline];
+      "opc" = mkStandaloneHome "x86_64-linux" [server-itscrystalline];
+    };
+    packages = {
+      aarch64-linux = {
+        raine = nixos-generators.nixosGenerate (raine // {format = "sd-aarch64";});
+        liriel = nixos-generators.nixosGenerate (liriel // {format = "sd-aarch64";});
+
+        docs = nixpkgs.legacyPackages.aarch64-linux.callPackage ./modules/docs.nix {};
+      };
+      x86_64-linux.docs = nixpkgs.legacyPackages.x86_64-linux.callPackage ./modules/docs.nix {};
     };
   };
 }
