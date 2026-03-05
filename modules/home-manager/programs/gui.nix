@@ -47,7 +47,7 @@ in {
           wireshark
           gimp
         ])
-        ++ [youtube-music pkgs.stdenv.isLinux]
+        ++ [(youtube-music pkgs.stdenv.isLinux)]
         ++ lib.optionals largePrograms (with pkgs.stable; [
           kdePackages.kdenlive
           audacity
