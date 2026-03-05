@@ -38,6 +38,7 @@ in {
   programs.enable = true;
   gui = {
     enable = true;
+    steam.enable = true;
     flatpak.enable = true;
     obs.enable = true;
     niri.enable = true;
@@ -82,6 +83,8 @@ in {
     localsend.enable = true;
     docker.enable = true;
     pipewire.enable = true;
+    printing.enable = true;
+    pm.enable = true;
   };
 
   nix = {
