@@ -7,7 +7,7 @@
   inherit (lib) types mkOption;
   inherit (config.hm) remoteBuilders asBuilderConfig;
 
-  mkMachineEntry = b: "ssh://${b.user}@${b.hostName} ${builtins.concatStringsSep "," b.systems} ${b.sshKey} ${toString b.maxJobs} ${toString b.speedFactor} ${builtins.concatStringsSep "," b.supportedFeatures}";
+  mkMachineEntry = b: "ssh://${b.user}@${b.hostName} ${builtins.concatStringsSep "," b.systems} ${b.privateKeyPath} ${toString b.maxJobs} ${toString b.speedFactor} ${builtins.concatStringsSep "," b.supportedFeatures}";
 
   machinesFile = pkgs.writeText "nix-machines" (
     builtins.concatStringsSep "\n" (map mkMachineEntry remoteBuilders) + "\n"
@@ -35,7 +35,7 @@ in {
             '';
           };
 
-          sshKey = mkOption {
+          privateKeyPath = mkOption {
             type = types.str;
             default = "/etc/nix/builder-key";
             description = ''
@@ -50,11 +50,12 @@ in {
             '';
           };
 
-          hostPublicKey = mkOption {
+          publicKeyPath = mkOption {
             type = types.str;
             description = ''
               The SSH *host* public key of the remote builder.
-              Added to known_hosts so Nix can connect without prompts.
+              Written into ~/.ssh/known_hosts and also used to set
+              StrictHostKeyChecking in the SSH match block for this builder.
 
               Find this by running on the builder:
                 cat /etc/ssh/ssh_host_ed25519_key.pub
@@ -98,7 +99,7 @@ in {
 
         2. Add the public key to each builder's `hm.asBuilderConfig.authorizedKeys`.
 
-        3. Get each builder's host public key for `hostPublicKey`:
+        3. Get each builder's host public key for `publicKeyPath`:
              ssh-keyscan <builder-host> | grep ed25519
 
         4. Test:
@@ -164,22 +165,21 @@ in {
 
   config = lib.mkMerge [
     (lib.mkIf (remoteBuilders != []) {
+      programs.ssh.enable = true;
+
+      hm.programs.ssh.hosts = builtins.listToAttrs (map (b: {
+          name = "nix-builder-${b.hostName}";
+          value = {
+            inherit (b) user privateKeyPath publicKeyPath;
+            hostname = b.hostName;
+          };
+        })
+        remoteBuilders);
+
       nix.extraOptions = ''
         builders = @${machinesFile}
         builders-use-substitutes = true
         fallback = true
-      '';
-
-      home.activation.nixRemoteBuilderKnownHosts = lib.hm.dag.entryAfter ["writeBoundary"] ''
-        mkdir -p "$HOME/.ssh"
-        touch "$HOME/.ssh/known_hosts"
-        chmod 600 "$HOME/.ssh/known_hosts"
-        ${builtins.concatStringsSep "\n" (map (b: ''
-            if ! grep -qF ${lib.escapeShellArg b.hostName} "$HOME/.ssh/known_hosts" 2>/dev/null; then
-              echo ${lib.escapeShellArg "${b.hostName} ${b.hostPublicKey}"} >> "$HOME/.ssh/known_hosts"
-            fi
-          '')
-          remoteBuilders)}
       '';
 
       home.activation.nixRemoteBuilderInfo = lib.hm.dag.entryAfter ["writeBoundary"] ''

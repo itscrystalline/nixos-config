@@ -6,5 +6,6 @@
     ./gui.nix
     ./blender.nix
     ./games.nix
+    ./ssh.nix
   ];
 }

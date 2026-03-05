@@ -1,6 +1,7 @@
 {
   headless ? false,
   nextcloudMount ? false,
+  config,
 }: {lib, ...}: {
   hm = lib.mkMerge [
     {
@@ -39,6 +40,27 @@
         };
         games.enable = true;
         cli.fastfetch.profile = "full";
+
+        ssh.hosts = {
+          rhys = {
+            publicKeyPath = "${config.home.homeDirectory}/.ssh/rhys.pub";
+            privateKeyPath = "${config.home.homeDirectory}/.ssh/rhys";
+          };
+          liriel = {
+            publicKeyPath = "${config.home.homeDirectory}/.ssh/liriel.pub";
+            privateKeyPath = "${config.home.homeDirectory}/.ssh/liriel";
+          };
+          raine = {
+            publicKeyPath = "${config.home.homeDirectory}/.ssh/raine.pub";
+            privateKeyPath = "${config.home.homeDirectory}/.ssh/raine";
+          };
+          oracle-cloud = {
+            hostname = "cwystaws-siwwybowox";
+            user = "opc";
+            publicKeyPath = "${config.home.homeDirectory}/.ssh/oracle_cloud.pub";
+            privateKeyPath = "${config.home.homeDirectory}/.ssh/oracle_cloud";
+          };
+        };
       };
       services.mpris-proxy.enable = true;
     })
