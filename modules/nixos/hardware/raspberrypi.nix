@@ -12,7 +12,7 @@ in {
       apply-overlays-dtmerge.enable = true;
       bluetooth.enable = true;
     };
-    hardware.enableAllHardware = false;
+    hardware.enableAllHardware = lib.mkForce false;
     environment.systemPackages = with pkgs; [
       libraspberrypi
       raspberrypi-eeprom
