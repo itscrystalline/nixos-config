@@ -467,7 +467,9 @@ in {
 
       zellij = {
         enable = true;
-        attachExistingSession = false;
+        attachExistingSession = true;
+        enableBashIntegration = true;
+        enableZshIntegration = true;
       };
 
       fzf = {
