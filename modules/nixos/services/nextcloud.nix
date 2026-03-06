@@ -23,7 +23,7 @@ in {
       description = "Path to a file containing the Nextcloud admin password.";
     };
     statsTokenFile = lib.mkOption {
-      type = lib.types.path;
+      type = lib.types.str;
       description = "Path to a file containing the Nextcloud serverinfo stats API token.";
     };
   };
