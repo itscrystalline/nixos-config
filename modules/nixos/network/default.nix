@@ -67,10 +67,26 @@ in {
         profile fields that reference them using $VAR syntax via
         networking.networkmanager.ensureProfiles.environmentFiles.
         Profile structure (SSID, IP config, etc.) stays in git-crypt
-        known-networks; only passwords live in sops.
-        Example env file contents:
-          SANTHAD_PSK=my-wifi-passphrase
-          KMITL_PSK=another-passphrase
+        known-networks; only credentials live in sops.
+
+        Three authentication types are supported:
+
+        Open networks — no credentials needed; no variables required.
+        Profile in known-networks has no wifi-security section.
+
+        WPA-PSK — add a PSK variable and reference it in the profile:
+          env file:   santhad_PSK=my-passphrase
+          known-networks: wifi-security.psk = "$santhad_PSK"
+
+        WPA-EAP / PEAP / MSCHAPv2 — add identity + password variables:
+          env file:   KMITL_HiSpeed_IDENTITY=username
+                      KMITL_HiSpeed_PASSWORD=password
+          known-networks:
+            802-1x.identity        = "$KMITL_HiSpeed_IDENTITY"
+            802-1x.password        = "$KMITL_HiSpeed_PASSWORD"
+            802-1x.eap             = "peap"
+            802-1x.phase2-auth     = "mschapv2"
+            wifi-security.key-mgmt = "wpa-eap"
       '';
     };
   };
