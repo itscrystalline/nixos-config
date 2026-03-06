@@ -74,14 +74,8 @@ in {
       ];
       udpRange = tcpRange;
     };
-    profiles = [];
-    sopsConnections = {
-      "KMITL-HiSpeed" = "wifi_kmitl_hispeed";
-      "cwystaw the neko :3 ^w^" = "wifi_cwystaw";
-      "dormpi" = "wifi_dormpi";
-      "santhad" = "wifi_santhad";
-      "santhad_5G" = "wifi_santhad_5g";
-    };
+    profiles = ["KMITL-HiSpeed" "cwystaw the neko :3 ^w^" "dormpi" "santhad" "santhad_5G"];
+    profileEnvSecret = "wifi-passwords";
   };
 
   crystals-services = {

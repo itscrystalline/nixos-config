@@ -28,11 +28,11 @@ in {
     };
   };
   config = lib.mkIf enabled {
-    # nextcloud_admin_password: only the nextcloud service user needs access.
-    sops.secrets.nextcloud_admin_password.owner = "nextcloud";
-    # nextcloud_admin_stats_token: readable by nextcloud (occ) and prometheus
+    # nextcloud-admin-password: only the nextcloud service user needs access.
+    sops.secrets."nextcloud-admin-password".owner = "nextcloud";
+    # nextcloud-admin-stats-token: readable by nextcloud (occ) and prometheus
     # exporter (different user). Mode 0444 is safe – this is a read-only token.
-    sops.secrets.nextcloud_admin_stats_token.mode = "0444";
+    sops.secrets."nextcloud-admin-stats-token".mode = "0444";
 
     services.nextcloud = {
       enable = true;

@@ -44,10 +44,8 @@
   network = {
     trustedInterfaces = [];
     ports.tcp = [80 443 2049 8080];
-    sopsConnections = {
-      "santhad" = "wifi_santhad";
-      "santhad_5G" = "wifi_santhad_5g";
-    };
+    profiles = ["santhad" "santhad_5G"];
+    profileEnvSecret = "wifi-passwords";
   };
 
   crystals-services = {
@@ -110,8 +108,8 @@
       enable = true;
       domain = "nc.iw2tryhard.dev";
       folder = "/mnt/main/nextcloud";
-      adminpassFile = config.sops.secrets.nextcloud_admin_password.path;
-      statsTokenFile = config.sops.secrets.nextcloud_admin_stats_token.path;
+      adminpassFile = config.sops.secrets."nextcloud-admin-password".path;
+      statsTokenFile = config.sops.secrets."nextcloud-admin-stats-token".path;
     };
     monitoring.enable = true;
     manga.enable = true;
