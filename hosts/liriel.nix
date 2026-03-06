@@ -22,6 +22,11 @@
   programs.enable = true;
   hardware.raspberrypi.enable = true;
 
+  network = {
+    dhcp = true;
+    profiles = ["KMITL-HiSpeed"];
+  };
+
   crystals-services = {
     ssh.enable = true;
     tailscale.enable = true;

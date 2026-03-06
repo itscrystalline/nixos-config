@@ -74,6 +74,7 @@ in {
       ];
       udpRange = tcpRange;
     };
+    profiles = ["KMITL-HiSpeed" "cwystaw the neko :3 ^w^" "dormpi" "santhad" "santhad_5G"];
   };
 
   crystals-services = {

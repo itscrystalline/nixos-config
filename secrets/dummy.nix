@@ -29,4 +29,5 @@
     token = "";
   };
   ghToken = "";
+  known-networks = {};
 }
