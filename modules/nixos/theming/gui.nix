@@ -30,9 +30,10 @@ in {
       ];
 
       fontconfig = {
+        enable = true;
         defaultFonts = {
           serif = ["Libertinus Serif" "Material Symbols Rounded" "Noto Serif Thai" "Noto Color Emoji"];
-          sansSerif = ["Inter" "Material Symbols Rounded" "Noto Sans CJK JP" "Noto Sans Thai" "Noto Color Emoji"];
+          sansSerif = ["Inter" "Material Symbols Rounded" "Noto Sans Thai" "Noto Sans CJK JP" "Noto Color Emoji"];
           monospace = ["JetbrainsMono Nerd Font Mono" "Material Symbols Rounded" "Noto Color Emoji"];
         };
       };
