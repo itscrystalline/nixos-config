@@ -143,14 +143,14 @@ in {
     restore-script
   ];
 
-  programs.msmtp = with config.secrets.mail; {
+  programs.msmtp = {
     enable = true;
     accounts = {
       default = {
         auth = true;
         tls = true;
-        user = username;
-        password = password;
+        user = config.secrets.mail.username;
+        passwordeval = "cat ${config.sops.secrets.mail_password.path}";
         host = "smtp.gmail.com";
         port = 587;
         from = "nc@iw2tryhard.dev";

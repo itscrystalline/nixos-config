@@ -1,0 +1,19 @@
+keys:
+  # Personal age key – generate with: age-keygen -o ~/.config/sops/age/keys.txt
+  # Print pubkey with: age-keygen -y ~/.config/sops/age/keys.txt
+  - &crystal age1XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+
+  # Host age keys, derived from each machine's SSH ed25519 host key.
+  # On the host run: nix-shell -p ssh-to-age --run 'cat /etc/ssh/ssh_host_ed25519_key.pub | ssh-to-age'
+  - &raine age1XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX   # raspi – cwystaws-raspi / dormpi
+  - &liriel age1XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX  # raspi – dormpi second pi
+  - &rhys age1XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX   # laptop – meowchine / rhys
+
+creation_rules:
+  - path_regex: secrets/secrets-runtime\.yaml$
+    key_groups:
+      - age:
+          - *crystal
+          - *raine
+          - *liriel
+          - *rhys

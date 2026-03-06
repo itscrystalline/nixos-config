@@ -5,7 +5,6 @@
 }: let
   inherit (config.crystals-services) cloudflared;
   enabled = cloudflared.enable;
-  secret_path = "${../../../secrets/cfd_creds.json}";
   mkDomains = attrs:
     lib.mergeAttrsList (map (key: {
       "${key}${
@@ -21,10 +20,13 @@
 in {
   options.crystals-services.cloudflared.enable = lib.mkEnableOption "Cloudflare tunnel";
   config = lib.mkIf enabled {
+    # Grant cloudflared access to its sops-managed credentials file.
+    sops.secrets.cloudflared_credentials.owner = "cloudflared";
+
     services.cloudflared = {
       enable = true;
       tunnels."fc4d0058-a84e-4ef5-b66f-56c2a1a7eb7f" = {
-        credentialsFile = secret_path;
+        credentialsFile = config.sops.secrets.cloudflared_credentials.path;
         ingress = mkDomains {
           "" = {};
           "www" = {};

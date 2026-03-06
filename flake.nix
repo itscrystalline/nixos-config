@@ -5,6 +5,10 @@
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.11";
     nixpkgs-unstable.url = "nixpkgs/nixos-unstable";
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
+    sops-nix = {
+      url = "github:Mic92/sops-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     nix-cachyos-kernel.url = "github:xddxdd/nix-cachyos-kernel/release";
     nixos-generators = {
       url = "github:nix-community/nixos-generators";
@@ -120,8 +124,10 @@
             (nixosHmConfig userHomeModules)
           ]
           ++ [
+            inputs.sops-nix.nixosModules.sops
             ./modules/nixos
             ./secrets
+            ./secrets/runtime.nix
             configModule
           ]
           ++ otherModules;

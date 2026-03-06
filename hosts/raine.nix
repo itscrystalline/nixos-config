@@ -111,8 +111,8 @@
       enable = true;
       domain = "nc.iw2tryhard.dev";
       folder = "/mnt/main/nextcloud";
-      adminpassFile = config.secrets.nextcloud.admin.password;
-      statsToken = config.secrets.nextcloud.admin.stats_token;
+      adminpassFile = config.sops.secrets.nextcloud_admin_password.path;
+      statsTokenFile = config.sops.secrets.nextcloud_admin_stats_token.path;
     };
     monitoring.enable = true;
     manga.enable = true;
