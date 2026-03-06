@@ -78,12 +78,12 @@ in {
           env file:   santhad_PSK=my-passphrase
           known-networks: wifi-security.psk = "$santhad_PSK"
 
-        WPA-EAP / PEAP / MSCHAPv2 — add identity + password variables:
-          env file:   KMITL_HiSpeed_IDENTITY=username
-                      KMITL_HiSpeed_PASSWORD=password
+        WPA-EAP / PEAP / MSCHAPv2 — add identity + credential variables
+          (one per SSID, preserving original capitalisation):
+          env file:   KMITL_HiSpeed_IDENTITY, KMITL_HiSpeed_PASSWORD
           known-networks:
             802-1x.identity        = "$KMITL_HiSpeed_IDENTITY"
-            802-1x.password        = "$KMITL_HiSpeed_PASSWORD"
+            802-1x.password        = "[REDACTED]"
             802-1x.eap             = "peap"
             802-1x.phase2-auth     = "mschapv2"
             wifi-security.key-mgmt = "wpa-eap"

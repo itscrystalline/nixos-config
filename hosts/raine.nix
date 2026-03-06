@@ -3,7 +3,9 @@
   lib,
   config,
   ...
-}: {
+}: let
+  sopsPath = name: config.sops.secrets.${name}.path;
+in {
   imports = [./raine];
 
   core = {
@@ -108,8 +110,8 @@
       enable = true;
       domain = "nc.iw2tryhard.dev";
       folder = "/mnt/main/nextcloud";
-      adminpassFile = config.sops.secrets."nextcloud-admin-password".path;
-      statsTokenFile = config.sops.secrets."nextcloud-admin-stats-token".path;
+      adminpassFile = sopsPath "nextcloud-admin-password";
+      statsTokenFile = sopsPath "nextcloud-admin-stats-token";
     };
     monitoring.enable = true;
     manga.enable = true;
