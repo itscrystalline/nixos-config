@@ -77,11 +77,11 @@ in {
         polarity = "dark";
         autoEnable = true;
         fonts = {
-          serif = {
+          sansSerif = {
             package = pkgs.inter;
             name = "Inter";
           };
-          sansSerif = {
+          serif = {
             package = pkgs.libertinus;
             name = "Libertinus Serif";
           };
