@@ -44,7 +44,10 @@
   network = {
     trustedInterfaces = [];
     ports.tcp = [80 443 2049 8080];
-    profiles = ["santhad" "santhad_5G"];
+    sopsConnections = {
+      "santhad" = "wifi_santhad";
+      "santhad_5G" = "wifi_santhad_5g";
+    };
   };
 
   crystals-services = {
