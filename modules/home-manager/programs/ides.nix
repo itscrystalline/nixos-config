@@ -11,8 +11,8 @@
   sanzenvim-pkgs = sanzenvim.packages.${pkgs.hostsys};
   sanzenvim-pkg =
     if (pkgs.stdenv.buildPlatform.isx86_64 && pkgs.stdenv.hostPlatform.isAarch64)
-    then lib.optionals (inputs ? sanzenvim) [sanzenvim-pkgs.defaultCross]
-    else lib.optionals (inputs ? sanzenvim) [sanzenvim-pkgs.default];
+    then lib.optionals (inputs ? sanzenvim) sanzenvim-pkgs.defaultCross
+    else lib.optionals (inputs ? sanzenvim) sanzenvim-pkgs.default;
 in {
   options.hm.programs.ides.enable = lib.mkEnableOption "IDEs and editors" // {default = true;};
 
