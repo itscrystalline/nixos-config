@@ -22,12 +22,18 @@ in {
       type = lib.types.str;
       description = "Path to a file containing the Nextcloud admin password.";
     };
-    statsToken = lib.mkOption {
-      type = lib.types.str;
-      description = "Nextcloud serverinfo stats API token.";
+    statsTokenFile = lib.mkOption {
+      type = lib.types.path;
+      description = "Path to a file containing the Nextcloud serverinfo stats API token.";
     };
   };
   config = lib.mkIf enabled {
+    # nextcloud_admin_password: only the nextcloud service user needs access.
+    sops.secrets.nextcloud_admin_password.owner = "nextcloud";
+    # nextcloud_admin_stats_token: readable by nextcloud (occ) and prometheus
+    # exporter (different user). Mode 0444 is safe – this is a read-only token.
+    sops.secrets.nextcloud_admin_stats_token.mode = "0444";
+
     services.nextcloud = {
       enable = true;
       package = pkgs.nextcloud32;
@@ -120,10 +126,10 @@ in {
       inherit (config.services.nextcloud) occ;
     in {
       wantedBy = ["multi-user.target"];
-      after = ["nextcloud-setup.service" "coolwsd.service"];
-      requires = ["coolwsd.service"];
+      after = ["nextcloud-setup.service" "coolwsd.service" "sops-install-secrets.service"];
+      requires = ["coolwsd.service" "sops-install-secrets.service"];
       script = ''
-        ${occ}/bin/nextcloud-occ config:app:set serverinfo token --value ${nextcloud.statsToken}
+        ${occ}/bin/nextcloud-occ config:app:set serverinfo token --value "$(cat ${nextcloud.statsTokenFile})"
       '';
       serviceConfig = {
         Type = "oneshot";

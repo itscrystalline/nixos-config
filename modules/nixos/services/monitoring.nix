@@ -62,7 +62,7 @@ in {
           enable = true;
           port = 9013;
           url = "https://${config.services.nextcloud.hostName}";
-          tokenFile = "${pkgs.writeText "nc_token" config.crystals-services.nextcloud.statsToken}";
+          tokenFile = config.crystals-services.nextcloud.statsTokenFile;
         };
       };
       scrapeConfigs =
