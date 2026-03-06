@@ -61,12 +61,6 @@ in {
         normal = ["JetBrainsMono Nerd Font", "Noto Sans CJK JP", "Noto Color Emoji"]
         size = 12
       '';
-      "lazygit/config.yml".text = ''
-        git:
-          paging:
-            colorArg: always
-            pager: ${pkgs.delta}/bin/delta --dark --paging=never --line-numbers --hyperlinks --hyperlinks-file-link-format="lazygit-edit://{path}:{line}"
-      '';
     };
   };
 }
