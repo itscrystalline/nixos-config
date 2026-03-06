@@ -1,31 +1,15 @@
 {
-  crystal_password = "";
-  adguard = {
+  mail.username = "";
+
+  nextcloud.rclone = {
     user = "";
-    pass = "";
-  };
-  mail = {
-    username = "";
     password = "";
   };
-  nextcloud = {
-    admin = {
-      stats_token = "";
-      password = "";
-    };
-    rclone = {
-      user = "";
-      password = "";
-    };
-  };
-  cloudflare = {
-    api_key = "";
-  };
+
   homeassistant = {
     instance = "";
     latitude = 0.0;
     longitude = 0.0;
-    wifi-password = "";
     token = "";
   };
   ghToken = "";
