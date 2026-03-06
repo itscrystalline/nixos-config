@@ -49,6 +49,7 @@ in {
         };
       });
       description = "Hosts to configure SSH for. Automatically adds them to matchBlocks and known_hosts.";
+      default = {};
     };
   };
   config = {
