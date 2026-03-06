@@ -22,6 +22,7 @@ in {
         noto-fonts-cjk-sans
         noto-fonts-color-emoji
         inter
+        libertinus
         nerd-fonts.jetbrains-mono
         unstable.material-symbols
         sarabun-font
@@ -29,9 +30,10 @@ in {
       ];
 
       fontconfig = {
+        enable = true;
         defaultFonts = {
-          serif = ["Noto Serif" "Material Symbols Rounded" "Noto Sans Thai" "Noto Color Emoji"];
-          sansSerif = ["Inter" "Material Symbols Rounded" "Noto Sans Thai" "Noto Color Emoji"];
+          serif = ["Libertinus Serif" "Material Symbols Rounded" "Noto Serif Thai" "Noto Color Emoji"];
+          sansSerif = ["Inter" "Material Symbols Rounded" "Noto Sans Thai" "Noto Sans CJK JP" "Noto Color Emoji"];
           monospace = ["JetbrainsMono Nerd Font Mono" "Material Symbols Rounded" "Noto Color Emoji"];
         };
       };
@@ -40,12 +42,15 @@ in {
     };
 
     stylix = {
-      fonts = rec {
-        serif = {
+      fonts = {
+        sansSerif = {
           package = pkgs.inter;
           name = "Inter";
         };
-        sansSerif = serif;
+        serif = {
+          package = pkgs.libertinus;
+          name = "Libertinus Serif";
+        };
         monospace = {
           package = pkgs.nerd-fonts.jetbrains-mono;
           name = "JetbrainsMono Nerd Font Mono";

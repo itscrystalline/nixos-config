@@ -68,6 +68,7 @@ in {
 
     home.shellAliases = {
       svim = "sudo nvim";
+      editnix = "cd ~/nixos-config; nvim";
       update =
         if passthrough == null # standalone home-manager
         then "nh home switch ~/nixos-config"
@@ -467,7 +468,47 @@ in {
 
       zellij = {
         enable = true;
-        attachExistingSession = false;
+        attachExistingSession = true;
+        enableBashIntegration = true;
+        enableZshIntegration = true;
+        settings.keybinds = {
+          _children = [{unbind._args = ["Ctrl s"];}];
+          scroll._children = [
+            {
+              bind = {
+                _args = ["Ctrl /"];
+                _children = [{SwitchToMode._args = ["Normal"];}];
+              };
+            }
+          ];
+          search._children = [
+            {
+              bind = {
+                _args = ["Ctrl /"];
+                _children = [{SwitchToMode._args = ["Normal"];}];
+              };
+            }
+          ];
+          session._children = [
+            {
+              bind = {
+                _args = ["Ctrl /"];
+                _children = [{SwitchToMode._args = ["Scroll"];}];
+              };
+            }
+          ];
+          shared_except = {
+            _args = ["scroll" "locked"];
+            _children = [
+              {
+                bind = {
+                  _args = ["Ctrl /"];
+                  _children = [{SwitchToMode._args = ["Scroll"];}];
+                };
+              }
+            ];
+          };
+        };
       };
 
       fzf = {

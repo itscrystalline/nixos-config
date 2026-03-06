@@ -2,43 +2,68 @@
   config,
   lib,
   ...
-}: {
+}: let
+  inherit (lib) types mkOption mkEnableOption;
+  inherit (config.secrets) known-networks;
+
+  mkProfiles = list:
+    builtins.listToAttrs (map (profile: (
+        if (builtins.isString profile && (known-networks ? ${profile}))
+        then {
+          name = profile;
+          value = known-networks.${profile};
+        }
+        else if (builtins.isAttrs profile && (profile.connection ? id))
+        then {
+          name = profile.connection.id;
+          value = profile;
+        }
+        else builtins.throw "`profile` is not a well-known network profile name described in `config.secrets.known-networks`, or an attribute set describing one, containing the attribute `connection.id`."
+      ))
+      list);
+in {
   imports = [./network-mounts.nix];
 
   options.network = {
-    dhcp = lib.mkEnableOption "DHCP" // {default = true;};
-    trustedInterfaces = lib.mkOption {
-      type = lib.types.listOf lib.types.str;
+    dhcp = mkEnableOption "DHCP" // {default = true;};
+    trustedInterfaces = mkOption {
+      type = types.listOf types.str;
       description = "Trusted Network Interfaces.";
       default = [];
     };
     ports = {
-      tcp = lib.mkOption {
-        type = lib.types.listOf lib.types.port;
+      tcp = mkOption {
+        type = types.listOf types.port;
         description = "TCP ports to open.";
         default = [];
       };
-      tcpRange = lib.mkOption {
-        type = lib.types.listOf (lib.types.attrsOf lib.types.port);
+      tcpRange = mkOption {
+        type = types.listOf (types.attrsOf types.port);
         description = "TCP port ranges to open.";
         default = [];
       };
-      udp = lib.mkOption {
-        type = lib.types.listOf lib.types.port;
+      udp = mkOption {
+        type = types.listOf types.port;
         description = "UDP ports to open.";
         default = [];
       };
-      udpRange = lib.mkOption {
-        type = lib.types.listOf (lib.types.attrsOf lib.types.port);
+      udpRange = mkOption {
+        type = types.listOf (types.attrsOf types.port);
         description = "UDP port ranges to open.";
         default = [];
       };
+    };
+    profiles = mkOption {
+      type = types.listOf (types.either types.str types.attrs);
+      description = "NetworkManager profiles automatically configured.";
+      default = [];
     };
   };
   config = {
     users.users.${config.core.primaryUser}.extraGroups = ["networkmanager"];
     networking = {
       networkmanager.enable = true;
+      networkmanager.ensureProfiles.profiles = mkProfiles config.network.profiles;
       hostName = config.core.name;
       useDHCP = lib.mkDefault config.network.dhcp;
       firewall = with config.network.ports; {

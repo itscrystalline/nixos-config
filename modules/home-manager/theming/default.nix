@@ -42,6 +42,15 @@ in {
         '';
       };
 
+      fonts.fontconfig = {
+        enable = true;
+        defaultFonts = {
+          serif = ["Libertinus Serif" "Material Symbols Rounded" "Noto Serif Thai" "Noto Color Emoji"];
+          sansSerif = ["Inter" "Material Symbols Rounded" "Noto Sans Thai" "Noto Sans CJK JP" "Noto Color Emoji"];
+          monospace = ["JetbrainsMono Nerd Font Mono" "Material Symbols Rounded" "Noto Color Emoji"];
+        };
+      };
+
       xdg.configFile = {
         "aseprite/extensions/mocha".source = pkgs.fetchzip {
           url = "https://github.com/catppuccin/aseprite/releases/download/v1.2.0/mocha.aseprite-extension";
@@ -54,7 +63,15 @@ in {
           	--adw-accent-rgb: ${base06-rgb-r}, ${base06-rgb-g}, ${base06-rgb-b};
           }
         '';
+        "lazygit/config.yml".text = ''
+          git:
+            paging:
+              colorArg: always
+              pager: ${pkgs.delta}/bin/delta --dark --paging=never --line-numbers --hyperlinks --hyperlinks-file-link-format="lazygit-edit://{path}:{line}"
+        '';
       };
+
+      programs.ghostty.settings.font-family = ["JetBrainsMono Nerd Font" "Noto Sans CJK JP" "Noto Sans Thai" "Noto Color Emoji"];
 
       dconf.settings = {
         "org/gnome/desktop/interface".color-scheme = "prefer-dark";
@@ -68,12 +85,15 @@ in {
         base16Scheme = "${pkgs.base16-schemes}/share/themes/catppuccin-mocha.yaml";
         polarity = "dark";
         autoEnable = true;
-        fonts = rec {
-          serif = {
+        fonts = {
+          sansSerif = {
             package = pkgs.inter;
             name = "Inter";
           };
-          sansSerif = serif;
+          serif = {
+            package = pkgs.libertinus;
+            name = "Libertinus Serif";
+          };
           monospace = {
             package = pkgs.nerd-fonts.jetbrains-mono;
             name = "JetbrainsMono Nerd Font Mono";

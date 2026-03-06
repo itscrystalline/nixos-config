@@ -74,6 +74,7 @@ in {
       ];
       udpRange = tcpRange;
     };
+    profiles = ["KMITL-HiSpeed" "cwystaw the neko :3 ^w^" "dormpi" "santhad" "santhad_5G"];
   };
 
   crystals-services = {
@@ -89,7 +90,7 @@ in {
 
   nix = {
     nh.enable = true;
-    keepGenerations = 10;
+    keepGenerations = 5;
   };
 
   boot = {
