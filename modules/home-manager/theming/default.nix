@@ -68,12 +68,15 @@ in {
         base16Scheme = "${pkgs.base16-schemes}/share/themes/catppuccin-mocha.yaml";
         polarity = "dark";
         autoEnable = true;
-        fonts = rec {
+        fonts = {
           serif = {
             package = pkgs.inter;
             name = "Inter";
           };
-          sansSerif = serif;
+          sansSerif = {
+            package = pkgs.libertinus;
+            name = "Libertinus Serif";
+          };
           monospace = {
             package = pkgs.nerd-fonts.jetbrains-mono;
             name = "JetbrainsMono Nerd Font Mono";
