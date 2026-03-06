@@ -5,7 +5,7 @@
 #
 # Age key used for decryption is derived from the host's SSH ed25519 host key.
 # See .sops.yaml for key configuration.
-{lib, config, ...}: {
+{...}: {
   sops = {
     defaultSopsFile = ./secrets-runtime.yaml;
     age.sshKeyPaths = ["/etc/ssh/ssh_host_ed25519_key"];
