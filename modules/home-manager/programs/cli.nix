@@ -472,6 +472,7 @@ in {
         enableBashIntegration = true;
         enableZshIntegration = true;
         settings.keybinds = {
+          _children = [{unbind._args = ["Ctrl s"];}];
           scroll._children = [
             {
               bind = {
