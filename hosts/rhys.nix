@@ -89,7 +89,7 @@ in {
 
   nix = {
     nh.enable = true;
-    keepGenerations = 10;
+    keepGenerations = 5;
   };
 
   boot = {
