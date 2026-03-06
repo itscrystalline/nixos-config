@@ -24,9 +24,8 @@
 
   network = {
     dhcp = true;
-    sopsConnections = {
-      "KMITL-HiSpeed" = "wifi_kmitl_hispeed";
-    };
+    profiles = ["KMITL-HiSpeed"];
+    profileEnvSecret = "wifi-passwords";
   };
 
   crystals-services = {

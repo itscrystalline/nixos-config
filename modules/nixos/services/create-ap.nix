@@ -92,7 +92,7 @@ in {
             cp ${staticConf} /run/create_ap/runtime.conf
             chmod 600 /run/create_ap/runtime.conf
             printf 'PASSPHRASE=%s\n' \
-              "$(cat ${config.sops.secrets.homeassistant_wifi_password.path})" \
+              "$(cat ${config.sops.secrets."homeassistant-wifi-password".path})" \
               >> /run/create_ap/runtime.conf
           '')
         ];

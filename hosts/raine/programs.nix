@@ -150,7 +150,7 @@ in {
         auth = true;
         tls = true;
         user = config.secrets.mail.username;
-        passwordeval = "cat ${config.sops.secrets.mail_password.path}";
+        passwordeval = "cat ${config.sops.secrets."mail-password".path}";
         host = "smtp.gmail.com";
         port = 587;
         from = "nc@iw2tryhard.dev";

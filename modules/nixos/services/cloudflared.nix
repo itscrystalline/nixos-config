@@ -21,12 +21,12 @@ in {
   options.crystals-services.cloudflared.enable = lib.mkEnableOption "Cloudflare tunnel";
   config = lib.mkIf enabled {
     # Grant cloudflared access to its sops-managed credentials file.
-    sops.secrets.cloudflared_credentials.owner = "cloudflared";
+    sops.secrets."cloudflared-credentials".owner = "cloudflared";
 
     services.cloudflared = {
       enable = true;
       tunnels."fc4d0058-a84e-4ef5-b66f-56c2a1a7eb7f" = {
-        credentialsFile = config.sops.secrets.cloudflared_credentials.path;
+        credentialsFile = config.sops.secrets."cloudflared-credentials".path;
         ingress = mkDomains {
           "" = {};
           "www" = {};
