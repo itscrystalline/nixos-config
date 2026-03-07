@@ -31,7 +31,7 @@
       "mail-password" = {};
 
       # Cloudflare tunnel credentials JSON – used as credentialsFile.
-      # Owner set to "cloudflared" by the cloudflared service module when enabled.
+      # systemd LoadCredential reads this as root; no owner override needed.
       "cloudflared-credentials" = {};
 
       # Shell environment file with WiFi PSK variables for NM ensureProfiles.
