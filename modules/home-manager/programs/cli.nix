@@ -108,8 +108,6 @@ in {
         initExtra = "hyfetch";
       };
 
-      fish.enable = true;
-
       zoxide = {
         enable = true;
         enableZshIntegration = true;
