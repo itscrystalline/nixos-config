@@ -3,7 +3,9 @@
   lib,
   config,
   ...
-}: {
+}: let
+  sopsPath = name: config.sops.secrets.${name}.path;
+in {
   imports = [./raine];
 
   core = {
@@ -45,6 +47,7 @@
     trustedInterfaces = [];
     ports.tcp = [80 443 2049 8080];
     profiles = ["santhad" "santhad_5G"];
+    profileEnvSecret = "wifi-passwords";
   };
 
   crystals-services = {
@@ -107,8 +110,8 @@
       enable = true;
       domain = "nc.iw2tryhard.dev";
       folder = "/mnt/main/nextcloud";
-      adminpassFile = config.secrets.nextcloud.admin.password;
-      statsToken = config.secrets.nextcloud.admin.stats_token;
+      adminpassFile = sopsPath "nextcloud-admin-password";
+      statsTokenFile = sopsPath "nextcloud-admin-stats-token";
     };
     monitoring.enable = true;
     manga.enable = true;

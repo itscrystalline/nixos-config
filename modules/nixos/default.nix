@@ -102,7 +102,7 @@ in {
       description = "itscrystalline";
       shell = pkgs.zsh;
 
-      hashedPassword = config.secrets.crystal_password;
+      hashedPasswordFile = config.sops.secrets."crystal-password".path;
       openssh.authorizedKeys.keys = [
         "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIPS4b7HxJiG6gAOvqw/fD5CKWP3HqOFdfi2zpwmPi4wu ${core.primaryUser}@rhys"
       ];
