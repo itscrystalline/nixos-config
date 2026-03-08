@@ -9,9 +9,30 @@
   startScript = pkgs.writeShellScript "opencode-with-secrets" ''
     set -a
     source ${config.sops.secrets."oc-api-keys".path}
-    ${lib.getExe config.programs.opencode.package}
+    ${lib.getExe config.programs.opencode.package} "$@"
   '';
-  # mkSkills
+  mkSkills = list:
+    lib.mergeAttrsList (map ({
+      repo,
+      rev,
+      sha256,
+      skills ? [],
+    }: let
+      src = pkgs.fetchgit {
+        inherit rev sha256;
+        url = "https://github.com/${repo}";
+        sparseCheckout = map (e: "/skills/${e}") skills;
+      };
+    in
+      builtins.listToAttrs (map (skill: {
+          name = "opencode/skills/${skill}";
+          value = {
+            recursive = true;
+            source = "${src}/skills/${skill}";
+          };
+        })
+        skills))
+    list);
 in {
   options.hm.programs.cli.dev.ai.enable = lib.mkEnableOption "ai stuff";
 
@@ -57,6 +78,37 @@ in {
       };
     };
 
-    # xdg.configFile = "";
+    xdg.configFile = mkSkills [
+      {
+        repo = "anthropics/skills";
+        rev = "b0cbd3df1533b396d281a6886d5132f623393a9c";
+        sha256 = "sha256-GzNpraXV85qUwyGs5XDe0zHYr2AazqFppWtH9JvO3QE=";
+        skills = ["pdf" "docx" "xlsx" "pptx"];
+      }
+      {
+        repo = "tartinerlabs/skills";
+        rev = "bf03b0bad773b49e7d547341a3e360d3f3a33b58";
+        sha256 = "sha256-+TxwV95Ao8S7uIOTz6AolbSN0i0zdy9/NyxTNdVQvNU=";
+        skills = ["github-actions"];
+      }
+      {
+        repo = "knoopx/pi";
+        rev = "702a7c6f6a78ed5a02b159e32c5ba057a3e13816";
+        sha256 = "sha256-26eVdhSGrrhFfo8ncOEfxhZtS13XvevZY92gcjgQmjs=";
+        skills = ["nix" "nix-flakes" "nh"];
+      }
+      {
+        repo = "0xBigBoss/claude-code";
+        rev = "c74dbed48e21f699ced5584a70a21133029f8556";
+        sha256 = "sha256-YkeU+6SoeaGvLT1W1zJ60a1e0v2uoqoqCR0sY2vi84c=";
+        skills = ["nix-best-practices"];
+      }
+      {
+        repo = "julianobarbosa/claude-code-skills";
+        rev = "865973f0f3f59df71c7075db2f1d424a82d9a147";
+        sha256 = "sha256-L3jbc0tEk9oJuSRsx2/Nhe6JD6JgntKGCL90SMZ9maw=";
+        skills = ["direnv"];
+      }
+    ];
   };
 }
