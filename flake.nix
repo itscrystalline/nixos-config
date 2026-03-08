@@ -69,7 +69,7 @@
       inputs.zen-browser.homeModules.twilight
       inputs.noctalia.homeModules.default
       inputs.sops-nix.homeManagerModules.sops
-      ./secrets/runtime.nix
+      (import ./secrets/runtime.nix false)
     ];
 
     # Build a standalone homeManagerConfiguration (adds stylix HM module).
@@ -124,7 +124,7 @@
             inputs.sops-nix.nixosModules.sops
             ./modules/nixos
             ./secrets
-            ./secrets/runtime.nix
+            (import ./secrets/runtime.nix true)
             configModule
           ]
           ++ otherModules;
