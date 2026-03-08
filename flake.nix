@@ -10,10 +10,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     nix-cachyos-kernel.url = "github:xddxdd/nix-cachyos-kernel/release";
-    nixos-generators = {
-      url = "github:nix-community/nixos-generators";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
     home-manager = {
       url = "github:nix-community/home-manager/release-25.11";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -58,7 +54,6 @@
   outputs = inputs @ {
     nixpkgs,
     nixos-hardware,
-    nixos-generators,
     home-manager,
     ...
   }: let
@@ -73,6 +68,8 @@
       inputs.vicinae.homeManagerModules.default
       inputs.zen-browser.homeModules.twilight
       inputs.noctalia.homeModules.default
+      inputs.sops-nix.homeManagerModules.sops
+      (import ./secrets/runtime.nix false)
     ];
 
     # Build a standalone homeManagerConfiguration (adds stylix HM module).
@@ -127,7 +124,7 @@
             inputs.sops-nix.nixosModules.sops
             ./modules/nixos
             ./secrets
-            ./secrets/runtime.nix
+            (import ./secrets/runtime.nix true)
             configModule
           ]
           ++ otherModules;
