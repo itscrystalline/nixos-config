@@ -67,7 +67,7 @@ in {
 
       shellAliases = lib.mkIf (pkgs.stdenv.isLinux && config.hm.gui.niri.enable) {
         mirror = "${mirrorScript}";
-        open = "${lib.getExe pkgs.nautilus} .";
+        open = "${lib.getExe pkgs.nautilus} . &>/dev/null &|";
       };
 
       sessionVariables = lib.mkIf pkgs.stdenv.isLinux {
