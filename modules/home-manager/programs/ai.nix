@@ -40,6 +40,7 @@ in {
           };
           github = {
             command = "${lib.getExe pkgs.github-mcp-server}";
+            args = ["stdio"];
             env.GITHUB_PERSONAL_ACCESS_TOKEN = config.secrets.ghToken;
             enabled = true;
           };
