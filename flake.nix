@@ -130,8 +130,6 @@
           ++ otherModules;
       };
 
-    server-itscrystalline = import ./homes/itscrystalline.nix {headless = true;};
-
     rhys = mkHost {
       arch = "x86_64-linux";
       configModule = ./hosts/rhys.nix;
@@ -140,7 +138,12 @@
         inputs.niri.nixosModules.niri
         nixos-hardware.nixosModules.asus-fx506hm
       ];
-      userHomeModules = [(import ./homes/itscrystalline.nix {nextcloudMount = true;})];
+      userHomeModules = [
+        (import ./homes/itscrystalline.nix {
+          nextcloudMount = true;
+          minimal = false;
+        })
+      ];
     };
     raine = mkHost {
       arch = "aarch64-linux";
@@ -148,7 +151,12 @@
       otherModules = [
         nixos-hardware.nixosModules.raspberry-pi-4
       ];
-      userHomeModules = [server-itscrystalline];
+      userHomeModules = [
+        (import ./homes/itscrystalline.nix {
+          headless = true;
+          minimal = true;
+        })
+      ];
     };
     liriel = mkHost {
       arch = "aarch64-linux";
@@ -163,7 +171,6 @@
       inherit rhys raine liriel;
     };
     homeConfigurations = {
-      # "itscrystalline" = mkStandaloneHome "aarch64-linux" [server-itscrystalline];
       "opc" = mkStandaloneHome "aarch64-linux" [./homes/opc.nix];
     };
     packages = {

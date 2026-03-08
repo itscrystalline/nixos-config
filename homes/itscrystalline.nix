@@ -1,4 +1,5 @@
 {
+  minimal ? true,
   headless ? false,
   nextcloudMount ? false,
 }: {
@@ -11,17 +12,19 @@
       core.username = "itscrystalline";
       theming.enable = true;
 
+      programs.cli.enable = true;
+
+      services.nextcloud.enable = nextcloudMount;
+    }
+    (lib.mkIf (!minimal) {
       programs = {
         cli = {
-          enable = true;
           dev.enable = true;
           dev.ai.enable = true;
         };
         ides.enable = true;
       };
-
-      services.nextcloud.enable = nextcloudMount;
-    }
+    })
     (lib.mkIf (!headless) {
       bluetooth.enable = true;
       flatpak.enable = true;
