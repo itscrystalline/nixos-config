@@ -5,10 +5,15 @@
 #
 # Age key used for decryption is derived from the host's SSH ed25519 host key.
 # See .sops.yaml for key configuration.
-nixos: _: {
+nixos: {
+  config,
+  lib,
+  ...
+}: {
   sops = {
     defaultSopsFile = ./secrets-runtime.yaml;
     age.sshKeyPaths = ["/etc/ssh/ssh_host_ed25519_key"];
+    age.keyFile = lib.optionalString (!nixos) "${config.home.homeDirectory}/.config/sops/age/keys.txt";
 
     secrets =
       if nixos
