@@ -6,12 +6,17 @@
 }: let
   inherit (config.hm.programs) cli;
   enabled = cli.dev.ai.enable && cli.dev.enable && cli.enable;
+  startScript = pkgs.writeShellScript "opencode-with-secrets" ''
+    set -a
+    source ${config.sops.secrets."oc-api-keys".path}
+    ${lib.getExe config.programs.opencode.package}
+  '';
   # mkSkills
 in {
   options.hm.programs.cli.dev.ai.enable = lib.mkEnableOption "ai stuff";
 
   config = lib.mkIf enabled {
-    home.shellAliases.opencode = "$SHELL -c 'set -a && source ${config.sops.secrets."oc-api-keys".path} && ${lib.getExe config.programs.opencode.package}'";
+    home.shellAliases.opencode = "${startScript}";
 
     programs = {
       opencode = {
