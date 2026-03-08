@@ -160,7 +160,7 @@ in {
             };
             enabled = true;
           };
-          playwright = {
+          playwright = lib.mkIf config.hm.gui.enable {
             command = "${lib.getExe pkgs.playwright-mcp}";
             enabled = true;
           };
