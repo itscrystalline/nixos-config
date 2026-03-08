@@ -5,7 +5,7 @@
 #
 # Age key used for decryption is derived from the host's SSH ed25519 host key.
 # See .sops.yaml for key configuration.
-{...}: {
+_: {
   sops = {
     defaultSopsFile = ./secrets-runtime.yaml;
     age.sshKeyPaths = ["/etc/ssh/ssh_host_ed25519_key"];
@@ -38,6 +38,8 @@
       # Format: VAR_NAME=psk-value (one per line).
       # Profile entries in known-networks reference these as $VAR_NAME.
       "wifi-passwords" = {};
+
+      "oc-api-keys" = {};
     };
   };
 }

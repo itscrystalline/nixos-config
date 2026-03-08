@@ -15,6 +15,7 @@
         cli = {
           enable = true;
           dev.enable = true;
+          dev.ai.enable = true;
         };
         ides.enable = true;
       };

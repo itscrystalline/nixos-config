@@ -6,6 +6,7 @@
       cli = {
         enable = true;
         dev.enable = true;
+        dev.ai.enable = true;
         fastfetch.profile = "minimal";
       };
       ides.enable = true;
