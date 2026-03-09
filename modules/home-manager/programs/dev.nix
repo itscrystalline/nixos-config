@@ -17,7 +17,6 @@ in {
         gnumake
         unstable.devenv
         nixd
-        gh
         cargo-mommy
         python3
       ]
@@ -39,6 +38,12 @@ in {
           };
           safe.directory = "${config.home.homeDirectory}/nixos-config";
         };
+      };
+      gh = {
+        enable = true;
+        gitCredentialHelper.enable = true;
+        hosts."github.com".user = "itscrystalline";
+        settings.git_protocol = "https";
       };
 
       direnv = {
