@@ -21,10 +21,9 @@
         device = "/dev/disk/by-uuid/F8E6-38E1";
         fsType = "vfat";
       };
-
-      stateVersion = "25.11";
     };
 
+    stateVersion = "25.11";
     arch = "aarch64-linux";
     localization.timezone = "Asia/Bangkok";
   };
