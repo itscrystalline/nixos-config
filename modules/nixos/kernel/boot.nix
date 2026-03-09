@@ -75,7 +75,7 @@ in {
       };
 
       loader = {
-        efi.canTouchEfiVariables = true;
+        efi.canTouchEfiVariables = boot.bootloader == "grub" && !config.boot.loader.grub.efiInstallAsRemovable;
         efi.efiSysMountPoint = boot.mountPoint;
         grub.enable = boot.bootloader == "grub";
         generic-extlinux-compatible.enable = boot.bootloader == "generic";
