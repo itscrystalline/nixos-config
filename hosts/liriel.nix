@@ -7,6 +7,7 @@
     primaryUserSshKeys = [
       "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIFCKOMNkZ20mVlrINueEM6KslqFD0v6O5XYJ/f4vXpiz itscrystalline@rhys"
       "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBQLcwyfwq2dROIanu5aXfWT1x6RQS/ABlZ413zHkkdS itscrystalline@raine"
+      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIOhfMp9LootBT3sWMV6/LZLXt3UCJC8jC6POHo6Rpsqn itscrystalline@mingzhu"
     ];
 
     fileSystems."/" = {
