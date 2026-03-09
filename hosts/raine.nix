@@ -11,6 +11,10 @@ in {
   core = {
     name = "raine";
     primaryUser = "itscrystalline";
+    primaryUserSshKeys = [
+      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIPS4b7HxJiG6gAOvqw/fD5CKWP3HqOFdfi2zpwmPi4wu itscrystalline@rhys"
+      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIFgYlL76SlT57GHQ+LzpPzQWDZALVi8SnqsWH8qNGFTW itscrystalline@liriel"
+    ];
 
     fileSystems = {
       "/" = {

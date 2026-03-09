@@ -1,0 +1,53 @@
+{modulesPath, ...}: {
+  imports = [
+    "${modulesPath}/profiles/qemu-guest.nix"
+    ./mingzhu
+  ];
+
+  core = {
+    name = "mingzhu";
+    primaryUser = "itscrystalline";
+    primaryUserSshKeys = [
+      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIIKZWDmuQuPaShyj0ZxEhIAyrw8KOgFq7rqYHVgyV6yQ itscrystalline@rhys"
+    ];
+
+    fileSystems = {
+      "/" = {
+        device = "/dev/sda1";
+        fsType = "ext4";
+        options = ["noatime"];
+      };
+      "/boot/efi" = {
+        device = "/dev/disk/by-uuid/F8E6-38E1";
+        fsType = "vfat";
+      };
+
+      stateVersion = "25.11";
+    };
+
+    arch = "aarch64-linux";
+    localization.timezone = "Asia/Bangkok";
+  };
+
+  programs.enable = true;
+  gui.enable = false;
+  theming.enable = true;
+
+  crystals-services = {
+    docker.enable = true;
+    ssh.enable = true;
+    tailscale.enable = true;
+  };
+
+  nix = {
+    nh.enable = true;
+    keepGenerations = 5;
+  };
+
+  boot = {
+    bootloader = "systemd-boot";
+    mountPoint = "/boot/efi";
+    stage1AvailableModules = ["ata_piix" "uhci_hcd" "xen_blkfront"];
+    stage1Modules = ["nvme"];
+  };
+}

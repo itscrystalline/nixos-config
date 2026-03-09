@@ -4,6 +4,10 @@
   core = {
     name = "liriel";
     primaryUser = "itscrystalline";
+    primaryUserSshKeys = [
+      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIFCKOMNkZ20mVlrINueEM6KslqFD0v6O5XYJ/f4vXpiz itscrystalline@rhys"
+      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBQLcwyfwq2dROIanu5aXfWT1x6RQS/ABlZ413zHkkdS itscrystalline@raine"
+    ];
 
     fileSystems."/" = {
       device = "/dev/disk/by-label/NIXOS_SD";

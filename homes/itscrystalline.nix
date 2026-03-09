@@ -13,6 +13,28 @@
       theming.enable = true;
 
       programs.cli.enable = true;
+      ssh.hosts = {
+        rhys = {
+          user = "itscrystalline";
+          publicKeyPath = "${config.home.homeDirectory}/.ssh/rhys.pub";
+          privateKeyPath = "${config.home.homeDirectory}/.ssh/rhys";
+        };
+        liriel = {
+          user = "itscrystalline";
+          publicKeyPath = "${config.home.homeDirectory}/.ssh/liriel.pub";
+          privateKeyPath = "${config.home.homeDirectory}/.ssh/liriel";
+        };
+        raine = {
+          user = "itscrystalline";
+          publicKeyPath = "${config.home.homeDirectory}/.ssh/raine.pub";
+          privateKeyPath = "${config.home.homeDirectory}/.ssh/raine";
+        };
+        mingzhu = {
+          user = "itscrystalline";
+          publicKeyPath = "${config.home.homeDirectory}/.ssh/mingzhu.pub";
+          privateKeyPath = "${config.home.homeDirectory}/.ssh/mingzhu";
+        };
+      };
 
       services.nextcloud.enable = nextcloudMount;
     }
@@ -25,7 +47,7 @@
         ides.enable = true;
       };
     })
-    (lib.mkIf (!headless) {
+    (lib.mkIf (!headless && !minimal) {
       bluetooth.enable = true;
       flatpak.enable = true;
       gui = {
@@ -47,30 +69,6 @@
         };
         games.enable = true;
         cli.fastfetch.profile = "full";
-
-        ssh.hosts = {
-          rhys = {
-            user = "itscrystalline";
-            publicKeyPath = "${config.home.homeDirectory}/.ssh/rhys.pub";
-            privateKeyPath = "${config.home.homeDirectory}/.ssh/rhys";
-          };
-          liriel = {
-            user = "itscrystalline";
-            publicKeyPath = "${config.home.homeDirectory}/.ssh/liriel.pub";
-            privateKeyPath = "${config.home.homeDirectory}/.ssh/liriel";
-          };
-          raine = {
-            user = "itscrystalline";
-            publicKeyPath = "${config.home.homeDirectory}/.ssh/raine.pub";
-            privateKeyPath = "${config.home.homeDirectory}/.ssh/raine";
-          };
-          oracle-cloud = {
-            hostname = "cwystaws-siwwybowox";
-            user = "opc";
-            publicKeyPath = "${config.home.homeDirectory}/.ssh/oracle_cloud.pub";
-            privateKeyPath = "${config.home.homeDirectory}/.ssh/oracle_cloud";
-          };
-        };
       };
       services.mpris-proxy.enable = true;
     })

@@ -166,9 +166,20 @@
       ];
       userHomeModules = [];
     };
+    mingzhu = mkHost {
+      arch = "aarch64-linux";
+      configModule = ./hosts/mingzhu.nix;
+      otherModules = [];
+      userHomeModules = [
+        (import ./homes/itscrystalline.nix {
+          headless = true;
+          minimal = false;
+        })
+      ];
+    };
   in {
     nixosConfigurations = {
-      inherit rhys raine liriel;
+      inherit rhys raine liriel mingzhu;
     };
     homeConfigurations = {
       "opc" = mkStandaloneHome "aarch64-linux" [./homes/opc.nix];
