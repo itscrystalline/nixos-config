@@ -25,6 +25,10 @@
         device = "/dev/disk/by-uuid/F8E6-38E1";
         fsType = "vfat";
       };
+      "/boot" = {
+        device = "/dev/disk/by-uuid/71551c63-1196-417c-b4ce-2898a9c58004";
+        fsType = "ext4";
+      };
     };
 
     stateVersion = "25.11";
