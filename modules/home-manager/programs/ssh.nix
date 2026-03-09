@@ -98,7 +98,7 @@ in {
           (lib.attrsToList hosts))}
       '';
 
-      sshAuthorizedKeys = lib.optionalAttrs (passthrough == null) (lib.hm.dag.entryAfter ["writeBoundary"] ''
+      sshAuthorizedKeys = lib.hm.dag.entryAfter ["writeBoundary"] (lib.optionalString (passthrough == null) ''
         mkdir -p "$HOME/.ssh"
         touch "$HOME/.ssh/authorized_keys"
         chmod 600 "$HOME/.ssh/authorized_keys"

@@ -21,6 +21,11 @@ in {
       description = "Kernel modules loaded during stage 1.";
       default = [];
     };
+    mountPoint = lib.mkOption {
+      type = types.str;
+      description = "EFI mount point.";
+      default = "/boot";
+    };
 
     verbosity = lib.mkOption {
       type = types.either (types.enum ["silent" "verbose"]) (types.submodule {
@@ -71,6 +76,7 @@ in {
 
       loader = {
         efi.canTouchEfiVariables = true;
+        efi.efiSysMountPoint = boot.mountPoint;
         grub.enable = false;
         generic-extlinux-compatible.enable = boot.bootloader == "generic";
         systemd-boot = lib.mkIf (boot.bootloader == "systemd-boot") {

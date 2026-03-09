@@ -74,6 +74,12 @@ in {
       description = "The system's localization settings.";
       default = {};
     };
+
+    stateVersion = lib.mkOption {
+      type = lib.types.str;
+      description = "NixOS State version.";
+      default = "24.11";
+    };
   };
 
   config = with core; {

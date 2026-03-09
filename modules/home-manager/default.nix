@@ -17,10 +17,17 @@ in {
   ];
 
   options.hm = {
-    core.username = mkOption {
-      type = types.str;
-      description = "Username of this user.";
-      default = "";
+    core = {
+      username = mkOption {
+        type = types.str;
+        description = "Username of this user.";
+        default = "";
+      };
+      stateVersion = mkOption {
+        type = types.str;
+        description = "HM State version.";
+        default = "24.11";
+      };
     };
     bluetooth.enable = lib.mkEnableOption "Bluetooth";
   };
