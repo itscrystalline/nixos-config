@@ -82,7 +82,7 @@ in {
         systemd-boot = lib.mkIf (boot.bootloader == "systemd-boot") {
           enable = true;
           configurationLimit = config.nix.keepGenerations;
-          memtest86.enable = true;
+          memtest86.enable = config.core.arch == "x86_64-linux";
           inherit (boot) extraBootEntries;
         };
       };
