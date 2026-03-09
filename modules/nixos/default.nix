@@ -45,6 +45,11 @@ in {
       description = "Main user's username.";
       default = "itscrystalline";
     };
+    primaryUserSshKeys = lib.mkOption {
+      type = lib.types.listOf lib.types.str;
+      description = "SSH Keys allowed to log in to the `primaryUser`.";
+      default = [];
+    };
 
     localization = lib.mkOption {
       type = lib.types.submodule {
@@ -99,13 +104,11 @@ in {
     users.users.${core.primaryUser} = {
       isNormalUser = true;
       home = lib.mkDefault "/home/${core.primaryUser}";
-      description = "itscrystalline";
+      description = "${core.primaryUser}";
       shell = pkgs.zsh;
 
       hashedPasswordFile = config.sops.secrets."crystal-password".path;
-      openssh.authorizedKeys.keys = [
-        "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIPS4b7HxJiG6gAOvqw/fD5CKWP3HqOFdfi2zpwmPi4wu ${core.primaryUser}@rhys"
-      ];
+      openssh.authorizedKeys.keys = core.primaryUserSshKeys;
     };
   };
 }

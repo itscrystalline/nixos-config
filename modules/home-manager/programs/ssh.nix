@@ -1,10 +1,11 @@
 {
   config,
   lib,
+  passthrough ? null,
   ...
 }: let
   inherit (lib) types mkOption;
-  inherit (config.hm.programs.ssh) hosts;
+  inherit (config.hm.programs.ssh) hosts authorizedKeys;
 
   selectName = name: hostname:
     if (hostname != null)
@@ -51,6 +52,12 @@ in {
       description = "Hosts to configure SSH for. Automatically adds them to matchBlocks and known_hosts.";
       default = {};
     };
+
+    authorizedKeys = mkOption {
+      type = types.listOf types.str;
+      description = "Public key strings authorized to log into this user.";
+      default = [];
+    };
   };
   config = {
     programs.ssh = {
@@ -90,6 +97,18 @@ in {
           '')
           (lib.attrsToList hosts))}
       '';
+
+      sshAuthorizedKeys = lib.optionalAttrs (passthrough == null) (lib.hm.dag.entryAfter ["writeBoundary"] ''
+        mkdir -p "$HOME/.ssh"
+        touch "$HOME/.ssh/authorized_keys"
+        chmod 600 "$HOME/.ssh/authorized_keys"
+        ${builtins.concatStringsSep "\n" (map (key: ''
+            if ! grep -qF ${lib.escapeShellArg key} "$HOME/.ssh/authorized_keys" 2>/dev/null; then
+              echo ${lib.escapeShellArg key} >> "$HOME/.ssh/authorized_keys"
+            fi
+          '')
+          authorizedKeys)}
+      '');
     };
   };
 }

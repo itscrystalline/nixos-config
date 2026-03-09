@@ -2,10 +2,11 @@
   lib,
   config,
   pkgs,
+  passthrough ? null,
   ...
 }: let
   inherit (lib) types mkOption;
-  inherit (config.hm) remoteBuilders asBuilderConfig;
+  inherit (config.hm.nix) remoteBuilders asBuilderConfig;
 
   mkMachineEntry = b: "ssh://${b.user}@${b.hostName} ${builtins.concatStringsSep "," b.systems} ${b.privateKeyPath} ${toString b.maxJobs} ${toString b.speedFactor} ${builtins.concatStringsSep "," b.supportedFeatures}";
 
@@ -13,7 +14,7 @@
     builtins.concatStringsSep "\n" (map mkMachineEntry remoteBuilders) + "\n"
   );
 in {
-  options.hm = {
+  options.hm.nix = {
     remoteBuilders = mkOption {
       type = types.listOf (types.submodule {
         options = {
@@ -163,56 +164,58 @@ in {
     };
   };
 
-  config = lib.mkMerge [
-    (lib.mkIf (remoteBuilders != []) {
-      programs.ssh.enable = true;
+  config = lib.mkIf (passthrough == null) (
+    lib.mkMerge [
+      (lib.mkIf (remoteBuilders != []) {
+        programs.ssh.enable = true;
 
-      hm.programs.ssh.hosts = builtins.listToAttrs (map (b: {
-          name = "nix-builder-${b.hostName}";
-          value = {
-            inherit (b) user privateKeyPath publicKeyPath;
-            hostname = b.hostName;
-          };
-        })
-        remoteBuilders);
+        hm.programs.ssh.hosts = builtins.listToAttrs (map (b: {
+            name = "nix-builder-${b.hostName}";
+            value = {
+              inherit (b) user privateKeyPath publicKeyPath;
+              hostname = b.hostName;
+            };
+          })
+          remoteBuilders);
 
-      nix.extraOptions = ''
-        builders = @${machinesFile}
-        builders-use-substitutes = true
-        fallback = true
-      '';
+        nix.extraOptions = ''
+          builders = @${machinesFile}
+          builders-use-substitutes = true
+          fallback = true
+        '';
 
-      home.activation.nixRemoteBuilderInfo = lib.hm.dag.entryAfter ["writeBoundary"] ''
-        echo "Remote builders configured (${toString (builtins.length remoteBuilders)}):"
-        ${builtins.concatStringsSep "\n" (map (b: ''
-            echo "  ssh://${b.user}@${b.hostName} [${builtins.concatStringsSep "," b.systems}] jobs=${toString b.maxJobs} speed=${toString b.speedFactor}"
-          '')
-          remoteBuilders)}
-      '';
-    })
+        home.activation.nixRemoteBuilderInfo = lib.hm.dag.entryAfter ["writeBoundary"] ''
+          echo "Remote builders configured (${toString (builtins.length remoteBuilders)}):"
+          ${builtins.concatStringsSep "\n" (map (b: ''
+              echo "  ssh://${b.user}@${b.hostName} [${builtins.concatStringsSep "," b.systems}] jobs=${toString b.maxJobs} speed=${toString b.speedFactor}"
+            '')
+            remoteBuilders)}
+        '';
+      })
 
-    (lib.mkIf (asBuilderConfig != null) {
-      home.activation.remoteBuilderKeys = lib.hm.dag.entryAfter ["writeBoundary"] ''
-        mkdir -p "$HOME/.ssh"
-        chmod 700 "$HOME/.ssh"
-        AUTHKEYS="$HOME/.ssh/authorized_keys"
-        touch "$AUTHKEYS"
-        chmod 600 "$AUTHKEYS"
+      (lib.mkIf (asBuilderConfig != null) {
+        home.activation.remoteBuilderKeys = lib.hm.dag.entryAfter ["writeBoundary"] ''
+          mkdir -p "$HOME/.ssh"
+          chmod 700 "$HOME/.ssh"
+          AUTHKEYS="$HOME/.ssh/authorized_keys"
+          touch "$AUTHKEYS"
+          chmod 600 "$AUTHKEYS"
 
-        ${builtins.concatStringsSep "\n" (map (key: ''
-            if ! grep -qF ${lib.escapeShellArg key} "$AUTHKEYS" 2>/dev/null; then
-              echo ${lib.escapeShellArg key} >> "$AUTHKEYS"
-              echo "  Added builder key: ${lib.escapeShellArg key}"
-            fi
-          '')
-          asBuilderConfig.authorizedKeys)}
+          ${builtins.concatStringsSep "\n" (map (key: ''
+              if ! grep -qF ${lib.escapeShellArg key} "$AUTHKEYS" 2>/dev/null; then
+                echo ${lib.escapeShellArg key} >> "$AUTHKEYS"
+                echo "  Added builder key: ${lib.escapeShellArg key}"
+              fi
+            '')
+            asBuilderConfig.authorizedKeys)}
 
-        echo "This machine is configured as a remote builder:"
-        echo "  Systems : ${builtins.concatStringsSep ", " asBuilderConfig.systems}"
-        echo "  Max jobs: ${toString asBuilderConfig.maxJobs}"
-        echo "  Speed   : ${toString asBuilderConfig.speedFactor}"
-        echo "  NOTE: ensure your user is in trusted-users in /etc/nix/nix.conf"
-      '';
-    })
-  ];
+          echo "This machine is configured as a remote builder:"
+          echo "  Systems : ${builtins.concatStringsSep ", " asBuilderConfig.systems}"
+          echo "  Max jobs: ${toString asBuilderConfig.maxJobs}"
+          echo "  Speed   : ${toString asBuilderConfig.speedFactor}"
+          echo "  NOTE: ensure your user is in trusted-users in /etc/nix/nix.conf"
+        '';
+      })
+    ]
+  );
 }
