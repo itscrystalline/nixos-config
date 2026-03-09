@@ -83,7 +83,7 @@ boolean
 ` true `
 
 *Declared by:*
- - [/nix/store/scaiwpc5m6bdrma86r02j962bkm1syyl-source/modules/nixos/bluetooth](file:///nix/store/scaiwpc5m6bdrma86r02j962bkm1syyl-source/modules/nixos/bluetooth)
+ - [/nix/store/ax41kllj2hs8jndjyd16bjnflkjzwfvj-source/modules/nixos/bluetooth](file:///nix/store/ax41kllj2hs8jndjyd16bjnflkjzwfvj-source/modules/nixos/bluetooth)
 
 
 
@@ -99,7 +99,7 @@ Boot loader\. ‘systemd-boot’ or ‘generic’\.
 one of “systemd-boot”, “generic”
 
 *Declared by:*
- - [/nix/store/scaiwpc5m6bdrma86r02j962bkm1syyl-source/modules/nixos/kernel/boot\.nix](file:///nix/store/scaiwpc5m6bdrma86r02j962bkm1syyl-source/modules/nixos/kernel/boot.nix)
+ - [/nix/store/ax41kllj2hs8jndjyd16bjnflkjzwfvj-source/modules/nixos/kernel/boot\.nix](file:///nix/store/ax41kllj2hs8jndjyd16bjnflkjzwfvj-source/modules/nixos/kernel/boot.nix)
 
 
 
@@ -120,7 +120,7 @@ attribute set
 ` { } `
 
 *Declared by:*
- - [/nix/store/scaiwpc5m6bdrma86r02j962bkm1syyl-source/modules/nixos/kernel/boot\.nix](file:///nix/store/scaiwpc5m6bdrma86r02j962bkm1syyl-source/modules/nixos/kernel/boot.nix)
+ - [/nix/store/ax41kllj2hs8jndjyd16bjnflkjzwfvj-source/modules/nixos/kernel/boot\.nix](file:///nix/store/ax41kllj2hs8jndjyd16bjnflkjzwfvj-source/modules/nixos/kernel/boot.nix)
 
 
 
@@ -146,7 +146,7 @@ boolean
 ` true `
 
 *Declared by:*
- - [/nix/store/scaiwpc5m6bdrma86r02j962bkm1syyl-source/modules/nixos/kernel/boot\.nix](file:///nix/store/scaiwpc5m6bdrma86r02j962bkm1syyl-source/modules/nixos/kernel/boot.nix)
+ - [/nix/store/ax41kllj2hs8jndjyd16bjnflkjzwfvj-source/modules/nixos/kernel/boot\.nix](file:///nix/store/ax41kllj2hs8jndjyd16bjnflkjzwfvj-source/modules/nixos/kernel/boot.nix)
 
 
 
@@ -167,7 +167,7 @@ Kernel modules available during stage 1\.
 ` [ ] `
 
 *Declared by:*
- - [/nix/store/scaiwpc5m6bdrma86r02j962bkm1syyl-source/modules/nixos/kernel/boot\.nix](file:///nix/store/scaiwpc5m6bdrma86r02j962bkm1syyl-source/modules/nixos/kernel/boot.nix)
+ - [/nix/store/ax41kllj2hs8jndjyd16bjnflkjzwfvj-source/modules/nixos/kernel/boot\.nix](file:///nix/store/ax41kllj2hs8jndjyd16bjnflkjzwfvj-source/modules/nixos/kernel/boot.nix)
 
 
 
@@ -188,7 +188,7 @@ Kernel modules loaded during stage 1\.
 ` [ ] `
 
 *Declared by:*
- - [/nix/store/scaiwpc5m6bdrma86r02j962bkm1syyl-source/modules/nixos/kernel/boot\.nix](file:///nix/store/scaiwpc5m6bdrma86r02j962bkm1syyl-source/modules/nixos/kernel/boot.nix)
+ - [/nix/store/ax41kllj2hs8jndjyd16bjnflkjzwfvj-source/modules/nixos/kernel/boot\.nix](file:///nix/store/ax41kllj2hs8jndjyd16bjnflkjzwfvj-source/modules/nixos/kernel/boot.nix)
 
 
 
@@ -209,7 +209,7 @@ one of “silent”, “verbose” or (submodule)
 ` "verbose" `
 
 *Declared by:*
- - [/nix/store/scaiwpc5m6bdrma86r02j962bkm1syyl-source/modules/nixos/kernel/boot\.nix](file:///nix/store/scaiwpc5m6bdrma86r02j962bkm1syyl-source/modules/nixos/kernel/boot.nix)
+ - [/nix/store/ax41kllj2hs8jndjyd16bjnflkjzwfvj-source/modules/nixos/kernel/boot\.nix](file:///nix/store/ax41kllj2hs8jndjyd16bjnflkjzwfvj-source/modules/nixos/kernel/boot.nix)
 
 
 
@@ -235,7 +235,7 @@ boolean
 ` true `
 
 *Declared by:*
- - [/nix/store/scaiwpc5m6bdrma86r02j962bkm1syyl-source/modules/nixos/compatibility/nix-ld\.nix](file:///nix/store/scaiwpc5m6bdrma86r02j962bkm1syyl-source/modules/nixos/compatibility/nix-ld.nix)
+ - [/nix/store/ax41kllj2hs8jndjyd16bjnflkjzwfvj-source/modules/nixos/compatibility/nix-ld\.nix](file:///nix/store/ax41kllj2hs8jndjyd16bjnflkjzwfvj-source/modules/nixos/compatibility/nix-ld.nix)
 
 
 
@@ -261,7 +261,7 @@ boolean
 ` true `
 
 *Declared by:*
- - [/nix/store/scaiwpc5m6bdrma86r02j962bkm1syyl-source/modules/nixos/compatibility/steam-run\.nix](file:///nix/store/scaiwpc5m6bdrma86r02j962bkm1syyl-source/modules/nixos/compatibility/steam-run.nix)
+ - [/nix/store/ax41kllj2hs8jndjyd16bjnflkjzwfvj-source/modules/nixos/compatibility/steam-run\.nix](file:///nix/store/ax41kllj2hs8jndjyd16bjnflkjzwfvj-source/modules/nixos/compatibility/steam-run.nix)
 
 
 
@@ -282,7 +282,7 @@ string
 ` "x86_64-linux" `
 
 *Declared by:*
- - [/nix/store/scaiwpc5m6bdrma86r02j962bkm1syyl-source/modules/nixos](file:///nix/store/scaiwpc5m6bdrma86r02j962bkm1syyl-source/modules/nixos)
+ - [/nix/store/ax41kllj2hs8jndjyd16bjnflkjzwfvj-source/modules/nixos](file:///nix/store/ax41kllj2hs8jndjyd16bjnflkjzwfvj-source/modules/nixos)
 
 
 
@@ -298,7 +298,7 @@ Filesystems to configure in /etc/fstab\. Mirrors that of NixOS’s ow\.
 attribute set
 
 *Declared by:*
- - [/nix/store/scaiwpc5m6bdrma86r02j962bkm1syyl-source/modules/nixos](file:///nix/store/scaiwpc5m6bdrma86r02j962bkm1syyl-source/modules/nixos)
+ - [/nix/store/ax41kllj2hs8jndjyd16bjnflkjzwfvj-source/modules/nixos](file:///nix/store/ax41kllj2hs8jndjyd16bjnflkjzwfvj-source/modules/nixos)
 
 
 
@@ -319,7 +319,7 @@ submodule
 ` { } `
 
 *Declared by:*
- - [/nix/store/scaiwpc5m6bdrma86r02j962bkm1syyl-source/modules/nixos](file:///nix/store/scaiwpc5m6bdrma86r02j962bkm1syyl-source/modules/nixos)
+ - [/nix/store/ax41kllj2hs8jndjyd16bjnflkjzwfvj-source/modules/nixos](file:///nix/store/ax41kllj2hs8jndjyd16bjnflkjzwfvj-source/modules/nixos)
 
 
 
@@ -340,7 +340,7 @@ string
 ` "us" `
 
 *Declared by:*
- - [/nix/store/scaiwpc5m6bdrma86r02j962bkm1syyl-source/modules/nixos](file:///nix/store/scaiwpc5m6bdrma86r02j962bkm1syyl-source/modules/nixos)
+ - [/nix/store/ax41kllj2hs8jndjyd16bjnflkjzwfvj-source/modules/nixos](file:///nix/store/ax41kllj2hs8jndjyd16bjnflkjzwfvj-source/modules/nixos)
 
 
 
@@ -361,7 +361,7 @@ string
 ` "ja_JP.UTF-8" `
 
 *Declared by:*
- - [/nix/store/scaiwpc5m6bdrma86r02j962bkm1syyl-source/modules/nixos](file:///nix/store/scaiwpc5m6bdrma86r02j962bkm1syyl-source/modules/nixos)
+ - [/nix/store/ax41kllj2hs8jndjyd16bjnflkjzwfvj-source/modules/nixos](file:///nix/store/ax41kllj2hs8jndjyd16bjnflkjzwfvj-source/modules/nixos)
 
 
 
@@ -382,7 +382,7 @@ string
 ` "Asia/Bangkok" `
 
 *Declared by:*
- - [/nix/store/scaiwpc5m6bdrma86r02j962bkm1syyl-source/modules/nixos](file:///nix/store/scaiwpc5m6bdrma86r02j962bkm1syyl-source/modules/nixos)
+ - [/nix/store/ax41kllj2hs8jndjyd16bjnflkjzwfvj-source/modules/nixos](file:///nix/store/ax41kllj2hs8jndjyd16bjnflkjzwfvj-source/modules/nixos)
 
 
 
@@ -403,7 +403,7 @@ string
 ` "localhost" `
 
 *Declared by:*
- - [/nix/store/scaiwpc5m6bdrma86r02j962bkm1syyl-source/modules/nixos](file:///nix/store/scaiwpc5m6bdrma86r02j962bkm1syyl-source/modules/nixos)
+ - [/nix/store/ax41kllj2hs8jndjyd16bjnflkjzwfvj-source/modules/nixos](file:///nix/store/ax41kllj2hs8jndjyd16bjnflkjzwfvj-source/modules/nixos)
 
 
 
@@ -424,7 +424,28 @@ string
 ` "itscrystalline" `
 
 *Declared by:*
- - [/nix/store/scaiwpc5m6bdrma86r02j962bkm1syyl-source/modules/nixos](file:///nix/store/scaiwpc5m6bdrma86r02j962bkm1syyl-source/modules/nixos)
+ - [/nix/store/ax41kllj2hs8jndjyd16bjnflkjzwfvj-source/modules/nixos](file:///nix/store/ax41kllj2hs8jndjyd16bjnflkjzwfvj-source/modules/nixos)
+
+
+
+## core\.primaryUserSshKeys
+
+
+
+SSH Keys allowed to log in to the ` primaryUser `\.
+
+
+
+*Type:*
+list of string
+
+
+
+*Default:*
+` [ ] `
+
+*Declared by:*
+ - [/nix/store/ax41kllj2hs8jndjyd16bjnflkjzwfvj-source/modules/nixos](file:///nix/store/ax41kllj2hs8jndjyd16bjnflkjzwfvj-source/modules/nixos)
 
 
 
@@ -450,7 +471,7 @@ boolean
 ` true `
 
 *Declared by:*
- - [/nix/store/scaiwpc5m6bdrma86r02j962bkm1syyl-source/modules/nixos/services/argonone\.nix](file:///nix/store/scaiwpc5m6bdrma86r02j962bkm1syyl-source/modules/nixos/services/argonone.nix)
+ - [/nix/store/ax41kllj2hs8jndjyd16bjnflkjzwfvj-source/modules/nixos/services/argonone\.nix](file:///nix/store/ax41kllj2hs8jndjyd16bjnflkjzwfvj-source/modules/nixos/services/argonone.nix)
 
 
 
@@ -478,7 +499,7 @@ list of signed integer
 ```
 
 *Declared by:*
- - [/nix/store/scaiwpc5m6bdrma86r02j962bkm1syyl-source/modules/nixos/services/argonone\.nix](file:///nix/store/scaiwpc5m6bdrma86r02j962bkm1syyl-source/modules/nixos/services/argonone.nix)
+ - [/nix/store/ax41kllj2hs8jndjyd16bjnflkjzwfvj-source/modules/nixos/services/argonone\.nix](file:///nix/store/ax41kllj2hs8jndjyd16bjnflkjzwfvj-source/modules/nixos/services/argonone.nix)
 
 
 
@@ -499,7 +520,7 @@ signed integer
 ` 5 `
 
 *Declared by:*
- - [/nix/store/scaiwpc5m6bdrma86r02j962bkm1syyl-source/modules/nixos/services/argonone\.nix](file:///nix/store/scaiwpc5m6bdrma86r02j962bkm1syyl-source/modules/nixos/services/argonone.nix)
+ - [/nix/store/ax41kllj2hs8jndjyd16bjnflkjzwfvj-source/modules/nixos/services/argonone\.nix](file:///nix/store/ax41kllj2hs8jndjyd16bjnflkjzwfvj-source/modules/nixos/services/argonone.nix)
 
 
 
@@ -527,7 +548,7 @@ list of signed integer
 ```
 
 *Declared by:*
- - [/nix/store/scaiwpc5m6bdrma86r02j962bkm1syyl-source/modules/nixos/services/argonone\.nix](file:///nix/store/scaiwpc5m6bdrma86r02j962bkm1syyl-source/modules/nixos/services/argonone.nix)
+ - [/nix/store/ax41kllj2hs8jndjyd16bjnflkjzwfvj-source/modules/nixos/services/argonone\.nix](file:///nix/store/ax41kllj2hs8jndjyd16bjnflkjzwfvj-source/modules/nixos/services/argonone.nix)
 
 
 
@@ -553,7 +574,7 @@ boolean
 ` true `
 
 *Declared by:*
- - [/nix/store/scaiwpc5m6bdrma86r02j962bkm1syyl-source/modules/nixos/services/avahi\.nix](file:///nix/store/scaiwpc5m6bdrma86r02j962bkm1syyl-source/modules/nixos/services/avahi.nix)
+ - [/nix/store/ax41kllj2hs8jndjyd16bjnflkjzwfvj-source/modules/nixos/services/avahi\.nix](file:///nix/store/ax41kllj2hs8jndjyd16bjnflkjzwfvj-source/modules/nixos/services/avahi.nix)
 
 
 
@@ -579,7 +600,7 @@ boolean
 ` true `
 
 *Declared by:*
- - [/nix/store/scaiwpc5m6bdrma86r02j962bkm1syyl-source/modules/nixos/services/blocky\.nix](file:///nix/store/scaiwpc5m6bdrma86r02j962bkm1syyl-source/modules/nixos/services/blocky.nix)
+ - [/nix/store/ax41kllj2hs8jndjyd16bjnflkjzwfvj-source/modules/nixos/services/blocky\.nix](file:///nix/store/ax41kllj2hs8jndjyd16bjnflkjzwfvj-source/modules/nixos/services/blocky.nix)
 
 
 
@@ -600,7 +621,7 @@ strings concatenated with “\\n”
 ` "" `
 
 *Declared by:*
- - [/nix/store/scaiwpc5m6bdrma86r02j962bkm1syyl-source/modules/nixos/services/blocky\.nix](file:///nix/store/scaiwpc5m6bdrma86r02j962bkm1syyl-source/modules/nixos/services/blocky.nix)
+ - [/nix/store/ax41kllj2hs8jndjyd16bjnflkjzwfvj-source/modules/nixos/services/blocky\.nix](file:///nix/store/ax41kllj2hs8jndjyd16bjnflkjzwfvj-source/modules/nixos/services/blocky.nix)
 
 
 
@@ -621,7 +642,7 @@ strings concatenated with “\\n”
 ` "" `
 
 *Declared by:*
- - [/nix/store/scaiwpc5m6bdrma86r02j962bkm1syyl-source/modules/nixos/services/blocky\.nix](file:///nix/store/scaiwpc5m6bdrma86r02j962bkm1syyl-source/modules/nixos/services/blocky.nix)
+ - [/nix/store/ax41kllj2hs8jndjyd16bjnflkjzwfvj-source/modules/nixos/services/blocky\.nix](file:///nix/store/ax41kllj2hs8jndjyd16bjnflkjzwfvj-source/modules/nixos/services/blocky.nix)
 
 
 
@@ -647,7 +668,7 @@ boolean
 ` true `
 
 *Declared by:*
- - [/nix/store/scaiwpc5m6bdrma86r02j962bkm1syyl-source/modules/nixos/services/cloudflared\.nix](file:///nix/store/scaiwpc5m6bdrma86r02j962bkm1syyl-source/modules/nixos/services/cloudflared.nix)
+ - [/nix/store/ax41kllj2hs8jndjyd16bjnflkjzwfvj-source/modules/nixos/services/cloudflared\.nix](file:///nix/store/ax41kllj2hs8jndjyd16bjnflkjzwfvj-source/modules/nixos/services/cloudflared.nix)
 
 
 
@@ -673,7 +694,7 @@ boolean
 ` true `
 
 *Declared by:*
- - [/nix/store/scaiwpc5m6bdrma86r02j962bkm1syyl-source/modules/nixos/services/create-ap\.nix](file:///nix/store/scaiwpc5m6bdrma86r02j962bkm1syyl-source/modules/nixos/services/create-ap.nix)
+ - [/nix/store/ax41kllj2hs8jndjyd16bjnflkjzwfvj-source/modules/nixos/services/create-ap\.nix](file:///nix/store/ax41kllj2hs8jndjyd16bjnflkjzwfvj-source/modules/nixos/services/create-ap.nix)
 
 
 
@@ -694,7 +715,7 @@ list of (submodule)
 ` [ ] `
 
 *Declared by:*
- - [/nix/store/scaiwpc5m6bdrma86r02j962bkm1syyl-source/modules/nixos/services/create-ap\.nix](file:///nix/store/scaiwpc5m6bdrma86r02j962bkm1syyl-source/modules/nixos/services/create-ap.nix)
+ - [/nix/store/ax41kllj2hs8jndjyd16bjnflkjzwfvj-source/modules/nixos/services/create-ap\.nix](file:///nix/store/ax41kllj2hs8jndjyd16bjnflkjzwfvj-source/modules/nixos/services/create-ap.nix)
 
 
 
@@ -710,7 +731,7 @@ Hostname\.
 string
 
 *Declared by:*
- - [/nix/store/scaiwpc5m6bdrma86r02j962bkm1syyl-source/modules/nixos/services/create-ap\.nix](file:///nix/store/scaiwpc5m6bdrma86r02j962bkm1syyl-source/modules/nixos/services/create-ap.nix)
+ - [/nix/store/ax41kllj2hs8jndjyd16bjnflkjzwfvj-source/modules/nixos/services/create-ap\.nix](file:///nix/store/ax41kllj2hs8jndjyd16bjnflkjzwfvj-source/modules/nixos/services/create-ap.nix)
 
 
 
@@ -726,7 +747,7 @@ IP address\.
 string
 
 *Declared by:*
- - [/nix/store/scaiwpc5m6bdrma86r02j962bkm1syyl-source/modules/nixos/services/create-ap\.nix](file:///nix/store/scaiwpc5m6bdrma86r02j962bkm1syyl-source/modules/nixos/services/create-ap.nix)
+ - [/nix/store/ax41kllj2hs8jndjyd16bjnflkjzwfvj-source/modules/nixos/services/create-ap\.nix](file:///nix/store/ax41kllj2hs8jndjyd16bjnflkjzwfvj-source/modules/nixos/services/create-ap.nix)
 
 
 
@@ -747,7 +768,7 @@ string
 ` "infinite" `
 
 *Declared by:*
- - [/nix/store/scaiwpc5m6bdrma86r02j962bkm1syyl-source/modules/nixos/services/create-ap\.nix](file:///nix/store/scaiwpc5m6bdrma86r02j962bkm1syyl-source/modules/nixos/services/create-ap.nix)
+ - [/nix/store/ax41kllj2hs8jndjyd16bjnflkjzwfvj-source/modules/nixos/services/create-ap\.nix](file:///nix/store/ax41kllj2hs8jndjyd16bjnflkjzwfvj-source/modules/nixos/services/create-ap.nix)
 
 
 
@@ -763,7 +784,7 @@ MAC address\.
 string
 
 *Declared by:*
- - [/nix/store/scaiwpc5m6bdrma86r02j962bkm1syyl-source/modules/nixos/services/create-ap\.nix](file:///nix/store/scaiwpc5m6bdrma86r02j962bkm1syyl-source/modules/nixos/services/create-ap.nix)
+ - [/nix/store/ax41kllj2hs8jndjyd16bjnflkjzwfvj-source/modules/nixos/services/create-ap\.nix](file:///nix/store/ax41kllj2hs8jndjyd16bjnflkjzwfvj-source/modules/nixos/services/create-ap.nix)
 
 
 
@@ -789,7 +810,7 @@ boolean
 ` true `
 
 *Declared by:*
- - [/nix/store/scaiwpc5m6bdrma86r02j962bkm1syyl-source/modules/nixos/services/docker\.nix](file:///nix/store/scaiwpc5m6bdrma86r02j962bkm1syyl-source/modules/nixos/services/docker.nix)
+ - [/nix/store/ax41kllj2hs8jndjyd16bjnflkjzwfvj-source/modules/nixos/services/docker\.nix](file:///nix/store/ax41kllj2hs8jndjyd16bjnflkjzwfvj-source/modules/nixos/services/docker.nix)
 
 
 
@@ -815,7 +836,7 @@ boolean
 ` true `
 
 *Declared by:*
- - [/nix/store/scaiwpc5m6bdrma86r02j962bkm1syyl-source/modules/nixos/services/earlyoom\.nix](file:///nix/store/scaiwpc5m6bdrma86r02j962bkm1syyl-source/modules/nixos/services/earlyoom.nix)
+ - [/nix/store/ax41kllj2hs8jndjyd16bjnflkjzwfvj-source/modules/nixos/services/earlyoom\.nix](file:///nix/store/ax41kllj2hs8jndjyd16bjnflkjzwfvj-source/modules/nixos/services/earlyoom.nix)
 
 
 
@@ -841,7 +862,7 @@ boolean
 ` true `
 
 *Declared by:*
- - [/nix/store/scaiwpc5m6bdrma86r02j962bkm1syyl-source/modules/nixos/services/home-assistant\.nix](file:///nix/store/scaiwpc5m6bdrma86r02j962bkm1syyl-source/modules/nixos/services/home-assistant.nix)
+ - [/nix/store/ax41kllj2hs8jndjyd16bjnflkjzwfvj-source/modules/nixos/services/home-assistant\.nix](file:///nix/store/ax41kllj2hs8jndjyd16bjnflkjzwfvj-source/modules/nixos/services/home-assistant.nix)
 
 
 
@@ -867,7 +888,7 @@ boolean
 ` true `
 
 *Declared by:*
- - [/nix/store/scaiwpc5m6bdrma86r02j962bkm1syyl-source/modules/nixos/services/iw2tryhard-dev\.nix](file:///nix/store/scaiwpc5m6bdrma86r02j962bkm1syyl-source/modules/nixos/services/iw2tryhard-dev.nix)
+ - [/nix/store/ax41kllj2hs8jndjyd16bjnflkjzwfvj-source/modules/nixos/services/iw2tryhard-dev\.nix](file:///nix/store/ax41kllj2hs8jndjyd16bjnflkjzwfvj-source/modules/nixos/services/iw2tryhard-dev.nix)
 
 
 
@@ -893,7 +914,7 @@ boolean
 ` true `
 
 *Declared by:*
- - [/nix/store/scaiwpc5m6bdrma86r02j962bkm1syyl-source/modules/nixos/services/manga\.nix](file:///nix/store/scaiwpc5m6bdrma86r02j962bkm1syyl-source/modules/nixos/services/manga.nix)
+ - [/nix/store/ax41kllj2hs8jndjyd16bjnflkjzwfvj-source/modules/nixos/services/manga\.nix](file:///nix/store/ax41kllj2hs8jndjyd16bjnflkjzwfvj-source/modules/nixos/services/manga.nix)
 
 
 
@@ -919,7 +940,7 @@ boolean
 ` true `
 
 *Declared by:*
- - [/nix/store/scaiwpc5m6bdrma86r02j962bkm1syyl-source/modules/nixos/services/monitoring\.nix](file:///nix/store/scaiwpc5m6bdrma86r02j962bkm1syyl-source/modules/nixos/services/monitoring.nix)
+ - [/nix/store/ax41kllj2hs8jndjyd16bjnflkjzwfvj-source/modules/nixos/services/monitoring\.nix](file:///nix/store/ax41kllj2hs8jndjyd16bjnflkjzwfvj-source/modules/nixos/services/monitoring.nix)
 
 
 
@@ -945,7 +966,7 @@ boolean
 ` true `
 
 *Declared by:*
- - [/nix/store/scaiwpc5m6bdrma86r02j962bkm1syyl-source/modules/nixos/services/ncps\.nix](file:///nix/store/scaiwpc5m6bdrma86r02j962bkm1syyl-source/modules/nixos/services/ncps.nix)
+ - [/nix/store/ax41kllj2hs8jndjyd16bjnflkjzwfvj-source/modules/nixos/services/ncps\.nix](file:///nix/store/ax41kllj2hs8jndjyd16bjnflkjzwfvj-source/modules/nixos/services/ncps.nix)
 
 
 
@@ -966,7 +987,7 @@ string
 ` "/mnt/main/ncps" `
 
 *Declared by:*
- - [/nix/store/scaiwpc5m6bdrma86r02j962bkm1syyl-source/modules/nixos/services/ncps\.nix](file:///nix/store/scaiwpc5m6bdrma86r02j962bkm1syyl-source/modules/nixos/services/ncps.nix)
+ - [/nix/store/ax41kllj2hs8jndjyd16bjnflkjzwfvj-source/modules/nixos/services/ncps\.nix](file:///nix/store/ax41kllj2hs8jndjyd16bjnflkjzwfvj-source/modules/nixos/services/ncps.nix)
 
 
 
@@ -992,7 +1013,7 @@ boolean
 ` true `
 
 *Declared by:*
- - [/nix/store/scaiwpc5m6bdrma86r02j962bkm1syyl-source/modules/nixos/services/nextcloud\.nix](file:///nix/store/scaiwpc5m6bdrma86r02j962bkm1syyl-source/modules/nixos/services/nextcloud.nix)
+ - [/nix/store/ax41kllj2hs8jndjyd16bjnflkjzwfvj-source/modules/nixos/services/nextcloud\.nix](file:///nix/store/ax41kllj2hs8jndjyd16bjnflkjzwfvj-source/modules/nixos/services/nextcloud.nix)
 
 
 
@@ -1008,7 +1029,7 @@ Path to a file containing the Nextcloud admin password\.
 string
 
 *Declared by:*
- - [/nix/store/scaiwpc5m6bdrma86r02j962bkm1syyl-source/modules/nixos/services/nextcloud\.nix](file:///nix/store/scaiwpc5m6bdrma86r02j962bkm1syyl-source/modules/nixos/services/nextcloud.nix)
+ - [/nix/store/ax41kllj2hs8jndjyd16bjnflkjzwfvj-source/modules/nixos/services/nextcloud\.nix](file:///nix/store/ax41kllj2hs8jndjyd16bjnflkjzwfvj-source/modules/nixos/services/nextcloud.nix)
 
 
 
@@ -1024,7 +1045,7 @@ Domain name for Nextcloud\.
 string
 
 *Declared by:*
- - [/nix/store/scaiwpc5m6bdrma86r02j962bkm1syyl-source/modules/nixos/services/nextcloud\.nix](file:///nix/store/scaiwpc5m6bdrma86r02j962bkm1syyl-source/modules/nixos/services/nextcloud.nix)
+ - [/nix/store/ax41kllj2hs8jndjyd16bjnflkjzwfvj-source/modules/nixos/services/nextcloud\.nix](file:///nix/store/ax41kllj2hs8jndjyd16bjnflkjzwfvj-source/modules/nixos/services/nextcloud.nix)
 
 
 
@@ -1040,7 +1061,7 @@ Main Nextcloud data directory\.
 string
 
 *Declared by:*
- - [/nix/store/scaiwpc5m6bdrma86r02j962bkm1syyl-source/modules/nixos/services/nextcloud\.nix](file:///nix/store/scaiwpc5m6bdrma86r02j962bkm1syyl-source/modules/nixos/services/nextcloud.nix)
+ - [/nix/store/ax41kllj2hs8jndjyd16bjnflkjzwfvj-source/modules/nixos/services/nextcloud\.nix](file:///nix/store/ax41kllj2hs8jndjyd16bjnflkjzwfvj-source/modules/nixos/services/nextcloud.nix)
 
 
 
@@ -1056,7 +1077,7 @@ Path to a file containing the Nextcloud serverinfo stats API token\.
 string
 
 *Declared by:*
- - [/nix/store/scaiwpc5m6bdrma86r02j962bkm1syyl-source/modules/nixos/services/nextcloud\.nix](file:///nix/store/scaiwpc5m6bdrma86r02j962bkm1syyl-source/modules/nixos/services/nextcloud.nix)
+ - [/nix/store/ax41kllj2hs8jndjyd16bjnflkjzwfvj-source/modules/nixos/services/nextcloud\.nix](file:///nix/store/ax41kllj2hs8jndjyd16bjnflkjzwfvj-source/modules/nixos/services/nextcloud.nix)
 
 
 
@@ -1082,7 +1103,7 @@ boolean
 ` true `
 
 *Declared by:*
- - [/nix/store/scaiwpc5m6bdrma86r02j962bkm1syyl-source/modules/nixos/services/nfs\.nix](file:///nix/store/scaiwpc5m6bdrma86r02j962bkm1syyl-source/modules/nixos/services/nfs.nix)
+ - [/nix/store/ax41kllj2hs8jndjyd16bjnflkjzwfvj-source/modules/nixos/services/nfs\.nix](file:///nix/store/ax41kllj2hs8jndjyd16bjnflkjzwfvj-source/modules/nixos/services/nfs.nix)
 
 
 
@@ -1103,7 +1124,7 @@ strings concatenated with “\\n”
 ` "" `
 
 *Declared by:*
- - [/nix/store/scaiwpc5m6bdrma86r02j962bkm1syyl-source/modules/nixos/services/nfs\.nix](file:///nix/store/scaiwpc5m6bdrma86r02j962bkm1syyl-source/modules/nixos/services/nfs.nix)
+ - [/nix/store/ax41kllj2hs8jndjyd16bjnflkjzwfvj-source/modules/nixos/services/nfs\.nix](file:///nix/store/ax41kllj2hs8jndjyd16bjnflkjzwfvj-source/modules/nixos/services/nfs.nix)
 
 
 
@@ -1124,7 +1145,7 @@ string
 ` "/mnt/main/nfs" `
 
 *Declared by:*
- - [/nix/store/scaiwpc5m6bdrma86r02j962bkm1syyl-source/modules/nixos/services/nfs\.nix](file:///nix/store/scaiwpc5m6bdrma86r02j962bkm1syyl-source/modules/nixos/services/nfs.nix)
+ - [/nix/store/ax41kllj2hs8jndjyd16bjnflkjzwfvj-source/modules/nixos/services/nfs\.nix](file:///nix/store/ax41kllj2hs8jndjyd16bjnflkjzwfvj-source/modules/nixos/services/nfs.nix)
 
 
 
@@ -1150,7 +1171,7 @@ boolean
 ` true `
 
 *Declared by:*
- - [/nix/store/scaiwpc5m6bdrma86r02j962bkm1syyl-source/modules/nixos/services/nginx\.nix](file:///nix/store/scaiwpc5m6bdrma86r02j962bkm1syyl-source/modules/nixos/services/nginx.nix)
+ - [/nix/store/ax41kllj2hs8jndjyd16bjnflkjzwfvj-source/modules/nixos/services/nginx\.nix](file:///nix/store/ax41kllj2hs8jndjyd16bjnflkjzwfvj-source/modules/nixos/services/nginx.nix)
 
 
 
@@ -1171,7 +1192,7 @@ string
 ` ".crys" `
 
 *Declared by:*
- - [/nix/store/scaiwpc5m6bdrma86r02j962bkm1syyl-source/modules/nixos/services/nginx\.nix](file:///nix/store/scaiwpc5m6bdrma86r02j962bkm1syyl-source/modules/nixos/services/nginx.nix)
+ - [/nix/store/ax41kllj2hs8jndjyd16bjnflkjzwfvj-source/modules/nixos/services/nginx\.nix](file:///nix/store/ax41kllj2hs8jndjyd16bjnflkjzwfvj-source/modules/nixos/services/nginx.nix)
 
 
 
@@ -1197,7 +1218,7 @@ boolean
 ` true `
 
 *Declared by:*
- - [/nix/store/scaiwpc5m6bdrma86r02j962bkm1syyl-source/modules/nixos/services/pipewire\.nix](file:///nix/store/scaiwpc5m6bdrma86r02j962bkm1syyl-source/modules/nixos/services/pipewire.nix)
+ - [/nix/store/ax41kllj2hs8jndjyd16bjnflkjzwfvj-source/modules/nixos/services/pipewire\.nix](file:///nix/store/ax41kllj2hs8jndjyd16bjnflkjzwfvj-source/modules/nixos/services/pipewire.nix)
 
 
 
@@ -1223,7 +1244,7 @@ boolean
 ` true `
 
 *Declared by:*
- - [/nix/store/scaiwpc5m6bdrma86r02j962bkm1syyl-source/modules/nixos/services/power-management\.nix](file:///nix/store/scaiwpc5m6bdrma86r02j962bkm1syyl-source/modules/nixos/services/power-management.nix)
+ - [/nix/store/ax41kllj2hs8jndjyd16bjnflkjzwfvj-source/modules/nixos/services/power-management\.nix](file:///nix/store/ax41kllj2hs8jndjyd16bjnflkjzwfvj-source/modules/nixos/services/power-management.nix)
 
 
 
@@ -1249,7 +1270,7 @@ boolean
 ` true `
 
 *Declared by:*
- - [/nix/store/scaiwpc5m6bdrma86r02j962bkm1syyl-source/modules/nixos/services/printing\.nix](file:///nix/store/scaiwpc5m6bdrma86r02j962bkm1syyl-source/modules/nixos/services/printing.nix)
+ - [/nix/store/ax41kllj2hs8jndjyd16bjnflkjzwfvj-source/modules/nixos/services/printing\.nix](file:///nix/store/ax41kllj2hs8jndjyd16bjnflkjzwfvj-source/modules/nixos/services/printing.nix)
 
 
 
@@ -1270,7 +1291,7 @@ null or string
 ` null `
 
 *Declared by:*
- - [/nix/store/scaiwpc5m6bdrma86r02j962bkm1syyl-source/modules/nixos/services/printing\.nix](file:///nix/store/scaiwpc5m6bdrma86r02j962bkm1syyl-source/modules/nixos/services/printing.nix)
+ - [/nix/store/ax41kllj2hs8jndjyd16bjnflkjzwfvj-source/modules/nixos/services/printing\.nix](file:///nix/store/ax41kllj2hs8jndjyd16bjnflkjzwfvj-source/modules/nixos/services/printing.nix)
 
 
 
@@ -1291,7 +1312,7 @@ list of package
 ` [ ] `
 
 *Declared by:*
- - [/nix/store/scaiwpc5m6bdrma86r02j962bkm1syyl-source/modules/nixos/services/printing\.nix](file:///nix/store/scaiwpc5m6bdrma86r02j962bkm1syyl-source/modules/nixos/services/printing.nix)
+ - [/nix/store/ax41kllj2hs8jndjyd16bjnflkjzwfvj-source/modules/nixos/services/printing\.nix](file:///nix/store/ax41kllj2hs8jndjyd16bjnflkjzwfvj-source/modules/nixos/services/printing.nix)
 
 
 
@@ -1312,7 +1333,7 @@ list of (submodule)
 ` [ ] `
 
 *Declared by:*
- - [/nix/store/scaiwpc5m6bdrma86r02j962bkm1syyl-source/modules/nixos/services/printing\.nix](file:///nix/store/scaiwpc5m6bdrma86r02j962bkm1syyl-source/modules/nixos/services/printing.nix)
+ - [/nix/store/ax41kllj2hs8jndjyd16bjnflkjzwfvj-source/modules/nixos/services/printing\.nix](file:///nix/store/ax41kllj2hs8jndjyd16bjnflkjzwfvj-source/modules/nixos/services/printing.nix)
 
 
 
@@ -1328,7 +1349,7 @@ Printer device URI\.
 string
 
 *Declared by:*
- - [/nix/store/scaiwpc5m6bdrma86r02j962bkm1syyl-source/modules/nixos/services/printing\.nix](file:///nix/store/scaiwpc5m6bdrma86r02j962bkm1syyl-source/modules/nixos/services/printing.nix)
+ - [/nix/store/ax41kllj2hs8jndjyd16bjnflkjzwfvj-source/modules/nixos/services/printing\.nix](file:///nix/store/ax41kllj2hs8jndjyd16bjnflkjzwfvj-source/modules/nixos/services/printing.nix)
 
 
 
@@ -1349,7 +1370,7 @@ string
 ` "" `
 
 *Declared by:*
- - [/nix/store/scaiwpc5m6bdrma86r02j962bkm1syyl-source/modules/nixos/services/printing\.nix](file:///nix/store/scaiwpc5m6bdrma86r02j962bkm1syyl-source/modules/nixos/services/printing.nix)
+ - [/nix/store/ax41kllj2hs8jndjyd16bjnflkjzwfvj-source/modules/nixos/services/printing\.nix](file:///nix/store/ax41kllj2hs8jndjyd16bjnflkjzwfvj-source/modules/nixos/services/printing.nix)
 
 
 
@@ -1365,7 +1386,7 @@ Printer PPD model\.
 string
 
 *Declared by:*
- - [/nix/store/scaiwpc5m6bdrma86r02j962bkm1syyl-source/modules/nixos/services/printing\.nix](file:///nix/store/scaiwpc5m6bdrma86r02j962bkm1syyl-source/modules/nixos/services/printing.nix)
+ - [/nix/store/ax41kllj2hs8jndjyd16bjnflkjzwfvj-source/modules/nixos/services/printing\.nix](file:///nix/store/ax41kllj2hs8jndjyd16bjnflkjzwfvj-source/modules/nixos/services/printing.nix)
 
 
 
@@ -1381,7 +1402,7 @@ Printer name\.
 string
 
 *Declared by:*
- - [/nix/store/scaiwpc5m6bdrma86r02j962bkm1syyl-source/modules/nixos/services/printing\.nix](file:///nix/store/scaiwpc5m6bdrma86r02j962bkm1syyl-source/modules/nixos/services/printing.nix)
+ - [/nix/store/ax41kllj2hs8jndjyd16bjnflkjzwfvj-source/modules/nixos/services/printing\.nix](file:///nix/store/ax41kllj2hs8jndjyd16bjnflkjzwfvj-source/modules/nixos/services/printing.nix)
 
 
 
@@ -1402,7 +1423,7 @@ attribute set of string
 ` { } `
 
 *Declared by:*
- - [/nix/store/scaiwpc5m6bdrma86r02j962bkm1syyl-source/modules/nixos/services/printing\.nix](file:///nix/store/scaiwpc5m6bdrma86r02j962bkm1syyl-source/modules/nixos/services/printing.nix)
+ - [/nix/store/ax41kllj2hs8jndjyd16bjnflkjzwfvj-source/modules/nixos/services/printing\.nix](file:///nix/store/ax41kllj2hs8jndjyd16bjnflkjzwfvj-source/modules/nixos/services/printing.nix)
 
 
 
@@ -1428,7 +1449,7 @@ boolean
 ` true `
 
 *Declared by:*
- - [/nix/store/scaiwpc5m6bdrma86r02j962bkm1syyl-source/modules/nixos/services/printing\.nix](file:///nix/store/scaiwpc5m6bdrma86r02j962bkm1syyl-source/modules/nixos/services/printing.nix)
+ - [/nix/store/ax41kllj2hs8jndjyd16bjnflkjzwfvj-source/modules/nixos/services/printing\.nix](file:///nix/store/ax41kllj2hs8jndjyd16bjnflkjzwfvj-source/modules/nixos/services/printing.nix)
 
 
 
@@ -1454,7 +1475,7 @@ boolean
 ` true `
 
 *Declared by:*
- - [/nix/store/scaiwpc5m6bdrma86r02j962bkm1syyl-source/modules/nixos/services/scanservjs\.nix](file:///nix/store/scaiwpc5m6bdrma86r02j962bkm1syyl-source/modules/nixos/services/scanservjs.nix)
+ - [/nix/store/ax41kllj2hs8jndjyd16bjnflkjzwfvj-source/modules/nixos/services/scanservjs\.nix](file:///nix/store/ax41kllj2hs8jndjyd16bjnflkjzwfvj-source/modules/nixos/services/scanservjs.nix)
 
 
 
@@ -1475,7 +1496,7 @@ null or string
 ` "scan" `
 
 *Declared by:*
- - [/nix/store/scaiwpc5m6bdrma86r02j962bkm1syyl-source/modules/nixos/services/scanservjs\.nix](file:///nix/store/scaiwpc5m6bdrma86r02j962bkm1syyl-source/modules/nixos/services/scanservjs.nix)
+ - [/nix/store/ax41kllj2hs8jndjyd16bjnflkjzwfvj-source/modules/nixos/services/scanservjs\.nix](file:///nix/store/ax41kllj2hs8jndjyd16bjnflkjzwfvj-source/modules/nixos/services/scanservjs.nix)
 
 
 
@@ -1501,7 +1522,7 @@ boolean
 ` true `
 
 *Declared by:*
- - [/nix/store/scaiwpc5m6bdrma86r02j962bkm1syyl-source/modules/nixos/services/ssh\.nix](file:///nix/store/scaiwpc5m6bdrma86r02j962bkm1syyl-source/modules/nixos/services/ssh.nix)
+ - [/nix/store/ax41kllj2hs8jndjyd16bjnflkjzwfvj-source/modules/nixos/services/ssh\.nix](file:///nix/store/ax41kllj2hs8jndjyd16bjnflkjzwfvj-source/modules/nixos/services/ssh.nix)
 
 
 
@@ -1527,7 +1548,7 @@ boolean
 ` true `
 
 *Declared by:*
- - [/nix/store/scaiwpc5m6bdrma86r02j962bkm1syyl-source/modules/nixos/services/tailscale\.nix](file:///nix/store/scaiwpc5m6bdrma86r02j962bkm1syyl-source/modules/nixos/services/tailscale.nix)
+ - [/nix/store/ax41kllj2hs8jndjyd16bjnflkjzwfvj-source/modules/nixos/services/tailscale\.nix](file:///nix/store/ax41kllj2hs8jndjyd16bjnflkjzwfvj-source/modules/nixos/services/tailscale.nix)
 
 
 
@@ -1553,7 +1574,7 @@ boolean
 ` true `
 
 *Declared by:*
- - [/nix/store/scaiwpc5m6bdrma86r02j962bkm1syyl-source/modules/nixos/gui](file:///nix/store/scaiwpc5m6bdrma86r02j962bkm1syyl-source/modules/nixos/gui)
+ - [/nix/store/ax41kllj2hs8jndjyd16bjnflkjzwfvj-source/modules/nixos/gui](file:///nix/store/ax41kllj2hs8jndjyd16bjnflkjzwfvj-source/modules/nixos/gui)
 
 
 
@@ -1579,7 +1600,7 @@ boolean
 ` true `
 
 *Declared by:*
- - [/nix/store/scaiwpc5m6bdrma86r02j962bkm1syyl-source/modules/nixos/gui/flatpak\.nix](file:///nix/store/scaiwpc5m6bdrma86r02j962bkm1syyl-source/modules/nixos/gui/flatpak.nix)
+ - [/nix/store/ax41kllj2hs8jndjyd16bjnflkjzwfvj-source/modules/nixos/gui/flatpak\.nix](file:///nix/store/ax41kllj2hs8jndjyd16bjnflkjzwfvj-source/modules/nixos/gui/flatpak.nix)
 
 
 
@@ -1605,7 +1626,7 @@ boolean
 ` true `
 
 *Declared by:*
- - [/nix/store/scaiwpc5m6bdrma86r02j962bkm1syyl-source/modules/nixos/gui/graphics\.nix](file:///nix/store/scaiwpc5m6bdrma86r02j962bkm1syyl-source/modules/nixos/gui/graphics.nix)
+ - [/nix/store/ax41kllj2hs8jndjyd16bjnflkjzwfvj-source/modules/nixos/gui/graphics\.nix](file:///nix/store/ax41kllj2hs8jndjyd16bjnflkjzwfvj-source/modules/nixos/gui/graphics.nix)
 
 
 
@@ -1631,7 +1652,7 @@ boolean
 ` true `
 
 *Declared by:*
- - [/nix/store/scaiwpc5m6bdrma86r02j962bkm1syyl-source/modules/nixos/gui/graphics\.nix](file:///nix/store/scaiwpc5m6bdrma86r02j962bkm1syyl-source/modules/nixos/gui/graphics.nix)
+ - [/nix/store/ax41kllj2hs8jndjyd16bjnflkjzwfvj-source/modules/nixos/gui/graphics\.nix](file:///nix/store/ax41kllj2hs8jndjyd16bjnflkjzwfvj-source/modules/nixos/gui/graphics.nix)
 
 
 
@@ -1657,7 +1678,7 @@ boolean
 ` true `
 
 *Declared by:*
- - [/nix/store/scaiwpc5m6bdrma86r02j962bkm1syyl-source/modules/nixos/gui/graphics\.nix](file:///nix/store/scaiwpc5m6bdrma86r02j962bkm1syyl-source/modules/nixos/gui/graphics.nix)
+ - [/nix/store/ax41kllj2hs8jndjyd16bjnflkjzwfvj-source/modules/nixos/gui/graphics\.nix](file:///nix/store/ax41kllj2hs8jndjyd16bjnflkjzwfvj-source/modules/nixos/gui/graphics.nix)
 
 
 
@@ -1678,7 +1699,7 @@ string
 ` "" `
 
 *Declared by:*
- - [/nix/store/scaiwpc5m6bdrma86r02j962bkm1syyl-source/modules/nixos/gui/graphics\.nix](file:///nix/store/scaiwpc5m6bdrma86r02j962bkm1syyl-source/modules/nixos/gui/graphics.nix)
+ - [/nix/store/ax41kllj2hs8jndjyd16bjnflkjzwfvj-source/modules/nixos/gui/graphics\.nix](file:///nix/store/ax41kllj2hs8jndjyd16bjnflkjzwfvj-source/modules/nixos/gui/graphics.nix)
 
 
 
@@ -1699,7 +1720,7 @@ string
 ` "" `
 
 *Declared by:*
- - [/nix/store/scaiwpc5m6bdrma86r02j962bkm1syyl-source/modules/nixos/gui/graphics\.nix](file:///nix/store/scaiwpc5m6bdrma86r02j962bkm1syyl-source/modules/nixos/gui/graphics.nix)
+ - [/nix/store/ax41kllj2hs8jndjyd16bjnflkjzwfvj-source/modules/nixos/gui/graphics\.nix](file:///nix/store/ax41kllj2hs8jndjyd16bjnflkjzwfvj-source/modules/nixos/gui/graphics.nix)
 
 
 
@@ -1725,7 +1746,7 @@ boolean
 ` true `
 
 *Declared by:*
- - [/nix/store/scaiwpc5m6bdrma86r02j962bkm1syyl-source/modules/nixos/gui/niri\.nix](file:///nix/store/scaiwpc5m6bdrma86r02j962bkm1syyl-source/modules/nixos/gui/niri.nix)
+ - [/nix/store/ax41kllj2hs8jndjyd16bjnflkjzwfvj-source/modules/nixos/gui/niri\.nix](file:///nix/store/ax41kllj2hs8jndjyd16bjnflkjzwfvj-source/modules/nixos/gui/niri.nix)
 
 
 
@@ -1751,7 +1772,7 @@ boolean
 ` true `
 
 *Declared by:*
- - [/nix/store/scaiwpc5m6bdrma86r02j962bkm1syyl-source/modules/nixos/gui/obs\.nix](file:///nix/store/scaiwpc5m6bdrma86r02j962bkm1syyl-source/modules/nixos/gui/obs.nix)
+ - [/nix/store/ax41kllj2hs8jndjyd16bjnflkjzwfvj-source/modules/nixos/gui/obs\.nix](file:///nix/store/ax41kllj2hs8jndjyd16bjnflkjzwfvj-source/modules/nixos/gui/obs.nix)
 
 
 
@@ -1777,7 +1798,7 @@ boolean
 ` true `
 
 *Declared by:*
- - [/nix/store/scaiwpc5m6bdrma86r02j962bkm1syyl-source/modules/nixos/gui/steam\.nix](file:///nix/store/scaiwpc5m6bdrma86r02j962bkm1syyl-source/modules/nixos/gui/steam.nix)
+ - [/nix/store/ax41kllj2hs8jndjyd16bjnflkjzwfvj-source/modules/nixos/gui/steam\.nix](file:///nix/store/ax41kllj2hs8jndjyd16bjnflkjzwfvj-source/modules/nixos/gui/steam.nix)
 
 
 
@@ -1803,11 +1824,162 @@ boolean
 ` true `
 
 *Declared by:*
- - [/nix/store/scaiwpc5m6bdrma86r02j962bkm1syyl-source/modules/nixos/hardware/raspberrypi\.nix](file:///nix/store/scaiwpc5m6bdrma86r02j962bkm1syyl-source/modules/nixos/hardware/raspberrypi.nix)
+ - [/nix/store/ax41kllj2hs8jndjyd16bjnflkjzwfvj-source/modules/nixos/hardware/raspberrypi\.nix](file:///nix/store/ax41kllj2hs8jndjyd16bjnflkjzwfvj-source/modules/nixos/hardware/raspberrypi.nix)
 
 
 
-## hm\.asBuilderConfig
+## hm\.bluetooth\.enable
+
+
+
+Whether to enable Bluetooth\.
+
+
+
+*Type:*
+boolean
+
+
+
+*Default:*
+` false `
+
+
+
+*Example:*
+` true `
+
+*Declared by:*
+ - [/nix/store/ax41kllj2hs8jndjyd16bjnflkjzwfvj-source/modules/home-manager](file:///nix/store/ax41kllj2hs8jndjyd16bjnflkjzwfvj-source/modules/home-manager)
+
+
+
+## hm\.core\.username
+
+
+
+Username of this user\.
+
+
+
+*Type:*
+string
+
+
+
+*Default:*
+` "" `
+
+*Declared by:*
+ - [/nix/store/ax41kllj2hs8jndjyd16bjnflkjzwfvj-source/modules/home-manager](file:///nix/store/ax41kllj2hs8jndjyd16bjnflkjzwfvj-source/modules/home-manager)
+
+
+
+## hm\.flatpak\.enable
+
+
+
+Whether to enable Flatpak support\.
+
+
+
+*Type:*
+boolean
+
+
+
+*Default:*
+` false `
+
+
+
+*Example:*
+` true `
+
+*Declared by:*
+ - [/nix/store/ax41kllj2hs8jndjyd16bjnflkjzwfvj-source/modules/home-manager/gui/flatpak\.nix](file:///nix/store/ax41kllj2hs8jndjyd16bjnflkjzwfvj-source/modules/home-manager/gui/flatpak.nix)
+
+
+
+## hm\.gui\.enable
+
+
+
+Whether to enable GUI configuration\.
+
+
+
+*Type:*
+boolean
+
+
+
+*Default:*
+` false `
+
+
+
+*Example:*
+` true `
+
+*Declared by:*
+ - [/nix/store/ax41kllj2hs8jndjyd16bjnflkjzwfvj-source/modules/home-manager/gui](file:///nix/store/ax41kllj2hs8jndjyd16bjnflkjzwfvj-source/modules/home-manager/gui)
+
+
+
+## hm\.gui\.niri\.enable
+
+
+
+Whether to enable Niri window manager\.
+
+
+
+*Type:*
+boolean
+
+
+
+*Default:*
+` false `
+
+
+
+*Example:*
+` true `
+
+*Declared by:*
+ - [/nix/store/ax41kllj2hs8jndjyd16bjnflkjzwfvj-source/modules/home-manager/gui/niri\.nix](file:///nix/store/ax41kllj2hs8jndjyd16bjnflkjzwfvj-source/modules/home-manager/gui/niri.nix)
+
+
+
+## hm\.gui\.shell\.enable
+
+
+
+Whether to enable Noctalia shell\.
+
+
+
+*Type:*
+boolean
+
+
+
+*Default:*
+` false `
+
+
+
+*Example:*
+` true `
+
+*Declared by:*
+ - [/nix/store/ax41kllj2hs8jndjyd16bjnflkjzwfvj-source/modules/home-manager/gui/shell\.nix](file:///nix/store/ax41kllj2hs8jndjyd16bjnflkjzwfvj-source/modules/home-manager/gui/shell.nix)
+
+
+
+## hm\.nix\.asBuilderConfig
 
 
 
@@ -1841,11 +2013,11 @@ null or (submodule)
 ` null `
 
 *Declared by:*
- - [/nix/store/scaiwpc5m6bdrma86r02j962bkm1syyl-source/modules/home-manager/nix/remote-building\.nix](file:///nix/store/scaiwpc5m6bdrma86r02j962bkm1syyl-source/modules/home-manager/nix/remote-building.nix)
+ - [/nix/store/ax41kllj2hs8jndjyd16bjnflkjzwfvj-source/modules/home-manager/nix/remote-building\.nix](file:///nix/store/ax41kllj2hs8jndjyd16bjnflkjzwfvj-source/modules/home-manager/nix/remote-building.nix)
 
 
 
-## hm\.asBuilderConfig\.authorizedKeys
+## hm\.nix\.asBuilderConfig\.authorizedKeys
 
 
 
@@ -1874,11 +2046,11 @@ list of string
 ```
 
 *Declared by:*
- - [/nix/store/scaiwpc5m6bdrma86r02j962bkm1syyl-source/modules/home-manager/nix/remote-building\.nix](file:///nix/store/scaiwpc5m6bdrma86r02j962bkm1syyl-source/modules/home-manager/nix/remote-building.nix)
+ - [/nix/store/ax41kllj2hs8jndjyd16bjnflkjzwfvj-source/modules/home-manager/nix/remote-building\.nix](file:///nix/store/ax41kllj2hs8jndjyd16bjnflkjzwfvj-source/modules/home-manager/nix/remote-building.nix)
 
 
 
-## hm\.asBuilderConfig\.maxJobs
+## hm\.nix\.asBuilderConfig\.maxJobs
 
 
 
@@ -1895,11 +2067,11 @@ signed integer
 ` 4 `
 
 *Declared by:*
- - [/nix/store/scaiwpc5m6bdrma86r02j962bkm1syyl-source/modules/home-manager/nix/remote-building\.nix](file:///nix/store/scaiwpc5m6bdrma86r02j962bkm1syyl-source/modules/home-manager/nix/remote-building.nix)
+ - [/nix/store/ax41kllj2hs8jndjyd16bjnflkjzwfvj-source/modules/home-manager/nix/remote-building\.nix](file:///nix/store/ax41kllj2hs8jndjyd16bjnflkjzwfvj-source/modules/home-manager/nix/remote-building.nix)
 
 
 
-## hm\.asBuilderConfig\.speedFactor
+## hm\.nix\.asBuilderConfig\.speedFactor
 
 
 
@@ -1916,11 +2088,11 @@ signed integer
 ` 1 `
 
 *Declared by:*
- - [/nix/store/scaiwpc5m6bdrma86r02j962bkm1syyl-source/modules/home-manager/nix/remote-building\.nix](file:///nix/store/scaiwpc5m6bdrma86r02j962bkm1syyl-source/modules/home-manager/nix/remote-building.nix)
+ - [/nix/store/ax41kllj2hs8jndjyd16bjnflkjzwfvj-source/modules/home-manager/nix/remote-building\.nix](file:///nix/store/ax41kllj2hs8jndjyd16bjnflkjzwfvj-source/modules/home-manager/nix/remote-building.nix)
 
 
 
-## hm\.asBuilderConfig\.systems
+## hm\.nix\.asBuilderConfig\.systems
 
 
 
@@ -1942,552 +2114,11 @@ list of string
 ```
 
 *Declared by:*
- - [/nix/store/scaiwpc5m6bdrma86r02j962bkm1syyl-source/modules/home-manager/nix/remote-building\.nix](file:///nix/store/scaiwpc5m6bdrma86r02j962bkm1syyl-source/modules/home-manager/nix/remote-building.nix)
+ - [/nix/store/ax41kllj2hs8jndjyd16bjnflkjzwfvj-source/modules/home-manager/nix/remote-building\.nix](file:///nix/store/ax41kllj2hs8jndjyd16bjnflkjzwfvj-source/modules/home-manager/nix/remote-building.nix)
 
 
 
-## hm\.bluetooth\.enable
-
-
-
-Whether to enable Bluetooth\.
-
-
-
-*Type:*
-boolean
-
-
-
-*Default:*
-` false `
-
-
-
-*Example:*
-` true `
-
-*Declared by:*
- - [/nix/store/scaiwpc5m6bdrma86r02j962bkm1syyl-source/modules/home-manager](file:///nix/store/scaiwpc5m6bdrma86r02j962bkm1syyl-source/modules/home-manager)
-
-
-
-## hm\.core\.username
-
-
-
-Username of this user\.
-
-
-
-*Type:*
-string
-
-
-
-*Default:*
-` "" `
-
-*Declared by:*
- - [/nix/store/scaiwpc5m6bdrma86r02j962bkm1syyl-source/modules/home-manager](file:///nix/store/scaiwpc5m6bdrma86r02j962bkm1syyl-source/modules/home-manager)
-
-
-
-## hm\.flatpak\.enable
-
-
-
-Whether to enable Flatpak support\.
-
-
-
-*Type:*
-boolean
-
-
-
-*Default:*
-` false `
-
-
-
-*Example:*
-` true `
-
-*Declared by:*
- - [/nix/store/scaiwpc5m6bdrma86r02j962bkm1syyl-source/modules/home-manager/gui/flatpak\.nix](file:///nix/store/scaiwpc5m6bdrma86r02j962bkm1syyl-source/modules/home-manager/gui/flatpak.nix)
-
-
-
-## hm\.gui\.enable
-
-
-
-Whether to enable GUI configuration\.
-
-
-
-*Type:*
-boolean
-
-
-
-*Default:*
-` false `
-
-
-
-*Example:*
-` true `
-
-*Declared by:*
- - [/nix/store/scaiwpc5m6bdrma86r02j962bkm1syyl-source/modules/home-manager/gui](file:///nix/store/scaiwpc5m6bdrma86r02j962bkm1syyl-source/modules/home-manager/gui)
-
-
-
-## hm\.gui\.niri\.enable
-
-
-
-Whether to enable Niri window manager\.
-
-
-
-*Type:*
-boolean
-
-
-
-*Default:*
-` false `
-
-
-
-*Example:*
-` true `
-
-*Declared by:*
- - [/nix/store/scaiwpc5m6bdrma86r02j962bkm1syyl-source/modules/home-manager/gui/niri\.nix](file:///nix/store/scaiwpc5m6bdrma86r02j962bkm1syyl-source/modules/home-manager/gui/niri.nix)
-
-
-
-## hm\.gui\.shell\.enable
-
-
-
-Whether to enable Noctalia shell\.
-
-
-
-*Type:*
-boolean
-
-
-
-*Default:*
-` false `
-
-
-
-*Example:*
-` true `
-
-*Declared by:*
- - [/nix/store/scaiwpc5m6bdrma86r02j962bkm1syyl-source/modules/home-manager/gui/shell\.nix](file:///nix/store/scaiwpc5m6bdrma86r02j962bkm1syyl-source/modules/home-manager/gui/shell.nix)
-
-
-
-## hm\.programs\.cli\.enable
-
-
-
-Whether to enable CLI tools\.
-
-
-
-*Type:*
-boolean
-
-
-
-*Default:*
-` true `
-
-
-
-*Example:*
-` true `
-
-*Declared by:*
- - [/nix/store/scaiwpc5m6bdrma86r02j962bkm1syyl-source/modules/home-manager/programs/cli\.nix](file:///nix/store/scaiwpc5m6bdrma86r02j962bkm1syyl-source/modules/home-manager/programs/cli.nix)
-
-
-
-## hm\.programs\.cli\.dev\.enable
-
-
-
-Whether to enable development tools\.
-
-
-
-*Type:*
-boolean
-
-
-
-*Default:*
-` true `
-
-
-
-*Example:*
-` true `
-
-*Declared by:*
- - [/nix/store/scaiwpc5m6bdrma86r02j962bkm1syyl-source/modules/home-manager/programs/dev\.nix](file:///nix/store/scaiwpc5m6bdrma86r02j962bkm1syyl-source/modules/home-manager/programs/dev.nix)
-
-
-
-## hm\.programs\.cli\.dev\.ai\.enable
-
-
-
-Whether to enable ai stuff\.
-
-
-
-*Type:*
-boolean
-
-
-
-*Default:*
-` false `
-
-
-
-*Example:*
-` true `
-
-*Declared by:*
- - [/nix/store/scaiwpc5m6bdrma86r02j962bkm1syyl-source/modules/home-manager/programs/ai\.nix](file:///nix/store/scaiwpc5m6bdrma86r02j962bkm1syyl-source/modules/home-manager/programs/ai.nix)
-
-
-
-## hm\.programs\.cli\.fastfetch\.profile
-
-
-
-How much info fastfetch should produce\.
-
-
-
-*Type:*
-one of “full”, “minimal”
-
-
-
-*Default:*
-` "minimal" `
-
-*Declared by:*
- - [/nix/store/scaiwpc5m6bdrma86r02j962bkm1syyl-source/modules/home-manager/programs/cli\.nix](file:///nix/store/scaiwpc5m6bdrma86r02j962bkm1syyl-source/modules/home-manager/programs/cli.nix)
-
-
-
-## hm\.programs\.games\.enable
-
-
-
-Whether to enable games\.
-
-
-
-*Type:*
-boolean
-
-
-
-*Default:*
-` false `
-
-
-
-*Example:*
-` true `
-
-*Declared by:*
- - [/nix/store/scaiwpc5m6bdrma86r02j962bkm1syyl-source/modules/home-manager/programs/games\.nix](file:///nix/store/scaiwpc5m6bdrma86r02j962bkm1syyl-source/modules/home-manager/programs/games.nix)
-
-
-
-## hm\.programs\.gui\.enable
-
-
-
-Whether to enable GUI apps\.
-
-
-
-*Type:*
-boolean
-
-
-
-*Default:*
-` false `
-
-
-
-*Example:*
-` true `
-
-*Declared by:*
- - [/nix/store/scaiwpc5m6bdrma86r02j962bkm1syyl-source/modules/home-manager/programs/gui\.nix](file:///nix/store/scaiwpc5m6bdrma86r02j962bkm1syyl-source/modules/home-manager/programs/gui.nix)
-
-
-
-## hm\.programs\.gui\.largePrograms\.enable
-
-
-
-Whether to enable Large GUI apps\.
-
-
-
-*Type:*
-boolean
-
-
-
-*Default:*
-` false `
-
-
-
-*Example:*
-` true `
-
-*Declared by:*
- - [/nix/store/scaiwpc5m6bdrma86r02j962bkm1syyl-source/modules/home-manager/programs/gui\.nix](file:///nix/store/scaiwpc5m6bdrma86r02j962bkm1syyl-source/modules/home-manager/programs/gui.nix)
-
-
-
-## hm\.programs\.gui\.obs\.enable
-
-
-
-Whether to enable OBS Studio\.
-
-
-
-*Type:*
-boolean
-
-
-
-*Default:*
-` false `
-
-
-
-*Example:*
-` true `
-
-*Declared by:*
- - [/nix/store/scaiwpc5m6bdrma86r02j962bkm1syyl-source/modules/home-manager/programs/gui\.nix](file:///nix/store/scaiwpc5m6bdrma86r02j962bkm1syyl-source/modules/home-manager/programs/gui.nix)
-
-
-
-## hm\.programs\.gui\.vicinae\.enable
-
-
-
-Whether to enable Vicinae launcher\.
-
-
-
-*Type:*
-boolean
-
-
-
-*Default:*
-` false `
-
-
-
-*Example:*
-` true `
-
-*Declared by:*
- - [/nix/store/scaiwpc5m6bdrma86r02j962bkm1syyl-source/modules/home-manager/gui/vicinae\.nix](file:///nix/store/scaiwpc5m6bdrma86r02j962bkm1syyl-source/modules/home-manager/gui/vicinae.nix)
-
-
-
-## hm\.programs\.gui\.vicinae\.plugins\.own
-
-
-
-List of vicinae plugins to install\.
-
-
-
-*Type:*
-list of string
-
-
-
-*Default:*
-` [ ] `
-
-*Declared by:*
- - [/nix/store/scaiwpc5m6bdrma86r02j962bkm1syyl-source/modules/home-manager/gui/vicinae\.nix](file:///nix/store/scaiwpc5m6bdrma86r02j962bkm1syyl-source/modules/home-manager/gui/vicinae.nix)
-
-
-
-## hm\.programs\.gui\.vicinae\.plugins\.raycast
-
-
-
-List of vicinae-compatable raycast plugins to install\.
-
-
-
-*Type:*
-list of string
-
-
-
-*Default:*
-` [ ] `
-
-*Declared by:*
- - [/nix/store/scaiwpc5m6bdrma86r02j962bkm1syyl-source/modules/home-manager/gui/vicinae\.nix](file:///nix/store/scaiwpc5m6bdrma86r02j962bkm1syyl-source/modules/home-manager/gui/vicinae.nix)
-
-
-
-## hm\.programs\.ides\.enable
-
-Whether to enable IDEs and editors\.
-
-
-
-*Type:*
-boolean
-
-
-
-*Default:*
-` true `
-
-
-
-*Example:*
-` true `
-
-*Declared by:*
- - [/nix/store/scaiwpc5m6bdrma86r02j962bkm1syyl-source/modules/home-manager/programs/ides\.nix](file:///nix/store/scaiwpc5m6bdrma86r02j962bkm1syyl-source/modules/home-manager/programs/ides.nix)
-
-
-
-## hm\.programs\.ssh\.hosts
-
-
-
-Hosts to configure SSH for\. Automatically adds them to matchBlocks and known_hosts\.
-
-
-
-*Type:*
-attribute set of (submodule)
-
-
-
-*Default:*
-` { } `
-
-*Declared by:*
- - [/nix/store/scaiwpc5m6bdrma86r02j962bkm1syyl-source/modules/home-manager/programs/ssh\.nix](file:///nix/store/scaiwpc5m6bdrma86r02j962bkm1syyl-source/modules/home-manager/programs/ssh.nix)
-
-
-
-## hm\.programs\.ssh\.hosts\.\<name>\.hostname
-
-
-
-Hostname to connect to via SSH\.
-
-
-
-*Type:*
-null or string
-
-
-
-*Default:*
-` null `
-
-*Declared by:*
- - [/nix/store/scaiwpc5m6bdrma86r02j962bkm1syyl-source/modules/home-manager/programs/ssh\.nix](file:///nix/store/scaiwpc5m6bdrma86r02j962bkm1syyl-source/modules/home-manager/programs/ssh.nix)
-
-
-
-## hm\.programs\.ssh\.hosts\.\<name>\.privateKeyPath
-
-
-
-Path to the private key on the host file system\.
-
-
-
-*Type:*
-string
-
-*Declared by:*
- - [/nix/store/scaiwpc5m6bdrma86r02j962bkm1syyl-source/modules/home-manager/programs/ssh\.nix](file:///nix/store/scaiwpc5m6bdrma86r02j962bkm1syyl-source/modules/home-manager/programs/ssh.nix)
-
-
-
-## hm\.programs\.ssh\.hosts\.\<name>\.publicKeyPath
-
-
-
-Path to the public key on the host file system\.
-
-
-
-*Type:*
-string
-
-*Declared by:*
- - [/nix/store/scaiwpc5m6bdrma86r02j962bkm1syyl-source/modules/home-manager/programs/ssh\.nix](file:///nix/store/scaiwpc5m6bdrma86r02j962bkm1syyl-source/modules/home-manager/programs/ssh.nix)
-
-
-
-## hm\.programs\.ssh\.hosts\.\<name>\.user
-
-
-
-User to connect to via SSH\.
-
-
-
-*Type:*
-null or string
-
-
-
-*Default:*
-` null `
-
-*Declared by:*
- - [/nix/store/scaiwpc5m6bdrma86r02j962bkm1syyl-source/modules/home-manager/programs/ssh\.nix](file:///nix/store/scaiwpc5m6bdrma86r02j962bkm1syyl-source/modules/home-manager/programs/ssh.nix)
-
-
-
-## hm\.remoteBuilders
+## hm\.nix\.remoteBuilders
 
 
 
@@ -2517,11 +2148,11 @@ list of (submodule)
 ` [ ] `
 
 *Declared by:*
- - [/nix/store/scaiwpc5m6bdrma86r02j962bkm1syyl-source/modules/home-manager/nix/remote-building\.nix](file:///nix/store/scaiwpc5m6bdrma86r02j962bkm1syyl-source/modules/home-manager/nix/remote-building.nix)
+ - [/nix/store/ax41kllj2hs8jndjyd16bjnflkjzwfvj-source/modules/home-manager/nix/remote-building\.nix](file:///nix/store/ax41kllj2hs8jndjyd16bjnflkjzwfvj-source/modules/home-manager/nix/remote-building.nix)
 
 
 
-## hm\.remoteBuilders\.\*\.hostName
+## hm\.nix\.remoteBuilders\.\*\.hostName
 
 
 
@@ -2539,11 +2170,11 @@ string
 ` "builder.local" `
 
 *Declared by:*
- - [/nix/store/scaiwpc5m6bdrma86r02j962bkm1syyl-source/modules/home-manager/nix/remote-building\.nix](file:///nix/store/scaiwpc5m6bdrma86r02j962bkm1syyl-source/modules/home-manager/nix/remote-building.nix)
+ - [/nix/store/ax41kllj2hs8jndjyd16bjnflkjzwfvj-source/modules/home-manager/nix/remote-building\.nix](file:///nix/store/ax41kllj2hs8jndjyd16bjnflkjzwfvj-source/modules/home-manager/nix/remote-building.nix)
 
 
 
-## hm\.remoteBuilders\.\*\.maxJobs
+## hm\.nix\.remoteBuilders\.\*\.maxJobs
 
 
 
@@ -2560,11 +2191,11 @@ signed integer
 ` 4 `
 
 *Declared by:*
- - [/nix/store/scaiwpc5m6bdrma86r02j962bkm1syyl-source/modules/home-manager/nix/remote-building\.nix](file:///nix/store/scaiwpc5m6bdrma86r02j962bkm1syyl-source/modules/home-manager/nix/remote-building.nix)
+ - [/nix/store/ax41kllj2hs8jndjyd16bjnflkjzwfvj-source/modules/home-manager/nix/remote-building\.nix](file:///nix/store/ax41kllj2hs8jndjyd16bjnflkjzwfvj-source/modules/home-manager/nix/remote-building.nix)
 
 
 
-## hm\.remoteBuilders\.\*\.privateKeyPath
+## hm\.nix\.remoteBuilders\.\*\.privateKeyPath
 
 
 
@@ -2588,11 +2219,11 @@ string
 ` "/etc/nix/builder-key" `
 
 *Declared by:*
- - [/nix/store/scaiwpc5m6bdrma86r02j962bkm1syyl-source/modules/home-manager/nix/remote-building\.nix](file:///nix/store/scaiwpc5m6bdrma86r02j962bkm1syyl-source/modules/home-manager/nix/remote-building.nix)
+ - [/nix/store/ax41kllj2hs8jndjyd16bjnflkjzwfvj-source/modules/home-manager/nix/remote-building\.nix](file:///nix/store/ax41kllj2hs8jndjyd16bjnflkjzwfvj-source/modules/home-manager/nix/remote-building.nix)
 
 
 
-## hm\.remoteBuilders\.\*\.publicKeyPath
+## hm\.nix\.remoteBuilders\.\*\.publicKeyPath
 
 
 
@@ -2614,11 +2245,11 @@ string
 ` "ssh-ed25519 AAAA..." `
 
 *Declared by:*
- - [/nix/store/scaiwpc5m6bdrma86r02j962bkm1syyl-source/modules/home-manager/nix/remote-building\.nix](file:///nix/store/scaiwpc5m6bdrma86r02j962bkm1syyl-source/modules/home-manager/nix/remote-building.nix)
+ - [/nix/store/ax41kllj2hs8jndjyd16bjnflkjzwfvj-source/modules/home-manager/nix/remote-building\.nix](file:///nix/store/ax41kllj2hs8jndjyd16bjnflkjzwfvj-source/modules/home-manager/nix/remote-building.nix)
 
 
 
-## hm\.remoteBuilders\.\*\.speedFactor
+## hm\.nix\.remoteBuilders\.\*\.speedFactor
 
 
 
@@ -2635,11 +2266,11 @@ signed integer
 ` 1 `
 
 *Declared by:*
- - [/nix/store/scaiwpc5m6bdrma86r02j962bkm1syyl-source/modules/home-manager/nix/remote-building\.nix](file:///nix/store/scaiwpc5m6bdrma86r02j962bkm1syyl-source/modules/home-manager/nix/remote-building.nix)
+ - [/nix/store/ax41kllj2hs8jndjyd16bjnflkjzwfvj-source/modules/home-manager/nix/remote-building\.nix](file:///nix/store/ax41kllj2hs8jndjyd16bjnflkjzwfvj-source/modules/home-manager/nix/remote-building.nix)
 
 
 
-## hm\.remoteBuilders\.\*\.supportedFeatures
+## hm\.nix\.remoteBuilders\.\*\.supportedFeatures
 
 
 
@@ -2663,11 +2294,11 @@ list of string
 ```
 
 *Declared by:*
- - [/nix/store/scaiwpc5m6bdrma86r02j962bkm1syyl-source/modules/home-manager/nix/remote-building\.nix](file:///nix/store/scaiwpc5m6bdrma86r02j962bkm1syyl-source/modules/home-manager/nix/remote-building.nix)
+ - [/nix/store/ax41kllj2hs8jndjyd16bjnflkjzwfvj-source/modules/home-manager/nix/remote-building\.nix](file:///nix/store/ax41kllj2hs8jndjyd16bjnflkjzwfvj-source/modules/home-manager/nix/remote-building.nix)
 
 
 
-## hm\.remoteBuilders\.\*\.systems
+## hm\.nix\.remoteBuilders\.\*\.systems
 
 
 
@@ -2700,11 +2331,11 @@ list of string
 ```
 
 *Declared by:*
- - [/nix/store/scaiwpc5m6bdrma86r02j962bkm1syyl-source/modules/home-manager/nix/remote-building\.nix](file:///nix/store/scaiwpc5m6bdrma86r02j962bkm1syyl-source/modules/home-manager/nix/remote-building.nix)
+ - [/nix/store/ax41kllj2hs8jndjyd16bjnflkjzwfvj-source/modules/home-manager/nix/remote-building\.nix](file:///nix/store/ax41kllj2hs8jndjyd16bjnflkjzwfvj-source/modules/home-manager/nix/remote-building.nix)
 
 
 
-## hm\.remoteBuilders\.\*\.user
+## hm\.nix\.remoteBuilders\.\*\.user
 
 
 
@@ -2722,7 +2353,418 @@ string
 ` "nixremote" `
 
 *Declared by:*
- - [/nix/store/scaiwpc5m6bdrma86r02j962bkm1syyl-source/modules/home-manager/nix/remote-building\.nix](file:///nix/store/scaiwpc5m6bdrma86r02j962bkm1syyl-source/modules/home-manager/nix/remote-building.nix)
+ - [/nix/store/ax41kllj2hs8jndjyd16bjnflkjzwfvj-source/modules/home-manager/nix/remote-building\.nix](file:///nix/store/ax41kllj2hs8jndjyd16bjnflkjzwfvj-source/modules/home-manager/nix/remote-building.nix)
+
+
+
+## hm\.programs\.cli\.enable
+
+
+
+Whether to enable CLI tools\.
+
+
+
+*Type:*
+boolean
+
+
+
+*Default:*
+` true `
+
+
+
+*Example:*
+` true `
+
+*Declared by:*
+ - [/nix/store/ax41kllj2hs8jndjyd16bjnflkjzwfvj-source/modules/home-manager/programs/cli\.nix](file:///nix/store/ax41kllj2hs8jndjyd16bjnflkjzwfvj-source/modules/home-manager/programs/cli.nix)
+
+
+
+## hm\.programs\.cli\.dev\.enable
+
+Whether to enable development tools\.
+
+
+
+*Type:*
+boolean
+
+
+
+*Default:*
+` true `
+
+
+
+*Example:*
+` true `
+
+*Declared by:*
+ - [/nix/store/ax41kllj2hs8jndjyd16bjnflkjzwfvj-source/modules/home-manager/programs/dev\.nix](file:///nix/store/ax41kllj2hs8jndjyd16bjnflkjzwfvj-source/modules/home-manager/programs/dev.nix)
+
+
+
+## hm\.programs\.cli\.dev\.ai\.enable
+
+
+
+Whether to enable ai stuff\.
+
+
+
+*Type:*
+boolean
+
+
+
+*Default:*
+` false `
+
+
+
+*Example:*
+` true `
+
+*Declared by:*
+ - [/nix/store/ax41kllj2hs8jndjyd16bjnflkjzwfvj-source/modules/home-manager/programs/ai\.nix](file:///nix/store/ax41kllj2hs8jndjyd16bjnflkjzwfvj-source/modules/home-manager/programs/ai.nix)
+
+
+
+## hm\.programs\.cli\.fastfetch\.profile
+
+
+
+How much info fastfetch should produce\.
+
+
+
+*Type:*
+one of “full”, “minimal”
+
+
+
+*Default:*
+` "minimal" `
+
+*Declared by:*
+ - [/nix/store/ax41kllj2hs8jndjyd16bjnflkjzwfvj-source/modules/home-manager/programs/cli\.nix](file:///nix/store/ax41kllj2hs8jndjyd16bjnflkjzwfvj-source/modules/home-manager/programs/cli.nix)
+
+
+
+## hm\.programs\.games\.enable
+
+
+
+Whether to enable games\.
+
+
+
+*Type:*
+boolean
+
+
+
+*Default:*
+` false `
+
+
+
+*Example:*
+` true `
+
+*Declared by:*
+ - [/nix/store/ax41kllj2hs8jndjyd16bjnflkjzwfvj-source/modules/home-manager/programs/games\.nix](file:///nix/store/ax41kllj2hs8jndjyd16bjnflkjzwfvj-source/modules/home-manager/programs/games.nix)
+
+
+
+## hm\.programs\.gui\.enable
+
+
+
+Whether to enable GUI apps\.
+
+
+
+*Type:*
+boolean
+
+
+
+*Default:*
+` false `
+
+
+
+*Example:*
+` true `
+
+*Declared by:*
+ - [/nix/store/ax41kllj2hs8jndjyd16bjnflkjzwfvj-source/modules/home-manager/programs/gui\.nix](file:///nix/store/ax41kllj2hs8jndjyd16bjnflkjzwfvj-source/modules/home-manager/programs/gui.nix)
+
+
+
+## hm\.programs\.gui\.largePrograms\.enable
+
+
+
+Whether to enable Large GUI apps\.
+
+
+
+*Type:*
+boolean
+
+
+
+*Default:*
+` false `
+
+
+
+*Example:*
+` true `
+
+*Declared by:*
+ - [/nix/store/ax41kllj2hs8jndjyd16bjnflkjzwfvj-source/modules/home-manager/programs/gui\.nix](file:///nix/store/ax41kllj2hs8jndjyd16bjnflkjzwfvj-source/modules/home-manager/programs/gui.nix)
+
+
+
+## hm\.programs\.gui\.obs\.enable
+
+
+
+Whether to enable OBS Studio\.
+
+
+
+*Type:*
+boolean
+
+
+
+*Default:*
+` false `
+
+
+
+*Example:*
+` true `
+
+*Declared by:*
+ - [/nix/store/ax41kllj2hs8jndjyd16bjnflkjzwfvj-source/modules/home-manager/programs/gui\.nix](file:///nix/store/ax41kllj2hs8jndjyd16bjnflkjzwfvj-source/modules/home-manager/programs/gui.nix)
+
+
+
+## hm\.programs\.gui\.vicinae\.enable
+
+
+
+Whether to enable Vicinae launcher\.
+
+
+
+*Type:*
+boolean
+
+
+
+*Default:*
+` false `
+
+
+
+*Example:*
+` true `
+
+*Declared by:*
+ - [/nix/store/ax41kllj2hs8jndjyd16bjnflkjzwfvj-source/modules/home-manager/gui/vicinae\.nix](file:///nix/store/ax41kllj2hs8jndjyd16bjnflkjzwfvj-source/modules/home-manager/gui/vicinae.nix)
+
+
+
+## hm\.programs\.gui\.vicinae\.plugins\.own
+
+
+
+List of vicinae plugins to install\.
+
+
+
+*Type:*
+list of string
+
+
+
+*Default:*
+` [ ] `
+
+*Declared by:*
+ - [/nix/store/ax41kllj2hs8jndjyd16bjnflkjzwfvj-source/modules/home-manager/gui/vicinae\.nix](file:///nix/store/ax41kllj2hs8jndjyd16bjnflkjzwfvj-source/modules/home-manager/gui/vicinae.nix)
+
+
+
+## hm\.programs\.gui\.vicinae\.plugins\.raycast
+
+
+
+List of vicinae-compatable raycast plugins to install\.
+
+
+
+*Type:*
+list of string
+
+
+
+*Default:*
+` [ ] `
+
+*Declared by:*
+ - [/nix/store/ax41kllj2hs8jndjyd16bjnflkjzwfvj-source/modules/home-manager/gui/vicinae\.nix](file:///nix/store/ax41kllj2hs8jndjyd16bjnflkjzwfvj-source/modules/home-manager/gui/vicinae.nix)
+
+
+
+## hm\.programs\.ides\.enable
+
+
+
+Whether to enable IDEs and editors\.
+
+
+
+*Type:*
+boolean
+
+
+
+*Default:*
+` true `
+
+
+
+*Example:*
+` true `
+
+*Declared by:*
+ - [/nix/store/ax41kllj2hs8jndjyd16bjnflkjzwfvj-source/modules/home-manager/programs/ides\.nix](file:///nix/store/ax41kllj2hs8jndjyd16bjnflkjzwfvj-source/modules/home-manager/programs/ides.nix)
+
+
+
+## hm\.programs\.ssh\.authorizedKeys
+
+
+
+Public key strings authorized to log into this user\.
+
+
+
+*Type:*
+list of string
+
+
+
+*Default:*
+` [ ] `
+
+*Declared by:*
+ - [/nix/store/ax41kllj2hs8jndjyd16bjnflkjzwfvj-source/modules/home-manager/programs/ssh\.nix](file:///nix/store/ax41kllj2hs8jndjyd16bjnflkjzwfvj-source/modules/home-manager/programs/ssh.nix)
+
+
+
+## hm\.programs\.ssh\.hosts
+
+
+
+Hosts to configure SSH for\. Automatically adds them to matchBlocks and known_hosts\.
+
+
+
+*Type:*
+attribute set of (submodule)
+
+
+
+*Default:*
+` { } `
+
+*Declared by:*
+ - [/nix/store/ax41kllj2hs8jndjyd16bjnflkjzwfvj-source/modules/home-manager/programs/ssh\.nix](file:///nix/store/ax41kllj2hs8jndjyd16bjnflkjzwfvj-source/modules/home-manager/programs/ssh.nix)
+
+
+
+## hm\.programs\.ssh\.hosts\.\<name>\.hostname
+
+
+
+Hostname to connect to via SSH\.
+
+
+
+*Type:*
+null or string
+
+
+
+*Default:*
+` null `
+
+*Declared by:*
+ - [/nix/store/ax41kllj2hs8jndjyd16bjnflkjzwfvj-source/modules/home-manager/programs/ssh\.nix](file:///nix/store/ax41kllj2hs8jndjyd16bjnflkjzwfvj-source/modules/home-manager/programs/ssh.nix)
+
+
+
+## hm\.programs\.ssh\.hosts\.\<name>\.privateKeyPath
+
+
+
+Path to the private key on the host file system\.
+
+
+
+*Type:*
+string
+
+*Declared by:*
+ - [/nix/store/ax41kllj2hs8jndjyd16bjnflkjzwfvj-source/modules/home-manager/programs/ssh\.nix](file:///nix/store/ax41kllj2hs8jndjyd16bjnflkjzwfvj-source/modules/home-manager/programs/ssh.nix)
+
+
+
+## hm\.programs\.ssh\.hosts\.\<name>\.publicKeyPath
+
+
+
+Path to the public key on the host file system\.
+
+
+
+*Type:*
+string
+
+*Declared by:*
+ - [/nix/store/ax41kllj2hs8jndjyd16bjnflkjzwfvj-source/modules/home-manager/programs/ssh\.nix](file:///nix/store/ax41kllj2hs8jndjyd16bjnflkjzwfvj-source/modules/home-manager/programs/ssh.nix)
+
+
+
+## hm\.programs\.ssh\.hosts\.\<name>\.user
+
+
+
+User to connect to via SSH\.
+
+
+
+*Type:*
+null or string
+
+
+
+*Default:*
+` null `
+
+*Declared by:*
+ - [/nix/store/ax41kllj2hs8jndjyd16bjnflkjzwfvj-source/modules/home-manager/programs/ssh\.nix](file:///nix/store/ax41kllj2hs8jndjyd16bjnflkjzwfvj-source/modules/home-manager/programs/ssh.nix)
 
 
 
@@ -2748,7 +2790,7 @@ boolean
 ` true `
 
 *Declared by:*
- - [/nix/store/scaiwpc5m6bdrma86r02j962bkm1syyl-source/modules/home-manager/services/mpris\.nix](file:///nix/store/scaiwpc5m6bdrma86r02j962bkm1syyl-source/modules/home-manager/services/mpris.nix)
+ - [/nix/store/ax41kllj2hs8jndjyd16bjnflkjzwfvj-source/modules/home-manager/services/mpris\.nix](file:///nix/store/ax41kllj2hs8jndjyd16bjnflkjzwfvj-source/modules/home-manager/services/mpris.nix)
 
 
 
@@ -2774,7 +2816,7 @@ boolean
 ` true `
 
 *Declared by:*
- - [/nix/store/scaiwpc5m6bdrma86r02j962bkm1syyl-source/modules/home-manager/services/nextcloud\.nix](file:///nix/store/scaiwpc5m6bdrma86r02j962bkm1syyl-source/modules/home-manager/services/nextcloud.nix)
+ - [/nix/store/ax41kllj2hs8jndjyd16bjnflkjzwfvj-source/modules/home-manager/services/nextcloud\.nix](file:///nix/store/ax41kllj2hs8jndjyd16bjnflkjzwfvj-source/modules/home-manager/services/nextcloud.nix)
 
 
 
@@ -2800,7 +2842,7 @@ boolean
 ` true `
 
 *Declared by:*
- - [/nix/store/scaiwpc5m6bdrma86r02j962bkm1syyl-source/modules/home-manager/theming](file:///nix/store/scaiwpc5m6bdrma86r02j962bkm1syyl-source/modules/home-manager/theming)
+ - [/nix/store/ax41kllj2hs8jndjyd16bjnflkjzwfvj-source/modules/home-manager/theming](file:///nix/store/ax41kllj2hs8jndjyd16bjnflkjzwfvj-source/modules/home-manager/theming)
 
 
 
@@ -2816,7 +2858,7 @@ Linux kernel package (linuxPackages set)\.
 raw value
 
 *Declared by:*
- - [/nix/store/scaiwpc5m6bdrma86r02j962bkm1syyl-source/modules/nixos/kernel/kernel\.nix](file:///nix/store/scaiwpc5m6bdrma86r02j962bkm1syyl-source/modules/nixos/kernel/kernel.nix)
+ - [/nix/store/ax41kllj2hs8jndjyd16bjnflkjzwfvj-source/modules/nixos/kernel/kernel\.nix](file:///nix/store/ax41kllj2hs8jndjyd16bjnflkjzwfvj-source/modules/nixos/kernel/kernel.nix)
 
 
 
@@ -2837,7 +2879,7 @@ list of string
 ` [ ] `
 
 *Declared by:*
- - [/nix/store/scaiwpc5m6bdrma86r02j962bkm1syyl-source/modules/nixos/kernel/kernel\.nix](file:///nix/store/scaiwpc5m6bdrma86r02j962bkm1syyl-source/modules/nixos/kernel/kernel.nix)
+ - [/nix/store/ax41kllj2hs8jndjyd16bjnflkjzwfvj-source/modules/nixos/kernel/kernel\.nix](file:///nix/store/ax41kllj2hs8jndjyd16bjnflkjzwfvj-source/modules/nixos/kernel/kernel.nix)
 
 
 
@@ -2858,7 +2900,7 @@ list of string
 ` [ ] `
 
 *Declared by:*
- - [/nix/store/scaiwpc5m6bdrma86r02j962bkm1syyl-source/modules/nixos/kernel/kernel\.nix](file:///nix/store/scaiwpc5m6bdrma86r02j962bkm1syyl-source/modules/nixos/kernel/kernel.nix)
+ - [/nix/store/ax41kllj2hs8jndjyd16bjnflkjzwfvj-source/modules/nixos/kernel/kernel\.nix](file:///nix/store/ax41kllj2hs8jndjyd16bjnflkjzwfvj-source/modules/nixos/kernel/kernel.nix)
 
 
 
@@ -2884,7 +2926,7 @@ boolean
 ` true `
 
 *Declared by:*
- - [/nix/store/scaiwpc5m6bdrma86r02j962bkm1syyl-source/modules/nixos/kernel/kernel\.nix](file:///nix/store/scaiwpc5m6bdrma86r02j962bkm1syyl-source/modules/nixos/kernel/kernel.nix)
+ - [/nix/store/ax41kllj2hs8jndjyd16bjnflkjzwfvj-source/modules/nixos/kernel/kernel\.nix](file:///nix/store/ax41kllj2hs8jndjyd16bjnflkjzwfvj-source/modules/nixos/kernel/kernel.nix)
 
 
 
@@ -2905,7 +2947,7 @@ null or string
 ` null `
 
 *Declared by:*
- - [/nix/store/scaiwpc5m6bdrma86r02j962bkm1syyl-source/modules/nixos/kernel/kernel\.nix](file:///nix/store/scaiwpc5m6bdrma86r02j962bkm1syyl-source/modules/nixos/kernel/kernel.nix)
+ - [/nix/store/ax41kllj2hs8jndjyd16bjnflkjzwfvj-source/modules/nixos/kernel/kernel\.nix](file:///nix/store/ax41kllj2hs8jndjyd16bjnflkjzwfvj-source/modules/nixos/kernel/kernel.nix)
 
 
 
@@ -2926,7 +2968,7 @@ list of string
 ` [ ] `
 
 *Declared by:*
- - [/nix/store/scaiwpc5m6bdrma86r02j962bkm1syyl-source/modules/nixos/kernel/kernel\.nix](file:///nix/store/scaiwpc5m6bdrma86r02j962bkm1syyl-source/modules/nixos/kernel/kernel.nix)
+ - [/nix/store/ax41kllj2hs8jndjyd16bjnflkjzwfvj-source/modules/nixos/kernel/kernel\.nix](file:///nix/store/ax41kllj2hs8jndjyd16bjnflkjzwfvj-source/modules/nixos/kernel/kernel.nix)
 
 
 
@@ -2947,7 +2989,7 @@ Kernel modules blacklisted\.
 ` [ ] `
 
 *Declared by:*
- - [/nix/store/scaiwpc5m6bdrma86r02j962bkm1syyl-source/modules/nixos/kernel/kernel\.nix](file:///nix/store/scaiwpc5m6bdrma86r02j962bkm1syyl-source/modules/nixos/kernel/kernel.nix)
+ - [/nix/store/ax41kllj2hs8jndjyd16bjnflkjzwfvj-source/modules/nixos/kernel/kernel\.nix](file:///nix/store/ax41kllj2hs8jndjyd16bjnflkjzwfvj-source/modules/nixos/kernel/kernel.nix)
 
 
 
@@ -2968,7 +3010,7 @@ list of package
 ` [ ] `
 
 *Declared by:*
- - [/nix/store/scaiwpc5m6bdrma86r02j962bkm1syyl-source/modules/nixos/kernel/kernel\.nix](file:///nix/store/scaiwpc5m6bdrma86r02j962bkm1syyl-source/modules/nixos/kernel/kernel.nix)
+ - [/nix/store/ax41kllj2hs8jndjyd16bjnflkjzwfvj-source/modules/nixos/kernel/kernel\.nix](file:///nix/store/ax41kllj2hs8jndjyd16bjnflkjzwfvj-source/modules/nixos/kernel/kernel.nix)
 
 
 
@@ -2989,7 +3031,7 @@ Kernel modules available during stage 2\.
 ` [ ] `
 
 *Declared by:*
- - [/nix/store/scaiwpc5m6bdrma86r02j962bkm1syyl-source/modules/nixos/kernel/kernel\.nix](file:///nix/store/scaiwpc5m6bdrma86r02j962bkm1syyl-source/modules/nixos/kernel/kernel.nix)
+ - [/nix/store/ax41kllj2hs8jndjyd16bjnflkjzwfvj-source/modules/nixos/kernel/kernel\.nix](file:///nix/store/ax41kllj2hs8jndjyd16bjnflkjzwfvj-source/modules/nixos/kernel/kernel.nix)
 
 
 
@@ -3010,7 +3052,7 @@ list of string
 ` [ ] `
 
 *Declared by:*
- - [/nix/store/scaiwpc5m6bdrma86r02j962bkm1syyl-source/modules/nixos/kernel/kernel\.nix](file:///nix/store/scaiwpc5m6bdrma86r02j962bkm1syyl-source/modules/nixos/kernel/kernel.nix)
+ - [/nix/store/ax41kllj2hs8jndjyd16bjnflkjzwfvj-source/modules/nixos/kernel/kernel\.nix](file:///nix/store/ax41kllj2hs8jndjyd16bjnflkjzwfvj-source/modules/nixos/kernel/kernel.nix)
 
 
 
@@ -3031,7 +3073,7 @@ attribute set
 ` { } `
 
 *Declared by:*
- - [/nix/store/scaiwpc5m6bdrma86r02j962bkm1syyl-source/modules/nixos/kernel/kernel\.nix](file:///nix/store/scaiwpc5m6bdrma86r02j962bkm1syyl-source/modules/nixos/kernel/kernel.nix)
+ - [/nix/store/ax41kllj2hs8jndjyd16bjnflkjzwfvj-source/modules/nixos/kernel/kernel\.nix](file:///nix/store/ax41kllj2hs8jndjyd16bjnflkjzwfvj-source/modules/nixos/kernel/kernel.nix)
 
 
 
@@ -3057,7 +3099,7 @@ boolean
 ` true `
 
 *Declared by:*
- - [/nix/store/scaiwpc5m6bdrma86r02j962bkm1syyl-source/modules/nixos/network](file:///nix/store/scaiwpc5m6bdrma86r02j962bkm1syyl-source/modules/nixos/network)
+ - [/nix/store/ax41kllj2hs8jndjyd16bjnflkjzwfvj-source/modules/nixos/network](file:///nix/store/ax41kllj2hs8jndjyd16bjnflkjzwfvj-source/modules/nixos/network)
 
 
 
@@ -3078,7 +3120,7 @@ list of (submodule)
 ` [ ] `
 
 *Declared by:*
- - [/nix/store/scaiwpc5m6bdrma86r02j962bkm1syyl-source/modules/nixos/network/network-mounts\.nix](file:///nix/store/scaiwpc5m6bdrma86r02j962bkm1syyl-source/modules/nixos/network/network-mounts.nix)
+ - [/nix/store/ax41kllj2hs8jndjyd16bjnflkjzwfvj-source/modules/nixos/network/network-mounts\.nix](file:///nix/store/ax41kllj2hs8jndjyd16bjnflkjzwfvj-source/modules/nixos/network/network-mounts.nix)
 
 
 
@@ -3094,7 +3136,7 @@ To configure an automount for this mount point\.
 boolean
 
 *Declared by:*
- - [/nix/store/scaiwpc5m6bdrma86r02j962bkm1syyl-source/modules/nixos/network/network-mounts\.nix](file:///nix/store/scaiwpc5m6bdrma86r02j962bkm1syyl-source/modules/nixos/network/network-mounts.nix)
+ - [/nix/store/ax41kllj2hs8jndjyd16bjnflkjzwfvj-source/modules/nixos/network/network-mounts\.nix](file:///nix/store/ax41kllj2hs8jndjyd16bjnflkjzwfvj-source/modules/nixos/network/network-mounts.nix)
 
 
 
@@ -3110,7 +3152,7 @@ Mount point on the local filesystem\.
 string
 
 *Declared by:*
- - [/nix/store/scaiwpc5m6bdrma86r02j962bkm1syyl-source/modules/nixos/network/network-mounts\.nix](file:///nix/store/scaiwpc5m6bdrma86r02j962bkm1syyl-source/modules/nixos/network/network-mounts.nix)
+ - [/nix/store/ax41kllj2hs8jndjyd16bjnflkjzwfvj-source/modules/nixos/network/network-mounts\.nix](file:///nix/store/ax41kllj2hs8jndjyd16bjnflkjzwfvj-source/modules/nixos/network/network-mounts.nix)
 
 
 
@@ -3126,7 +3168,7 @@ Mount point source remote\.
 string
 
 *Declared by:*
- - [/nix/store/scaiwpc5m6bdrma86r02j962bkm1syyl-source/modules/nixos/network/network-mounts\.nix](file:///nix/store/scaiwpc5m6bdrma86r02j962bkm1syyl-source/modules/nixos/network/network-mounts.nix)
+ - [/nix/store/ax41kllj2hs8jndjyd16bjnflkjzwfvj-source/modules/nixos/network/network-mounts\.nix](file:///nix/store/ax41kllj2hs8jndjyd16bjnflkjzwfvj-source/modules/nixos/network/network-mounts.nix)
 
 
 
@@ -3142,7 +3184,7 @@ Mount point type\.
 string
 
 *Declared by:*
- - [/nix/store/scaiwpc5m6bdrma86r02j962bkm1syyl-source/modules/nixos/network/network-mounts\.nix](file:///nix/store/scaiwpc5m6bdrma86r02j962bkm1syyl-source/modules/nixos/network/network-mounts.nix)
+ - [/nix/store/ax41kllj2hs8jndjyd16bjnflkjzwfvj-source/modules/nixos/network/network-mounts\.nix](file:///nix/store/ax41kllj2hs8jndjyd16bjnflkjzwfvj-source/modules/nixos/network/network-mounts.nix)
 
 
 
@@ -3163,7 +3205,7 @@ list of 16 bit unsigned integer; between 0 and 65535 (both inclusive)
 ` [ ] `
 
 *Declared by:*
- - [/nix/store/scaiwpc5m6bdrma86r02j962bkm1syyl-source/modules/nixos/network](file:///nix/store/scaiwpc5m6bdrma86r02j962bkm1syyl-source/modules/nixos/network)
+ - [/nix/store/ax41kllj2hs8jndjyd16bjnflkjzwfvj-source/modules/nixos/network](file:///nix/store/ax41kllj2hs8jndjyd16bjnflkjzwfvj-source/modules/nixos/network)
 
 
 
@@ -3184,7 +3226,7 @@ list of attribute set of 16 bit unsigned integer; between 0 and 65535 (both incl
 ` [ ] `
 
 *Declared by:*
- - [/nix/store/scaiwpc5m6bdrma86r02j962bkm1syyl-source/modules/nixos/network](file:///nix/store/scaiwpc5m6bdrma86r02j962bkm1syyl-source/modules/nixos/network)
+ - [/nix/store/ax41kllj2hs8jndjyd16bjnflkjzwfvj-source/modules/nixos/network](file:///nix/store/ax41kllj2hs8jndjyd16bjnflkjzwfvj-source/modules/nixos/network)
 
 
 
@@ -3205,7 +3247,7 @@ list of 16 bit unsigned integer; between 0 and 65535 (both inclusive)
 ` [ ] `
 
 *Declared by:*
- - [/nix/store/scaiwpc5m6bdrma86r02j962bkm1syyl-source/modules/nixos/network](file:///nix/store/scaiwpc5m6bdrma86r02j962bkm1syyl-source/modules/nixos/network)
+ - [/nix/store/ax41kllj2hs8jndjyd16bjnflkjzwfvj-source/modules/nixos/network](file:///nix/store/ax41kllj2hs8jndjyd16bjnflkjzwfvj-source/modules/nixos/network)
 
 
 
@@ -3226,7 +3268,7 @@ list of attribute set of 16 bit unsigned integer; between 0 and 65535 (both incl
 ` [ ] `
 
 *Declared by:*
- - [/nix/store/scaiwpc5m6bdrma86r02j962bkm1syyl-source/modules/nixos/network](file:///nix/store/scaiwpc5m6bdrma86r02j962bkm1syyl-source/modules/nixos/network)
+ - [/nix/store/ax41kllj2hs8jndjyd16bjnflkjzwfvj-source/modules/nixos/network](file:///nix/store/ax41kllj2hs8jndjyd16bjnflkjzwfvj-source/modules/nixos/network)
 
 
 
@@ -3271,7 +3313,7 @@ null or string
 ` null `
 
 *Declared by:*
- - [/nix/store/scaiwpc5m6bdrma86r02j962bkm1syyl-source/modules/nixos/network](file:///nix/store/scaiwpc5m6bdrma86r02j962bkm1syyl-source/modules/nixos/network)
+ - [/nix/store/ax41kllj2hs8jndjyd16bjnflkjzwfvj-source/modules/nixos/network](file:///nix/store/ax41kllj2hs8jndjyd16bjnflkjzwfvj-source/modules/nixos/network)
 
 
 
@@ -3292,7 +3334,7 @@ list of (string or (attribute set))
 ` [ ] `
 
 *Declared by:*
- - [/nix/store/scaiwpc5m6bdrma86r02j962bkm1syyl-source/modules/nixos/network](file:///nix/store/scaiwpc5m6bdrma86r02j962bkm1syyl-source/modules/nixos/network)
+ - [/nix/store/ax41kllj2hs8jndjyd16bjnflkjzwfvj-source/modules/nixos/network](file:///nix/store/ax41kllj2hs8jndjyd16bjnflkjzwfvj-source/modules/nixos/network)
 
 
 
@@ -3313,7 +3355,7 @@ list of string
 ` [ ] `
 
 *Declared by:*
- - [/nix/store/scaiwpc5m6bdrma86r02j962bkm1syyl-source/modules/nixos/network](file:///nix/store/scaiwpc5m6bdrma86r02j962bkm1syyl-source/modules/nixos/network)
+ - [/nix/store/ax41kllj2hs8jndjyd16bjnflkjzwfvj-source/modules/nixos/network](file:///nix/store/ax41kllj2hs8jndjyd16bjnflkjzwfvj-source/modules/nixos/network)
 
 
 
@@ -3356,7 +3398,7 @@ null or (submodule)
 ` null `
 
 *Declared by:*
- - [/nix/store/scaiwpc5m6bdrma86r02j962bkm1syyl-source/modules/nixos/nix/remote-building\.nix](file:///nix/store/scaiwpc5m6bdrma86r02j962bkm1syyl-source/modules/nixos/nix/remote-building.nix)
+ - [/nix/store/ax41kllj2hs8jndjyd16bjnflkjzwfvj-source/modules/nixos/nix/remote-building\.nix](file:///nix/store/ax41kllj2hs8jndjyd16bjnflkjzwfvj-source/modules/nixos/nix/remote-building.nix)
 
 
 
@@ -3394,7 +3436,7 @@ list of string
 ```
 
 *Declared by:*
- - [/nix/store/scaiwpc5m6bdrma86r02j962bkm1syyl-source/modules/nixos/nix/remote-building\.nix](file:///nix/store/scaiwpc5m6bdrma86r02j962bkm1syyl-source/modules/nixos/nix/remote-building.nix)
+ - [/nix/store/ax41kllj2hs8jndjyd16bjnflkjzwfvj-source/modules/nixos/nix/remote-building\.nix](file:///nix/store/ax41kllj2hs8jndjyd16bjnflkjzwfvj-source/modules/nixos/nix/remote-building.nix)
 
 
 
@@ -3432,7 +3474,7 @@ list of string
 ```
 
 *Declared by:*
- - [/nix/store/scaiwpc5m6bdrma86r02j962bkm1syyl-source/modules/nixos/nix/remote-building\.nix](file:///nix/store/scaiwpc5m6bdrma86r02j962bkm1syyl-source/modules/nixos/nix/remote-building.nix)
+ - [/nix/store/ax41kllj2hs8jndjyd16bjnflkjzwfvj-source/modules/nixos/nix/remote-building\.nix](file:///nix/store/ax41kllj2hs8jndjyd16bjnflkjzwfvj-source/modules/nixos/nix/remote-building.nix)
 
 
 
@@ -3456,7 +3498,7 @@ signed integer
 ` 4 `
 
 *Declared by:*
- - [/nix/store/scaiwpc5m6bdrma86r02j962bkm1syyl-source/modules/nixos/nix/remote-building\.nix](file:///nix/store/scaiwpc5m6bdrma86r02j962bkm1syyl-source/modules/nixos/nix/remote-building.nix)
+ - [/nix/store/ax41kllj2hs8jndjyd16bjnflkjzwfvj-source/modules/nixos/nix/remote-building\.nix](file:///nix/store/ax41kllj2hs8jndjyd16bjnflkjzwfvj-source/modules/nixos/nix/remote-building.nix)
 
 
 
@@ -3479,7 +3521,7 @@ signed integer
 ` 1 `
 
 *Declared by:*
- - [/nix/store/scaiwpc5m6bdrma86r02j962bkm1syyl-source/modules/nixos/nix/remote-building\.nix](file:///nix/store/scaiwpc5m6bdrma86r02j962bkm1syyl-source/modules/nixos/nix/remote-building.nix)
+ - [/nix/store/ax41kllj2hs8jndjyd16bjnflkjzwfvj-source/modules/nixos/nix/remote-building\.nix](file:///nix/store/ax41kllj2hs8jndjyd16bjnflkjzwfvj-source/modules/nixos/nix/remote-building.nix)
 
 
 
@@ -3517,7 +3559,7 @@ list of string
 ```
 
 *Declared by:*
- - [/nix/store/scaiwpc5m6bdrma86r02j962bkm1syyl-source/modules/nixos/nix/remote-building\.nix](file:///nix/store/scaiwpc5m6bdrma86r02j962bkm1syyl-source/modules/nixos/nix/remote-building.nix)
+ - [/nix/store/ax41kllj2hs8jndjyd16bjnflkjzwfvj-source/modules/nixos/nix/remote-building\.nix](file:///nix/store/ax41kllj2hs8jndjyd16bjnflkjzwfvj-source/modules/nixos/nix/remote-building.nix)
 
 
 
@@ -3541,7 +3583,7 @@ string
 ` "nixremote" `
 
 *Declared by:*
- - [/nix/store/scaiwpc5m6bdrma86r02j962bkm1syyl-source/modules/nixos/nix/remote-building\.nix](file:///nix/store/scaiwpc5m6bdrma86r02j962bkm1syyl-source/modules/nixos/nix/remote-building.nix)
+ - [/nix/store/ax41kllj2hs8jndjyd16bjnflkjzwfvj-source/modules/nixos/nix/remote-building\.nix](file:///nix/store/ax41kllj2hs8jndjyd16bjnflkjzwfvj-source/modules/nixos/nix/remote-building.nix)
 
 
 
@@ -3562,7 +3604,7 @@ signed integer or floating point number
 ` 3 `
 
 *Declared by:*
- - [/nix/store/scaiwpc5m6bdrma86r02j962bkm1syyl-source/modules/nixos/nix](file:///nix/store/scaiwpc5m6bdrma86r02j962bkm1syyl-source/modules/nixos/nix)
+ - [/nix/store/ax41kllj2hs8jndjyd16bjnflkjzwfvj-source/modules/nixos/nix](file:///nix/store/ax41kllj2hs8jndjyd16bjnflkjzwfvj-source/modules/nixos/nix)
 
 
 
@@ -3588,7 +3630,7 @@ boolean
 ` true `
 
 *Declared by:*
- - [/nix/store/scaiwpc5m6bdrma86r02j962bkm1syyl-source/modules/nixos/nix](file:///nix/store/scaiwpc5m6bdrma86r02j962bkm1syyl-source/modules/nixos/nix)
+ - [/nix/store/ax41kllj2hs8jndjyd16bjnflkjzwfvj-source/modules/nixos/nix](file:///nix/store/ax41kllj2hs8jndjyd16bjnflkjzwfvj-source/modules/nixos/nix)
 
 
 
@@ -3614,7 +3656,7 @@ string
 ` "1w" `
 
 *Declared by:*
- - [/nix/store/scaiwpc5m6bdrma86r02j962bkm1syyl-source/modules/nixos/nix](file:///nix/store/scaiwpc5m6bdrma86r02j962bkm1syyl-source/modules/nixos/nix)
+ - [/nix/store/ax41kllj2hs8jndjyd16bjnflkjzwfvj-source/modules/nixos/nix](file:///nix/store/ax41kllj2hs8jndjyd16bjnflkjzwfvj-source/modules/nixos/nix)
 
 
 
@@ -3656,7 +3698,7 @@ list of (submodule)
 ` [ ] `
 
 *Declared by:*
- - [/nix/store/scaiwpc5m6bdrma86r02j962bkm1syyl-source/modules/nixos/nix/remote-building\.nix](file:///nix/store/scaiwpc5m6bdrma86r02j962bkm1syyl-source/modules/nixos/nix/remote-building.nix)
+ - [/nix/store/ax41kllj2hs8jndjyd16bjnflkjzwfvj-source/modules/nixos/nix/remote-building\.nix](file:///nix/store/ax41kllj2hs8jndjyd16bjnflkjzwfvj-source/modules/nixos/nix/remote-building.nix)
 
 
 
@@ -3679,7 +3721,7 @@ string
 ` "builder.local" `
 
 *Declared by:*
- - [/nix/store/scaiwpc5m6bdrma86r02j962bkm1syyl-source/modules/nixos/nix/remote-building\.nix](file:///nix/store/scaiwpc5m6bdrma86r02j962bkm1syyl-source/modules/nixos/nix/remote-building.nix)
+ - [/nix/store/ax41kllj2hs8jndjyd16bjnflkjzwfvj-source/modules/nixos/nix/remote-building\.nix](file:///nix/store/ax41kllj2hs8jndjyd16bjnflkjzwfvj-source/modules/nixos/nix/remote-building.nix)
 
 
 
@@ -3708,7 +3750,7 @@ string
 ` "ssh-ed25519 AAAA..." `
 
 *Declared by:*
- - [/nix/store/scaiwpc5m6bdrma86r02j962bkm1syyl-source/modules/nixos/nix/remote-building\.nix](file:///nix/store/scaiwpc5m6bdrma86r02j962bkm1syyl-source/modules/nixos/nix/remote-building.nix)
+ - [/nix/store/ax41kllj2hs8jndjyd16bjnflkjzwfvj-source/modules/nixos/nix/remote-building\.nix](file:///nix/store/ax41kllj2hs8jndjyd16bjnflkjzwfvj-source/modules/nixos/nix/remote-building.nix)
 
 
 
@@ -3731,7 +3773,7 @@ signed integer
 ` 4 `
 
 *Declared by:*
- - [/nix/store/scaiwpc5m6bdrma86r02j962bkm1syyl-source/modules/nixos/nix/remote-building\.nix](file:///nix/store/scaiwpc5m6bdrma86r02j962bkm1syyl-source/modules/nixos/nix/remote-building.nix)
+ - [/nix/store/ax41kllj2hs8jndjyd16bjnflkjzwfvj-source/modules/nixos/nix/remote-building\.nix](file:///nix/store/ax41kllj2hs8jndjyd16bjnflkjzwfvj-source/modules/nixos/nix/remote-building.nix)
 
 
 
@@ -3755,7 +3797,7 @@ signed integer
 ` 1 `
 
 *Declared by:*
- - [/nix/store/scaiwpc5m6bdrma86r02j962bkm1syyl-source/modules/nixos/nix/remote-building\.nix](file:///nix/store/scaiwpc5m6bdrma86r02j962bkm1syyl-source/modules/nixos/nix/remote-building.nix)
+ - [/nix/store/ax41kllj2hs8jndjyd16bjnflkjzwfvj-source/modules/nixos/nix/remote-building\.nix](file:///nix/store/ax41kllj2hs8jndjyd16bjnflkjzwfvj-source/modules/nixos/nix/remote-building.nix)
 
 
 
@@ -3792,7 +3834,7 @@ string
 ` "/etc/nix/builder-key" `
 
 *Declared by:*
- - [/nix/store/scaiwpc5m6bdrma86r02j962bkm1syyl-source/modules/nixos/nix/remote-building\.nix](file:///nix/store/scaiwpc5m6bdrma86r02j962bkm1syyl-source/modules/nixos/nix/remote-building.nix)
+ - [/nix/store/ax41kllj2hs8jndjyd16bjnflkjzwfvj-source/modules/nixos/nix/remote-building\.nix](file:///nix/store/ax41kllj2hs8jndjyd16bjnflkjzwfvj-source/modules/nixos/nix/remote-building.nix)
 
 
 
@@ -3829,7 +3871,7 @@ list of string
 ```
 
 *Declared by:*
- - [/nix/store/scaiwpc5m6bdrma86r02j962bkm1syyl-source/modules/nixos/nix/remote-building\.nix](file:///nix/store/scaiwpc5m6bdrma86r02j962bkm1syyl-source/modules/nixos/nix/remote-building.nix)
+ - [/nix/store/ax41kllj2hs8jndjyd16bjnflkjzwfvj-source/modules/nixos/nix/remote-building\.nix](file:///nix/store/ax41kllj2hs8jndjyd16bjnflkjzwfvj-source/modules/nixos/nix/remote-building.nix)
 
 
 
@@ -3872,7 +3914,7 @@ list of string
 ```
 
 *Declared by:*
- - [/nix/store/scaiwpc5m6bdrma86r02j962bkm1syyl-source/modules/nixos/nix/remote-building\.nix](file:///nix/store/scaiwpc5m6bdrma86r02j962bkm1syyl-source/modules/nixos/nix/remote-building.nix)
+ - [/nix/store/ax41kllj2hs8jndjyd16bjnflkjzwfvj-source/modules/nixos/nix/remote-building\.nix](file:///nix/store/ax41kllj2hs8jndjyd16bjnflkjzwfvj-source/modules/nixos/nix/remote-building.nix)
 
 
 
@@ -3898,7 +3940,7 @@ string
 ` "nixremote" `
 
 *Declared by:*
- - [/nix/store/scaiwpc5m6bdrma86r02j962bkm1syyl-source/modules/nixos/nix/remote-building\.nix](file:///nix/store/scaiwpc5m6bdrma86r02j962bkm1syyl-source/modules/nixos/nix/remote-building.nix)
+ - [/nix/store/ax41kllj2hs8jndjyd16bjnflkjzwfvj-source/modules/nixos/nix/remote-building\.nix](file:///nix/store/ax41kllj2hs8jndjyd16bjnflkjzwfvj-source/modules/nixos/nix/remote-building.nix)
 
 
 
@@ -3924,7 +3966,7 @@ boolean
 ` true `
 
 *Declared by:*
- - [/nix/store/scaiwpc5m6bdrma86r02j962bkm1syyl-source/modules/nixos/programs](file:///nix/store/scaiwpc5m6bdrma86r02j962bkm1syyl-source/modules/nixos/programs)
+ - [/nix/store/ax41kllj2hs8jndjyd16bjnflkjzwfvj-source/modules/nixos/programs](file:///nix/store/ax41kllj2hs8jndjyd16bjnflkjzwfvj-source/modules/nixos/programs)
 
 
 
@@ -3950,6 +3992,6 @@ boolean
 ` true `
 
 *Declared by:*
- - [/nix/store/scaiwpc5m6bdrma86r02j962bkm1syyl-source/modules/nixos/theming](file:///nix/store/scaiwpc5m6bdrma86r02j962bkm1syyl-source/modules/nixos/theming)
+ - [/nix/store/ax41kllj2hs8jndjyd16bjnflkjzwfvj-source/modules/nixos/theming](file:///nix/store/ax41kllj2hs8jndjyd16bjnflkjzwfvj-source/modules/nixos/theming)
 
 
