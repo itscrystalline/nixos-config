@@ -586,11 +586,11 @@
         "nixpkgs": "nixpkgs_3"
       },
       "locked": {
-        "lastModified": 1773064470,
-        "narHash": "sha256-5Cj6qpCvLfCJcbZ7znAy+51vhLwnrrfrSnA2oImhTGk=",
+        "lastModified": 1773067698,
+        "narHash": "sha256-urvTBgWoGMCtbZJfz+VINgH2ppC2yPhjxTDpHv+pDYM=",
         "owner": "itscrystalline",
         "repo": "nur-packages",
-        "rev": "783561a55adb4a53542df87a85003653957769e2",
+        "rev": "7f9ef220586c2a9c03b279fe202e591ca5433b48",
         "type": "github"
       },
       "original": {
