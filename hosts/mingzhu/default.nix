@@ -3,7 +3,7 @@
 
   services.logrotate.checkConfig = false;
   boot.tmp.cleanOnBoot = true;
-  grub = {
+  boot.loader.grub = {
     efiSupport = true;
     efiInstallAsRemovable = true;
     device = "nodev";
