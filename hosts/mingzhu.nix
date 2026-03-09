@@ -15,6 +15,7 @@
       "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIIKZWDmuQuPaShyj0ZxEhIAyrw8KOgFq7rqYHVgyV6yQ itscrystalline@rhys"
       "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIAU/Pgn8WjdTrA5aW0GaPv/6aZmxLnmmOyldnbCZZCZR itscrystalline@raine"
       "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIB0+RVmo0ate9/OQoQTLlB2WxIf6u3x605g4a/GFYVfb itscrystalline@liriel"
+      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAILGXOcduQxgwKleQ8Nfe5JKjP/SuWGIOOLIbFdC4Vfwz itscrystalline@localhost"
     ];
 
     fileSystems = {
