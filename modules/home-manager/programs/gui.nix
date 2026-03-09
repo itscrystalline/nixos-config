@@ -116,6 +116,7 @@ in {
 
       zen-browser = lib.mkIf pkgs.stdenv.isLinux {
         enable = true;
+        setAsDefaultBrowser = true;
         policies = let
           mkLockedAttrs = builtins.mapAttrs (_: value: {
             Value = value;
@@ -170,9 +171,6 @@ in {
           desktopFile = pkg:
             builtins.head (builtins.filter (f: lib.hasSuffix ".desktop" f)
               (builtins.attrNames (builtins.readDir "${pkg}/share/applications")));
-          browser =
-            lib.optionalString (inputs ? zen-browser)
-            inputs.zen-browser.packages.${pkgs.hostsys}.twilight.meta.desktopFileName;
           image_viewer = desktopFile pkgs.loupe;
           pdf_viewer = desktopFile pkgs.papers;
           text_editor = desktopFile pkgs.gnome-text-editor;
@@ -181,12 +179,6 @@ in {
           file_manager = desktopFile pkgs.nautilus;
         in {
           "inode/directory" = file_manager;
-          "text/html" = browser;
-          "text/xml" = browser;
-          "application/xhtml+xml" = browser;
-          "application/vnd.mozilla.xul+xml" = browser;
-          "x-scheme-handler/http" = browser;
-          "x-scheme-handler/https" = browser;
           "image/jpeg" = image_viewer;
           "image/png" = image_viewer;
           "image/gif" = image_viewer;
