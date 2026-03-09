@@ -8,7 +8,7 @@ keys:
   - &rhys age1zndp5vwuh4xumq46vxwj02n8t94urq2vfunp8p9asaqfe2ychulqxzz6w0
   - &liriel age1a98c7q8la7n6dslwxcqwg4cwf8vks3r9exq68xzt7pmvuayzrsvs3qhfw9
   - &raine age1zgfjcs8703v8alw5vn7lzac3j4fu3c4hqse8x60du2v3aw9rdsrstt8rr0
-  - &mingzhu age1z270tlrv83hs7597uamu0a9gxxuw9enrvux8y32sxwz22zsln9xq4un03p
+  - &mingzhu age1atnaedc648xx0czkj89ydtfnqgwkx0wdkpknzr2mj8eksg2f8e7qcggh8e
 
 creation_rules:
   - path_regex: secrets/secrets-runtime\.yaml$

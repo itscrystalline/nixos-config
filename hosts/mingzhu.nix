@@ -48,7 +48,7 @@
 
   nix = {
     nh.enable = true;
-    keepGenerations = 5;
+    keepGenerations = 2;
   };
 
   kernel.package = pkgs.linuxKernel.packages.linux_6_12;
