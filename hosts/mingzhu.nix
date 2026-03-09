@@ -1,4 +1,8 @@
-{modulesPath, ...}: {
+{
+  modulesPath,
+  pkgs,
+  ...
+}: {
   imports = [
     "${modulesPath}/profiles/qemu-guest.nix"
     ./mingzhu
@@ -43,6 +47,7 @@
     keepGenerations = 5;
   };
 
+  kernel.package = pkgs.linuxKernel.packages.linux_6_12;
   boot = {
     bootloader = "systemd-boot";
     mountPoint = "/boot/efi";
