@@ -46,8 +46,8 @@ in {
     };
 
     bootloader = lib.mkOption {
-      type = types.enum ["systemd-boot" "generic"];
-      description = "Boot loader. 'systemd-boot' or 'generic'.";
+      type = types.enum ["systemd-boot" "generic" "grub"];
+      description = "Boot loader. 'systemd-boot', 'grub' or 'generic'.";
     };
     extraBootEntries = lib.mkOption {
       type = types.attrs;
@@ -77,7 +77,7 @@ in {
       loader = {
         efi.canTouchEfiVariables = true;
         efi.efiSysMountPoint = boot.mountPoint;
-        grub.enable = false;
+        grub.enable = boot.bootloader == "grub";
         generic-extlinux-compatible.enable = boot.bootloader == "generic";
         systemd-boot = lib.mkIf (boot.bootloader == "systemd-boot") {
           enable = true;

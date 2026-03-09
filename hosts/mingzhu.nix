@@ -53,7 +53,7 @@
 
   kernel.package = pkgs.linuxKernel.packages.linux_6_12;
   boot = {
-    bootloader = "systemd-boot";
+    bootloader = "grub";
     mountPoint = "/boot/efi";
     stage1AvailableModules = ["ata_piix" "uhci_hcd" "xen_blkfront"];
     stage1Modules = ["nvme"];
