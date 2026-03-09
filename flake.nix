@@ -169,7 +169,10 @@
     mingzhu = mkHost {
       arch = "aarch64-linux";
       configModule = ./hosts/mingzhu.nix;
-      otherModules = [];
+      otherModules = [
+        inputs.my-nur.nixosModules.ocid
+        inputs.my-nur.nixosModules.oracle-cloud-agent
+      ];
       userHomeModules = [
         (import ./homes/itscrystalline.nix {
           headless = true;

@@ -1,11 +1,14 @@
 {...}: {
   imports = [./root.nix];
-
-  services.logrotate.checkConfig = false;
   boot.tmp.cleanOnBoot = true;
   boot.loader.grub = {
     efiSupport = true;
     efiInstallAsRemovable = true;
     device = "nodev";
+  };
+  services = {
+    logrotate.checkConfig = false;
+    oracle-cloud-agent.enable = true;
+    ocid.enable = true;
   };
 }
