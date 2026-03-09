@@ -13,7 +13,7 @@
       theming.enable = true;
 
       programs.cli.enable = true;
-      ssh.hosts = {
+      programs.ssh.hosts = {
         rhys = {
           user = "itscrystalline";
           publicKeyPath = "${config.home.homeDirectory}/.ssh/rhys.pub";
