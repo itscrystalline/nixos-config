@@ -37,6 +37,7 @@ in {
             email = "pvpthadgaming@gmail.com";
           };
           safe.directory = "${config.home.homeDirectory}/nixos-config";
+          pull.rebase = false;
         };
       };
       gh = {
