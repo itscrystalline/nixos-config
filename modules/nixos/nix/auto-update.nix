@@ -5,6 +5,23 @@
   ...
 }: let
   inherit (config.nix) autoUpdate;
+  isRemote = autoUpdate.enable && autoUpdate.type == "remote";
+
+  host = autoUpdate.remoteUpdaterHost;
+  builder = lib.findFirst (b: b.hostName == host) null config.nix.remoteBuilders;
+  sshKey =
+    if builder != null
+    then builder.sshKey
+    else "/etc/nix/builder-key";
+  sshUser =
+    if builder != null
+    then builder.user
+    else "nixremote";
+  hostname = config.networking.hostName;
+  flakeAttr = "github:itscrystalline/nixos-config#nixosConfigurations.${hostname}.config.system.build.toplevel";
+  sshRemote = "${pkgs.openssh}/bin/ssh -i ${sshKey} ${sshUser}@${host}";
+  nix = "${config.nix.package.out}/bin/nix";
+  nh = "${pkgs.nh}/bin/nh";
 in {
   options.nix.autoUpdate = {
     enable = lib.mkEnableOption "automatic updates";
@@ -35,25 +52,10 @@ in {
       runGarbageCollection = true;
     };
 
-    systemd.timers.nixos-remote-upgrade = lib.mkIf (autoUpdate.enable && autoUpdate.type == "remote") {
+    systemd.timers.nixos-remote-upgrade = lib.mkIf isRemote {
       timerConfig.Persistent = true;
     };
-    systemd.services.nixos-remote-upgrade = lib.mkIf (autoUpdate.enable && autoUpdate.type == "remote") (let
-      host = autoUpdate.remoteUpdaterHost;
-      # Find the matching remote builder entry for SSH key and user
-      builder = lib.findFirst (b: b.hostName == host) null config.nix.remoteBuilders;
-      sshKey =
-        if builder != null
-        then builder.sshKey
-        else "/etc/nix/builder-key";
-      sshUser =
-        if builder != null
-        then builder.user
-        else "nixremote";
-      hostname = config.networking.hostName;
-      flakeAttr = "github:itscrystalline/nixos-config#nixosConfigurations.${hostname}.config.system.build.toplevel";
-      sshRemote = "${pkgs.openssh}/bin/ssh -i ${sshKey} ${sshUser}@${host}";
-    in {
+    systemd.services.nixos-remote-upgrade = lib.mkIf isRemote {
       description = "NixOS Remote Upgrade";
 
       restartIfChanged = false;
@@ -83,23 +85,35 @@ in {
       script = ''
         set -euo pipefail
 
-        # 1. Build the system closure on the remote builder
         echo "Building ${hostname} configuration on remote host ${host}..."
         outPath=$(${sshRemote} nix build --no-link --print-out-paths "${flakeAttr}")
 
-        # 2. Copy the built closure from the remote store to the local store
         echo "Copying closure from ${host} to local store..."
-        nix copy --from ssh://${sshUser}@${host} "$outPath"
+        ${nix} copy --from ssh://${sshUser}@${host} "$outPath"
 
-        # 3. Activate the new configuration locally via nh
         echo "Activating new configuration..."
-        nh os switch --no-nom --bypass-root-check "$outPath"
+        ${nh} os switch --no-nom --bypass-root-check "$outPath"
       '';
 
       startAt = autoUpdate.dates;
 
       after = ["network-online.target"];
       wants = ["network-online.target"];
-    });
+    };
+
+    environment.systemPackages = lib.mkIf isRemote [
+      (pkgs.writeShellScriptBin "remote-update" ''
+        set -euo pipefail
+
+        echo "Building ${hostname} configuration on remote host ${host}..."
+        outPath=$(${sshRemote} nix build --no-link --print-out-paths "${flakeAttr}")
+
+        echo "Copying closure from ${host} to local store..."
+        ${nix} copy --from ssh://${sshUser}@${host} "$outPath"
+
+        echo "Activating new configuration..."
+        ${nh} os switch --no-nom "$outPath"
+      '')
+    ];
   };
 }
