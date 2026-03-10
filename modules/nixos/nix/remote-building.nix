@@ -136,7 +136,7 @@ in {
       # Ensure the SSH key directory exists and has correct permissions
       system.activationScripts.nixBuilderKeys = ''
         mkdir -p /etc/nix
-        chmod 700 /etc/nix
+        chmod 755 /etc/nix
       '';
     })
 
