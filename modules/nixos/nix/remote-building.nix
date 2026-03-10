@@ -11,11 +11,15 @@ in {
     remoteBuilders = mkOption {
       type = types.listOf (types.submodule {
         options = {
-          hostName = mkOption {type = types.str;};
+          hostName = mkOption {
+            type = types.str;
+            description = "The hostname of the remote builder.";
+          };
 
           user = mkOption {
             type = types.str;
             default = "nixremote";
+            description = "Nix remote builder username.";
           };
 
           sshKey = mkOption {
@@ -32,21 +36,25 @@ in {
           systems = mkOption {
             type = types.listOf types.str;
             default = ["x86_64-linux"];
+            description = "Architectures this remote builder supports building for.";
           };
 
           maxJobs = mkOption {
             type = types.int;
             default = 4;
+            description = "Max CPU cores for building.";
           };
 
           speedFactor = mkOption {
             type = types.int;
             default = 1;
+            description = "idk for this one";
           };
 
           supportedFeatures = mkOption {
             type = types.listOf types.str;
             default = ["nixos-test" "big-parallel" "kvm"];
+            description = "Supported nix features on this builder.";
           };
         };
       });
