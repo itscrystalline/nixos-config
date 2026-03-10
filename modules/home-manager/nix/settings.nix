@@ -54,9 +54,8 @@ lib.mkIf (passthrough == null) {
 
     extraOptions = ''
       builders-use-substitutes = true
-      !include ${config.sops.templates."nix-extra-config".path}
+      include ${config.sops.templates."nix-extra-config".path}
     '';
-    checkConfig = false;
   };
 
   nixpkgs.config.allowUnfree = true;

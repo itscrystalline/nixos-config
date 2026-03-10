@@ -89,7 +89,7 @@ in {
         outPath=$(${sshRemote} nix build --no-link --print-out-paths "${flakeAttr}")
 
         echo "Copying closure from ${host} to local store..."
-        ${nix} copy --from ssh://${sshUser}@${host} "$outPath"
+        NIX_SSHOPTS="-i ${sshKey}" ${nix} copy --from ssh://${sshUser}@${host} "$outPath"
 
         echo "Activating new configuration..."
         ${nh} os switch --no-nom --bypass-root-check "$outPath"
@@ -109,7 +109,7 @@ in {
         outPath=$(sudo ${sshRemote} nix build --no-link --print-out-paths "${flakeAttr}")
 
         echo "Copying closure from ${host} to local store..."
-        sudo ${nix} copy --from ssh://${sshUser}@${host} "$outPath"
+        NIX_SSHOPTS="-i ${sshKey}" sudo ${nix} copy --from ssh://${sshUser}@${host} "$outPath"
 
         echo "Activating new configuration..."
         ${nh} os switch --no-nom "$outPath"

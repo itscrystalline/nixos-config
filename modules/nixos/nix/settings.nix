@@ -58,7 +58,7 @@
     ];
 
     extraOptions = ''
-      !include ${config.sops.templates."nix-extra-config".path}
+      include ${config.sops.templates."nix-extra-config".path}
     '';
     checkConfig = false;
 
