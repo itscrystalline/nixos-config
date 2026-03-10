@@ -1,9 +1,4 @@
 {
-  nextcloud.rclone = {
-    user = "";
-    password = "";
-  };
-
   homeassistant = {
     instance = "";
     latitude = 0.0;
