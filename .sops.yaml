@@ -3,6 +3,7 @@ keys:
   # Print pubkey with: age-keygen -y ~/.config/sops/age/keys.txt
   - &crystal age17s6dzupyu53655tjqw6qfdd9n22vefgdahn3a6ckc5nmvfcycpas8e9grc
   - &shuijing age1jy5ydcqkwjg93wwup2c32npk33n9avueah2t3lv3aqclqthdp5fqn82d5c # crystal but more chinese
+  - &rainestal age178lxkuusgm9h03p78h8u3345jsxnchwszrmlnfn8eys0cuukk4gqvhj7e4
   # Host age keys, derived from each machine's SSH ed25519 host key.
   # On the host run: nix-shell -p ssh-to-age --run 'cat /etc/ssh/ssh_host_ed25519_key.pub | ssh-to-age'
   - &rhys age1zndp5vwuh4xumq46vxwj02n8t94urq2vfunp8p9asaqfe2ychulqxzz6w0
@@ -16,6 +17,7 @@ creation_rules:
       - age:
           - *crystal
           - *shuijing
+          - *rainestal
           - *raine
           - *liriel
           - *rhys
