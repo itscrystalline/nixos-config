@@ -10,7 +10,7 @@
   enabled = theming.enable;
   guiEnabled = config.hm.gui.enable;
 in {
-  options.hm.theming.enable = lib.mkEnableOption "theming configuration" // {default = true;};
+  options.hm.theming.enable = lib.mkEnableOption "theming configuration";
 
   config = lib.mkIf enabled (lib.mkMerge [
     (lib.mkIf guiEnabled {

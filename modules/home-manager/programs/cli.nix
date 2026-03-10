@@ -12,7 +12,7 @@
   enabled = cli.enable;
 in {
   options.hm.programs.cli = {
-    enable = lib.mkEnableOption "CLI tools" // {default = true;};
+    enable = lib.mkEnableOption "CLI tools";
     fastfetch.profile = lib.mkOption {
       type = types.enum ["full" "minimal"];
       description = "How much info fastfetch should produce.";

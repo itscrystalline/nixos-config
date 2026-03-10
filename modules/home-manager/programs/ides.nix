@@ -18,7 +18,7 @@
     then lib.optionals (inputs ? sanzenvim) sanzenvim-pkgs."${sanzenvim-prefix}Cross"
     else lib.optionals (inputs ? sanzenvim) sanzenvim-pkgs.${sanzenvim-prefix};
 in {
-  options.hm.programs.ides.enable = lib.mkEnableOption "IDEs and editors" // {default = true;};
+  options.hm.programs.ides.enable = lib.mkEnableOption "IDEs and editors";
 
   config = lib.mkMerge [
     {

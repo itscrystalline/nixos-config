@@ -9,7 +9,7 @@
 in {
   imports = [./ai.nix];
 
-  options.hm.programs.cli.dev.enable = lib.mkEnableOption "development tools" // {default = true;};
+  options.hm.programs.cli.dev.enable = lib.mkEnableOption "development tools";
 
   config = lib.mkIf enabled {
     home.packages = with pkgs;
