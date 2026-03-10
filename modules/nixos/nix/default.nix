@@ -1,12 +1,11 @@
 {
   lib,
   config,
-  pkgs,
   ...
 }: let
   inherit (config) nix;
 in {
-  imports = [./settings.nix ./remote-building.nix];
+  imports = [./settings.nix ./remote-building.nix ./auto-update.nix];
 
   options.nix = {
     nh = {

@@ -64,6 +64,25 @@
   nix = {
     nh.enable = true;
     keepGenerations = 3;
+
+    remoteBuilders = [
+      {
+        hostName = "mingzhu";
+        user = "nixremote";
+        sshKey = "/etc/nix/builder-key";
+        hostPublicKey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIOdZ5SCnebaW69b4xDaeGnyaV0as6UF+0C881rIYCFGU root@main";
+        systems = ["aarch64-linux"];
+        maxJobs = 4;
+        speedFactor = 2;
+        supportedFeatures = ["nixos-test" "big-parallel" "kvm"];
+      }
+    ];
+
+    autoUpdate = {
+      enable = true;
+      type = "remote";
+      remoteUpdaterHost = "mingzhu";
+    };
   };
 
   boot = {

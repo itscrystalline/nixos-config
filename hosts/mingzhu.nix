@@ -48,6 +48,22 @@
   nix = {
     nh.enable = true;
     keepGenerations = 2;
+
+    autoUpdate = {
+      enable = true;
+      type = "self";
+    };
+
+    asBuilderConfig = {
+      user = "nixremote";
+      authorizedKeys = [
+        "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIKmCgHeKY5eCVXX1pSXWmc9x7i2Cfnt6qo+vpw4SsSmb nix-daemon@raine"
+        "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIPNm1+bZZ29m4kzKL2goSmrb8ylsrC+FkwVvI4fS8U5M nix-daemon@liriel"
+      ];
+      systems = ["aarch64-linux"];
+      maxJobs = 4;
+      speedFactor = 2;
+    };
   };
 
   kernel.package = pkgs.linuxKernel.packages.linux_6_12;
