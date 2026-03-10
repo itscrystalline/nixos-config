@@ -138,7 +138,7 @@
     done
   '';
 in {
-  environment.systemPackages = with pkgs; [
+  environment.systemPackages = [
     backup-script
     restore-script
   ];
@@ -149,7 +149,7 @@ in {
       default = {
         auth = true;
         tls = true;
-        user = config.secrets.mail.username;
+        user = "choyrumthad";
         passwordeval = "cat ${config.sops.secrets."mail-password".path}";
         host = "smtp.gmail.com";
         port = 587;

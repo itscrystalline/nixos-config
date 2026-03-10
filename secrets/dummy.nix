@@ -1,6 +1,4 @@
 {
-  mail.username = "";
-
   nextcloud.rclone = {
     user = "";
     password = "";
