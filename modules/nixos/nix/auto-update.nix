@@ -106,10 +106,10 @@ in {
         set -euo pipefail
 
         echo "Building ${hostname} configuration on remote host ${host}..."
-        outPath=$(${sshRemote} nix build --no-link --print-out-paths "${flakeAttr}")
+        outPath=$(sudo ${sshRemote} nix build --no-link --print-out-paths "${flakeAttr}")
 
         echo "Copying closure from ${host} to local store..."
-        ${nix} copy --from ssh://${sshUser}@${host} "$outPath"
+        sudo ${nix} copy --from ssh://${sshUser}@${host} "$outPath"
 
         echo "Activating new configuration..."
         ${nh} os switch --no-nom "$outPath"

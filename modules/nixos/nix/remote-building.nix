@@ -137,6 +137,8 @@ in {
         isSystemUser = true;
         group = asBuilderConfig.user;
         shell = pkgs.bash;
+        home = "/var/lib/${asBuilderConfig.user}";
+        createHome = true;
         openssh.authorizedKeys.keys = asBuilderConfig.authorizedKeys;
       };
       users.groups.${asBuilderConfig.user} = {};
