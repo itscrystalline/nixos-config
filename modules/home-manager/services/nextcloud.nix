@@ -10,16 +10,14 @@ in {
   options.hm.services.nextcloud.enable = lib.mkEnableOption "Nextcloud integration";
 
   config = lib.mkIf enabled {
-    sops = {
-      templates."nextcloud-mount.conf".content = ''
-        [nextcloud]
-        type = webdav
-        url = https://nc.iw2tryhard.dev/remote.php/dav/files/itscrystalline
-        vendor = nextcloud
-        user = itscrystalline
-        pass = ${config.sops.placeholder."nextcloud-rclone-password"}
-      '';
-    };
+    sops.templates."nextcloud-mount.conf".content = ''
+      [nextcloud]
+      type = webdav
+      url = https://nc.iw2tryhard.dev/remote.php/dav/files/itscrystalline
+      vendor = nextcloud
+      user = itscrystalline
+      pass = ${config.sops.placeholder."nextcloud-rclone-password"}
+    '';
 
     systemd.user.services.nextcloud-mount = {
       Unit = {

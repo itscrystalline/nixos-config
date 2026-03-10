@@ -26,6 +26,18 @@ in {
   };
 
   config = lib.mkIf (enabled && pkgs.stdenv.isLinux) {
+    sops.templates."vicinae-secrets.json".content = ''
+      {
+        "providers": {
+          "@knoopx/nix-0": {
+             "preferences": {
+                "githubToken": "${config.sops.placeholder."gh-token"}"
+             }
+          }
+        }
+      }
+    '';
+
     services.vicinae = {
       enable = true;
       settings = lib.mkMerge [
@@ -41,6 +53,7 @@ in {
           };
         })
         {
+          imports = [config.sops.templates."vicinae-secrets.json".path];
           favicon_service = "twenty";
           pop_to_root_on_close = false;
           search_files_in_root = false;
@@ -52,10 +65,7 @@ in {
             "@knoopx/store.vicinae.nix:home-manager-options"
             "@tonka3000/0a3cf1ce-7de6-415c-9e37-91a892d1747e:lights"
           ];
-          providers = {
-            "@knoopx/store.vicinae.nix".preferences.githubToken = config.secrets.ghToken;
-            "@tonka3000/0a3cf1ce-7de6-415c-9e37-91a892d1747e".preferences.instance = config.secrets.homeassistant.instance;
-          };
+          providers."@tonka3000/0a3cf1ce-7de6-415c-9e37-91a892d1747e".preferences.instance = "http://liriel:8000";
         }
       ];
       systemd = {

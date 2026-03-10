@@ -19,26 +19,31 @@ nixos: {
       else null;
 
     secrets =
-      if nixos
-      then {
-        "crystal-password" = {
-          neededForUsers = true;
-        };
+      (
+        if nixos
+        then {
+          "crystal-password" = {
+            neededForUsers = true;
+          };
 
-        "homeassistant-wifi-password" = {};
+          "homeassistant-wifi-password" = {};
 
-        "nextcloud-admin-password" = {};
-        "nextcloud-admin-stats-token" = {};
+          "nextcloud-admin-password" = {};
+          "nextcloud-admin-stats-token" = {};
 
-        "mail-password" = {};
+          "mail-password" = {};
 
-        "cloudflared-credentials" = {};
+          "cloudflared-credentials" = {};
 
-        "wifi-passwords" = {};
-      }
-      else {
-        "nextcloud-rclone-password" = {};
-        "oc-api-keys" = {};
+          "wifi-passwords" = {};
+        }
+        else {
+          "nextcloud-rclone-password" = {};
+          "oc-api-keys" = {};
+        }
+      )
+      // {
+        "gh-token" = {};
       };
   };
 }

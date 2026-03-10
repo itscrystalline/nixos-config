@@ -5,5 +5,4 @@
     longitude = 0.0;
     token = "";
   };
-  ghToken = "";
 }
