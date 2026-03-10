@@ -17,7 +17,7 @@ in {
   options.crystals-services.home-assistant.enable = lib.mkEnableOption "Home Assistant";
   config = lib.mkIf enabled {
     sops.secrets."homeassistant-secrets.yaml" = {
-      owner = config.systemd.services.home-assistant.User;
+      owner = config.systemd.services.home-assistant.serviceConfig.User;
       path = "/var/lib/hass/secrets.yaml";
     };
     services.home-assistant = with config.secrets.homeassistant; {
