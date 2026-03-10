@@ -1,11 +1,17 @@
 {
   config,
   inputs,
-  lib,
   pkgs,
-  options,
   ...
 }: {
+  sops = {
+    secrets."gh-token" = {
+      restartUnits = ["nix-daemon.service"];
+    };
+    templates."nix-extra-config".content = ''
+      access-tokens = github.com=${config.sops.placeholder."gh-token"}
+    '';
+  };
   nix = {
     settings = {
       experimental-features = ["nix-command" "flakes"];
@@ -51,6 +57,11 @@
       "nix-flatpak=${inputs.nix-flatpak}"
       "niri=${inputs.niri}"
     ];
+
+    extraOptions = ''
+      !include ${config.sops.templates."nix-extra-config".path}
+    '';
+    checkConfig = false;
 
     package = pkgs.lixPackageSets.stable.lix;
   };
