@@ -16,9 +16,13 @@
 in {
   options.crystals-services.home-assistant.enable = lib.mkEnableOption "Home Assistant";
   config = lib.mkIf enabled {
+    sops.secrets."homeassistant-secrets.yaml" = {
+      owner = config.systemd.services.home-assistant.User;
+      path = "/var/lib/hass/secrets.yaml";
+    };
     services.home-assistant = with config.secrets.homeassistant; {
       enable = true;
-      package = pkgs.unstable.home-assistant.overrideAttrs (oldAttrs: {doInstallCheck = false;});
+      package = pkgs.unstable.home-assistant.overrideAttrs (_: {doInstallCheck = false;});
       openFirewall = true;
       extraComponents = ["wiz" "matter" "mobile_app" "bluetooth" "tplink" "tplink_tapo" "accuweather"];
       customComponents = [
@@ -56,12 +60,14 @@ in {
         ]);
       config = {
         homeassistant = {
-          inherit latitude longitude;
+          latitude = "!secret latitude";
+          longitude = "!secret longitude";
           name = "Dormitory";
         };
         zone = [
           {
-            inherit latitude longitude;
+            latitude = "!secret latitude";
+            longitude = "!secret longitude";
             name = "Home";
             radius = 25;
             icon = "mdi:home";

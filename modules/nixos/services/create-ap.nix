@@ -54,8 +54,7 @@ in {
       COUNTRY = "TH";
     };
     # Config file without PASSPHRASE, placed in the Nix store.
-    staticConf = pkgs.writeText "create_ap_static.conf"
-      (lib.generators.toKeyValue {} staticSettings);
+    staticConf = pkgs.writeText "create_ap_static.conf" (lib.generators.toKeyValue {} staticSettings);
   in {
     kernel.sysctl = {
       "net.ipv6.conf.all.forwarding" = 1;

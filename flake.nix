@@ -61,7 +61,7 @@
     # Does NOT include stylix (NixOS provides it via nixosModules.stylix).
     hmModules = [
       ./modules/home-manager
-      ./secrets
+      (import ./secrets false)
       inputs.nix-flatpak.homeManagerModules.nix-flatpak
       inputs.nix-index-database.homeModules.nix-index
       inputs.occasion.homeManagerModule
@@ -69,7 +69,6 @@
       inputs.zen-browser.homeModules.twilight
       inputs.noctalia.homeModules.default
       inputs.sops-nix.homeManagerModules.sops
-      (import ./secrets/runtime.nix false)
     ];
 
     # Build a standalone homeManagerConfiguration (adds stylix HM module).
@@ -123,8 +122,7 @@
           ++ [
             inputs.sops-nix.nixosModules.sops
             ./modules/nixos
-            ./secrets
-            (import ./secrets/runtime.nix true)
+            (import ./secrets true)
             configModule
           ]
           ++ otherModules;

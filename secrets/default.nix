@@ -1,8 +1,44 @@
-{lib, ...}: {
-  options.secrets = lib.mkOption {
-    type = lib.types.attrs;
-    readOnly = true;
+nixos: {
+  config,
+  lib,
+  ...
+}: {
+  sops = {
+    defaultSopsFile = ./secrets.yaml;
+    age.sshKeyPaths = lib.optional nixos "/etc/ssh/ssh_host_ed25519_key";
+    age.keyFile =
+      if (config ? home)
+      then "${config.home.homeDirectory}/.config/sops/age/keys.txt"
+      else null;
+
+    secrets =
+      (
+        if nixos
+        then {
+          "crystal-password" = {
+            neededForUsers = true;
+          };
+
+          "homeassistant-wifi-password" = {};
+          "homeassistant-token" = {};
+          "homeassistant-secrets.yaml" = {};
+
+          "nextcloud-admin-password" = {};
+          "nextcloud-admin-stats-token" = {};
+
+          "mail-password" = {};
+
+          "cloudflared-credentials" = {};
+
+          "wifi-passwords" = {};
+        }
+        else {
+          "nextcloud-rclone-password" = {};
+          "oc-api-keys" = {};
+        }
+      )
+      // {
+        "gh-token" = {};
+      };
   };
-  config.secrets = import ./secrets.nix;
-  # config.secrets = import ./dummy.nix;
 }
