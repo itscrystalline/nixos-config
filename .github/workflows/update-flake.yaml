@@ -1,11 +1,12 @@
-name: Check configuration
+name: Update flake inputs
 
 on:
-  push:
+  schedule:
+    - cron: "0 0 * * 0"
 
 jobs:
-  check:
-    name: Check config 
+  updati:
+    name: Update flake
     runs-on: ubuntu-latest
 
     steps:
@@ -22,5 +23,5 @@ jobs:
 
     - name: Check
       run: |
-        nix flake check --all-systems 2>&1
+        nix flake update 2>&1
 
