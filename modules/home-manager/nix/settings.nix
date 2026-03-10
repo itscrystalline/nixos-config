@@ -1,12 +1,15 @@
 {
   lib,
-  config,
   inputs ? {},
   passthrough ? null,
   pkgs,
+  config,
   ...
 }:
 lib.mkIf (passthrough == null) {
+  sops.templates."nix-extra-config".content = ''
+    access-tokens = github.com=${config.sops.placeholder."gh-token"}
+  '';
   nix = {
     settings = {
       experimental-features = ["nix-command" "flakes"];
@@ -34,8 +37,7 @@ lib.mkIf (passthrough == null) {
         "cuda-maintainers.cachix.org-1:0dq3bujKpuEPMCX6U4WylrUDZ9JyUG0VpVZa7CNfq5E="
       ];
 
-      access-tokens = "github.com=${config.secrets.ghToken}";
-      trusted-users = ["root" "itscrystalline" "nixremote" "opc" "ubuntu"];
+      trusted-users = ["root" "itscrystalline" "nixremote" "@wheel"];
       auto-optimise-store = true;
     };
 
@@ -52,7 +54,9 @@ lib.mkIf (passthrough == null) {
 
     extraOptions = ''
       builders-use-substitutes = true
+      !include ${config.sops.templates."nix-extra-config".path}
     '';
+    checkConfig = false;
   };
 
   nixpkgs.config.allowUnfree = true;

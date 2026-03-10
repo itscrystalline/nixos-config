@@ -43,11 +43,6 @@ in {
       gh = {
         enable = true;
         gitCredentialHelper.enable = true;
-        hosts."github.com" = {
-          user = "itscrystalline";
-          oauth_token = "${config.secrets.ghToken}";
-        };
-        settings.git_protocol = "https";
       };
 
       direnv = {

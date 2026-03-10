@@ -1,4 +1,4 @@
-name: Build images
+name: Build SD images
 
 on:
   workflow_dispatch:
@@ -22,12 +22,6 @@ jobs:
 
     - name: Checkout code
       uses: actions/checkout@v4
-
-    - name: Write secrets file & decrypt
-      run: |
-        sudo apt-get install -y git-crypt 
-        echo ${{ secrets.REPO_SECRETS_KEY }} | base64 -di | zcat > /tmp/repo-key
-        git-crypt unlock /tmp/repo-key
 
     - name: Install Nix
       uses: cachix/install-nix-action@v30

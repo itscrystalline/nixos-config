@@ -1,11 +1,13 @@
-name: Check configuration
+name: Update flake inputs
 
 on:
-  push:
+  schedule:
+    - cron: "0 0 * * 0"
+  workflow_dispatch:
 
 jobs:
-  check:
-    name: Check config 
+  updati:
+    name: Update flake
     runs-on: ubuntu-latest
 
     steps:
@@ -20,7 +22,18 @@ jobs:
           extra-substituters = https://devenv.cachix.org https://sanzenvim.cachix.org https://nix-community.cachix.org https://nixpkgs-python.cachix.org https://cuda-maintainers.cachix.org https://attic.xuyh0120.win/lantian https://niri.cachix.org
           extra-trusted-public-keys = devenv.cachix.org-1:w1cLUi8dv3hnoSPGAuibQv+f9TZLr6cv/Hm9XgU50cw= sanzenvim.cachix.org-1:zNf9OhUUfJ/NM55vbjx9fSM6O/Q3L6JDoFwU1VCEohc= nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs= nixpkgs-python.cachix.org-1:hxjI7pFxTyuTHn2NkvWCrAUcNZLNS3ZAvfYNuYifcEU= niri.cachix.org-1:Wv0OmO7PsuocRKzfDoJ3mulSl7Z6oezYhGhR+3W2964= cuda-maintainers.cachix.org-1:0dq3bujKpuEPMCX6U4WylrUDZ9JyUG0VpVZa7CNfq5E= lantian:EeAUQ+W+6r7EtwnmYjeVwx5kOGEBpjlBfPlzGlTNvHc=
 
+    - name: Update
+      run: |
+        nix flake update 2>&1
+
     - name: Check
       run: |
         nix flake check --all-systems 2>&1
+
+    - name: Commit
+      uses: EndBug/add-and-commit@v9
+      with:
+        default_author: github_actions
+        push: true
+        message: 'chore: update flake (automated)'
 

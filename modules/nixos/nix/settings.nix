@@ -1,11 +1,17 @@
 {
   config,
   inputs,
-  lib,
   pkgs,
-  options,
   ...
 }: {
+  sops = {
+    secrets."gh-token" = {
+      restartUnits = ["nix-daemon.service"];
+    };
+    templates."nix-extra-config".content = ''
+      access-tokens = github.com=${config.sops.placeholder."gh-token"}
+    '';
+  };
   nix = {
     settings = {
       experimental-features = ["nix-command" "flakes"];
@@ -34,8 +40,7 @@
         "raine:2xuwbE44tVXZdoV8OJYaTXJT1PoKF3nD0fc9dDix41s="
       ];
 
-      access-tokens = "github.com=${config.secrets.ghToken}";
-      trusted-users = ["root" "itscrystalline" "nixremote" "opc"];
+      trusted-users = ["root" "itscrystalline" "nixremote" "@wheel"];
       auto-optimise-store = true;
     };
 
@@ -51,6 +56,11 @@
       "nix-flatpak=${inputs.nix-flatpak}"
       "niri=${inputs.niri}"
     ];
+
+    extraOptions = ''
+      !include ${config.sops.templates."nix-extra-config".path}
+    '';
+    checkConfig = false;
 
     package = pkgs.lixPackageSets.stable.lix;
   };

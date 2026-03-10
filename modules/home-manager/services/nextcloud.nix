@@ -10,25 +10,23 @@ in {
   options.hm.services.nextcloud.enable = lib.mkEnableOption "Nextcloud integration";
 
   config = lib.mkIf enabled {
-    xdg.configFile = lib.mkIf config.hm.gui.enable {
-      "rclone/nextcloud.conf".text = with config.secrets.nextcloud.rclone; ''
-        [nextcloud]
-        type = webdav
-        url = https://nc.iw2tryhard.dev/remote.php/dav/files/${user}
-        vendor = nextcloud
-        user = ${user}
-        pass = ${password}
-      '';
-    };
+    sops.templates."nextcloud-mount.conf".content = ''
+      [nextcloud]
+      type = webdav
+      url = https://nc.iw2tryhard.dev/remote.php/dav/files/itscrystalline
+      vendor = nextcloud
+      user = itscrystalline
+      pass = ${config.sops.placeholder."nextcloud-rclone-password"}
+    '';
 
-    systemd.user.services.nextcloud-mount = lib.mkIf config.hm.gui.enable {
+    systemd.user.services.nextcloud-mount = {
       Unit = {
         Description = "Mounts My Nextcloud as a local directory.";
-        After = ["network-online.target"];
+        After = ["network-online.target" "sops-nix.service"];
       };
       Service = {
         Type = "notify";
-        ExecStart = "${pkgs.rclone}/bin/rclone --config=%h/.config/rclone/nextcloud.conf --vfs-cache-mode writes --ignore-checksum mount \"nextcloud:\" \"Nextcloud\"";
+        ExecStart = "${pkgs.rclone}/bin/rclone --config=${config.sops.templates."nextcloud-mount.conf".path} --vfs-cache-mode writes --ignore-checksum mount \"nextcloud:\" \"Nextcloud\"";
         ExecStop = "/bin/fusermount -u %h/Nextcloud/%i";
         Restart = "always";
       };
