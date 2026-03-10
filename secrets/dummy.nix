@@ -6,5 +6,4 @@
     token = "";
   };
   ghToken = "";
-  known-networks = {};
 }

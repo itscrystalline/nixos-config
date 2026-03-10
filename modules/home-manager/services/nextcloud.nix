@@ -11,7 +11,6 @@ in {
 
   config = lib.mkIf enabled {
     sops = {
-      secrets."nextcloud-rclone-password".restartUnits = ["nextcloud-mount.service"];
       templates."nextcloud-mount.conf".content = ''
         [nextcloud]
         type = webdav

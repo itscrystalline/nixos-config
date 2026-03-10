@@ -30,7 +30,6 @@
   network = {
     dhcp = true;
     profiles = ["KMITL-HiSpeed"];
-    profileEnvSecret = "wifi-passwords";
   };
 
   crystals-services = {
