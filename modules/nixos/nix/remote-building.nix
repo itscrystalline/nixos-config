@@ -94,6 +94,8 @@ in {
           };
         };
       });
+      default = null;
+      description = "Configure this machine as a remote builder.";
     };
   };
 
