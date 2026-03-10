@@ -167,7 +167,7 @@ in {
           github = {
             command = "${lib.getExe pkgs.github-mcp-server}";
             args = ["stdio"];
-            env.GITHUB_PERSONAL_ACCESS_TOKEN = config.secrets.ghToken;
+            env.GITHUB_PERSONAL_ACCESS_TOKEN = "{env:GITHUB_PERSONAL_ACCESS_TOKEN}";
             enabled = true;
           };
           nixos = {

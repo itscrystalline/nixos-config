@@ -40,8 +40,7 @@
         "raine:2xuwbE44tVXZdoV8OJYaTXJT1PoKF3nD0fc9dDix41s="
       ];
 
-      access-tokens = "github.com=${config.secrets.ghToken}";
-      trusted-users = ["root" "itscrystalline" "nixremote" "opc"];
+      trusted-users = ["root" "itscrystalline" "nixremote" "@wheel"];
       auto-optimise-store = true;
     };
 
