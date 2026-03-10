@@ -15,6 +15,7 @@ in {
       "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIPS4b7HxJiG6gAOvqw/fD5CKWP3HqOFdfi2zpwmPi4wu itscrystalline@rhys"
       "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIFgYlL76SlT57GHQ+LzpPzQWDZALVi8SnqsWH8qNGFTW itscrystalline@liriel"
       "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIDRUiQaNLor3ymnrHft6Yk8PZT3df0Cdb5J5h3QLtnTl itscrystalline@mingzhu"
+      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAINJmlnY6dBpJHo+tRXSfQ+xrOZCRC91h4OVj/vUDCExu termius-raine"
     ];
 
     fileSystems = {
