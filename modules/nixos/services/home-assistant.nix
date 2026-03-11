@@ -19,6 +19,7 @@ in {
     sops.secrets."homeassistant-secrets.yaml" = {
       owner = config.systemd.services.home-assistant.serviceConfig.User;
       path = "/var/lib/hass/secrets.yaml";
+      restartUnits = ["home-assistant.service"];
     };
     services.home-assistant = with config.secrets.homeassistant; {
       enable = true;
