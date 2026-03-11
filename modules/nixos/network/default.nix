@@ -63,10 +63,13 @@ in {
     users.users.${config.core.primaryUser}.extraGroups = ["networkmanager"];
 
     networking = {
-      networkmanager.enable = true;
-      networkmanager.ensureProfiles = {
-        profiles = mkProfiles config.network.profiles;
-        environmentFiles = [config.sops.secrets."wifi-passwords".path];
+      networkmanager = {
+        enable = true;
+        connectionConfig.connection.auth-retries = 0;
+        ensureProfiles = {
+          profiles = mkProfiles config.network.profiles;
+          environmentFiles = [config.sops.secrets."wifi-passwords".path];
+        };
       };
       hostName = config.core.name;
       useDHCP = lib.mkDefault config.network.dhcp;
