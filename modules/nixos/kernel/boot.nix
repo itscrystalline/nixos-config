@@ -1,6 +1,7 @@
 {
   lib,
   config,
+  pkgs,
   ...
 }: let
   inherit (config) boot;
@@ -50,9 +51,9 @@ in {
       description = "Boot loader. 'limine', 'systemd-boot', 'grub' or 'generic'.";
     };
     extraBootEntries = lib.mkOption {
-      type = types.attrs;
-      description = "Additional boot entries for systemd-boot. Does nothing on 'generic'.";
-      default = {};
+      type = types.nullOr (types.oneOf [types.lines types.attrs]);
+      description = "Additional boot entries for systemd-boot/limine/grub. Does nothing on 'generic'.";
+      default = null;
     };
   };
   config = {
@@ -74,25 +75,57 @@ in {
         themePackages = lib.optional (boot.verbosity.plymouth.package != null) boot.verbosity.plymouth.package;
       };
 
-      loader = {
-        efi.canTouchEfiVariables = boot.bootloader == "systemd-boot";
+      loader = let
+        isx86_64 = config.core.arch == "x86_64-linux";
+      in {
         efi.efiSysMountPoint = boot.mountPoint;
-
-        grub.enable = boot.bootloader == "grub";
 
         generic-extlinux-compatible.enable = boot.bootloader == "generic";
 
+        grub = lib.mkIf (boot.bootloader == "grub") {
+          enable = true;
+          memtest86.enable = isx86_64;
+          extraEntries =
+            if (builtins.isString boot.extraBootEntries)
+            then boot.extraBootEntries
+            else if (builtins.isNull boot.extraBootEntries)
+            then ""
+            else builtins.throw "`boot.extraBootEntries` must be a string for the GRUB bootloader.";
+        };
+
+        efi.canTouchEfiVariables = boot.bootloader == "systemd-boot";
         systemd-boot = lib.mkIf (boot.bootloader == "systemd-boot") {
           enable = true;
           configurationLimit = config.nix.keepGenerations;
-          memtest86.enable = config.core.arch == "x86_64-linux";
-          inherit (boot) extraBootEntries;
+          memtest86.enable = isx86_64;
+          extraBootEntries =
+            if (builtins.isAttrs boot.extraBootEntries)
+            then boot.extraBootEntries
+            else if (builtins.isNull boot.extraBootEntries)
+            then {}
+            else builtins.throw "`boot.extraBootEntries` must be an attrset for the systemd-boot bootloader.";
         };
 
         limine = lib.mkIf (boot.bootloader == "limine") {
           enable = true;
           resolution = "1920x1080";
-          extraEntries = boot.extraBootEntries;
+          extraEntries = ''
+            ${
+              if (builtins.isString boot.extraBootEntries)
+              then boot.extraBootEntries
+              else if (builtins.isNull boot.extraBootEntries)
+              then ""
+              else builtins.throw "`boot.extraBootEntries` must be a string for the limine bootloader."
+            }
+            ${
+              lib.optionalString isx86_64 ''
+                /memtest86
+                protocol: chainload
+                path: boot():///efi/memtest86/memtest86.efi
+              ''
+            }
+          '';
+          additionalFiles = lib.optionalAttrs isx86_64 {"efi/memtest86/memtest86.efi" = "${pkgs.memtest86-efi}/BOOTX64.efi";};
           maxGenerations = config.nix.keepGenerations;
           style.interface.branding = config.core.name;
         };
