@@ -65,7 +65,7 @@ in {
     networking = {
       networkmanager = {
         enable = true;
-        connectionConfig.connection.auth-retries = 0;
+        connectionConfig."connection.auth-retries" = 0;
         ensureProfiles = {
           profiles = mkProfiles config.network.profiles;
           environmentFiles = [config.sops.secrets."wifi-passwords".path];
