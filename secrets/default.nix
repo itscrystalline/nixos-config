@@ -31,6 +31,8 @@ nixos: {
           "cloudflared-credentials" = {};
 
           "wifi-passwords" = {};
+
+          "tailscaleAuthKey" = {};
         }
         else {
           "nextcloud-rclone-password" = {};

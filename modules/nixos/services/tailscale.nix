@@ -16,10 +16,13 @@ in {
     };
   };
   config = lib.mkIf enabled {
+    sops.secrets."tailscaleAuthKey".restartUnits = ["tailscaled-autoconnect.service"];
+
     services.tailscale = {
       enable = true;
       useRoutingFeatures = tailscale.role;
-      extraSetFlags = ["--operator=${config.core.primaryUser}"] ++ lib.optional (tailscale.role == "server" && tailscale.asExitNode) "--advertise-exit-node";
+      extraSetFlags = ["--operator=${config.core.primaryUser}" "--ssh"] ++ lib.optional (tailscale.role == "server" && tailscale.asExitNode) "--advertise-exit-node";
+      authKeyFile = config.sops.secrets."tailscaleAuthKey".path;
     };
     systemd.services.tailscaled.serviceConfig.Restart = lib.mkForce "always";
   };
