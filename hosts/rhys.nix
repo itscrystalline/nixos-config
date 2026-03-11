@@ -99,7 +99,7 @@ in {
   };
 
   boot = {
-    bootloader = "systemd-boot";
+    bootloader = "limine";
     stage1AvailableModules = [
       "xhci_pci"
       "ahci"
