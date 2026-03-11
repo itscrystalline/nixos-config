@@ -112,6 +112,15 @@ in {
         pantip.com$important
         app.localhost.direct
         register.appattest.apple.com
+
+        chatgpt.com
+        claude.ai
+        ai.google
+        deepseek.com
+        www.chatgpt.com
+        www.claude.ai
+        www.ai.google
+        www.deepseek.com
       '';
     };
     cloudflared.enable = true;
