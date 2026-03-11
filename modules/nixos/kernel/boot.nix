@@ -46,8 +46,8 @@ in {
     };
 
     bootloader = lib.mkOption {
-      type = types.enum ["systemd-boot" "generic" "grub"];
-      description = "Boot loader. 'systemd-boot', 'grub' or 'generic'.";
+      type = types.enum ["systemd-boot" "generic" "grub" "limine"];
+      description = "Boot loader. 'limine', 'systemd-boot', 'grub' or 'generic'.";
     };
     extraBootEntries = lib.mkOption {
       type = types.attrs;
@@ -75,15 +75,26 @@ in {
       };
 
       loader = {
-        efi.canTouchEfiVariables = boot.bootloader == "grub" && !config.boot.loader.grub.efiInstallAsRemovable;
+        efi.canTouchEfiVariables = boot.bootloader == "systemd-boot";
         efi.efiSysMountPoint = boot.mountPoint;
+
         grub.enable = boot.bootloader == "grub";
+
         generic-extlinux-compatible.enable = boot.bootloader == "generic";
+
         systemd-boot = lib.mkIf (boot.bootloader == "systemd-boot") {
           enable = true;
           configurationLimit = config.nix.keepGenerations;
           memtest86.enable = config.core.arch == "x86_64-linux";
           inherit (boot) extraBootEntries;
+        };
+
+        limine = lib.mkIf (boot.bootloader == "limine") {
+          enable = true;
+          resolution = "1920x1080";
+          extraEntries = boot.extraBootEntries;
+          maxGenerations = config.nix.keepGenerations;
+          style.interface.branding = config.core.name;
         };
       };
     };
