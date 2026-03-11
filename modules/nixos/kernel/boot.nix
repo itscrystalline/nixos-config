@@ -9,6 +9,11 @@
   attrNamesToTrue = types.coercedTo (types.listOf types.str) (
     enabledList: lib.genAttrs enabledList (_attrName: true)
   ) (types.attrsOf types.bool);
+
+  boot-wallpaper = pkgs.fetchurl {
+    url = "https://raw.githubusercontent.com/zhichaoh/catppuccin-wallpapers/refs/heads/main/gradients/magenta_pink.png";
+    hash = "sha256-Skj2LLYAPaSZytl8v3sQvsl+fx06CIpbloue11Ti24c=";
+  };
 in {
   options.boot = {
     network = lib.mkEnableOption "network in the initrd";
@@ -106,29 +111,37 @@ in {
             else builtins.throw "`boot.extraBootEntries` must be an attrset for the systemd-boot bootloader.";
         };
 
-        limine = lib.mkIf (boot.bootloader == "limine") {
-          enable = true;
-          resolution = "1920x1080";
-          extraEntries = ''
-            ${
-              if (builtins.isString boot.extraBootEntries)
-              then boot.extraBootEntries
-              else if (builtins.isNull boot.extraBootEntries)
-              then ""
-              else builtins.throw "`boot.extraBootEntries` must be a string for the limine bootloader."
-            }
-            ${
-              lib.optionalString isx86_64 ''
-                /memtest86
-                protocol: chainload
-                path: boot():///efi/memtest86/memtest86.efi
-              ''
-            }
-          '';
-          additionalFiles = lib.optionalAttrs isx86_64 {"efi/memtest86/memtest86.efi" = "${pkgs.memtest86-efi}/BOOTX64.efi";};
-          maxGenerations = config.nix.keepGenerations;
-          style.interface.branding = config.core.name;
-        };
+        limine = lib.mkIf (boot.bootloader == "limine") (lib.mkMerge [
+          {
+            enable = true;
+            resolution = "1920x1080";
+            extraEntries = ''
+              ${
+                if (builtins.isString boot.extraBootEntries)
+                then boot.extraBootEntries
+                else if (builtins.isNull boot.extraBootEntries)
+                then ""
+                else builtins.throw "`boot.extraBootEntries` must be a string for the limine bootloader."
+              }
+              ${
+                lib.optionalString isx86_64 ''
+                  /memtest86
+                  protocol: chainload
+                  path: boot():///efi/memtest86/memtest86.efi
+                ''
+              }
+            '';
+            additionalFiles = lib.optionalAttrs isx86_64 {"efi/memtest86/memtest86.efi" = "${pkgs.memtest86-efi}/BOOTX64.efi";};
+            maxGenerations = config.nix.keepGenerations;
+            style.interface.branding = config.core.name;
+          }
+          (lib.mkIf config.theming.enable {
+            style = {
+              wallpapers = [boot-wallpaper];
+              wallpaperStyle = "stretched";
+            };
+          })
+        ]);
       };
     };
     kernel.cmdline =
