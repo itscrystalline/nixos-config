@@ -368,35 +368,28 @@ in {
         exitShellOnExit = true;
         enableBashIntegration = true;
         enableZshIntegration = true;
-        settings.keybinds = {
-          _children = [{unbind._args = ["Ctrl s"];}];
-          scroll._children = [
-            {
-              bind = {
-                _args = ["Ctrl /"];
-                _children = [{SwitchToMode._args = ["Normal"];}];
-              };
-            }
-          ];
-          search._children = [
-            {
-              bind = {
-                _args = ["Ctrl /"];
-                _children = [{SwitchToMode._args = ["Normal"];}];
-              };
-            }
-          ];
-          session._children = [
-            {
-              bind = {
-                _args = ["Ctrl /"];
-                _children = [{SwitchToMode._args = ["Scroll"];}];
-              };
-            }
-          ];
-          shared_except = {
-            _args = ["scroll" "locked"];
-            _children = [
+        settings = {
+          show_startup_tips._args = [false];
+          ui.pane_frames._children = [{rounded_corners._args = [true];}];
+          keybinds = {
+            _children = [{unbind._args = ["Ctrl s"];}];
+            scroll._children = [
+              {
+                bind = {
+                  _args = ["Ctrl /"];
+                  _children = [{SwitchToMode._args = ["Normal"];}];
+                };
+              }
+            ];
+            search._children = [
+              {
+                bind = {
+                  _args = ["Ctrl /"];
+                  _children = [{SwitchToMode._args = ["Normal"];}];
+                };
+              }
+            ];
+            session._children = [
               {
                 bind = {
                   _args = ["Ctrl /"];
@@ -404,6 +397,17 @@ in {
                 };
               }
             ];
+            shared_except = {
+              _args = ["scroll" "locked"];
+              _children = [
+                {
+                  bind = {
+                    _args = ["Ctrl /"];
+                    _children = [{SwitchToMode._args = ["Scroll"];}];
+                  };
+                }
+              ];
+            };
           };
         };
       };
