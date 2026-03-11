@@ -35,7 +35,10 @@
 
   crystals-services = {
     ssh.enable = true;
-    tailscale.enable = true;
+    tailscale = {
+      enable = true;
+      role = "server";
+    };
     earlyoom.enable = true;
     avahi.enable = true;
     argonone.enable = true;

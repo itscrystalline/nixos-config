@@ -57,7 +57,11 @@ in {
 
   crystals-services = {
     ssh.enable = true;
-    tailscale.enable = true;
+    tailscale = {
+      enable = true;
+      asExitNode = true;
+      role = "server";
+    };
     earlyoom.enable = true;
     avahi.enable = true;
     docker.enable = true;

@@ -43,7 +43,11 @@
   crystals-services = {
     docker.enable = true;
     ssh.enable = true;
-    tailscale.enable = true;
+    tailscale = {
+      enable = true;
+      asExitNode = true;
+      role = "server";
+    };
   };
 
   nix = {
