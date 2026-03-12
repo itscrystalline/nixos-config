@@ -27,7 +27,7 @@ in {
       Service = {
         Type = "notify";
         ExecStart = "${pkgs.rclone}/bin/rclone --config=${config.sops.templates."nextcloud-mount.conf".path} --vfs-cache-mode writes --ignore-checksum mount \"nextcloud:\" \"Nextcloud\"";
-        ExecStop = "/bin/fusermount -u %h/Nextcloud/%i";
+        ExecStop = "${pkgs.fuse}/bin/fusermount -u %h/Nextcloud/%i";
         Restart = "always";
       };
       Install.WantedBy = ["default.target"];
