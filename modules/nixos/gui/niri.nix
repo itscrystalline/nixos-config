@@ -29,7 +29,6 @@ in {
       xserver.enable = true;
     };
     environment.systemPackages = with pkgs; [
-      polkit_gnome
       gnome-keyring
       nautilus-python
       ghostty

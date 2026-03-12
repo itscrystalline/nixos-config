@@ -21,7 +21,6 @@ in {
     ];
 
     services = {
-      polkit-gnome.enable = true;
       hypridle = {
         enable = true;
         settings = let
