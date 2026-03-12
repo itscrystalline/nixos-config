@@ -10,6 +10,15 @@
   inherit (cli) fastfetch;
   inherit (lib) types;
   enabled = cli.enable;
+
+  zellij-resume-script = ''
+    if [[ -z "$ZELLIJ_SESSION_NAME" ]] && [[ -o interactive ]]; then
+        zellij attach -c $USER@$(hostname)
+        # grace period :))
+        sleep 0.25
+        exit
+    fi
+  '';
 in {
   options.hm.programs.cli = {
     enable = lib.mkEnableOption "CLI tools";
@@ -94,81 +103,14 @@ in {
         syntaxHighlighting.enable = true;
         autocd = true;
         history.append = true;
-        initContent = let
-          # https://gist.github.com/iprok/fdbabff0751264c6266c20ee997a5e6c
-          zellij-resume-script = ''
-            zellij_auto_attach() {
-              # Exit early if already inside Zellij or Zellij is not installed
-              if [[ -n "$ZELLIJ" || -z "$(command -v zellij)" ]]; then
-                return
-              fi
-
-              # If ZELLIJ_FORCE_SESSION is set and exists (even if EXITED), attach to it
-              if [[ -n "$ZELLIJ_FORCE_SESSION" ]]; then
-                local existing_sessions
-                existing_sessions=("''${(@f)$(zellij list-sessions -n)}")
-
-                for line in $existing_sessions; do
-                  local session_name=''${line%% *}
-                  if [[ "$session_name" == "$ZELLIJ_FORCE_SESSION" ]]; then
-                    zellij attach "$ZELLIJ_FORCE_SESSION"
-                    return
-                  fi
-                done
-              fi
-
-              local sessions names=() all_zero=true
-
-              # Get list of non-exited sessions
-              sessions=("''${(@f)$(zellij list-sessions -nr | grep -Ev '\(EXITED - attach to resurrect\)$')}")
-
-              for line in $sessions; do
-                local created_part session_name
-
-                # Extract "Created ..." part
-                created_part=$(echo "$line" | grep -o 'Created [^]]*')
-
-                # If not "Created 0s ago", set flag to false
-                [[ "$created_part" != "Created 0s ago" ]] && all_zero=false
-
-                # Extract session name (before first space)
-                session_name=''${line%% *}
-                names+=("$session_name")
-              done
-
-              # If no active sessions, create a new one
-              if [[ ''${#names} -eq 0 ]]; then
-                zellij
-                return
-              fi
-
-              # Choose target session
-              local target_session
-              if $all_zero; then
-                names=("''${(@o)names}") # sort alphabetically
-                target_session="''${names[1]}"
-              else
-                target_session="''${names[1]}" # first in the list
-              fi
-
-              # Attach to the session
-              zellij attach "$target_session"
-            }
-          '';
-        in
-          lib.mkMerge [
-            (lib.mkBefore ''
-              export _ZO_EXCLUDE_DIRS=$HOME:$HOME/Nextcloud/*:/mnt/nfs
-            '')
-            (lib.mkAfter ''
-              ${zellij-resume-script}
-              if [[ -o interactive ]]; then
-                zellij_auto_attach
-              fi
-
-              hyfetch
-            '')
-          ];
+        initContent = lib.mkMerge [
+          (lib.mkOrder 200 zellij-resume-script)
+          (lib.mkBefore ''
+            export _ZO_EXCLUDE_DIRS=$HOME:$HOME/Nextcloud/*:/mnt/nfs
+            setopt INTERACTIVE_COMMENTS
+          '')
+          (lib.mkAfter ''hyfetch'')
+        ];
       };
 
       bash = {
@@ -176,7 +118,10 @@ in {
         enableCompletion = true;
         enableVteIntegration = true;
         sessionVariables."_ZO_EXCLUDE_DIRS" = "$HOME:$HOME/Nextcloud/*:/mnt/nfs";
-        initExtra = "hyfetch";
+        initExtra = lib.mkMerge [
+          (lib.mkOrder 200 zellij-resume-script)
+          (lib.mkAfter ''hyfetch'')
+        ];
       };
 
       zoxide = {
@@ -435,10 +380,11 @@ in {
 
       zellij = {
         enable = true;
-        attachExistingSession = false; # implemented manually, avoids zellij bug where you can softlock yourself by having >1 active session w/ no clients
-        exitShellOnExit = true;
-        enableBashIntegration = true;
-        enableZshIntegration = true;
+        # implemented manually, avoids zellij bug where you can softlock yourself by having >1 active session w/ no clients
+        attachExistingSession = false;
+        exitShellOnExit = false;
+        enableBashIntegration = false;
+        enableZshIntegration = false;
         settings = {
           show_startup_tips._args = [false];
           ui.pane_frames._children = [{rounded_corners._args = [true];}];
