@@ -20,6 +20,10 @@ in {
     };
   };
   config = lib.mkIf enabled {
+    network = {
+      tcp = [53 83 5000 5443];
+      udp = [53 83];
+    };
     services.blocky = {
       enable = true;
       settings = {
