@@ -86,7 +86,7 @@ in {
           [
             nextcloud.domain
             config.networking.hostName
-            "nc${localSuffix}"
+            "nc.${localSuffix}"
             "100.125.37.13"
             "192.128.1.61"
           ]
@@ -117,7 +117,7 @@ in {
     };
 
     services.nginx.virtualHosts.${nextcloud.domain} = {
-      serverAliases = ["nc${localSuffix}"];
+      serverAliases = ["nc.${localSuffix}"];
       sslCertificate = "/mnt/main/cwystaws-raspi.snake-rudd.ts.net.crt";
       sslCertificateKey = "/mnt/main/cwystaws-raspi.snake-rudd.ts.net.key";
     };

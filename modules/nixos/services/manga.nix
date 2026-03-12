@@ -20,7 +20,7 @@ in {
         ];
       };
     };
-    services.nginx.virtualHosts."manga${localSuffix}".locations."/" = {
+    services.nginx.virtualHosts."manga.${localSuffix}".locations."/" = {
       proxyPass = "http://127.0.0.1:${toString config.services.suwayomi-server.settings.server.port}";
       proxyWebsockets = true;
     };

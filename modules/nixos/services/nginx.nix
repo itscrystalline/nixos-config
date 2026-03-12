@@ -11,7 +11,7 @@ in {
     localSuffix = lib.mkOption {
       type = lib.types.str;
       description = "suffix for local domains.";
-      default = ".crys";
+      default = "crys";
     };
   };
   config = lib.mkIf enabled {

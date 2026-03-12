@@ -47,8 +47,8 @@ in {
         customDNS.mapping = let
           suffix = config.crystals-services.nginx.localSuffix;
         in {
-          "dorm${suffix}" = "100.122.114.13";
-          "${builtins.substring 1 (builtins.stringLength suffix - 1) suffix}" = "100.125.37.13";
+          "dorm.${suffix}" = "100.122.114.13";
+          "${suffix}" = "100.125.37.13";
         };
 
         blocking = rec {

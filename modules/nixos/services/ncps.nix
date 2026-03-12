@@ -46,7 +46,7 @@ in {
         ];
       };
     };
-    services.nginx.virtualHosts."cache${config.crystals-services.nginx.localSuffix}".locations."/" = {
+    services.nginx.virtualHosts."cache.${config.crystals-services.nginx.localSuffix}".locations."/" = {
       proxyPass = "http://127.0.0.1:${toString port}";
       proxyWebsockets = true;
     };

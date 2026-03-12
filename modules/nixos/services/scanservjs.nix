@@ -21,7 +21,7 @@ in {
       settings.host = "0.0.0.0";
     };
     services.nginx.virtualHosts = lib.mkIf (scanservjs.nginxVhost != null) {
-      "${scanservjs.nginxVhost}${localSuffix}".locations."/" = {
+      "${scanservjs.nginxVhost}.${localSuffix}".locations."/" = {
         proxyPass = "http://127.0.0.1:${toString config.services.scanservjs.settings.port}";
       };
     };

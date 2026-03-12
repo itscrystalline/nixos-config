@@ -24,7 +24,7 @@
         "https://nixpkgs-python.cachix.org"
         "https://cuda-maintainers.cachix.org"
         "https://attic.xuyh0120.win/lantian"
-        "http://cache${config.crystals-services.nginx.localSuffix}"
+        "http://cache.${config.crystals-services.nginx.localSuffix}"
         "https://niri.cachix.org"
       ];
 

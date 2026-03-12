@@ -18,7 +18,7 @@ in {
           http_port = 9000;
           http_addr = "0.0.0.0";
           protocol = "http";
-          domain = "grafana${localSuffix}";
+          domain = "grafana.${localSuffix}";
           enforce_domain = true;
         };
         analytics.reporting_enabled = false;
@@ -174,17 +174,17 @@ in {
     };
 
     services.nginx.virtualHosts = {
-      "grafana${localSuffix}".locations."/" = {
+      "grafana.${localSuffix}".locations."/" = {
         proxyPass = "http://127.0.0.1:${toString config.services.grafana.settings.server.http_port}";
         proxyWebsockets = true;
       };
-      "prometheus${localSuffix}".locations."/" = {
+      "prometheus.${localSuffix}".locations."/" = {
         proxyPass = "http://127.0.0.1:${toString config.services.prometheus.port}";
       };
-      "loki${localSuffix}".locations."/" = {
+      "loki.${localSuffix}".locations."/" = {
         proxyPass = "http://127.0.0.1:${toString config.services.loki.configuration.server.http_listen_port}";
       };
-      "promtail${localSuffix}".locations."/" = {
+      "promtail.${localSuffix}".locations."/" = {
         proxyPass = "http://127.0.0.1:${toString config.services.promtail.configuration.server.http_listen_port}";
       };
     };
