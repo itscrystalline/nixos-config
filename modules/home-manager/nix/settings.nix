@@ -22,7 +22,7 @@ lib.mkIf (passthrough == null) {
         "https://nixpkgs-python.cachix.org"
         "https://niri.cachix.org"
         "https://cuda-maintainers.cachix.org"
-        "http://cache.crys"
+        # "http://cache.crys"
       ];
 
       trusted-public-keys = [
@@ -33,7 +33,7 @@ lib.mkIf (passthrough == null) {
         "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
         "nixpkgs-python.cachix.org-1:hxjI7pFxTyuTHn2NkvWCrAUcNZLNS3ZAvfYNuYifcEU="
         "niri.cachix.org-1:Wv0OmO7PsuocRKzfDoJ3mulSl7Z6oezYhGhR+3W2964="
-        "raine:2xuwbE44tVXZdoV8OJYaTXJT1PoKF3nD0fc9dDix41s="
+        # "raine:2xuwbE44tVXZdoV8OJYaTXJT1PoKF3nD0fc9dDix41s="
         "cuda-maintainers.cachix.org-1:0dq3bujKpuEPMCX6U4WylrUDZ9JyUG0VpVZa7CNfq5E="
       ];
 

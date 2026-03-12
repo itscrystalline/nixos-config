@@ -48,6 +48,11 @@
       asExitNode = true;
       role = "server";
     };
+    ncps = {
+      enable = true;
+      nixCaches = "system";
+    };
+    nginx.enable = true;
   };
 
   nix = {

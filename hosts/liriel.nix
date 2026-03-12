@@ -42,6 +42,7 @@
     earlyoom.enable = true;
     avahi.enable = true;
     argonone.enable = true;
+    nginx.enable = true;
     home-assistant.enable = true;
     create-ap = {
       enable = true;

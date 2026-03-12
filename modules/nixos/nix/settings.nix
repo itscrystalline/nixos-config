@@ -24,7 +24,7 @@
         "https://nixpkgs-python.cachix.org"
         "https://cuda-maintainers.cachix.org"
         "https://attic.xuyh0120.win/lantian"
-        "http://cache.${config.crystals-services.nginx.localSuffix}"
+        # "http://cache.${config.crystals-services.nginx.localSuffix}"
         "https://niri.cachix.org"
       ];
 
@@ -37,7 +37,7 @@
         "niri.cachix.org-1:Wv0OmO7PsuocRKzfDoJ3mulSl7Z6oezYhGhR+3W2964="
         "cuda-maintainers.cachix.org-1:0dq3bujKpuEPMCX6U4WylrUDZ9JyUG0VpVZa7CNfq5E="
         "lantian:EeAUQ+W+6r7EtwnmYjeVwx5kOGEBpjlBfPlzGlTNvHc="
-        "raine:2xuwbE44tVXZdoV8OJYaTXJT1PoKF3nD0fc9dDix41s="
+        # "raine:2xuwbE44tVXZdoV8OJYaTXJT1PoKF3nD0fc9dDix41s="
       ];
 
       trusted-users = ["root" "itscrystalline" "nixremote" "@wheel"];

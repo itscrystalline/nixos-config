@@ -51,7 +51,7 @@ in {
 
   network = {
     trustedInterfaces = [];
-    ports.tcp = [80 443 2049 8080];
+    ports.tcp = [2049 8080];
     profiles = ["santhad" "santhad_5G"];
   };
 
@@ -133,7 +133,6 @@ in {
     };
     monitoring.enable = true;
     manga.enable = true;
-    ncps.enable = true;
     iw2tryhard-dev.enable = true;
   };
 

@@ -9,10 +9,34 @@
 in {
   options.crystals-services.ncps = {
     enable = lib.mkEnableOption "ncps Nix cache proxy";
+    nixCaches = lib.mkOption {
+      type = lib.types.enum [
+        "system"
+        (lib.types.submodule {
+          options.caches = lib.mkOption {
+            type = lib.types.listOf lib.types.str;
+            default = [];
+            description = "Upstream caches for ncps.";
+          };
+          options.publicKeys = lib.mkOption {
+            type = lib.types.listOf lib.types.str;
+            default = [];
+            description = "Upstream public keys for ncps.";
+          };
+        })
+      ];
+      default = {};
+      description = "Nix cache config for ncps to use. 'system' means to use the global nix caches.";
+    };
     basePath = lib.mkOption {
       type = lib.types.str;
-      default = "/mnt/main/ncps";
-      description = "Base directory for ncps data, temp, and database files";
+      default = "/var/lib/ncps";
+      description = "Base directory for ncps's data, temp, and database files";
+    };
+    broadcastAddress = lib.mkOption {
+      type = lib.types.str;
+      default = "127.0.0.1";
+      description = "The addresses ncps will be available at.";
     };
   };
   config = lib.mkIf enabled {
@@ -28,23 +52,14 @@ in {
         allowPutVerb = true;
         allowDeleteVerb = true;
       };
-      server.addr = "0.0.0.0:${toString port}";
-      upstream = {
-        caches = [
-          "https://devenv.cachix.org"
-          "https://sanzenvim.cachix.org"
-          "https://nix-community.cachix.org"
-          "https://nixpkgs-python.cachix.org"
-          "https://cuda-maintainers.cachix.org"
-        ];
-        publicKeys = [
-          "devenv.cachix.org-1:w1cLUi8dv3hnoSPGAuibQv+f9TZLr6cv/Hm9XgU50cw="
-          "sanzenvim.cachix.org-1:zNf9OhUUfJ/NM55vbjx9fSM6O/Q3L6JDoFwU1VCEohc="
-          "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
-          "nixpkgs-python.cachix.org-1:hxjI7pFxTyuTHn2NkvWCrAUcNZLNS3ZAvfYNuYifcEU="
-          "cuda-maintainers.cachix.org-1:0dq3bujKpuEPMCX6U4WylrUDZ9JyUG0VpVZa7CNfq5E="
-        ];
-      };
+      server.addr = "${ncps.broadcastAddress}:${toString port}";
+      upstream =
+        if (ncps.nixCaches == "system")
+        then {
+          caches = config.nix.settings.substituters;
+          publicKeys = config.nix.settings.trusted-public-keys;
+        }
+        else ncps.nixCaches;
     };
     services.nginx.virtualHosts."cache.${config.crystals-services.nginx.localSuffix}".locations."/" = {
       proxyPass = "http://127.0.0.1:${toString port}";

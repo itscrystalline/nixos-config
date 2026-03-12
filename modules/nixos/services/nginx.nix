@@ -15,6 +15,7 @@ in {
     };
   };
   config = lib.mkIf enabled {
+    network.ports.tcp = [80 443];
     services.nginx = {
       enable = true;
       recommendedProxySettings = true;
