@@ -22,4 +22,9 @@
     ./home-assistant.nix
     ./create-ap.nix
   ];
+
+  systemd = {
+    settings.Manager.DefaultTimeoutStopSec = "20s";
+    user.extraConfig = ''DefaultTimeoutStopSec=20s'';
+  };
 }

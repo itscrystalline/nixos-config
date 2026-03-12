@@ -16,8 +16,6 @@
       openFirewall = true;
     };
   };
-  systemd = {
-    settings.Manager.DefaultTimeoutStopSec = "20s";
-    sleep.extraConfig = ''HibernateDelaySec=1h'';
-  };
+
+  systemd.sleep.extraConfig = ''HibernateDelaySec=1h'';
 }
