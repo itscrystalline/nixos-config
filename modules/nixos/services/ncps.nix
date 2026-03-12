@@ -56,8 +56,8 @@ in {
       upstream =
         if (ncps.nixCaches == "system")
         then {
-          caches = config.nix.settings.substituters;
-          publicKeys = config.nix.settings.trusted-public-keys;
+          caches = builtins.filter (url: !(lib.strings.hasInfix config.crystals-services.nginx.localSuffix url)) config.nix.settings.substituters;
+          publicKeys = builtins.filter (key: !(lib.strings.hasInfix config.core.name key)) config.nix.settings.trusted-public-keys;
         }
         else ncps.nixCaches;
     };
