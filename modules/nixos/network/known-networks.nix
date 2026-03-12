@@ -12,6 +12,9 @@
       timestamp = "1771050100";
       type = "wifi";
       uuid = "cff8983f-7384-42fa-b6a2-bd532f8b6bf5";
+
+      autoconnect-priority = 999;
+      autoreconnect-retries = 0;
     };
     ipv4.method = "auto";
     ipv6.addr-gen-mode = "default";
@@ -45,6 +48,9 @@
       interface-name = "wlp4s0";
       type = "wifi";
       uuid = "d6c4a10a-0466-43f7-b5c9-615801f36d6f";
+
+      autoconnect-priority = 100;
+      autoreconnect-retries = 10;
     };
     ipv4 = {method = "auto";};
     ipv6 = {
