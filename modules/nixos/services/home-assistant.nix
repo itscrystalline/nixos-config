@@ -105,6 +105,7 @@ in {
 
       nginx.virtualHosts."dorm.${config.crystals-services.nginx.localSuffix}".locations."/" = {
         proxyPass = "http://127.0.0.1:${toString config.services.home-assistant.config.http.server_port}";
+        proxyWebsockets = true;
       };
     };
   };
