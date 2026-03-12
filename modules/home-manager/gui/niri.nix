@@ -36,16 +36,16 @@ in {
           };
           listener = [
             {
-              timeout = 300;
+              timeout = 600;
               on-timeout = lock;
             }
             {
-              timeout = 600;
+              timeout = 900;
               on-timeout = screen_off;
               on-resume = screen_on;
             }
             {
-              timeout = 900;
+              timeout = 1200;
               on-timeout = "systemctl suspend";
               on-resume = screen_on;
             }
