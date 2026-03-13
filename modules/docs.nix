@@ -1,6 +1,7 @@
 {
   lib,
   pkgs,
+  inputs,
   ...
 }: let
   # evaluate our options
@@ -9,7 +10,7 @@
       ./home-manager
       ./nixos
     ];
-    specialArgs = {inherit pkgs;};
+    specialArgs = {inherit pkgs inputs;};
   };
   # generate our docs
   optionsDoc = pkgs.nixosOptionsDoc {
