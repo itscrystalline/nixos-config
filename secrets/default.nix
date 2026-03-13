@@ -33,6 +33,8 @@ nixos: {
           "wifi-passwords" = {};
 
           "tailscaleAuthKey" = {};
+
+          "harmonia-secret-key" = {};
         }
         else {
           "nextcloud-rclone-password" = {};

@@ -17,7 +17,7 @@
     ./nextcloud.nix
     ./monitoring.nix
     ./manga.nix
-    ./ncps.nix
+    ./nix-binary-cache.nix
     ./iw2tryhard-dev.nix
     ./home-assistant.nix
     ./create-ap.nix
