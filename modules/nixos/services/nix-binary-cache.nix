@@ -26,7 +26,10 @@ in {
           };
         })
       ];
-      default = {};
+      default = {
+        urls = [];
+        publicKeys = [];
+      };
       description = "Nix cache config for ncps to use. 'system' means to use the global nix caches.";
     };
     basePath = lib.mkOption {

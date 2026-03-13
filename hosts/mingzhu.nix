@@ -48,7 +48,7 @@
       asExitNode = true;
       role = "server";
     };
-    ncps = {
+    nix-binary-cache = {
       enable = true;
       nixCaches = "system";
     };
