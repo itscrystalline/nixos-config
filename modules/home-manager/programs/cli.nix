@@ -77,7 +77,7 @@ in {
 
     home.shellAliases = {
       svim = "sudo nvim";
-      editnix = "cd ~/nixos-config; nvim";
+      enic = "cd ~/nixos-config; nvim"; # Edit NIx Config
       update =
         if passthrough == null # standalone home-manager
         then "nh home switch ~/nixos-config"
