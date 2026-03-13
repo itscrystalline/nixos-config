@@ -25,7 +25,7 @@
         "https://cuda-maintainers.cachix.org"
         "https://attic.xuyh0120.win/lantian"
         "https://niri.cachix.org"
-        "http://cache.${config.crystals-services.nginx.localSuffix}"
+        "http://cache.crys"
       ];
 
       trusted-public-keys = [

@@ -1,6 +1,8 @@
 {
   lib,
   config,
+  pkgs,
+  inputs,
   ...
 }: let
   nbc = config.crystals-services.nix-binary-cache;
@@ -12,15 +14,15 @@ in {
       type = lib.types.enum [
         "system"
         (lib.types.submodule {
-          options.caches = lib.mkOption {
+          options.urls = lib.mkOption {
             type = lib.types.listOf lib.types.str;
             default = [];
-            description = "Upstream caches for ncps.";
+            description = "Upstream caches for the binary cache.";
           };
           options.publicKeys = lib.mkOption {
             type = lib.types.listOf lib.types.str;
             default = [];
-            description = "Upstream public keys for ncps.";
+            description = "Upstream public keys for the binary cache.";
           };
         })
       ];
@@ -32,31 +34,32 @@ in {
       default = "/var/lib/ncps";
       description = "Base directory for ncps's data, temp, and database files";
     };
-    broadcastAddress = lib.mkOption {
-      type = lib.types.str;
-      default = "127.0.0.1";
-      description = "The addresses ncps will be available at.";
-    };
   };
+
+  disabledModules = ["services/networking/ncps.nix"];
+  imports = [(inputs.nixpkgs-unstable + "/nixos/modules/services/networking/ncps.nix")];
+
   config = lib.mkIf enabled {
     services = {
       ncps = {
         enable = true;
+        package = pkgs.unstable.ncps;
         cache = {
           inherit (config.networking) hostName;
-          dataPath = "${nbc.basePath}/data";
-          tempPath = "${nbc.basePath}/temp";
+          storage.local = nbc.basePath;
           databaseURL = "sqlite:${nbc.basePath}/db/db.sqlite";
           maxSize = "100G";
           lru.schedule = "0 2 * * *";
+          lru.scheduleTimeZone = config.core.localization.timezone;
           allowPutVerb = true;
           allowDeleteVerb = true;
+          cdc.enabled = true;
         };
-        server.addr = "${nbc.broadcastAddress}:8501";
+        server.addr = "127.0.0.1:8501";
         upstream =
           if (nbc.nixCaches == "system")
           then {
-            caches =
+            urls =
               (builtins.filter (url: !(lib.strings.hasInfix config.crystals-services.nginx.localSuffix url)) config.nix.settings.substituters)
               ++ [
                 "http://127.0.0.1:5000"
@@ -64,7 +67,7 @@ in {
             publicKeys =
               (builtins.filter (key: !(lib.strings.hasInfix config.core.name key)) config.nix.settings.trusted-public-keys)
               ++ [
-                "harmonia:z1iV14fiWCOjqPiTbVjF0dLdYQPfz0OjcKcGQ+2oejc="
+                "harmonia.cache.crys:5IjKpw7rA9DxB2BVvDY/NzD0Zakjn9t9SB40AEpY2Q8="
               ];
           }
           else nbc.nixCaches;
@@ -79,6 +82,10 @@ in {
 
       nginx.virtualHosts."cache.${config.crystals-services.nginx.localSuffix}".locations."/" = {
         proxyPass = "http://127.0.0.1:8501";
+        proxyWebsockets = true;
+      };
+      nginx.virtualHosts."harmonia.cache.${config.crystals-services.nginx.localSuffix}".locations."/" = {
+        proxyPass = "http://127.0.0.1:5000";
         proxyWebsockets = true;
       };
     };
