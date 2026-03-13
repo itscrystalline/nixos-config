@@ -42,6 +42,8 @@
 
       trusted-users = ["root" "itscrystalline" "nixremote" "@wheel"];
       auto-optimise-store = true;
+      fallback = true;
+      builders-use-substitutes = true;
     };
 
     nixPath = [

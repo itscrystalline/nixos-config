@@ -39,6 +39,8 @@ lib.mkIf (passthrough == null) {
 
       trusted-users = ["root" "itscrystalline" "nixremote" "@wheel"];
       auto-optimise-store = true;
+      builders-use-substitutes = true;
+      fallback = true;
     };
 
     nixPath = [
@@ -53,7 +55,6 @@ lib.mkIf (passthrough == null) {
     package = pkgs.lixPackageSets.stable.lix;
 
     extraOptions = ''
-      builders-use-substitutes = true
       include ${config.sops.templates."nix-extra-config".path}
     '';
   };

@@ -180,8 +180,6 @@ in {
 
         nix.extraOptions = ''
           builders = @${machinesFile}
-          builders-use-substitutes = true
-          fallback = true
         '';
 
         home.activation.nixRemoteBuilderInfo = lib.hm.dag.entryAfter ["writeBoundary"] ''
