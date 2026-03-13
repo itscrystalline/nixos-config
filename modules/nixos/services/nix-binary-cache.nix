@@ -39,8 +39,11 @@ in {
     };
   };
 
-  disabledModules = ["services/networking/ncps.nix"];
-  imports = [(inputs.nixpkgs-unstable + "/nixos/modules/services/networking/ncps.nix")];
+  disabledModules = ["services/networking/ncps.nix" "services/networking/harmonia.nix"];
+  imports = [
+    (inputs.nixpkgs-unstable + "/nixos/modules/services/networking/ncps.nix")
+    (inputs.nixpkgs-unstable + "/nixos/modules/services/networking/harmonia.nix")
+  ];
 
   config = lib.mkIf enabled {
     services = {
@@ -57,30 +60,36 @@ in {
           allowPutVerb = true;
           allowDeleteVerb = true;
           cdc.enabled = true;
+
+          upstream =
+            if (nbc.nixCaches == "system")
+            then {
+              urls =
+                (builtins.filter (url: !(lib.strings.hasInfix config.crystals-services.nginx.localSuffix url)) config.nix.settings.substituters)
+                ++ [
+                  "http://127.0.0.1:5000"
+                ];
+              publicKeys =
+                (builtins.filter (key: !(lib.strings.hasInfix config.core.name key)) config.nix.settings.trusted-public-keys)
+                ++ [
+                  "harmonia.cache.crys:5IjKpw7rA9DxB2BVvDY/NzD0Zakjn9t9SB40AEpY2Q8="
+                ];
+            }
+            else nbc.nixCaches;
         };
         server.addr = "127.0.0.1:8501";
-        upstream =
-          if (nbc.nixCaches == "system")
-          then {
-            urls =
-              (builtins.filter (url: !(lib.strings.hasInfix config.crystals-services.nginx.localSuffix url)) config.nix.settings.substituters)
-              ++ [
-                "http://127.0.0.1:5000"
-              ];
-            publicKeys =
-              (builtins.filter (key: !(lib.strings.hasInfix config.core.name key)) config.nix.settings.trusted-public-keys)
-              ++ [
-                "harmonia.cache.crys:5IjKpw7rA9DxB2BVvDY/NzD0Zakjn9t9SB40AEpY2Q8="
-              ];
-          }
-          else nbc.nixCaches;
+        prometheus.enable = true;
       };
 
       sops.secrets."harmonia-secret-key".owner = "harmonia";
       harmonia = {
-        enable = true;
-        signKeyPaths = [config.sops.secrets."harmonia-secret-key".path];
-        settings.bind = "127.0.0.1:5000";
+        package = pkgs.unstable.harmonia;
+        daemon.enable = true;
+        cache = {
+          enable = true;
+          signKeyPaths = [config.sops.secrets."harmonia-secret-key".path];
+          settings.bind = "127.0.0.1:5000";
+        };
       };
 
       nginx.virtualHosts."cache.${config.crystals-services.nginx.localSuffix}".locations."/" = {
