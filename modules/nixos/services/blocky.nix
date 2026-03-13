@@ -8,6 +8,11 @@
 in {
   options.crystals-services.blocky = {
     enable = lib.mkEnableOption "Blocky DNS server";
+    listenAddress = lib.mkOption {
+      type = lib.types.str;
+      default = "0.0.0.0";
+      description = "Blocky's listen IP address. defaults to 0.0.0.0 (all interfaces).";
+    };
     allowList = lib.mkOption {
       type = lib.types.lines;
       default = "";
@@ -28,10 +33,10 @@ in {
       enable = true;
       settings = {
         ports = {
-          dns = 53;
-          tls = 83;
-          http = 5000;
-          https = 5443;
+          dns = "${blocky.listenAddress}:53";
+          tls = "${blocky.listenAddress}:83";
+          http = "${blocky.listenAddress}:5000";
+          https = "${blocky.listenAddress}:5443";
         };
         upstreams = {
           init.strategy = "fast";
