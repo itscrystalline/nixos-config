@@ -37,7 +37,7 @@
         "niri.cachix.org-1:Wv0OmO7PsuocRKzfDoJ3mulSl7Z6oezYhGhR+3W2964="
         "cuda-maintainers.cachix.org-1:0dq3bujKpuEPMCX6U4WylrUDZ9JyUG0VpVZa7CNfq5E="
         "lantian:EeAUQ+W+6r7EtwnmYjeVwx5kOGEBpjlBfPlzGlTNvHc="
-        "mingzhu:cb5+q/qQiRYrsqCR9ry2TYaWLXPmtPIHJ7RdMSs1SLc="
+        "mingzhu:V0KsUipFnrBNsfUD8VI0rFXQpgE3KKJfRby9Jm8cLTQ="
       ];
 
       trusted-users = ["root" "itscrystalline" "nixremote" "@wheel"];
