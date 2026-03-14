@@ -17,6 +17,7 @@ in {
   };
   config = lib.mkIf enabled (lib.mkMerge [
     {
+      network.trustedInterfaces = ["tailscale0"];
       services.tailscale = {
         enable = true;
         useRoutingFeatures = tailscale.role;
