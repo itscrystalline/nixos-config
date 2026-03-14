@@ -7,6 +7,7 @@
   enabled = config.programs.enable;
 in {
   config = lib.mkIf enabled {
+    environment.variables.EDITOR = "nvim";
     programs = {
       zsh = {
         enable = true;
@@ -29,6 +30,7 @@ in {
 
     environment.systemPackages = with pkgs; [
       vim
+      neovim
       wget
       curl
       bind

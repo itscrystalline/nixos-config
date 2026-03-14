@@ -6,7 +6,7 @@
   ...
 }: let
   inherit (config.hm.programs) ides;
-  inherit (inputs) sanzenvim my-nur;
+  inherit (inputs) sanzenvim;
   enabled = ides.enable;
   sanzenvim-prefix =
     if enabled
