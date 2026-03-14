@@ -3,6 +3,9 @@ name: Build SD images
 on:
   workflow_dispatch:
 
+permissions:
+  contents: write
+
 jobs:
   pis:
     name: SD card images for pis
