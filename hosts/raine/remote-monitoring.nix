@@ -1,4 +1,11 @@
 _: {
+  crystals-services.monitoring.additionalOpenTelemeteryResourceAttributes = [
+    {
+      key = "service.name";
+      value = "ncps";
+      action = "insert";
+    }
+  ];
   services.prometheus.scrapeConfigs = [
     {
       job_name = "blocky";

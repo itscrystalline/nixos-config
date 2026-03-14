@@ -11,6 +11,11 @@ in {
   options.crystals-services.monitoring = {
     enable = lib.mkEnableOption "Grafana + Prometheus + Loki + Promtail monitoring stack";
     enableOpenTelemetryCollector = lib.mkEnableOption "OpenTelemetry Collector";
+    additionalOpenTelemeteryResourceAttributes = lib.mkOption {
+      type = lib.types.listOf lib.types.attrs;
+      description = "Additional resource attributes to add to OpenTelemetry.";
+      default = [];
+    };
   };
   config = lib.mkIf enabled {
     services = {
@@ -79,6 +84,10 @@ in {
                   targets = map (port: "127.0.0.1:${toString port}") (with config.services.prometheus.exporters; [node.port smartctl.port]);
                 }
               ];
+            }
+            {
+              job_name = "otel-collector";
+              static_configs = [{targets = ["127.0.0.1:8899"];}];
             }
           ]
           ++ lib.optional config.crystals-services.nextcloud.enable {
@@ -199,12 +208,8 @@ in {
       otel-config = lib.generators.toYAML {} {
         exporters = {
           debug.verbosity = "detailed";
-          "otlphttp/loki" = {
-            endpoint = "http://127.0.0.1:${toString config.services.loki.configuration.server.http_listen_port}/otlp";
-          };
-          prometheusremotewrite = {
-            endpoint = "http://127.0.0.1:${toString config.services.prometheus.port}/api/v1/write";
-          };
+          "otlphttp/loki".endpoint = "http://127.0.0.1:${toString config.services.loki.configuration.server.http_listen_port}/otlp";
+          prometheus.endpoint = "http://127.0.0.1:8899";
         };
 
         processors = {
@@ -213,18 +218,15 @@ in {
             timeout = "5s";
           };
           resource = {
-            attributes = [
-              {
-                key = "service.name";
-                value = "ncps";
-                action = "insert";
-              }
-              {
-                key = "host.name";
-                value = config.networking.hostName;
-                action = "insert";
-              }
-            ];
+            attributes =
+              [
+                {
+                  key = "host.name";
+                  value = config.networking.hostName;
+                  action = "insert";
+                }
+              ]
+              ++ monitoring.additionalOpenTelemeteryResourceAttributes;
           };
         };
 
@@ -240,7 +242,7 @@ in {
             receivers = ["otlp"];
           };
           metrics = {
-            exporters = ["prometheusremotewrite" "debug"];
+            exporters = ["prometheus" "debug"];
             processors = ["batch" "resource"];
             receivers = ["otlp"];
           };
