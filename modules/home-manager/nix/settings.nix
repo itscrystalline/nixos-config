@@ -22,6 +22,7 @@ lib.mkIf (passthrough == null) {
         "https://nixpkgs-python.cachix.org"
         "https://niri.cachix.org"
         "https://cuda-maintainers.cachix.org"
+        "https://itscrystalline.cachix.org"
         "http://cache.crys"
       ];
 
@@ -34,6 +35,7 @@ lib.mkIf (passthrough == null) {
         "nixpkgs-python.cachix.org-1:hxjI7pFxTyuTHn2NkvWCrAUcNZLNS3ZAvfYNuYifcEU="
         "niri.cachix.org-1:Wv0OmO7PsuocRKzfDoJ3mulSl7Z6oezYhGhR+3W2964="
         "cuda-maintainers.cachix.org-1:0dq3bujKpuEPMCX6U4WylrUDZ9JyUG0VpVZa7CNfq5E="
+        "itscrystalline.cachix.org-1:w+aEu6k5Rx3xgUSJPCUhdZSxS919ZJvv9wThPKGVMv4="
         "mingzhu:V0KsUipFnrBNsfUD8VI0rFXQpgE3KKJfRby9Jm8cLTQ="
       ];
 
