@@ -51,6 +51,7 @@ in {
       prometheus = {
         enable = true;
         port = 9010;
+        extraFlags = ["--web.enable-otlp-receiver"];
         exporters = {
           node = {
             enable = true;
@@ -196,11 +197,35 @@ in {
 
     systemd.services.otel-collector = let
       otel-config = lib.generators.toYAML {} {
-        exporters.debug.verbosity = "detailed";
+        exporters = {
+          debug.verbosity = "detailed";
+          "otlphttp/loki" = {
+            endpoint = "http://127.0.0.1:${toString config.services.loki.configuration.server.http_listen_port}/otlp";
+          };
+          prometheusremotewrite = {
+            endpoint = "http://127.0.0.1:${toString config.services.prometheus.port}/api/v1/write";
+          };
+        };
 
-        processors.batch = {
-          send_batch_size = 512;
-          timeout = "5s";
+        processors = {
+          batch = {
+            send_batch_size = 512;
+            timeout = "5s";
+          };
+          resource = {
+            attributes = [
+              {
+                key = "service.name";
+                value = "ncps";
+                action = "insert";
+              }
+              {
+                key = "host.name";
+                value = config.networking.hostName;
+                action = "insert";
+              }
+            ];
+          };
         };
 
         receivers.otlp.protocols = {
@@ -210,18 +235,18 @@ in {
 
         service.pipelines = {
           logs = {
-            exporters = ["debug"];
-            processors = ["batch"];
+            exporters = ["otlphttp/loki" "debug"];
+            processors = ["batch" "resource"];
             receivers = ["otlp"];
           };
           metrics = {
-            exporters = ["debug"];
-            processors = ["batch"];
+            exporters = ["prometheusremotewrite" "debug"];
+            processors = ["batch" "resource"];
             receivers = ["otlp"];
           };
           traces = {
             exporters = ["debug"];
-            processors = ["batch"];
+            processors = ["batch" "resource"];
             receivers = ["otlp"];
           };
         };
