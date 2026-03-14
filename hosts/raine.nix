@@ -131,7 +131,10 @@ in {
       adminpassFile = sopsPath "nextcloud-admin-password";
       statsTokenFile = sopsPath "nextcloud-admin-stats-token";
     };
-    monitoring.enable = true;
+    monitoring = {
+      enable = true;
+      enableOpenTelemetryCollector = true;
+    };
     manga.enable = true;
     iw2tryhard-dev.enable = true;
   };

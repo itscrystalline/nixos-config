@@ -37,6 +37,11 @@ in {
       default = "/var/lib/ncps";
       description = "Base directory for ncps's data, temp, and database files";
     };
+    openTelemetryGrpcUrl = lib.mkOption {
+      type = lib.types.nullOr lib.types.str;
+      default = null;
+      description = "OpenTelemetry gRPC URL for sending logs and traces. If null, telemetry is emitted to stdout.";
+    };
   };
 
   disabledModules = ["services/networking/ncps.nix" "services/networking/harmonia.nix"];
@@ -79,7 +84,10 @@ in {
         };
         server.addr = ":8501";
         prometheus.enable = true;
-        openTelemetry.enable = true;
+        openTelemetry = {
+          enable = true;
+          grpcURL = nbc.openTelemetryGrpcUrl;
+        };
       };
 
       sops.secrets."harmonia-secret-key".owner = "harmonia";

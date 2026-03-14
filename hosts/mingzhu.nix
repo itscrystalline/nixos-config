@@ -51,6 +51,7 @@
     nix-binary-cache = {
       enable = true;
       nixCaches = "system";
+      openTelemetryGrpcUrl = "http://100.125.37.13:4317";
     };
     nginx.enable = true;
     blocky = {
