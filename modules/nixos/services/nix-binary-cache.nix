@@ -67,7 +67,7 @@ in {
               urls =
                 (builtins.filter (url: !(lib.strings.hasInfix config.crystals-services.nginx.localSuffix url)) config.nix.settings.substituters)
                 ++ [
-                  "http://127.0.0.1:5000"
+                  "http://127.0.0.1:8502"
                 ];
               publicKeys =
                 (builtins.filter (key: !(lib.strings.hasInfix config.core.name key)) config.nix.settings.trusted-public-keys)
@@ -77,7 +77,7 @@ in {
             }
             else nbc.nixCaches;
         };
-        server.addr = "127.0.0.1:8501";
+        server.addr = ":8501";
         prometheus.enable = true;
       };
 
@@ -88,7 +88,7 @@ in {
         cache = {
           enable = true;
           signKeyPaths = [config.sops.secrets."harmonia-secret-key".path];
-          settings.bind = "127.0.0.1:5000";
+          settings.bind = "[::]:8502";
         };
       };
 
@@ -97,7 +97,7 @@ in {
         proxyWebsockets = true;
       };
       nginx.virtualHosts."harmonia.cache.${config.crystals-services.nginx.localSuffix}".locations."/" = {
-        proxyPass = "http://127.0.0.1:5000";
+        proxyPass = "http://127.0.0.1:8502";
         proxyWebsockets = true;
       };
     };

@@ -6,14 +6,12 @@ _: {
     }
     {
       job_name = "ncps";
-      scheme = "http";
-      static_configs = [{targets = ["cache.crys"];}];
+      static_configs = [{targets = ["100.95.62.30:8501"];}];
       scrape_interval = "30s";
     }
     {
       job_name = "harmonia";
-      scheme = "http";
-      static_configs = [{targets = ["harmonia.cache.crys"];}];
+      static_configs = [{targets = ["100.95.62.30:8502"];}];
     }
   ];
 }
