@@ -196,8 +196,6 @@ in {
 
     systemd.services.otel-collector = let
       otel-config = lib.generators.toYAML {} {
-        exporters.logging.loglevel = "debug";
-
         processors.batch = {
           send_batch_size = 512;
           timeout = "5s";
