@@ -79,6 +79,7 @@ in {
         };
         server.addr = ":8501";
         prometheus.enable = true;
+        openTelemetry.enable = true;
       };
 
       sops.secrets."harmonia-secret-key".owner = "harmonia";
