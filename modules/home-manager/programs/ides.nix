@@ -55,9 +55,7 @@ in {
           verible
           arduino-cli
           delta
-        ]
-        ++ lib.optionals (inputs ? my-nur) [
-          my-nur.packages.${pkgs.hostsys}.veridian
+          unstable.veridian
         ];
 
       home.sessionVariables.EDITOR = "${sanzenvim-pkg}/bin/nvim";

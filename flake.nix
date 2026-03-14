@@ -168,8 +168,9 @@
       arch = "aarch64-linux";
       configModule = ./hosts/mingzhu.nix;
       otherModules = [
-        inputs.my-nur.nixosModules.ocid
-        inputs.my-nur.nixosModules.oracle-cloud-agent
+        # TODO: update to pull from actual nur when https://github.com/nix-community/NUR/pull/1093 is merged
+        (inputs.my-nur + "/modules/ocid.nix")
+        (inputs.my-nur + "/modules/oracle-cloud-agent.nix")
       ];
       userHomeModules = [
         (import ./homes/itscrystalline.nix {
