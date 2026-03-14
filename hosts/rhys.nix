@@ -96,6 +96,7 @@ in {
   nix = {
     nh.enable = true;
     keepGenerations = 5;
+    autoUpdate.enable = true;
   };
 
   boot = {
