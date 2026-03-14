@@ -210,17 +210,17 @@ in {
 
         service.pipelines = {
           logs = {
-            exporters = ["logging"];
+            exporters = ["debug"];
             processors = ["batch"];
             receivers = ["otlp"];
           };
           metrics = {
-            exporters = ["logging"];
+            exporters = ["debug"];
             processors = ["batch"];
             receivers = ["otlp"];
           };
           traces = {
-            exporters = ["logging"];
+            exporters = ["debug"];
             processors = ["batch"];
             receivers = ["otlp"];
           };
