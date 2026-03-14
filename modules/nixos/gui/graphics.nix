@@ -44,13 +44,15 @@ in {
         powerManagement.finegrained = true;
 
         prime = lib.mkIf graphics.prime.enable ({
-          offload.enable = true;
-          offload.enableOffloadCmd = true;
-        } // lib.optionalAttrs (graphics.prime.intelBusID != "") {
-          intelBusId = graphics.prime.intelBusID;
-        } // lib.optionalAttrs (graphics.prime.nvidiaBusID != "") {
-          nvidiaBusId = graphics.prime.nvidiaBusID;
-        });
+            offload.enable = true;
+            offload.enableOffloadCmd = true;
+          }
+          // lib.optionalAttrs (graphics.prime.intelBusID != "") {
+            intelBusId = graphics.prime.intelBusID;
+          }
+          // lib.optionalAttrs (graphics.prime.nvidiaBusID != "") {
+            nvidiaBusId = graphics.prime.nvidiaBusID;
+          });
       };
     };
     environment.sessionVariables.LIBVA_DRIVER_NAME = "iHD";
