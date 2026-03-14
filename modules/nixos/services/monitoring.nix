@@ -197,7 +197,7 @@ in {
     };
 
     systemd.services.otel-collector = let
-      otel-config = lib.generators.toYAML {
+      otel-config = lib.generators.toYAML {} {
         exporters.logging.loglevel = "debug";
 
         processors.batch = {
@@ -227,7 +227,7 @@ in {
             receivers = ["otlp"];
           };
         };
-      } {};
+      };
       config-file = pkgs.writeText "otel-collector-config.yaml" otel-config;
     in
       lib.mkIf monitoring.enableOpenTelemetryCollector {
