@@ -13,8 +13,6 @@ in {
     enableOpenTelemetryCollector = lib.mkEnableOption "OpenTelemetry Collector";
   };
   config = lib.mkIf enabled {
-    environment.systemPackages = lib.optional monitoring.enableOpenTelemetryCollector pkgs.otelcol-contrib;
-
     services = {
       grafana = {
         enable = true;
