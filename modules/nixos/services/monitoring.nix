@@ -238,7 +238,7 @@ in {
 
         serviceConfig = {
           Type = "simple";
-          ExecStart = "${pkgs.otelcol-contrib}/bin/otelcol-contrib --config=${config-file}";
+          ExecStart = "${lib.getExe pkgs.opentelemetry-collector-contrib} --config=${config-file}";
           Restart = "always";
           RestartSec = "5s";
 
