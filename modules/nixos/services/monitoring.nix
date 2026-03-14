@@ -209,7 +209,7 @@ in {
         exporters = {
           debug.verbosity = "detailed";
           "otlphttp/loki".endpoint = "http://127.0.0.1:${toString config.services.loki.configuration.server.http_listen_port}/otlp";
-          prometheus.endpoint = "http://127.0.0.1:8899";
+          prometheus.endpoint = "127.0.0.1:8899";
         };
 
         processors = {
