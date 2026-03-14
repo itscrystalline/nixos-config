@@ -17,6 +17,13 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v4
 
+    - name: Set up Tailscale
+      uses: tailscale/github-action@v4
+      with:
+        oauth-client-id: ${{ secrets.TS_OAUTH_CLIENT_ID }}
+        oauth-secret: ${{ secrets.TS_OAUTH_SECRET }}
+        tags: tag:ci
+
     - name: Install Nix
       uses: cachix/install-nix-action@v30
       with:
@@ -24,8 +31,6 @@ jobs:
         extra_nix_config: |
           extra-substituters = http://cache.crys
           extra-trusted-public-keys = mingzhu:V0KsUipFnrBNsfUD8VI0rFXQpgE3KKJfRby9Jm8cLTQ=
-          connect-timeout = 30
-          stall-timeout = 600
           fallback = true
 
     - name: Update
