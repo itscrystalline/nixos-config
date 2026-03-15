@@ -7,9 +7,16 @@
 }: let
   nbc = config.crystals-services.nix-binary-cache;
   enabled = nbc.enable;
+
+  inherit (config.crystals-services.nginx) localSuffix;
 in {
   options.crystals-services.nix-binary-cache = {
     enable = lib.mkEnableOption "Local nix binary cache";
+    domain = lib.mkOption {
+      type = lib.types.str;
+      description = "local domain for all cache-related things. this is affixed by `config.crystals-services.nginx.localSuffix`.";
+      default = "cache";
+    };
     nixCaches = lib.mkOption {
       type = lib.types.enum [
         "system"
@@ -70,14 +77,14 @@ in {
             if (nbc.nixCaches == "system")
             then {
               urls =
-                (builtins.filter (url: !(lib.strings.hasInfix config.crystals-services.nginx.localSuffix url)) config.nix.settings.substituters)
+                (builtins.filter (url: !(lib.strings.hasInfix localSuffix url)) config.nix.settings.substituters)
                 ++ [
                   "http://127.0.0.1:8502"
                 ];
               publicKeys =
                 (builtins.filter (key: !(lib.strings.hasInfix config.core.name key)) config.nix.settings.trusted-public-keys)
                 ++ [
-                  "harmonia.cache.crys:5IjKpw7rA9DxB2BVvDY/NzD0Zakjn9t9SB40AEpY2Q8="
+                  "harmonia.${nbc.domain}.crys:5IjKpw7rA9DxB2BVvDY/NzD0Zakjn9t9SB40AEpY2Q8="
                 ];
             }
             else nbc.nixCaches;
@@ -101,14 +108,17 @@ in {
         };
       };
 
-      nginx.virtualHosts."cache.${config.crystals-services.nginx.localSuffix}".locations."/" = {
+      nginx.virtualHosts."${nbc.domain}.${localSuffix}".locations."/" = {
         proxyPass = "http://127.0.0.1:8501";
         proxyWebsockets = true;
       };
-      nginx.virtualHosts."harmonia.cache.${config.crystals-services.nginx.localSuffix}".locations."/" = {
+      nginx.virtualHosts."harmonia.${nbc.domain}.${localSuffix}".locations."/" = {
         proxyPass = "http://127.0.0.1:8502";
         proxyWebsockets = true;
       };
+    };
+    networking.hosts = {
+      "127.0.0.1" = ["${nbc.domain}.${localSuffix}" "harmonia.${nbc.domain}.${localSuffix}"];
     };
   };
 }
