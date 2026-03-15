@@ -23,6 +23,17 @@ in {
       default = "";
       description = "Custom denylist entries (one domain per line)";
     };
+    customDNS = lib.mkOption {
+      type = lib.types.attrsOf lib.types.str;
+      default = {};
+      example = lib.literalExpression ''
+        {
+          "" = "1.2.3.4";
+          "test" = "5.6.7.8";
+        }
+      '';
+      description = "Custom DNS mappings of <domain> to <ip address>. <domain> is affixed with `config.crystals-services.nginx.localSuffix`.";
+    };
   };
   config = lib.mkIf enabled {
     network = {
@@ -55,11 +66,17 @@ in {
 
         customDNS.mapping = let
           suffix = config.crystals-services.nginx.localSuffix;
-        in {
-          "dorm.${suffix}" = "100.122.114.13"; # liriel
-          "cache.${suffix}" = "100.95.62.30"; # mingzhu
-          "${suffix}" = "100.125.37.13"; # raine
-        };
+          dns =
+            lib.attrsets.mapAttrs' (n: value: {
+              inherit value;
+              name =
+                if (n == "")
+                then suffix
+                else "${n}.${suffix}";
+            })
+            blocky.customDNS;
+        in
+          dns;
 
         blocking = rec {
           denylists = {
