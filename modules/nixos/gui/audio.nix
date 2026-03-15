@@ -3,10 +3,10 @@
   config,
   ...
 }: let
-  inherit (config.crystals-services) pipewire;
-  enabled = pipewire.enable;
+  inherit (config.gui) audio;
+  enabled = audio.enable && config.gui.enable;
 in {
-  options.crystals-services.pipewire.enable = lib.mkEnableOption "PipeWire audio";
+  options.gui.audio.enable = lib.mkEnableOption "PipeWire audio" // {default = config.gui.enable;};
   config = lib.mkIf enabled {
     security.rtkit.enable = true;
 
@@ -15,6 +15,15 @@ in {
       alsa.enable = true;
       alsa.support32Bit = true;
       pulse.enable = true;
+      extraConfig.pipewire = {
+        "98-crackling-fix" = {
+          "context.properties" = {
+            "default.clock.quantum" = 1024;
+            "default.clock.min-quantum" = 1024;
+            "default.clock.max-quantum" = 8192;
+          };
+        };
+      };
 
       wireplumber.extraConfig = lib.mkIf config.bluetooth.enable {
         bluetoothEnhancements = {

@@ -9,6 +9,7 @@ in {
     ./flatpak.nix
     ./steam.nix
     ./graphics.nix
+    ./audio.nix
     ./niri.nix
     ./obs.nix
   ];

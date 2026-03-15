@@ -6,7 +6,6 @@
     ./avahi.nix
     ./docker.nix
     ./power-management.nix
-    ./pipewire.nix
     ./printing.nix
     ./argonone.nix
     ./nfs.nix
