@@ -62,10 +62,22 @@
   blender_addons_script = ''
     for file in ${blender_addons_zip_path}/*.zip; do
         if [ -f "$file" ]; then
-            ${pkgs.unzip}/bin/unzip -u "$file" -d ${blender_addons_path}
+            zip_name=$(basename "$file" .zip)
+
+            top_level_count=$(${pkgs.unzip}/bin/unzip -Z1 "$file" \
+                | cut -d'/' -f1 \
+                | sort -u \
+                | wc -l)
+
+            if [ "$top_level_count" -gt 1 ]; then
+                ${pkgs.unzip}/bin/unzip -u "$file" -d ${blender_addons_path}/"$zip_name"
+            else
+                ${pkgs.unzip}/bin/unzip -u "$file" -d ${blender_addons_path}
+            fi
         fi
     done
   '';
+
   blenderkit_version = "3.18.1.251219";
   blenderkit_sha256 = "sha256-mfzLE1HrvBIcujxehCTlLwet0Bf5vSQPde6jZ166+mg=";
 in {
