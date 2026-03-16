@@ -31,6 +31,12 @@ in {
       description = "Trusted Network Interfaces.";
       default = [];
     };
+    unmanagedInterfaces = mkOption {
+      type = types.listOf types.str;
+      description = "Network interfaces that NetworkManager will not manage.";
+      example = ["end0"];
+      default = [];
+    };
     ports = {
       tcp = mkOption {
         type = types.listOf types.port;
@@ -65,6 +71,7 @@ in {
     networking = {
       networkmanager = {
         enable = true;
+        unmanaged = config.network.unmanagedInterfaces;
         connectionConfig."connection.auth-retries" = 0;
         ensureProfiles = {
           profiles = mkProfiles config.network.profiles;

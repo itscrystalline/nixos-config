@@ -30,6 +30,7 @@
 
   network = {
     dhcp = true;
+    unmanagedInterfaces = ["end0" "wlan0"];
     profiles = ["KMITL-HiSpeed"];
   };
 
