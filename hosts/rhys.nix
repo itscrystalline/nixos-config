@@ -98,7 +98,7 @@ in {
     keepGenerations = 5;
     autoUpdate = {
       enable = true;
-      date = "Sun *-*-* 18:00:00";
+      dates = "Sun *-*-* 18:00:00";
     };
   };
 
