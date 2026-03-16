@@ -6,7 +6,7 @@
 }: let
   enabled = config.gui.niri.enable && config.gui.enable;
 in {
-  options.gui.niri.enable = lib.mkEnableOption "niri & friends";
+  options.gui.niri.enable = lib.mkEnableOption "niri & friends (nixos)";
   config = lib.mkIf enabled {
     users.users.${config.core.primaryUser}.extraGroups = ["ydotool"];
     programs = {

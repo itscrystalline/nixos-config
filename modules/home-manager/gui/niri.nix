@@ -12,12 +12,13 @@
   cliProgramsEnabled = config.hm.programs.cli.enable;
   shellEnabled = config.hm.gui.shell.enable;
 in {
-  options.hm.gui.niri.enable = lib.mkEnableOption "Niri window manager";
+  options.hm.gui.niri.enable = lib.mkEnableOption "niri & friends (home-manager)";
 
   config = lib.mkIf (enabled && pkgs.stdenv.isLinux) {
     home.packages = [
       pkgs.xwayland-satellite
       pkgs.wl-mirror
+      pkgs.wl-kbptr
     ];
 
     services = {
@@ -151,6 +152,8 @@ in {
               "Print".action.screenshot-screen.write-to-disk = true;
 
               "Mod+F1".action = switch-layout "next";
+
+              "Mod+P".action = spawn "wl-kbptr" "-o" "modes=floating,click" "-o" "mode_floating.source=detect";
             };
 
           overview.backdrop-color = config.lib.stylix.colors.withHashtag.base00;
