@@ -33,7 +33,7 @@ in {
 
     dates = lib.mkOption {
       type = lib.types.str;
-      default = "Mon *-*-* 12:00:00";
+      default = "Mon *-*-* 00:00:00";
       description = "When automatic updates happen.";
     };
 
@@ -50,6 +50,7 @@ in {
       flake = "github:itscrystalline/nixos-config";
       upgrade = false;
       runGarbageCollection = true;
+      inherit (autoUpdate) dates;
     };
 
     systemd.timers.nixos-remote-upgrade = lib.mkIf isRemote {

@@ -110,6 +110,47 @@ in {
           font-size = 12;
           clipboard-paste-protection = false;
           clipboard-trim-trailing-spaces = true;
+          keybind = [
+            # keybinds
+            "ctrl+shift+o=unbind"
+            "ctrl+alt+arrow_left=unbind"
+            "ctrl+shift+e=unbind"
+            "super+ctrl+bracket_right=unbind"
+            "ctrl+alt+arrow_down=unbind"
+            "super+ctrl+shift+arrow_up=unbind"
+            "ctrl+alt+arrow_right=unbind"
+            "super+ctrl+shift+arrow_left=unbind"
+            "ctrl+alt+arrow_up=unbind"
+            "super+ctrl+shift+arrow_down=unbind"
+            "super+ctrl+bracket_left=unbind"
+            "super+ctrl+shift+arrow_right=unbind"
+            "ctrl+shift+enter=unbind"
+            # tabs
+            "ctrl+shift+arrow_left=unbind"
+            "alt+digit_3=unbind"
+            "alt+digit_7=unbind"
+            "alt+7=unbind"
+            "ctrl+tab=unbind"
+            "alt+digit_8=unbind"
+            "alt+digit_2=unbind"
+            "alt+5=unbind"
+            "ctrl+page_up=unbind"
+            "alt+digit_6=unbind"
+            "alt+digit_4=unbind"
+            "alt+2=unbind"
+            "alt+9=unbind"
+            "ctrl+shift+arrow_right=unbind"
+            "ctrl+page_down=unbind"
+            "alt+1=unbind"
+            "alt+digit_1=unbind"
+            "alt+6=unbind"
+            "alt+digit_5=unbind"
+            "ctrl+shift+tab=unbind"
+            "alt+3=unbind"
+            "ctrl+shift+t=unbind"
+            "alt+4=unbind"
+            "alt+8=unbind"
+          ];
         };
         systemd.enable = pkgs.stdenv.isLinux;
       };

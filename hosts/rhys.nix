@@ -43,6 +43,7 @@ in {
   programs.enable = true;
   gui = {
     enable = true;
+    audio.enable = true;
     steam.enable = true;
     flatpak.enable = true;
     obs.enable = true;
@@ -88,7 +89,6 @@ in {
     avahi.enable = true;
     localsend.enable = true;
     docker.enable = true;
-    pipewire.enable = true;
     printing.enable = true;
     pm.enable = true;
   };
@@ -96,7 +96,10 @@ in {
   nix = {
     nh.enable = true;
     keepGenerations = 5;
-    autoUpdate.enable = true;
+    autoUpdate = {
+      enable = true;
+      date = "Sun *-*-* 18:00:00";
+    };
   };
 
   boot = {

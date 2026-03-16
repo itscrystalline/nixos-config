@@ -84,6 +84,11 @@
         www.ai.google
         www.deepseek.com
       '';
+      customDNS = {
+        "dorm" = "100.122.114.13"; # liriel
+        "cache" = "100.95.62.30"; # mingzhu
+        "" = "100.125.37.13"; # raine
+      };
     };
   };
 
