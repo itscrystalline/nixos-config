@@ -35,9 +35,9 @@ in {
         package = pkgs.unstable.home-assistant.overrideAttrs (_: {doInstallCheck = false;});
         openFirewall = true;
         extraComponents = ["wiz" "matter" "mobile_app" "bluetooth" "tplink" "tplink_tapo" "accuweather"];
-        customComponents = [
-          inputs.my-nur.packages.${pkgs.stdenv.hostPlatform.system}.ha_tuya_ble
-          inputs.my-nur.packages.${pkgs.stdenv.hostPlatform.system}.hass-localtuya
+        customComponents = with pkgs.nur.repos.itscrystalline; [
+          ha_tuya_ble
+          hass-localtuya
         ];
         extraPackages = python3Packages:
           (with python3Packages; [

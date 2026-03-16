@@ -12,8 +12,8 @@ in {
   options.hm.programs.games.enable = lib.mkEnableOption "games";
 
   config = lib.mkIf enabled (lib.mkIf guiEnabled {
-    home.packages =
-      (with pkgs; [
+    home.packages = with pkgs;
+      [
         (prismlauncher.override {
           additionalPrograms = [ffmpeg];
           gamemodeSupport = true;
@@ -24,13 +24,11 @@ in {
           ];
         })
         itch
-        mcpelauncher-ui-qt
-      ])
-      ++ lib.optionals (inputs ? my-nur) [
-        inputs.my-nur.packages.${pkgs.hostsys}.irony-mod-manager
       ]
       ++ lib.optionals pkgs.stdenv.isLinux [
-        pkgs.bottles
+        mcpelauncher-ui-qt
+        nur.repos.itscrystalline.irony-mod-manager
+        bottles
       ];
 
     services.flatpak.packages = lib.optionals (pkgs.stdenv.isLinux && config.hm.flatpak.enable) [

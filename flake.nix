@@ -40,7 +40,6 @@
       url = "github:noctalia-dev/noctalia-shell";
       inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
-    my-nur.url = "github:itscrystalline/nur-packages";
     blender-flake.url = "github:edolstra/nix-warez?dir=blender";
     nix-flatpak.url = "github:gmodena/nix-flatpak";
     sanzenvim.url = "github:itscrystalline/sanzenvim";
@@ -164,13 +163,12 @@
       ];
       userHomeModules = [];
     };
-    mingzhu = mkHost {
+    mingzhu = mkHost rec {
       arch = "aarch64-linux";
       configModule = ./hosts/mingzhu.nix;
-      otherModules = [
-        # TODO: update to pull from actual nur when https://github.com/nix-community/NUR/pull/1093 is merged
-        (inputs.my-nur + "/modules/ocid.nix")
-        (inputs.my-nur + "/modules/oracle-cloud-agent.nix")
+      otherModules = with inputs.nur.legacyPackages.${arch}.repos.itscrystalline.modules; [
+        ocid
+        oracle-cloud-agent
       ];
       userHomeModules = [
         (import ./homes/itscrystalline.nix {

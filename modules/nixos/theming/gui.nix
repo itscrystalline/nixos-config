@@ -26,7 +26,7 @@ in {
         nerd-fonts.jetbrains-mono
         unstable.material-symbols
         sarabun-font
-        inputs.my-nur.packages.${pkgs.hostsys}.sipa-th-fonts
+        nur.repos.itscrystalline.sipa-th-fonts
       ];
 
       fontconfig = {
