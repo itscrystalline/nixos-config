@@ -131,6 +131,7 @@ in {
     autoUpdate = {
       enable = true;
       type = "remote";
+      dates = "*-*-1..31/3 18:00:00"; # every 3rd day instead
       remoteUpdaterHost = "mingzhu";
     };
   };

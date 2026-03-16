@@ -33,8 +33,9 @@ in {
 
     dates = lib.mkOption {
       type = lib.types.str;
-      default = "Mon *-*-* 00:00:00";
-      description = "When automatic updates happen.";
+      default = "*-*-* 18:00:00";
+      example = lib.literalMD "`*-1..12/3-1..31/2 00:30:00` => half past midnight on every other day on every 3rd month.";
+      description = "When automatic updates happen. The default is at 6PM local time.";
     };
 
     remoteUpdaterHost = lib.mkOption {

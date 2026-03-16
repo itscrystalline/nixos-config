@@ -95,11 +95,7 @@
   nix = {
     nh.enable = true;
     keepGenerations = 2;
-
-    autoUpdate = {
-      enable = true;
-      type = "self";
-    };
+    autoUpdate.enable = true;
 
     asBuilderConfig = {
       user = "nixremote";

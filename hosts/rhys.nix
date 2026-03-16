@@ -96,10 +96,7 @@ in {
   nix = {
     nh.enable = true;
     keepGenerations = 5;
-    autoUpdate = {
-      enable = true;
-      dates = "Sun *-*-* 18:00:00";
-    };
+    autoUpdate.enable = true;
   };
 
   boot = {
