@@ -153,7 +153,7 @@ in {
 
               "Mod+F1".action = switch-layout "next";
 
-              "Mod+P".action = spawn "wl-kbptr" "-o" "modes=floating,click" "-o" "mode_floating.source=detect";
+              "Mod+A".action = spawn "wl-kbptr" "-o" "modes=floating,click" "-o" "mode_floating.source=detect";
             };
 
           overview.backdrop-color = config.lib.stylix.colors.withHashtag.base00;
