@@ -217,7 +217,7 @@ in {
           text_editor = desktopFile pkgs.gnome-text-editor;
           video_player = desktopFile pkgs.totem;
           archiver = desktopFile pkgs.file-roller;
-          file_manager = desktopFile pkgs.nautilus;
+          file_manager = "org.gnome.Nautilus.desktop";
         in {
           "inode/directory" = file_manager;
           "image/jpeg" = image_viewer;
