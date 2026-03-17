@@ -27,6 +27,7 @@
 
   programs.enable = true;
   hardware.raspberrypi.enable = true;
+  bluetooth.enable = true;
 
   network = {
     dhcp = true;
