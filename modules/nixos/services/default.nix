@@ -20,6 +20,7 @@
     ./iw2tryhard-dev.nix
     ./home-assistant.nix
     ./create-ap.nix
+    ./localsend.nix
   ];
 
   systemd = {
