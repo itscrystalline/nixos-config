@@ -45,6 +45,7 @@ jobs:
 
       - name: Check
         run: |
+          rm update-output.txt
           nix flake check --all-systems 2>&1
 
       - name: Commit
