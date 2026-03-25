@@ -64,15 +64,15 @@
         if [ -f "$file" ]; then
             zip_name=$(basename "$file" .zip)
 
-            top_level_count=$(${pkgs.unzip}/bin/unzip -Z1 "$file" \
+            top_level_count=$(${lib.getExe pkgs.unzip} -o -Z1 "$file" \
                 | cut -d'/' -f1 \
                 | sort -u \
                 | wc -l)
 
             if [ "$top_level_count" -gt 1 ]; then
-                ${pkgs.unzip}/bin/unzip -u "$file" -d ${blender_addons_path}/"$zip_name"
+                ${lib.getExe pkgs.unzip} -u "$file" -d ${blender_addons_path}/"$zip_name"
             else
-                ${pkgs.unzip}/bin/unzip -u "$file" -d ${blender_addons_path}
+                ${lib.getExe pkgs.unzip} -u "$file" -d ${blender_addons_path}
             fi
         fi
     done
@@ -84,7 +84,7 @@ in {
   config = lib.mkIf (enabled && pkgs.stdenv.isLinux && pkgs.stdenv.isx86_64) {
     home = {
       packages = lib.optionals (inputs ? blender-flake) [blender];
-      activation.blender-addons = lib.hm.dag.entryAfter ["writeBoundary"] blender_addons_script;
+      # activation.blender-addons = lib.hm.dag.entryAfter ["writeBoundary"] blender_addons_script;
     };
 
     xdg.configFile = {
