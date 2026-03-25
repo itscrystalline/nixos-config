@@ -36,10 +36,10 @@ jobs:
       - name: Update
         id: update
         run: |
-          nix flake update 2>&1 | tee update-output.txt
+          nix flake update 2>&1 | tee /tmp/update-output.txt
           {
             echo "output<<FLAKE_UPDATE_END"
-            cat update-output.txt
+            cat /tmp/update-output.txt
             echo "FLAKE_UPDATE_END"
           } >> $GITHUB_OUTPUT
 
