@@ -205,7 +205,6 @@ in {
         };
         location = {
           monthBeforeDay = false;
-          name = "Bangkok, Thailand";
         };
         wallpaper.enabled = false;
         dock.enabled = false;
