@@ -44,9 +44,7 @@ jobs:
           } >> $GITHUB_OUTPUT
 
       - name: Check
-        run: |
-          rm update-output.txt
-          nix flake check --all-systems 2>&1
+        run: nix flake check --all-systems 2>&1
 
       - name: Commit
         uses: EndBug/add-and-commit@v9
