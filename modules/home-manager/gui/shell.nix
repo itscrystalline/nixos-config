@@ -37,8 +37,7 @@ in {
               })
               plugins);
         in
-          mkEnable "noctalia-dev" ["privacy-indicator" "tailscale" "keybind-cheatsheet" "battery-threshold" "battery-actions"];
-        # // (mkEnable "itscrystalline" []);
+          mkEnable "noctalia-dev" ["privacy-indicator" "tailscale" "keybind-cheatsheet" "battery-threshold" "battery-actions" "polkit-agent"];
         version = 1;
       };
       pluginSettings = {

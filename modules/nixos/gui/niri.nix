@@ -52,5 +52,12 @@ in {
       layout = "us";
       variant = "";
     };
+
+    systemd.user.services = {
+      xdg-desktop-portal.after = ["xdg-desktop-autostart.target"];
+      xdg-desktop-portal-gtk.after = ["xdg-desktop-autostart.target"];
+      xdg-desktop-portal-gnome.after = ["xdg-desktop-autostart.target"];
+      niri-flake-polkit = lib.mkForce {};
+    };
   };
 }
