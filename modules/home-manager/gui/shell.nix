@@ -203,6 +203,7 @@ in {
           forceBlackScreenCorners = true;
         };
         location = {
+          name = "Helsinki";
           monthBeforeDay = false;
         };
         wallpaper.enabled = false;
