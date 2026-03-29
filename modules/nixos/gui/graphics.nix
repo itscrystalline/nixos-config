@@ -42,6 +42,7 @@ in {
         modesetting.enable = true;
         powerManagement.enable = true;
         powerManagement.finegrained = true;
+        dynamicBoost.enable = true; # nvidia-powerd
 
         prime = lib.mkIf graphics.prime.enable ({
             offload.enable = true;
