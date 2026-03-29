@@ -19,8 +19,8 @@
         unitConfig.TimeoutStartSec = "10s";
         upheldBy = lib.optional config.crystals-services.tailscale.enable "tailscaled.service";
         requires = ["network-online.target"];
+        wants = upheldBy;
         after = requires ++ upheldBy;
-        bindsTo = upheldBy;
       }
     )
     mounts;
