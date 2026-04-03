@@ -136,6 +136,15 @@ in {
                 unfocusedIconsOpacity = 0.65;
               }
               {id = "plugin:privacy-indicator";}
+              {
+                autoMount = true;
+                fileBrowser = "xdg-open";
+                terminalCommand = "ghostty";
+                showNotifications = true;
+                hideWhenEmpty = false;
+                showBadge = true;
+                id = "plugin:usb-drive-manager";
+              }
             ];
             right = [
               {
