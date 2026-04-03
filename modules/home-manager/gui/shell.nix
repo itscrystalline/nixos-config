@@ -37,7 +37,7 @@ in {
               })
               plugins);
         in
-          mkEnable "noctalia-dev" ["privacy-indicator" "tailscale" "keybind-cheatsheet" "battery-threshold" "battery-actions" "polkit-agent"];
+          mkEnable "noctalia-dev" ["privacy-indicator" "tailscale" "keybind-cheatsheet" "battery-threshold" "battery-actions" "polkit-agent" "usb-drive-manager"];
         version = 1;
       };
       pluginSettings = {
