@@ -9,7 +9,7 @@
   enabled = forgejo.enable;
 
   cfg = config.services.forgejo;
-  srv = forgejo.settings.server;
+  srv = cfg.settings.server;
 in {
   options.crystals-services.forgejo = {
     enable = mkEnableOption "forgejo server";
