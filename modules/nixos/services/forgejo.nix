@@ -30,6 +30,7 @@ in {
       forgejo = {
         enable = true;
         database.type = "sqlite3";
+        stateDir = "/mnt/main/services/forgejo";
         lfs.enable = true;
         settings = {
           server = {
