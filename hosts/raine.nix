@@ -110,6 +110,11 @@ in {
     };
     manga.enable = true;
     iw2tryhard-dev.enable = true;
+
+    forgejo = {
+      enable = true;
+      directory = "/mnt/main/services/forgejo";
+    };
   };
 
   nix = {
