@@ -122,6 +122,12 @@ in {
       sslCertificateKey = "/mnt/main/cwystaws-raspi.snake-rudd.ts.net.key";
     };
 
+    crystals-services.cloudflared.domains."nc".originRequest = {
+      disableChunkedEncoding = true;
+      noHappyEyeballs = true;
+      noTLSVerify = true;
+    };
+
     systemd.services.nextcloud-config = let
       inherit (config.services.nextcloud) occ;
     in {

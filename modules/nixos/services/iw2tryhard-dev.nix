@@ -35,5 +35,10 @@ in {
         };
       };
     };
+    crystals-services.cloudflared.domains = {
+      "" = {};
+      "www" = {};
+      "v2" = {};
+    };
   };
 }
