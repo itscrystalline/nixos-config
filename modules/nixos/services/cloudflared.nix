@@ -22,7 +22,7 @@ in {
   options.crystals-services.cloudflared = {
     enable = lib.mkEnableOption "Cloudflare tunnel";
     domains = lib.mkOption {
-      type = types.attrs;
+      type = types.attrsOf types.attrs;
       description = "Domains to open to the public via cloudflare tunnels";
       default = {};
     };

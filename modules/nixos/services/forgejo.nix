@@ -20,7 +20,7 @@ in {
     };
   };
   config = lib.mkIf enabled {
-    crystals-services.cloudflared.domains = {"git".noTLSVerify = true;};
+    crystals-services.cloudflared.domains."git".noTLSVerify = true;
 
     sops.secrets.forgejo-admin-password.owner = "forgejo";
     systemd.services.forgejo.preStart = let
