@@ -35,6 +35,8 @@ nixos: {
           "tailscaleAuthKey" = {};
 
           "harmonia-secret-key" = {};
+
+          "forgejo-admin-password" = {};
         }
         else {
           "nextcloud-rclone-password" = {};
