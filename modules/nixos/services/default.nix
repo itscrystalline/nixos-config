@@ -14,6 +14,7 @@
     ./blocky.nix
     ./cloudflared.nix
     ./nextcloud.nix
+    ./msmtp.nix
     ./monitoring.nix
     ./manga.nix
     ./nix-binary-cache.nix
