@@ -21,6 +21,7 @@
     ./home-assistant.nix
     ./create-ap.nix
     ./localsend.nix
+    ./forgejo.nix
   ];
 
   systemd = {
