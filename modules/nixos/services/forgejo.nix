@@ -13,6 +13,11 @@
 in {
   options.crystals-services.forgejo = {
     enable = mkEnableOption "forgejo server";
+    directory = mkOption {
+      type = types.str;
+      description = "Forgejo's state directory.";
+      default = "/var/lib/forgejo";
+    };
   };
   config = lib.mkIf enabled {
     crystals-services.cloudflared.domains."git".noTLSVerify = true;
@@ -30,7 +35,7 @@ in {
       forgejo = {
         enable = true;
         database.type = "sqlite3";
-        stateDir = "/mnt/main/services/forgejo";
+        stateDir = forgejo.directory;
         lfs.enable = true;
         settings = {
           server = {
