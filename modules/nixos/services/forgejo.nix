@@ -41,7 +41,7 @@ in {
           server = {
             DOMAIN = "git.iw2tryhard.dev";
             ROOT_URL = "https://${srv.DOMAIN}/";
-            HTTP_PORT = 3000;
+            HTTP_PORT = 4985;
             SSH_PORT = lib.head config.services.openssh.ports;
           };
           # You can temporarily allow registration to create an admin user.
