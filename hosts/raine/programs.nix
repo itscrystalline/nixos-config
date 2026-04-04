@@ -142,19 +142,4 @@ in {
     backup-script
     restore-script
   ];
-
-  programs.msmtp = {
-    enable = true;
-    accounts = {
-      default = {
-        auth = true;
-        tls = true;
-        user = "choyrumthad";
-        passwordeval = "cat ${config.sops.secrets."mail-password".path}";
-        host = "smtp.gmail.com";
-        port = 587;
-        from = "nc@iw2tryhard.dev";
-      };
-    };
-  };
 }

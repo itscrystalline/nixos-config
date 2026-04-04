@@ -57,6 +57,7 @@ in {
 
   crystals-services = {
     ssh.enable = true;
+    msmtp.enable = true;
     tailscale = {
       enable = true;
       asExitNode = true;
