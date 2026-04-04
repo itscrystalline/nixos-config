@@ -122,7 +122,7 @@ in {
       sslCertificateKey = "/mnt/main/cwystaws-raspi.snake-rudd.ts.net.key";
     };
 
-    crystals-services.cloudflared.domains."nc".originRequest = {
+    crystals-services.cloudflared.domains."nc" = {
       disableChunkedEncoding = true;
       noHappyEyeballs = true;
       noTLSVerify = true;

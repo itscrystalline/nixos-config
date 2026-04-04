@@ -12,11 +12,10 @@
         if key != ""
         then "."
         else ""
-      }iw2tryhard.dev" =
-        attrs."${key}"
-        // {
-          service = "http://localhost:80";
-        };
+      }iw2tryhard.dev" = {
+        originRequest = attrs.${key};
+        service = "http://localhost:80";
+      };
     }) (builtins.attrNames attrs));
 in {
   options.crystals-services.cloudflared = {
