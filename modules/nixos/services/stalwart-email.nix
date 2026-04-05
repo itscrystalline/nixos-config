@@ -79,6 +79,14 @@ in {
   };
 
   config = lib.mkIf enabled {
+    sops.secrets = {
+      stalwart-admin-password.owner = "stalwart-mail";
+      stalwart-real-password.owner = "stalwart-mail";
+      stalwart-itscrystalline-password.owner = "stalwart-mail";
+      stalwart-nc-password.owner = "stalwart-mail";
+      stalwart-git-password.owner = "stalwart-mail";
+      stalwart-cloudflare-token.owner = "stalwart-mail";
+    };
     services.stalwart-mail = {
       enable = true;
       dataDir = stalwart.directory;
@@ -132,7 +140,7 @@ in {
           contact = "real@${stalwart.host}";
           domains = ["${stalwart.host}" "mx1.${stalwart.host}"];
           provider = "cloudflare";
-          secret = "%{file:/run/credentials/stalwart.service/cloudflare_token}%";
+          secret = "%{file:/run/credentials/stalwart-mail.service/cloudflare_token}%";
         };
         session.auth = {
           mechanisms = "[plain]";
@@ -147,7 +155,7 @@ in {
         };
         authentication.fallback-admin = {
           user = "admin";
-          secret = "%{file:/run/credentials/stalwart.service/admin_pass}%";
+          secret = "%{file:/run/credentials/stalwart-mail.service/admin_pass}%";
         };
       };
     };
