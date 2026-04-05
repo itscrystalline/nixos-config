@@ -54,7 +54,7 @@ in {
   };
 
   config = lib.mkIf enabled {
-    services.stalwart = {
+    services.stalwart-mail = {
       enable = true;
       dataDir = stalwart.directory;
       openFirewall = true;
@@ -161,7 +161,7 @@ in {
     };
 
     # ensure storage mount is ready if directory is under /mnt/main
-    systemd.services.stalwart = lib.mkIf (lib.hasPrefix "/mnt/main" stalwart.directory) {
+    systemd.services.stalwart-mail = lib.mkIf (lib.hasPrefix "/mnt/main" stalwart.directory) {
       requires = ["mnt-main.mount"];
     };
 
@@ -202,7 +202,7 @@ in {
       in ''
         # wait for stalwart http to be actually ready (not just systemd "started")
         for i in {1..30}; do
-          if ${config.services.stalwart.package}/bin/stalwart-cli \
+          if ${config.services.stalwart-mail.package}/bin/stalwart-cli \
              -u http://127.0.0.1:8080 \
              --credentials admin:$(cat ${config.sops.secrets.stalwart-admin-password.path}) \
              server status &>/dev/null; then
@@ -224,7 +224,7 @@ in {
           PASSWORD=$(cat "$PASSWORD_FILE")
 
           echo "Creating mailbox: $mailbox"
-          ${config.services.stalwart.package}/bin/stalwart-cli \
+          ${config.services.stalwart-mail.package}/bin/stalwart-cli \
             -u http://127.0.0.1:8080 \
             --credentials admin:$ADMIN_PASS \
             account create "$mailbox" \
