@@ -1,6 +1,7 @@
 {
   modulesPath,
   pkgs,
+  config,
   ...
 }: {
   imports = [
@@ -87,10 +88,31 @@
       customDNS = {
         "dorm" = "100.122.114.13"; # liriel
         "cache" = "100.95.62.30"; # mingzhu
+        "stalwart" = "100.95.62.30"; # mingzhu
         "" = "100.125.37.13"; # raine
       };
     };
     forgejo.runner.enable = true;
+
+    stalwart = {
+      enable = true;
+      webUIHost = "stalwart.crys";
+      mailboxes = {
+        "real@iw2tryhard.dev" = {
+          password = config.sops.secrets.stalwart-real-password.path;
+        };
+        "nc@iw2tryhard.dev" = {
+          password = config.sops.secrets.stalwart-nc-password.path;
+        };
+        "git@iw2tryhard.dev" = {
+          password = config.sops.secrets.stalwart-git-password.path;
+        };
+        "itscrystalline@iw2tryhard.dev" = {
+          password = config.sops.secrets.stalwart-itscrystalline-password.path;
+          aliases = ["tryhard@iw2tryhard.dev" "colonthree@iw2tryhard.dev" "crystal@iw2tryhard.dev"];
+        };
+      };
+    };
   };
 
   nix = {

@@ -14,7 +14,6 @@
     ./blocky.nix
     ./cloudflared.nix
     ./nextcloud.nix
-    ./msmtp.nix
     ./monitoring.nix
     ./manga.nix
     ./nix-binary-cache.nix
@@ -23,6 +22,7 @@
     ./create-ap.nix
     ./localsend.nix
     ./forgejo.nix
+    ./stalwart-email.nix
   ];
 
   systemd = {

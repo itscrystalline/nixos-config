@@ -77,18 +77,20 @@ in {
             # Sending emails is completely optional
             # You can send a test email from the web UI at:
             # Profile Picture > Site Administration > Configuration >  Mailer Configuration
-
-            # TODO: later noobs
-            # mailer = {
-            #   ENABLED = true;
-            #   SMTP_ADDR = "mail.example.com";
-            #   FROM = "noreply@${srv.DOMAIN}";
-            #   USER = "noreply@${srv.DOMAIN}";
-            # };
+            # 
+            # cross-host mail setup: forgejo on raine talks to stalwart on mingzhu (via tailscale)
+            mailer = {
+              ENABLED = true;
+              PROTOCOL = "smtps";
+              SMTP_ADDR = "iw2tryhard.dev"; # use public hostname so TLS cert matches
+              SMTP_PORT = 465;
+              FROM = "git@iw2tryhard.dev";
+              USER = "git@iw2tryhard.dev";
+            };
           };
-          # secrets = {
-          #   mailer.PASSWD = config.age.secrets.forgejo-mailer-password.path;
-          # };
+          secrets = {
+            mailer.PASSWD = config.sops.secrets."stalwart-git-password".path;
+          };
         };
 
         nginx.virtualHosts.${srv.DOMAIN} = {

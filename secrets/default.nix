@@ -38,6 +38,13 @@ nixos: {
 
           "forgejo-admin-password" = {};
           "forgejo-runner-token" = {};
+
+          "stalwart-admin-password" = {};
+          "stalwart-real-password" = {};
+          "stalwart-itscrystalline-password" = {};
+          "stalwart-nc-password" = {};
+          "stalwart-git-password" = {};
+          "stalwart-cloudflare-token" = {};
         }
         else {
           "nextcloud-rclone-password" = {};

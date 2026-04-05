@@ -33,6 +33,8 @@ in {
     # nextcloud-admin-stats-token: readable by nextcloud (occ) and prometheus
     # exporter (different user). Mode 0444 is safe – this is a read-only token.
     sops.secrets."nextcloud-admin-stats-token".mode = "0444";
+    # stalwart-nc-password: cross-host mail setup - nextcloud on raine talks to stalwart on mingzhu
+    sops.secrets."stalwart-nc-password".owner = "nextcloud";
 
     services.nextcloud = {
       enable = true;
@@ -68,8 +70,18 @@ in {
       settings = {
         updatechecker = false;
         default_phone_region = "TH";
-        mail_smtpmode = "sendmail";
-        mail_sendmailmode = "pipe";
+        
+        # cross-host mail setup: use stalwart on mingzhu (via tailscale)
+        mail_smtpmode = "smtp";
+        mail_smtphost = "iw2tryhard.dev"; # use public hostname so TLS cert matches
+        mail_smtpport = 465;
+        mail_smtpsecure = "ssl";
+        mail_smtpauth = 1;
+        mail_from_address = "nc";
+        mail_domain = "iw2tryhard.dev";
+        mail_smtpname = "nc@iw2tryhard.dev";
+        mail_smtppassword = ""; # set via occ in nextcloud-mail-config service
+
         enabledPreviewProviders = [
           "OC\\Preview\\Image"
           "OC\\Preview\\Movie"
@@ -133,9 +145,25 @@ in {
     in {
       wantedBy = ["multi-user.target"];
       after = ["nextcloud-setup.service" "coolwsd.service" "sops-install-secrets.service"];
-      requires = ["coolwsd.service" "sops-install-secrets.service"];
+      requires = ["nextcloud-setup.service" "coolwsd.service" "sops-install-secrets.service"];
       script = ''
         ${occ}/bin/nextcloud-occ config:app:set serverinfo token --value "$(cat ${nextcloud.statsTokenFile})"
+      '';
+      serviceConfig = {
+        Type = "oneshot";
+        User = "nextcloud";
+      };
+    };
+
+    # set smtp password via occ (can't be done via settings since it's a secret)
+    systemd.services.nextcloud-mail-config = let
+      inherit (config.services.nextcloud) occ;
+    in {
+      wantedBy = ["multi-user.target"];
+      after = ["nextcloud-setup.service" "sops-install-secrets.service"];
+      requires = ["nextcloud-setup.service" "sops-install-secrets.service"];
+      script = ''
+        ${occ}/bin/nextcloud-occ config:system:set mail_smtppassword --value "$(cat ${config.sops.secrets.stalwart-nc-password.path})"
       '';
       serviceConfig = {
         Type = "oneshot";
