@@ -28,110 +28,108 @@ in {
     };
   };
   config = lib.mkIf enabled {
-    # nextcloud-admin-password: only the nextcloud service user needs access.
-    sops.secrets."nextcloud-admin-password".owner = "nextcloud";
-    # nextcloud-admin-stats-token: readable by nextcloud (occ) and prometheus
-    # exporter (different user). Mode 0444 is safe – this is a read-only token.
-    sops.secrets."nextcloud-admin-stats-token".mode = "0444";
-    # stalwart-nc-password: cross-host mail setup - nextcloud on raine talks to stalwart on mingzhu
-    sops.secrets."stalwart-nc-password".owner = "nextcloud";
-
-    services.nextcloud = {
-      enable = true;
-      package = pkgs.nextcloud32;
-      home = nextcloud.folder;
-      hostName = nextcloud.domain;
-      https = true;
-      config = {
-        dbtype = "mysql";
-        adminpassFile = nextcloud.adminpassFile;
-      };
-
-      poolSettings = {
-        pm = "dynamic";
-        "pm.max_children" = "48";
-        "pm.max_spare_servers" = "38";
-        "pm.min_spare_servers" = "12";
-        "pm.start_servers" = "12";
-        "pm.max_requests" = "750";
-      };
-      phpOptions = {
-        "opcache.interned_strings_buffer" = "16";
-        "opcache.enabled" = "true";
-        "opcache.jit" = "on";
-        "opcache.jit_buffer_size" = "128M";
-      };
-
-      extraApps = with config.services.nextcloud.package.packages.apps; {
-        inherit news contacts calendar tasks recognize phonetrack memories previewgenerator notes groupfolders;
-      };
-      extraAppsEnable = true;
-
-      settings = {
-        updatechecker = false;
-        default_phone_region = "TH";
-        
-        # cross-host mail setup: use stalwart on mingzhu (via tailscale)
-        mail_smtpmode = "smtp";
-        mail_smtphost = "iw2tryhard.dev"; # use public hostname so TLS cert matches
-        mail_smtpport = 465;
-        mail_smtpsecure = "ssl";
-        mail_smtpauth = 1;
-        mail_from_address = "nc";
-        mail_domain = "iw2tryhard.dev";
-        mail_smtpname = "nc@iw2tryhard.dev";
-        mail_smtppassword = ""; # set via occ in nextcloud-mail-config service
-
-        enabledPreviewProviders = [
-          "OC\\Preview\\Image"
-          "OC\\Preview\\Movie"
-          "OC\\Preview\\Krita"
-          "OC\\Preview\\MarkDown"
-          "OC\\Preview\\MP3"
-          "OC\\Preview\\OpenDocument"
-          "OC\\Preview\\TXT"
-          "OC\\Preview\\XBitmap"
-          "OC\\Preview\\HEIC"
-        ];
-        preview_imaginary_url = "http://127.0.0.1:${toString config.services.imaginary.port}";
-        trusted_domains =
-          [
-            nextcloud.domain
-            config.networking.hostName
-            "nc.${localSuffix}"
-            "100.125.37.13"
-            "192.128.1.61"
-          ]
-          ++ config.services.nginx.virtualHosts.${nextcloud.domain}.serverAliases;
-        trusted_proxies = [
-          "127.0.0.1"
-          "::1"
-          "2001:fb1:139:87b0:33d6:4f2:97b9:481e"
-        ];
-        "memories.exiftool" = "${lib.getExe pkgs.exiftool}";
-        "memories.exiftool_no_local" = true;
-        "preview_ffmpeg_path" = "${lib.getExe pkgs.ffmpeg-headless}";
-        "memories.vod.ffmpeg" = "${lib.getExe pkgs.ffmpeg-headless}";
-        "memories.vod.ffprobe" = "${pkgs.ffmpeg-headless}/bin/ffprobe";
-        "maintenance_window_start" = 7;
-      };
-
-      enableImagemagick = true;
-      configureRedis = true;
-      caching.redis = true;
-      database.createLocally = true;
-      maxUploadSize = "4G";
+    sops.secrets = {
+      "nextcloud-admin-password".owner = "nextcloud";
+      "nextcloud-admin-stats-token".mode = "0444";
+      "stalwart-nc-password".owner = "nextcloud";
     };
+    services = {
+      nextcloud = {
+        enable = true;
+        package = pkgs.nextcloud32;
+        home = nextcloud.folder;
+        hostName = nextcloud.domain;
+        https = true;
+        config = {
+          dbtype = "mysql";
+          inherit (nextcloud) adminpassFile;
+        };
 
-    services.imaginary = {
-      enable = true;
-      settings.return-size = true;
-    };
+        poolSettings = {
+          pm = "dynamic";
+          "pm.max_children" = "48";
+          "pm.max_spare_servers" = "38";
+          "pm.min_spare_servers" = "12";
+          "pm.start_servers" = "12";
+          "pm.max_requests" = "750";
+        };
+        phpOptions = {
+          "opcache.interned_strings_buffer" = "16";
+          "opcache.enabled" = "true";
+          "opcache.jit" = "on";
+          "opcache.jit_buffer_size" = "128M";
+        };
 
-    services.nginx.virtualHosts.${nextcloud.domain} = {
-      serverAliases = ["nc.${localSuffix}"];
-      sslCertificate = "/mnt/main/cwystaws-raspi.snake-rudd.ts.net.crt";
-      sslCertificateKey = "/mnt/main/cwystaws-raspi.snake-rudd.ts.net.key";
+        extraApps = with config.services.nextcloud.package.packages.apps; {
+          inherit news contacts calendar tasks recognize phonetrack memories previewgenerator notes groupfolders;
+        };
+        extraAppsEnable = true;
+
+        secrets.mail_smtppassword = config.sops.secrets.stalwart-nc-password.path;
+        settings = {
+          updatechecker = false;
+          default_phone_region = "TH";
+
+          mail_smtpmode = "smtp";
+          mail_smtphost = "iw2tryhard.dev";
+          mail_smtpport = 465;
+          mail_smtpsecure = "ssl";
+          mail_smtpauth = true;
+          mail_from_address = "nc";
+          mail_domain = "iw2tryhard.dev";
+          mail_smtpname = "nc@iw2tryhard.dev";
+
+          enabledPreviewProviders = [
+            "OC\\Preview\\Image"
+            "OC\\Preview\\Movie"
+            "OC\\Preview\\Krita"
+            "OC\\Preview\\MarkDown"
+            "OC\\Preview\\MP3"
+            "OC\\Preview\\OpenDocument"
+            "OC\\Preview\\TXT"
+            "OC\\Preview\\XBitmap"
+            "OC\\Preview\\HEIC"
+          ];
+          preview_imaginary_url = "http://127.0.0.1:${toString config.services.imaginary.port}";
+          trusted_domains =
+            [
+              nextcloud.domain
+              config.networking.hostName
+              "nc.${localSuffix}"
+              "100.125.37.13"
+              "192.128.1.61"
+            ]
+            ++ config.services.nginx.virtualHosts.${nextcloud.domain}.serverAliases;
+          trusted_proxies = [
+            "127.0.0.1"
+            "::1"
+            "2001:fb1:139:87b0:33d6:4f2:97b9:481e"
+          ];
+          "memories.exiftool" = "${lib.getExe pkgs.exiftool}";
+          "memories.exiftool_no_local" = true;
+          "preview_ffmpeg_path" = "${lib.getExe pkgs.ffmpeg-headless}";
+          "memories.vod.ffmpeg" = "${lib.getExe pkgs.ffmpeg-headless}";
+          "memories.vod.ffprobe" = "${pkgs.ffmpeg-headless}/bin/ffprobe";
+          "maintenance_window_start" = 7;
+        };
+
+        enableImagemagick = true;
+        configureRedis = true;
+        caching.redis = true;
+        database.createLocally = true;
+        maxUploadSize = "4G";
+      };
+
+      imaginary = {
+        enable = true;
+        settings.return-size = true;
+      };
+
+      nginx.virtualHosts.${nextcloud.domain} = {
+        serverAliases = ["nc.${localSuffix}"];
+        sslCertificate = "/mnt/main/cwystaws-raspi.snake-rudd.ts.net.crt";
+        sslCertificateKey = "/mnt/main/cwystaws-raspi.snake-rudd.ts.net.key";
+      };
     };
 
     crystals-services.cloudflared.domains."nc" = {
@@ -140,38 +138,24 @@ in {
       noTLSVerify = true;
     };
 
-    systemd.services.nextcloud-config = let
-      inherit (config.services.nextcloud) occ;
-    in {
-      wantedBy = ["multi-user.target"];
-      after = ["nextcloud-setup.service" "coolwsd.service" "sops-install-secrets.service"];
-      requires = ["nextcloud-setup.service" "coolwsd.service" "sops-install-secrets.service"];
-      script = ''
-        ${occ}/bin/nextcloud-occ config:app:set serverinfo token --value "$(cat ${nextcloud.statsTokenFile})"
-      '';
-      serviceConfig = {
-        Type = "oneshot";
-        User = "nextcloud";
+    systemd.services = {
+      nextcloud-config = let
+        inherit (config.services.nextcloud) occ;
+      in {
+        wantedBy = ["multi-user.target"];
+        after = ["nextcloud-setup.service" "coolwsd.service" "sops-install-secrets.service"];
+        requires = ["nextcloud-setup.service" "coolwsd.service" "sops-install-secrets.service"];
+        script = ''
+          ${occ}/bin/nextcloud-occ config:app:set serverinfo token --value "$(cat ${nextcloud.statsTokenFile})"
+        '';
+        serviceConfig = {
+          Type = "oneshot";
+          User = "nextcloud";
+        };
       };
-    };
 
-    # set smtp password via occ (can't be done via settings since it's a secret)
-    systemd.services.nextcloud-mail-config = let
-      inherit (config.services.nextcloud) occ;
-    in {
-      wantedBy = ["multi-user.target"];
-      after = ["nextcloud-setup.service" "sops-install-secrets.service"];
-      requires = ["nextcloud-setup.service" "sops-install-secrets.service"];
-      script = ''
-        ${occ}/bin/nextcloud-occ config:system:set mail_smtppassword --value "$(cat ${config.sops.secrets.stalwart-nc-password.path})"
-      '';
-      serviceConfig = {
-        Type = "oneshot";
-        User = "nextcloud";
-      };
+      mysql.serviceConfig.Restart = lib.mkForce "always";
+      nextcloud-cron.path = [pkgs.perl];
     };
-
-    systemd.services.mysql.serviceConfig.Restart = lib.mkForce "always";
-    systemd.services.nextcloud-cron.path = [pkgs.perl];
   };
 }
