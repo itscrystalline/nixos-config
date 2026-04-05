@@ -90,6 +90,7 @@
         "" = "100.125.37.13"; # raine
       };
     };
+    forgejo.runner.enable = true;
   };
 
   nix = {

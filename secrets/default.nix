@@ -37,6 +37,7 @@ nixos: {
           "harmonia-secret-key" = {};
 
           "forgejo-admin-password" = {};
+          "forgejo-runner-token" = {};
         }
         else {
           "nextcloud-rclone-password" = {};
