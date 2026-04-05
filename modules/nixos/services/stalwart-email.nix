@@ -27,8 +27,9 @@ in {
     host = lib.mkOption {
       type = lib.types.nullOr lib.types.str;
       description = "Main stalwart hostname.";
-      default = null;
+      default = "iw2tryhard.dev";
     };
+
     webUIHost = lib.mkOption {
       type = lib.types.nullOr lib.types.str;
       description = "Nginx virtual host name to proxy stalwart web UI under. Null to disable.";

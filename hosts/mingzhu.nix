@@ -96,20 +96,31 @@
 
     stalwart = {
       enable = true;
+      host = "iw2tryhard.dev";
       webUIHost = "stalwart.crys";
       mailboxes = {
-        "real@iw2tryhard.dev" = {
+        "Postmaster" = {
+          email = "postmaster@iw2tryhard.dev";
+          postmaster = true;
+          password = config.sops.secrets.stalwart-admin-password.path;
+        };
+
+        "Crystal" = {
+          email = "real@iw2tryhard.dev";
           password = config.sops.secrets.stalwart-real-password.path;
         };
-        "nc@iw2tryhard.dev" = {
+        "Crystal's Nextcloud" = {
+          email = "nc@iw2tryhard.dev";
           password = config.sops.secrets.stalwart-nc-password.path;
         };
-        "git@iw2tryhard.dev" = {
+        "Crystal's Forgejo" = {
+          email = "git@iw2tryhard.dev";
           password = config.sops.secrets.stalwart-git-password.path;
         };
-        "itscrystalline@iw2tryhard.dev" = {
+        "Also Crystal" = {
+          email = "crystal@iw2tryhard.dev";
           password = config.sops.secrets.stalwart-itscrystalline-password.path;
-          aliases = ["tryhard@iw2tryhard.dev" "colonthree@iw2tryhard.dev" "crystal@iw2tryhard.dev"];
+          aliases = ["tryhard@iw2tryhard.dev" "colonthree@iw2tryhard.dev"];
         };
       };
     };
