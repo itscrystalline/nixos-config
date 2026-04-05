@@ -28,7 +28,8 @@ in {
       pwd = config.sops.secrets.forgejo-admin-password;
       user = "itscrystalline"; # Note, Forgejo doesn't allow creation of an account named "admin"
     in ''
-      ${adminCmd} create --admin --email "real@iw2tryhard.dev" --username ${user} --password "$(tr -d '\n' < ${pwd.path})" || true
+      # ${adminCmd} create --admin --email "real@iw2tryhard.dev" --username ${user} --password "$(tr -d '\n' < ${pwd.path})" || true
+      ${adminCmd} change-password --username ${user} --password "$(tr -d '\n' < ${pwd.path})" || true
     '';
 
     services = {
