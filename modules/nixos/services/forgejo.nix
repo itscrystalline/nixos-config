@@ -15,6 +15,7 @@
     hash = "sha256-rZHLORwLUfIFcB6K9yhrzr+UwdPNQVSadsw6rg8Q7gs=";
     stripRoot = false;
   };
+  theme-name = "catppuccin-pink-auto";
 
   DOMAIN = "git.iw2tryhard.dev";
   ROOT_URL = "https://${srv.DOMAIN}/";
@@ -42,6 +43,13 @@ in {
         # ${adminCmd} change-password --username ${user} --password "$(< ${pwd.path})" || true
       '';
 
+      systemd.tmpfiles.rules = [
+        "d '${config.services.forgejo.customDir}/public' - forgejo forgejo - -"
+        "d '${config.services.forgejo.customDir}/public/assets' - forgejo forgejo - -"
+        "d '${config.services.forgejo.customDir}/public/assets/css' - forgejo forgejo - -"
+        "C+ '${config.services.forgejo.customDir}/public/assets/css/theme-${theme-name}.css' - forgejo forgejo - ${theme}/theme-${theme-name}.css"
+      ];
+
       services = {
         forgejo = {
           enable = true;
@@ -61,7 +69,10 @@ in {
               ENABLED = true;
               DEFAULT_ACTIONS_URL = "github";
             };
-            ui.THEMES = "catppuccin-pink-auto";
+            ui = {
+              THEMES = theme-name;
+              DEFAULT_THEME = theme-name;
+            };
 
             # Sending emails is completely optional
             # You can send a test email from the web UI at:
@@ -79,12 +90,6 @@ in {
           #   mailer.PASSWD = config.age.secrets.forgejo-mailer-password.path;
           # };
         };
-
-        systemd.tmpfiles.rules = [
-          "d '${config.services.forgejo.customDir}/public' - forgejo forgejo - -"
-          "d '${config.services.forgejo.customDir}/public/assets' - forgejo forgejo - -"
-          "d '${config.services.forgejo.customDir}/public/assets/css' - forgejo forgejo - ${theme}"
-        ];
 
         nginx.virtualHosts.${srv.DOMAIN} = {
           extraConfig = ''
