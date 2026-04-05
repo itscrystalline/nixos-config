@@ -18,7 +18,7 @@
   theme-name = "catppuccin-pink-auto";
 
   DOMAIN = "git.iw2tryhard.dev";
-  ROOT_URL = "https://${srv.DOMAIN}/";
+  ROOT_URL = "https://${DOMAIN}/";
 in {
   options.crystals-services.forgejo = {
     enable = mkEnableOption "forgejo server";
