@@ -43,7 +43,7 @@ in {
 
     crystal =
       {
-        name = "Crystal";
+        # name = "crystal";
         address = "crystal@iw2tryhard.dev";
         aliases = ["tryhard@iw2tryhard.dev" "colonthree@iw2tryhard.dev"];
       }
