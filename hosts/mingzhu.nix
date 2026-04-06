@@ -99,25 +99,30 @@
       host = "iw2tryhard.dev";
       webUIHost = "stalwart.crys";
       mailboxes = {
-        "Postmaster" = {
+        "postmaster" = {
+          fullName = "Crystal, the Postmistress";
           email = "postmaster@iw2tryhard.dev";
           postmaster = true;
           passwordFile = config.sops.secrets.stalwart-admin-password.path;
         };
 
-        "Crystal" = {
+        "real" = {
+          fullName = "Thad Choyrum";
           email = "real@iw2tryhard.dev";
           passwordFile = config.sops.secrets.stalwart-real-password.path;
         };
-        "Crystal's Nextcloud" = {
+        "nextcloud" = {
+          fullName = "Crystal's Nextcloud";
           email = "nc@iw2tryhard.dev";
           passwordFile = config.sops.secrets.stalwart-nc-password.path;
         };
-        "Crystal's Forgejo" = {
+        "forgejo" = {
+          fullName = "Crystal's Forgejo";
           email = "git@iw2tryhard.dev";
           passwordFile = config.sops.secrets.stalwart-git-password.path;
         };
-        "Also Crystal" = {
+        "crystal" = {
+          fullName = "Crystal";
           email = "crystal@iw2tryhard.dev";
           passwordFile = config.sops.secrets.stalwart-itscrystalline-password.path;
           aliases = ["tryhard@iw2tryhard.dev" "colonthree@iw2tryhard.dev"];

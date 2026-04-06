@@ -11,6 +11,7 @@
     map (mailbox: {
       inherit (mailbox) name;
       class = "individual";
+      description = mailbox.value.fullName;
       secret = "%{file:${mailbox.value.passwordFile}}%";
       email = [mailbox.value.email] ++ mailbox.value.aliases;
     }) (lib.attrsToList mailboxes);
@@ -39,25 +40,30 @@ in {
     mailboxes = lib.mkOption {
       type = lib.types.attrsOf (lib.types.submodule {
         options = {
+          fullName = lib.mkOption {
+            type = lib.types.str;
+            default = "";
+            description = "The full name of this user.";
+          };
           email = lib.mkOption {
             type = lib.types.str;
             default = "";
-            description = "Email address for this user";
+            description = "Email address for this user.";
           };
           passwordFile = lib.mkOption {
             type = lib.types.str;
             default = "";
-            description = "Path to sops secret containing password";
+            description = "Path to sops secret containing password.";
           };
           postmaster = lib.mkOption {
             type = lib.types.bool;
             default = false;
-            description = "Is this user the postmaster?";
+            description = "Wether this user is the postmaster.";
           };
           aliases = lib.mkOption {
             type = lib.types.listOf lib.types.str;
             default = [];
-            description = "List of email aliases for this user";
+            description = "List of email aliases for this user.";
           };
         };
       });
