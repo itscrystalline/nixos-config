@@ -186,6 +186,10 @@ in {
           };
         };
       };
+
+      thunderbird = {
+        enable = true;
+      };
     };
 
     xdg = lib.mkIf pkgs.stdenv.isLinux {
