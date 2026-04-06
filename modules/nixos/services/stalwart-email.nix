@@ -5,15 +5,15 @@
 }: let
   inherit (config.crystals-services) stalwart;
   enabled = stalwart.enable;
-
-  mkMailBoxes = mailboxes:
-    map (mailbox: {
-      inherit (mailbox) name;
-      class = "individual";
-      description = mailbox.value.fullName;
-      secret = "%{file:${mailbox.value.passwordFile}}%";
-      email = [mailbox.value.email] ++ mailbox.value.aliases;
-    }) (lib.attrsToList mailboxes);
+  #
+  # mkMailBoxes = mailboxes:
+  #   map (mailbox: {
+  #     inherit (mailbox) name;
+  #     class = "individual";
+  #     description = mailbox.value.fullName;
+  #     secret = "%{file:${mailbox.value.passwordFile}}%";
+  #     email = [mailbox.value.email] ++ mailbox.value.aliases;
+  #   }) (lib.attrsToList mailboxes);
 in {
   options.crystals-services.stalwart = {
     enable = lib.mkEnableOption "stalwart mail server";
@@ -36,51 +36,51 @@ in {
       default = "stalwart.${stalwart.host}";
     };
 
-    mailboxes = lib.mkOption {
-      type = lib.types.attrsOf (lib.types.submodule {
-        options = {
-          fullName = lib.mkOption {
-            type = lib.types.str;
-            default = "";
-            description = "The full name of this user.";
-          };
-          email = lib.mkOption {
-            type = lib.types.str;
-            default = "";
-            description = "Email address for this user.";
-          };
-          passwordFile = lib.mkOption {
-            type = lib.types.str;
-            default = "";
-            description = "Path to sops secret containing password.";
-          };
-          postmaster = lib.mkOption {
-            type = lib.types.bool;
-            default = false;
-            description = "Wether this user is the postmaster.";
-          };
-          aliases = lib.mkOption {
-            type = lib.types.listOf lib.types.str;
-            default = [];
-            description = "List of email aliases for this user.";
-          };
-        };
-      });
-      default = {};
-      description = "Mailbox configuration";
-      example = lib.literalExpression ''
-        {
-          "user01@example.dev" = {
-            password = config.sops.secrets.stalwart-user01-password.path;
-            aliases = [];
-          };
-          "main@example.dev" = {
-            password = config.sops.secrets.stalwart-main-password.path;
-            aliases = [ "alias1@example.dev" "alias2@example.dev" ];
-          };
-        }
-      '';
-    };
+    # mailboxes = lib.mkOption {
+    #   type = lib.types.attrsOf (lib.types.submodule {
+    #     options = {
+    #       fullName = lib.mkOption {
+    #         type = lib.types.str;
+    #         default = "";
+    #         description = "The full name of this user.";
+    #       };
+    #       email = lib.mkOption {
+    #         type = lib.types.str;
+    #         default = "";
+    #         description = "Email address for this user.";
+    #       };
+    #       passwordFile = lib.mkOption {
+    #         type = lib.types.str;
+    #         default = "";
+    #         description = "Path to sops secret containing password.";
+    #       };
+    #       postmaster = lib.mkOption {
+    #         type = lib.types.bool;
+    #         default = false;
+    #         description = "Wether this user is the postmaster.";
+    #       };
+    #       aliases = lib.mkOption {
+    #         type = lib.types.listOf lib.types.str;
+    #         default = [];
+    #         description = "List of email aliases for this user.";
+    #       };
+    #     };
+    #   });
+    #   default = {};
+    #   description = "Mailbox configuration";
+    #   example = lib.literalExpression ''
+    #     {
+    #       "user01@example.dev" = {
+    #         password = config.sops.secrets.stalwart-user01-password.path;
+    #         aliases = [];
+    #       };
+    #       "main@example.dev" = {
+    #         password = config.sops.secrets.stalwart-main-password.path;
+    #         aliases = [ "alias1@example.dev" "alias2@example.dev" ];
+    #       };
+    #     }
+    #   '';
+    # };
   };
 
   config = lib.mkIf enabled {
@@ -167,18 +167,18 @@ in {
         storage.directory = "in-memory";
         directory = {
           "imap".lookup.domains = ["${stalwart.host}"];
-          "in-memory" = {
-            type = "memory";
-            principals =
-              mkMailBoxes stalwart.mailboxes
-              ++ [
-                {
-                  name = "iw2tryhard.dev";
-                  type = "domain";
-                  description = "Main";
-                }
-              ];
-          };
+          # "in-memory" = {
+          #   type = "memory";
+          #   principals =
+          #     mkMailBoxes stalwart.mailboxes
+          #     ++ [
+          #       {
+          #         name = "iw2tryhard.dev";
+          #         type = "domain";
+          #         description = "Main";
+          #       }
+          #     ];
+          # };
         };
 
         authentication.fallback-admin = {
