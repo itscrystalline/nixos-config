@@ -164,6 +164,10 @@ in {
           rcpt.directory = "'in-memory'";
         };
 
+        store.rocksdb = {
+          type = "rocksdb";
+          path = "/var/lib/stalwart-mail";
+        };
         storage = {
           data = "rocksdb";
           fts = "rocksdb";
