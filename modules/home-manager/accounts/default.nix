@@ -47,17 +47,20 @@ in {
     #   }
     #   // mailServerDefaults;
 
-    main_gmail = {
+    "Main" = {
       address = "real.thad.choyrum@gmail.com";
       realName = "Thad Choyrum";
+      aliases = ["real@iw2tryhard.dev"];
       flavor = "gmail.com";
+      primary = true;
     };
-    other_gmail = {
+    "Crystal" = {
       address = "pvpthadgaming@gmail.com";
       realName = "itscrystalline";
+      aliases = ["crystal@iw2tryhard.dev" "tryhard@iw2tryhard.dev" "colonthree@iw2tryhard.dev"];
       flavor = "gmail.com";
     };
-    recovery = {
+    "Other Email" = {
       address = "choyrumthad@gmail.com";
       realName = "itscrystalline";
       flavor = "gmail.com";
