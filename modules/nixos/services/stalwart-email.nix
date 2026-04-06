@@ -161,7 +161,16 @@ in {
             mechanisms = "[plain]";
             directory = "'in-memory'";
           };
-          rcpt.directory = "'in-memory'";
+          rcpt = {
+            directory = "'in-memory'";
+            relay = [
+              {
+                "if" = "!is_local_domain('*', rcpt_domain) && authenticated_as != ''";
+                "then" = "true";
+              }
+              {"else" = "false";}
+            ];
+          };
         };
 
         store.rocksdb = {
