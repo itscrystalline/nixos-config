@@ -19,34 +19,33 @@
       };
     }
     // config;
-
-  mailServerDefaults = {
-    imap = {
-      host = "mail.iw2tryhard.dev";
-      port = 993;
-    };
-    smtp = {
-      host = "mail.iw2tryhard.dev";
-      port = 465;
-    };
-  };
+  # mailServerDefaults = {
+  #   imap = {
+  #     host = "mail.iw2tryhard.dev";
+  #     port = 993;
+  #   };
+  #   smtp = {
+  #     host = "mail.iw2tryhard.dev";
+  #     port = 465;
+  #   };
+  # };
 in {
   accounts.email.accounts = lib.mapAttrs (_: applyDefaults) {
-    main =
-      {
-        realName = "Thad Choyrum";
-        address = "real@iw2tryhard.dev";
-        primary = true;
-      }
-      // mailServerDefaults;
-
-    crystal =
-      {
-        realName = "Crystal";
-        address = "crystal@iw2tryhard.dev";
-        aliases = ["tryhard@iw2tryhard.dev" "colonthree@iw2tryhard.dev"];
-      }
-      // mailServerDefaults;
+    # main =
+    #   {
+    #     realName = "Thad Choyrum";
+    #     address = "real@iw2tryhard.dev";
+    #     primary = true;
+    #   }
+    #   // mailServerDefaults;
+    #
+    # crystal =
+    #   {
+    #     realName = "Crystal";
+    #     address = "crystal@iw2tryhard.dev";
+    #     aliases = ["tryhard@iw2tryhard.dev" "colonthree@iw2tryhard.dev"];
+    #   }
+    #   // mailServerDefaults;
 
     main_gmail = {
       address = "real.thad.choyrum@gmail.com";

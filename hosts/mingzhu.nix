@@ -95,7 +95,7 @@
     forgejo.runner.enable = true;
 
     stalwart = {
-      enable = true;
+      enable = false; # curse you oracle with your port 25
       host = "iw2tryhard.dev";
       webUIHost = "stalwart.crys";
       mailboxes = {
