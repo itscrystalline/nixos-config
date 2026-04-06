@@ -169,7 +169,15 @@ in {
           "imap".lookup.domains = ["${stalwart.host}"];
           "in-memory" = {
             type = "memory";
-            principals = mkMailBoxes stalwart.mailboxes;
+            principals =
+              mkMailBoxes stalwart.mailboxes
+              ++ [
+                {
+                  name = "iw2tryhard.dev";
+                  type = "domain";
+                  description = "Main";
+                }
+              ];
           };
         };
 
