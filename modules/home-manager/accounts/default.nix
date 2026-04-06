@@ -1,7 +1,6 @@
 {lib, ...}: let
   applyDefaults = config:
     {
-      realName = config.name;
       userName = config.address;
 
       thunderbird = {
@@ -35,7 +34,7 @@ in {
   accounts.email.accounts = lib.mapAttrs (_: applyDefaults) {
     main =
       {
-        name = "Thad Choyrum";
+        realName = "Thad Choyrum";
         address = "real@iw2tryhard.dev";
         primary = true;
       }
@@ -43,7 +42,7 @@ in {
 
     crystal =
       {
-        # name = "crystal";
+        realName = "Crystal";
         address = "crystal@iw2tryhard.dev";
         aliases = ["tryhard@iw2tryhard.dev" "colonthree@iw2tryhard.dev"];
       }
