@@ -164,21 +164,20 @@ in {
           rcpt.directory = "'in-memory'";
         };
 
-        storage.directory = "in-memory";
+        storage = {
+          data = "rocksdb";
+          fts = "rocksdb";
+          blob = "rocksdb";
+          lookup = "rocksdb";
+          directory = "internal";
+        };
+
         directory = {
-          "imap".lookup.domains = ["${stalwart.host}"];
-          # "in-memory" = {
-          #   type = "memory";
-          #   principals =
-          #     mkMailBoxes stalwart.mailboxes
-          #     ++ [
-          #       {
-          #         name = "iw2tryhard.dev";
-          #         type = "domain";
-          #         description = "Main";
-          #       }
-          #     ];
-          # };
+          imap.lookup.domains = ["${stalwart.host}"];
+          internal = {
+            type = "internal";
+            store = "rocksdb";
+          };
         };
 
         authentication.fallback-admin = {
