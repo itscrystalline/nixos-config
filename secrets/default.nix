@@ -45,6 +45,9 @@ nixos: {
           "stalwart-nc-password" = {};
           "stalwart-git-password" = {};
           "stalwart-cloudflare-token" = {};
+
+          "stalwart-smtp-username" = {};
+          "stalwart-smtp-password" = {};
         }
         else {
           "nextcloud-rclone-password" = {};

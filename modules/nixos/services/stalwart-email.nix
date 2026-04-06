@@ -86,6 +86,9 @@ in {
       stalwart-nc-password.owner = "stalwart-mail";
       stalwart-git-password.owner = "stalwart-mail";
       stalwart-cloudflare-token.owner = "stalwart-mail";
+
+      stalwart-smtp-username.owner = "stalwart-mail";
+      stalwart-smtp-password.owner = "stalwart-mail";
     };
     services.stalwart-mail = {
       enable = true;
@@ -95,6 +98,9 @@ in {
       credentials = {
         admin_pass = config.sops.secrets.stalwart-admin-password.path;
         cloudflare_token = config.sops.secrets.stalwart-cloudflare-token.path;
+
+        smtp_username = config.sops.secrets.stalwart-smtp-username.path;
+        smtp_password = config.sops.secrets.stalwart-smtp-password.path;
       };
 
       settings = {
@@ -130,10 +136,12 @@ in {
             };
           };
         };
+
         lookup.default = {
           hostname = "mx1.${stalwart.host}";
           domain = stalwart.host;
         };
+
         acme."letsencrypt" = {
           directory = "https://acme-v02.api.letsencrypt.org/directory";
           challenge = "dns-01";
@@ -142,20 +150,53 @@ in {
           provider = "cloudflare";
           secret = "%{file:/run/credentials/stalwart-mail.service/cloudflare_token}%";
         };
-        session.auth = {
-          mechanisms = "[plain]";
-          directory = "'in-memory'";
+
+        session = {
+          auth = {
+            mechanisms = "[plain]";
+            directory = "'in-memory'";
+          };
+          rcpt.directory = "'in-memory'";
         };
+
         storage.directory = "in-memory";
-        session.rcpt.directory = "'in-memory'";
-        directory."imap".lookup.domains = ["${stalwart.host}"];
-        directory."in-memory" = {
-          type = "memory";
-          principals = mkMailBoxes stalwart.mailboxes;
+        directory = {
+          "imap".lookup.domains = ["${stalwart.host}"];
+          "in-memory" = {
+            type = "memory";
+            principals = mkMailBoxes stalwart.mailboxes;
+          };
         };
+
         authentication.fallback-admin = {
           user = "admin";
           secret = "%{file:/run/credentials/stalwart-mail.service/admin_pass}%";
+        };
+
+        queue = {
+          strategy.route = [
+            {
+              "if" = "is_local_domain('*', rcpt_domain)";
+              "then" = "'local'";
+            }
+            {"else" = "'oracle_smtp'";}
+          ];
+
+          # oracle cloud relay
+          route.oracle_smtp = {
+            type = "relay";
+            address = "smtp.email.ap-singapore-1.oci.oraclecloud.com";
+            port = 587;
+            protocol = "smtp";
+            auth = {
+              username = "%{file:/run/credentials/stalwart-mail.service/smtp_username}%";
+              password = "%{file:/run/credentials/stalwart-mail.service/smtp_password}%";
+            };
+            tls = {
+              implicit = false;
+              allow-invalid-certs = false;
+            };
+          };
         };
       };
     };
