@@ -14,6 +14,7 @@ in {
     ./gui
     ./services
     ./theming
+    ./accounts
   ];
 
   options.hm = {

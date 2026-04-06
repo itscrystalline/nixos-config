@@ -189,6 +189,7 @@ in {
 
       thunderbird = {
         enable = true;
+        profiles.default.isDefault = true;
       };
     };
 
