@@ -74,22 +74,17 @@ in {
               DEFAULT_THEME = theme-name;
             };
 
-            # Sending emails is completely optional
-            # You can send a test email from the web UI at:
-            # Profile Picture > Site Administration > Configuration >  Mailer Configuration
-            #
-            # cross-host mail setup: forgejo on raine talks to stalwart on mingzhu (via tailscale)
             mailer = {
               ENABLED = true;
               PROTOCOL = "smtps";
-              SMTP_ADDR = "iw2tryhard.dev"; # use public hostname so TLS cert matches
+              SMTP_ADDR = "smtp.gmail.com";
               SMTP_PORT = 465;
               FROM = "git@iw2tryhard.dev";
-              USER = "git@iw2tryhard.dev";
+              USER = "choyrumthad@gmail.com";
             };
           };
           secrets = {
-            mailer.PASSWD = config.sops.secrets."stalwart-git-password".path;
+            mailer.PASSWD = config.sops.secrets.mail-password.path;
           };
         };
 

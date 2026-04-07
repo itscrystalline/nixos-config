@@ -65,19 +65,19 @@ in {
         };
         extraAppsEnable = true;
 
-        secrets.mail_smtppassword = config.sops.secrets.stalwart-nc-password.path;
+        secrets.mail_smtppassword = config.sops.secrets.mail-password.path;
         settings = {
           updatechecker = false;
           default_phone_region = "TH";
 
           mail_smtpmode = "smtp";
-          mail_smtphost = "iw2tryhard.dev";
+          mail_smtphost = "smtp.gmail.com";
           mail_smtpport = 465;
           mail_smtpsecure = "ssl";
           mail_smtpauth = true;
           mail_from_address = "nc";
           mail_domain = "iw2tryhard.dev";
-          mail_smtpname = "nc@iw2tryhard.dev";
+          mail_smtpname = "choyrumthad@gmail.com";
 
           enabledPreviewProviders = [
             "OC\\Preview\\Image"
