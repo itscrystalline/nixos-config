@@ -280,7 +280,7 @@ in {
 
       yt-dlp = {
         enable = true;
-        package = pkgs.unstable.yt-dlp;
+        package = pkgs.yt-dlp;
       };
 
       occasion = lib.mkIf (inputs ? occasion) {
