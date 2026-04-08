@@ -42,9 +42,9 @@
     };
     blender-flake.url = "github:edolstra/nix-warez?dir=blender";
     nix-flatpak.url = "github:gmodena/nix-flatpak";
-    sanzenvim.url = "github:itscrystalline/sanzenvim";
-    iw2tryhard-dev.url = "github:itscrystalline/iw2tryhard-dev-3.0";
-    occasion.url = "github:itscrystalline/occasion";
+    sanzenvim.url = "git+https://git.iw2tryhard.dev/itscrystalline/sanzenvim";
+    iw2tryhard-dev.url = "git+https://git.iw2tryhard.dev/itscrystalline/iw2tryhard-dev-3.0";
+    occasion.url = "git+https://git.iw2tryhard.dev/itscrystalline/occasion";
     vicinae.url = "github:vicinaehq/vicinae";
     stylix.url = "github:nix-community/stylix/release-25.11";
     stylix-unstable.url = "github:nix-community/stylix";

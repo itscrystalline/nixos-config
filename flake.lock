@@ -559,15 +559,15 @@
       "locked": {
         "lastModified": 1748955067,
         "narHash": "sha256-YuRYTf0gi3plnNGmPHVI7WC6tAgJXFzZbY1vQqX66aE=",
-        "owner": "itscrystalline",
-        "repo": "iw2tryhard-dev-3.0",
+        "ref": "refs/heads/main",
         "rev": "6139216e3a6b671920a5d1f006830405a5530267",
-        "type": "github"
+        "revCount": 49,
+        "type": "git",
+        "url": "https://git.iw2tryhard.dev/itscrystalline/iw2tryhard-dev-3.0"
       },
       "original": {
-        "owner": "itscrystalline",
-        "repo": "iw2tryhard-dev-3.0",
-        "type": "github"
+        "type": "git",
+        "url": "https://git.iw2tryhard.dev/itscrystalline/iw2tryhard-dev-3.0"
       }
     },
     "libgit2": {
@@ -609,17 +609,17 @@
         ]
       },
       "locked": {
-        "lastModified": 1775557912,
-        "narHash": "sha256-Y4aYhTdWSsVxwHKvp/bzEFh8e7AayGbdKrcSblEaTb8=",
-        "owner": "itscrystalline",
-        "repo": "nur-packages",
-        "rev": "b059be38bc8242120a3de6d2db39f091b44f06d0",
-        "type": "github"
+        "lastModified": 1775644443,
+        "narHash": "sha256-LabwRurl/FE+6jKgK1xjQnD5uiH0likyZZHUQagx8BQ=",
+        "ref": "refs/heads/main",
+        "rev": "7ad087d9c3a51611dc94a5ed644a0b1e810db943",
+        "revCount": 54,
+        "type": "git",
+        "url": "https://git.iw2tryhard.dev/itscrystalline/nur-packages"
       },
       "original": {
-        "owner": "itscrystalline",
-        "repo": "nur-packages",
-        "type": "github"
+        "type": "git",
+        "url": "https://git.iw2tryhard.dev/itscrystalline/nur-packages"
       }
     },
     "ndg": {
@@ -1216,15 +1216,15 @@
       "locked": {
         "lastModified": 1746443070,
         "narHash": "sha256-7ygQX7zUsAn5N4jEgD8+wBGUnZ88jJkuKZk/aYXXmE8=",
-        "owner": "itscrystalline",
-        "repo": "occasion",
+        "ref": "refs/heads/main",
         "rev": "5dc455405452a20c460a5786586d653a922eacc2",
-        "type": "github"
+        "revCount": 174,
+        "type": "git",
+        "url": "https://git.iw2tryhard.dev/itscrystalline/occasion"
       },
       "original": {
-        "owner": "itscrystalline",
-        "repo": "occasion",
-        "type": "github"
+        "type": "git",
+        "url": "https://git.iw2tryhard.dev/itscrystalline/occasion"
       }
     },
     "root": {
@@ -1261,17 +1261,17 @@
         "upstream-nur": "upstream-nur"
       },
       "locked": {
-        "lastModified": 1775616458,
-        "narHash": "sha256-cNYxLU1prQZ/Gmdp5IpeFun83U8N4gANb6Z6YciPQ5M=",
-        "owner": "itscrystalline",
-        "repo": "sanzenvim",
-        "rev": "c459158d88621930b2a9aa0ed5d88508e91f7822",
-        "type": "github"
+        "lastModified": 1775672494,
+        "narHash": "sha256-WK+43X1Sj29cKLU7T/O7DwqAcqXDw2XN5odaxXrKpqc=",
+        "ref": "refs/heads/main",
+        "rev": "24ada28da8d5a89a0645175bf77623a5eb4ae181",
+        "revCount": 158,
+        "type": "git",
+        "url": "https://git.iw2tryhard.dev/itscrystalline/sanzenvim"
       },
       "original": {
-        "owner": "itscrystalline",
-        "repo": "sanzenvim",
-        "type": "github"
+        "type": "git",
+        "url": "https://git.iw2tryhard.dev/itscrystalline/sanzenvim"
       }
     },
     "sops-nix": {
