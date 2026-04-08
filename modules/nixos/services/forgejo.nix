@@ -18,14 +18,12 @@
   theme-name = "catppuccin-mocha-pink";
 
   icons = pkgs.stdenvNoCC.mkDerivation {
-    pname = "forgejo-file-icons";
+    name = "forgejo-file-icons";
 
-    src = pkgs.fetchFromGitea {
-      domain = "https://git.cathedral.gg";
-      owner = "Ben";
-      repo = "forgejo-file-icons";
+    src = pkgs.fetchgit {
+      url = "https://git.cathedral.gg/Ben/forgejo-file-icons";
       rev = "2b57afb2c2e04984c2f819600c666a048cd53c81";
-      hash = "sha256-AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=";
+      hash = "sha256-A0VaCxk8eBITP/PFdlpiidLPuCWiHK+7VWDInoqFHMo=";
     };
 
     nativeBuildInputs = [pkgs.bash];
