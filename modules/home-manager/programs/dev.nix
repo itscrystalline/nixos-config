@@ -19,6 +19,8 @@ in {
         nixd
         cargo-mommy
         python3
+
+        forgejo-cli
       ]
       ++ lib.optionals config.hm.gui.enable [
         filezilla
@@ -32,6 +34,7 @@ in {
       git = {
         enable = true;
         settings = {
+          credential.helper = lib.mkBefore ["cache --timeout 216000"];
           user = {
             name = "itscrystalline";
             email = "pvpthadgaming@gmail.com";
@@ -44,6 +47,7 @@ in {
         enable = true;
         gitCredentialHelper.enable = true;
       };
+      git-credential-oauth.enable = true;
 
       direnv = {
         enable = true;
