@@ -48,6 +48,8 @@ nixos: {
 
           "stalwart-smtp-username" = {};
           "stalwart-smtp-password" = {};
+
+          "forgejo-sync" = {};
         }
         else {
           "nextcloud-rclone-password" = {};

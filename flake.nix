@@ -48,6 +48,10 @@
     vicinae.url = "github:vicinaehq/vicinae";
     stylix.url = "github:nix-community/stylix/release-25.11";
     stylix-unstable.url = "github:nix-community/stylix";
+    forgesync = {
+      url = "git+https://codeberg.org/helvetica/forgesync";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = inputs @ {
@@ -147,6 +151,7 @@
       configModule = ./hosts/raine.nix;
       otherModules = [
         nixos-hardware.nixosModules.raspberry-pi-4
+        inputs.forgesync.nixosModules.default
       ];
       userHomeModules = [
         (import ./homes/itscrystalline.nix {

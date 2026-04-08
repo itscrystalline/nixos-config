@@ -44,6 +44,8 @@ in {
   options.crystals-services.forgejo = {
     enable = mkEnableOption "forgejo server";
     runner.enable = mkEnableOption "forgejo actions runner";
+    sync.enable = mkEnableOption "syncing to github from forgejo. requires importing the forgesync.nixosModules.default module.";
+
     directory = mkOption {
       type = types.str;
       description = "Forgejo's state directory.";
@@ -142,6 +144,41 @@ in {
             "node:docker://node:16-bullseye"
             "native:host"
           ];
+        };
+      };
+    })
+    (lib.mkIf (forgejo.enable && forgejo.sync.enable) {
+      services.forgesync = {
+        enable = true;
+        jobs = {
+          github = {
+            source = "${ROOT_URL}/api/v1";
+            target = "github";
+
+            settings = {
+              remirror = true;
+              feature = [
+                "issues"
+                "pull-requests"
+                "actions"
+                "discussions"
+                "releases"
+                "wiki"
+                # "releases"
+                # "projects"
+              ];
+              description-template = "{description} (Mirror of {url})";
+              on-commit = true;
+              mirror-interval = "0h0m0s";
+            };
+
+            secretFile = config.sops.secrets.forgejo-sync.path;
+
+            timerConfig = {
+              OnCalendar = "daily";
+              Persistent = true;
+            };
+          };
         };
       };
     })

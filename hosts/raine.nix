@@ -112,6 +112,7 @@ in {
 
     forgejo = {
       enable = true;
+      sync.enable = true;
       directory = "/mnt/main/services/forgejo";
     };
   };
