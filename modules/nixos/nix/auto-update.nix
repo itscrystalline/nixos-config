@@ -18,7 +18,7 @@
     then builder.user
     else "nixremote";
   hostname = config.networking.hostName;
-  flakeAttr = "github:itscrystalline/nixos-config#nixosConfigurations.${hostname}.config.system.build.toplevel";
+  flakeAttr = "git+https://git.iw2tryhard.dev/itscrystalline/nixos-config#nixosConfigurations.${hostname}.config.system.build.toplevel";
   sshRemote = "${pkgs.openssh}/bin/ssh -i ${sshKey} ${sshUser}@${host}";
   nix = "${config.nix.package.out}/bin/nix";
   nh = "${pkgs.nh}/bin/nh";
@@ -48,7 +48,7 @@ in {
     system.autoUpgrade = lib.mkIf (autoUpdate.enable && autoUpdate.type == "self") {
       enable = true;
       persistent = true;
-      flake = "github:itscrystalline/nixos-config";
+      flake = "git+https://git.iw2tryhard.dev/itscrystalline/nixos-config";
       upgrade = false;
       runGarbageCollection = true;
       inherit (autoUpdate) dates;
