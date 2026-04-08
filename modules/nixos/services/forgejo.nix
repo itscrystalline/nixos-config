@@ -17,6 +17,29 @@
   };
   theme-name = "catppuccin-mocha-pink";
 
+  icons = pkgs.stdenvNoCC.mkDerivation {
+    pname = "forgejo-file-icons";
+
+    src = pkgs.fetchFromGitea {
+      domain = "https://git.cathedral.gg";
+      owner = "Ben";
+      repo = "forgejo-file-icons";
+      rev = "2b57afb2c2e04984c2f819600c666a048cd53c81";
+      hash = "sha256-AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=";
+    };
+
+    nativeBuildInputs = [pkgs.bash];
+
+    buildPhase = ''
+      bash ./build.sh
+    '';
+    installPhase = ''
+      mkdir -p $out
+      cp -r icons $out/icons
+      cp templates/custom/header.tmpl $out/header.tmpl
+    '';
+  };
+
   DOMAIN = "git.iw2tryhard.dev";
   ROOT_URL = "https://${DOMAIN}/";
 in {
@@ -48,6 +71,12 @@ in {
         "d '${config.services.forgejo.customDir}/public/assets' - forgejo forgejo - -"
         "d '${config.services.forgejo.customDir}/public/assets/css' - forgejo forgejo - -"
         "C+ '${config.services.forgejo.customDir}/public/assets/css/theme-${theme-name}.css' - forgejo forgejo - ${theme}/theme-${theme-name}.css"
+
+        "d '${config.services.forgejo.customDir}/public/assets/icons' - forgejo forgejo - ${icons}/icons"
+
+        "d '${config.services.forgejo.customDir}/templates' - forgejo forgejo - -"
+        "d '${config.services.forgejo.customDir}/templates/custom' - forgejo forgejo - -"
+        "C+ '${config.services.forgejo.customDir}/templates/custom/header.tmpl' - forgejo forgejo - ${icons}/header.tmpl"
       ];
 
       services = {
