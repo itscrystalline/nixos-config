@@ -44,7 +44,7 @@ in {
   options.crystals-services.forgejo = {
     enable = mkEnableOption "forgejo server";
     runner.enable = mkEnableOption "forgejo actions runner";
-    sync.enable = mkEnableOption "syncing to github from forgejo. requires importing the forgesync.nixosModules.default module.";
+    sync.enable = mkEnableOption "syncing to github from forgejo. requires importing the forgesync.nixosModules.default module";
 
     directory = mkOption {
       type = types.str;
