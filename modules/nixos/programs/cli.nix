@@ -29,7 +29,6 @@ in {
     };
 
     environment.systemPackages = with pkgs; [
-      vim
       neovim
       wget
       curl

@@ -1,23 +1,42 @@
-{pkgs, ...}: {
-  imports = [./jocelyn];
+{
+  pkgs,
+  modulesPath,
+  ...
+}: {
+  imports = [
+    "${modulesPath}/profiles/qemu-guest.nix"
+    ./jocelyn
+  ];
 
   core = {
     name = "jocelyn";
     primaryUser = "itscrystalline";
     primaryUserSshKeys = [
-      ""
-      ""
-      ""
+      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIFsl6Q8ewf/4/GXNdOQTliXM8Njms8PwSQNjG0zgy/Cf itscrystalline@rhys"
+      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIB6BYLHO3EdqneIpmTsZxLE+EI1IAHOVlkPbdBRuci2J itscrystalline@mingzhu"
+      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIFHr3s1d8yhjE+dcaqkXHJIXSAeMyEy72Bzc6eJmw9Eb itscrystalline@raine"
     ];
 
     # Managed by hosts/jocelyn/default.nix disko layout.
-    fileSystems = {};
-
-    arch = "x86_64-linux";
-    localization = {
-      timezone = "Asia/Bangkok";
-      locale = "en_US.UTF-8";
+    fileSystems = {
+      "/" = {
+        device = "/dev/sda1";
+        fsType = "ext4";
+      };
+      "/boot" = {
+        device = "/dev/sda16";
+        fsType = "ext4";
+      };
+      "/boot/efi" = {
+        device = "/dev/sda15";
+        fsType = "vfat";
+        options = ["umask=0077"];
+      };
     };
+
+    stateVersion = "25.11";
+    arch = "x86_64-linux";
+    localization.timezone = "Asia/Bangkok";
   };
 
   programs.enable = true;
@@ -37,11 +56,8 @@
   };
 
   boot = {
-    bootloader = "systemd-boot";
-    mountPoint = "/boot";
-    stage1AvailableModules = ["ahci" "nvme" "xhci_pci" "usbhid" "sd_mod"];
+    bootloader = "grub";
+    mountPoint = "/boot/efi";
     verbosity = "verbose";
   };
-
-  kernel.package = pkgs.linuxPackages;
 }
