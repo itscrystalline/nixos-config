@@ -93,42 +93,6 @@
       };
     };
     forgejo.runner.enable = true;
-
-    stalwart = {
-      enable = false; # curse you oracle with your port 25
-      host = "iw2tryhard.dev";
-      webUIHost = "stalwart.crys";
-      mailboxes = {
-        "postmaster" = {
-          fullName = "Crystal, the Postmistress";
-          email = "postmaster@iw2tryhard.dev";
-          postmaster = true;
-          passwordFile = config.sops.secrets.stalwart-admin-password.path;
-        };
-
-        "real" = {
-          fullName = "Thad Choyrum";
-          email = "real@iw2tryhard.dev";
-          passwordFile = config.sops.secrets.stalwart-real-password.path;
-        };
-        "nextcloud" = {
-          fullName = "Crystal's Nextcloud";
-          email = "nc@iw2tryhard.dev";
-          passwordFile = config.sops.secrets.stalwart-nc-password.path;
-        };
-        "forgejo" = {
-          fullName = "Crystal's Forgejo";
-          email = "git@iw2tryhard.dev";
-          passwordFile = config.sops.secrets.stalwart-git-password.path;
-        };
-        "crystal" = {
-          fullName = "Crystal";
-          email = "crystal@iw2tryhard.dev";
-          passwordFile = config.sops.secrets.stalwart-itscrystalline-password.path;
-          aliases = ["tryhard@iw2tryhard.dev" "colonthree@iw2tryhard.dev"];
-        };
-      };
-    };
   };
 
   nix = {
@@ -148,7 +112,8 @@
     };
   };
 
-  kernel.package = pkgs.linuxKernel.packages.linux_6_12;
+  # LTS
+  kernel.package = pkgs.linuxPackages;
   boot = {
     bootloader = "grub";
     mountPoint = "/boot/efi";

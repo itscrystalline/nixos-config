@@ -47,7 +47,11 @@
       enable = true;
       role = "server";
     };
-    stalwart.enable = true;
+    stalwart = {
+      enable = false;
+      host = "iw2tryhard.dev";
+      webUIHost = "stalwart.crys";
+    };
   };
 
   nix = {
@@ -55,6 +59,8 @@
     keepGenerations = 3;
   };
 
+  # LTS
+  kernel.package = pkgs.linuxPackages;
   boot = {
     bootloader = "grub";
     mountPoint = "/boot/efi";
