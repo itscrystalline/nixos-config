@@ -5,15 +5,6 @@
 }: let
   inherit (config.crystals-services) stalwart;
   enabled = stalwart.enable;
-  #
-  # mkMailBoxes = mailboxes:
-  #   map (mailbox: {
-  #     inherit (mailbox) name;
-  #     class = "individual";
-  #     description = mailbox.value.fullName;
-  #     secret = "%{file:${mailbox.value.passwordFile}}%";
-  #     email = [mailbox.value.email] ++ mailbox.value.aliases;
-  #   }) (lib.attrsToList mailboxes);
 in {
   options.crystals-services.stalwart = {
     enable = lib.mkEnableOption "stalwart mail server";
@@ -35,65 +26,12 @@ in {
       description = "Nginx virtual host name to proxy stalwart web UI under. Null to disable.";
       default = "stalwart.${stalwart.host}";
     };
-
-    # mailboxes = lib.mkOption {
-    #   type = lib.types.attrsOf (lib.types.submodule {
-    #     options = {
-    #       fullName = lib.mkOption {
-    #         type = lib.types.str;
-    #         default = "";
-    #         description = "The full name of this user.";
-    #       };
-    #       email = lib.mkOption {
-    #         type = lib.types.str;
-    #         default = "";
-    #         description = "Email address for this user.";
-    #       };
-    #       passwordFile = lib.mkOption {
-    #         type = lib.types.str;
-    #         default = "";
-    #         description = "Path to sops secret containing password.";
-    #       };
-    #       postmaster = lib.mkOption {
-    #         type = lib.types.bool;
-    #         default = false;
-    #         description = "Wether this user is the postmaster.";
-    #       };
-    #       aliases = lib.mkOption {
-    #         type = lib.types.listOf lib.types.str;
-    #         default = [];
-    #         description = "List of email aliases for this user.";
-    #       };
-    #     };
-    #   });
-    #   default = {};
-    #   description = "Mailbox configuration";
-    #   example = lib.literalExpression ''
-    #     {
-    #       "user01@example.dev" = {
-    #         password = config.sops.secrets.stalwart-user01-password.path;
-    #         aliases = [];
-    #       };
-    #       "main@example.dev" = {
-    #         password = config.sops.secrets.stalwart-main-password.path;
-    #         aliases = [ "alias1@example.dev" "alias2@example.dev" ];
-    #       };
-    #     }
-    #   '';
-    # };
   };
 
   config = lib.mkIf enabled {
     sops.secrets = {
       stalwart-admin-password.owner = "stalwart-mail";
-      stalwart-real-password.owner = "stalwart-mail";
-      stalwart-itscrystalline-password.owner = "stalwart-mail";
-      stalwart-nc-password.owner = "stalwart-mail";
-      stalwart-git-password.owner = "stalwart-mail";
       stalwart-cloudflare-token.owner = "stalwart-mail";
-
-      stalwart-smtp-username.owner = "stalwart-mail";
-      stalwart-smtp-password.owner = "stalwart-mail";
     };
     services.stalwart-mail = {
       enable = true;
@@ -151,7 +89,7 @@ in {
           directory = "https://acme-v02.api.letsencrypt.org/directory";
           challenge = "dns-01";
           contact = "real@${stalwart.host}";
-          domains = ["${stalwart.host}" "mx1.${stalwart.host}"];
+          domains = ["${stalwart.host}" "mx1.${stalwart.host}" "mail.${stalwart.host}"];
           provider = "cloudflare";
           secret = "%{file:/run/credentials/stalwart-mail.service/cloudflare_token}%";
         };
@@ -204,24 +142,8 @@ in {
               "if" = "is_local_domain('*', rcpt_domain)";
               "then" = "'local'";
             }
-            {"else" = "'oracle_smtp'";}
+            {"else" = "'mx'";}
           ];
-
-          # oracle cloud relay
-          route.oracle_smtp = {
-            type = "relay";
-            address = "smtp.email.ap-singapore-1.oci.oraclecloud.com";
-            port = 587;
-            protocol = "smtp";
-            auth = {
-              username = "%{file:/run/credentials/stalwart-mail.service/smtp_username}%";
-              password = "%{file:/run/credentials/stalwart-mail.service/smtp_password}%";
-            };
-            tls = {
-              implicit = false;
-              allow-invalid-certs = false;
-            };
-          };
         };
       };
     };
