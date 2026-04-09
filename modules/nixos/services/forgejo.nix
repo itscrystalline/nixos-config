@@ -162,9 +162,8 @@ in {
                 "pull-requests"
                 "actions"
                 "discussions"
-                "releases"
                 "wiki"
-                # "releases"
+                "releases"
                 # "projects"
               ];
               description-template = "{description} (Mirror of {url})";
