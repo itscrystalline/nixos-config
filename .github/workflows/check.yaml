@@ -22,15 +22,6 @@ jobs:
 #        oauth-secret: ${{ secrets.TS_OAUTH_SECRET }}
 #        tags: tag:ci
 
-    - name: Install Nix
-      uses: cachix/install-nix-action@v30
-      with:
-        nix_path: nixpkgs=channel:nixos-25.11
-        extra_nix_config: |
-          extra-substituters = http://cache.crys
-          extra-trusted-public-keys = mingzhu:V0KsUipFnrBNsfUD8VI0rFXQpgE3KKJfRby9Jm8cLTQ=
-          fallback = true
-          post-build-hook = /tmp/post-build-hook.sh
     - name: Set up post build hook
       run: |
         cat > /tmp/post-build-hook.sh << EOF
@@ -41,6 +32,15 @@ jobs:
         fi
         EOF
         chmod +x /tmp/post-build-hook.sh
+    - name: Install Nix
+      uses: cachix/install-nix-action@v30
+      with:
+        nix_path: nixpkgs=channel:nixos-25.11
+        extra_nix_config: |
+          extra-substituters = http://cache.crys
+          extra-trusted-public-keys = mingzhu:V0KsUipFnrBNsfUD8VI0rFXQpgE3KKJfRby9Jm8cLTQ=
+          fallback = true
+          post-build-hook = /tmp/post-build-hook.sh
 
     - name: Check
       run: |
