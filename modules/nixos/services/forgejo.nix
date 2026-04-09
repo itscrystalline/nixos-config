@@ -136,11 +136,18 @@ in {
           # tokenFile should be in format TOKEN=<secret>, since it's EnvironmentFile for systemd
           tokenFile = config.sops.secrets.forgejo-runner-token.path;
           labels = [
-            "ubuntu-latest:docker://ghcr.io/catthehacker/ubuntu:act-latest"
-            "ubuntu-24.04:docker://ghcr.io/catthehacker/ubuntu:act-24.04"
-            "ubuntu-22.04:docker://ghcr.io/catthehacker/ubuntu:act-22.04"
-            "ubuntu-20.04:docker://ghcr.io/catthehacker/ubuntu:act-20.04"
-            "ubuntu-18.04:docker://ghcr.io/catthehacker/ubuntu:act-18.04"
+            "ubuntu-latest:docker://ghcr.io/catthehacker/ubuntu:runner-latest"
+            "ubuntu-24.04:docker://ghcr.io/catthehacker/ubuntu:runner-24.04"
+            "ubuntu-22.04:docker://ghcr.io/catthehacker/ubuntu:runner-22.04"
+            "ubuntu-20.04:docker://ghcr.io/catthehacker/ubuntu:runner-20.04"
+            "ubuntu-18.04:docker://ghcr.io/catthehacker/ubuntu:runner-18.04"
+
+            "ubuntu-latest-arm:docker://ghcr.io/catthehacker/ubuntu:runner-latest"
+            "ubuntu-24.04-arm:docker://ghcr.io/catthehacker/ubuntu:runner-24.04"
+            "ubuntu-22.04-arm:docker://ghcr.io/catthehacker/ubuntu:runner-22.04"
+            "ubuntu-20.04-arm:docker://ghcr.io/catthehacker/ubuntu:runner-20.04"
+            "ubuntu-18.04-arm:docker://ghcr.io/catthehacker/ubuntu:runner-18.04"
+
             "node:docker://node:16-bullseye"
             "native:host"
           ];
