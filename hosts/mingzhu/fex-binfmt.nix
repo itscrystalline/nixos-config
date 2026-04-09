@@ -1,10 +1,9 @@
 {pkgs, ...}: {
   # Register FEX as the binfmt handler for x86_64
   boot.binfmt.registrations."x86_64-linux" = {
-    interpreter = "${pkgs.fex}/bin/FEXInterpreter";
+    interpreter = "${pkgs.fex}/bin/FEX";
     magicOrExtension = ''\x7fELF\x02\x01\x01\x00\x00\x00\x00\x00\x00\x00\x00\x00\x02\x00\x3e\x00'';
     mask = ''\xff\xff\xff\xff\xff\xfe\xfe\x00\xff\xff\xff\xff\xff\xff\xff\xff\xfe\xff\xff\xff'';
-    fixBinary = true;
     preserveArgvZero = true;
     openBinary = true;
     matchCredentials = true;
@@ -21,12 +20,11 @@
 
   systemd.tmpfiles.rules = [
     "d /var/lib/fex-emu 0755 root root -"
-    "d /var/lib/fex-emu/RootFS 0755 root root -"
   ];
 
   system.activationScripts.fexRootFS = ''
-    if [ ! -d /var/lib/fex-emu/RootFS/Ubuntu_22_04 ]; then
-      HOME=/var/lib/fex-emu ${pkgs.fex}/bin/FEXRootFSFetcher --yes
+    if [ ! -f /var/lib/fex-emu/RootFS/Ubuntu_24_04.sqsh ]; then
+      HOME=/var/lib/fex-emu ${pkgs.fex}/bin/FEXRootFSFetcher --distro-name=ubuntu --distro-version=24.04 --assume-yes --as-is
       mv /var/lib/fex-emu/.fex-emu/* /var/lib/fex-emu/
       rm -r /var/lib/fex-emu/.fex-emu
     fi
@@ -34,6 +32,7 @@
 
   environment.etc."fex-emu/Config.json".text = builtins.toJSON {
     Config.RootFS = "/var/lib/fex-emu/RootFS/Ubuntu_24_04.sqsh";
+    ThunksDB = {};
   };
 
   environment.systemPackages = with pkgs; [fex squashfsTools squashfuse];
