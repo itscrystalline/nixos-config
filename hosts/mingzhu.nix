@@ -88,7 +88,7 @@
       customDNS = {
         "dorm" = "100.122.114.13"; # liriel
         "cache" = "100.95.62.30"; # mingzhu
-        "stalwart" = "100.95.62.30"; # mingzhu
+        "stalwart" = "100.76.244.115"; # jocelyn
         "" = "100.125.37.13"; # raine
       };
     };
