@@ -28,6 +28,7 @@
 
   crystals-services = {
     ssh.enable = true;
+    nginx.enable = true;
     tailscale = {
       enable = true;
       role = "server";
@@ -44,6 +45,7 @@
   nix = {
     nh.enable = true;
     keepGenerations = 3;
+    autoUpdate.enable = true;
   };
 
   # LTS
