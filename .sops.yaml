@@ -10,7 +10,7 @@ keys:
   - &liriel age1a98c7q8la7n6dslwxcqwg4cwf8vks3r9exq68xzt7pmvuayzrsvs3qhfw9
   - &raine age1zgfjcs8703v8alw5vn7lzac3j4fu3c4hqse8x60du2v3aw9rdsrstt8rr0
   - &mingzhu age1atnaedc648xx0czkj89ydtfnqgwkx0wdkpknzr2mj8eksg2f8e7qcggh8e
-  - &jocelyn age1q3rq0wlxdd30t2707xvlxxsknmnwd8alfstfkx62p7nnfzktka4q3pmxuz
+  - &jocelyn age12s7x9zlp6f76gh426p520v6m3mugx7d46uq0zxg8azc3eqdq6qksdt8r53
 
 creation_rules:
   - path_regex: secrets/secrets\.yaml$

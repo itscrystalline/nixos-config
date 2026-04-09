@@ -39,6 +39,8 @@
     };
   };
 
+  network.dhcp = false;
+
   nix = {
     nh.enable = true;
     keepGenerations = 3;
