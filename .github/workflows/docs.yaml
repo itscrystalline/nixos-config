@@ -32,7 +32,8 @@ jobs:
     - name: Commit
       uses: EndBug/add-and-commit@v9
       with:
-        default_author: github_actions
+        author_name: "crystal's forgejo actions runner"
+        author_email: runner@git.iw2tryhard.dev
         push: true
         message: 'chore: update docs (automated)'
 

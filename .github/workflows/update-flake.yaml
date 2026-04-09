@@ -17,12 +17,12 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Set up Tailscale
-        uses: tailscale/github-action@v4
-        with:
-          oauth-client-id: ${{ secrets.TS_OAUTH_CLIENT_ID }}
-          oauth-secret: ${{ secrets.TS_OAUTH_SECRET }}
-          tags: tag:ci
+      # - name: Set up Tailscale
+      #   uses: tailscale/github-action@v4
+      #   with:
+      #     oauth-client-id: ${{ secrets.TS_OAUTH_CLIENT_ID }}
+      #     oauth-secret: ${{ secrets.TS_OAUTH_SECRET }}
+      #     tags: tag:ci
 
       - name: Install Nix
         uses: cachix/install-nix-action@v30
@@ -49,7 +49,8 @@ jobs:
       - name: Commit
         uses: EndBug/add-and-commit@v9
         with:
-          default_author: github_actions
+          author_name: "crystal's forgejo actions runner"
+          author_email: runner@git.iw2tryhard.dev
           push: true
           message: |
             chore: update flake (automated)

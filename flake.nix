@@ -5,6 +5,11 @@
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.11";
     nixpkgs-unstable.url = "nixpkgs/nixos-unstable";
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
+    disko = {
+      url = "github:nix-community/disko";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    nixos-facter-modules.url = "github:numtide/nixos-facter-modules";
     sops-nix = {
       url = "github:Mic92/sops-nix";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -182,9 +187,17 @@
         })
       ];
     };
+    jocelyn = mkHost {
+      arch = "x86_64-linux";
+      configModule = ./hosts/jocelyn.nix;
+      otherModules = [
+        inputs.disko.nixosModules.disko
+        inputs.nixos-facter-modules.nixosModules.facter
+      ];
+    };
   in {
     nixosConfigurations = {
-      inherit rhys raine liriel mingzhu;
+      inherit rhys raine liriel mingzhu jocelyn;
     };
     homeConfigurations = {
       "opc" = mkStandaloneHome "aarch64-linux" [./homes/opc.nix];
