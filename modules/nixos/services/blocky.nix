@@ -111,8 +111,10 @@ in {
             strategy = "fast";
           };
         };
-
-        caching.prefetching = true;
+        caching = {
+          prefetching = true;
+          cacheTimeNegative = -1;
+        };
         prometheus.enable = config.crystals-services.monitoring.enable;
       };
     };
