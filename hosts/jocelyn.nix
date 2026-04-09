@@ -1,7 +1,6 @@
 {
   pkgs,
   modulesPath,
-  lib,
   ...
 }: {
   imports = [
@@ -18,6 +17,8 @@
       "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIFHr3s1d8yhjE+dcaqkXHJIXSAeMyEy72Bzc6eJmw9Eb itscrystalline@raine"
     ];
 
+    # Managed by hosts/jocelyn/default.nix disko layout.
+    fileSystems = {};
     stateVersion = "25.11";
     arch = "x86_64-linux";
     localization.timezone = "Asia/Bangkok";
@@ -32,7 +33,7 @@
       role = "server";
     };
     stalwart = {
-      enable = false;
+      enable = true;
       host = "iw2tryhard.dev";
       webUIHost = "stalwart.crys";
     };
