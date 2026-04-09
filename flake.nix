@@ -187,6 +187,7 @@
         })
       ];
     };
+    # nix run github:nix-community/nixos-anywhere -- --generate-hardware-config nixos-facter ./hosts/jocelyn/facter.json  --flake .#jocelyn --target-host root@<ip address>
     jocelyn = mkHost {
       arch = "x86_64-linux";
       configModule = ./hosts/jocelyn.nix;
