@@ -1,6 +1,7 @@
 {
   pkgs,
   modulesPath,
+  lib,
   ...
 }: {
   imports = [
@@ -16,23 +17,6 @@
       "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIB6BYLHO3EdqneIpmTsZxLE+EI1IAHOVlkPbdBRuci2J itscrystalline@mingzhu"
       "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIFHr3s1d8yhjE+dcaqkXHJIXSAeMyEy72Bzc6eJmw9Eb itscrystalline@raine"
     ];
-
-    # Managed by hosts/jocelyn/default.nix disko layout.
-    fileSystems = {
-      "/" = {
-        device = "/dev/sda1";
-        fsType = "ext4";
-      };
-      "/boot" = {
-        device = "/dev/sda16";
-        fsType = "ext4";
-      };
-      "/boot/efi" = {
-        device = "/dev/sda15";
-        fsType = "vfat";
-        options = ["umask=0077"];
-      };
-    };
 
     stateVersion = "25.11";
     arch = "x86_64-linux";
