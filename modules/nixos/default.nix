@@ -31,7 +31,7 @@ in {
 
     fileSystems = lib.mkOption {
       type = lib.types.attrs;
-      description = "Filesystems to configure in /etc/fstab. Mirrors that of NixOS's ow.";
+      description = "Filesystems to configure in /etc/fstab. Mirrors that of NixOS's.";
     };
 
     arch = lib.mkOption {
