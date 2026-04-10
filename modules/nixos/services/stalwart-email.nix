@@ -41,9 +41,6 @@ in {
       credentials = {
         admin_pass = config.sops.secrets.stalwart-admin-password.path;
         cloudflare_token = config.sops.secrets.stalwart-cloudflare-token.path;
-
-        smtp_username = config.sops.secrets.stalwart-smtp-username.path;
-        smtp_password = config.sops.secrets.stalwart-smtp-password.path;
       };
 
       settings = {
