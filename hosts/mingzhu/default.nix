@@ -1,5 +1,5 @@
 {lib, ...}: {
-  imports = [./root.nix ./fex-binfmt.nix];
+  imports = [./root.nix ./x86_64-emu.nix];
 
   boot.tmp.cleanOnBoot = true;
   boot.loader.grub = {
