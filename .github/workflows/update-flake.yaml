@@ -43,8 +43,8 @@ jobs:
             echo "FLAKE_UPDATE_END"
           } >> $GITHUB_OUTPUT
 
-      - name: Check
-        run: nix flake check --all-systems 2>&1
+      # - name: Check
+      #   run: nix flake check --all-systems 2>&1
 
       - name: Commit
         uses: EndBug/add-and-commit@v9

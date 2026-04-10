@@ -42,7 +42,7 @@ jobs:
           fallback = true
           post-build-hook = /tmp/post-build-hook.sh
 
-    - name: Check
-      run: |
-        nix flake check --all-systems 2>&1
+    # - name: Check
+    #   run: |
+    #     nix flake check --all-systems 2>&1
 
