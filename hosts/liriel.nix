@@ -76,7 +76,6 @@
       {
         hostName = "mingzhu";
         user = "nixremote";
-        sshKey = "/etc/nix/builder-key";
         hostPublicKey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIOdZ5SCnebaW69b4xDaeGnyaV0as6UF+0C881rIYCFGU root@main";
         systems = ["aarch64-linux"];
         maxJobs = 4;

@@ -104,7 +104,7 @@
       user = "nixremote";
       authorizedKeys = [
         "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIKmCgHeKY5eCVXX1pSXWmc9x7i2Cfnt6qo+vpw4SsSmb nix-daemon@raine"
-        "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIPNm1+bZZ29m4kzKL2goSmrb8ylsrC+FkwVvI4fS8U5M nix-daemon@liriel"
+        "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAILTUZEre3b7gVl3JIl5lQQvF4IXr5Fgum8b4QPHi5UYa nix-daemon@liriel"
       ];
       systems = ["aarch64-linux"];
       maxJobs = 4;
