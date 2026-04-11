@@ -143,6 +143,13 @@ in {
             {"else" = "'mx'";}
           ];
         };
+
+        tracer.stdout = {
+          type = "stdout";
+          level = "trace";
+          ansi = false;
+          enable = true;
+        };
       };
     };
 
