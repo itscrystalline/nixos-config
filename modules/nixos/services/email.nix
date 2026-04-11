@@ -69,6 +69,7 @@ in {
       certificateScheme = "acme-nginx";
       openFirewall = true;
       loginAccounts = mkMailboxes mailserver.mailboxes;
+      dmarcReporting.enable = true;
     };
 
     security.acme = {
