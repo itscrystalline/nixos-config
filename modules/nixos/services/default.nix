@@ -22,7 +22,7 @@
     ./create-ap.nix
     ./localsend.nix
     ./forgejo.nix
-    ./stalwart-email.nix
+    ./email.nix
   ];
 
   systemd = {

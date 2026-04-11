@@ -14,6 +14,10 @@
       url = "github:Mic92/sops-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    simple-nixos-mailserver = {
+      url = "gitlab:simple-nixos-mailserver/nixos-mailserver/nixos-25.11";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     nix-cachyos-kernel.url = "github:xddxdd/nix-cachyos-kernel/release";
     home-manager = {
       url = "github:nix-community/home-manager/release-25.11";
@@ -194,6 +198,7 @@
       otherModules = [
         inputs.disko.nixosModules.disko
         inputs.nixos-facter-modules.nixosModules.facter
+        inputs.simple-nixos-mailserver.nixosModules.default
       ];
     };
   in {
