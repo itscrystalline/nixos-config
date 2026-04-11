@@ -19,7 +19,7 @@ in {
 
     home.packages = with pkgs; [
       qemu-user
-      winboat
+      unstable.winboat
     ];
   };
 }
