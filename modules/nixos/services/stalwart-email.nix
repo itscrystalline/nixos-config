@@ -108,10 +108,18 @@ in {
           };
         };
 
+        imap = {
+          auth = {
+            directory = "'internal'";
+            mechanisms = "[plain]";
+          };
+        };
+
         store.rocksdb = {
           type = "rocksdb";
           path = "/var/lib/stalwart-mail";
         };
+
         storage = {
           data = "rocksdb";
           fts = "rocksdb";
@@ -120,13 +128,10 @@ in {
           directory = "internal";
         };
 
-        directory = {
-          imap.lookup.domains = ["${stalwart.host}"];
-          internal = {
-            type = "internal";
-            store = "rocksdb";
-            lookup.domains = ["${stalwart.host}"];
-          };
+        directory.internal = {
+          type = "internal";
+          store = "rocksdb";
+          lookup.domains = ["${stalwart.host}"];
         };
 
         authentication.fallback-admin = {
