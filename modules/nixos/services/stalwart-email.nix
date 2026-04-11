@@ -94,7 +94,7 @@ in {
         session = {
           auth = {
             mechanisms = "[plain]";
-            directory = "'in-memory'";
+            directory = "'internal'";
           };
           rcpt = {
             directory = "'internal'";
