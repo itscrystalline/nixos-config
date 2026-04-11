@@ -43,8 +43,10 @@
   network.dhcp = false;
 
   nix = {
-    nh.enable = true;
-    nh.keepSince = "3d"; # more agressive gcing in think, 30gb is nowhere near enough for ts
+    nh = {
+      enable = true;
+      keepSince = "1d"; # more agressive gcing in think, 30gb is nowhere near enough for ts
+    };
     keepGenerations = 3;
     autoUpdate.enable = true;
   };
