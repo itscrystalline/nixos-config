@@ -11,8 +11,13 @@
   builder = lib.findFirst (b: b.hostName == host) null config.nix.remoteBuilders;
   sshKey =
     if builder != null
-    then builder.sshKey
-    else "/etc/nix/builder-key";
+    then
+      (
+        if builder.sshKey != null
+        then builder.sshKey
+        else config.sops.secrets."${host}-builder-key-${config.core.name}".path
+      )
+    else throw "No defined remote builder ${host}!";
   sshUser =
     if builder != null
     then builder.user
