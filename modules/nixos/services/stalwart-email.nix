@@ -125,6 +125,7 @@ in {
           internal = {
             type = "internal";
             store = "rocksdb";
+            lookup.domains = ["${stalwart.host}"];
           };
         };
 
