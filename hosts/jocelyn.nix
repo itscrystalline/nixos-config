@@ -33,10 +33,21 @@
       enable = true;
       role = "server";
     };
-    stalwart = {
+    mailserver = {
       enable = true;
       host = "iw2tryhard.dev";
-      webUIHost = "stalwart.crys";
+      mailboxes = {
+        "real" = {};
+        "crystal" = {
+          aliases = ["tryhard"];
+        };
+        "git" = {};
+        "nc" = {};
+
+        "postmaster" = {
+          aliases = ["abuse" "dmca"];
+        };
+      };
     };
   };
 
