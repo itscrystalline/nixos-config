@@ -16,6 +16,12 @@ in {
         example = "1w";
         default = "1w";
       };
+      dates = lib.mkOption {
+        type = lib.types.str;
+        description = "How often to run `nh clean`. systemd timer format.";
+        example = "weekly";
+        default = "weekly";
+      };
     };
     keepGenerations = lib.mkOption {
       type = lib.types.number;
@@ -27,8 +33,11 @@ in {
   config = {
     programs.nh = {
       inherit (nix.nh) enable;
-      clean.enable = true;
-      clean.extraArgs = "--keep-since ${builtins.toString nix.nh.keepSince} --keep ${builtins.toString nix.keepGenerations}";
+      clean = {
+        inherit (nix.nh) dates;
+        enable = true;
+        extraArgs = "--keep-since ${builtins.toString nix.nh.keepSince} --keep ${builtins.toString nix.keepGenerations}";
+      };
     };
   };
 }
