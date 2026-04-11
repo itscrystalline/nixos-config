@@ -115,22 +115,17 @@ in {
           };
         };
 
-        store.rocksdb = {
-          type = "rocksdb";
-          path = "/var/lib/stalwart-mail";
-        };
-
         storage = {
-          data = "rocksdb";
-          fts = "rocksdb";
-          blob = "rocksdb";
-          lookup = "rocksdb";
+          data = "db";
+          fts = "db";
+          blob = "db";
+          lookup = "db";
           directory = "internal";
         };
 
         directory.internal = {
           type = "internal";
-          store = "rocksdb";
+          store = "db";
           lookup.domains = ["${stalwart.host}"];
         };
 
