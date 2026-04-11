@@ -49,6 +49,16 @@
     };
     keepGenerations = 3;
     autoUpdate.enable = true;
+
+    asBuilderConfig = {
+      user = "nixremote";
+      authorizedKeys = [
+        "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIPMzemcNoFavKSsUfBkk1FzgQWlYN3lLFPZaHGByjc6L nix-daemon@mingzhu"
+      ];
+      systems = ["x86_64-linux"];
+      maxJobs = 1;
+      speedFactor = 1;
+    };
   };
 
   # LTS
