@@ -36,7 +36,7 @@ in {
       clean = {
         inherit (nix.nh) dates;
         enable = true;
-        extraArgs = "--keep-since ${builtins.toString nix.nh.keepSince} --keep ${builtins.toString nix.keepGenerations}";
+        extraArgs = "--keep-since ${builtins.toString nix.nh.keepSince} --keep ${builtins.toString nix.keepGenerations} --optimise";
       };
     };
   };
