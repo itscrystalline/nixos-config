@@ -106,14 +106,14 @@ in {
             mailer = {
               ENABLED = true;
               PROTOCOL = "smtps";
-              SMTP_ADDR = "smtp.gmail.com";
+              SMTP_ADDR = "mx1.iw2tryhard.dev";
               SMTP_PORT = 465;
               FROM = "git@iw2tryhard.dev";
-              USER = "choyrumthad@gmail.com";
+              USER = "git@iw2tryhard.dev";
             };
           };
           secrets = {
-            mailer.PASSWD = config.sops.secrets.mail-password.path;
+            mailer.PASSWD = config.sops.secrets.forgejo-mail-password.path;
           };
         };
 

@@ -25,8 +25,7 @@ nixos: {
 
           "nextcloud-admin-password" = {};
           "nextcloud-admin-stats-token" = {};
-
-          "mail-password" = {};
+          "nextcloud-mail-password" = {};
 
           "cloudflared-credentials" = {};
 
@@ -37,6 +36,7 @@ nixos: {
           "harmonia-secret-key" = {};
 
           "forgejo-admin-password" = {};
+          "forgejo-mail-password" = {};
           "forgejo-runner-token" = {};
           "forgejo-sync" = {};
         }

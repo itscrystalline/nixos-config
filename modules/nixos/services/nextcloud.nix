@@ -31,7 +31,6 @@ in {
     sops.secrets = {
       "nextcloud-admin-password".owner = "nextcloud";
       "nextcloud-admin-stats-token".mode = "0444";
-      "stalwart-nc-password".owner = "nextcloud";
     };
     services = {
       nextcloud = {
@@ -65,13 +64,13 @@ in {
         };
         extraAppsEnable = true;
 
-        secrets.mail_smtppassword = config.sops.secrets.mail-password.path;
+        secrets.mail_smtppassword = config.sops.secrets.nextcloud-mail-password.path;
         settings = {
           updatechecker = false;
           default_phone_region = "TH";
 
           mail_smtpmode = "smtp";
-          mail_smtphost = "smtp.gmail.com";
+          mail_smtphost = "mx1.iw2tryhard.dev";
           mail_smtpport = 465;
           mail_smtpsecure = "ssl";
           mail_smtpauth = true;
