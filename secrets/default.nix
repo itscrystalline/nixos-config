@@ -38,10 +38,6 @@ nixos: {
 
           "forgejo-admin-password" = {};
           "forgejo-runner-token" = {};
-
-          "stalwart-admin-password" = {};
-          "stalwart-cloudflare-token" = {};
-
           "forgejo-sync" = {};
         }
         else {
