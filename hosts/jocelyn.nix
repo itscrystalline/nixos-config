@@ -46,6 +46,7 @@
     nh = {
       enable = true;
       keepSince = "1d"; # more agressive gcing in think, 30gb is nowhere near enough for ts
+      dates = "daily";
     };
     keepGenerations = 3;
     autoUpdate.enable = true;
