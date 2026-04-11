@@ -97,7 +97,7 @@ in {
             directory = "'in-memory'";
           };
           rcpt = {
-            directory = "'in-memory'";
+            directory = "'internal'";
             relay = [
               {
                 "if" = "!is_local_domain('*', rcpt_domain) && authenticated_as != ''";
