@@ -109,7 +109,7 @@ in {
 
   config = lib.mkMerge [
     (lib.mkIf (remoteBuilders != []) {
-      config.sops.secrets = builtins.listToAttrs (map (b: {
+      sops.secrets = builtins.listToAttrs (map (b: {
           name = "${b.hostName}-builder-key-${config.core.name}";
           value.mode = "0755";
         })
