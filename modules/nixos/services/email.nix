@@ -1,6 +1,7 @@
 {
   lib,
   config,
+  options,
   ...
 }: let
   inherit (config.crystals-services) mailserver;
@@ -50,10 +51,6 @@ in {
       {
         assertion = mailserver.host != null && mailserver.host != "";
         message = "crystals-services.mailserver.host must be set to a non-empty domain when enabled.";
-      }
-      {
-        assertion = !(config ? mailserver);
-        message = "import `simple-nixos-mailserver.nixosModule` to use `crystals-services.mailserver`.";
       }
     ];
 
