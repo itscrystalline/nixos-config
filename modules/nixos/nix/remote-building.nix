@@ -23,9 +23,9 @@ in {
           };
 
           sshKey = mkOption {
-            type = types.str;
-            default = "/etc/nix/builder-key";
-            description = "Path to private SSH key readable by the nix daemon (root)";
+            type = types.nullOr types.str;
+            default = null;
+            description = "Path to private SSH key readable by the nix daemon (root). If not defined, will pull the sops secret `{remote-hostname}-builder-key-{local-hostname}`.";
           };
 
           hostPublicKey = mkOption {
@@ -109,6 +109,12 @@ in {
 
   config = lib.mkMerge [
     (lib.mkIf (remoteBuilders != []) {
+      config.sops.secrets = builtins.listToAttrs (map (b: {
+          name = "${b.hostName}-builder-key-${config.core.name}";
+          value.mode = "0755";
+        })
+        (builtins.filter (b: b.sshKey == null) remoteBuilders));
+
       nix = {
         distributedBuilds = true;
 
@@ -120,7 +126,11 @@ in {
         # Wire up all builders
         buildMachines =
           map (b: {
-            inherit (b) hostName systems maxJobs speedFactor supportedFeatures sshKey;
+            inherit (b) hostName systems maxJobs speedFactor supportedFeatures;
+            sshKey =
+              if b.sshKey != null
+              then b.sshKey
+              else config.sops.secrets."${b.hostName}-builder-key-${config.core.name}".path;
             sshUser = b.user;
           })
           remoteBuilders;
@@ -132,12 +142,6 @@ in {
           value.publicKey = b.hostPublicKey;
         })
         remoteBuilders);
-
-      # Ensure the SSH key directory exists and has correct permissions
-      system.activationScripts.nixBuilderKeys = ''
-        mkdir -p /etc/nix
-        chmod 755 /etc/nix
-      '';
     })
 
     (lib.mkIf (asBuilderConfig != null) {
