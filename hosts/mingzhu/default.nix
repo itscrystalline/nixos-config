@@ -1,5 +1,5 @@
 {lib, ...}: {
-  imports = [./root.nix ./x86_64-emu.nix];
+  imports = [./root.nix];
 
   boot.tmp.cleanOnBoot = true;
   boot.loader.grub = {
