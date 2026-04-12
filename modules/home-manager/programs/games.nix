@@ -2,7 +2,6 @@
   lib,
   config,
   pkgs,
-  inputs ? {},
   ...
 }: let
   inherit (config.hm.programs) games;
@@ -32,10 +31,7 @@ in {
       ];
 
     services.flatpak.packages = lib.optionals (pkgs.stdenv.isLinux && config.hm.flatpak.enable) [
-      {
-        flatpakref = "https://sober.vinegarhq.org/sober.flatpakref";
-        sha256 = "1pj8y1xhiwgbnhrr3yr3ybpfis9slrl73i0b1lc9q89vhip6ym2l";
-      }
+      "org.vinegarhq.Sober"
     ];
   });
 }
