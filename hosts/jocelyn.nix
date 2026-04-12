@@ -36,6 +36,7 @@
     stalwart = {
       enable = true;
       host = "iw2tryhard.dev";
+      webUIHost = "stalwart.crys";
     };
   };
 

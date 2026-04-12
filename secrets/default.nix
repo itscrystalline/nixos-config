@@ -39,6 +39,9 @@ nixos: {
           "forgejo-mail-password" = {};
           "forgejo-runner-token" = {};
           "forgejo-sync" = {};
+
+          "stalwart-cloudflare-token" = {};
+          "stalwart-admin-password" = {};
         }
         else {
           "nextcloud-rclone-password" = {};
