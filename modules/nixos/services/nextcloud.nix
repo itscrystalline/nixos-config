@@ -76,7 +76,7 @@ in {
           mail_smtpauth = true;
           mail_from_address = "nc";
           mail_domain = "iw2tryhard.dev";
-          mail_smtpname = "choyrumthad@gmail.com";
+          mail_smtpname = "nc@iw2tryhard.dev";
 
           enabledPreviewProviders = [
             "OC\\Preview\\Image"
