@@ -72,7 +72,7 @@ in {
         "d '${config.services.forgejo.customDir}/public/assets/css' - forgejo forgejo - -"
         "C+ '${config.services.forgejo.customDir}/public/assets/css/theme-${theme-name}.css' - forgejo forgejo - ${theme}/theme-${theme-name}.css"
 
-        "d '${config.services.forgejo.customDir}/public/assets/icons' - forgejo forgejo - ${icons}/icons"
+        "C+ '${config.services.forgejo.customDir}/public/assets/icons' - forgejo forgejo - ${icons}/icons"
 
         "d '${config.services.forgejo.customDir}/templates' - forgejo forgejo - -"
         "d '${config.services.forgejo.customDir}/templates/custom' - forgejo forgejo - -"
@@ -91,8 +91,11 @@ in {
               HTTP_PORT = 4985;
               SSH_PORT = lib.head config.services.openssh.ports;
             };
-            # You can temporarily allow registration to create an admin user.
-            service.DISABLE_REGISTRATION = true;
+            service = {
+              # You can temporarily allow registration to create an admin user.
+              DISABLE_REGISTRATION = true;
+              ENABLE_NOTIFY_MAIL = true;
+            };
             # Add support for actions, based on act: https://github.com/nektos/act
             actions = {
               ENABLED = true;
