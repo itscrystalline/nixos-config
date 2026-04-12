@@ -89,9 +89,10 @@ in {
               "Mod+Shift+C".action = spawn "hyprpicker" "-a";
               "Mod+Space".action = lib.mkIf gui.vicinae.enable (spawn "vicinae" "toggle");
               "Mod+E".action = spawn "nautilus" "--new-window";
+              "Mod+M".action = spawn "thunderbird";
               "Mod+I".action = sh ''XDG_CURRENT_DESKTOP="gnome" gnome-control-center'';
               "Mod+V".action = spawn "pavucontrol";
-              "Mod+W".action = spawn (lib.getExe inputs.zen-browser.packages.${pkgs.hostsys}.twilight) "-p" "crystal";
+              "Mod+W".action = spawn "zen-twilight" "-p" "crystal";
               "Mod+B".action = spawn "neovide";
               "Mod+Return".action = spawn "ghostty";
               "Mod+Control+M".action = sh "pgrep youtube-music && niri msg action focus-workspace music || youtube-music --enable-features=UseOzonePlatform --ozone-platform=wayland --enable-wayland-ime &";
@@ -183,6 +184,7 @@ in {
               {argv = ["vesktop" "--enable-features=UseOzonePlatform" "--ozone-platform=wayland" "--enable-wayland-ime"];}
               {argv = ["teams-for-linux" "--enable-features=UseOzonePlatform" "--ozone-platform=wayland" "--enable-features=WebRTCPipeWireCapturer" "--enable-wayland-ime"];}
               {argv = ["keepassxc"];}
+              {argv = ["thunderbird"];}
               {argv = ["rog-control-center"];}
             ];
 
@@ -294,6 +296,7 @@ in {
             }
             (mkWorkspace "vesktop" "social" 0.6667)
             (mkWorkspace "teams-for-linux" "social" 0.6667)
+            (mkWorkspace "thunderbird" "social" 0.6667)
             (mkWorkspace "LINE" "social" 0.5)
             (mkWorkspace "valent" "social" 0.5)
             {
