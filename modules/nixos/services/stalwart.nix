@@ -26,6 +26,10 @@ in {
       }
     ];
 
+    systemd.tmpfiles.rules = [
+      "d '/var/lib/stalwart' - root root - -"
+    ];
+
     nginx.virtualHosts."stalwart.${config.crystals-services.nginx.localSuffix}".locations."/" = {
       proxyPass = "http://127.0.0.1:8080";
       proxyWebsockets = true;
