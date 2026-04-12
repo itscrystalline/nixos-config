@@ -33,21 +33,9 @@
       enable = true;
       role = "server";
     };
-    mailserver = {
+    stalwart = {
       enable = true;
       host = "iw2tryhard.dev";
-      mailboxes = {
-        "real" = {};
-        "crystal" = {
-          aliases = ["tryhard"];
-        };
-        "git" = {};
-        "nc" = {};
-
-        "postmaster" = {
-          aliases = ["abuse" "dmca"];
-        };
-      };
     };
   };
 
