@@ -56,7 +56,11 @@ in {
     (lib.mkIf enabled {
       crystals-services.cloudflared.domains."git".noTLSVerify = true;
 
-      sops.secrets.forgejo-admin-password.owner = "forgejo";
+      sops.secrets = {
+        "forgejo-admin-password".owner = "forgejo";
+        "forgejo-mail-password" = {};
+      };
+
       systemd.services.forgejo.preStart = let
         adminCmd = "${lib.getExe cfg.package} admin user";
         pwd = config.sops.secrets.forgejo-admin-password;
@@ -129,6 +133,8 @@ in {
       };
     })
     (lib.mkIf forgejo.runner.enable {
+      sops.secrets."forgejo-runner-token" = {};
+
       services.gitea-actions-runner = {
         package = pkgs.forgejo-runner;
         instances.default = {
@@ -158,6 +164,8 @@ in {
       };
     })
     (lib.mkIf (forgejo.enable && forgejo.sync.enable) {
+      sops.secrets."forgejo-sync" = {};
+
       services.forgesync = {
         enable = true;
         jobs = {

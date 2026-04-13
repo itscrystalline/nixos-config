@@ -56,6 +56,8 @@ in {
     # Config file without PASSPHRASE, placed in the Nix store.
     staticConf = pkgs.writeText "create_ap_static.conf" (lib.generators.toKeyValue {} staticSettings);
   in {
+    sops.secrets."homeassistant-wifi-password" = {};
+
     kernel.sysctl = {
       "net.ipv6.conf.all.forwarding" = 1;
       "net.ipv4.conf.all.forwarding" = 1;
@@ -91,7 +93,7 @@ in {
             cp ${staticConf} /run/create_ap/runtime.conf
             chmod 600 /run/create_ap/runtime.conf
             printf 'PASSPHRASE=%s\n' \
-              "$(cat ${config.sops.secrets."homeassistant-wifi-password".path})" \
+              "$(cat ${config.sops.secrets.homeassistant-wifi-password.path})" \
               >> /run/create_ap/runtime.conf
           '')
         ];

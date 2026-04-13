@@ -31,7 +31,7 @@ in {
         "providers": {
           "@knoopx/nix-0": {
              "preferences": {
-                "githubToken": "${config.sops.placeholder."gh-token"}"
+                "githubToken": "${config.sops.placeholder.gh-token}"
              }
           }
         }

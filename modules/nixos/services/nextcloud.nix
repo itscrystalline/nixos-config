@@ -31,7 +31,9 @@ in {
     sops.secrets = {
       "nextcloud-admin-password".owner = "nextcloud";
       "nextcloud-admin-stats-token".mode = "0444";
+      "nextcloud-mail-password" = {};
     };
+
     services = {
       nextcloud = {
         enable = true;

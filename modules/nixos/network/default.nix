@@ -68,6 +68,8 @@ in {
   config = {
     users.users.${config.core.primaryUser}.extraGroups = ["networkmanager"];
 
+    sops.secrets."wifi-passwords" = {};
+
     networking = {
       networkmanager = {
         enable = true;
@@ -75,7 +77,7 @@ in {
         connectionConfig."connection.auth-retries" = 0;
         ensureProfiles = {
           profiles = mkProfiles config.network.profiles;
-          environmentFiles = [config.sops.secrets."wifi-passwords".path];
+          environmentFiles = [config.sops.secrets.wifi-passwords.path];
         };
       };
       hostName = config.core.name;

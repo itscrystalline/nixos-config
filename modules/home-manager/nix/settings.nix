@@ -7,9 +7,6 @@
   ...
 }:
 lib.mkIf (passthrough == null) {
-  sops.templates."nix-extra-config".content = ''
-    access-tokens = github.com=${config.sops.placeholder."gh-token"}
-  '';
   nix = {
     settings = {
       experimental-features = ["nix-command" "flakes"];
@@ -55,7 +52,7 @@ lib.mkIf (passthrough == null) {
     package = pkgs.lixPackageSets.stable.lix;
 
     extraOptions = ''
-      include ${config.sops.templates."nix-extra-config".path}
+      include ${config.sops.templates.nix-extra-config.path}
     '';
   };
 

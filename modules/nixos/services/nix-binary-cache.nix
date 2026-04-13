@@ -98,12 +98,13 @@ in {
       };
 
       sops.secrets."harmonia-secret-key".owner = "harmonia";
+
       harmonia = {
         package = pkgs.unstable.harmonia;
         daemon.enable = true;
         cache = {
           enable = true;
-          signKeyPaths = [config.sops.secrets."harmonia-secret-key".path];
+          signKeyPaths = [config.sops.secrets.harmonia-secret-key.path];
           settings.bind = "[::]:8502";
         };
       };

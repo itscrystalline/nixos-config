@@ -30,8 +30,8 @@ in {
 
   config = lib.mkIf enabled {
     sops.secrets = {
-      stalwart-admin-password.owner = "stalwart-mail";
-      stalwart-cloudflare-token.owner = "stalwart-mail";
+      "stalwart-admin-password".owner = "stalwart-mail";
+      "stalwart-cloudflare-token".owner = "stalwart-mail";
     };
 
     services.stalwart-mail = {

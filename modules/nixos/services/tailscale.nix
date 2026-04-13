@@ -26,10 +26,11 @@ in {
       systemd.services.tailscaled.serviceConfig.Restart = lib.mkForce "always";
     }
     (lib.mkIf (tailscale.role == "server") {
-      sops.secrets."tailscaleAuthKey".restartUnits = ["tailscaled-autoconnect.service"];
+      sops.secrets."tailscale-auth-key".restartUnits = ["tailscaled-autoconnect.service"];
+
       services.tailscale = {
         extraSetFlags = ["--ssh"] ++ lib.optional tailscale.asExitNode "--advertise-exit-node";
-        authKeyFile = config.sops.secrets."tailscaleAuthKey".path;
+        authKeyFile = config.sops.secrets.tailscale-auth-key.path;
       };
     })
   ]);

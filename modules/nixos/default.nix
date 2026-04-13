@@ -107,13 +107,15 @@ in {
     };
     console.keyMap = localization.keymap;
 
+    sops.secrets."crystal-password".neededForUsers = true;
+
     users.users.${core.primaryUser} = {
       isNormalUser = true;
       home = lib.mkDefault "/home/${core.primaryUser}";
       description = "${core.primaryUser}";
       shell = pkgs.zsh;
 
-      hashedPasswordFile = config.sops.secrets."crystal-password".path;
+      hashedPasswordFile = config.sops.secrets.crystal-password.path;
       openssh.authorizedKeys.keys = core.primaryUserSshKeys;
     };
   };

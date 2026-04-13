@@ -27,10 +27,12 @@ in {
     };
   };
   config = lib.mkIf enabled {
+    sops.secrets."cloudflared-credentials" = {};
+
     services.cloudflared = {
       enable = true;
       tunnels."fc4d0058-a84e-4ef5-b66f-56c2a1a7eb7f" = {
-        credentialsFile = config.sops.secrets."cloudflared-credentials".path;
+        credentialsFile = config.sops.secrets.cloudflared-credentials.path;
         ingress = mkDomains cloudflared.domains;
         warp-routing.enabled = false;
         default = "http_status:404";

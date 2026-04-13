@@ -4,14 +4,8 @@
   pkgs,
   ...
 }: {
-  sops = {
-    secrets."gh-token" = {
-      restartUnits = ["nix-daemon.service"];
-    };
-    templates."nix-extra-config".content = ''
-      access-tokens = github.com=${config.sops.placeholder."gh-token"}
-    '';
-  };
+  sops.secrets.gh-token.restartUnits = ["nix-daemon.service"];
+
   nix = {
     settings = {
       experimental-features = ["nix-command" "flakes"];
@@ -60,7 +54,7 @@
     ];
 
     extraOptions = ''
-      include ${config.sops.templates."nix-extra-config".path}
+      include ${config.sops.templates.nix-extra-config.path}
     '';
     checkConfig = false;
 
