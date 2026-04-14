@@ -109,6 +109,11 @@ in {
               THEMES = theme-name;
               DEFAULT_THEME = theme-name;
             };
+            repository = {
+              ENABLE_PUSH_CREATE_USER = true;
+              ENABLE_PUSH_CREATE_ORG = true;
+              DEFAULT_PUSH_CREATE_PRIVATE = true;
+            };
 
             mailer = {
               ENABLED = true;
