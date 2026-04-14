@@ -157,6 +157,63 @@ in {
           {"else" = "'mx'";}
         ];
 
+        report = {
+          domain = stalwart.host;
+          submitter = "'mx1.${stalwart.host}'";
+
+          dsn = {
+            from-name = "'Mail Delivery Subsystem'";
+            from-address = "'mailer-daemon@${stalwart.host}'";
+            sign = "['rsa-${stalwart.host}', 'ed25519-${stalwart.host}']";
+          };
+          dkim = {
+            from-name = "'Report Subsystem'";
+            from-address = "'noreply-dkim@${stalwart.host}'";
+            subject = "'DKIM Authentication Failure Report'";
+            sign = "['rsa-${stalwart.host}', 'ed25519-${stalwart.host}']";
+            send = "1/1d";
+          };
+          spf = {
+            from-name = "'Report Subsystem'";
+            from-address = "'noreply-spf@${stalwart.host}'";
+            subject = "'SPF Authentication Failure Report'";
+            sign = "['rsa-${stalwart.host}', 'ed25519-${stalwart.host}']";
+            send = "1/1d";
+          };
+          dmarc = {
+            from-name = "'Report Subsystem'";
+            from-address = "'noreply-dmarc@${stalwart.host}'";
+            subject = "'DMARC Authentication Failure Report'";
+            sign = "['rsa-${stalwart.host}', 'ed25519-${stalwart.host}']";
+            send = "1/1d";
+
+            aggregate = {
+              from-name = "'DMARC Aggregate Report'";
+              from-address = "'noreply-dmarc@${stalwart.host}'";
+              org-name = "'Crystal's Amazing Mail server";
+              contact-info = "'postmaster@${stalwart.host}'";
+              send = "weekly";
+              max-size = 26214400; # 25mb
+              sign = "['rsa-${stalwart.host}', 'ed25519-${stalwart.host}']";
+            };
+          };
+          tls.aggregate = {
+            from-name = "'TLS Aggregate Report'";
+            from-address = "'noreply-tls@${stalwart.host}'";
+            org-name = "'Crystal's Amazing Mail server";
+            contact-info = "'postmaster@${stalwart.host}'";
+            send = "weekly";
+            max-size = 26214400; # 25 mb
+            sign = "['rsa-${stalwart.host}', 'ed25519-${stalwart.host}']";
+          };
+
+          analysis = {
+            addresses = ["dmarc@${stalwart.host}" "abuse@${stalwart.host}" "postmaster@${stalwart.host}"];
+            forward = true;
+            store = "30d";
+          };
+        };
+
         tracer.stdout = {
           type = "stdout";
           level = "info";
