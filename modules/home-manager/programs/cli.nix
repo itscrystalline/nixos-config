@@ -367,7 +367,7 @@ in {
         settings = {
           services."git.iw2tryhard.dev" = "gitea:git.iw2tryhard.dev";
           gui.theme = {
-            activeBorderColor = ["magenta"];
+            activeBorderColor = lib.mkForce ["#f5c2e7" "bold"];
           };
         };
       };
