@@ -190,7 +190,7 @@ in {
             aggregate = {
               from-name = "'DMARC Aggregate Report'";
               from-address = "'noreply-dmarc@${stalwart.host}'";
-              org-name = "'Crystal's Amazing Mail server";
+              org-name = "'Jocelyn the Mailgirl'";
               contact-info = "'postmaster@${stalwart.host}'";
               send = "weekly";
               max-size = 26214400; # 25mb
@@ -200,7 +200,7 @@ in {
           tls.aggregate = {
             from-name = "'TLS Aggregate Report'";
             from-address = "'noreply-tls@${stalwart.host}'";
-            org-name = "'Crystal's Amazing Mail server";
+            org-name = "'Jocelyn the Mailgirl'";
             contact-info = "'postmaster@${stalwart.host}'";
             send = "weekly";
             max-size = 26214400; # 25 mb
