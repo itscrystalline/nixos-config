@@ -54,7 +54,7 @@
     stylix.url = "github:nix-community/stylix/release-25.11";
     stylix-unstable.url = "github:nix-community/stylix";
     forgesync = {
-      url = "git+https://codeberg.org/helvetica/forgesync";
+      url = "git+https://git.iw2tryhard.dev/itscrystalline/forgesync";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };

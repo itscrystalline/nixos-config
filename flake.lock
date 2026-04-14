@@ -492,17 +492,17 @@
         "uv2nix": "uv2nix"
       },
       "locked": {
-        "lastModified": 1774047468,
-        "narHash": "sha256-azH+ifqdUJsh6houiXWeNeU9r3rsgxbiJJgELXkeGTk=",
+        "lastModified": 1776184824,
+        "narHash": "sha256-eD+Pp03ZDM4/G+Yiq+u/qEs5vQy1jK3c7adVzmEjX68=",
         "ref": "refs/heads/main",
-        "rev": "afe1cec179426ba7377ffe6699685f645d62988a",
-        "revCount": 42,
+        "rev": "61911ea8e9822cccc3bdeb78393735da7cdfbdc4",
+        "revCount": 43,
         "type": "git",
-        "url": "https://codeberg.org/helvetica/forgesync"
+        "url": "https://git.iw2tryhard.dev/itscrystalline/forgesync"
       },
       "original": {
         "type": "git",
-        "url": "https://codeberg.org/helvetica/forgesync"
+        "url": "https://git.iw2tryhard.dev/itscrystalline/forgesync"
       }
     },
     "fromYaml": {
@@ -1372,11 +1372,11 @@
         "upstream-nur": "upstream-nur"
       },
       "locked": {
-        "lastModified": 1776114661,
-        "narHash": "sha256-Oku+oK8kV4HjdblneOgjKyi9E+Am91YiUWip7wN6bo4=",
+        "lastModified": 1776185082,
+        "narHash": "sha256-nOiNiRldV1LEDUr6r3nRocON5gMkHFsoQyb0mM4zZLQ=",
         "ref": "refs/heads/main",
-        "rev": "ef4c3552f5f669470265886cb2bfd6475a51fc75",
-        "revCount": 170,
+        "rev": "9a71531977c9284f7d2186d6d60a024d9e18859e",
+        "revCount": 173,
         "type": "git",
         "url": "https://git.iw2tryhard.dev/itscrystalline/sanzenvim"
       },
