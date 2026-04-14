@@ -61,7 +61,7 @@ in {
     services.xserver.videoDrivers = ["nvidia"];
 
     specialisation.noDGPU.configuration = lib.mkIf graphics.enableSpecialisation {
-      hardware.nvidia.dynamicBoost.enable = false; # this being on blocks some nixos rebuilds
+      hardware.nvidia.dynamicBoost.enable = lib.mkForce false; # this being on blocks some nixos rebuilds
 
       services.udev.extraRules = ''
         # Remove NVIDIA USB xHCI Host Controller devices, if present
