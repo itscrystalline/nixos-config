@@ -58,6 +58,8 @@ in {
   ];
 
   config = lib.mkIf enabled {
+    sops.secrets."harmonia-secret-key".owner = "harmonia";
+
     services = {
       ncps = {
         enable = true;
@@ -96,8 +98,6 @@ in {
           grpcURL = nbc.openTelemetryGrpcUrl;
         };
       };
-
-      sops.secrets."harmonia-secret-key".owner = "harmonia";
 
       harmonia = {
         package = pkgs.unstable.harmonia;
