@@ -360,7 +360,17 @@ in {
         };
       };
 
-      lazygit.enable = true;
+      lazygit = {
+        enable = true;
+        enableZshIntegration = true;
+        enableBashIntegration = true;
+        settings = {
+          services."git.iw2tryhard.dev" = "gitea:git.iw2tryhard.dev";
+          gui.theme = {
+            activeBorderColor = ["magenta"];
+          };
+        };
+      };
 
       nix-index = {
         enable = true;
