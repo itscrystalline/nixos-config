@@ -32,8 +32,8 @@ in {
     sops.secrets = {
       "stalwart-admin-password".owner = "stalwart-mail";
       "stalwart-cloudflare-token".owner = "stalwart-mail";
-      "dkim-rsa.key".owner = "stalwart-mail";
-      "dkim-ed25519.key".owner = "stalwart-mail";
+      "stalwart-dkim-rsa-key".owner = "stalwart-mail";
+      "stalwart-dkim-ed25519-key".owner = "stalwart-mail";
     };
 
     services.stalwart-mail = {
