@@ -57,6 +57,11 @@ in {
       realName = "Crystal";
       flavor = "gmail.com";
     };
+    "School" = {
+      address = "66991035@kmitl.ac.th";
+      realName = "Thad Choyrum";
+      flavor = "gmail.com";
+    };
     "Other Email" = {
       address = "choyrumthad@gmail.com";
       realName = "itscrystalline";
