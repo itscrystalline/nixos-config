@@ -32,6 +32,8 @@ in {
     sops.secrets = {
       "stalwart-admin-password".owner = "stalwart-mail";
       "stalwart-cloudflare-token".owner = "stalwart-mail";
+      "dkim-rsa.key".owner = "stalwart-mail";
+      "dkim-ed25519.key".owner = "stalwart-mail";
     };
 
     services.stalwart-mail = {
@@ -39,9 +41,11 @@ in {
       dataDir = stalwart.directory;
       openFirewall = true;
 
-      credentials = {
-        admin_pass = config.sops.secrets.stalwart-admin-password.path;
-        cloudflare_token = config.sops.secrets.stalwart-cloudflare-token.path;
+      credentials = with config.sops.secrets; {
+        admin_pass = stalwart-admin-password.path;
+        cloudflare_token = stalwart-cloudflare-token.path;
+        "dkim-rsa.key" = stalwart-dkim-rsa-key.path;
+        "dkim-ed25519.key" = stalwart-dkim-ed25519-key.path;
       };
 
       settings = {
@@ -95,7 +99,6 @@ in {
           challenge = "dns-01";
           contact = "real@${stalwart.host}";
           domains = [
-            # "${stalwart.host}"
             "mx1.${stalwart.host}"
             "mail.${stalwart.host}"
             "autoconfig.${stalwart.host}"
@@ -157,6 +160,37 @@ in {
           {"else" = "'mx'";}
         ];
 
+        auth.dkim.sign = [
+          {
+            "if" = "is_local_domain('*', sender_domain)";
+            # "then" = "['rsa-' + sender_domain, 'ed25519-' + sender_domain]";
+            "then" = "['rsa-' + sender_domain]";
+          }
+          {"else" = false;}
+        ];
+        signature = {
+          "rsa-${stalwart.host}" = {
+            private-key = "%{file:/run/credentials/stalwart-mail.service/dkim-rsa.key}%";
+            domain = stalwart.host;
+            selector = "202604r";
+            headers = ["From" "To" "Cc" "Date" "Subject" "Message-ID" "MIME-Version" "Content-Type" "In-Reply-To" "References" "List-Id"];
+            algorithm = "rsa-sha256";
+            canonicalization = "relaxed/relaxed";
+            set-body-length = false;
+            report = true;
+          };
+          "ed25519-${stalwart.host}" = {
+            private-key = "%{file:/run/credentials/stalwart-mail.service/dkim-ed25519.key}%";
+            domain = stalwart.host;
+            selector = "202604e";
+            headers = ["From" "To" "Cc" "Date" "Subject" "Message-ID" "MIME-Version" "Content-Type" "In-Reply-To" "References" "List-Id"];
+            algorithm = "ed25519-sha256";
+            canonicalization = "relaxed/relaxed";
+            set-body-length = false;
+            report = true;
+          };
+        };
+
         report = {
           domain = stalwart.host;
           submitter = "'mx1.${stalwart.host}'";
@@ -164,27 +198,31 @@ in {
           dsn = {
             from-name = "'Mail Delivery Subsystem'";
             from-address = "'mailer-daemon@${stalwart.host}'";
-            sign = "['rsa-${stalwart.host}', 'ed25519-${stalwart.host}']";
+            # sign = "['rsa-${stalwart.host}', 'ed25519-${stalwart.host}']";
+            sign = "['rsa-${stalwart.host}']";
           };
           dkim = {
             from-name = "'Report Subsystem'";
             from-address = "'noreply-dkim@${stalwart.host}'";
             subject = "'DKIM Authentication Failure Report'";
-            sign = "['rsa-${stalwart.host}', 'ed25519-${stalwart.host}']";
+            # sign = "['rsa-${stalwart.host}', 'ed25519-${stalwart.host}']";
+            sign = "['rsa-${stalwart.host}']";
             send = "1/1d";
           };
           spf = {
             from-name = "'Report Subsystem'";
             from-address = "'noreply-spf@${stalwart.host}'";
             subject = "'SPF Authentication Failure Report'";
-            sign = "['rsa-${stalwart.host}', 'ed25519-${stalwart.host}']";
+            # sign = "['rsa-${stalwart.host}', 'ed25519-${stalwart.host}']";
+            sign = "['rsa-${stalwart.host}']";
             send = "1/1d";
           };
           dmarc = {
             from-name = "'Report Subsystem'";
             from-address = "'noreply-dmarc@${stalwart.host}'";
             subject = "'DMARC Authentication Failure Report'";
-            sign = "['rsa-${stalwart.host}', 'ed25519-${stalwart.host}']";
+            # sign = "['rsa-${stalwart.host}', 'ed25519-${stalwart.host}']";
+            sign = "['rsa-${stalwart.host}']";
             send = "1/1d";
 
             aggregate = {
@@ -194,7 +232,8 @@ in {
               contact-info = "'postmaster@${stalwart.host}'";
               send = "weekly";
               max-size = 26214400; # 25mb
-              sign = "['rsa-${stalwart.host}', 'ed25519-${stalwart.host}']";
+              # sign = "['rsa-${stalwart.host}', 'ed25519-${stalwart.host}']";
+              sign = "['rsa-${stalwart.host}']";
             };
           };
           tls.aggregate = {
@@ -204,7 +243,8 @@ in {
             contact-info = "'postmaster@${stalwart.host}'";
             send = "weekly";
             max-size = 26214400; # 25 mb
-            sign = "['rsa-${stalwart.host}', 'ed25519-${stalwart.host}']";
+            # sign = "['rsa-${stalwart.host}', 'ed25519-${stalwart.host}']";
+            sign = "['rsa-${stalwart.host}']";
           };
 
           analysis = {
