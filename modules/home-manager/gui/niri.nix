@@ -205,7 +205,7 @@ in {
               disabled-on-external-mouse = false;
               scroll-method = "two-finger";
               drag = true;
-              dwt = false;
+              dwt = true;
               tap-button-map = "left-right-middle";
               natural-scroll = true;
             };
