@@ -439,10 +439,10 @@ in {
           };
         };
 
-        themes.stylix.themes.default = with config.lib.stylix.colors.withHashtag; {
-          frame_selected.base = lib.mkForce base06;
-          ribbon_selected.background = lib.mkForce base06;
-          table_title.base = lib.mkForce base06;
+        themes.stylix.themes.default = {
+          frame_selected.base = lib.mkForce "#F5C2E7";
+          ribbon_selected.background = lib.mkForce "#F5C2E7";
+          table_title.base = lib.mkForce "#F5C2E7";
         };
       };
 
