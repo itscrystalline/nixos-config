@@ -395,6 +395,7 @@ in {
         exitShellOnExit = false;
         enableBashIntegration = false;
         enableZshIntegration = false;
+
         settings = {
           show_startup_tips._args = [false];
           ui.pane_frames._children = [{rounded_corners._args = [true];}];
@@ -436,6 +437,12 @@ in {
               ];
             };
           };
+        };
+
+        themes.stylix.themes.default = with config.lib.stylix.colors.withHashtag; {
+          frame_selected.base = lib.mkForce base06;
+          ribbon_selected.background = lib.mkForce base06;
+          table_title.base = lib.mkForce base06;
         };
       };
 
