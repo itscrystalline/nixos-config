@@ -28,6 +28,8 @@ in {
       };
     };
 
+    programs.nix-index-database.comma.enable = true;
+
     environment.systemPackages = with pkgs; [
       neovim
       sops

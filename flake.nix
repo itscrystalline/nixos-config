@@ -122,6 +122,7 @@
           [
             inputs.nur.modules.nixos.default
             inputs.stylix.nixosModules.stylix
+            inputs.nix-index-database.nixosModules.default
           ]
           ++ nixpkgs.lib.optionals (userHomeModules != []) [
             home-manager.nixosModules.home-manager
