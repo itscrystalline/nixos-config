@@ -24,10 +24,10 @@ in {
       device = nfs.folder;
       options = ["bind" "x-systemd.requires-mounts-for=/mnt/main"];
     };
-    systemd.tmpfiles.rules = ["Z /export 0777 - - - -"];
+    systemd.tmpfiles.rules = ["Z ${nfs.folder} 0666 - - - -"];
     services.nfs.server = {
+      inherit (nfs) exports;
       enable = true;
-      exports = nfs.exports;
     };
   };
 }

@@ -23,6 +23,7 @@
     ./localsend.nix
     ./forgejo.nix
     ./stalwart.nix
+    ./copyparty.nix
   ];
 
   systemd = {

@@ -57,6 +57,10 @@
       url = "git+https://git.iw2tryhard.dev/itscrystalline/forgesync";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    copyparty = {
+      url = "github:9001/copyparty";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = inputs @ {
@@ -158,6 +162,7 @@
       otherModules = [
         nixos-hardware.nixosModules.raspberry-pi-4
         inputs.forgesync.nixosModules.default
+        inputs.copyparty.nixosModules.default
       ];
       userHomeModules = [
         (import ./homes/itscrystalline.nix {
