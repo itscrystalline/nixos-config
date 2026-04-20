@@ -1,6 +1,7 @@
 {
   lib,
   config,
+  pkgs,
   ...
 }: let
   inherit (config.hm.gui) shell;
@@ -11,6 +12,21 @@ in {
   options.hm.gui.shell.enable = lib.mkEnableOption "Noctalia shell";
 
   config = lib.mkIf (enabled && guiEnabled) {
+    home.packages = with pkgs; [
+      qt6.qtwebsockets
+      grim
+      slurp
+      wl-clipboard
+      tesseract
+      imagemagick
+      zbar
+      curl
+      translate-shell
+      wl-screenrec
+      ffmpeg
+      gifski
+      jq
+    ];
     programs.noctalia-shell = {
       enable = true;
       plugins = {
@@ -37,7 +53,18 @@ in {
               })
               plugins);
         in
-          mkEnable "noctalia-dev" ["privacy-indicator" "tailscale" "keybind-cheatsheet" "battery-threshold" "battery-actions" "polkit-agent" "usb-drive-manager"];
+          mkEnable "noctalia-dev" [
+            "privacy-indicator"
+            "tailscale"
+            "keybind-cheatsheet"
+            "battery-threshold"
+            "battery-actions"
+            "polkit-agent"
+            "usb-drive-manager"
+            "hassio"
+            "screen-toolkit"
+            "lyrics-fetch"
+          ];
         version = 1;
       };
       pluginSettings = {
@@ -94,27 +121,11 @@ in {
                 showIcon = true;
                 useFixedWidth = false;
               }
-              {
-                compactMode = false;
-                compactShowAlbumArt = true;
-                compactShowVisualizer = false;
-                hideMode = "hidden";
-                hideWhenIdle = false;
-                id = "MediaMini";
-                maxWidth = 145;
-                panelShowAlbumArt = true;
-                panelShowVisualizer = true;
-                scrollingMode = "hover";
-                showAlbumArt = true;
-                showArtistFirst = true;
-                showProgressRing = true;
-                showVisualizer = false;
-                useFixedWidth = false;
-                visualizerType = "linear";
-              }
+              {id = "plugin:lyrics-fetch";}
               {id = "plugin:keybind-cheatsheet";}
             ];
             center = [
+              {id = "plugin:screen-toolkit";}
               {id = "plugin:tailscale";}
               {
                 characterCount = 2;
@@ -147,6 +158,7 @@ in {
               }
             ];
             right = [
+              {id = "plugin:hassio";}
               {
                 blacklist = [];
                 colorizeIcons = false;
