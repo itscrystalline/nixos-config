@@ -123,6 +123,7 @@ in {
               }
               {id = "plugin:lyrics-fetch";}
               {id = "plugin:keybind-cheatsheet";}
+              {id = "plugin:hassio";}
             ];
             center = [
               {id = "plugin:screen-toolkit";}
@@ -158,7 +159,6 @@ in {
               }
             ];
             right = [
-              {id = "plugin:hassio";}
               {
                 blacklist = [];
                 colorizeIcons = false;
