@@ -71,9 +71,12 @@ in {
       user = "copyparty";
       # the group to run the service as
       group = "copyparty";
-      # directly maps to values in the [global] section of the copyparty config.
-      # see `copyparty --help` for available options
-      settings.i = "unix:770:/run/copyparty/copyparty.sock";
+      settings = {
+        # directly maps to values in the [global] section of the copyparty config.
+        # see `copyparty --help` for available options
+        i = "unix:770:/run/copyparty/copyparty.sock";
+        xff-hdr = "cf-connecting-ip";
+      };
 
       accounts.itscrystalline.passwordFile = config.sops.secrets.itscrystalline-copyparty-password.path;
 
@@ -86,13 +89,49 @@ in {
         locations."/" = {
           proxyPass = "http://copyparty";
           proxyWebsockets = true;
+          extraConfig = ''
+            proxy_redirect off;
+            proxy_buffering off;
+            proxy_request_buffering off;
+            proxy_buffers 32 8k;
+            proxy_buffer_size 16k;
+            proxy_busy_buffers_size 24k;
+            proxy_set_header Connection "Keep-Alive";
+            proxy_set_header Host $host;
+            proxy_set_header X-Real-IP $remote_addr;
+            proxy_set_header X-Forwarded-Proto $scheme;
+            proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+
+            allow 173.245.48.0/20;
+            allow 103.21.244.0/22;
+            allow 103.22.200.0/22;
+            allow 103.31.4.0/22;
+            allow 141.101.64.0/18;
+            allow 108.162.192.0/18;
+            allow 190.93.240.0/20;
+            allow 188.114.96.0/20;
+            allow 197.234.240.0/22;
+            allow 198.41.128.0/17;
+            allow 162.158.0.0/15;
+            allow 104.16.0.0/13;
+            allow 104.24.0.0/14;
+            allow 172.64.0.0/13;
+            allow 131.0.72.0/222400:cb00::/32;
+            allow 2606:4700::/32;
+            allow 2803:f800::/32;
+            allow 2405:b500::/32;
+            allow 2405:8100::/32;
+            allow 2a06:98c0::/29;
+            allow 2c0f:f248::/32;
+            deny all;
+          '';
         };
       };
       upstreams.copyparty.servers."unix:/run/copyparty/copyparty.sock" = {};
-      crystals-services.cloudflared.domains."static" = {
-        disableChunkedEncoding = true;
-        noHappyEyeballs = true;
-      };
+    };
+    crystals-services.cloudflared.domains."static" = {
+      disableChunkedEncoding = true;
+      noHappyEyeballs = true;
     };
     users.groups.copyparty.members = [config.services.copyparty.user config.services.nginx.user];
     systemd.tmpfiles.rules = ["d /run/copyparty 0750 copyparty copyparty -"];
