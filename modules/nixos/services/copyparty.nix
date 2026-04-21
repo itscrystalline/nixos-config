@@ -70,10 +70,10 @@ in {
       # the user to run the service as
       user = "copyparty";
       # the group to run the service as
-      group = "copyparty";
+      group = "nginx";
       # directly maps to values in the [global] section of the copyparty config.
       # see `copyparty --help` for available options
-      settings.i = "unix:666:/run/copyparty/copyparty.sock";
+      settings.i = "unix:770:/run/copyparty/copyparty.sock";
 
       accounts.itscrystalline.passwordFile = config.sops.secrets.itscrystalline-copyparty-password.path;
 
