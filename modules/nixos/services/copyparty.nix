@@ -75,7 +75,9 @@ in {
         # directly maps to values in the [global] section of the copyparty config.
         # see `copyparty --help` for available options
         i = "unix:770:/run/copyparty/copyparty.sock";
-        xff-hdr = "cf-connecting-ip";
+        xff-hdr = ["cf-connecting-ip" "x-forwarded-for"];
+        xff-src = "127.0.0.1";
+        rproxy = -1;
       };
 
       accounts.itscrystalline.passwordFile = config.sops.secrets.itscrystalline-copyparty-password.path;
@@ -85,7 +87,6 @@ in {
     };
     services.nginx = {
       virtualHosts."static.iw2tryhard.dev" = {
-        serverAliases = ["static.${config.crystals-services.nginx.localSuffix}"];
         locations."/" = {
           proxyPass = "http://copyparty";
           proxyWebsockets = true;
@@ -99,7 +100,7 @@ in {
             proxy_set_header Connection "Keep-Alive";
             proxy_set_header Host $host;
             proxy_set_header X-Real-IP $remote_addr;
-            proxy_set_header X-Forwarded-Proto $scheme;
+            proxy_set_header X-Forwarded-Proto https;
             proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
           '';
         };
