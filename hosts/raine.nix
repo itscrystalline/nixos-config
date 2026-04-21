@@ -115,6 +115,21 @@ in {
       sync.enable = true;
       directory = "/mnt/main/services/forgejo";
     };
+
+    copyparty = {
+      enable = true;
+      volumes = {
+        "/" = {
+          path = "/mnt/main/nfs";
+          read = "itscrystalline";
+          read-write = "itscrystalline";
+        };
+        "/public" = {
+          path = "/mnt/main/nfs/public";
+          read-write = "itscrystalline";
+        };
+      };
+    };
   };
 
   nix = {
