@@ -75,10 +75,11 @@ in {
         # directly maps to values in the [global] section of the copyparty config.
         # see `copyparty --help` for available options
         i = "unix:770:/run/copyparty/copyparty.sock";
-        xff-hdr = ["cf-connecting-ip" "x-forwarded-for"];
+        xff-hdr = "cf-connecting-ip";
         xf-proto = "https";
-        xff-src = "127.0.0.1";
-        rproxy = -1;
+        xf-host = "x-forwarded-host";
+        xff-src = "lan";
+        rproxy = 1;
       };
 
       accounts.itscrystalline.passwordFile = config.sops.secrets.itscrystalline-copyparty-password.path;
@@ -99,6 +100,7 @@ in {
             proxy_buffer_size 16k;
             proxy_busy_buffers_size 24k;
             proxy_set_header Connection "Keep-Alive";
+            proxy_set_header Origin "http://static.iw2tryhard.dev";
             proxy_set_header Host $host;
             proxy_set_header X-Real-IP $remote_addr;
             proxy_set_header X-Forwarded-Proto https;
