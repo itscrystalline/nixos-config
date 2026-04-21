@@ -7,18 +7,54 @@
   inherit (lib) mkEnableOption mkOption types;
   inherit (config.crystals-services) copyparty;
   enabled = copyparty.enable;
+
+  volumeFlags = {
+    # "fk" enables filekeys (necessary for upget permission) (4 chars long)
+    fk = 4;
+    # scan for new files every 60sec
+    scan = 60;
+    # volflag "e2d" enables the uploads database
+    e2d = true;
+  };
+  mkVolumes = vols:
+    builtins.mapAttrs (vol: opts: {
+      inherit (opts) path;
+      access = {
+        r = opts.read;
+        rw = opts.read-write;
+      };
+      flags = volumeFlags;
+    })
+    vols;
 in {
   options.crystals-services.copyparty = {
     enable = mkEnableOption "copyparty";
-    # directory = mkOption {
-    #   type = types.path;
-    #   default = "/mnt/main/nfs";
-    #   description = "Directory to store stalwart data";
-    # };
+    volumes = mkOption {
+      type = types.attrsOf (types.submodule {
+        options = {
+          path = mkOption {
+            type = types.str;
+            default = "";
+            description = "Host path for this volume.";
+          };
+          read = mkOption {
+            type = types.coercedTo types.str (x: lib.singleton x) (types.listOf types.str);
+            default = "*";
+            description = "Users that can access this volume read only.";
+          };
+          read-write = mkOption {
+            type = types.coercedTo types.str (x: lib.singleton x) (types.listOf types.str);
+            default = [];
+            description = "Users that can access and modify this volume.";
+          };
+        };
+      });
+      default = {};
+      description = "Volumes to enable in copyparty.";
+    };
   };
   config = lib.mkIf enabled {
     nixpkgs.overlays = [copyparty.overlays.default];
-    network.ports.tcp = [3210 3211];
 
     sops.secrets."itscrystalline-copyparty-password".owner = "copyparty";
 
@@ -36,51 +72,11 @@ in {
       group = "copyparty";
       # directly maps to values in the [global] section of the copyparty config.
       # see `copyparty --help` for available options
-      settings = {
-        i = "unix:666:/run/copyparty/copyparty.sock";
-      };
+      settings.i = "unix:666:/run/copyparty/copyparty.sock";
 
       accounts.itscrystalline.passwordFile = config.sops.secrets.itscrystalline-copyparty-password.path;
 
-      # create a volume
-      volumes = {
-        # create a volume at "/" (the webroot), which will
-        "/" = {
-          # share the contents of "/srv/copyparty"
-          path = "/mnt/main/nfs";
-          # see `copyparty --help-accounts` for available options
-          access.rw = ["itscrystalline"];
-          # see `copyparty --help-flags` for available options
-          flags = {
-            # "fk" enables filekeys (necessary for upget permission) (4 chars long)
-            fk = 4;
-            # scan for new files every 60sec
-            scan = 60;
-            # volflag "e2d" enables the uploads database
-            e2d = true;
-          };
-        };
-        "/public" = {
-          # share the contents of "/srv/copyparty"
-          path = "/mnt/main/nfs/public";
-          # see `copyparty --help-accounts` for available options
-          access = {
-            # everyone gets read-access, but
-            r = "*";
-            # users "ed" and "k" get read-write
-            rw = ["itscrystalline"];
-          };
-          # see `copyparty --help-flags` for available options
-          flags = {
-            # "fk" enables filekeys (necessary for upget permission) (4 chars long)
-            fk = 4;
-            # scan for new files every 60sec
-            scan = 60;
-            # volflag "e2d" enables the uploads database
-            e2d = true;
-          };
-        };
-      };
+      volumes = mkVolumes copyparty.volumes;
       openFilesLimit = 8192;
     };
     services.nginx = {
@@ -90,6 +86,10 @@ in {
         proxyWebsockets = true;
       };
       upstreams.copyparty.servers."unix:/run/copyparty/copyparty.sock" = {};
+      crystals-services.cloudflared.domains."static" = {
+        disableChunkedEncoding = true;
+        noHappyEyeballs = true;
+      };
     };
   };
 }
