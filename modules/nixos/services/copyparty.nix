@@ -81,10 +81,12 @@ in {
       openFilesLimit = 8192;
     };
     services.nginx = {
-      virtualHosts."static.iw2tryhard.dev".locations."/" = {
+      virtualHosts."static.iw2tryhard.dev" = {
         serverAliases = ["static.${config.crystals-services.nginx.localSuffix}"];
-        proxyPass = "http://copyparty";
-        proxyWebsockets = true;
+        locations."/" = {
+          proxyPass = "http://copyparty";
+          proxyWebsockets = true;
+        };
       };
       upstreams.copyparty.servers."unix:/run/copyparty/copyparty.sock" = {};
       crystals-services.cloudflared.domains."static" = {
