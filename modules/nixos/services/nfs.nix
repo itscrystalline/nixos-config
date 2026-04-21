@@ -24,7 +24,7 @@ in {
       device = nfs.folder;
       options = ["bind" "x-systemd.requires-mounts-for=/mnt/main"];
     };
-    systemd.tmpfiles.rules = ["Z ${nfs.folder} 0766 root root - -"];
+    systemd.tmpfiles.rules = ["Z ${nfs.folder} 0777 root root - -"];
     services.nfs.server = {
       inherit (nfs) exports;
       enable = true;
