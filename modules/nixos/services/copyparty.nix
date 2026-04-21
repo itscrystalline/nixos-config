@@ -2,6 +2,7 @@
   lib,
   pkgs,
   config,
+  inputs,
   ...
 }: let
   inherit (lib) mkEnableOption mkOption types;
@@ -17,7 +18,7 @@
     e2d = true;
   };
   mkVolumes = vols:
-    builtins.mapAttrs (vol: opts: {
+    builtins.mapAttrs (_: opts: {
       inherit (opts) path;
       access = {
         r = opts.read;
@@ -54,7 +55,7 @@ in {
     };
   };
   config = lib.mkIf enabled {
-    nixpkgs.overlays = [copyparty.overlays.default];
+    nixpkgs.overlays = [inputs.copyparty.overlays.default];
 
     sops.secrets."itscrystalline-copyparty-password".owner = "copyparty";
 
