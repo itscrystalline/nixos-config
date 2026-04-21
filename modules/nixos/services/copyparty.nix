@@ -95,5 +95,6 @@ in {
       };
     };
     users.groups.copyparty.members = [config.services.copyparty.user config.services.nginx.user];
+    systemd.tmpfiles.rules = ["d /run/copyparty 0750 copyparty copyparty -"];
   };
 }
