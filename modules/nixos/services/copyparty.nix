@@ -70,7 +70,7 @@ in {
       # the user to run the service as
       user = "copyparty";
       # the group to run the service as
-      group = "nginx";
+      group = "copyparty";
       # directly maps to values in the [global] section of the copyparty config.
       # see `copyparty --help` for available options
       settings.i = "unix:770:/run/copyparty/copyparty.sock";
@@ -94,5 +94,6 @@ in {
         noHappyEyeballs = true;
       };
     };
+    users.groups.copyparty.members = [config.services.copyparty.user config.services.nginx.user];
   };
 }
