@@ -316,6 +316,16 @@ in {
               block-out-from = "screencast";
               open-on-workspace = null;
             }
+            {
+              matches = [
+                {
+                  app-id = "^org\.keepassxc\.KeePassXC$";
+                  title = "^KeePassXC - ブラウザーのアクセス要求$";
+                }
+              ];
+              open-focused = true;
+              open-on-workspace = null;
+            }
             (mkWorkspace "com.github.th_ch.youtube_music" "music" 0.6667)
             {
               matches = [{title = "^(steam)$";}];
