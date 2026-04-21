@@ -76,6 +76,7 @@ in {
         # see `copyparty --help` for available options
         i = "unix:770:/run/copyparty/copyparty.sock";
         xff-hdr = ["cf-connecting-ip" "x-forwarded-for"];
+        xf-proto = "https";
         xff-src = "127.0.0.1";
         rproxy = -1;
       };
