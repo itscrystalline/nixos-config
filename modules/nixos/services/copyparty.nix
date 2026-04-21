@@ -65,7 +65,7 @@ in {
         withFastThumbnails = true;
         withMagic = true;
 
-        extraPackages = [pkgs.exiftool];
+        extraPackages = [pkgs.exiftool pkgs.cfssl];
       };
       # the user to run the service as
       user = "copyparty";
