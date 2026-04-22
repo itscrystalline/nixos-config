@@ -88,6 +88,8 @@ in {
             // (lib.optionalAttrs guiProgramsEnabled {
               "Mod+Shift+C".action = spawn "hyprpicker" "-a";
               "Mod+Space".action = lib.mkIf gui.vicinae.enable (spawn "vicinae" "toggle");
+              "Mod+Shift+W".action = lib.mkIf gui.vicinae.enable (spawn "vicinae" "vicinae://launch/wm/switch-windows");
+
               "Mod+E".action = spawn "nautilus" "--new-window";
               "Mod+M".action = spawn "thunderbird";
               "Mod+I".action = sh ''XDG_CURRENT_DESKTOP="gnome" gnome-control-center'';
