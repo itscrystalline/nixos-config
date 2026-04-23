@@ -5,7 +5,6 @@
   ...
 }: let
   inherit (config.crystals-services) nextcloud;
-  inherit (config.crystals-services.nginx) localSuffix;
   enabled = nextcloud.enable;
 in {
   options.crystals-services.nextcloud = {
@@ -39,7 +38,7 @@ in {
         enable = true;
         package = pkgs.nextcloud32;
         home = nextcloud.folder;
-        hostName = nextcloud.domain;
+        hostName = "${nextcloud.domain}.${config.crystals-services.nginx.public.suffix}";
         https = true;
         config = {
           dbtype = "mysql";
@@ -94,13 +93,12 @@ in {
           preview_imaginary_url = "http://127.0.0.1:${toString config.services.imaginary.port}";
           trusted_domains =
             [
-              nextcloud.domain
               config.networking.hostName
-              "nc.${localSuffix}"
+              "${nextcloud.domain}.${config.crystals-services.nginx.public.suffix}"
               "100.125.37.13"
               "192.128.1.61"
             ]
-            ++ config.services.nginx.virtualHosts.${nextcloud.domain}.serverAliases;
+            ++ (config.crystals-services.nginx.public.sites.${nextcloud.domain}.aliases or []);
           trusted_proxies = [
             "127.0.0.1"
             "::1"
@@ -125,15 +123,13 @@ in {
         enable = true;
         settings.return-size = true;
       };
-
-      nginx.virtualHosts.${nextcloud.domain} = {
-        serverAliases = ["nc.${localSuffix}"];
-        sslCertificate = "/mnt/main/cwystaws-raspi.snake-rudd.ts.net.crt";
-        sslCertificateKey = "/mnt/main/cwystaws-raspi.snake-rudd.ts.net.key";
-      };
     };
 
-    crystals-services.cloudflared.domains."nc" = {
+    crystals-services.nginx.public.sites.${nextcloud.domain} = {
+      acme = true;
+    };
+
+    crystals-services.cloudflared.domains.${nextcloud.domain} = {
       disableChunkedEncoding = true;
       noHappyEyeballs = true;
       noTLSVerify = true;

@@ -4,7 +4,6 @@
   ...
 }: let
   inherit (config.crystals-services) manga;
-  inherit (config.crystals-services.nginx) localSuffix;
   enabled = manga.enable;
 in {
   options.crystals-services.manga.enable = lib.mkEnableOption "Suwayomi manga server";
@@ -20,9 +19,11 @@ in {
         ];
       };
     };
-    services.nginx.virtualHosts."manga.${localSuffix}".locations."/" = {
-      proxyPass = "http://127.0.0.1:${toString config.services.suwayomi-server.settings.server.port}";
-      proxyWebsockets = true;
+    crystals-services.nginx.local.sites."manga" = {
+      locations."/" = {
+        proxyPass = "http://127.0.0.1:${toString config.services.suwayomi-server.settings.server.port}";
+        proxyWebsockets = true;
+      };
     };
   };
 }

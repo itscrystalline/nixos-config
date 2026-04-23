@@ -87,27 +87,28 @@ in {
       volumes = mkVolumes copyparty.volumes;
       openFilesLimit = 8192;
     };
-    services.nginx = {
-      virtualHosts."static.iw2tryhard.dev" = {
-        locations."/" = {
-          proxyPass = "http://copyparty";
-          proxyWebsockets = true;
-          extraConfig = ''
-            proxy_redirect off;
-            proxy_buffering off;
-            proxy_request_buffering off;
-            proxy_buffers 32 8k;
-            proxy_buffer_size 16k;
-            proxy_busy_buffers_size 24k;
-            proxy_set_header Connection "Keep-Alive";
-            proxy_set_header Origin "http://static.iw2tryhard.dev";
-            proxy_set_header Host $host;
-            proxy_set_header X-Real-IP $remote_addr;
-            proxy_set_header X-Forwarded-Proto https;
-            proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-          '';
-        };
+    crystals-services.nginx.public.sites."static" = {
+      locations."/" = {
+        proxyPass = "http://copyparty";
+        proxyWebsockets = true;
+        extraConfig = ''
+          proxy_redirect off;
+          proxy_buffering off;
+          proxy_request_buffering off;
+          proxy_buffers 32 8k;
+          proxy_buffer_size 16k;
+          proxy_busy_buffers_size 24k;
+          proxy_set_header Connection "Keep-Alive";
+          proxy_set_header Origin "http://static.iw2tryhard.dev";
+          proxy_set_header Host $host;
+          proxy_set_header X-Real-IP $remote_addr;
+          proxy_set_header X-Forwarded-Proto https;
+          proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        '';
       };
+      acme = true;
+    };
+    services.nginx = {
       upstreams.copyparty.servers."unix:/run/copyparty/copyparty.sock" = {};
     };
     crystals-services.cloudflared.domains."static" = {

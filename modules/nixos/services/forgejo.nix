@@ -129,11 +129,14 @@ in {
           };
         };
 
-        nginx.virtualHosts.${srv.DOMAIN} = {
+        crystals-services.nginx.public.sites."git" = {
           extraConfig = ''
             client_max_body_size 512M;
           '';
-          locations."/".proxyPass = "http://localhost:${toString srv.HTTP_PORT}";
+          locations."/" = {
+            proxyPass = "http://localhost:${toString srv.HTTP_PORT}";
+          };
+          acme = true;
         };
       };
     })

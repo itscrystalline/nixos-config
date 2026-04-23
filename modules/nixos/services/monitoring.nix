@@ -5,7 +5,6 @@
   ...
 }: let
   inherit (config.crystals-services) monitoring;
-  inherit (config.crystals-services.nginx) localSuffix;
   enabled = monitoring.enable;
 in {
   options.crystals-services.monitoring = {
@@ -27,7 +26,7 @@ in {
             http_port = 9000;
             http_addr = "0.0.0.0";
             protocol = "http";
-            domain = "grafana.${localSuffix}";
+            domain = "grafana.crys";
             enforce_domain = true;
           };
           analytics.reporting_enabled = false;
@@ -186,21 +185,27 @@ in {
           ];
         };
       };
+    };
 
-      nginx.virtualHosts = {
-        "grafana.${localSuffix}".locations."/" = {
-          proxyPass = "http://127.0.0.1:${toString config.services.grafana.settings.server.http_port}";
-          proxyWebsockets = true;
-        };
-        "prometheus.${localSuffix}".locations."/" = {
-          proxyPass = "http://127.0.0.1:${toString config.services.prometheus.port}";
-        };
-        "loki.${localSuffix}".locations."/" = {
-          proxyPass = "http://127.0.0.1:${toString config.services.loki.configuration.server.http_listen_port}";
-        };
-        "promtail.${localSuffix}".locations."/" = {
-          proxyPass = "http://127.0.0.1:${toString config.services.promtail.configuration.server.http_listen_port}";
-        };
+    crystals-services.nginx.local.sites."grafana" = {
+      locations."/" = {
+        proxyPass = "http://127.0.0.1:${toString config.services.grafana.settings.server.http_port}";
+        proxyWebsockets = true;
+      };
+    };
+    crystals-services.nginx.local.sites."prometheus" = {
+      locations."/" = {
+        proxyPass = "http://127.0.0.1:${toString config.services.prometheus.port}";
+      };
+    };
+    crystals-services.nginx.local.sites."loki" = {
+      locations."/" = {
+        proxyPass = "http://127.0.0.1:${toString config.services.loki.configuration.server.http_listen_port}";
+      };
+    };
+    crystals-services.nginx.local.sites."promtail" = {
+      locations."/" = {
+        proxyPass = "http://127.0.0.1:${toString config.services.promtail.configuration.server.http_listen_port}";
       };
     };
 

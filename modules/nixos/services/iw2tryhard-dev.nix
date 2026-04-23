@@ -22,17 +22,19 @@ in {
         autoStart = true;
       };
     };
-    services.nginx.virtualHosts = {
-      "iw2tryhard.dev" = {
-        serverAliases = ["www.iw2tryhard.dev"];
+    crystals-services.nginx.public.sites = {
+      "" = {
         locations."/" = {
           proxyPass = "http://127.0.0.1:3000";
         };
+        aliases = ["www"];
+        acme = true;
       };
-      "v2.iw2tryhard.dev" = {
+      "v2" = {
         locations."/" = {
           proxyPass = "http://127.0.0.1:3001";
         };
+        acme = true;
       };
     };
     crystals-services.cloudflared.domains = {

@@ -4,7 +4,6 @@
   ...
 }: let
   inherit (config.crystals-services) scanservjs;
-  inherit (config.crystals-services.nginx) localSuffix;
   enabled = scanservjs.enable;
 in {
   options.crystals-services.scanservjs = {
@@ -20,8 +19,8 @@ in {
       enable = true;
       settings.host = "0.0.0.0";
     };
-    services.nginx.virtualHosts = lib.mkIf (scanservjs.nginxVhost != null) {
-      "${scanservjs.nginxVhost}.${localSuffix}".locations."/" = {
+    crystals-services.nginx.local.sites."${scanservjs.nginxVhost}" = lib.mkIf (scanservjs.nginxVhost != null) {
+      locations."/" = {
         proxyPass = "http://127.0.0.1:${toString config.services.scanservjs.settings.port}";
       };
     };

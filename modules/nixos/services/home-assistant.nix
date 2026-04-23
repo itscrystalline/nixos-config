@@ -101,8 +101,10 @@ in {
         enable = true;
         port = 5590;
       };
+    };
 
-      nginx.virtualHosts."dorm.${config.crystals-services.nginx.localSuffix}".locations."/" = {
+    crystals-services.nginx.local.sites."dorm" = {
+      locations."/" = {
         proxyPass = "http://127.0.0.1:${toString config.services.home-assistant.config.http.server_port}";
         proxyWebsockets = true;
       };

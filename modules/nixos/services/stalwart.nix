@@ -20,12 +20,6 @@ in {
       description = "Main stalwart hostname.";
       default = "iw2tryhard.dev";
     };
-
-    webUIHost = lib.mkOption {
-      type = lib.types.nullOr lib.types.str;
-      description = "Nginx local host name to proxy stalwart web UI under. Null to disable.";
-      default = "stalwart.crys";
-    };
   };
 
   config = lib.mkIf enabled {
@@ -260,14 +254,6 @@ in {
           ansi = false;
           enable = true;
         };
-      };
-    };
-
-    # nginx reverse proxy for web UI
-    services.nginx.virtualHosts = lib.mkIf (stalwart.webUIHost != null) {
-      "${stalwart.webUIHost}".locations."/" = {
-        proxyPass = "http://127.0.0.1:8080";
-        proxyWebsockets = true;
       };
     };
   };

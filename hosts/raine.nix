@@ -98,7 +98,7 @@ in {
     cloudflared.enable = true;
     nextcloud = {
       enable = true;
-      domain = "nc.iw2tryhard.dev";
+      domain = "nc";
       folder = "/mnt/main/nextcloud";
       adminpassFile = sopsPath "nextcloud-admin-password";
       statsTokenFile = sopsPath "nextcloud-admin-stats-token";
