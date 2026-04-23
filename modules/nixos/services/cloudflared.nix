@@ -14,7 +14,7 @@
         else ""
       }iw2tryhard.dev" = {
         originRequest = attrs.${key};
-        service = "http://localhost:80";
+        service = "https://localhost:443";
       };
     }) (builtins.attrNames attrs));
 in {
