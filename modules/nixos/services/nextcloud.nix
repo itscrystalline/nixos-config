@@ -126,7 +126,7 @@ in {
     };
 
     crystals-services.nginx.public.sites.${nextcloud.domain} = {
-      acme = true;
+      acme = ""; # iw2tryhard.dev
     };
 
     crystals-services.cloudflared.domains.${nextcloud.domain} = {

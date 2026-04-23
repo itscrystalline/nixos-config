@@ -34,7 +34,7 @@ in {
         locations."/" = {
           proxyPass = "http://127.0.0.1:3001";
         };
-        acme = true;
+        acme = "";
       };
     };
     crystals-services.cloudflared.domains = {

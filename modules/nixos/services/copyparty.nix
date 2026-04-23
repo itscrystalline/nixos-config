@@ -106,7 +106,9 @@ in {
           proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
         '';
       };
-      acme = true;
+      acme = "";
+      acmeReloadedService = "copyparty.service";
+      acmeUser = "copyparty";
     };
     services.nginx = {
       upstreams.copyparty.servers."unix:/run/copyparty/copyparty.sock" = {};

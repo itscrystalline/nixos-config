@@ -25,7 +25,7 @@ in {
   config = lib.mkIf enabled {
     sops.secrets = {
       "stalwart-admin-password".owner = "stalwart-mail";
-      "stalwart-cloudflare-token".owner = "stalwart-mail";
+      "cloudflare-token".owner = "stalwart-mail";
       "stalwart-dkim-rsa-key".owner = "stalwart-mail";
       "stalwart-dkim-ed25519-key".owner = "stalwart-mail";
     };
@@ -37,7 +37,7 @@ in {
 
       credentials = with config.sops.secrets; {
         admin_pass = stalwart-admin-password.path;
-        cloudflare_token = stalwart-cloudflare-token.path;
+        cloudflare_token = cloudflare-token.path;
         "dkim-rsa.key" = stalwart-dkim-rsa-key.path;
         "dkim-ed25519.key" = stalwart-dkim-ed25519-key.path;
       };

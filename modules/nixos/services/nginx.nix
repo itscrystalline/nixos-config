@@ -1,6 +1,7 @@
 {
   lib,
   config,
+  pkgs,
   ...
 }: let
   inherit (config.crystals-services) nginx;
@@ -17,18 +18,25 @@
       description = "Aliases for this domain";
       default = [];
     };
+    extraConfig = lib.mkOption {
+      type = lib.types.lines;
+      description = "Extra config for this site.";
+      default = "";
+    };
   };
+
+  expandDomain = suffix: name: "${name}${
+    if name != ""
+    then "."
+    else ""
+  }${suffix}";
 
   mkLocalDomains = domains:
     builtins.listToAttrs (map ({
       name,
       value,
     }: {
-      name = "${name}${
-        if name != ""
-        then "."
-        else ""
-      }${nginx.local.suffix}";
+      name = expandDomain nginx.local.suffix name;
       value = {
         inherit (value) locations;
         serverAliases = value.aliases;
@@ -40,16 +48,14 @@
       name,
       value,
     }: let
-      domain = "${name}${
-        if name != ""
-        then "."
-        else ""
-      }${nginx.public.suffix}";
+      expandDomain' = expandDomain nginx.public.suffix;
+      domain = expandDomain' name;
     in {
       name = domain;
       value = {
         inherit (value) locations;
         serverAliases = value.aliases;
+        acmeRoot = null;
         forceSSL = value.acme != false;
         useACMEHost =
           if builtins.isBool value.acme
@@ -59,26 +65,50 @@
               then domain
               else null
             )
-          else value.acme;
+          else expandDomain' value.acme;
       };
     }) (lib.attrsToList domains));
 
   mkACMECertificateOrders = domains: let
-    expandDomain = name: "${name}${
-      if name != ""
-      then "."
-      else ""
-    }${nginx.public.suffix}";
     domainNames = builtins.attrNames domains;
+    expandDomain' = expandDomain nginx.public.suffix;
 
     topLevelDomains = builtins.filter (domain: let d = domains.${domain}; in builtins.isBool d.acme && d.acme) domainNames;
     referrers = domain: builtins.filter (other: domains.${other}.acme == domain) domainNames;
   in
-    builtins.listToAttrs (map (tld: {
-        name = expandDomain tld;
+    builtins.listToAttrs (map (tld: let
+        ref = referrers tld;
+        search = attr:
+          map
+          (d: d.${attr}) # extracts the service name
+          
+          ( # filters to those that have defined it
+            builtins.filter
+            (d: !(builtins.isNull d.${attr}))
+            ( # maps to their respective attrs
+              map
+              (name: domains.${name})
+              ([tld] ++ ref) # search domains
+            )
+          );
+
+        neededServices = search "acmeReloadedService";
+        neededUsers = builtins.foldl' (acc: elem: "${acc},u:${elem}:rx") "u:${config.services.nginx.user}:rx" (search "acmeUser");
+        name = expandDomain' tld;
+      in {
+        inherit name;
         value = {
           inherit (config.services.nginx) group;
-          extraDomainNames = map expandDomain (referrers tld);
+          extraDomainNames = map expandDomain' ref;
+          dnsProvider = "cloudflare";
+          environmentFile = config.sops.templates.acme-cloudflare.path;
+          postRun = ''
+            # set permission on dir
+            ${pkgs.acl}/bin/setfacl -m ${neededUsers} /var/lib/acme/${name}
+            # set permission on key file
+            ${pkgs.acl}/bin/setfacl -m ${neededUsers} /var/lib/acme/${name}/*.pem
+          '';
+          reloadServices = neededServices;
         };
       })
       topLevelDomains);
@@ -115,6 +145,16 @@ in {
                 description = "If set to true, Registers a TLS certificate for this site and it's aliases. else, this site uses the ACME cert of the site entered here. if false, disables TLS.";
                 default = true;
               };
+              acmeReloadedService = lib.mkOption {
+                type = lib.types.nullOr lib.types.str;
+                description = "The systemd service that is to be restarted when the certificate refreshes.";
+                default = null;
+              };
+              acmeUser = lib.mkOption {
+                type = lib.types.nullOr lib.types.str;
+                description = "The user that will have read access to the certificate dir & file.";
+                default = null;
+              };
             };
         });
         description = "Attrset of local sites. the name constitutes a subdomain, an empty name means the domain apex.";
@@ -123,6 +163,9 @@ in {
     };
   };
   config = lib.mkIf enabled {
+    sops.templates."acme-cloudflare".content = ''
+      CLOUDFLARE_DNS_API_TOKEN=${config.sops.placeholder.cloudflare-token}
+    '';
     network.ports.tcp = [80 443];
     services.nginx = {
       enable = true;
