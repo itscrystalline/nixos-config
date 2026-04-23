@@ -390,6 +390,7 @@ in {
 
       zellij = {
         enable = true;
+        package = pkgs.unstable.zellij;
         # implemented manually, avoids zellij bug where you can softlock yourself by having >1 active session w/ no clients
         attachExistingSession = false;
         exitShellOnExit = false;
