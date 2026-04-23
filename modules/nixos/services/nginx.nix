@@ -163,9 +163,12 @@ in {
     };
   };
   config = lib.mkIf enabled {
-    sops.templates."acme-cloudflare".content = ''
-      CLOUDFLARE_DNS_API_TOKEN=${config.sops.placeholder.cloudflare-token}
-    '';
+    sops = {
+      secrets."cloudflare-token" = {};
+      templates."acme-cloudflare".content = ''
+        CLOUDFLARE_DNS_API_TOKEN=${config.sops.placeholder.cloudflare-token}
+      '';
+    };
     network.ports.tcp = [80 443];
     services.nginx = {
       enable = true;
