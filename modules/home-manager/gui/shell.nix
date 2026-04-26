@@ -61,7 +61,7 @@ in {
             "battery-actions"
             "polkit-agent"
             "usb-drive-manager"
-            "hassio"
+            # "hassio"
             "screen-toolkit"
             "lyrics-fetch"
           ];
@@ -123,7 +123,7 @@ in {
               }
               {id = "plugin:lyrics-fetch";}
               {id = "plugin:keybind-cheatsheet";}
-              {id = "plugin:hassio";}
+              # {id = "plugin:hassio";}
             ];
             center = [
               {id = "plugin:screen-toolkit";}
