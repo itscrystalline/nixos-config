@@ -224,7 +224,7 @@ in {
           forceBlackScreenCorners = true;
         };
         location = {
-          name = "Helsinki";
+          name = "Bangkok";
           monthBeforeDay = false;
         };
         wallpaper.enabled = false;
