@@ -20,6 +20,7 @@
   crystals-services = {
     ssh.enable = true;
     nginx.enable = true;
+    docker.enable = true;
     tailscale = {
       enable = true;
       role = "server";
