@@ -32,7 +32,7 @@ in {
     };
 
     arch = "x86_64-linux";
-    localization.timezone = "Europe/Helsinki";
+    localization.timezone = "Asia/Bangkok";
   };
 
   compat = {
