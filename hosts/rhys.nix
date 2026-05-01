@@ -91,6 +91,7 @@ in {
     docker.enable = true;
     printing.enable = true;
     pm.enable = true;
+    pm.profile = "workstation";
   };
 
   nix = {

@@ -26,6 +26,9 @@
       role = "server";
     };
     forgejo.runner.enable = true;
+
+    pm.enable = true;
+    pm.profile = "server";
   };
 
   nix = {
