@@ -49,9 +49,18 @@
       speedFactor = 1;
     };
   };
+  kernel = {
+    # LTS
+    package = pkgs.linuxPackages;
+    cmdline = [
+      "i915.enable_rc6=7"
+      "i915.enable_fbc=1"
+      "i915.lvds_downclock=1"
+      "i915.powersave=1"
 
-  # LTS
-  kernel.package = pkgs.linuxPackages;
+      "nouveau.modeset=0"
+    ];
+  };
   boot = {
     bootloader = "grub";
     verbosity = "verbose";
