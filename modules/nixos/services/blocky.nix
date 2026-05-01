@@ -32,7 +32,7 @@ in {
           "test" = "5.6.7.8";
         }
       '';
-      description = "Custom DNS mappings of <domain> to <ip address>. <domain> is affixed with `config.crystals-services.nginx.localSuffix`.";
+      description = "Custom DNS mappings of <domain> to <ip address>. <domain> is affixed with `config.crystals-services.nginx.local.suffix`.";
     };
   };
   config = lib.mkIf enabled {
@@ -65,7 +65,7 @@ in {
         ];
 
         customDNS.mapping = let
-          suffix = config.crystals-services.nginx.localSuffix;
+          suffix = config.crystals-services.nginx.local.suffix;
           dns =
             lib.attrsets.mapAttrs' (n: value: {
               inherit value;

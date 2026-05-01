@@ -14,7 +14,7 @@ in {
     enable = lib.mkEnableOption "Local nix binary cache";
     domain = lib.mkOption {
       type = lib.types.str;
-      description = "local domain for all cache-related things. this is affixed by `config.crystals-services.nginx.localSuffix`.";
+      description = "local domain for all cache-related things. this is affixed by `config.crystals-services.nginx.local.suffix`.";
       default = "cache";
     };
     nixCaches = lib.mkOption {
