@@ -11,6 +11,7 @@ keys:
   - &raine age1zgfjcs8703v8alw5vn7lzac3j4fu3c4hqse8x60du2v3aw9rdsrstt8rr0
   - &mingzhu age1atnaedc648xx0czkj89ydtfnqgwkx0wdkpknzr2mj8eksg2f8e7qcggh8e
   - &jocelyn age12s7x9zlp6f76gh426p520v6m3mugx7d46uq0zxg8azc3eqdq6qksdt8r53
+  - &emily age1y32uecct28ls9e5d3q47actajy5dueja772sdj3aelzqacr0j37qaxwm23
 
 creation_rules:
   - path_regex: secrets/secrets\.yaml$
@@ -24,3 +25,4 @@ creation_rules:
         - *rhys
         - *mingzhu
         - *jocelyn
+        - *emily

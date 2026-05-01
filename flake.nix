@@ -202,9 +202,18 @@
         inputs.nixos-facter-modules.nixosModules.facter
       ];
     };
+    # nix run github:nix-community/nixos-anywhere -- --generate-hardware-config nixos-facter ./hosts/emily/facter.json  --flake .#emily --copy-host-keys --target-host root@<ip address>
+    emily = mkHost {
+      arch = "x86_64-linux";
+      configModule = ./hosts/emily.nix;
+      otherModules = [
+        inputs.disko.nixosModules.disko
+        inputs.nixos-facter-modules.nixosModules.facter
+      ];
+    };
   in {
     nixosConfigurations = {
-      inherit rhys raine liriel mingzhu jocelyn;
+      inherit rhys raine liriel mingzhu jocelyn emily;
     };
     homeConfigurations = {
       "opc" = mkStandaloneHome "aarch64-linux" [./homes/opc.nix];

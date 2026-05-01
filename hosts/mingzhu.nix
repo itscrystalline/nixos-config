@@ -1,7 +1,6 @@
 {
   modulesPath,
   pkgs,
-  config,
   ...
 }: {
   imports = [
@@ -118,6 +117,15 @@
         hostPublicKey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIGx/sDmD9rvzXpBdFrw6D5DdUlbesJT4sAiQlQxZofZK root@ubuntu";
         systems = ["x86_64-linux"];
         maxJobs = 1;
+        speedFactor = 1;
+        supportedFeatures = [];
+      }
+      {
+        hostName = "emily";
+        user = "nixremote";
+        hostPublicKey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAID+mcYYGTGYoSbzSQV/S4VRX+CwzXRGD8bLTv6FgDECV root@nixos";
+        systems = ["x86_64-linux"];
+        maxJobs = 4;
         speedFactor = 1;
         supportedFeatures = [];
       }
