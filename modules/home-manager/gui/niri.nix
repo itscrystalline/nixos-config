@@ -176,7 +176,7 @@ in {
             ]
             ++ lib.optionals shellEnabled [
               {argv = ["swww" "img" "/home/itscrystalline/bg.gif" "--filter=Nearest"];}
-              {sh = ["QT_IM_MODULE=wayland noctalia-shell"];}
+              {sh = "QT_IM_MODULE=wayland noctalia-shell";}
             ]
             ++ lib.optionals cliProgramsEnabled [
               {argv = ["valent" "--gapplication-service"];}
