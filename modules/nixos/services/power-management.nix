@@ -40,11 +40,10 @@
       INTEL_GPU_BOOST_FREQ_ON_BAT = 1050;
     };
     server = {
-      CPU_SCALING_GOVERNOR_ON_AC = "powersave";
+      CPU_SCALING_GOVERNOR_ON_AC = "schedutil";
       CPU_MIN_PERF_ON_AC = 0;
       CPU_MAX_PERF_ON_AC = 100;
       CPU_BOOST_ON_AC = 1;
-      SCHED_POWERSAVE_ON_AC = 1;
 
       CPU_SCALING_MIN_FREQ_ON_AC = 400000;
       CPU_SCALING_MAX_FREQ_ON_AC = 2600000;
