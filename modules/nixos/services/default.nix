@@ -1,4 +1,8 @@
-{...}: {
+{
+  lib,
+  config,
+  ...
+}: {
   imports = [
     ./tailscale.nix
     ./ssh.nix
@@ -26,8 +30,19 @@
     ./copyparty.nix
   ];
 
-  systemd = {
+  options.crystals-services.essentialServices = lib.mkOption {
+    type = lib.types.listOf lib.types.str;
+    description = "Essential systemd services to restart always.";
+    default = [];
+  };
+
+  config.systemd = {
     settings.Manager.DefaultTimeoutStopSec = "20s";
     user.extraConfig = ''DefaultTimeoutStopSec=20s'';
+    services = builtins.listToAttrs (map (name: {
+        inherit name;
+        value.serviceConfig.Restart = lib.mkForce "always";
+      })
+      config.crystals-services.essentialServices);
   };
 }

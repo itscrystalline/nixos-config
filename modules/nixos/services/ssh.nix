@@ -11,6 +11,6 @@ in {
       enable = true;
       settings.SetEnv = "PATH=/nix/var/nix/profiles/default/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin";
     };
-    systemd.services.sshd.serviceConfig.Restart = lib.mkForce "always";
+    crystals-services.essentialServices = ["sshd"];
   };
 }

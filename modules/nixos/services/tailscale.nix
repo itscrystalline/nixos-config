@@ -23,7 +23,7 @@ in {
         useRoutingFeatures = tailscale.role;
         extraSetFlags = ["--operator=${config.core.primaryUser}"];
       };
-      systemd.services.tailscaled.serviceConfig.Restart = lib.mkForce "always";
+      crystals-services.essentialServices = ["tailscaled"];
     }
     (lib.mkIf (tailscale.role == "server") {
       sops.secrets."tailscale-auth-key".restartUnits = ["tailscaled-autoconnect.service"];

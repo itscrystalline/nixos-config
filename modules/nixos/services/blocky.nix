@@ -40,6 +40,7 @@ in {
       tcp = [53 83 5000 5443];
       udp = [53 83];
     };
+    crystals-services.essentialServices = ["blocky"];
     services.blocky = {
       enable = true;
       settings = {
