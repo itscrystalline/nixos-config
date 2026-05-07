@@ -53,6 +53,8 @@ in {
         qrtool
         socat
         unstable.jocalsend
+
+        prettyping
       ]
       ++ lib.optionals pkgs.stdenv.isLinux [
         cliphist
@@ -93,6 +95,7 @@ in {
       cm = "sudo loadkeys colemak";
       qw = "sudo loadkeys us";
       cargo = "cargo mommy";
+      ping = "prettyping";
     };
 
     programs = {
