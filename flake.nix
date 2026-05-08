@@ -14,7 +14,7 @@
       url = "github:Mic92/sops-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    nix-cachyos-kernel.url = "github:xddxdd/nix-cachyos-kernel/release";
+    nix-cachyos-kernel.url = "github:xddxdd/nix-cachyos-kernel?ref=0f7e2bea4088227a80502557f6c0e3b74949d6b5";
     home-manager = {
       url = "github:nix-community/home-manager/release-25.11";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -45,14 +45,33 @@
       url = "github:noctalia-dev/noctalia-shell";
       inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
-    blender-flake.url = "github:edolstra/nix-warez?dir=blender";
+    blender-flake = {
+      url = "github:edolstra/nix-warez?dir=blender";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     nix-flatpak.url = "github:gmodena/nix-flatpak";
     sanzenvim.url = "git+https://git.iw2tryhard.dev/itscrystalline/sanzenvim";
-    iw2tryhard-dev.url = "git+https://git.iw2tryhard.dev/itscrystalline/iw2tryhard-dev-3.0";
-    occasion.url = "git+https://git.iw2tryhard.dev/itscrystalline/occasion";
+
+    iw2tryhard-dev = {
+      url = "git+https://git.iw2tryhard.dev/itscrystalline/iw2tryhard-dev-3.0";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    occasion = {
+      url = "git+https://git.iw2tryhard.dev/itscrystalline/occasion";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     vicinae.url = "github:vicinaehq/vicinae";
-    stylix.url = "github:nix-community/stylix/release-25.11";
-    stylix-unstable.url = "github:nix-community/stylix";
+
+    stylix = {
+      url = "github:nix-community/stylix/release-25.11";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    stylix-unstable = {
+      url = "github:nix-community/stylix";
+      inputs.nixpkgs.follows = "nixpkgs-unstable";
+    };
     forgesync = {
       url = "git+https://git.iw2tryhard.dev/itscrystalline/forgesync";
       inputs.nixpkgs.follows = "nixpkgs";
