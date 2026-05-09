@@ -80,6 +80,7 @@
       url = "github:9001/copyparty";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    harmonia.url = "github:nix-community/harmonia";
   };
 
   outputs = inputs @ {
@@ -201,9 +202,10 @@
     mingzhu = mkHost rec {
       arch = "aarch64-linux";
       configModule = ./hosts/mingzhu.nix;
-      otherModules = with inputs.nur.legacyPackages.${arch}.repos.itscrystalline.modules; [
-        ocid
-        oracle-cloud-agent
+      otherModules = [
+        inputs.nur.legacyPackages.${arch}.repos.itscrystalline.modules.ocid
+        inputs.nur.legacyPackages.${arch}.repos.itscrystalline.modules.oracle-cloud-agent
+        inputs.harmonia.nixosModules.harmonia
       ];
       userHomeModules = [
         (import ./homes/itscrystalline.nix {

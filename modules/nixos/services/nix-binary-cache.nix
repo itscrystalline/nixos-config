@@ -99,8 +99,8 @@ in {
         };
       };
 
-      harmonia = {
-        package = pkgs.unstable.harmonia;
+      harmonia-dev = {
+        # package = pkgs.unstable.harmonia;
         daemon.enable = true;
         cache = {
           enable = true;
