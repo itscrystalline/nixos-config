@@ -15,7 +15,6 @@ in {
 
   config = lib.mkIf (enabled && pkgs.stdenv.isLinux) {
     home.packages = [
-      pkgs.xwayland-satellite
       pkgs.wl-mirror
       pkgs.wl-kbptr
     ];
@@ -160,6 +159,17 @@ in {
 
           overview.backdrop-color = config.lib.stylix.colors.withHashtag.base00;
           screenshot-path = "~/Pictures/Screenshots/Screenshot at %Y-%m-%d %H-%M-%S.png";
+          xwayland-satellite = {
+            enable = true;
+            path = lib.getExe (pkgs.xwayland-satellite-unstable.overrideAttrs {
+              patches = [
+                (pkgs.fetchpatch {
+                  url = "https://github.com/Supreeeme/xwayland-satellite/compare/main...WMsans:xwayland-satellite:fix/unity-editor.patch";
+                  sha256 = "sha256-3Ts/GQ2Ilj/svN5zthUsHYMJLlwt5AsdYcPuYZbXygY=";
+                })
+              ];
+            });
+          };
 
           workspaces = {
             social.open-on-output = "eDP-1";

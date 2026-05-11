@@ -11,7 +11,7 @@ in {
     users.users.${config.core.primaryUser}.extraGroups = ["ydotool"];
     programs = {
       niri.enable = true;
-      niri.package = pkgs.niri-stable;
+      niri.package = pkgs.niri-unstable;
 
       ydotool.enable = true;
 
