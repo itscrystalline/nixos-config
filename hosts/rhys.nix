@@ -135,8 +135,8 @@ in {
   };
 
   kernel = {
-    # package = pkgs.cachyosKernels.linuxPackages-cachyos-latest-lto-x86_64-v4;
-    package = pkgs.linuxPackages_latest;
+    package = pkgs.cachyosKernels.linuxPackages-cachyos-latest-lto-x86_64-v4;
+    # package = pkgs.linuxPackages_latest;
     stage2Modules = ["kvm-intel"];
     emulatedArchitectures = ["aarch64-linux"];
     supportedFilesystems = ["ntfs" "nfs"];

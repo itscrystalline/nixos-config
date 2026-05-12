@@ -2,6 +2,7 @@
   config,
   pkgs,
   lib,
+  inputs,
   ...
 }: let
   inherit (config.gui) graphics;
@@ -26,7 +27,18 @@ in {
     };
   };
 
+  # FIXME: remove when 26.05 comes out
+  disabledModules = ["hardware/video/nvidia.nix"];
+  imports = [(inputs.nixpkgs-unstable + "/nixos/modules/hardware/video/nvidia.nix")];
+
   config = lib.mkIf enabled {
+    # FIXME: remove when 26.05 comes out
+    nixpkgs.overlays = [
+      (final: _: {
+        inherit (final.unstable) egl-gbm egl-wayland egl-wayland2 egl-x11 eglexternalplatform;
+      })
+    ];
+
     hardware = {
       graphics = {
         enable = true;
@@ -38,6 +50,7 @@ in {
 
       nvidia = {
         open = pkgs.lib.mkForce false; # Set to false for proprietary drivers
+        # branch = "stable";
 
         modesetting.enable = true;
         powerManagement.enable = true;
