@@ -14,7 +14,6 @@
       url = "github:Mic92/sops-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    # nix-cachyos-kernel.url = "github:xddxdd/nix-cachyos-kernel?ref=0f7e2bea4088227a80502557f6c0e3b74949d6b5";
     nix-cachyos-kernel.url = "github:xddxdd/nix-cachyos-kernel/release";
     home-manager = {
       url = "github:nix-community/home-manager/release-25.11";

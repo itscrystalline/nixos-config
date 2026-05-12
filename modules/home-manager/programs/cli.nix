@@ -30,72 +30,79 @@ in {
   };
 
   config = lib.mkIf enabled {
-    home.packages = with pkgs;
-      [
-        blahaj
-        zoxide
-        sshfs
-        nh
-        git-crypt
-        nix-output-monitor
-        tmux
-        byobu
+    home = {
+      packages = with pkgs;
+        [
+          blahaj
+          zoxide
+          sshfs
+          nh
+          git-crypt
+          nix-output-monitor
+          tmux
+          byobu
 
-        adwaita-icon-theme
-        axel
-        bc
-        cmake
-        meson
-        tinyxml-2
-        libnotify
-        jq
-        lsof
-        qrtool
-        socat
-        unstable.jocalsend
+          adwaita-icon-theme
+          axel
+          bc
+          cmake
+          meson
+          tinyxml-2
+          libnotify
+          jq
+          lsof
+          qrtool
+          socat
+          unstable.jocalsend
 
-        prettyping
-      ]
-      ++ lib.optionals pkgs.stdenv.isLinux [
-        cliphist
-        fuzzel
-        brightnessctl
-        ddcutil
-        swww
-        mpvpaper
-        sass
-        sassc
-        cava
-        yad
-        pywal
-        swappy
-        playerctl
-        ydotool
-        valent
-      ]
-      ++ lib.optionals (inputs ? occasion) [
-        inputs.occasion.packages.${pkgs.hostsys}.occasion
+          prettyping
+        ]
+        ++ lib.optionals pkgs.stdenv.isLinux [
+          cliphist
+          fuzzel
+          brightnessctl
+          ddcutil
+          swww
+          mpvpaper
+          sass
+          sassc
+          cava
+          yad
+          pywal
+          swappy
+          playerctl
+          ydotool
+          valent
+        ]
+        ++ lib.optionals (inputs ? occasion) [
+          inputs.occasion.packages.${pkgs.hostsys}.occasion
+        ];
+
+      shellAliases = {
+        svim = "sudo nvim";
+        enic = "cd ~/nixos-config; nvim"; # Edit NIx Config
+        update =
+          if passthrough == null # standalone home-manager
+          then "nh home switch ~/nixos-config"
+          else "nh os switch ~/nixos-config";
+        nuke-cache = "rm -rf ~/.cache/nix";
+        gc = "nh clean all";
+        clean-hmbkups = "find ${config.home.homeDirectory}/.config -name \"*.hmbkup\" -type f -delete";
+        gssh = "TERM=xterm-256color ssh";
+        ":q" = "exit";
+        lg = "lazygit";
+        ls = "eza";
+        cat = "bat --paging=never";
+        cm = "sudo loadkeys colemak";
+        qw = "sudo loadkeys us";
+        cargo = "cargo mommy";
+        ping = "prettyping";
+      };
+
+      sessionPath = [
+        "$HOME/.local/bin"
+        "$HOME/.local/share/bin"
       ];
-
-    home.shellAliases = {
-      svim = "sudo nvim";
-      enic = "cd ~/nixos-config; nvim"; # Edit NIx Config
-      update =
-        if passthrough == null # standalone home-manager
-        then "nh home switch ~/nixos-config"
-        else "nh os switch ~/nixos-config";
-      nuke-cache = "rm -rf ~/.cache/nix";
-      gc = "nh clean all";
-      clean-hmbkups = "find ${config.home.homeDirectory}/.config -name \"*.hmbkup\" -type f -delete";
-      gssh = "TERM=xterm-256color ssh";
-      ":q" = "exit";
-      lg = "lazygit";
-      ls = "eza";
-      cat = "bat --paging=never";
-      cm = "sudo loadkeys colemak";
-      qw = "sudo loadkeys us";
-      cargo = "cargo mommy";
-      ping = "prettyping";
     };
 
     programs = {
