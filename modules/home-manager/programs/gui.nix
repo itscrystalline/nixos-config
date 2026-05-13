@@ -28,11 +28,6 @@
   mirrorScript = pkgs.writeShellScript "niri-mirror.sh" ''
     ${pkgs.wl-mirror}/bin/wl-mirror $(niri msg --json focused-output | ${pkgs.jq}/bin/jq -r .name)
   '';
-  matlabScript = pkgs.writeShellScript "matlab-web.sh" ''
-    TO_OPEN=''${1:-"$HOME/Documents/programming/00-Classes/signal-processing"}
-    docker run -d -p 8888:8888 --shm-size=512M -e MWI_MATLAB_STARTUP_SCRIPT="cd('/work')" -v "$TO_OPEN:/work" mathworks/matlab:latest -browser
-    xdg-open http://localhost:8888 &
-  '';
 in {
   options.hm.programs.gui = {
     enable = lib.mkEnableOption "GUI apps";
@@ -72,7 +67,6 @@ in {
 
       shellAliases = lib.mkIf (pkgs.stdenv.isLinux && config.hm.gui.niri.enable) {
         mirror = "${mirrorScript}";
-        matlab = "${matlabScript}";
         open = "${lib.getExe pkgs.nautilus} . &>/dev/null &|";
       };
 
@@ -208,12 +202,6 @@ in {
           type = "Application";
           categories = [""];
           mimeType = ["x-scheme-handler/org-protocol"];
-        };
-        MATLAB = {
-          name = "MATLAB";
-          exec = "${matlabScript}";
-          terminal = false;
-          type = "Application";
         };
         niri-mirror-screen = lib.mkIf config.hm.gui.niri.enable {
           name = "Start Screen Mirroring (Niri)";

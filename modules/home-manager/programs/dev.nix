@@ -6,6 +6,13 @@
 }: let
   inherit (config.hm.programs.cli) dev;
   enabled = dev.enable && config.hm.programs.cli.enable;
+
+  matlabScript = pkgs.writeShellScript "matlab-web.sh" ''
+    TO_OPEN=''${1:-"$HOME/Documents/programming/00-Classes/signal-processing"}
+    docker run -d -p 8888:8888 --shm-size=512M -e MWI_MATLAB_STARTUP_SCRIPT="cd('$TO_OPEN')" -v "$TO_OPEN:$TO_OPEN" matlab-with-ls:latest -browser
+    sleep 0.2
+    xdg-open http://localhost:8888 &
+  '';
 in {
   imports = [./ai.nix];
 
@@ -29,6 +36,13 @@ in {
         darwin.xcode
         mas
       ];
+    home.shellAliases.matlab = "${matlabScript}";
+    xdg.desktopEntries.MATLAB = {
+      name = "MATLAB";
+      exec = "${matlabScript}";
+      terminal = false;
+      type = "Application";
+    };
 
     programs = {
       git = {
