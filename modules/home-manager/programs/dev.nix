@@ -7,7 +7,7 @@
   inherit (config.hm.programs.cli) dev;
   enabled = dev.enable && config.hm.programs.cli.enable;
 
-  matlabScript = pkgs.writeShellScript "matlab-web.sh" ''
+  matlabScript = pkgs.writeShellScript "matlab-web" ''
     TO_OPEN=''${1:-"$HOME/Documents/programming/00-Classes/signal-processing"}
     docker run -d -p 8888:8888 --shm-size=512M -e MWI_MATLAB_STARTUP_SCRIPT="cd('$TO_OPEN')" -v "$TO_OPEN:$TO_OPEN" matlab-with-ls:latest -browser
     sleep 0.2
@@ -28,6 +28,8 @@ in {
         python3
 
         forgejo-cli
+
+        matlabScript
       ]
       ++ lib.optionals config.hm.gui.enable [
         filezilla
@@ -36,7 +38,6 @@ in {
         darwin.xcode
         mas
       ];
-    home.shellAliases.matlab = "${matlabScript}";
     xdg.desktopEntries.MATLAB = {
       name = "MATLAB";
       exec = "${matlabScript}";
