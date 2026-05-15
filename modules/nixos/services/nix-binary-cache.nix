@@ -59,6 +59,11 @@ in {
 
   config = lib.mkIf enabled {
     sops.secrets."harmonia-secret-key".owner = "harmonia";
+    users.users.harmonia = {
+      isSystemUser = true;
+      group = "harmonia";
+    };
+    users.groups.harmonia = {};
 
     services = {
       ncps = {
