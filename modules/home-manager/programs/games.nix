@@ -14,7 +14,7 @@ in {
     home.packages = with pkgs;
       [
         (prismlauncher.override {
-          additionalPrograms = [ffmpeg];
+          additionalPrograms = [ffmpeg mangohud];
           gamemodeSupport = true;
           jdks = [
             graalvmPackages.graalvm-ce
