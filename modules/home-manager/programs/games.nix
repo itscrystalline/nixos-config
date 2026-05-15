@@ -18,8 +18,11 @@ in {
           gamemodeSupport = true;
           jdks = [
             graalvmPackages.graalvm-ce
+            graalvmPackages.graalvm-oracle_17
             zulu8
+            zulu17
             zulu21
+            zulu25
           ];
         })
         itch
