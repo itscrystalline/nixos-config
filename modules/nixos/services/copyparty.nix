@@ -87,6 +87,8 @@ in {
       volumes = mkVolumes copyparty.volumes;
       openFilesLimit = 8192;
     };
+    systemd.services.copyparty.wants = ["systemd-tmpfiles-resetup.service"];
+
     crystals-services.nginx.public.sites."static" = {
       locations."/" = {
         proxyPass = "http://copyparty";
