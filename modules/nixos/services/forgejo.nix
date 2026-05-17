@@ -86,6 +86,7 @@ in {
       services = {
         forgejo = {
           enable = true;
+          package = pkgs.forgejo;
           database.type = "sqlite3";
           stateDir = forgejo.directory;
           lfs.enable = true;
