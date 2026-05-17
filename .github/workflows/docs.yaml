@@ -11,7 +11,7 @@ permissions:
 jobs:
   docs:
     name: Build docs and commit
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-latest-arm
 
     steps:
     - name: Checkout code

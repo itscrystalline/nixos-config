@@ -11,7 +11,7 @@ permissions:
 jobs:
   update:
     name: Update flake
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-latest-arm
 
     steps:
       - name: Checkout code
