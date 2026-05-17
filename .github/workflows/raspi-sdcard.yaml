@@ -56,7 +56,7 @@ jobs:
         nix run nixpkgs#nixos-rebuild -- build-image --flake .#${{ matrix.name }} --image-variant sd-card 2>&1
 
     - name: Upload
-      uses: actions/upload-artifact@v6
+      uses: https://github.com/christopherHX/gitea-upload-artifact@v4
       with:
         name: sdcard-${{ matrix.name }}
         path: result/sd-image/*.img.zst
