@@ -74,7 +74,7 @@ in {
       settings = {
         # directly maps to values in the [global] section of the copyparty config.
         # see `copyparty --help` for available options
-        i = "unix:770:/run/copyparty/copyparty.sock";
+        i = "unix:770:/dev/shm/copyparty.sock";
         xff-hdr = "cf-connecting-ip";
         # xf-proto-fb = "https";
         xf-host = "x-forwarded-host";
@@ -112,7 +112,7 @@ in {
       acmeUser = "copyparty";
     };
     services.nginx = {
-      upstreams.copyparty.servers."unix:/run/copyparty/copyparty.sock" = {};
+      upstreams.copyparty.servers."unix:/dev/shm/copyparty.sock" = {};
     };
     crystals-services.cloudflared.domains."static" = {
       disableChunkedEncoding = true;
