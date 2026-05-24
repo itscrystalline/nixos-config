@@ -161,14 +161,7 @@ in {
           screenshot-path = "~/Pictures/Screenshots/Screenshot at %Y-%m-%d %H-%M-%S.png";
           xwayland-satellite = {
             enable = true;
-            path = lib.getExe (pkgs.xwayland-satellite-unstable.overrideAttrs {
-              patches = [
-                (pkgs.fetchpatch {
-                  url = "https://github.com/Supreeeme/xwayland-satellite/compare/main...WMsans:xwayland-satellite:fix/unity-editor.patch";
-                  sha256 = "sha256-uxN6x7nhTHSNDVPw2KTwczkYwJMjhdc8cO44VmQZZ9E=";
-                })
-              ];
-            });
+            path = lib.getExe pkgs.xwayland-satellite-unstable;
           };
 
           workspaces = {
