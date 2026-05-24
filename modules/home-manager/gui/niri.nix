@@ -165,7 +165,7 @@ in {
               patches = [
                 (pkgs.fetchpatch {
                   url = "https://github.com/Supreeeme/xwayland-satellite/compare/main...WMsans:xwayland-satellite:fix/unity-editor.patch";
-                  sha256 = "sha256-3Ts/GQ2Ilj/svN5zthUsHYMJLlwt5AsdYcPuYZbXygY=";
+                  sha256 = "sha256-uxN6x7nhTHSNDVPw2KTwczkYwJMjhdc8cO44VmQZZ9E=";
                 })
               ];
             });

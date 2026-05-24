@@ -13,6 +13,15 @@
     then "default"
     else "mini";
   sanzenvim-pkg = sanzenvim.packages.${pkgs.hostsys}.${sanzenvim-prefix};
+
+  neovide_conf = (pkgs.formats.toml {}).generate "config.toml" {
+    fork = true;
+    neovim-bin = "${sanzenvim-pkg}/bin/nvim";
+    font = {
+      normal = ["JetBrainsMono Nerd Font" "Noto Sans CJK JP" "Noto Color Emoji"];
+      size = 12;
+    };
+  };
 in {
   options.hm.programs.ides.enable = lib.mkEnableOption "IDEs and editors";
 
@@ -24,7 +33,7 @@ in {
       home.packages = with pkgs;
         (lib.optionals config.hm.gui.enable [
           arduino-ide
-          neovide
+          unstable.neovide
           unityhub
         ])
         ++ [
@@ -56,15 +65,8 @@ in {
 
       home.sessionVariables.EDITOR = "${sanzenvim-pkg}/bin/nvim";
 
-      xdg.configFile = lib.mkIf config.hm.gui.enable {
-        "neovide/config.toml".text = lib.optionalString (inputs ? sanzenvim) ''
-          fork = true
-          neovim-bin = "${sanzenvim-pkg}/bin/nvim"
-
-          [font]
-          normal = ["JetBrainsMono Nerd Font", "Noto Sans CJK JP", "Noto Color Emoji"]
-          size = 12
-        '';
+      xdg.configFile = lib.mkIf (config.hm.gui.enable && (inputs ? sanzenvim)) {
+        "neovide/config.toml".src = neovide_conf;
       };
     })
   ];
