@@ -18,7 +18,7 @@
     fork = true;
     neovim-bin = "${sanzenvim-pkg}/bin/nvim";
     font = {
-      normal = ["JetBrainsMono Nerd Font" "Noto Sans CJK JP" "Noto Color Emoji"];
+      normal = config.fonts.fontconfig.defaultFonts.sansSerif;
       size = 12;
     };
   };
@@ -66,7 +66,7 @@ in {
       home.sessionVariables.EDITOR = "${sanzenvim-pkg}/bin/nvim";
 
       xdg.configFile = lib.mkIf (config.hm.gui.enable && (inputs ? sanzenvim)) {
-        "neovide/config.toml".src = neovide_conf;
+        "neovide/config.toml".source = neovide_conf;
       };
     })
   ];
