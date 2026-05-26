@@ -18,8 +18,8 @@ in {
       default = "cache";
     };
     nixCaches = lib.mkOption {
-      type = lib.types.enum [
-        "system"
+      type = lib.types.oneOf [
+        (lib.types.enum ["system"])
         (lib.types.submodule {
           options.urls = lib.mkOption {
             type = lib.types.listOf lib.types.str;
@@ -94,7 +94,10 @@ in {
                   "harmonia.${nbc.domain}.${local.suffix}:5IjKpw7rA9DxB2BVvDY/NzD0Zakjn9t9SB40AEpY2Q8="
                 ];
             }
-            else nbc.nixCaches;
+            else {
+              urls = ["http://127.0.0.1:8502"] ++ nbc.nixCaches.urls;
+              publicKeys = ["harmonia.${nbc.domain}.${local.suffix}:5IjKpw7rA9DxB2BVvDY/NzD0Zakjn9t9SB40AEpY2Q8="] ++ nbc.nixCaches.publicKeys;
+            };
         };
         server.addr = ":8501";
         prometheus.enable = true;
