@@ -18,7 +18,7 @@
     fork = true;
     neovim-bin = "${sanzenvim-pkg}/bin/nvim";
     font = {
-      normal = config.fonts.fontconfig.defaultFonts.sansSerif;
+      normal = config.programs.ghostty.settings.font-family;
       size = 12;
     };
   };
