@@ -181,15 +181,12 @@ in {
               {argv = ["swww" "img" "/home/itscrystalline/bg.gif" "--filter=Nearest"];}
               {sh = "QT_IM_MODULE=wayland noctalia-shell";}
             ]
-            ++ lib.optionals cliProgramsEnabled [
-              {argv = ["valent" "--gapplication-service"];}
-            ]
             ++ lib.optionals guiProgramsEnabled [
-              {argv = ["vesktop" "--enable-features=UseOzonePlatform" "--ozone-platform=wayland" "--enable-wayland-ime"];}
-              {argv = ["teams-for-linux" "--enable-features=UseOzonePlatform" "--ozone-platform=wayland" "--enable-features=WebRTCPipeWireCapturer" "--enable-wayland-ime"];}
+              {argv = ["valent" "--gapplication-service"];}
+              {argv = ["ghostty" "-e" "concord"];}
+              # {argv = ["teams-for-linux" "--enable-features=UseOzonePlatform" "--ozone-platform=wayland" "--enable-features=WebRTCPipeWireCapturer" "--enable-wayland-ime"];}
               {argv = ["keepassxc"];}
               {argv = ["thunderbird"];}
-              {argv = ["rog-control-center"];}
             ];
 
           input = {
