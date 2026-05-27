@@ -81,9 +81,10 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     harmonia.url = "github:nix-community/harmonia";
-    concord = {
-      url = "github:chojs23/concord";
-      inputs.nixpkgs.follows = "nixpkgs";
+    concord.url = "github:chojs23/concord";
+    matcha = {
+      url = "github:floatpane/matcha";
+      inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
   };
 

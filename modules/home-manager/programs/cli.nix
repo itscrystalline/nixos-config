@@ -58,12 +58,9 @@ in {
           pywal
           swappy
         ]
-        ++ lib.optionals (inputs ? concord) [
-          inputs.concord.packages.${pkgs.hostsys}.concord
-        ]
-        ++ lib.optionals (inputs ? occasion) [
-          inputs.occasion.packages.${pkgs.hostsys}.occasion
-        ];
+        ++ lib.optional (inputs ? concord) inputs.concord.packages.${pkgs.hostsys}.concord
+        ++ lib.optional (inputs ? matcha) inputs.matcha.packages.${pkgs.hostsys}.matcha
+        ++ lib.optional (inputs ? occasion) inputs.occasion.packages.${pkgs.hostsys}.occasion;
 
       shellAliases = {
         svim = "sudo nvim";
