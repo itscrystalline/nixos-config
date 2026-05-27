@@ -46,6 +46,7 @@ in {
           blockbench
           wireshark
           gimp
+          adwaita-icon-theme
         ])
         ++ [(youtube-music pkgs.stdenv.isLinux)]
         ++ lib.optionals largePrograms (with pkgs.stable; [
@@ -55,6 +56,16 @@ in {
           logisim-evolution
         ])
         ++ lib.optionals pkgs.stdenv.isLinux (with pkgs.stable; [
+          fuzzel
+          brightnessctl
+          ddcutil
+          swww
+          mpvpaper
+          yad
+          playerctl
+          ydotool
+          valent
+
           teams-for-linux
           pavucontrol
           hyprpicker

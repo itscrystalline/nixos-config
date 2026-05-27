@@ -40,15 +40,9 @@ in {
           git-crypt
           nix-output-monitor
           tmux
-          byobu
 
-          adwaita-icon-theme
           axel
           bc
-          cmake
-          meson
-          tinyxml-2
-          libnotify
           jq
           lsof
           qrtool
@@ -58,21 +52,14 @@ in {
           prettyping
         ]
         ++ lib.optionals pkgs.stdenv.isLinux [
-          cliphist
-          fuzzel
-          brightnessctl
-          ddcutil
-          swww
-          mpvpaper
           sass
           sassc
           cava
-          yad
           pywal
           swappy
-          playerctl
-          ydotool
-          valent
+        ]
+        ++ lib.optionals (inputs ? concord) [
+          inputs.concord.packages.${pkgs.hostsys}.concord
         ]
         ++ lib.optionals (inputs ? occasion) [
           inputs.occasion.packages.${pkgs.hostsys}.occasion
