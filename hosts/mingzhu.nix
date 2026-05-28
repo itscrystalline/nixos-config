@@ -1,7 +1,6 @@
 {
   modulesPath,
   pkgs,
-  config,
   ...
 }: {
   imports = [
@@ -62,6 +61,7 @@
           "https://attic.xuyh0120.win/lantian"
           "https://niri.cachix.org"
           "https://itscrystalline.cachix.org"
+          "https://vicinae.cachix.org"
         ];
         publicKeys = [
           "hydra.nixos.org-1:CNHJZBh9K4tP3EKF6FkkgeVYsS3ohTl+oS0Qa8bezVs="
@@ -72,6 +72,7 @@
           "cuda-maintainers.cachix.org-1:0dq3bujKpuEPMCX6U4WylrUDZ9JyUG0VpVZa7CNfq5E="
           "lantian:EeAUQ+W+6r7EtwnmYjeVwx5kOGEBpjlBfPlzGlTNvHc="
           "itscrystalline.cachix.org-1:w+aEu6k5Rx3xgUSJPCUhdZSxS919ZJvv9wThPKGVMv4="
+          "vicinae.cachix.org-1:1kDrfienkGHPYbkpNj1mWTr7Fm1+zcenzgTizIcI3oc="
         ];
       };
       openTelemetryGrpcUrl = "http://100.125.37.13:4317";
