@@ -72,37 +72,37 @@ in {
       flavor = "gmail.com";
     };
   };
-  xdg.configFile = lib.mkIf config.hm.programs.cli.enable {
-    "matcha/config.json".text = builtins.toJSON {
-      accounts = map ({
-        name,
-        value,
-      }:
-        {
-          id = lib.strings.sanitizeDerivationName name;
-          name = value.realName;
-          email = value.address;
-          fetch_email = value.address;
-          service_provider =
-            if value.flavor == "gmail.com"
-            then "gmail"
-            else "custom";
-        }
-        // lib.optionalAttrs (value.flavor == "custom") {
-          imap_server = value.imap.host;
-          imap_port = value.imap.port;
-          smtp_server = value.smtp.host;
-          smtp_port = value.smtp.port;
-        }) (lib.attrsToList config.accounts.email.accounts);
-      theme = "Rose";
-      enable_split_pane = true;
-      enable_detailed_dates = true;
-      date_format = "DD/MM/YYYY HH:MM";
-      disable_images = false;
-      hide_tips = false;
-      disable_spellcheck = false;
-      disable_spell_suggestions = false;
-      body_cache_threshold_mb = 100;
-    };
-  };
+  # xdg.configFile = lib.mkIf config.hm.programs.cli.enable {
+  #   "matcha/config.json".text = builtins.toJSON {
+  #     accounts = map ({
+  #       name,
+  #       value,
+  #     }:
+  #       {
+  #         id = lib.strings.sanitizeDerivationName name;
+  #         name = value.realName;
+  #         email = value.address;
+  #         fetch_email = value.address;
+  #         service_provider =
+  #           if value.flavor == "gmail.com"
+  #           then "gmail"
+  #           else "custom";
+  #       }
+  #       // lib.optionalAttrs (value.flavor == "custom") {
+  #         imap_server = value.imap.host;
+  #         imap_port = value.imap.port;
+  #         smtp_server = value.smtp.host;
+  #         smtp_port = value.smtp.port;
+  #       }) (lib.attrsToList config.accounts.email.accounts);
+  #     theme = "Rose";
+  #     enable_split_pane = true;
+  #     enable_detailed_dates = true;
+  #     date_format = "DD/MM/YYYY HH:MM";
+  #     disable_images = false;
+  #     hide_tips = false;
+  #     disable_spellcheck = false;
+  #     disable_spell_suggestions = false;
+  #     body_cache_threshold_mb = 100;
+  #   };
+  # };
 }
