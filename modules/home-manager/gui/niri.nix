@@ -183,7 +183,7 @@ in {
             ]
             ++ lib.optionals guiProgramsEnabled [
               {argv = ["valent" "--gapplication-service"];}
-              {argv = ["ghostty" "-e" "concord"];}
+              {argv = ["kitty" "--app-id=vesktop" "--title=concord" "concord"];}
               # {argv = ["teams-for-linux" "--enable-features=UseOzonePlatform" "--ozone-platform=wayland" "--enable-features=WebRTCPipeWireCapturer" "--enable-wayland-ime"];}
               {argv = ["keepassxc"];}
               {argv = ["thunderbird"];}
