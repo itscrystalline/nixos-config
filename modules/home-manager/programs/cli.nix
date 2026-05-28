@@ -58,7 +58,6 @@ in {
           pywal
           swappy
         ]
-        ++ lib.optional (inputs ? concord) inputs.concord.packages.${pkgs.hostsys}.concord
         ++ lib.optional (inputs ? matcha) inputs.matcha.packages.${pkgs.hostsys}.matcha
         ++ lib.optional (inputs ? occasion) inputs.occasion.packages.${pkgs.hostsys}.occasion;
 

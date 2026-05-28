@@ -49,6 +49,7 @@ in {
           adwaita-icon-theme
         ])
         ++ [(youtube-music pkgs.stdenv.isLinux)]
+        ++ lib.optional (inputs ? concord) inputs.concord.packages.${pkgs.hostsys}.concord
         ++ lib.optionals largePrograms (with pkgs.stable; [
           kdePackages.kdenlive
           audacity
