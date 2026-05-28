@@ -67,7 +67,7 @@ in {
         '';
       };
 
-      programs.ghostty.settings.font-family = ["JetBrainsMono Nerd Font" "Noto Sans CJK JP" "Noto Sans Thai" "Noto Color Emoji"];
+      programs.ghostty.settings.font-family = ["JetBrainsMono Nerd Font" "Noto Sans CJK JP" "Noto Sans Thai Looped" "Noto Color Emoji"];
 
       dconf.settings = {
         "org/gnome/desktop/interface".color-scheme = "prefer-dark";

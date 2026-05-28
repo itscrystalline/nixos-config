@@ -108,7 +108,10 @@ in {
 
       kitty = {
         enable = true;
-        shellIntegration.enableZshIntegration = true;
+        shellIntegration = {
+          enableZshIntegration = true;
+          enableBashIntegration = true;
+        };
       };
 
       fuzzel.enable = true;
