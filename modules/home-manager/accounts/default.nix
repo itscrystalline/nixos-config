@@ -79,7 +79,7 @@ in {
         value,
       }:
         {
-          id = lib.strings.sanitizeDerivation name;
+          id = lib.strings.sanitizeDerivationName name;
           name = value.realName;
           email = value.address;
           fetch_email = value.address;
