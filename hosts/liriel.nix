@@ -32,7 +32,22 @@
   network = {
     dhcp = true;
     unmanagedInterfaces = ["wlan0"];
-    profiles = ["KMITL-HiSpeed"];
+    profiles = [
+      "KMITL-HiSpeed"
+      {
+        connection = {
+          id = "emily";
+          interface-name = "end0";
+          type = "ethernet";
+          uuid = "edaba718-1934-4aa9-b244-99a2dd892f83";
+        };
+        ipv4.method = "shared";
+        ipv6 = {
+          addr-gen-mode = "default";
+          method = "auto";
+        };
+      }
+    ];
   };
 
   crystals-services = {
