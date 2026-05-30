@@ -25,7 +25,10 @@
       enable = true;
       role = "server";
     };
-    forgejo.runner.enable = true;
+    forgejo.runner = {
+      enable = true;
+      workers = 1;
+    };
 
     pm.enable = true;
     pm.profile = "server";

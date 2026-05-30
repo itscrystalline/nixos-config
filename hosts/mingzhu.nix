@@ -115,7 +115,10 @@
         "" = "100.125.37.13"; # raine
       };
     };
-    forgejo.runner.enable = true;
+    forgejo.runner = {
+      enable = true;
+      workers = 10;
+    };
   };
 
   nix = {

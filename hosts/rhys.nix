@@ -92,6 +92,11 @@ in {
     printing.enable = true;
     pm.enable = true;
     pm.profile = "workstation";
+
+    forgejo.runner = {
+      enable = true;
+      workers = 5;
+    };
   };
 
   nix = {
