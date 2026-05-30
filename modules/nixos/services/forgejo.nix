@@ -44,6 +44,11 @@ in {
   options.crystals-services.forgejo = {
     enable = mkEnableOption "forgejo server";
     runner.enable = mkEnableOption "forgejo actions runner";
+    runner.workers = mkOption {
+      type = types.int;
+      description = "How many runners to spin up";
+      default = 1;
+    };
     sync.enable = mkEnableOption "syncing to github from forgejo. requires importing the forgesync.nixosModules.default module";
 
     directory = mkOption {
@@ -54,8 +59,6 @@ in {
   };
   config = lib.mkMerge [
     (lib.mkIf enabled {
-      crystals-services.cloudflared.domains."git".noTLSVerify = true;
-
       sops.secrets = {
         "forgejo-admin-password".owner = "forgejo";
         "forgejo-mail-password" = {};
@@ -130,47 +133,63 @@ in {
           };
         };
       };
-      crystals-services.nginx.public.sites."git" = {
-        extraConfig = ''
-          client_max_body_size 512M;
-        '';
-        locations."/" = {
-          proxyPass = "http://localhost:${toString srv.HTTP_PORT}";
+      crystals-services = {
+        cloudflared.domains."git".noTLSVerify = true;
+        nginx = {
+          enable = true;
+          public.sites."git" = {
+            extraConfig = ''
+              client_max_body_size 512M;
+            '';
+            locations."/" = {
+              proxyPass = "http://localhost:${toString srv.HTTP_PORT}";
+            };
+            acme = "";
+          };
         };
-        acme = "";
       };
     })
     (lib.mkIf forgejo.runner.enable {
       sops.secrets."forgejo-runner-token" = {};
+      crystals-services.docker.enable = true;
 
       services.gitea-actions-runner = {
         package = pkgs.forgejo-runner;
-        instances.default = {
-          enable = true;
-          name = "monolith";
-          url = ROOT_URL;
-          # Obtaining the path to the runner token file may differ
-          # tokenFile should be in format TOKEN=<secret>, since it's EnvironmentFile for systemd
-          tokenFile = config.sops.secrets.forgejo-runner-token.path;
-          labels =
-            (lib.optionals pkgs.stdenv.hostPlatform.isx86_64 [
-              "ubuntu-latest:docker://ghcr.io/catthehacker/ubuntu:runner-latest"
-              "ubuntu-24.04:docker://ghcr.io/catthehacker/ubuntu:runner-24.04"
-              "ubuntu-22.04:docker://ghcr.io/catthehacker/ubuntu:runner-22.04"
-              "ubuntu-20.04:docker://ghcr.io/catthehacker/ubuntu:runner-20.04"
-              "ubuntu-18.04:docker://ghcr.io/catthehacker/ubuntu:runner-18.04"
-            ])
-            ++ (lib.optionals pkgs.stdenv.hostPlatform.isAarch64 [
-              "ubuntu-latest-arm:docker://ghcr.io/catthehacker/ubuntu:runner-latest"
-              "ubuntu-24.04-arm:docker://ghcr.io/catthehacker/ubuntu:runner-24.04"
-              "ubuntu-22.04-arm:docker://ghcr.io/catthehacker/ubuntu:runner-22.04"
-              "ubuntu-20.04-arm:docker://ghcr.io/catthehacker/ubuntu:runner-20.04"
-              "ubuntu-18.04-arm:docker://ghcr.io/catthehacker/ubuntu:runner-18.04"
-            ])
-            ++ [
-              "native:host"
-            ];
-        };
+        instances = let
+          range = map toString (lib.range 1 forgejo.runner.workers);
+        in
+          builtins.listToAttrs (map (num: let
+              name = "runner-${pkgs.stdenv.hostPlatform.system}-${config.core.name}-${num}";
+            in {
+              inherit name;
+              value = {
+                inherit name;
+                enable = true;
+                url = ROOT_URL;
+                # Obtaining the path to the runner token file may differ
+                # tokenFile should be in format TOKEN=<secret>, since it's EnvironmentFile for systemd
+                tokenFile = config.sops.secrets.forgejo-runner-token.path;
+                labels =
+                  (lib.optionals pkgs.stdenv.hostPlatform.isx86_64 [
+                    "ubuntu-latest:docker://ghcr.io/catthehacker/ubuntu:runner-latest"
+                    "ubuntu-24.04:docker://ghcr.io/catthehacker/ubuntu:runner-24.04"
+                    "ubuntu-22.04:docker://ghcr.io/catthehacker/ubuntu:runner-22.04"
+                    "ubuntu-20.04:docker://ghcr.io/catthehacker/ubuntu:runner-20.04"
+                    "ubuntu-18.04:docker://ghcr.io/catthehacker/ubuntu:runner-18.04"
+                  ])
+                  ++ (lib.optionals pkgs.stdenv.hostPlatform.isAarch64 [
+                    "ubuntu-latest-arm:docker://ghcr.io/catthehacker/ubuntu:runner-latest"
+                    "ubuntu-24.04-arm:docker://ghcr.io/catthehacker/ubuntu:runner-24.04"
+                    "ubuntu-22.04-arm:docker://ghcr.io/catthehacker/ubuntu:runner-22.04"
+                    "ubuntu-20.04-arm:docker://ghcr.io/catthehacker/ubuntu:runner-20.04"
+                    "ubuntu-18.04-arm:docker://ghcr.io/catthehacker/ubuntu:runner-18.04"
+                  ])
+                  ++ [
+                    "native:host"
+                  ];
+              };
+            })
+            range);
       };
     })
     (lib.mkIf (forgejo.enable && forgejo.sync.enable) {
