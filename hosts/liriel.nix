@@ -31,7 +31,7 @@
 
   network = {
     dhcp = true;
-    unmanagedInterfaces = ["end0" "wlan0"];
+    unmanagedInterfaces = ["wlan0"];
     profiles = ["KMITL-HiSpeed"];
   };
 
