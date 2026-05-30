@@ -5,24 +5,13 @@ on:
     - cron: "0 5 * * *"  # 12AM UTC+7
   workflow_dispatch:
 
-permissions:
-  contents: write
-
 jobs:
   update:
-    name: Update flake
+    name: Update flake    
     runs-on: ubuntu-latest-arm
-
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
-
-      # - name: Set up Tailscale
-      #   uses: tailscale/github-action@v4
-      #   with:
-      #     oauth-client-id: ${{ secrets.TS_OAUTH_CLIENT_ID }}
-      #     oauth-secret: ${{ secrets.TS_OAUTH_SECRET }}
-      #     tags: tag:ci
 
       - name: Install Nix
         uses: cachix/install-nix-action@v30
@@ -33,26 +22,64 @@ jobs:
             extra-trusted-public-keys = mingzhu:V0KsUipFnrBNsfUD8VI0rFXQpgE3KKJfRby9Jm8cLTQ=
             fallback = true
 
-      - name: Update
+      - name: Update flake.lock
         id: update
         run: |
-          nix flake update 2>&1 | tee /tmp/update-output.txt
-          {
-            echo "output<<FLAKE_UPDATE_END"
-            cat /tmp/update-output.txt
-            echo "FLAKE_UPDATE_END"
-          } >> $GITHUB_OUTPUT
+          nix flake update 2> >(tee /dev/stderr) | awk '
+            /^• Updated input/ {in_update = 1; print; next}
+            in_update && !/^warning:/ {print}
+            /^$/ {in_update = 0}
+          ' > update.log
 
-      # - name: Check
-      #   run: nix flake check --all-systems 2>&1
+          echo "UPDATE_LOG<<EOF" >> $GITHUB_ENV
+          cat update.log >> $GITHUB_ENV 
+          echo "EOF" >> $GITHUB_ENV
 
-      - name: Commit
-        uses: EndBug/add-and-commit@v9
+          rm update.log
+
+      - name: Write PR body template
+        uses: https://github.com/DamianReeves/write-file-action@v1.3
         with:
-          author_name: "crystal's forgejo actions runner"
-          author_email: runner@git.iw2tryhard.dev
-          push: true
-          message: |
-            chore: update flake (automated)
+          path: pr_body.template
+          contents: |
+            automatically updated:
 
-            ${{ steps.update.outputs.output }}
+            ```
+            ${{ env.UPDATE_LOG }}
+            ```
+
+      - name: Generate PR body
+        uses: pedrolamas/handlebars-action@v2.4.0 # v2.4.0
+        with:
+          files: "pr_body.template"
+          output-filename: "pr_body.md"
+      - name: Save PR body
+        id: pr_body
+        uses: juliangruber/read-file-action@v1
+        with:
+          path: "pr_body.md"
+
+      - name: Remove temporary files
+        run: |
+          rm pr_body.template
+          rm pr_body.md
+
+      - name: Create Pull Request
+        id: create-pull-request
+        uses: https://forgejo.stefka.eu/jiriks74/create-pull-request@cf18b4ebc5d022c1329a271c156d323fce522c8f
+        with:
+          token: ${{ secrets.FORGEJO_TOKEN }}
+          body: ${{ steps.pr_body.outputs.content }}
+          author: "crystals forgejo actions runner <runner@git.iw2tryhard.dev>"
+          title: 'chore: Update flake (automated)'
+          commit-message: |
+            automated: Update `flake.lock`
+
+            ${{ steps.pr_body.outputs.content }}
+
+          branch: update-flake-lock
+          delete-branch: true
+      - name: Print PR number
+        run: |
+          echo "Pull request number is ${{ steps.create-pull-request.outputs.pull-request-number }}."
+          echo "Pull Request URL - ${{ steps.cpr.outputs.pull-request-url }}"
