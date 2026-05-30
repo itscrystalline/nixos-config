@@ -34,11 +34,14 @@
       url = "github:nix-community/nix-index-database";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    # FIXME: until niri fixes itself?
+    niri-unstable_old.url = "github:YaLTeR/niri/c5253968b4b2d9fc599c1636b0e295ff32aab52b";
     niri = {
       url = "github:sodiboo/niri-flake";
       inputs = {
         nixpkgs.follows = "nixpkgs-unstable";
         nixpkgs-stable.follows = "nixpkgs";
+        niri-unstable.follows = "niri-unstable_old";
       };
     };
     noctalia = {
