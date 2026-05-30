@@ -2,7 +2,11 @@ name: Check configuration
 
 on:
   push:
+    paths-ignore:
+      - '.github/**'
   pull_request:
+    paths-ignore:
+      - '.github/**'
   workflow_dispatch:
 
 jobs:

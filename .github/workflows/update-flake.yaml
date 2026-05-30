@@ -68,7 +68,7 @@ jobs:
         id: create-pull-request
         uses: https://forgejo.stefka.eu/jiriks74/create-pull-request@cf18b4ebc5d022c1329a271c156d323fce522c8f
         with:
-          token: ${{ secrets.FORGEJO_TOKEN }}
+          token: ${{ secrets.FJ_TOKEN }}
           body: ${{ steps.pr_body.outputs.content }}
           author: "crystals forgejo actions runner <runner@git.iw2tryhard.dev>"
           title: 'chore: Update flake (automated)'
