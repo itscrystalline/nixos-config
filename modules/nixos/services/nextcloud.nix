@@ -36,7 +36,7 @@ in {
     services = {
       nextcloud = {
         enable = true;
-        package = pkgs.nextcloud32;
+        package = pkgs.nextcloud33;
         home = nextcloud.folder;
         hostName = "${nextcloud.domain}.${config.crystals-services.nginx.public.suffix}";
         https = true;
