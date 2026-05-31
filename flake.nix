@@ -68,7 +68,8 @@
     vicinae.url = "github:vicinaehq/vicinae";
 
     stylix = {
-      url = "github:nix-community/stylix/release-26.05";
+      # url = "github:nix-community/stylix/release-26.05";
+      url = "github:nix-community/stylix/release-25.11";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     stylix-unstable = {
