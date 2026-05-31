@@ -88,18 +88,18 @@ in {
           inherit (pkgs.importNpmLock) npmConfigHook;
         });
 
-        extensions = names:
+        extensions = names: let
+          src = pkgs.fetchgit {
+            rev = "c7a8d7d2e3fa599922c4964a94315c55c9bfe80b";
+            sha256 = "sha256-n9iCpADO7kZRNVwWhY40ID54TDWa4/amrYYvsvJpyXk=";
+            url = "https://github.com/vicinaehq/extensions";
+            sparseCheckout = map (e: "/extensions/${e}") names;
+          };
+        in
           map (ext:
             mkExtension {
               name = ext;
-              src =
-                pkgs.fetchFromGitHub {
-                  owner = "vicinaehq";
-                  repo = "extensions";
-                  rev = "ffbb04567d5108a0fb197aedb7642a0aa6ae7aad";
-                  hash = "sha256-1Q/vrarA1M5rIIOZeSmqpC2e33ncpI7dL8AkNIHgtVo=";
-                }
-                + "/extensions/${ext}";
+              src = "${src}/extensions/${ext}";
             })
           names;
 
@@ -109,8 +109,8 @@ in {
             sha256 = "sha256-UgDA2hIH7HwKl3j4UEGIlvh6eE+IWUlSML0wloHFPQw=";
           };
           sources = pkgs.fetchgit {
-            rev = "4a6e46f1dae389a4f8c52f12eb5722542cdfe6f3";
-            sha256 = "sha256-600VVV8DrKgL+Wk5wJGpVG/ckwvzEV948/qXj9q6vKE=";
+            rev = "427cf26de9bfbb0737d073fc6df7138c0af5d28a";
+            sha256 = "sha256-tLThvYYSMApy4GtRN2v9wwTREltzXz/4GefEspD85Zs=";
             url = "https://github.com/raycast/extensions";
             sparseCheckout = map (e: "/extensions/${e}") names;
           };
