@@ -21,6 +21,7 @@ jobs:
             extra-substituters = http://cache.crys
             extra-trusted-public-keys = mingzhu:V0KsUipFnrBNsfUD8VI0rFXQpgE3KKJfRby9Jm8cLTQ=
             fallback = true
+            access-tokens = github.com=${{ secrets.GH_TOKEN }}
 
       - name: Update flake.lock
         id: update
