@@ -66,12 +66,15 @@ jobs:
 
       - name: Create Pull Request
         id: create-pull-request
-        uses: https://forgejo.stefka.eu/jiriks74/create-pull-request@cf18b4ebc5d022c1329a271c156d323fce522c8f
+        uses: maxking/forgejo-create-pr@main
         with:
           token: ${{ secrets.FJ_TOKEN }}
-          body: ${{ steps.pr_body.outputs.content }}
-          author: "crystals forgejo actions runner <runner@git.iw2tryhard.dev>"
-          title: 'chore: Update flake (automated)'
+          commit-user: crystals forgejo actions runner
+          commit-email: runner@git.iw2tryhard.dev
+          pr-branch: update-flake
+          pr-title: 'chore: Update flake (automated)'
+          pr-body: ${{ steps.pr_body.outputs.content }}
+          pr-automerge: true
           commit-message: |
             automated: Update `flake.lock`
 
@@ -79,7 +82,3 @@ jobs:
 
           branch: update-flake-lock
           delete-branch: true
-      - name: Print PR number
-        run: |
-          echo "Pull request number is ${{ steps.create-pull-request.outputs.pull-request-number }}."
-          echo "Pull Request URL - ${{ steps.cpr.outputs.pull-request-url }}"
