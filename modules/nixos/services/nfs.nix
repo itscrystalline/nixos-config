@@ -9,9 +9,9 @@ in {
   options.crystals-services.nfs = {
     enable = lib.mkEnableOption "NFS server";
     folder = lib.mkOption {
-      type = lib.types.str;
+      type = lib.types.nullOr lib.types.str;
       description = "Local directory to export via NFS (bind-mounted to /export).";
-      default = "/mnt/main/nfs";
+      default = null;
     };
     exports = lib.mkOption {
       type = lib.types.lines;
@@ -20,11 +20,14 @@ in {
     };
   };
   config = lib.mkIf enabled {
-    fileSystems."/export" = {
-      device = nfs.folder;
-      options = ["bind" "x-systemd.requires-mounts-for=/mnt/main"];
+    fileSystems = lib.mkIf (nfs.folder != null) {
+      "/export" = {
+        device = nfs.folder;
+        options = ["bind"];
+        fsType = "ext4";
+      };
     };
-    systemd.tmpfiles.rules = ["Z ${nfs.folder} 0777 root root - -"];
+    systemd.tmpfiles.rules = ["Z /export 0777 root root - -"];
     services.nfs.server = {
       inherit (nfs) exports;
       enable = true;

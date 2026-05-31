@@ -84,6 +84,7 @@ in {
     argonone.enable = true;
     nfs = {
       enable = true;
+      folder = "/mnt/main/nfs";
       exports = ''
         /export 192.168.1.0/24(rw,sync,no_subtree_check) 100.0.0.0/8(rw,sync,no_subtree_check)
       '';
