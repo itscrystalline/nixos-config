@@ -47,7 +47,7 @@ in {
         enable = true;
         package = pkgs.unstable.opencode;
         enableMcpIntegration = true;
-        rules = ''
+        context = ''
             # Tool usage
             When you need to search docs, use `context7`'s tools.
             When you need to use the browser, use `playwright`'s tools.

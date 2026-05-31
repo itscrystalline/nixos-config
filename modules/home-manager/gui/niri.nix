@@ -95,7 +95,7 @@ in {
               "Mod+W".action = spawn "zen-twilight" "-p" "crystal";
               "Mod+B".action = spawn "neovide";
               "Mod+Return".action = spawn "ghostty";
-              "Mod+Control+M".action = sh "pgrep youtube-music && niri msg action focus-workspace music || youtube-music --enable-features=UseOzonePlatform --ozone-platform=wayland --enable-wayland-ime &";
+              "Mod+Control+M".action = sh "pgrep pear-desktop && niri msg action focus-workspace music || pear-desktop --enable-features=UseOzonePlatform --ozone-platform=wayland --enable-wayland-ime &";
               "Control+Shift+Escape".action = spawn "missioncenter";
               "XF86Calculator".action = spawn "gnome-calculator";
             })
@@ -172,13 +172,13 @@ in {
 
           spawn-at-startup =
             [
-              {argv = ["swww-daemon" "--format" "argb"];}
+              {argv = ["awww-daemon" "--format" "argb"];}
               {argv = ["fcitx5"];}
               {argv = ["gnome-keyring-daemon" "--start" "--components=secrets"];}
               {argv = ["xhost" "+SI:localuser:root"];}
             ]
             ++ lib.optionals shellEnabled [
-              {argv = ["swww" "img" "/home/itscrystalline/bg.gif" "--filter=Nearest"];}
+              {argv = ["awww" "img" "/home/itscrystalline/bg.gif" "--filter=Nearest"];}
               {sh = "QT_IM_MODULE=wayland noctalia-shell";}
             ]
             ++ lib.optionals guiProgramsEnabled [

@@ -47,19 +47,19 @@ in {
         libplist
       ]
       ++ (lib.optionals guiEnabled [
-        xorg.libXcomposite
-        xorg.libXtst
-        xorg.libXrandr
-        xorg.libXext
-        xorg.libX11
-        xorg.libXfixes
+        libxcomposite
+        libxtst
+        libxrandr
+        libxext
+        libx11
+        libxfixes
         libGL
         libva
         pipewire
-        xorg.libxcb
-        xorg.libXdamage
-        xorg.libxshmfence
-        xorg.libXxf86vm
+        libxcb
+        libxdamage
+        libxshmfence
+        libxxf86vm
 
         glib
         gtk2
@@ -70,13 +70,13 @@ in {
         libxcrypt
         zenity
 
-        xorg.libXinerama
-        xorg.libXcursor
-        xorg.libXrender
-        xorg.libXScrnSaver
-        xorg.libXi
-        xorg.libSM
-        xorg.libICE
+        libxinerama
+        libxcursor
+        libxrender
+        libxscrnsaver
+        libxi
+        libsm
+        libice
         gnome2.GConf
         SDL2
 

@@ -88,8 +88,8 @@ in {
           batteryDevice = "/sys/class/power_supply/BAT1";
         };
         battery-actions = lib.mkIf niriEnabled {
-          pluggedInScript = "niri msg output eDP-1 mode 1920x1080@144.003; noctalia-shell ipc call brightness set 100%; noctalia-shell ipc call powerProfile disableNoctaliaPerformance; brightnessctl -d asus::kbd_backlight set 3; asusctl profile -P Balanced; swww img ~/bg.gif";
-          onBatteryScript = "niri msg output eDP-1 mode 1920x1080@60.004; noctalia-shell ipc call brightness set 65%; noctalia-shell ipc call powerProfile enableNoctaliaPerformance; brightnessctl -d asus::kbd_backlight set 0; asusctl profile -P LowPower; swww img ~/bg.png";
+          pluggedInScript = "niri msg output eDP-1 mode 1920x1080@144.003; noctalia-shell ipc call brightness set 100%; noctalia-shell ipc call powerProfile disableNoctaliaPerformance; brightnessctl -d asus::kbd_backlight set 3; asusctl profile -P Balanced; awww img ~/bg.gif";
+          onBatteryScript = "niri msg output eDP-1 mode 1920x1080@60.004; noctalia-shell ipc call brightness set 65%; noctalia-shell ipc call powerProfile enableNoctaliaPerformance; brightnessctl -d asus::kbd_backlight set 0; asusctl profile -P LowPower; awww img ~/bg.png";
         };
       };
       settings = {

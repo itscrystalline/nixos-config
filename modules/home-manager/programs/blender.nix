@@ -14,11 +14,11 @@
     libs = with pkgs; [
       wayland
       libdecor
-      xorg.libX11
-      xorg.libXi
-      xorg.libXxf86vm
-      xorg.libXfixes
-      xorg.libXrender
+      libx11
+      libxi
+      libxxf86vm
+      libxfixes
+      libxrender
       libxkbcommon
       libGLU
       libglvnd
@@ -28,8 +28,8 @@
       ocl-icd
       stdenv.cc.cc.lib
       openal
-      xorg.libSM
-      xorg.libICE
+      libsm
+      libice
       zlib
     ];
   in {

@@ -8,22 +8,22 @@
   guiEnabled = config.hm.programs.gui.enable;
   largePrograms = config.hm.programs.gui.largePrograms.enable;
 
-  youtube-music = isLinux:
+  pear-desktop = isLinux:
     if isLinux
     then
-      (pkgs.youtube-music.overrideAttrs {
+      (pkgs.pear-desktop.overrideAttrs {
         desktopItems = [
           (pkgs.makeDesktopItem {
-            name = "youtube-music";
-            exec = "youtube-music --enable-features=UseOzonePlatform --ozone-platform=wayland --enable-wayland-ime %u";
-            icon = "youtube-music";
-            desktopName = "Youtube Music";
-            startupWMClass = "Youtube Music";
+            name = "pear-desktop";
+            exec = "pear-desktop --enable-features=UseOzonePlatform --ozone-platform=wayland --enable-wayland-ime %u";
+            icon = "pear-desktop";
+            desktopName = "Pear Desktop";
+            startupWMClass = "Pear Desktop";
             categories = ["AudioVideo"];
           })
         ];
       })
-    else pkgs.youtube-music;
+    else pkgs.pear-desktop;
 
   mirrorScript = pkgs.writeShellScript "niri-mirror.sh" ''
     ${pkgs.wl-mirror}/bin/wl-mirror $(niri msg --json focused-output | ${pkgs.jq}/bin/jq -r .name)
@@ -48,7 +48,7 @@ in {
           gimp
           ente-auth
         ])
-        ++ [(youtube-music pkgs.stdenv.isLinux)]
+        ++ [(pear-desktop pkgs.stdenv.isLinux)]
         ++ lib.optional (inputs ? concord) inputs.concord.packages.${pkgs.hostsys}.concord
         ++ lib.optionals largePrograms (with pkgs.stable; [
           kdePackages.kdenlive
@@ -61,7 +61,7 @@ in {
           fuzzel
           brightnessctl
           ddcutil
-          swww
+          awww
           mpvpaper
           yad
           playerctl
