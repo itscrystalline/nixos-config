@@ -75,6 +75,9 @@ jobs:
             ${{ steps.pr_body.outputs.content }}
           new_branch: update-flake-lock 
 
+      - name: Install tea
+        run: nix profile install nixpkgs#tea
+
       - name: Create Pull Request
         id: create-pull-request
         uses: https://git.theless.one/actions/create-pr@main
