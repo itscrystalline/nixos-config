@@ -62,21 +62,29 @@ jobs:
       - name: Remove temporary files
         run: |
           rm pr_body.template
+          rm pr_body.md
+
+      - uses: EndBug/add-and-commit@v10 # You can change this to use a specific version.
+        with:
+          author_name: crystals forgojo actions runner
+          author_email: runner@git.iw2tryhard.dev
+          message: |
+            automated: Update `flake.lock`
+
+            ${{ steps.pr_body.outputs.content }}
+          new_branch: update-flake-lock 
 
       - name: Create Pull Request
         id: create-pull-request
-        uses: maxking/forgejo-create-pr@main
+        uses: https://git.theless.one/actions/create-pr@main
         with:
+          source-branch: update-flake-lock
+          title: 'chore: Update flake (automated)'
+          description: ${{ steps.pr_body.outputs.content }}
           token: ${{ secrets.FJ_TOKEN }}
-          commit-user: crystals forgejo actions runner
-          commit-email: runner@git.iw2tryhard.dev
-          pr-branch: update-flake
-          pr-title: 'chore: Update flake (automated)'
-          pr-body: ${{ steps.pr_body.outputs.content }}
-          pr-automerge: true
+          user: itscrystalline
+          auto-merge: true
           delete-branch: true
-          commit-message: $( cat pr-body.md )
 
-      - name: Remove temporary files
-        run: |
-          rm pr_body.md
+      - name: PR number
+        run: echo "PR #${{ steps.create-pull-request.outputs.pr }}"
