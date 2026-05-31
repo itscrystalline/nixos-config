@@ -62,7 +62,6 @@ jobs:
       - name: Remove temporary files
         run: |
           rm pr_body.template
-          rm pr_body.md
 
       - name: Create Pull Request
         id: create-pull-request
@@ -75,10 +74,9 @@ jobs:
           pr-title: 'chore: Update flake (automated)'
           pr-body: ${{ steps.pr_body.outputs.content }}
           pr-automerge: true
-          commit-message: |
-            automated: Update `flake.lock`
-
-            ${{ steps.pr_body.outputs.content }}
-
-          branch: update-flake-lock
           delete-branch: true
+          commit-message: $( cat pr-body.md )
+
+      - name: Remove temporary files
+        run: |
+          rm pr_body.md
