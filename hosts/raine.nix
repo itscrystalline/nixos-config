@@ -37,6 +37,7 @@ in {
       };
       "/var/lib/prometheus2" = {
         device = "/mnt/main/services/prometheus2";
+        fsType = "ext4";
         options = ["bind" "x-systemd.requires-mounts-for=/mnt/main"];
       };
     };
