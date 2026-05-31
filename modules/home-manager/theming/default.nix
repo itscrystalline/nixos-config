@@ -59,13 +59,8 @@ in {
           	--adw-accent-rgb: ${base06-rgb-r}, ${base06-rgb-g}, ${base06-rgb-b};
           }
         '';
-        "lazygit/config.yml".text = ''
-          git:
-            paging:
-              colorArg: always
-              pager: ${pkgs.delta}/bin/delta --dark --paging=never --line-numbers --hyperlinks --hyperlinks-file-link-format="lazygit-edit://{path}:{line}"
-        '';
       };
+      gtk.gtk4.theme = config.gtk.theme;
 
       programs.ghostty.settings.font-family = ["JetBrainsMono Nerd Font" "Noto Sans CJK JP" "Noto Sans Thai Looped" "Noto Color Emoji"];
 
@@ -222,6 +217,8 @@ in {
         broken_symlink = {foreground = "#F38BA8";};
         broken_path_overlay = {foreground = "#585B70";};
       };
+
+      programs.lazygit.settings.gui.theme.activeBorderColor = lib.mkForce ["#f5c2e7" "bold"];
     }
   ]);
 }
