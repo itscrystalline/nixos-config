@@ -9,7 +9,7 @@ permissions:
 jobs:
   pis:
     name: SD card images for pis
-    runs-on: ubuntu-24.04-arm
+    runs-on: ubuntu-latest-arm
     strategy:
       fail-fast: false
       matrix:
@@ -37,7 +37,7 @@ jobs:
     - name: Install Nix
       uses: cachix/install-nix-action@v30
       with:
-        nix_path: nixpkgs=channel:nixos-25.05
+        nix_path: nixpkgs=channel:nixos-26.05
         extra_nix_config: |
           extra-substituters = http://cache.crys
           extra-trusted-public-keys = mingzhu:V0KsUipFnrBNsfUD8VI0rFXQpgE3KKJfRby9Jm8cLTQ=
