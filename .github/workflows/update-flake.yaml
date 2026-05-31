@@ -91,4 +91,4 @@ jobs:
           delete-branch: true
 
       - name: PR number
-        run: echo "PR #${{ steps.create-pull-request.outputs.pr }}"
+        run: echo "PR \#${{ steps.create-pull-request.outputs.pr }}"

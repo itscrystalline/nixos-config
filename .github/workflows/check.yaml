@@ -11,6 +11,7 @@ on:
 
 jobs:
   check-x86_64-linux:
+    if: "!startsWith(github.event.head_commit.message, 'Merge pull request')"
     name: "Check config for x86_64-linux -> ${{ matrix.config }}"
     runs-on: ubuntu-latest
     timeout-minutes: 60
@@ -48,6 +49,7 @@ jobs:
         nix build .#nixosConfigurations.${{ matrix.config }}.config.system.build.toplevel --dry-run 2>&1
 
   check-aarch64-linux:
+    if: "!startsWith(github.event.head_commit.message, 'Merge pull request')"
     name: "Check config for aarch64-linux -> ${{ matrix.config }}"
     runs-on: ubuntu-latest-arm
     timeout-minutes: 60
@@ -83,22 +85,4 @@ jobs:
     - name: Check
       run: |
         nix build .#nixosConfigurations.${{ matrix.config }}.config.system.build.toplevel --dry-run 2>&1
-
-  # auto-merge:
-  #   needs: [check-x86_64-linux, check-aarch64-linux]
-  #   runs-on: ubuntu-latest-arm
-  #   if: contains(github.event.pull_request.labels.*.name, 'automated')
-  #   permissions:
-  #     contents: write
-  #     pull-requests: write
-  #
-  #   steps:
-  #     - name: Set up forgejo CLI
-  #       run: |
-  #         sudo apt install forgejo-cli
-  #         fj -H https://git.iw2tryhard.dev auth add-key itscrystalline ${{ secrets.FORGEJO_TOKEN }}
-  #
-  #     - name: Merge
-  #       run: fj -H git.iw2tryhard.dev pr merge -M merge -d ${{ github.event.pull_request.head.repo.full_name }}#${{ github.event.pull_request.number }}
-  #
 
