@@ -30,10 +30,11 @@ in {
       "stalwart-dkim-ed25519-key".owner = "stalwart-mail";
     };
 
-    services.stalwart-mail = {
+    services.stalwart = {
       enable = true;
       dataDir = stalwart.directory;
       openFirewall = true;
+      stateVersion = config.core.stateVersion;
 
       credentials = with config.sops.secrets; {
         admin_pass = stalwart-admin-password.path;
