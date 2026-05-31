@@ -46,7 +46,7 @@ in {
           blockbench
           wireshark
           gimp
-          adwaita-icon-theme
+          ente-auth
         ])
         ++ [(youtube-music pkgs.stdenv.isLinux)]
         ++ lib.optional (inputs ? concord) inputs.concord.packages.${pkgs.hostsys}.concord
@@ -57,6 +57,7 @@ in {
           logisim-evolution
         ])
         ++ lib.optionals pkgs.stdenv.isLinux (with pkgs.stable; [
+          adwaita-icon-theme
           fuzzel
           brightnessctl
           ddcutil
