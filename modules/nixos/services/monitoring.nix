@@ -8,7 +8,7 @@
   enabled = monitoring.enable;
 in {
   options.crystals-services.monitoring = {
-    enable = lib.mkEnableOption "Grafana + Prometheus + Loki + Promtail monitoring stack";
+    enable = lib.mkEnableOption "Grafana + Prometheus + Loki + Alloy monitoring stack";
     enableOpenTelemetryCollector = lib.mkEnableOption "OpenTelemetry Collector";
     additionalOpenTelemeteryResourceAttributes = lib.mkOption {
       type = lib.types.listOf lib.types.attrs;
@@ -31,6 +31,7 @@ in {
           };
           analytics.reporting_enabled = false;
           panels.disable_sanitize_html = true;
+          security.secret_key = "SW2YcwTIb9zpOOhoPsMm";
         };
         provision = {
           enable = true;
@@ -152,40 +153,37 @@ in {
         };
       };
 
-      promtail = {
+      alloy = {
         enable = true;
-        configuration = {
-          server = {
-            http_listen_port = 9040;
-            grpc_listen_port = 0;
-          };
-          positions.filename = "/tmp/positions.yaml";
-          clients = [
-            {
-              url = "http://127.0.0.1:${toString config.services.loki.configuration.server.http_listen_port}/loki/api/v1/push";
-            }
-          ];
-          scrape_configs = [
-            {
-              job_name = "journal";
-              journal = {
-                max_age = "12h";
-                labels = {
-                  job = "systemd-journal";
-                  host = config.networking.hostName;
-                };
-              };
-              relabel_configs = [
-                {
-                  source_labels = ["__journal__systemd_unit"];
-                  target_label = "unit";
-                }
-              ];
-            }
-          ];
-        };
+        extraFlags = ["--server.http.listen-addr=127.0.0.1:9040"];
       };
     };
+
+    environment.etc."alloy/config.alloy".text = ''
+      loki.source.journal "journal" {
+        max_age       = "12h"
+        relabel_rules = loki.relabel.journal.rules
+        forward_to    = [loki.write.local.receiver]
+        labels = {
+          job  = "systemd-journal",
+          host = "${config.networking.hostName}",
+        }
+      }
+
+      loki.relabel "journal" {
+        forward_to = []
+        rule {
+          source_labels = ["__journal__systemd_unit"]
+          target_label  = "unit"
+        }
+      }
+
+      loki.write "local" {
+        endpoint {
+          url = "http://127.0.0.1:${toString config.services.loki.configuration.server.http_listen_port}/loki/api/v1/push"
+        }
+      }
+    '';
 
     crystals-services.nginx.local.sites."grafana" = {
       locations."/" = {
@@ -203,9 +201,9 @@ in {
         proxyPass = "http://127.0.0.1:${toString config.services.loki.configuration.server.http_listen_port}";
       };
     };
-    crystals-services.nginx.local.sites."promtail" = {
+    crystals-services.nginx.local.sites."alloy" = {
       locations."/" = {
-        proxyPass = "http://127.0.0.1:${toString config.services.promtail.configuration.server.http_listen_port}";
+        proxyPass = "http://127.0.0.1:9040";
       };
     };
 
