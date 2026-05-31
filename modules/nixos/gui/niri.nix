@@ -28,6 +28,23 @@ in {
       gvfs.enable = true;
       xserver.enable = true;
     };
+
+    # FIXME: https://github.com/NixOS/nixpkgs/issues/523332#issuecomment-4528189167
+    environment.sessionVariables.XDG_DATA_DIRS = ["${pkgs.gdm}/share"];
+    services.displayManager.gdm.settings.debug.Enable = true;
+    security.pam.services.gdm-launch-environment.rules.session.gnome-session-path = {
+      inherit (config.security.pam.services.gdm-launch-environment.rules.session.env) control modulePath;
+      order = config.security.pam.services.gdm-launch-environment.rules.session.env.order + 50;
+      settings = {
+        conffile = let
+          envfile = pkgs.writeText "gnome-session-path.env" ''
+            PATH   DEFAULT="''${PATH}:${pkgs.gnome-session}/bin"
+          '';
+        in "${envfile}";
+        readenv = 0;
+      };
+    };
+
     environment.systemPackages = with pkgs; [
       gnome-keyring
       nautilus-python
