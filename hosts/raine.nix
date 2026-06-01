@@ -169,8 +169,5 @@ in {
     network = true;
   };
 
-  kernel = {
-    package = pkgs.linuxKernel.packages.linux_rpi4;
-    cmdline = ["psi=1"];
-  };
+  kernel.cmdline = ["psi=1"];
 }

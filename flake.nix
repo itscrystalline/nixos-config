@@ -21,6 +21,11 @@
       url = "github:nix-community/home-manager/release-26.05";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    # FIXME: until raspi kernels are on hydra or i find an alternate cache
+    home-manager-25-11 = {
+      url = "github:nix-community/home-manager/release-25.11";
+      inputs.nixpkgs.follows = "nixpkgs-25-11";
+    };
     zen-browser = {
       url = "github:0xc000022070/zen-browser-flake";
       inputs = {
@@ -145,13 +150,12 @@
     };
 
     mkHost = {
-      nixpkgs' ? nixpkgs,
       arch,
       configModule,
       otherModules ? [],
       userHomeModules ? [],
     }:
-      nixpkgs'.lib.nixosSystem {
+      nixpkgs.lib.nixosSystem {
         system = arch;
         specialArgs.inputs = inputs;
         modules =
@@ -189,7 +193,6 @@
       ];
     };
     raine = mkHost {
-      nixpkgs' = inputs.nixpkgs-25-11;
       arch = "aarch64-linux";
       configModule = ./hosts/raine.nix;
       otherModules = [
@@ -205,7 +208,6 @@
       ];
     };
     liriel = mkHost {
-      nixpkgs' = inputs.nixpkgs-25-11;
       arch = "aarch64-linux";
       configModule = ./hosts/liriel.nix;
       otherModules = [

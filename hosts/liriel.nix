@@ -1,4 +1,8 @@
-{pkgs, ...}: {
+{
+  pkgs,
+  config,
+  ...
+}: {
   imports = [./liriel];
 
   core = {
@@ -114,10 +118,9 @@
     network = true;
   };
 
-  kernel = rec {
-    package = pkgs.linuxKernel.packages.linux_rpi4;
+  kernel = {
     stage2Modules = ["rtw88"];
-    stage2ModulePackages = [package.rtw88];
+    stage2ModulePackages = [config.kernel.package.rtw88];
     cmdline = [
       "psi=1"
       "brcmfmac.roamoff=1"
