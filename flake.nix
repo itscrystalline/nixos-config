@@ -3,6 +3,8 @@
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-26.05";
+    # FIXME: until raspi kernels are on hydra or i find an alternate cache
+    nixpkgs-25-11.url = "github:NixOS/nixpkgs/nixos-25.11";
     nixpkgs-unstable.url = "nixpkgs/nixos-unstable";
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
     disko = {
@@ -34,7 +36,7 @@
       url = "github:nix-community/nix-index-database";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    # FIXME: until niri fixes itself?
+    # FIXME: until niri fixes https://github.com/niri-wm/niri/issues/4113
     niri-unstable_old.url = "github:YaLTeR/niri/c5253968b4b2d9fc599c1636b0e295ff32aab52b";
     niri = {
       url = "github:sodiboo/niri-flake";
@@ -143,12 +145,13 @@
     };
 
     mkHost = {
+      nixpkgs' ? nixpkgs,
       arch,
       configModule,
       otherModules ? [],
       userHomeModules ? [],
     }:
-      nixpkgs.lib.nixosSystem {
+      nixpkgs'.lib.nixosSystem {
         system = arch;
         specialArgs.inputs = inputs;
         modules =
@@ -186,6 +189,7 @@
       ];
     };
     raine = mkHost {
+      nixpkgs' = inputs.nixpkgs-25-11;
       arch = "aarch64-linux";
       configModule = ./hosts/raine.nix;
       otherModules = [
@@ -201,6 +205,7 @@
       ];
     };
     liriel = mkHost {
+      nixpkgs' = inputs.nixpkgs-25-11;
       arch = "aarch64-linux";
       configModule = ./hosts/liriel.nix;
       otherModules = [
