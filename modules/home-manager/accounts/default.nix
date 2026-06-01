@@ -1,8 +1,4 @@
-{
-  lib,
-  config,
-  ...
-}: let
+{lib, ...}: let
   applyDefaults = config:
     {
       userName = config.address;
@@ -22,6 +18,12 @@
         };
       };
     }
+    // (lib.optionalAttrs (config ? gpgKey) {
+      gpg = {
+        signByDefault = true;
+        key = config.gpgKey;
+      };
+    })
     // config;
   mailServerDefaults = {
     imap = {
@@ -40,6 +42,7 @@ in {
         realName = "Thad Choyrum";
         address = "real@iw2tryhard.dev";
         primary = true;
+        gpgKey = "EA4F54860C2BD5D4";
       }
       // mailServerDefaults;
 
@@ -48,6 +51,7 @@ in {
         realName = "Crystal";
         address = "crystal@iw2tryhard.dev";
         aliases = ["tryhard@iw2tryhard.dev" "colonthree@iw2tryhard.dev"];
+        gpgKey = "955937102112FE21";
       }
       // mailServerDefaults;
 
