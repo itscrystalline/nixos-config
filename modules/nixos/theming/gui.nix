@@ -2,7 +2,6 @@
   lib,
   config,
   pkgs,
-  inputs,
   ...
 }: let
   enabled = config.theming.enable && config.gui.enable;
@@ -42,6 +41,7 @@ in {
     };
 
     stylix = {
+      targets.gtksourceview.enable = false;
       fonts = {
         sansSerif = {
           package = pkgs.inter;

@@ -82,6 +82,7 @@ in {
         }
 
         (lib.mkIf guiEnabled {
+          targets.gtksourceview.enable = false;
           fonts = {
             sansSerif = {
               package = pkgs.inter;
