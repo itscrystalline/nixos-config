@@ -53,8 +53,9 @@ in {
           credential.helper = lib.mkBefore ["cache --timeout 216000"];
           commit.gpgsign = true;
           user = {
-            name = "itscrystalline";
+            name = "Wararat Choyrum";
             email = "real@iw2tryhard.dev";
+            signingkey = "EA4F54860C2BD5D4";
           };
           safe.directory = "${config.home.homeDirectory}/nixos-config";
           pull.rebase = false;
