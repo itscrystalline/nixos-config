@@ -354,24 +354,6 @@ in {
         };
       };
 
-      lazygit = {
-        enable = true;
-        enableZshIntegration = true;
-        enableBashIntegration = true;
-        settings = {
-          services."git.iw2tryhard.dev" = "gitea:git.iw2tryhard.dev";
-          git.pagers = [
-            {
-              colorArg = "always";
-              pager = ''${pkgs.delta}/bin/delta --dark --paging=never --line-numbers --hyperlinks --hyperlinks-file-link-format="lazygit-edit://{path}:{line}"'';
-            }
-          ];
-          gui.theme = {
-            activeBorderColor = lib.mkForce ["#f5c2e7" "bold"];
-          };
-        };
-      };
-
       nix-index = {
         enable = true;
         enableZshIntegration = true;

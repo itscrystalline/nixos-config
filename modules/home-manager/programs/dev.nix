@@ -51,9 +51,10 @@ in {
         enable = true;
         settings = {
           credential.helper = lib.mkBefore ["cache --timeout 216000"];
+          commit.gpgsign = true;
           user = {
             name = "itscrystalline";
-            email = "pvpthadgaming@gmail.com";
+            email = "real@iw2tryhard.dev";
           };
           safe.directory = "${config.home.homeDirectory}/nixos-config";
           pull.rebase = false;
@@ -69,6 +70,24 @@ in {
         enable = true;
         enableZshIntegration = true;
         enableBashIntegration = true;
+      };
+
+      lazygit = {
+        enable = true;
+        enableZshIntegration = true;
+        enableBashIntegration = true;
+        settings = {
+          services."git.iw2tryhard.dev" = "gitea:git.iw2tryhard.dev";
+          git.pagers = [
+            {
+              colorArg = "always";
+              pager = ''${pkgs.delta}/bin/delta --dark --paging=never --line-numbers --hyperlinks --hyperlinks-file-link-format="lazygit-edit://{path}:{line}"'';
+            }
+          ];
+          gui.theme = {
+            activeBorderColor = lib.mkForce ["#f5c2e7" "bold"];
+          };
+        };
       };
     };
   };
