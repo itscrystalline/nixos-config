@@ -60,9 +60,9 @@ in {
           favorites = [
             "clipboard:history"
             "core:search-emojis"
-            "@knoopx/store.vicinae.nix:packages"
-            "@knoopx/store.vicinae.nix:options"
-            "@knoopx/store.vicinae.nix:home-manager-options"
+            "@knoopx/nix:packages"
+            "@knoopx/nix:options"
+            "@knoopx/nix:home-manager-options"
             "@tonka3000/0a3cf1ce-7de6-415c-9e37-91a892d1747e:lights"
           ];
           providers."@tonka3000/0a3cf1ce-7de6-415c-9e37-91a892d1747e".preferences.instance = "http://liriel:8000";
