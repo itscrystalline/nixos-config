@@ -24,7 +24,6 @@ in {
       translate-shell
       wl-screenrec
       ffmpeg
-      gifski
       jq
     ];
     programs.noctalia-shell = {
