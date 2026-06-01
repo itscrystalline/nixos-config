@@ -9,8 +9,10 @@
     ./nextcloud.nix
   ];
   sops.secrets = {
-    "gpg_public" = {};
-    "gpg_private" = {};
+    "gpg_public_main" = {};
+    "gpg_private_main" = {};
+    "gpg_public_crystal" = {};
+    "gpg_private_crystal" = {};
   };
 
   home = {
@@ -19,15 +21,20 @@
     # (which handles publicKeys when mutableKeys = true) runs after linkGeneration.
     # See GnuPG.md Section 8 for the full technical rationale.
     activation.importGpgPrivateKeys = lib.hm.dag.entryAfter ["linkGeneration"] ''
-      ${pkgs.gnupg}/bin/gpg --batch --yes --pinentry-mode loopback --allow-secret-key-import --import "${config.sops.secrets.gpg_private.path}" 2>/dev/null || true
+      ${pkgs.gnupg}/bin/gpg --batch --yes --pinentry-mode loopback --allow-secret-key-import --import "${config.sops.secrets.gpg_private_main.path}" 2>/dev/null || true
+      ${pkgs.gnupg}/bin/gpg --batch --yes --pinentry-mode loopback --allow-secret-key-import --import "${config.sops.secrets.gpg_private_crystal.path}" 2>/dev/null || true
     '';
   };
   programs.gpg = {
     enable = true;
     publicKeys = [
       {
-        source = config.sops.secrets.gpg_public.path;
+        source = config.sops.secrets.gpg_public_main.path;
         trust = "ultimate";
+      }
+      {
+        source = config.sops.secrets.gpg_public_crystal.path;
+        trust = "full";
       }
     ];
   };
