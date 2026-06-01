@@ -117,7 +117,7 @@
     };
     forgejo.runner = {
       enable = true;
-      workers = 10;
+      workers = 5;
     };
   };
 

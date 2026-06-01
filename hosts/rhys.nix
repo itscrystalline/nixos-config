@@ -90,7 +90,7 @@
 
     forgejo.runner = {
       enable = true;
-      workers = 5;
+      workers = 2;
     };
   };
 
