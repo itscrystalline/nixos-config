@@ -56,6 +56,14 @@ For NixOS, the default value for this option includes at least this argument:
 *Type:*
 lazy attribute set of raw value
 
+
+
+*Default:*
+
+```nix
+{ }
+```
+
 *Declared by:*
  - [\<nixpkgs/lib/modules\.nix>](https://github.com/NixOS/nixpkgs/blob//lib/modules.nix)
 
@@ -75,15 +83,21 @@ boolean
 
 
 *Default:*
-` false `
+
+```nix
+false
+```
 
 
 
 *Example:*
-` true `
+
+```nix
+true
+```
 
 *Declared by:*
- - [/nix/store/xifgdfqjdj9yffx430q82kgbx6wnkbcx-source/modules/nixos/bluetooth](file:///nix/store/xifgdfqjdj9yffx430q82kgbx6wnkbcx-source/modules/nixos/bluetooth)
+ - [/nix/store/hdbypkibmhnmv7h5m6y7svmcbrrv6ic4-source/modules/nixos/bluetooth](file:///nix/store/hdbypkibmhnmv7h5m6y7svmcbrrv6ic4-source/modules/nixos/bluetooth)
 
 
 
@@ -99,7 +113,7 @@ Boot loader\. ‘limine’, ‘systemd-boot’, ‘grub’ or ‘generic’\.
 one of “systemd-boot”, “generic”, “grub”, “limine”
 
 *Declared by:*
- - [/nix/store/xifgdfqjdj9yffx430q82kgbx6wnkbcx-source/modules/nixos/kernel/boot\.nix](file:///nix/store/xifgdfqjdj9yffx430q82kgbx6wnkbcx-source/modules/nixos/kernel/boot.nix)
+ - [/nix/store/hdbypkibmhnmv7h5m6y7svmcbrrv6ic4-source/modules/nixos/kernel/boot\.nix](file:///nix/store/hdbypkibmhnmv7h5m6y7svmcbrrv6ic4-source/modules/nixos/kernel/boot.nix)
 
 
 
@@ -117,10 +131,13 @@ null or strings concatenated with “\\n” or (attribute set)
 
 
 *Default:*
-` null `
+
+```nix
+null
+```
 
 *Declared by:*
- - [/nix/store/xifgdfqjdj9yffx430q82kgbx6wnkbcx-source/modules/nixos/kernel/boot\.nix](file:///nix/store/xifgdfqjdj9yffx430q82kgbx6wnkbcx-source/modules/nixos/kernel/boot.nix)
+ - [/nix/store/hdbypkibmhnmv7h5m6y7svmcbrrv6ic4-source/modules/nixos/kernel/boot\.nix](file:///nix/store/hdbypkibmhnmv7h5m6y7svmcbrrv6ic4-source/modules/nixos/kernel/boot.nix)
 
 
 
@@ -138,10 +155,13 @@ string
 
 
 *Default:*
-` "/boot" `
+
+```nix
+"/boot"
+```
 
 *Declared by:*
- - [/nix/store/xifgdfqjdj9yffx430q82kgbx6wnkbcx-source/modules/nixos/kernel/boot\.nix](file:///nix/store/xifgdfqjdj9yffx430q82kgbx6wnkbcx-source/modules/nixos/kernel/boot.nix)
+ - [/nix/store/hdbypkibmhnmv7h5m6y7svmcbrrv6ic4-source/modules/nixos/kernel/boot\.nix](file:///nix/store/hdbypkibmhnmv7h5m6y7svmcbrrv6ic4-source/modules/nixos/kernel/boot.nix)
 
 
 
@@ -159,15 +179,21 @@ boolean
 
 
 *Default:*
-` false `
+
+```nix
+false
+```
 
 
 
 *Example:*
-` true `
+
+```nix
+true
+```
 
 *Declared by:*
- - [/nix/store/xifgdfqjdj9yffx430q82kgbx6wnkbcx-source/modules/nixos/kernel/boot\.nix](file:///nix/store/xifgdfqjdj9yffx430q82kgbx6wnkbcx-source/modules/nixos/kernel/boot.nix)
+ - [/nix/store/hdbypkibmhnmv7h5m6y7svmcbrrv6ic4-source/modules/nixos/kernel/boot\.nix](file:///nix/store/hdbypkibmhnmv7h5m6y7svmcbrrv6ic4-source/modules/nixos/kernel/boot.nix)
 
 
 
@@ -185,10 +211,13 @@ Kernel modules available during stage 1\.
 
 
 *Default:*
-` [ ] `
+
+```nix
+[ ]
+```
 
 *Declared by:*
- - [/nix/store/xifgdfqjdj9yffx430q82kgbx6wnkbcx-source/modules/nixos/kernel/boot\.nix](file:///nix/store/xifgdfqjdj9yffx430q82kgbx6wnkbcx-source/modules/nixos/kernel/boot.nix)
+ - [/nix/store/hdbypkibmhnmv7h5m6y7svmcbrrv6ic4-source/modules/nixos/kernel/boot\.nix](file:///nix/store/hdbypkibmhnmv7h5m6y7svmcbrrv6ic4-source/modules/nixos/kernel/boot.nix)
 
 
 
@@ -206,10 +235,13 @@ Kernel modules loaded during stage 1\.
 
 
 *Default:*
-` [ ] `
+
+```nix
+[ ]
+```
 
 *Declared by:*
- - [/nix/store/xifgdfqjdj9yffx430q82kgbx6wnkbcx-source/modules/nixos/kernel/boot\.nix](file:///nix/store/xifgdfqjdj9yffx430q82kgbx6wnkbcx-source/modules/nixos/kernel/boot.nix)
+ - [/nix/store/hdbypkibmhnmv7h5m6y7svmcbrrv6ic4-source/modules/nixos/kernel/boot\.nix](file:///nix/store/hdbypkibmhnmv7h5m6y7svmcbrrv6ic4-source/modules/nixos/kernel/boot.nix)
 
 
 
@@ -227,10 +259,13 @@ one of “silent”, “verbose” or (submodule)
 
 
 *Default:*
-` "verbose" `
+
+```nix
+"verbose"
+```
 
 *Declared by:*
- - [/nix/store/xifgdfqjdj9yffx430q82kgbx6wnkbcx-source/modules/nixos/kernel/boot\.nix](file:///nix/store/xifgdfqjdj9yffx430q82kgbx6wnkbcx-source/modules/nixos/kernel/boot.nix)
+ - [/nix/store/hdbypkibmhnmv7h5m6y7svmcbrrv6ic4-source/modules/nixos/kernel/boot\.nix](file:///nix/store/hdbypkibmhnmv7h5m6y7svmcbrrv6ic4-source/modules/nixos/kernel/boot.nix)
 
 
 
@@ -248,15 +283,21 @@ boolean
 
 
 *Default:*
-` false `
+
+```nix
+false
+```
 
 
 
 *Example:*
-` true `
+
+```nix
+true
+```
 
 *Declared by:*
- - [/nix/store/xifgdfqjdj9yffx430q82kgbx6wnkbcx-source/modules/nixos/compatibility/nix-ld\.nix](file:///nix/store/xifgdfqjdj9yffx430q82kgbx6wnkbcx-source/modules/nixos/compatibility/nix-ld.nix)
+ - [/nix/store/hdbypkibmhnmv7h5m6y7svmcbrrv6ic4-source/modules/nixos/compatibility/nix-ld\.nix](file:///nix/store/hdbypkibmhnmv7h5m6y7svmcbrrv6ic4-source/modules/nixos/compatibility/nix-ld.nix)
 
 
 
@@ -274,15 +315,21 @@ boolean
 
 
 *Default:*
-` false `
+
+```nix
+false
+```
 
 
 
 *Example:*
-` true `
+
+```nix
+true
+```
 
 *Declared by:*
- - [/nix/store/xifgdfqjdj9yffx430q82kgbx6wnkbcx-source/modules/nixos/compatibility/steam-run\.nix](file:///nix/store/xifgdfqjdj9yffx430q82kgbx6wnkbcx-source/modules/nixos/compatibility/steam-run.nix)
+ - [/nix/store/hdbypkibmhnmv7h5m6y7svmcbrrv6ic4-source/modules/nixos/compatibility/steam-run\.nix](file:///nix/store/hdbypkibmhnmv7h5m6y7svmcbrrv6ic4-source/modules/nixos/compatibility/steam-run.nix)
 
 
 
@@ -300,10 +347,13 @@ string
 
 
 *Default:*
-` "x86_64-linux" `
+
+```nix
+"x86_64-linux"
+```
 
 *Declared by:*
- - [/nix/store/xifgdfqjdj9yffx430q82kgbx6wnkbcx-source/modules/nixos](file:///nix/store/xifgdfqjdj9yffx430q82kgbx6wnkbcx-source/modules/nixos)
+ - [/nix/store/hdbypkibmhnmv7h5m6y7svmcbrrv6ic4-source/modules/nixos](file:///nix/store/hdbypkibmhnmv7h5m6y7svmcbrrv6ic4-source/modules/nixos)
 
 
 
@@ -318,8 +368,16 @@ Filesystems to configure in /etc/fstab\. Mirrors that of NixOS’s\.
 *Type:*
 attribute set
 
+
+
+*Default:*
+
+```nix
+{ }
+```
+
 *Declared by:*
- - [/nix/store/xifgdfqjdj9yffx430q82kgbx6wnkbcx-source/modules/nixos](file:///nix/store/xifgdfqjdj9yffx430q82kgbx6wnkbcx-source/modules/nixos)
+ - [/nix/store/hdbypkibmhnmv7h5m6y7svmcbrrv6ic4-source/modules/nixos](file:///nix/store/hdbypkibmhnmv7h5m6y7svmcbrrv6ic4-source/modules/nixos)
 
 
 
@@ -337,10 +395,13 @@ submodule
 
 
 *Default:*
-` { } `
+
+```nix
+{ }
+```
 
 *Declared by:*
- - [/nix/store/xifgdfqjdj9yffx430q82kgbx6wnkbcx-source/modules/nixos](file:///nix/store/xifgdfqjdj9yffx430q82kgbx6wnkbcx-source/modules/nixos)
+ - [/nix/store/hdbypkibmhnmv7h5m6y7svmcbrrv6ic4-source/modules/nixos](file:///nix/store/hdbypkibmhnmv7h5m6y7svmcbrrv6ic4-source/modules/nixos)
 
 
 
@@ -358,10 +419,13 @@ string
 
 
 *Default:*
-` "us" `
+
+```nix
+"us"
+```
 
 *Declared by:*
- - [/nix/store/xifgdfqjdj9yffx430q82kgbx6wnkbcx-source/modules/nixos](file:///nix/store/xifgdfqjdj9yffx430q82kgbx6wnkbcx-source/modules/nixos)
+ - [/nix/store/hdbypkibmhnmv7h5m6y7svmcbrrv6ic4-source/modules/nixos](file:///nix/store/hdbypkibmhnmv7h5m6y7svmcbrrv6ic4-source/modules/nixos)
 
 
 
@@ -379,10 +443,13 @@ string
 
 
 *Default:*
-` "ja_JP.UTF-8" `
+
+```nix
+"ja_JP.UTF-8"
+```
 
 *Declared by:*
- - [/nix/store/xifgdfqjdj9yffx430q82kgbx6wnkbcx-source/modules/nixos](file:///nix/store/xifgdfqjdj9yffx430q82kgbx6wnkbcx-source/modules/nixos)
+ - [/nix/store/hdbypkibmhnmv7h5m6y7svmcbrrv6ic4-source/modules/nixos](file:///nix/store/hdbypkibmhnmv7h5m6y7svmcbrrv6ic4-source/modules/nixos)
 
 
 
@@ -400,10 +467,13 @@ string
 
 
 *Default:*
-` "Asia/Bangkok" `
+
+```nix
+"Asia/Bangkok"
+```
 
 *Declared by:*
- - [/nix/store/xifgdfqjdj9yffx430q82kgbx6wnkbcx-source/modules/nixos](file:///nix/store/xifgdfqjdj9yffx430q82kgbx6wnkbcx-source/modules/nixos)
+ - [/nix/store/hdbypkibmhnmv7h5m6y7svmcbrrv6ic4-source/modules/nixos](file:///nix/store/hdbypkibmhnmv7h5m6y7svmcbrrv6ic4-source/modules/nixos)
 
 
 
@@ -421,10 +491,13 @@ string
 
 
 *Default:*
-` "localhost" `
+
+```nix
+"localhost"
+```
 
 *Declared by:*
- - [/nix/store/xifgdfqjdj9yffx430q82kgbx6wnkbcx-source/modules/nixos](file:///nix/store/xifgdfqjdj9yffx430q82kgbx6wnkbcx-source/modules/nixos)
+ - [/nix/store/hdbypkibmhnmv7h5m6y7svmcbrrv6ic4-source/modules/nixos](file:///nix/store/hdbypkibmhnmv7h5m6y7svmcbrrv6ic4-source/modules/nixos)
 
 
 
@@ -442,10 +515,13 @@ string
 
 
 *Default:*
-` "itscrystalline" `
+
+```nix
+"itscrystalline"
+```
 
 *Declared by:*
- - [/nix/store/xifgdfqjdj9yffx430q82kgbx6wnkbcx-source/modules/nixos](file:///nix/store/xifgdfqjdj9yffx430q82kgbx6wnkbcx-source/modules/nixos)
+ - [/nix/store/hdbypkibmhnmv7h5m6y7svmcbrrv6ic4-source/modules/nixos](file:///nix/store/hdbypkibmhnmv7h5m6y7svmcbrrv6ic4-source/modules/nixos)
 
 
 
@@ -463,10 +539,13 @@ list of string
 
 
 *Default:*
-` [ ] `
+
+```nix
+[ ]
+```
 
 *Declared by:*
- - [/nix/store/xifgdfqjdj9yffx430q82kgbx6wnkbcx-source/modules/nixos](file:///nix/store/xifgdfqjdj9yffx430q82kgbx6wnkbcx-source/modules/nixos)
+ - [/nix/store/hdbypkibmhnmv7h5m6y7svmcbrrv6ic4-source/modules/nixos](file:///nix/store/hdbypkibmhnmv7h5m6y7svmcbrrv6ic4-source/modules/nixos)
 
 
 
@@ -484,10 +563,13 @@ string
 
 
 *Default:*
-` "24.11" `
+
+```nix
+"24.11"
+```
 
 *Declared by:*
- - [/nix/store/xifgdfqjdj9yffx430q82kgbx6wnkbcx-source/modules/nixos](file:///nix/store/xifgdfqjdj9yffx430q82kgbx6wnkbcx-source/modules/nixos)
+ - [/nix/store/hdbypkibmhnmv7h5m6y7svmcbrrv6ic4-source/modules/nixos](file:///nix/store/hdbypkibmhnmv7h5m6y7svmcbrrv6ic4-source/modules/nixos)
 
 
 
@@ -505,15 +587,21 @@ boolean
 
 
 *Default:*
-` false `
+
+```nix
+false
+```
 
 
 
 *Example:*
-` true `
+
+```nix
+true
+```
 
 *Declared by:*
- - [/nix/store/xifgdfqjdj9yffx430q82kgbx6wnkbcx-source/modules/nixos/services/argonone\.nix](file:///nix/store/xifgdfqjdj9yffx430q82kgbx6wnkbcx-source/modules/nixos/services/argonone.nix)
+ - [/nix/store/hdbypkibmhnmv7h5m6y7svmcbrrv6ic4-source/modules/nixos/services/argonone\.nix](file:///nix/store/hdbypkibmhnmv7h5m6y7svmcbrrv6ic4-source/modules/nixos/services/argonone.nix)
 
 
 
@@ -532,7 +620,7 @@ list of signed integer
 
 *Default:*
 
-```
+```nix
 [
   30
   60
@@ -541,7 +629,7 @@ list of signed integer
 ```
 
 *Declared by:*
- - [/nix/store/xifgdfqjdj9yffx430q82kgbx6wnkbcx-source/modules/nixos/services/argonone\.nix](file:///nix/store/xifgdfqjdj9yffx430q82kgbx6wnkbcx-source/modules/nixos/services/argonone.nix)
+ - [/nix/store/hdbypkibmhnmv7h5m6y7svmcbrrv6ic4-source/modules/nixos/services/argonone\.nix](file:///nix/store/hdbypkibmhnmv7h5m6y7svmcbrrv6ic4-source/modules/nixos/services/argonone.nix)
 
 
 
@@ -559,10 +647,13 @@ signed integer
 
 
 *Default:*
-` 5 `
+
+```nix
+5
+```
 
 *Declared by:*
- - [/nix/store/xifgdfqjdj9yffx430q82kgbx6wnkbcx-source/modules/nixos/services/argonone\.nix](file:///nix/store/xifgdfqjdj9yffx430q82kgbx6wnkbcx-source/modules/nixos/services/argonone.nix)
+ - [/nix/store/hdbypkibmhnmv7h5m6y7svmcbrrv6ic4-source/modules/nixos/services/argonone\.nix](file:///nix/store/hdbypkibmhnmv7h5m6y7svmcbrrv6ic4-source/modules/nixos/services/argonone.nix)
 
 
 
@@ -581,7 +672,7 @@ list of signed integer
 
 *Default:*
 
-```
+```nix
 [
   45
   60
@@ -590,7 +681,7 @@ list of signed integer
 ```
 
 *Declared by:*
- - [/nix/store/xifgdfqjdj9yffx430q82kgbx6wnkbcx-source/modules/nixos/services/argonone\.nix](file:///nix/store/xifgdfqjdj9yffx430q82kgbx6wnkbcx-source/modules/nixos/services/argonone.nix)
+ - [/nix/store/hdbypkibmhnmv7h5m6y7svmcbrrv6ic4-source/modules/nixos/services/argonone\.nix](file:///nix/store/hdbypkibmhnmv7h5m6y7svmcbrrv6ic4-source/modules/nixos/services/argonone.nix)
 
 
 
@@ -608,15 +699,21 @@ boolean
 
 
 *Default:*
-` false `
+
+```nix
+false
+```
 
 
 
 *Example:*
-` true `
+
+```nix
+true
+```
 
 *Declared by:*
- - [/nix/store/xifgdfqjdj9yffx430q82kgbx6wnkbcx-source/modules/nixos/services/avahi\.nix](file:///nix/store/xifgdfqjdj9yffx430q82kgbx6wnkbcx-source/modules/nixos/services/avahi.nix)
+ - [/nix/store/hdbypkibmhnmv7h5m6y7svmcbrrv6ic4-source/modules/nixos/services/avahi\.nix](file:///nix/store/hdbypkibmhnmv7h5m6y7svmcbrrv6ic4-source/modules/nixos/services/avahi.nix)
 
 
 
@@ -634,15 +731,21 @@ boolean
 
 
 *Default:*
-` false `
+
+```nix
+false
+```
 
 
 
 *Example:*
-` true `
+
+```nix
+true
+```
 
 *Declared by:*
- - [/nix/store/xifgdfqjdj9yffx430q82kgbx6wnkbcx-source/modules/nixos/services/blocky\.nix](file:///nix/store/xifgdfqjdj9yffx430q82kgbx6wnkbcx-source/modules/nixos/services/blocky.nix)
+ - [/nix/store/hdbypkibmhnmv7h5m6y7svmcbrrv6ic4-source/modules/nixos/services/blocky\.nix](file:///nix/store/hdbypkibmhnmv7h5m6y7svmcbrrv6ic4-source/modules/nixos/services/blocky.nix)
 
 
 
@@ -660,10 +763,13 @@ strings concatenated with “\\n”
 
 
 *Default:*
-` "" `
+
+```nix
+""
+```
 
 *Declared by:*
- - [/nix/store/xifgdfqjdj9yffx430q82kgbx6wnkbcx-source/modules/nixos/services/blocky\.nix](file:///nix/store/xifgdfqjdj9yffx430q82kgbx6wnkbcx-source/modules/nixos/services/blocky.nix)
+ - [/nix/store/hdbypkibmhnmv7h5m6y7svmcbrrv6ic4-source/modules/nixos/services/blocky\.nix](file:///nix/store/hdbypkibmhnmv7h5m6y7svmcbrrv6ic4-source/modules/nixos/services/blocky.nix)
 
 
 
@@ -681,13 +787,16 @@ attribute set of string
 
 
 *Default:*
-` { } `
+
+```nix
+{ }
+```
 
 
 
 *Example:*
 
-```
+```nix
 {
   "" = "1.2.3.4";
   "test" = "5.6.7.8";
@@ -696,7 +805,7 @@ attribute set of string
 ```
 
 *Declared by:*
- - [/nix/store/xifgdfqjdj9yffx430q82kgbx6wnkbcx-source/modules/nixos/services/blocky\.nix](file:///nix/store/xifgdfqjdj9yffx430q82kgbx6wnkbcx-source/modules/nixos/services/blocky.nix)
+ - [/nix/store/hdbypkibmhnmv7h5m6y7svmcbrrv6ic4-source/modules/nixos/services/blocky\.nix](file:///nix/store/hdbypkibmhnmv7h5m6y7svmcbrrv6ic4-source/modules/nixos/services/blocky.nix)
 
 
 
@@ -714,10 +823,13 @@ strings concatenated with “\\n”
 
 
 *Default:*
-` "" `
+
+```nix
+""
+```
 
 *Declared by:*
- - [/nix/store/xifgdfqjdj9yffx430q82kgbx6wnkbcx-source/modules/nixos/services/blocky\.nix](file:///nix/store/xifgdfqjdj9yffx430q82kgbx6wnkbcx-source/modules/nixos/services/blocky.nix)
+ - [/nix/store/hdbypkibmhnmv7h5m6y7svmcbrrv6ic4-source/modules/nixos/services/blocky\.nix](file:///nix/store/hdbypkibmhnmv7h5m6y7svmcbrrv6ic4-source/modules/nixos/services/blocky.nix)
 
 
 
@@ -735,10 +847,13 @@ string
 
 
 *Default:*
-` "0.0.0.0" `
+
+```nix
+"0.0.0.0"
+```
 
 *Declared by:*
- - [/nix/store/xifgdfqjdj9yffx430q82kgbx6wnkbcx-source/modules/nixos/services/blocky\.nix](file:///nix/store/xifgdfqjdj9yffx430q82kgbx6wnkbcx-source/modules/nixos/services/blocky.nix)
+ - [/nix/store/hdbypkibmhnmv7h5m6y7svmcbrrv6ic4-source/modules/nixos/services/blocky\.nix](file:///nix/store/hdbypkibmhnmv7h5m6y7svmcbrrv6ic4-source/modules/nixos/services/blocky.nix)
 
 
 
@@ -756,15 +871,21 @@ boolean
 
 
 *Default:*
-` false `
+
+```nix
+false
+```
 
 
 
 *Example:*
-` true `
+
+```nix
+true
+```
 
 *Declared by:*
- - [/nix/store/xifgdfqjdj9yffx430q82kgbx6wnkbcx-source/modules/nixos/services/cloudflared\.nix](file:///nix/store/xifgdfqjdj9yffx430q82kgbx6wnkbcx-source/modules/nixos/services/cloudflared.nix)
+ - [/nix/store/hdbypkibmhnmv7h5m6y7svmcbrrv6ic4-source/modules/nixos/services/cloudflared\.nix](file:///nix/store/hdbypkibmhnmv7h5m6y7svmcbrrv6ic4-source/modules/nixos/services/cloudflared.nix)
 
 
 
@@ -782,10 +903,13 @@ attribute set of (attribute set)
 
 
 *Default:*
-` { } `
+
+```nix
+{ }
+```
 
 *Declared by:*
- - [/nix/store/xifgdfqjdj9yffx430q82kgbx6wnkbcx-source/modules/nixos/services/cloudflared\.nix](file:///nix/store/xifgdfqjdj9yffx430q82kgbx6wnkbcx-source/modules/nixos/services/cloudflared.nix)
+ - [/nix/store/hdbypkibmhnmv7h5m6y7svmcbrrv6ic4-source/modules/nixos/services/cloudflared\.nix](file:///nix/store/hdbypkibmhnmv7h5m6y7svmcbrrv6ic4-source/modules/nixos/services/cloudflared.nix)
 
 
 
@@ -803,15 +927,21 @@ boolean
 
 
 *Default:*
-` false `
+
+```nix
+false
+```
 
 
 
 *Example:*
-` true `
+
+```nix
+true
+```
 
 *Declared by:*
- - [/nix/store/xifgdfqjdj9yffx430q82kgbx6wnkbcx-source/modules/nixos/services/copyparty\.nix](file:///nix/store/xifgdfqjdj9yffx430q82kgbx6wnkbcx-source/modules/nixos/services/copyparty.nix)
+ - [/nix/store/hdbypkibmhnmv7h5m6y7svmcbrrv6ic4-source/modules/nixos/services/copyparty\.nix](file:///nix/store/hdbypkibmhnmv7h5m6y7svmcbrrv6ic4-source/modules/nixos/services/copyparty.nix)
 
 
 
@@ -829,10 +959,13 @@ attribute set of (submodule)
 
 
 *Default:*
-` { } `
+
+```nix
+{ }
+```
 
 *Declared by:*
- - [/nix/store/xifgdfqjdj9yffx430q82kgbx6wnkbcx-source/modules/nixos/services/copyparty\.nix](file:///nix/store/xifgdfqjdj9yffx430q82kgbx6wnkbcx-source/modules/nixos/services/copyparty.nix)
+ - [/nix/store/hdbypkibmhnmv7h5m6y7svmcbrrv6ic4-source/modules/nixos/services/copyparty\.nix](file:///nix/store/hdbypkibmhnmv7h5m6y7svmcbrrv6ic4-source/modules/nixos/services/copyparty.nix)
 
 
 
@@ -850,10 +983,13 @@ string
 
 
 *Default:*
-` "" `
+
+```nix
+""
+```
 
 *Declared by:*
- - [/nix/store/xifgdfqjdj9yffx430q82kgbx6wnkbcx-source/modules/nixos/services/copyparty\.nix](file:///nix/store/xifgdfqjdj9yffx430q82kgbx6wnkbcx-source/modules/nixos/services/copyparty.nix)
+ - [/nix/store/hdbypkibmhnmv7h5m6y7svmcbrrv6ic4-source/modules/nixos/services/copyparty\.nix](file:///nix/store/hdbypkibmhnmv7h5m6y7svmcbrrv6ic4-source/modules/nixos/services/copyparty.nix)
 
 
 
@@ -871,10 +1007,13 @@ Users that can access this volume read only\.
 
 
 *Default:*
-` "*" `
+
+```nix
+"*"
+```
 
 *Declared by:*
- - [/nix/store/xifgdfqjdj9yffx430q82kgbx6wnkbcx-source/modules/nixos/services/copyparty\.nix](file:///nix/store/xifgdfqjdj9yffx430q82kgbx6wnkbcx-source/modules/nixos/services/copyparty.nix)
+ - [/nix/store/hdbypkibmhnmv7h5m6y7svmcbrrv6ic4-source/modules/nixos/services/copyparty\.nix](file:///nix/store/hdbypkibmhnmv7h5m6y7svmcbrrv6ic4-source/modules/nixos/services/copyparty.nix)
 
 
 
@@ -892,10 +1031,13 @@ Users that can access and modify this volume\.
 
 
 *Default:*
-` [ ] `
+
+```nix
+[ ]
+```
 
 *Declared by:*
- - [/nix/store/xifgdfqjdj9yffx430q82kgbx6wnkbcx-source/modules/nixos/services/copyparty\.nix](file:///nix/store/xifgdfqjdj9yffx430q82kgbx6wnkbcx-source/modules/nixos/services/copyparty.nix)
+ - [/nix/store/hdbypkibmhnmv7h5m6y7svmcbrrv6ic4-source/modules/nixos/services/copyparty\.nix](file:///nix/store/hdbypkibmhnmv7h5m6y7svmcbrrv6ic4-source/modules/nixos/services/copyparty.nix)
 
 
 
@@ -913,15 +1055,21 @@ boolean
 
 
 *Default:*
-` false `
+
+```nix
+false
+```
 
 
 
 *Example:*
-` true `
+
+```nix
+true
+```
 
 *Declared by:*
- - [/nix/store/xifgdfqjdj9yffx430q82kgbx6wnkbcx-source/modules/nixos/services/create-ap\.nix](file:///nix/store/xifgdfqjdj9yffx430q82kgbx6wnkbcx-source/modules/nixos/services/create-ap.nix)
+ - [/nix/store/hdbypkibmhnmv7h5m6y7svmcbrrv6ic4-source/modules/nixos/services/create-ap\.nix](file:///nix/store/hdbypkibmhnmv7h5m6y7svmcbrrv6ic4-source/modules/nixos/services/create-ap.nix)
 
 
 
@@ -939,10 +1087,13 @@ list of (submodule)
 
 
 *Default:*
-` [ ] `
+
+```nix
+[ ]
+```
 
 *Declared by:*
- - [/nix/store/xifgdfqjdj9yffx430q82kgbx6wnkbcx-source/modules/nixos/services/create-ap\.nix](file:///nix/store/xifgdfqjdj9yffx430q82kgbx6wnkbcx-source/modules/nixos/services/create-ap.nix)
+ - [/nix/store/hdbypkibmhnmv7h5m6y7svmcbrrv6ic4-source/modules/nixos/services/create-ap\.nix](file:///nix/store/hdbypkibmhnmv7h5m6y7svmcbrrv6ic4-source/modules/nixos/services/create-ap.nix)
 
 
 
@@ -958,7 +1109,7 @@ Hostname\.
 string
 
 *Declared by:*
- - [/nix/store/xifgdfqjdj9yffx430q82kgbx6wnkbcx-source/modules/nixos/services/create-ap\.nix](file:///nix/store/xifgdfqjdj9yffx430q82kgbx6wnkbcx-source/modules/nixos/services/create-ap.nix)
+ - [/nix/store/hdbypkibmhnmv7h5m6y7svmcbrrv6ic4-source/modules/nixos/services/create-ap\.nix](file:///nix/store/hdbypkibmhnmv7h5m6y7svmcbrrv6ic4-source/modules/nixos/services/create-ap.nix)
 
 
 
@@ -974,7 +1125,7 @@ IP address\.
 string
 
 *Declared by:*
- - [/nix/store/xifgdfqjdj9yffx430q82kgbx6wnkbcx-source/modules/nixos/services/create-ap\.nix](file:///nix/store/xifgdfqjdj9yffx430q82kgbx6wnkbcx-source/modules/nixos/services/create-ap.nix)
+ - [/nix/store/hdbypkibmhnmv7h5m6y7svmcbrrv6ic4-source/modules/nixos/services/create-ap\.nix](file:///nix/store/hdbypkibmhnmv7h5m6y7svmcbrrv6ic4-source/modules/nixos/services/create-ap.nix)
 
 
 
@@ -992,10 +1143,13 @@ string
 
 
 *Default:*
-` "infinite" `
+
+```nix
+"infinite"
+```
 
 *Declared by:*
- - [/nix/store/xifgdfqjdj9yffx430q82kgbx6wnkbcx-source/modules/nixos/services/create-ap\.nix](file:///nix/store/xifgdfqjdj9yffx430q82kgbx6wnkbcx-source/modules/nixos/services/create-ap.nix)
+ - [/nix/store/hdbypkibmhnmv7h5m6y7svmcbrrv6ic4-source/modules/nixos/services/create-ap\.nix](file:///nix/store/hdbypkibmhnmv7h5m6y7svmcbrrv6ic4-source/modules/nixos/services/create-ap.nix)
 
 
 
@@ -1011,7 +1165,7 @@ MAC address\.
 string
 
 *Declared by:*
- - [/nix/store/xifgdfqjdj9yffx430q82kgbx6wnkbcx-source/modules/nixos/services/create-ap\.nix](file:///nix/store/xifgdfqjdj9yffx430q82kgbx6wnkbcx-source/modules/nixos/services/create-ap.nix)
+ - [/nix/store/hdbypkibmhnmv7h5m6y7svmcbrrv6ic4-source/modules/nixos/services/create-ap\.nix](file:///nix/store/hdbypkibmhnmv7h5m6y7svmcbrrv6ic4-source/modules/nixos/services/create-ap.nix)
 
 
 
@@ -1029,15 +1183,21 @@ boolean
 
 
 *Default:*
-` false `
+
+```nix
+false
+```
 
 
 
 *Example:*
-` true `
+
+```nix
+true
+```
 
 *Declared by:*
- - [/nix/store/xifgdfqjdj9yffx430q82kgbx6wnkbcx-source/modules/nixos/services/docker\.nix](file:///nix/store/xifgdfqjdj9yffx430q82kgbx6wnkbcx-source/modules/nixos/services/docker.nix)
+ - [/nix/store/hdbypkibmhnmv7h5m6y7svmcbrrv6ic4-source/modules/nixos/services/docker\.nix](file:///nix/store/hdbypkibmhnmv7h5m6y7svmcbrrv6ic4-source/modules/nixos/services/docker.nix)
 
 
 
@@ -1055,15 +1215,21 @@ boolean
 
 
 *Default:*
-` false `
+
+```nix
+false
+```
 
 
 
 *Example:*
-` true `
+
+```nix
+true
+```
 
 *Declared by:*
- - [/nix/store/xifgdfqjdj9yffx430q82kgbx6wnkbcx-source/modules/nixos/services/earlyoom\.nix](file:///nix/store/xifgdfqjdj9yffx430q82kgbx6wnkbcx-source/modules/nixos/services/earlyoom.nix)
+ - [/nix/store/hdbypkibmhnmv7h5m6y7svmcbrrv6ic4-source/modules/nixos/services/earlyoom\.nix](file:///nix/store/hdbypkibmhnmv7h5m6y7svmcbrrv6ic4-source/modules/nixos/services/earlyoom.nix)
 
 
 
@@ -1081,10 +1247,13 @@ list of string
 
 
 *Default:*
-` [ ] `
+
+```nix
+[ ]
+```
 
 *Declared by:*
- - [/nix/store/xifgdfqjdj9yffx430q82kgbx6wnkbcx-source/modules/nixos/services](file:///nix/store/xifgdfqjdj9yffx430q82kgbx6wnkbcx-source/modules/nixos/services)
+ - [/nix/store/hdbypkibmhnmv7h5m6y7svmcbrrv6ic4-source/modules/nixos/services](file:///nix/store/hdbypkibmhnmv7h5m6y7svmcbrrv6ic4-source/modules/nixos/services)
 
 
 
@@ -1102,15 +1271,21 @@ boolean
 
 
 *Default:*
-` false `
+
+```nix
+false
+```
 
 
 
 *Example:*
-` true `
+
+```nix
+true
+```
 
 *Declared by:*
- - [/nix/store/xifgdfqjdj9yffx430q82kgbx6wnkbcx-source/modules/nixos/services/forgejo\.nix](file:///nix/store/xifgdfqjdj9yffx430q82kgbx6wnkbcx-source/modules/nixos/services/forgejo.nix)
+ - [/nix/store/hdbypkibmhnmv7h5m6y7svmcbrrv6ic4-source/modules/nixos/services/forgejo\.nix](file:///nix/store/hdbypkibmhnmv7h5m6y7svmcbrrv6ic4-source/modules/nixos/services/forgejo.nix)
 
 
 
@@ -1128,10 +1303,13 @@ string
 
 
 *Default:*
-` "/var/lib/forgejo" `
+
+```nix
+"/var/lib/forgejo"
+```
 
 *Declared by:*
- - [/nix/store/xifgdfqjdj9yffx430q82kgbx6wnkbcx-source/modules/nixos/services/forgejo\.nix](file:///nix/store/xifgdfqjdj9yffx430q82kgbx6wnkbcx-source/modules/nixos/services/forgejo.nix)
+ - [/nix/store/hdbypkibmhnmv7h5m6y7svmcbrrv6ic4-source/modules/nixos/services/forgejo\.nix](file:///nix/store/hdbypkibmhnmv7h5m6y7svmcbrrv6ic4-source/modules/nixos/services/forgejo.nix)
 
 
 
@@ -1149,15 +1327,21 @@ boolean
 
 
 *Default:*
-` false `
+
+```nix
+false
+```
 
 
 
 *Example:*
-` true `
+
+```nix
+true
+```
 
 *Declared by:*
- - [/nix/store/xifgdfqjdj9yffx430q82kgbx6wnkbcx-source/modules/nixos/services/forgejo\.nix](file:///nix/store/xifgdfqjdj9yffx430q82kgbx6wnkbcx-source/modules/nixos/services/forgejo.nix)
+ - [/nix/store/hdbypkibmhnmv7h5m6y7svmcbrrv6ic4-source/modules/nixos/services/forgejo\.nix](file:///nix/store/hdbypkibmhnmv7h5m6y7svmcbrrv6ic4-source/modules/nixos/services/forgejo.nix)
 
 
 
@@ -1175,10 +1359,13 @@ signed integer
 
 
 *Default:*
-` 1 `
+
+```nix
+1
+```
 
 *Declared by:*
- - [/nix/store/xifgdfqjdj9yffx430q82kgbx6wnkbcx-source/modules/nixos/services/forgejo\.nix](file:///nix/store/xifgdfqjdj9yffx430q82kgbx6wnkbcx-source/modules/nixos/services/forgejo.nix)
+ - [/nix/store/hdbypkibmhnmv7h5m6y7svmcbrrv6ic4-source/modules/nixos/services/forgejo\.nix](file:///nix/store/hdbypkibmhnmv7h5m6y7svmcbrrv6ic4-source/modules/nixos/services/forgejo.nix)
 
 
 
@@ -1196,15 +1383,21 @@ boolean
 
 
 *Default:*
-` false `
+
+```nix
+false
+```
 
 
 
 *Example:*
-` true `
+
+```nix
+true
+```
 
 *Declared by:*
- - [/nix/store/xifgdfqjdj9yffx430q82kgbx6wnkbcx-source/modules/nixos/services/forgejo\.nix](file:///nix/store/xifgdfqjdj9yffx430q82kgbx6wnkbcx-source/modules/nixos/services/forgejo.nix)
+ - [/nix/store/hdbypkibmhnmv7h5m6y7svmcbrrv6ic4-source/modules/nixos/services/forgejo\.nix](file:///nix/store/hdbypkibmhnmv7h5m6y7svmcbrrv6ic4-source/modules/nixos/services/forgejo.nix)
 
 
 
@@ -1222,15 +1415,21 @@ boolean
 
 
 *Default:*
-` false `
+
+```nix
+false
+```
 
 
 
 *Example:*
-` true `
+
+```nix
+true
+```
 
 *Declared by:*
- - [/nix/store/xifgdfqjdj9yffx430q82kgbx6wnkbcx-source/modules/nixos/services/home-assistant\.nix](file:///nix/store/xifgdfqjdj9yffx430q82kgbx6wnkbcx-source/modules/nixos/services/home-assistant.nix)
+ - [/nix/store/hdbypkibmhnmv7h5m6y7svmcbrrv6ic4-source/modules/nixos/services/home-assistant\.nix](file:///nix/store/hdbypkibmhnmv7h5m6y7svmcbrrv6ic4-source/modules/nixos/services/home-assistant.nix)
 
 
 
@@ -1248,15 +1447,21 @@ boolean
 
 
 *Default:*
-` false `
+
+```nix
+false
+```
 
 
 
 *Example:*
-` true `
+
+```nix
+true
+```
 
 *Declared by:*
- - [/nix/store/xifgdfqjdj9yffx430q82kgbx6wnkbcx-source/modules/nixos/services/iw2tryhard-dev\.nix](file:///nix/store/xifgdfqjdj9yffx430q82kgbx6wnkbcx-source/modules/nixos/services/iw2tryhard-dev.nix)
+ - [/nix/store/hdbypkibmhnmv7h5m6y7svmcbrrv6ic4-source/modules/nixos/services/iw2tryhard-dev\.nix](file:///nix/store/hdbypkibmhnmv7h5m6y7svmcbrrv6ic4-source/modules/nixos/services/iw2tryhard-dev.nix)
 
 
 
@@ -1274,15 +1479,21 @@ boolean
 
 
 *Default:*
-` false `
+
+```nix
+false
+```
 
 
 
 *Example:*
-` true `
+
+```nix
+true
+```
 
 *Declared by:*
- - [/nix/store/xifgdfqjdj9yffx430q82kgbx6wnkbcx-source/modules/nixos/services/localsend\.nix](file:///nix/store/xifgdfqjdj9yffx430q82kgbx6wnkbcx-source/modules/nixos/services/localsend.nix)
+ - [/nix/store/hdbypkibmhnmv7h5m6y7svmcbrrv6ic4-source/modules/nixos/services/localsend\.nix](file:///nix/store/hdbypkibmhnmv7h5m6y7svmcbrrv6ic4-source/modules/nixos/services/localsend.nix)
 
 
 
@@ -1300,15 +1511,21 @@ boolean
 
 
 *Default:*
-` false `
+
+```nix
+false
+```
 
 
 
 *Example:*
-` true `
+
+```nix
+true
+```
 
 *Declared by:*
- - [/nix/store/xifgdfqjdj9yffx430q82kgbx6wnkbcx-source/modules/nixos/services/manga\.nix](file:///nix/store/xifgdfqjdj9yffx430q82kgbx6wnkbcx-source/modules/nixos/services/manga.nix)
+ - [/nix/store/hdbypkibmhnmv7h5m6y7svmcbrrv6ic4-source/modules/nixos/services/manga\.nix](file:///nix/store/hdbypkibmhnmv7h5m6y7svmcbrrv6ic4-source/modules/nixos/services/manga.nix)
 
 
 
@@ -1316,7 +1533,7 @@ boolean
 
 
 
-Whether to enable Grafana + Prometheus + Loki + Promtail monitoring stack\.
+Whether to enable Grafana + Prometheus + Loki + Alloy monitoring stack\.
 
 
 
@@ -1326,15 +1543,21 @@ boolean
 
 
 *Default:*
-` false `
+
+```nix
+false
+```
 
 
 
 *Example:*
-` true `
+
+```nix
+true
+```
 
 *Declared by:*
- - [/nix/store/xifgdfqjdj9yffx430q82kgbx6wnkbcx-source/modules/nixos/services/monitoring\.nix](file:///nix/store/xifgdfqjdj9yffx430q82kgbx6wnkbcx-source/modules/nixos/services/monitoring.nix)
+ - [/nix/store/hdbypkibmhnmv7h5m6y7svmcbrrv6ic4-source/modules/nixos/services/monitoring\.nix](file:///nix/store/hdbypkibmhnmv7h5m6y7svmcbrrv6ic4-source/modules/nixos/services/monitoring.nix)
 
 
 
@@ -1352,15 +1575,21 @@ boolean
 
 
 *Default:*
-` false `
+
+```nix
+false
+```
 
 
 
 *Example:*
-` true `
+
+```nix
+true
+```
 
 *Declared by:*
- - [/nix/store/xifgdfqjdj9yffx430q82kgbx6wnkbcx-source/modules/nixos/services/monitoring\.nix](file:///nix/store/xifgdfqjdj9yffx430q82kgbx6wnkbcx-source/modules/nixos/services/monitoring.nix)
+ - [/nix/store/hdbypkibmhnmv7h5m6y7svmcbrrv6ic4-source/modules/nixos/services/monitoring\.nix](file:///nix/store/hdbypkibmhnmv7h5m6y7svmcbrrv6ic4-source/modules/nixos/services/monitoring.nix)
 
 
 
@@ -1378,10 +1607,13 @@ list of (attribute set)
 
 
 *Default:*
-` [ ] `
+
+```nix
+[ ]
+```
 
 *Declared by:*
- - [/nix/store/xifgdfqjdj9yffx430q82kgbx6wnkbcx-source/modules/nixos/services/monitoring\.nix](file:///nix/store/xifgdfqjdj9yffx430q82kgbx6wnkbcx-source/modules/nixos/services/monitoring.nix)
+ - [/nix/store/hdbypkibmhnmv7h5m6y7svmcbrrv6ic4-source/modules/nixos/services/monitoring\.nix](file:///nix/store/hdbypkibmhnmv7h5m6y7svmcbrrv6ic4-source/modules/nixos/services/monitoring.nix)
 
 
 
@@ -1399,15 +1631,21 @@ boolean
 
 
 *Default:*
-` false `
+
+```nix
+false
+```
 
 
 
 *Example:*
-` true `
+
+```nix
+true
+```
 
 *Declared by:*
- - [/nix/store/xifgdfqjdj9yffx430q82kgbx6wnkbcx-source/modules/nixos/services/nextcloud\.nix](file:///nix/store/xifgdfqjdj9yffx430q82kgbx6wnkbcx-source/modules/nixos/services/nextcloud.nix)
+ - [/nix/store/hdbypkibmhnmv7h5m6y7svmcbrrv6ic4-source/modules/nixos/services/nextcloud\.nix](file:///nix/store/hdbypkibmhnmv7h5m6y7svmcbrrv6ic4-source/modules/nixos/services/nextcloud.nix)
 
 
 
@@ -1423,7 +1661,7 @@ Path to a file containing the Nextcloud admin password\.
 string
 
 *Declared by:*
- - [/nix/store/xifgdfqjdj9yffx430q82kgbx6wnkbcx-source/modules/nixos/services/nextcloud\.nix](file:///nix/store/xifgdfqjdj9yffx430q82kgbx6wnkbcx-source/modules/nixos/services/nextcloud.nix)
+ - [/nix/store/hdbypkibmhnmv7h5m6y7svmcbrrv6ic4-source/modules/nixos/services/nextcloud\.nix](file:///nix/store/hdbypkibmhnmv7h5m6y7svmcbrrv6ic4-source/modules/nixos/services/nextcloud.nix)
 
 
 
@@ -1439,7 +1677,7 @@ Domain name for Nextcloud\.
 string
 
 *Declared by:*
- - [/nix/store/xifgdfqjdj9yffx430q82kgbx6wnkbcx-source/modules/nixos/services/nextcloud\.nix](file:///nix/store/xifgdfqjdj9yffx430q82kgbx6wnkbcx-source/modules/nixos/services/nextcloud.nix)
+ - [/nix/store/hdbypkibmhnmv7h5m6y7svmcbrrv6ic4-source/modules/nixos/services/nextcloud\.nix](file:///nix/store/hdbypkibmhnmv7h5m6y7svmcbrrv6ic4-source/modules/nixos/services/nextcloud.nix)
 
 
 
@@ -1455,7 +1693,7 @@ Main Nextcloud data directory\.
 string
 
 *Declared by:*
- - [/nix/store/xifgdfqjdj9yffx430q82kgbx6wnkbcx-source/modules/nixos/services/nextcloud\.nix](file:///nix/store/xifgdfqjdj9yffx430q82kgbx6wnkbcx-source/modules/nixos/services/nextcloud.nix)
+ - [/nix/store/hdbypkibmhnmv7h5m6y7svmcbrrv6ic4-source/modules/nixos/services/nextcloud\.nix](file:///nix/store/hdbypkibmhnmv7h5m6y7svmcbrrv6ic4-source/modules/nixos/services/nextcloud.nix)
 
 
 
@@ -1471,7 +1709,7 @@ Path to a file containing the Nextcloud serverinfo stats API token\.
 string
 
 *Declared by:*
- - [/nix/store/xifgdfqjdj9yffx430q82kgbx6wnkbcx-source/modules/nixos/services/nextcloud\.nix](file:///nix/store/xifgdfqjdj9yffx430q82kgbx6wnkbcx-source/modules/nixos/services/nextcloud.nix)
+ - [/nix/store/hdbypkibmhnmv7h5m6y7svmcbrrv6ic4-source/modules/nixos/services/nextcloud\.nix](file:///nix/store/hdbypkibmhnmv7h5m6y7svmcbrrv6ic4-source/modules/nixos/services/nextcloud.nix)
 
 
 
@@ -1489,15 +1727,21 @@ boolean
 
 
 *Default:*
-` false `
+
+```nix
+false
+```
 
 
 
 *Example:*
-` true `
+
+```nix
+true
+```
 
 *Declared by:*
- - [/nix/store/xifgdfqjdj9yffx430q82kgbx6wnkbcx-source/modules/nixos/services/nfs\.nix](file:///nix/store/xifgdfqjdj9yffx430q82kgbx6wnkbcx-source/modules/nixos/services/nfs.nix)
+ - [/nix/store/hdbypkibmhnmv7h5m6y7svmcbrrv6ic4-source/modules/nixos/services/nfs\.nix](file:///nix/store/hdbypkibmhnmv7h5m6y7svmcbrrv6ic4-source/modules/nixos/services/nfs.nix)
 
 
 
@@ -1515,10 +1759,13 @@ strings concatenated with “\\n”
 
 
 *Default:*
-` "" `
+
+```nix
+""
+```
 
 *Declared by:*
- - [/nix/store/xifgdfqjdj9yffx430q82kgbx6wnkbcx-source/modules/nixos/services/nfs\.nix](file:///nix/store/xifgdfqjdj9yffx430q82kgbx6wnkbcx-source/modules/nixos/services/nfs.nix)
+ - [/nix/store/hdbypkibmhnmv7h5m6y7svmcbrrv6ic4-source/modules/nixos/services/nfs\.nix](file:///nix/store/hdbypkibmhnmv7h5m6y7svmcbrrv6ic4-source/modules/nixos/services/nfs.nix)
 
 
 
@@ -1531,15 +1778,18 @@ Local directory to export via NFS (bind-mounted to /export)\.
 
 
 *Type:*
-string
+null or string
 
 
 
 *Default:*
-` "/mnt/main/nfs" `
+
+```nix
+null
+```
 
 *Declared by:*
- - [/nix/store/xifgdfqjdj9yffx430q82kgbx6wnkbcx-source/modules/nixos/services/nfs\.nix](file:///nix/store/xifgdfqjdj9yffx430q82kgbx6wnkbcx-source/modules/nixos/services/nfs.nix)
+ - [/nix/store/hdbypkibmhnmv7h5m6y7svmcbrrv6ic4-source/modules/nixos/services/nfs\.nix](file:///nix/store/hdbypkibmhnmv7h5m6y7svmcbrrv6ic4-source/modules/nixos/services/nfs.nix)
 
 
 
@@ -1557,15 +1807,21 @@ boolean
 
 
 *Default:*
-` false `
+
+```nix
+false
+```
 
 
 
 *Example:*
-` true `
+
+```nix
+true
+```
 
 *Declared by:*
- - [/nix/store/xifgdfqjdj9yffx430q82kgbx6wnkbcx-source/modules/nixos/services/nginx\.nix](file:///nix/store/xifgdfqjdj9yffx430q82kgbx6wnkbcx-source/modules/nixos/services/nginx.nix)
+ - [/nix/store/hdbypkibmhnmv7h5m6y7svmcbrrv6ic4-source/modules/nixos/services/nginx\.nix](file:///nix/store/hdbypkibmhnmv7h5m6y7svmcbrrv6ic4-source/modules/nixos/services/nginx.nix)
 
 
 
@@ -1583,10 +1839,13 @@ attribute set of (submodule)
 
 
 *Default:*
-` { } `
+
+```nix
+{ }
+```
 
 *Declared by:*
- - [/nix/store/xifgdfqjdj9yffx430q82kgbx6wnkbcx-source/modules/nixos/services/nginx\.nix](file:///nix/store/xifgdfqjdj9yffx430q82kgbx6wnkbcx-source/modules/nixos/services/nginx.nix)
+ - [/nix/store/hdbypkibmhnmv7h5m6y7svmcbrrv6ic4-source/modules/nixos/services/nginx\.nix](file:///nix/store/hdbypkibmhnmv7h5m6y7svmcbrrv6ic4-source/modules/nixos/services/nginx.nix)
 
 
 
@@ -1604,10 +1863,13 @@ list of string
 
 
 *Default:*
-` [ ] `
+
+```nix
+[ ]
+```
 
 *Declared by:*
- - [/nix/store/xifgdfqjdj9yffx430q82kgbx6wnkbcx-source/modules/nixos/services/nginx\.nix](file:///nix/store/xifgdfqjdj9yffx430q82kgbx6wnkbcx-source/modules/nixos/services/nginx.nix)
+ - [/nix/store/hdbypkibmhnmv7h5m6y7svmcbrrv6ic4-source/modules/nixos/services/nginx\.nix](file:///nix/store/hdbypkibmhnmv7h5m6y7svmcbrrv6ic4-source/modules/nixos/services/nginx.nix)
 
 
 
@@ -1625,10 +1887,13 @@ strings concatenated with “\\n”
 
 
 *Default:*
-` "" `
+
+```nix
+""
+```
 
 *Declared by:*
- - [/nix/store/xifgdfqjdj9yffx430q82kgbx6wnkbcx-source/modules/nixos/services/nginx\.nix](file:///nix/store/xifgdfqjdj9yffx430q82kgbx6wnkbcx-source/modules/nixos/services/nginx.nix)
+ - [/nix/store/hdbypkibmhnmv7h5m6y7svmcbrrv6ic4-source/modules/nixos/services/nginx\.nix](file:///nix/store/hdbypkibmhnmv7h5m6y7svmcbrrv6ic4-source/modules/nixos/services/nginx.nix)
 
 
 
@@ -1647,14 +1912,14 @@ attribute set of (attribute set)
 
 *Default:*
 
-```
+```nix
 {
   "/" = { };
 }
 ```
 
 *Declared by:*
- - [/nix/store/xifgdfqjdj9yffx430q82kgbx6wnkbcx-source/modules/nixos/services/nginx\.nix](file:///nix/store/xifgdfqjdj9yffx430q82kgbx6wnkbcx-source/modules/nixos/services/nginx.nix)
+ - [/nix/store/hdbypkibmhnmv7h5m6y7svmcbrrv6ic4-source/modules/nixos/services/nginx\.nix](file:///nix/store/hdbypkibmhnmv7h5m6y7svmcbrrv6ic4-source/modules/nixos/services/nginx.nix)
 
 
 
@@ -1672,10 +1937,13 @@ string
 
 
 *Default:*
-` "crys" `
+
+```nix
+"crys"
+```
 
 *Declared by:*
- - [/nix/store/xifgdfqjdj9yffx430q82kgbx6wnkbcx-source/modules/nixos/services/nginx\.nix](file:///nix/store/xifgdfqjdj9yffx430q82kgbx6wnkbcx-source/modules/nixos/services/nginx.nix)
+ - [/nix/store/hdbypkibmhnmv7h5m6y7svmcbrrv6ic4-source/modules/nixos/services/nginx\.nix](file:///nix/store/hdbypkibmhnmv7h5m6y7svmcbrrv6ic4-source/modules/nixos/services/nginx.nix)
 
 
 
@@ -1693,10 +1961,13 @@ attribute set of (submodule)
 
 
 *Default:*
-` { } `
+
+```nix
+{ }
+```
 
 *Declared by:*
- - [/nix/store/xifgdfqjdj9yffx430q82kgbx6wnkbcx-source/modules/nixos/services/nginx\.nix](file:///nix/store/xifgdfqjdj9yffx430q82kgbx6wnkbcx-source/modules/nixos/services/nginx.nix)
+ - [/nix/store/hdbypkibmhnmv7h5m6y7svmcbrrv6ic4-source/modules/nixos/services/nginx\.nix](file:///nix/store/hdbypkibmhnmv7h5m6y7svmcbrrv6ic4-source/modules/nixos/services/nginx.nix)
 
 
 
@@ -1714,10 +1985,13 @@ boolean or string
 
 
 *Default:*
-` true `
+
+```nix
+true
+```
 
 *Declared by:*
- - [/nix/store/xifgdfqjdj9yffx430q82kgbx6wnkbcx-source/modules/nixos/services/nginx\.nix](file:///nix/store/xifgdfqjdj9yffx430q82kgbx6wnkbcx-source/modules/nixos/services/nginx.nix)
+ - [/nix/store/hdbypkibmhnmv7h5m6y7svmcbrrv6ic4-source/modules/nixos/services/nginx\.nix](file:///nix/store/hdbypkibmhnmv7h5m6y7svmcbrrv6ic4-source/modules/nixos/services/nginx.nix)
 
 
 
@@ -1735,10 +2009,13 @@ null or string
 
 
 *Default:*
-` null `
+
+```nix
+null
+```
 
 *Declared by:*
- - [/nix/store/xifgdfqjdj9yffx430q82kgbx6wnkbcx-source/modules/nixos/services/nginx\.nix](file:///nix/store/xifgdfqjdj9yffx430q82kgbx6wnkbcx-source/modules/nixos/services/nginx.nix)
+ - [/nix/store/hdbypkibmhnmv7h5m6y7svmcbrrv6ic4-source/modules/nixos/services/nginx\.nix](file:///nix/store/hdbypkibmhnmv7h5m6y7svmcbrrv6ic4-source/modules/nixos/services/nginx.nix)
 
 
 
@@ -1756,10 +2033,13 @@ null or string
 
 
 *Default:*
-` null `
+
+```nix
+null
+```
 
 *Declared by:*
- - [/nix/store/xifgdfqjdj9yffx430q82kgbx6wnkbcx-source/modules/nixos/services/nginx\.nix](file:///nix/store/xifgdfqjdj9yffx430q82kgbx6wnkbcx-source/modules/nixos/services/nginx.nix)
+ - [/nix/store/hdbypkibmhnmv7h5m6y7svmcbrrv6ic4-source/modules/nixos/services/nginx\.nix](file:///nix/store/hdbypkibmhnmv7h5m6y7svmcbrrv6ic4-source/modules/nixos/services/nginx.nix)
 
 
 
@@ -1777,10 +2057,13 @@ list of string
 
 
 *Default:*
-` [ ] `
+
+```nix
+[ ]
+```
 
 *Declared by:*
- - [/nix/store/xifgdfqjdj9yffx430q82kgbx6wnkbcx-source/modules/nixos/services/nginx\.nix](file:///nix/store/xifgdfqjdj9yffx430q82kgbx6wnkbcx-source/modules/nixos/services/nginx.nix)
+ - [/nix/store/hdbypkibmhnmv7h5m6y7svmcbrrv6ic4-source/modules/nixos/services/nginx\.nix](file:///nix/store/hdbypkibmhnmv7h5m6y7svmcbrrv6ic4-source/modules/nixos/services/nginx.nix)
 
 
 
@@ -1798,10 +2081,13 @@ strings concatenated with “\\n”
 
 
 *Default:*
-` "" `
+
+```nix
+""
+```
 
 *Declared by:*
- - [/nix/store/xifgdfqjdj9yffx430q82kgbx6wnkbcx-source/modules/nixos/services/nginx\.nix](file:///nix/store/xifgdfqjdj9yffx430q82kgbx6wnkbcx-source/modules/nixos/services/nginx.nix)
+ - [/nix/store/hdbypkibmhnmv7h5m6y7svmcbrrv6ic4-source/modules/nixos/services/nginx\.nix](file:///nix/store/hdbypkibmhnmv7h5m6y7svmcbrrv6ic4-source/modules/nixos/services/nginx.nix)
 
 
 
@@ -1820,14 +2106,14 @@ attribute set of (attribute set)
 
 *Default:*
 
-```
+```nix
 {
   "/" = { };
 }
 ```
 
 *Declared by:*
- - [/nix/store/xifgdfqjdj9yffx430q82kgbx6wnkbcx-source/modules/nixos/services/nginx\.nix](file:///nix/store/xifgdfqjdj9yffx430q82kgbx6wnkbcx-source/modules/nixos/services/nginx.nix)
+ - [/nix/store/hdbypkibmhnmv7h5m6y7svmcbrrv6ic4-source/modules/nixos/services/nginx\.nix](file:///nix/store/hdbypkibmhnmv7h5m6y7svmcbrrv6ic4-source/modules/nixos/services/nginx.nix)
 
 
 
@@ -1845,10 +2131,13 @@ string
 
 
 *Default:*
-` "iw2tryhard.dev" `
+
+```nix
+"iw2tryhard.dev"
+```
 
 *Declared by:*
- - [/nix/store/xifgdfqjdj9yffx430q82kgbx6wnkbcx-source/modules/nixos/services/nginx\.nix](file:///nix/store/xifgdfqjdj9yffx430q82kgbx6wnkbcx-source/modules/nixos/services/nginx.nix)
+ - [/nix/store/hdbypkibmhnmv7h5m6y7svmcbrrv6ic4-source/modules/nixos/services/nginx\.nix](file:///nix/store/hdbypkibmhnmv7h5m6y7svmcbrrv6ic4-source/modules/nixos/services/nginx.nix)
 
 
 
@@ -1866,15 +2155,21 @@ boolean
 
 
 *Default:*
-` false `
+
+```nix
+false
+```
 
 
 
 *Example:*
-` true `
+
+```nix
+true
+```
 
 *Declared by:*
- - [/nix/store/xifgdfqjdj9yffx430q82kgbx6wnkbcx-source/modules/nixos/services/nix-binary-cache\.nix](file:///nix/store/xifgdfqjdj9yffx430q82kgbx6wnkbcx-source/modules/nixos/services/nix-binary-cache.nix)
+ - [/nix/store/hdbypkibmhnmv7h5m6y7svmcbrrv6ic4-source/modules/nixos/services/nix-binary-cache\.nix](file:///nix/store/hdbypkibmhnmv7h5m6y7svmcbrrv6ic4-source/modules/nixos/services/nix-binary-cache.nix)
 
 
 
@@ -1892,10 +2187,13 @@ string
 
 
 *Default:*
-` "/var/lib/ncps" `
+
+```nix
+"/var/lib/ncps"
+```
 
 *Declared by:*
- - [/nix/store/xifgdfqjdj9yffx430q82kgbx6wnkbcx-source/modules/nixos/services/nix-binary-cache\.nix](file:///nix/store/xifgdfqjdj9yffx430q82kgbx6wnkbcx-source/modules/nixos/services/nix-binary-cache.nix)
+ - [/nix/store/hdbypkibmhnmv7h5m6y7svmcbrrv6ic4-source/modules/nixos/services/nix-binary-cache\.nix](file:///nix/store/hdbypkibmhnmv7h5m6y7svmcbrrv6ic4-source/modules/nixos/services/nix-binary-cache.nix)
 
 
 
@@ -1913,10 +2211,13 @@ string
 
 
 *Default:*
-` "cache" `
+
+```nix
+"cache"
+```
 
 *Declared by:*
- - [/nix/store/xifgdfqjdj9yffx430q82kgbx6wnkbcx-source/modules/nixos/services/nix-binary-cache\.nix](file:///nix/store/xifgdfqjdj9yffx430q82kgbx6wnkbcx-source/modules/nixos/services/nix-binary-cache.nix)
+ - [/nix/store/hdbypkibmhnmv7h5m6y7svmcbrrv6ic4-source/modules/nixos/services/nix-binary-cache\.nix](file:///nix/store/hdbypkibmhnmv7h5m6y7svmcbrrv6ic4-source/modules/nixos/services/nix-binary-cache.nix)
 
 
 
@@ -1935,7 +2236,7 @@ value “system” (singular enum) or (submodule)
 
 *Default:*
 
-```
+```nix
 {
   publicKeys = [ ];
   urls = [ ];
@@ -1943,7 +2244,7 @@ value “system” (singular enum) or (submodule)
 ```
 
 *Declared by:*
- - [/nix/store/xifgdfqjdj9yffx430q82kgbx6wnkbcx-source/modules/nixos/services/nix-binary-cache\.nix](file:///nix/store/xifgdfqjdj9yffx430q82kgbx6wnkbcx-source/modules/nixos/services/nix-binary-cache.nix)
+ - [/nix/store/hdbypkibmhnmv7h5m6y7svmcbrrv6ic4-source/modules/nixos/services/nix-binary-cache\.nix](file:///nix/store/hdbypkibmhnmv7h5m6y7svmcbrrv6ic4-source/modules/nixos/services/nix-binary-cache.nix)
 
 
 
@@ -1961,10 +2262,13 @@ null or string
 
 
 *Default:*
-` null `
+
+```nix
+null
+```
 
 *Declared by:*
- - [/nix/store/xifgdfqjdj9yffx430q82kgbx6wnkbcx-source/modules/nixos/services/nix-binary-cache\.nix](file:///nix/store/xifgdfqjdj9yffx430q82kgbx6wnkbcx-source/modules/nixos/services/nix-binary-cache.nix)
+ - [/nix/store/hdbypkibmhnmv7h5m6y7svmcbrrv6ic4-source/modules/nixos/services/nix-binary-cache\.nix](file:///nix/store/hdbypkibmhnmv7h5m6y7svmcbrrv6ic4-source/modules/nixos/services/nix-binary-cache.nix)
 
 
 
@@ -1982,15 +2286,21 @@ boolean
 
 
 *Default:*
-` false `
+
+```nix
+false
+```
 
 
 
 *Example:*
-` true `
+
+```nix
+true
+```
 
 *Declared by:*
- - [/nix/store/xifgdfqjdj9yffx430q82kgbx6wnkbcx-source/modules/nixos/services/power-management\.nix](file:///nix/store/xifgdfqjdj9yffx430q82kgbx6wnkbcx-source/modules/nixos/services/power-management.nix)
+ - [/nix/store/hdbypkibmhnmv7h5m6y7svmcbrrv6ic4-source/modules/nixos/services/power-management\.nix](file:///nix/store/hdbypkibmhnmv7h5m6y7svmcbrrv6ic4-source/modules/nixos/services/power-management.nix)
 
 
 
@@ -2008,10 +2318,13 @@ one of “workstation”, “server” or (attribute set)
 
 
 *Default:*
-` "workstation" `
+
+```nix
+"workstation"
+```
 
 *Declared by:*
- - [/nix/store/xifgdfqjdj9yffx430q82kgbx6wnkbcx-source/modules/nixos/services/power-management\.nix](file:///nix/store/xifgdfqjdj9yffx430q82kgbx6wnkbcx-source/modules/nixos/services/power-management.nix)
+ - [/nix/store/hdbypkibmhnmv7h5m6y7svmcbrrv6ic4-source/modules/nixos/services/power-management\.nix](file:///nix/store/hdbypkibmhnmv7h5m6y7svmcbrrv6ic4-source/modules/nixos/services/power-management.nix)
 
 
 
@@ -2029,15 +2342,21 @@ boolean
 
 
 *Default:*
-` false `
+
+```nix
+false
+```
 
 
 
 *Example:*
-` true `
+
+```nix
+true
+```
 
 *Declared by:*
- - [/nix/store/xifgdfqjdj9yffx430q82kgbx6wnkbcx-source/modules/nixos/services/printing\.nix](file:///nix/store/xifgdfqjdj9yffx430q82kgbx6wnkbcx-source/modules/nixos/services/printing.nix)
+ - [/nix/store/hdbypkibmhnmv7h5m6y7svmcbrrv6ic4-source/modules/nixos/services/printing\.nix](file:///nix/store/hdbypkibmhnmv7h5m6y7svmcbrrv6ic4-source/modules/nixos/services/printing.nix)
 
 
 
@@ -2055,10 +2374,13 @@ null or string
 
 
 *Default:*
-` null `
+
+```nix
+null
+```
 
 *Declared by:*
- - [/nix/store/xifgdfqjdj9yffx430q82kgbx6wnkbcx-source/modules/nixos/services/printing\.nix](file:///nix/store/xifgdfqjdj9yffx430q82kgbx6wnkbcx-source/modules/nixos/services/printing.nix)
+ - [/nix/store/hdbypkibmhnmv7h5m6y7svmcbrrv6ic4-source/modules/nixos/services/printing\.nix](file:///nix/store/hdbypkibmhnmv7h5m6y7svmcbrrv6ic4-source/modules/nixos/services/printing.nix)
 
 
 
@@ -2076,10 +2398,13 @@ list of package
 
 
 *Default:*
-` [ ] `
+
+```nix
+[ ]
+```
 
 *Declared by:*
- - [/nix/store/xifgdfqjdj9yffx430q82kgbx6wnkbcx-source/modules/nixos/services/printing\.nix](file:///nix/store/xifgdfqjdj9yffx430q82kgbx6wnkbcx-source/modules/nixos/services/printing.nix)
+ - [/nix/store/hdbypkibmhnmv7h5m6y7svmcbrrv6ic4-source/modules/nixos/services/printing\.nix](file:///nix/store/hdbypkibmhnmv7h5m6y7svmcbrrv6ic4-source/modules/nixos/services/printing.nix)
 
 
 
@@ -2097,10 +2422,13 @@ list of (submodule)
 
 
 *Default:*
-` [ ] `
+
+```nix
+[ ]
+```
 
 *Declared by:*
- - [/nix/store/xifgdfqjdj9yffx430q82kgbx6wnkbcx-source/modules/nixos/services/printing\.nix](file:///nix/store/xifgdfqjdj9yffx430q82kgbx6wnkbcx-source/modules/nixos/services/printing.nix)
+ - [/nix/store/hdbypkibmhnmv7h5m6y7svmcbrrv6ic4-source/modules/nixos/services/printing\.nix](file:///nix/store/hdbypkibmhnmv7h5m6y7svmcbrrv6ic4-source/modules/nixos/services/printing.nix)
 
 
 
@@ -2116,7 +2444,7 @@ Printer device URI\.
 string
 
 *Declared by:*
- - [/nix/store/xifgdfqjdj9yffx430q82kgbx6wnkbcx-source/modules/nixos/services/printing\.nix](file:///nix/store/xifgdfqjdj9yffx430q82kgbx6wnkbcx-source/modules/nixos/services/printing.nix)
+ - [/nix/store/hdbypkibmhnmv7h5m6y7svmcbrrv6ic4-source/modules/nixos/services/printing\.nix](file:///nix/store/hdbypkibmhnmv7h5m6y7svmcbrrv6ic4-source/modules/nixos/services/printing.nix)
 
 
 
@@ -2134,10 +2462,13 @@ string
 
 
 *Default:*
-` "" `
+
+```nix
+""
+```
 
 *Declared by:*
- - [/nix/store/xifgdfqjdj9yffx430q82kgbx6wnkbcx-source/modules/nixos/services/printing\.nix](file:///nix/store/xifgdfqjdj9yffx430q82kgbx6wnkbcx-source/modules/nixos/services/printing.nix)
+ - [/nix/store/hdbypkibmhnmv7h5m6y7svmcbrrv6ic4-source/modules/nixos/services/printing\.nix](file:///nix/store/hdbypkibmhnmv7h5m6y7svmcbrrv6ic4-source/modules/nixos/services/printing.nix)
 
 
 
@@ -2153,7 +2484,7 @@ Printer PPD model\.
 string
 
 *Declared by:*
- - [/nix/store/xifgdfqjdj9yffx430q82kgbx6wnkbcx-source/modules/nixos/services/printing\.nix](file:///nix/store/xifgdfqjdj9yffx430q82kgbx6wnkbcx-source/modules/nixos/services/printing.nix)
+ - [/nix/store/hdbypkibmhnmv7h5m6y7svmcbrrv6ic4-source/modules/nixos/services/printing\.nix](file:///nix/store/hdbypkibmhnmv7h5m6y7svmcbrrv6ic4-source/modules/nixos/services/printing.nix)
 
 
 
@@ -2169,7 +2500,7 @@ Printer name\.
 string
 
 *Declared by:*
- - [/nix/store/xifgdfqjdj9yffx430q82kgbx6wnkbcx-source/modules/nixos/services/printing\.nix](file:///nix/store/xifgdfqjdj9yffx430q82kgbx6wnkbcx-source/modules/nixos/services/printing.nix)
+ - [/nix/store/hdbypkibmhnmv7h5m6y7svmcbrrv6ic4-source/modules/nixos/services/printing\.nix](file:///nix/store/hdbypkibmhnmv7h5m6y7svmcbrrv6ic4-source/modules/nixos/services/printing.nix)
 
 
 
@@ -2187,10 +2518,13 @@ attribute set of string
 
 
 *Default:*
-` { } `
+
+```nix
+{ }
+```
 
 *Declared by:*
- - [/nix/store/xifgdfqjdj9yffx430q82kgbx6wnkbcx-source/modules/nixos/services/printing\.nix](file:///nix/store/xifgdfqjdj9yffx430q82kgbx6wnkbcx-source/modules/nixos/services/printing.nix)
+ - [/nix/store/hdbypkibmhnmv7h5m6y7svmcbrrv6ic4-source/modules/nixos/services/printing\.nix](file:///nix/store/hdbypkibmhnmv7h5m6y7svmcbrrv6ic4-source/modules/nixos/services/printing.nix)
 
 
 
@@ -2208,15 +2542,21 @@ boolean
 
 
 *Default:*
-` false `
+
+```nix
+false
+```
 
 
 
 *Example:*
-` true `
+
+```nix
+true
+```
 
 *Declared by:*
- - [/nix/store/xifgdfqjdj9yffx430q82kgbx6wnkbcx-source/modules/nixos/services/printing\.nix](file:///nix/store/xifgdfqjdj9yffx430q82kgbx6wnkbcx-source/modules/nixos/services/printing.nix)
+ - [/nix/store/hdbypkibmhnmv7h5m6y7svmcbrrv6ic4-source/modules/nixos/services/printing\.nix](file:///nix/store/hdbypkibmhnmv7h5m6y7svmcbrrv6ic4-source/modules/nixos/services/printing.nix)
 
 
 
@@ -2234,15 +2574,21 @@ boolean
 
 
 *Default:*
-` false `
+
+```nix
+false
+```
 
 
 
 *Example:*
-` true `
+
+```nix
+true
+```
 
 *Declared by:*
- - [/nix/store/xifgdfqjdj9yffx430q82kgbx6wnkbcx-source/modules/nixos/services/scanservjs\.nix](file:///nix/store/xifgdfqjdj9yffx430q82kgbx6wnkbcx-source/modules/nixos/services/scanservjs.nix)
+ - [/nix/store/hdbypkibmhnmv7h5m6y7svmcbrrv6ic4-source/modules/nixos/services/scanservjs\.nix](file:///nix/store/hdbypkibmhnmv7h5m6y7svmcbrrv6ic4-source/modules/nixos/services/scanservjs.nix)
 
 
 
@@ -2260,10 +2606,13 @@ null or string
 
 
 *Default:*
-` "scan" `
+
+```nix
+"scan"
+```
 
 *Declared by:*
- - [/nix/store/xifgdfqjdj9yffx430q82kgbx6wnkbcx-source/modules/nixos/services/scanservjs\.nix](file:///nix/store/xifgdfqjdj9yffx430q82kgbx6wnkbcx-source/modules/nixos/services/scanservjs.nix)
+ - [/nix/store/hdbypkibmhnmv7h5m6y7svmcbrrv6ic4-source/modules/nixos/services/scanservjs\.nix](file:///nix/store/hdbypkibmhnmv7h5m6y7svmcbrrv6ic4-source/modules/nixos/services/scanservjs.nix)
 
 
 
@@ -2279,15 +2628,21 @@ boolean
 
 
 *Default:*
-` false `
+
+```nix
+false
+```
 
 
 
 *Example:*
-` true `
+
+```nix
+true
+```
 
 *Declared by:*
- - [/nix/store/xifgdfqjdj9yffx430q82kgbx6wnkbcx-source/modules/nixos/services/ssh\.nix](file:///nix/store/xifgdfqjdj9yffx430q82kgbx6wnkbcx-source/modules/nixos/services/ssh.nix)
+ - [/nix/store/hdbypkibmhnmv7h5m6y7svmcbrrv6ic4-source/modules/nixos/services/ssh\.nix](file:///nix/store/hdbypkibmhnmv7h5m6y7svmcbrrv6ic4-source/modules/nixos/services/ssh.nix)
 
 
 
@@ -2305,15 +2660,21 @@ boolean
 
 
 *Default:*
-` false `
+
+```nix
+false
+```
 
 
 
 *Example:*
-` true `
+
+```nix
+true
+```
 
 *Declared by:*
- - [/nix/store/xifgdfqjdj9yffx430q82kgbx6wnkbcx-source/modules/nixos/services/stalwart\.nix](file:///nix/store/xifgdfqjdj9yffx430q82kgbx6wnkbcx-source/modules/nixos/services/stalwart.nix)
+ - [/nix/store/hdbypkibmhnmv7h5m6y7svmcbrrv6ic4-source/modules/nixos/services/stalwart\.nix](file:///nix/store/hdbypkibmhnmv7h5m6y7svmcbrrv6ic4-source/modules/nixos/services/stalwart.nix)
 
 
 
@@ -2331,10 +2692,13 @@ absolute path
 
 
 *Default:*
-` "/var/lib/stalwart-mail" `
+
+```nix
+"/var/lib/stalwart-mail"
+```
 
 *Declared by:*
- - [/nix/store/xifgdfqjdj9yffx430q82kgbx6wnkbcx-source/modules/nixos/services/stalwart\.nix](file:///nix/store/xifgdfqjdj9yffx430q82kgbx6wnkbcx-source/modules/nixos/services/stalwart.nix)
+ - [/nix/store/hdbypkibmhnmv7h5m6y7svmcbrrv6ic4-source/modules/nixos/services/stalwart\.nix](file:///nix/store/hdbypkibmhnmv7h5m6y7svmcbrrv6ic4-source/modules/nixos/services/stalwart.nix)
 
 
 
@@ -2352,10 +2716,13 @@ null or string
 
 
 *Default:*
-` "iw2tryhard.dev" `
+
+```nix
+"iw2tryhard.dev"
+```
 
 *Declared by:*
- - [/nix/store/xifgdfqjdj9yffx430q82kgbx6wnkbcx-source/modules/nixos/services/stalwart\.nix](file:///nix/store/xifgdfqjdj9yffx430q82kgbx6wnkbcx-source/modules/nixos/services/stalwart.nix)
+ - [/nix/store/hdbypkibmhnmv7h5m6y7svmcbrrv6ic4-source/modules/nixos/services/stalwart\.nix](file:///nix/store/hdbypkibmhnmv7h5m6y7svmcbrrv6ic4-source/modules/nixos/services/stalwart.nix)
 
 
 
@@ -2373,15 +2740,21 @@ boolean
 
 
 *Default:*
-` false `
+
+```nix
+false
+```
 
 
 
 *Example:*
-` true `
+
+```nix
+true
+```
 
 *Declared by:*
- - [/nix/store/xifgdfqjdj9yffx430q82kgbx6wnkbcx-source/modules/nixos/services/tailscale\.nix](file:///nix/store/xifgdfqjdj9yffx430q82kgbx6wnkbcx-source/modules/nixos/services/tailscale.nix)
+ - [/nix/store/hdbypkibmhnmv7h5m6y7svmcbrrv6ic4-source/modules/nixos/services/tailscale\.nix](file:///nix/store/hdbypkibmhnmv7h5m6y7svmcbrrv6ic4-source/modules/nixos/services/tailscale.nix)
 
 
 
@@ -2399,15 +2772,21 @@ boolean
 
 
 *Default:*
-` false `
+
+```nix
+false
+```
 
 
 
 *Example:*
-` true `
+
+```nix
+true
+```
 
 *Declared by:*
- - [/nix/store/xifgdfqjdj9yffx430q82kgbx6wnkbcx-source/modules/nixos/services/tailscale\.nix](file:///nix/store/xifgdfqjdj9yffx430q82kgbx6wnkbcx-source/modules/nixos/services/tailscale.nix)
+ - [/nix/store/hdbypkibmhnmv7h5m6y7svmcbrrv6ic4-source/modules/nixos/services/tailscale\.nix](file:///nix/store/hdbypkibmhnmv7h5m6y7svmcbrrv6ic4-source/modules/nixos/services/tailscale.nix)
 
 
 
@@ -2425,10 +2804,13 @@ one of “client”, “server”
 
 
 *Default:*
-` "client" `
+
+```nix
+"client"
+```
 
 *Declared by:*
- - [/nix/store/xifgdfqjdj9yffx430q82kgbx6wnkbcx-source/modules/nixos/services/tailscale\.nix](file:///nix/store/xifgdfqjdj9yffx430q82kgbx6wnkbcx-source/modules/nixos/services/tailscale.nix)
+ - [/nix/store/hdbypkibmhnmv7h5m6y7svmcbrrv6ic4-source/modules/nixos/services/tailscale\.nix](file:///nix/store/hdbypkibmhnmv7h5m6y7svmcbrrv6ic4-source/modules/nixos/services/tailscale.nix)
 
 
 
@@ -2446,15 +2828,21 @@ boolean
 
 
 *Default:*
-` false `
+
+```nix
+false
+```
 
 
 
 *Example:*
-` true `
+
+```nix
+true
+```
 
 *Declared by:*
- - [/nix/store/xifgdfqjdj9yffx430q82kgbx6wnkbcx-source/modules/nixos/gui](file:///nix/store/xifgdfqjdj9yffx430q82kgbx6wnkbcx-source/modules/nixos/gui)
+ - [/nix/store/hdbypkibmhnmv7h5m6y7svmcbrrv6ic4-source/modules/nixos/gui](file:///nix/store/hdbypkibmhnmv7h5m6y7svmcbrrv6ic4-source/modules/nixos/gui)
 
 
 
@@ -2472,15 +2860,21 @@ boolean
 
 
 *Default:*
-` false `
+
+```nix
+false
+```
 
 
 
 *Example:*
-` true `
+
+```nix
+true
+```
 
 *Declared by:*
- - [/nix/store/xifgdfqjdj9yffx430q82kgbx6wnkbcx-source/modules/nixos/gui/audio\.nix](file:///nix/store/xifgdfqjdj9yffx430q82kgbx6wnkbcx-source/modules/nixos/gui/audio.nix)
+ - [/nix/store/hdbypkibmhnmv7h5m6y7svmcbrrv6ic4-source/modules/nixos/gui/audio\.nix](file:///nix/store/hdbypkibmhnmv7h5m6y7svmcbrrv6ic4-source/modules/nixos/gui/audio.nix)
 
 
 
@@ -2498,15 +2892,21 @@ boolean
 
 
 *Default:*
-` false `
+
+```nix
+false
+```
 
 
 
 *Example:*
-` true `
+
+```nix
+true
+```
 
 *Declared by:*
- - [/nix/store/xifgdfqjdj9yffx430q82kgbx6wnkbcx-source/modules/nixos/gui/flatpak\.nix](file:///nix/store/xifgdfqjdj9yffx430q82kgbx6wnkbcx-source/modules/nixos/gui/flatpak.nix)
+ - [/nix/store/hdbypkibmhnmv7h5m6y7svmcbrrv6ic4-source/modules/nixos/gui/flatpak\.nix](file:///nix/store/hdbypkibmhnmv7h5m6y7svmcbrrv6ic4-source/modules/nixos/gui/flatpak.nix)
 
 
 
@@ -2524,15 +2924,21 @@ boolean
 
 
 *Default:*
-` false `
+
+```nix
+false
+```
 
 
 
 *Example:*
-` true `
+
+```nix
+true
+```
 
 *Declared by:*
- - [/nix/store/xifgdfqjdj9yffx430q82kgbx6wnkbcx-source/modules/nixos/gui/graphics\.nix](file:///nix/store/xifgdfqjdj9yffx430q82kgbx6wnkbcx-source/modules/nixos/gui/graphics.nix)
+ - [/nix/store/hdbypkibmhnmv7h5m6y7svmcbrrv6ic4-source/modules/nixos/gui/graphics\.nix](file:///nix/store/hdbypkibmhnmv7h5m6y7svmcbrrv6ic4-source/modules/nixos/gui/graphics.nix)
 
 
 
@@ -2550,15 +2956,21 @@ boolean
 
 
 *Default:*
-` true `
+
+```nix
+true
+```
 
 
 
 *Example:*
-` true `
+
+```nix
+true
+```
 
 *Declared by:*
- - [/nix/store/xifgdfqjdj9yffx430q82kgbx6wnkbcx-source/modules/nixos/gui/graphics\.nix](file:///nix/store/xifgdfqjdj9yffx430q82kgbx6wnkbcx-source/modules/nixos/gui/graphics.nix)
+ - [/nix/store/hdbypkibmhnmv7h5m6y7svmcbrrv6ic4-source/modules/nixos/gui/graphics\.nix](file:///nix/store/hdbypkibmhnmv7h5m6y7svmcbrrv6ic4-source/modules/nixos/gui/graphics.nix)
 
 
 
@@ -2576,15 +2988,21 @@ boolean
 
 
 *Default:*
-` true `
+
+```nix
+true
+```
 
 
 
 *Example:*
-` true `
+
+```nix
+true
+```
 
 *Declared by:*
- - [/nix/store/xifgdfqjdj9yffx430q82kgbx6wnkbcx-source/modules/nixos/gui/graphics\.nix](file:///nix/store/xifgdfqjdj9yffx430q82kgbx6wnkbcx-source/modules/nixos/gui/graphics.nix)
+ - [/nix/store/hdbypkibmhnmv7h5m6y7svmcbrrv6ic4-source/modules/nixos/gui/graphics\.nix](file:///nix/store/hdbypkibmhnmv7h5m6y7svmcbrrv6ic4-source/modules/nixos/gui/graphics.nix)
 
 
 
@@ -2602,10 +3020,13 @@ string
 
 
 *Default:*
-` "" `
+
+```nix
+""
+```
 
 *Declared by:*
- - [/nix/store/xifgdfqjdj9yffx430q82kgbx6wnkbcx-source/modules/nixos/gui/graphics\.nix](file:///nix/store/xifgdfqjdj9yffx430q82kgbx6wnkbcx-source/modules/nixos/gui/graphics.nix)
+ - [/nix/store/hdbypkibmhnmv7h5m6y7svmcbrrv6ic4-source/modules/nixos/gui/graphics\.nix](file:///nix/store/hdbypkibmhnmv7h5m6y7svmcbrrv6ic4-source/modules/nixos/gui/graphics.nix)
 
 
 
@@ -2623,10 +3044,13 @@ string
 
 
 *Default:*
-` "" `
+
+```nix
+""
+```
 
 *Declared by:*
- - [/nix/store/xifgdfqjdj9yffx430q82kgbx6wnkbcx-source/modules/nixos/gui/graphics\.nix](file:///nix/store/xifgdfqjdj9yffx430q82kgbx6wnkbcx-source/modules/nixos/gui/graphics.nix)
+ - [/nix/store/hdbypkibmhnmv7h5m6y7svmcbrrv6ic4-source/modules/nixos/gui/graphics\.nix](file:///nix/store/hdbypkibmhnmv7h5m6y7svmcbrrv6ic4-source/modules/nixos/gui/graphics.nix)
 
 
 
@@ -2644,15 +3068,21 @@ boolean
 
 
 *Default:*
-` false `
+
+```nix
+false
+```
 
 
 
 *Example:*
-` true `
+
+```nix
+true
+```
 
 *Declared by:*
- - [/nix/store/xifgdfqjdj9yffx430q82kgbx6wnkbcx-source/modules/nixos/gui/niri\.nix](file:///nix/store/xifgdfqjdj9yffx430q82kgbx6wnkbcx-source/modules/nixos/gui/niri.nix)
+ - [/nix/store/hdbypkibmhnmv7h5m6y7svmcbrrv6ic4-source/modules/nixos/gui/niri\.nix](file:///nix/store/hdbypkibmhnmv7h5m6y7svmcbrrv6ic4-source/modules/nixos/gui/niri.nix)
 
 
 
@@ -2670,15 +3100,21 @@ boolean
 
 
 *Default:*
-` false `
+
+```nix
+false
+```
 
 
 
 *Example:*
-` true `
+
+```nix
+true
+```
 
 *Declared by:*
- - [/nix/store/xifgdfqjdj9yffx430q82kgbx6wnkbcx-source/modules/nixos/gui/obs\.nix](file:///nix/store/xifgdfqjdj9yffx430q82kgbx6wnkbcx-source/modules/nixos/gui/obs.nix)
+ - [/nix/store/hdbypkibmhnmv7h5m6y7svmcbrrv6ic4-source/modules/nixos/gui/obs\.nix](file:///nix/store/hdbypkibmhnmv7h5m6y7svmcbrrv6ic4-source/modules/nixos/gui/obs.nix)
 
 
 
@@ -2696,908 +3132,21 @@ boolean
 
 
 *Default:*
-` false `
 
-
-
-*Example:*
-` true `
-
-*Declared by:*
- - [/nix/store/xifgdfqjdj9yffx430q82kgbx6wnkbcx-source/modules/nixos/gui/steam\.nix](file:///nix/store/xifgdfqjdj9yffx430q82kgbx6wnkbcx-source/modules/nixos/gui/steam.nix)
-
-
-
-## hardware\.nvidia\.enabled
-
-
-
-True if NVIDIA support is enabled
-
-
-
-*Type:*
-boolean *(read only)*
-
-
-
-*Default:*
-` true ` if NVIDIA support is enabled
-
-*Declared by:*
- - [/nix/store/81sr43harc753claf8bzyv3mrnjzq652-source/nixos/modules/hardware/video/nvidia\.nix](file:///nix/store/81sr43harc753claf8bzyv3mrnjzq652-source/nixos/modules/hardware/video/nvidia.nix)
-
-
-
-## hardware\.nvidia\.package
-
-
-
-The NVIDIA driver package to use\.
-
-Prefer using ` hardware.nvidia.branch ` when possible\.
-
-If you set this option, it is recommended to pick a package from
-` config.boot.kernelPackages.nvidiaPackages ` so the driver build matches
-your configured kernel\.
-
-For custom versions, you can use ` nvidiaPackages.mkDriver `; see
-` pkgs/os-specific/linux/nvidia-x11/default.nix ` for examples\.
-
-
-
-*Type:*
-package
-
-
-
-*Default:*
-` config.boot.kernelPackages.nvidiaPackages.${config.hardware.nvidia.branch} `
-
-
-
-*Example:*
-` config.boot.kernelPackages.nvidiaPackages.legacy_470 `
-
-*Declared by:*
- - [/nix/store/81sr43harc753claf8bzyv3mrnjzq652-source/nixos/modules/hardware/video/nvidia\.nix](file:///nix/store/81sr43harc753claf8bzyv3mrnjzq652-source/nixos/modules/hardware/video/nvidia.nix)
-
-
-
-## hardware\.nvidia\.branch
-
-
-
-The branch of the NVIDIA driver to use\.
-
-Note: if ` hardware.nvidia.package ` is set, it overrides this option\.
-
-Commonly interesting branches for end users:
-
- - production, new_feature, beta:
-   NVIDIA’s official production / new feature / beta release branches\.
-
- - stable:
-   The default; the highest stable version\.
-
- - latest:
-   Whichever is newer of ` production ` and ` new_feature `\.
-
- - bleeding_edge:
-   Whichever is newer of ` latest ` and ` beta `\.
-
- - legacy_580:
-   The long-lived 580 series (LTSB), for GPUs that newer driver branches
-   no longer support (often Maxwell through Volta; roughly GeForce GTX 9xx
-   through 10xx, plus rare Volta cards like TITAN V)\.
-
- - vulkan_beta:
-   The Vulkan developer beta driver, for users interested in testing new
-   Vulkan features\.
-
-
-
-*Type:*
-one of the available driver branches in \`pkgs/os-specific/linux/nvidia-x11/default\.nix\`
-
-
-
-*Default:*
-
-```
-if config.hardware.nvidia.datacenter.enable then "dc" else "stable"
-
+```nix
+false
 ```
 
 
 
 *Example:*
-` "bleeding_edge" `
 
-*Declared by:*
- - [/nix/store/81sr43harc753claf8bzyv3mrnjzq652-source/nixos/modules/hardware/video/nvidia\.nix](file:///nix/store/81sr43harc753claf8bzyv3mrnjzq652-source/nixos/modules/hardware/video/nvidia.nix)
-
-
-
-## hardware\.nvidia\.datacenter\.enable
-
-
-
-Whether to enable Data Center drivers for NVIDIA cards on a NVLink topology
-\.
-
-
-
-*Type:*
-boolean
-
-
-
-*Default:*
-` false `
-
-
-
-*Example:*
-` true `
-
-*Declared by:*
- - [/nix/store/81sr43harc753claf8bzyv3mrnjzq652-source/nixos/modules/hardware/video/nvidia\.nix](file:///nix/store/81sr43harc753claf8bzyv3mrnjzq652-source/nixos/modules/hardware/video/nvidia.nix)
-
-
-
-## hardware\.nvidia\.datacenter\.settings
-
-
-
-Additional configuration options for fabricmanager\.
-
-
-
-*Type:*
-attribute set of (atom (null, bool, int, float or string))
-
-
-
-*Default:*
-
-```
-{
-  LOG_LEVEL=4;
-  LOG_FILE_NAME="/var/log/fabricmanager.log";
-  LOG_APPEND_TO_LOG=1;
-  LOG_FILE_MAX_SIZE=1024;
-  LOG_USE_SYSLOG=0;
-  DAEMONIZE=1;
-  BIND_INTERFACE_IP="127.0.0.1";
-  STARTING_TCP_PORT=16000;
-  FABRIC_MODE=0;
-  FABRIC_MODE_RESTART=0;
-  STATE_FILE_NAME="/var/tmp/fabricmanager.state";
-  FM_CMD_BIND_INTERFACE="127.0.0.1";
-  FM_CMD_PORT_NUMBER=6666;
-  FM_STAY_RESIDENT_ON_FAILURES=0;
-  ACCESS_LINK_FAILURE_MODE=0;
-  TRUNK_LINK_FAILURE_MODE=0;
-  NVSWITCH_FAILURE_MODE=0;
-  ABORT_CUDA_JOBS_ON_FM_EXIT=1;
-}
-
+```nix
+true
 ```
 
 *Declared by:*
- - [/nix/store/81sr43harc753claf8bzyv3mrnjzq652-source/nixos/modules/hardware/video/nvidia\.nix](file:///nix/store/81sr43harc753claf8bzyv3mrnjzq652-source/nixos/modules/hardware/video/nvidia.nix)
-
-
-
-## hardware\.nvidia\.dynamicBoost\.enable
-
-
-
-Whether to enable dynamic Boost balances power between the CPU and the GPU for improved
-performance on supported laptops using the nvidia-powerd daemon\. For more
-information, see the NVIDIA docs, on Chapter 23\. Dynamic Boost on Linux
-\.
-
-
-
-*Type:*
-boolean
-
-
-
-*Default:*
-` false `
-
-
-
-*Example:*
-` true `
-
-*Declared by:*
- - [/nix/store/81sr43harc753claf8bzyv3mrnjzq652-source/nixos/modules/hardware/video/nvidia\.nix](file:///nix/store/81sr43harc753claf8bzyv3mrnjzq652-source/nixos/modules/hardware/video/nvidia.nix)
-
-
-
-## hardware\.nvidia\.forceFullCompositionPipeline
-
-
-
-Whether to enable forcefully the full composition pipeline\.
-This sometimes fixes screen tearing issues\.
-This has been reported to reduce the performance of some OpenGL applications and may produce issues in WebGL\.
-It also drastically increases the time the driver needs to clock down after load
-\.
-
-
-
-*Type:*
-boolean
-
-
-
-*Default:*
-` false `
-
-
-
-*Example:*
-` true `
-
-*Declared by:*
- - [/nix/store/81sr43harc753claf8bzyv3mrnjzq652-source/nixos/modules/hardware/video/nvidia\.nix](file:///nix/store/81sr43harc753claf8bzyv3mrnjzq652-source/nixos/modules/hardware/video/nvidia.nix)
-
-
-
-## hardware\.nvidia\.gsp\.enable
-
-
-
-Whether to enable the GPU System Processor (GSP) on the video card
-\.
-
-
-
-*Type:*
-boolean
-
-
-
-*Default:*
-
-```
-config.hardware.nvidia.open == true || lib.versionAtLeast config.hardware.nvidia.package.version "555"
-
-```
-
-
-
-*Example:*
-` true `
-
-*Declared by:*
- - [/nix/store/81sr43harc753claf8bzyv3mrnjzq652-source/nixos/modules/hardware/video/nvidia\.nix](file:///nix/store/81sr43harc753claf8bzyv3mrnjzq652-source/nixos/modules/hardware/video/nvidia.nix)
-
-
-
-## hardware\.nvidia\.modesetting\.enable
-
-
-
-Whether to enable kernel modesetting when using the NVIDIA proprietary driver\.
-
-Enabling this fixes screen tearing when using Optimus via PRIME (see
-` hardware.nvidia.prime.sync.enable `\. This is not enabled
-by default because it is not officially supported by NVIDIA and would not
-work with SLI\.
-
-Enabling this and using version 545 or newer of the proprietary NVIDIA
-driver causes it to provide its own framebuffer device, which can cause
-Wayland compositors to work when they otherwise wouldn’t\.
-\.
-
-
-
-*Type:*
-boolean
-
-
-
-*Default:*
-` lib.versionAtLeast cfg.package.version "535" `
-
-
-
-*Example:*
-` true `
-
-*Declared by:*
- - [/nix/store/81sr43harc753claf8bzyv3mrnjzq652-source/nixos/modules/hardware/video/nvidia\.nix](file:///nix/store/81sr43harc753claf8bzyv3mrnjzq652-source/nixos/modules/hardware/video/nvidia.nix)
-
-
-
-## hardware\.nvidia\.moduleParams
-
-
-
-Additional parameters to pass to the NVIDIA kernel module\.
-
-
-
-*Type:*
-attribute set of attribute set of raw value
-
-
-
-*Default:*
-` { } `
-
-
-
-*Example:*
-
-```
-''
-  {
-    nvidia = {
-      NVreg_UsePageAttributeTable = 1;
-      NVreg_RegistryDwords = "EnableBrightnessControl=1"
-    };
-  }
-''
-```
-
-*Declared by:*
- - [/nix/store/81sr43harc753claf8bzyv3mrnjzq652-source/nixos/modules/hardware/video/nvidia\.nix](file:///nix/store/81sr43harc753claf8bzyv3mrnjzq652-source/nixos/modules/hardware/video/nvidia.nix)
-
-
-
-## hardware\.nvidia\.nvidiaPersistenced
-
-
-
-Whether to enable nvidia-persistenced a update for NVIDIA GPU headless mode, i\.e\.
-It ensures all GPUs stay awake even during headless mode
-\.
-
-
-
-*Type:*
-boolean
-
-
-
-*Default:*
-` false `
-
-
-
-*Example:*
-` true `
-
-*Declared by:*
- - [/nix/store/81sr43harc753claf8bzyv3mrnjzq652-source/nixos/modules/hardware/video/nvidia\.nix](file:///nix/store/81sr43harc753claf8bzyv3mrnjzq652-source/nixos/modules/hardware/video/nvidia.nix)
-
-
-
-## hardware\.nvidia\.nvidiaSettings
-
-
-
-Whether to enable nvidia-settings, NVIDIA’s GUI configuration tool
-\.
-
-
-
-*Type:*
-boolean
-
-
-
-*Default:*
-` true `
-
-
-
-*Example:*
-` true `
-
-*Declared by:*
- - [/nix/store/81sr43harc753claf8bzyv3mrnjzq652-source/nixos/modules/hardware/video/nvidia\.nix](file:///nix/store/81sr43harc753claf8bzyv3mrnjzq652-source/nixos/modules/hardware/video/nvidia.nix)
-
-
-
-## hardware\.nvidia\.open
-
-
-
-Whether to enable the open source NVIDIA kernel module\.
-
-
-
-*Type:*
-null or boolean
-
-
-
-*Default:*
-
-```
-if lib.versionOlder config.hardware.nvidia.package.version "560" then false else null
-
-```
-
-
-
-*Example:*
-` true `
-
-*Declared by:*
- - [/nix/store/81sr43harc753claf8bzyv3mrnjzq652-source/nixos/modules/hardware/video/nvidia\.nix](file:///nix/store/81sr43harc753claf8bzyv3mrnjzq652-source/nixos/modules/hardware/video/nvidia.nix)
-
-
-
-## hardware\.nvidia\.powerManagement\.enable
-
-
-
-Whether to enable experimental power management through systemd\. For more information, see
-the NVIDIA docs, on Chapter 21\. Configuring Power Management Support
-\.
-
-
-
-*Type:*
-boolean
-
-
-
-*Default:*
-` false `
-
-
-
-*Example:*
-` true `
-
-*Declared by:*
- - [/nix/store/81sr43harc753claf8bzyv3mrnjzq652-source/nixos/modules/hardware/video/nvidia\.nix](file:///nix/store/81sr43harc753claf8bzyv3mrnjzq652-source/nixos/modules/hardware/video/nvidia.nix)
-
-
-
-## hardware\.nvidia\.powerManagement\.finegrained
-
-
-
-Whether to enable experimental power management of PRIME offload\. For more information, see
-the NVIDIA docs, on Chapter 22\. PCI-Express Runtime D3 (RTD3) Power Management
-\.
-
-
-
-*Type:*
-boolean
-
-
-
-*Default:*
-` false `
-
-
-
-*Example:*
-` true `
-
-*Declared by:*
- - [/nix/store/81sr43harc753claf8bzyv3mrnjzq652-source/nixos/modules/hardware/video/nvidia\.nix](file:///nix/store/81sr43harc753claf8bzyv3mrnjzq652-source/nixos/modules/hardware/video/nvidia.nix)
-
-
-
-## hardware\.nvidia\.powerManagement\.kernelSuspendNotifier
-
-
-
-Whether to enable NVIDIA driver support for kernel suspend notifiers, which allows the driver
-to be notified of suspend and resume events by the kernel, rather than
-relying on systemd services\.
-Requires NVIDIA driver version 595 or newer, and the open source kernel modules\.
-\.
-
-
-
-*Type:*
-boolean
-
-
-
-*Default:*
-
-```
-config.hardware.nvidia.open == true && lib.versionAtLeast config.hardware.nvidia.package.version "595"
-
-```
-
-
-
-*Example:*
-` true `
-
-*Declared by:*
- - [/nix/store/81sr43harc753claf8bzyv3mrnjzq652-source/nixos/modules/hardware/video/nvidia\.nix](file:///nix/store/81sr43harc753claf8bzyv3mrnjzq652-source/nixos/modules/hardware/video/nvidia.nix)
-
-
-
-## hardware\.nvidia\.prime\.allowExternalGpu
-
-
-
-Whether to enable configuring X to allow external NVIDIA GPUs when using Prime \[Reverse] sync optimus
-\.
-
-
-
-*Type:*
-boolean
-
-
-
-*Default:*
-` false `
-
-
-
-*Example:*
-` true `
-
-*Declared by:*
- - [/nix/store/81sr43harc753claf8bzyv3mrnjzq652-source/nixos/modules/hardware/video/nvidia\.nix](file:///nix/store/81sr43harc753claf8bzyv3mrnjzq652-source/nixos/modules/hardware/video/nvidia.nix)
-
-
-
-## hardware\.nvidia\.prime\.amdgpuBusId
-
-
-
-Bus ID of the AMD APU\. You can find it using lspci; for example if lspci
-shows the AMD APU at “0001:02:03\.4”, set this option to “PCI:2@1:3:4”\.
-
-lspci might omit the PCI domain (0001 in above example) if it is zero\.
-In which case, use “@0” instead\.
-
-Please be aware that this option takes decimal address while lspci reports
-hexadecimal address\. So for device at domain “10000”, use “@65536”\.
-
-
-
-*Type:*
-string matching the pattern (\[\[:print:]]+:\[0-9]{1,3}(@\[0-9]{1,10})?:\[0-9]{1,2}:\[0-9])?
-
-
-
-*Default:*
-` "" `
-
-
-
-*Example:*
-` "PCI:4@0:0:0" `
-
-*Declared by:*
- - [/nix/store/81sr43harc753claf8bzyv3mrnjzq652-source/nixos/modules/hardware/video/nvidia\.nix](file:///nix/store/81sr43harc753claf8bzyv3mrnjzq652-source/nixos/modules/hardware/video/nvidia.nix)
-
-
-
-## hardware\.nvidia\.prime\.intelBusId
-
-
-
-Bus ID of the Intel GPU\. You can find it using lspci; for example if lspci
-shows the Intel GPU at “0001:02:03\.4”, set this option to “PCI:2@1:3:4”\.
-
-lspci might omit the PCI domain (0001 in above example) if it is zero\.
-In which case, use “@0” instead\.
-
-Please be aware that this option takes decimal address while lspci reports
-hexadecimal address\. So for device at domain “10000”, use “@65536”\.
-
-
-
-*Type:*
-string matching the pattern (\[\[:print:]]+:\[0-9]{1,3}(@\[0-9]{1,10})?:\[0-9]{1,2}:\[0-9])?
-
-
-
-*Default:*
-` "" `
-
-
-
-*Example:*
-` "PCI:0@0:2:0" `
-
-*Declared by:*
- - [/nix/store/81sr43harc753claf8bzyv3mrnjzq652-source/nixos/modules/hardware/video/nvidia\.nix](file:///nix/store/81sr43harc753claf8bzyv3mrnjzq652-source/nixos/modules/hardware/video/nvidia.nix)
-
-
-
-## hardware\.nvidia\.prime\.nvidiaBusId
-
-
-
-Bus ID of the NVIDIA GPU\. You can find it using lspci; for example if lspci
-shows the NVIDIA GPU at “0001:02:03\.4”, set this option to “PCI:2@1:3:4”\.
-
-lspci might omit the PCI domain (0001 in above example) if it is zero\.
-In which case, use “@0” instead\.
-
-Please be aware that this option takes decimal address while lspci reports
-hexadecimal address\. So for device at domain “10000”, use “@65536”\.
-
-
-
-*Type:*
-string matching the pattern (\[\[:print:]]+:\[0-9]{1,3}(@\[0-9]{1,10})?:\[0-9]{1,2}:\[0-9])?
-
-
-
-*Default:*
-` "" `
-
-
-
-*Example:*
-` "PCI:1@0:0:0" `
-
-*Declared by:*
- - [/nix/store/81sr43harc753claf8bzyv3mrnjzq652-source/nixos/modules/hardware/video/nvidia\.nix](file:///nix/store/81sr43harc753claf8bzyv3mrnjzq652-source/nixos/modules/hardware/video/nvidia.nix)
-
-
-
-## hardware\.nvidia\.prime\.offload\.enable
-
-
-
-Whether to enable render offload support using the NVIDIA proprietary driver via PRIME\.
-
-If this is enabled, then the bus IDs of the NVIDIA and Intel/AMD GPUs have to
-be specified (` hardware.nvidia.prime.nvidiaBusId ` and
-` hardware.nvidia.prime.intelBusId ` or
-` hardware.nvidia.prime.amdgpuBusId `)
-\.
-
-
-
-*Type:*
-boolean
-
-
-
-*Default:*
-` false `
-
-
-
-*Example:*
-` true `
-
-*Declared by:*
- - [/nix/store/81sr43harc753claf8bzyv3mrnjzq652-source/nixos/modules/hardware/video/nvidia\.nix](file:///nix/store/81sr43harc753claf8bzyv3mrnjzq652-source/nixos/modules/hardware/video/nvidia.nix)
-
-
-
-## hardware\.nvidia\.prime\.offload\.enableOffloadCmd
-
-
-
-Whether to enable adding a ` nvidia-offload ` convenience script to ` environment.systemPackages `
-for offloading programs to an nvidia device\. To work, you must also enable
-` hardware.nvidia.prime.offload.enable ` or ` hardware.nvidia.prime.reverseSync.enable `\.
-
-Example usage: ` nvidia-offload sauerbraten_client `
-
-This script can be renamed with ` hardware.nvidia.prime.offload.enableOffloadCmd `\.
-\.
-
-
-
-*Type:*
-boolean
-
-
-
-*Default:*
-` false `
-
-
-
-*Example:*
-` true `
-
-*Declared by:*
- - [/nix/store/81sr43harc753claf8bzyv3mrnjzq652-source/nixos/modules/hardware/video/nvidia\.nix](file:///nix/store/81sr43harc753claf8bzyv3mrnjzq652-source/nixos/modules/hardware/video/nvidia.nix)
-
-
-
-## hardware\.nvidia\.prime\.offload\.offloadCmdMainProgram
-
-
-
-Specifies the CLI name of the ` hardware.nvidia.prime.offload.enableOffloadCmd `
-convenience script for offloading programs to an nvidia device\.
-
-
-
-*Type:*
-string
-
-
-
-*Default:*
-` "nvidia-offload" `
-
-
-
-*Example:*
-` "prime-run" `
-
-*Declared by:*
- - [/nix/store/81sr43harc753claf8bzyv3mrnjzq652-source/nixos/modules/hardware/video/nvidia\.nix](file:///nix/store/81sr43harc753claf8bzyv3mrnjzq652-source/nixos/modules/hardware/video/nvidia.nix)
-
-
-
-## hardware\.nvidia\.prime\.reverseSync\.enable
-
-
-
-Whether to enable NVIDIA Optimus support using the NVIDIA proprietary driver via reverse
-PRIME\. If enabled, the Intel/AMD GPU will be used for all rendering, while
-enabling output to displays attached only to the NVIDIA GPU without a
-multiplexer\.
-
-Warning: This feature is relatively new, depending on your system this might
-work poorly\. AMD support, especially so\.
-See: [https://forums\.developer\.nvidia\.com/t/the-all-new-outputsink-feature-aka-reverse-prime/129828](https://forums\.developer\.nvidia\.com/t/the-all-new-outputsink-feature-aka-reverse-prime/129828)
-
-Note that this option only has any effect if the “nvidia” driver is specified
-in ` services.xserver.videoDrivers `, and it should preferably
-be the only driver there\.
-
-If this is enabled, then the bus IDs of the NVIDIA and Intel/AMD GPUs have to
-be specified (` hardware.nvidia.prime.nvidiaBusId ` and
-` hardware.nvidia.prime.intelBusId ` or
-` hardware.nvidia.prime.amdgpuBusId `)\.
-
-If you enable this, you may want to also enable kernel modesetting for the
-NVIDIA driver (` hardware.nvidia.modesetting.enable `) in order
-to prevent tearing\.
-
-Note that this configuration will only be successful when a display manager
-for which the ` services.xserver.displayManager.setupCommands `
-option is supported is used
-\.
-
-
-
-*Type:*
-boolean
-
-
-
-*Default:*
-` false `
-
-
-
-*Example:*
-` true `
-
-*Declared by:*
- - [/nix/store/81sr43harc753claf8bzyv3mrnjzq652-source/nixos/modules/hardware/video/nvidia\.nix](file:///nix/store/81sr43harc753claf8bzyv3mrnjzq652-source/nixos/modules/hardware/video/nvidia.nix)
-
-
-
-## hardware\.nvidia\.prime\.reverseSync\.setupCommands\.enable
-
-
-
-Whether to enable configure the display manager to be able to use the outputs
-attached to the NVIDIA GPU\.
-Disable in order to configure the NVIDIA GPU outputs manually using xrandr\.
-Note that this configuration will only be successful when a display manager
-for which the ` services.xserver.displayManager.setupCommands `
-option is supported is used
-\.
-
-
-
-*Type:*
-boolean
-
-
-
-*Default:*
-` true `
-
-
-
-*Example:*
-` true `
-
-*Declared by:*
- - [/nix/store/81sr43harc753claf8bzyv3mrnjzq652-source/nixos/modules/hardware/video/nvidia\.nix](file:///nix/store/81sr43harc753claf8bzyv3mrnjzq652-source/nixos/modules/hardware/video/nvidia.nix)
-
-
-
-## hardware\.nvidia\.prime\.sync\.enable
-
-
-
-Whether to enable NVIDIA Optimus support using the NVIDIA proprietary driver via PRIME\.
-If enabled, the NVIDIA GPU will be always on and used for all rendering,
-while enabling output to displays attached only to the integrated Intel/AMD
-GPU without a multiplexer\.
-
-Note that this option only has any effect if the “nvidia” driver is specified
-in ` services.xserver.videoDrivers `, and it should preferably
-be the only driver there\.
-
-If this is enabled, then the bus IDs of the NVIDIA and Intel/AMD GPUs have to
-be specified (` hardware.nvidia.prime.nvidiaBusId ` and
-` hardware.nvidia.prime.intelBusId ` or
-` hardware.nvidia.prime.amdgpuBusId `)\.
-
-If you enable this, you may want to also enable kernel modesetting for the
-NVIDIA driver (` hardware.nvidia.modesetting.enable `) in order
-to prevent tearing\.
-
-Note that this configuration will only be successful when a display manager
-for which the ` services.xserver.displayManager.setupCommands `
-option is supported is used
-\.
-
-
-
-*Type:*
-boolean
-
-
-
-*Default:*
-` false `
-
-
-
-*Example:*
-` true `
-
-*Declared by:*
- - [/nix/store/81sr43harc753claf8bzyv3mrnjzq652-source/nixos/modules/hardware/video/nvidia\.nix](file:///nix/store/81sr43harc753claf8bzyv3mrnjzq652-source/nixos/modules/hardware/video/nvidia.nix)
-
-
-
-## hardware\.nvidia\.videoAcceleration
-
-
-
-Whether to enable video acceleration (VA-API)\.
-
-
-
-*Type:*
-boolean
-
-
-
-*Default:*
-` true `
-
-
-
-*Example:*
-` true `
-
-*Declared by:*
- - [/nix/store/81sr43harc753claf8bzyv3mrnjzq652-source/nixos/modules/hardware/video/nvidia\.nix](file:///nix/store/81sr43harc753claf8bzyv3mrnjzq652-source/nixos/modules/hardware/video/nvidia.nix)
+ - [/nix/store/hdbypkibmhnmv7h5m6y7svmcbrrv6ic4-source/modules/nixos/gui/steam\.nix](file:///nix/store/hdbypkibmhnmv7h5m6y7svmcbrrv6ic4-source/modules/nixos/gui/steam.nix)
 
 
 
@@ -3615,15 +3164,21 @@ boolean
 
 
 *Default:*
-` false `
+
+```nix
+false
+```
 
 
 
 *Example:*
-` true `
+
+```nix
+true
+```
 
 *Declared by:*
- - [/nix/store/xifgdfqjdj9yffx430q82kgbx6wnkbcx-source/modules/nixos/hardware/raspberrypi\.nix](file:///nix/store/xifgdfqjdj9yffx430q82kgbx6wnkbcx-source/modules/nixos/hardware/raspberrypi.nix)
+ - [/nix/store/hdbypkibmhnmv7h5m6y7svmcbrrv6ic4-source/modules/nixos/hardware/raspberrypi\.nix](file:///nix/store/hdbypkibmhnmv7h5m6y7svmcbrrv6ic4-source/modules/nixos/hardware/raspberrypi.nix)
 
 
 
@@ -3641,15 +3196,21 @@ boolean
 
 
 *Default:*
-` false `
+
+```nix
+false
+```
 
 
 
 *Example:*
-` true `
+
+```nix
+true
+```
 
 *Declared by:*
- - [/nix/store/xifgdfqjdj9yffx430q82kgbx6wnkbcx-source/modules/home-manager](file:///nix/store/xifgdfqjdj9yffx430q82kgbx6wnkbcx-source/modules/home-manager)
+ - [/nix/store/hdbypkibmhnmv7h5m6y7svmcbrrv6ic4-source/modules/home-manager](file:///nix/store/hdbypkibmhnmv7h5m6y7svmcbrrv6ic4-source/modules/home-manager)
 
 
 
@@ -3667,10 +3228,13 @@ string
 
 
 *Default:*
-` "24.11" `
+
+```nix
+"24.11"
+```
 
 *Declared by:*
- - [/nix/store/xifgdfqjdj9yffx430q82kgbx6wnkbcx-source/modules/home-manager](file:///nix/store/xifgdfqjdj9yffx430q82kgbx6wnkbcx-source/modules/home-manager)
+ - [/nix/store/hdbypkibmhnmv7h5m6y7svmcbrrv6ic4-source/modules/home-manager](file:///nix/store/hdbypkibmhnmv7h5m6y7svmcbrrv6ic4-source/modules/home-manager)
 
 
 
@@ -3688,10 +3252,13 @@ string
 
 
 *Default:*
-` "" `
+
+```nix
+""
+```
 
 *Declared by:*
- - [/nix/store/xifgdfqjdj9yffx430q82kgbx6wnkbcx-source/modules/home-manager](file:///nix/store/xifgdfqjdj9yffx430q82kgbx6wnkbcx-source/modules/home-manager)
+ - [/nix/store/hdbypkibmhnmv7h5m6y7svmcbrrv6ic4-source/modules/home-manager](file:///nix/store/hdbypkibmhnmv7h5m6y7svmcbrrv6ic4-source/modules/home-manager)
 
 
 
@@ -3709,15 +3276,21 @@ boolean
 
 
 *Default:*
-` false `
+
+```nix
+false
+```
 
 
 
 *Example:*
-` true `
+
+```nix
+true
+```
 
 *Declared by:*
- - [/nix/store/xifgdfqjdj9yffx430q82kgbx6wnkbcx-source/modules/home-manager/gui/flatpak\.nix](file:///nix/store/xifgdfqjdj9yffx430q82kgbx6wnkbcx-source/modules/home-manager/gui/flatpak.nix)
+ - [/nix/store/hdbypkibmhnmv7h5m6y7svmcbrrv6ic4-source/modules/home-manager/gui/flatpak\.nix](file:///nix/store/hdbypkibmhnmv7h5m6y7svmcbrrv6ic4-source/modules/home-manager/gui/flatpak.nix)
 
 
 
@@ -3735,15 +3308,21 @@ boolean
 
 
 *Default:*
-` false `
+
+```nix
+false
+```
 
 
 
 *Example:*
-` true `
+
+```nix
+true
+```
 
 *Declared by:*
- - [/nix/store/xifgdfqjdj9yffx430q82kgbx6wnkbcx-source/modules/home-manager/gui](file:///nix/store/xifgdfqjdj9yffx430q82kgbx6wnkbcx-source/modules/home-manager/gui)
+ - [/nix/store/hdbypkibmhnmv7h5m6y7svmcbrrv6ic4-source/modules/home-manager/gui](file:///nix/store/hdbypkibmhnmv7h5m6y7svmcbrrv6ic4-source/modules/home-manager/gui)
 
 
 
@@ -3761,15 +3340,21 @@ boolean
 
 
 *Default:*
-` false `
+
+```nix
+false
+```
 
 
 
 *Example:*
-` true `
+
+```nix
+true
+```
 
 *Declared by:*
- - [/nix/store/xifgdfqjdj9yffx430q82kgbx6wnkbcx-source/modules/home-manager/gui/niri\.nix](file:///nix/store/xifgdfqjdj9yffx430q82kgbx6wnkbcx-source/modules/home-manager/gui/niri.nix)
+ - [/nix/store/hdbypkibmhnmv7h5m6y7svmcbrrv6ic4-source/modules/home-manager/gui/niri\.nix](file:///nix/store/hdbypkibmhnmv7h5m6y7svmcbrrv6ic4-source/modules/home-manager/gui/niri.nix)
 
 
 
@@ -3787,15 +3372,21 @@ boolean
 
 
 *Default:*
-` false `
+
+```nix
+false
+```
 
 
 
 *Example:*
-` true `
+
+```nix
+true
+```
 
 *Declared by:*
- - [/nix/store/xifgdfqjdj9yffx430q82kgbx6wnkbcx-source/modules/home-manager/gui/shell\.nix](file:///nix/store/xifgdfqjdj9yffx430q82kgbx6wnkbcx-source/modules/home-manager/gui/shell.nix)
+ - [/nix/store/hdbypkibmhnmv7h5m6y7svmcbrrv6ic4-source/modules/home-manager/gui/shell\.nix](file:///nix/store/hdbypkibmhnmv7h5m6y7svmcbrrv6ic4-source/modules/home-manager/gui/shell.nix)
 
 
 
@@ -3830,10 +3421,13 @@ null or (submodule)
 
 
 *Default:*
-` null `
+
+```nix
+null
+```
 
 *Declared by:*
- - [/nix/store/xifgdfqjdj9yffx430q82kgbx6wnkbcx-source/modules/home-manager/nix/remote-building\.nix](file:///nix/store/xifgdfqjdj9yffx430q82kgbx6wnkbcx-source/modules/home-manager/nix/remote-building.nix)
+ - [/nix/store/hdbypkibmhnmv7h5m6y7svmcbrrv6ic4-source/modules/home-manager/nix/remote-building\.nix](file:///nix/store/hdbypkibmhnmv7h5m6y7svmcbrrv6ic4-source/modules/home-manager/nix/remote-building.nix)
 
 
 
@@ -3853,20 +3447,23 @@ list of string
 
 
 *Default:*
-` [ ] `
+
+```nix
+[ ]
+```
 
 
 
 *Example:*
 
-```
+```nix
 [
   "ssh-ed25519 AAAA... nix-remote@client-host"
 ]
 ```
 
 *Declared by:*
- - [/nix/store/xifgdfqjdj9yffx430q82kgbx6wnkbcx-source/modules/home-manager/nix/remote-building\.nix](file:///nix/store/xifgdfqjdj9yffx430q82kgbx6wnkbcx-source/modules/home-manager/nix/remote-building.nix)
+ - [/nix/store/hdbypkibmhnmv7h5m6y7svmcbrrv6ic4-source/modules/home-manager/nix/remote-building\.nix](file:///nix/store/hdbypkibmhnmv7h5m6y7svmcbrrv6ic4-source/modules/home-manager/nix/remote-building.nix)
 
 
 
@@ -3884,10 +3481,13 @@ signed integer
 
 
 *Default:*
-` 4 `
+
+```nix
+4
+```
 
 *Declared by:*
- - [/nix/store/xifgdfqjdj9yffx430q82kgbx6wnkbcx-source/modules/home-manager/nix/remote-building\.nix](file:///nix/store/xifgdfqjdj9yffx430q82kgbx6wnkbcx-source/modules/home-manager/nix/remote-building.nix)
+ - [/nix/store/hdbypkibmhnmv7h5m6y7svmcbrrv6ic4-source/modules/home-manager/nix/remote-building\.nix](file:///nix/store/hdbypkibmhnmv7h5m6y7svmcbrrv6ic4-source/modules/home-manager/nix/remote-building.nix)
 
 
 
@@ -3905,10 +3505,13 @@ signed integer
 
 
 *Default:*
-` 1 `
+
+```nix
+1
+```
 
 *Declared by:*
- - [/nix/store/xifgdfqjdj9yffx430q82kgbx6wnkbcx-source/modules/home-manager/nix/remote-building\.nix](file:///nix/store/xifgdfqjdj9yffx430q82kgbx6wnkbcx-source/modules/home-manager/nix/remote-building.nix)
+ - [/nix/store/hdbypkibmhnmv7h5m6y7svmcbrrv6ic4-source/modules/home-manager/nix/remote-building\.nix](file:///nix/store/hdbypkibmhnmv7h5m6y7svmcbrrv6ic4-source/modules/home-manager/nix/remote-building.nix)
 
 
 
@@ -3927,14 +3530,14 @@ list of string
 
 *Default:*
 
-```
+```nix
 [
   "aarch64-linux"
 ]
 ```
 
 *Declared by:*
- - [/nix/store/xifgdfqjdj9yffx430q82kgbx6wnkbcx-source/modules/home-manager/nix/remote-building\.nix](file:///nix/store/xifgdfqjdj9yffx430q82kgbx6wnkbcx-source/modules/home-manager/nix/remote-building.nix)
+ - [/nix/store/hdbypkibmhnmv7h5m6y7svmcbrrv6ic4-source/modules/home-manager/nix/remote-building\.nix](file:///nix/store/hdbypkibmhnmv7h5m6y7svmcbrrv6ic4-source/modules/home-manager/nix/remote-building.nix)
 
 
 
@@ -3965,10 +3568,13 @@ list of (submodule)
 
 
 *Default:*
-` [ ] `
+
+```nix
+[ ]
+```
 
 *Declared by:*
- - [/nix/store/xifgdfqjdj9yffx430q82kgbx6wnkbcx-source/modules/home-manager/nix/remote-building\.nix](file:///nix/store/xifgdfqjdj9yffx430q82kgbx6wnkbcx-source/modules/home-manager/nix/remote-building.nix)
+ - [/nix/store/hdbypkibmhnmv7h5m6y7svmcbrrv6ic4-source/modules/home-manager/nix/remote-building\.nix](file:///nix/store/hdbypkibmhnmv7h5m6y7svmcbrrv6ic4-source/modules/home-manager/nix/remote-building.nix)
 
 
 
@@ -3987,10 +3593,13 @@ string
 
 
 *Example:*
-` "builder.local" `
+
+```nix
+"builder.local"
+```
 
 *Declared by:*
- - [/nix/store/xifgdfqjdj9yffx430q82kgbx6wnkbcx-source/modules/home-manager/nix/remote-building\.nix](file:///nix/store/xifgdfqjdj9yffx430q82kgbx6wnkbcx-source/modules/home-manager/nix/remote-building.nix)
+ - [/nix/store/hdbypkibmhnmv7h5m6y7svmcbrrv6ic4-source/modules/home-manager/nix/remote-building\.nix](file:///nix/store/hdbypkibmhnmv7h5m6y7svmcbrrv6ic4-source/modules/home-manager/nix/remote-building.nix)
 
 
 
@@ -4008,10 +3617,13 @@ signed integer
 
 
 *Default:*
-` 4 `
+
+```nix
+4
+```
 
 *Declared by:*
- - [/nix/store/xifgdfqjdj9yffx430q82kgbx6wnkbcx-source/modules/home-manager/nix/remote-building\.nix](file:///nix/store/xifgdfqjdj9yffx430q82kgbx6wnkbcx-source/modules/home-manager/nix/remote-building.nix)
+ - [/nix/store/hdbypkibmhnmv7h5m6y7svmcbrrv6ic4-source/modules/home-manager/nix/remote-building\.nix](file:///nix/store/hdbypkibmhnmv7h5m6y7svmcbrrv6ic4-source/modules/home-manager/nix/remote-building.nix)
 
 
 
@@ -4036,10 +3648,13 @@ string
 
 
 *Default:*
-` "/etc/nix/builder-key" `
+
+```nix
+"/etc/nix/builder-key"
+```
 
 *Declared by:*
- - [/nix/store/xifgdfqjdj9yffx430q82kgbx6wnkbcx-source/modules/home-manager/nix/remote-building\.nix](file:///nix/store/xifgdfqjdj9yffx430q82kgbx6wnkbcx-source/modules/home-manager/nix/remote-building.nix)
+ - [/nix/store/hdbypkibmhnmv7h5m6y7svmcbrrv6ic4-source/modules/home-manager/nix/remote-building\.nix](file:///nix/store/hdbypkibmhnmv7h5m6y7svmcbrrv6ic4-source/modules/home-manager/nix/remote-building.nix)
 
 
 
@@ -4062,10 +3677,13 @@ string
 
 
 *Example:*
-` "ssh-ed25519 AAAA..." `
+
+```nix
+"ssh-ed25519 AAAA..."
+```
 
 *Declared by:*
- - [/nix/store/xifgdfqjdj9yffx430q82kgbx6wnkbcx-source/modules/home-manager/nix/remote-building\.nix](file:///nix/store/xifgdfqjdj9yffx430q82kgbx6wnkbcx-source/modules/home-manager/nix/remote-building.nix)
+ - [/nix/store/hdbypkibmhnmv7h5m6y7svmcbrrv6ic4-source/modules/home-manager/nix/remote-building\.nix](file:///nix/store/hdbypkibmhnmv7h5m6y7svmcbrrv6ic4-source/modules/home-manager/nix/remote-building.nix)
 
 
 
@@ -4083,10 +3701,13 @@ signed integer
 
 
 *Default:*
-` 1 `
+
+```nix
+1
+```
 
 *Declared by:*
- - [/nix/store/xifgdfqjdj9yffx430q82kgbx6wnkbcx-source/modules/home-manager/nix/remote-building\.nix](file:///nix/store/xifgdfqjdj9yffx430q82kgbx6wnkbcx-source/modules/home-manager/nix/remote-building.nix)
+ - [/nix/store/hdbypkibmhnmv7h5m6y7svmcbrrv6ic4-source/modules/home-manager/nix/remote-building\.nix](file:///nix/store/hdbypkibmhnmv7h5m6y7svmcbrrv6ic4-source/modules/home-manager/nix/remote-building.nix)
 
 
 
@@ -4105,7 +3726,7 @@ list of string
 
 *Default:*
 
-```
+```nix
 [
   "nixos-test"
   "big-parallel"
@@ -4114,7 +3735,7 @@ list of string
 ```
 
 *Declared by:*
- - [/nix/store/xifgdfqjdj9yffx430q82kgbx6wnkbcx-source/modules/home-manager/nix/remote-building\.nix](file:///nix/store/xifgdfqjdj9yffx430q82kgbx6wnkbcx-source/modules/home-manager/nix/remote-building.nix)
+ - [/nix/store/hdbypkibmhnmv7h5m6y7svmcbrrv6ic4-source/modules/home-manager/nix/remote-building\.nix](file:///nix/store/hdbypkibmhnmv7h5m6y7svmcbrrv6ic4-source/modules/home-manager/nix/remote-building.nix)
 
 
 
@@ -4133,7 +3754,7 @@ list of string
 
 *Default:*
 
-```
+```nix
 [
   "x86_64-linux"
 ]
@@ -4143,7 +3764,7 @@ list of string
 
 *Example:*
 
-```
+```nix
 [
   "x86_64-linux"
   "aarch64-linux"
@@ -4151,7 +3772,7 @@ list of string
 ```
 
 *Declared by:*
- - [/nix/store/xifgdfqjdj9yffx430q82kgbx6wnkbcx-source/modules/home-manager/nix/remote-building\.nix](file:///nix/store/xifgdfqjdj9yffx430q82kgbx6wnkbcx-source/modules/home-manager/nix/remote-building.nix)
+ - [/nix/store/hdbypkibmhnmv7h5m6y7svmcbrrv6ic4-source/modules/home-manager/nix/remote-building\.nix](file:///nix/store/hdbypkibmhnmv7h5m6y7svmcbrrv6ic4-source/modules/home-manager/nix/remote-building.nix)
 
 
 
@@ -4170,10 +3791,13 @@ string
 
 
 *Default:*
-` "nixremote" `
+
+```nix
+"nixremote"
+```
 
 *Declared by:*
- - [/nix/store/xifgdfqjdj9yffx430q82kgbx6wnkbcx-source/modules/home-manager/nix/remote-building\.nix](file:///nix/store/xifgdfqjdj9yffx430q82kgbx6wnkbcx-source/modules/home-manager/nix/remote-building.nix)
+ - [/nix/store/hdbypkibmhnmv7h5m6y7svmcbrrv6ic4-source/modules/home-manager/nix/remote-building\.nix](file:///nix/store/hdbypkibmhnmv7h5m6y7svmcbrrv6ic4-source/modules/home-manager/nix/remote-building.nix)
 
 
 
@@ -4191,15 +3815,21 @@ boolean
 
 
 *Default:*
-` false `
+
+```nix
+false
+```
 
 
 
 *Example:*
-` true `
+
+```nix
+true
+```
 
 *Declared by:*
- - [/nix/store/xifgdfqjdj9yffx430q82kgbx6wnkbcx-source/modules/home-manager/programs/cli\.nix](file:///nix/store/xifgdfqjdj9yffx430q82kgbx6wnkbcx-source/modules/home-manager/programs/cli.nix)
+ - [/nix/store/hdbypkibmhnmv7h5m6y7svmcbrrv6ic4-source/modules/home-manager/programs/cli\.nix](file:///nix/store/hdbypkibmhnmv7h5m6y7svmcbrrv6ic4-source/modules/home-manager/programs/cli.nix)
 
 
 
@@ -4217,15 +3847,21 @@ boolean
 
 
 *Default:*
-` false `
+
+```nix
+false
+```
 
 
 
 *Example:*
-` true `
+
+```nix
+true
+```
 
 *Declared by:*
- - [/nix/store/xifgdfqjdj9yffx430q82kgbx6wnkbcx-source/modules/home-manager/programs/dev\.nix](file:///nix/store/xifgdfqjdj9yffx430q82kgbx6wnkbcx-source/modules/home-manager/programs/dev.nix)
+ - [/nix/store/hdbypkibmhnmv7h5m6y7svmcbrrv6ic4-source/modules/home-manager/programs/dev\.nix](file:///nix/store/hdbypkibmhnmv7h5m6y7svmcbrrv6ic4-source/modules/home-manager/programs/dev.nix)
 
 
 
@@ -4243,15 +3879,21 @@ boolean
 
 
 *Default:*
-` false `
+
+```nix
+false
+```
 
 
 
 *Example:*
-` true `
+
+```nix
+true
+```
 
 *Declared by:*
- - [/nix/store/xifgdfqjdj9yffx430q82kgbx6wnkbcx-source/modules/home-manager/programs/ai\.nix](file:///nix/store/xifgdfqjdj9yffx430q82kgbx6wnkbcx-source/modules/home-manager/programs/ai.nix)
+ - [/nix/store/hdbypkibmhnmv7h5m6y7svmcbrrv6ic4-source/modules/home-manager/programs/ai\.nix](file:///nix/store/hdbypkibmhnmv7h5m6y7svmcbrrv6ic4-source/modules/home-manager/programs/ai.nix)
 
 
 
@@ -4269,10 +3911,13 @@ one of “full”, “minimal”
 
 
 *Default:*
-` "minimal" `
+
+```nix
+"minimal"
+```
 
 *Declared by:*
- - [/nix/store/xifgdfqjdj9yffx430q82kgbx6wnkbcx-source/modules/home-manager/programs/cli\.nix](file:///nix/store/xifgdfqjdj9yffx430q82kgbx6wnkbcx-source/modules/home-manager/programs/cli.nix)
+ - [/nix/store/hdbypkibmhnmv7h5m6y7svmcbrrv6ic4-source/modules/home-manager/programs/cli\.nix](file:///nix/store/hdbypkibmhnmv7h5m6y7svmcbrrv6ic4-source/modules/home-manager/programs/cli.nix)
 
 
 
@@ -4290,15 +3935,21 @@ boolean
 
 
 *Default:*
-` false `
+
+```nix
+false
+```
 
 
 
 *Example:*
-` true `
+
+```nix
+true
+```
 
 *Declared by:*
- - [/nix/store/xifgdfqjdj9yffx430q82kgbx6wnkbcx-source/modules/home-manager/programs/games\.nix](file:///nix/store/xifgdfqjdj9yffx430q82kgbx6wnkbcx-source/modules/home-manager/programs/games.nix)
+ - [/nix/store/hdbypkibmhnmv7h5m6y7svmcbrrv6ic4-source/modules/home-manager/programs/games\.nix](file:///nix/store/hdbypkibmhnmv7h5m6y7svmcbrrv6ic4-source/modules/home-manager/programs/games.nix)
 
 
 
@@ -4316,15 +3967,21 @@ boolean
 
 
 *Default:*
-` false `
+
+```nix
+false
+```
 
 
 
 *Example:*
-` true `
+
+```nix
+true
+```
 
 *Declared by:*
- - [/nix/store/xifgdfqjdj9yffx430q82kgbx6wnkbcx-source/modules/home-manager/programs/gui\.nix](file:///nix/store/xifgdfqjdj9yffx430q82kgbx6wnkbcx-source/modules/home-manager/programs/gui.nix)
+ - [/nix/store/hdbypkibmhnmv7h5m6y7svmcbrrv6ic4-source/modules/home-manager/programs/gui\.nix](file:///nix/store/hdbypkibmhnmv7h5m6y7svmcbrrv6ic4-source/modules/home-manager/programs/gui.nix)
 
 
 
@@ -4342,15 +3999,21 @@ boolean
 
 
 *Default:*
-` false `
+
+```nix
+false
+```
 
 
 
 *Example:*
-` true `
+
+```nix
+true
+```
 
 *Declared by:*
- - [/nix/store/xifgdfqjdj9yffx430q82kgbx6wnkbcx-source/modules/home-manager/programs/gui\.nix](file:///nix/store/xifgdfqjdj9yffx430q82kgbx6wnkbcx-source/modules/home-manager/programs/gui.nix)
+ - [/nix/store/hdbypkibmhnmv7h5m6y7svmcbrrv6ic4-source/modules/home-manager/programs/gui\.nix](file:///nix/store/hdbypkibmhnmv7h5m6y7svmcbrrv6ic4-source/modules/home-manager/programs/gui.nix)
 
 
 
@@ -4368,15 +4031,21 @@ boolean
 
 
 *Default:*
-` false `
+
+```nix
+false
+```
 
 
 
 *Example:*
-` true `
+
+```nix
+true
+```
 
 *Declared by:*
- - [/nix/store/xifgdfqjdj9yffx430q82kgbx6wnkbcx-source/modules/home-manager/programs/gui\.nix](file:///nix/store/xifgdfqjdj9yffx430q82kgbx6wnkbcx-source/modules/home-manager/programs/gui.nix)
+ - [/nix/store/hdbypkibmhnmv7h5m6y7svmcbrrv6ic4-source/modules/home-manager/programs/gui\.nix](file:///nix/store/hdbypkibmhnmv7h5m6y7svmcbrrv6ic4-source/modules/home-manager/programs/gui.nix)
 
 
 
@@ -4394,15 +4063,21 @@ boolean
 
 
 *Default:*
-` false `
+
+```nix
+false
+```
 
 
 
 *Example:*
-` true `
+
+```nix
+true
+```
 
 *Declared by:*
- - [/nix/store/xifgdfqjdj9yffx430q82kgbx6wnkbcx-source/modules/home-manager/gui/vicinae\.nix](file:///nix/store/xifgdfqjdj9yffx430q82kgbx6wnkbcx-source/modules/home-manager/gui/vicinae.nix)
+ - [/nix/store/hdbypkibmhnmv7h5m6y7svmcbrrv6ic4-source/modules/home-manager/gui/vicinae\.nix](file:///nix/store/hdbypkibmhnmv7h5m6y7svmcbrrv6ic4-source/modules/home-manager/gui/vicinae.nix)
 
 
 
@@ -4420,10 +4095,13 @@ list of string
 
 
 *Default:*
-` [ ] `
+
+```nix
+[ ]
+```
 
 *Declared by:*
- - [/nix/store/xifgdfqjdj9yffx430q82kgbx6wnkbcx-source/modules/home-manager/gui/vicinae\.nix](file:///nix/store/xifgdfqjdj9yffx430q82kgbx6wnkbcx-source/modules/home-manager/gui/vicinae.nix)
+ - [/nix/store/hdbypkibmhnmv7h5m6y7svmcbrrv6ic4-source/modules/home-manager/gui/vicinae\.nix](file:///nix/store/hdbypkibmhnmv7h5m6y7svmcbrrv6ic4-source/modules/home-manager/gui/vicinae.nix)
 
 
 
@@ -4441,10 +4119,13 @@ list of string
 
 
 *Default:*
-` [ ] `
+
+```nix
+[ ]
+```
 
 *Declared by:*
- - [/nix/store/xifgdfqjdj9yffx430q82kgbx6wnkbcx-source/modules/home-manager/gui/vicinae\.nix](file:///nix/store/xifgdfqjdj9yffx430q82kgbx6wnkbcx-source/modules/home-manager/gui/vicinae.nix)
+ - [/nix/store/hdbypkibmhnmv7h5m6y7svmcbrrv6ic4-source/modules/home-manager/gui/vicinae\.nix](file:///nix/store/hdbypkibmhnmv7h5m6y7svmcbrrv6ic4-source/modules/home-manager/gui/vicinae.nix)
 
 
 
@@ -4462,15 +4143,21 @@ boolean
 
 
 *Default:*
-` false `
+
+```nix
+false
+```
 
 
 
 *Example:*
-` true `
+
+```nix
+true
+```
 
 *Declared by:*
- - [/nix/store/xifgdfqjdj9yffx430q82kgbx6wnkbcx-source/modules/home-manager/programs/ides\.nix](file:///nix/store/xifgdfqjdj9yffx430q82kgbx6wnkbcx-source/modules/home-manager/programs/ides.nix)
+ - [/nix/store/hdbypkibmhnmv7h5m6y7svmcbrrv6ic4-source/modules/home-manager/programs/ides\.nix](file:///nix/store/hdbypkibmhnmv7h5m6y7svmcbrrv6ic4-source/modules/home-manager/programs/ides.nix)
 
 
 
@@ -4488,10 +4175,13 @@ list of string
 
 
 *Default:*
-` [ ] `
+
+```nix
+[ ]
+```
 
 *Declared by:*
- - [/nix/store/xifgdfqjdj9yffx430q82kgbx6wnkbcx-source/modules/home-manager/programs/ssh\.nix](file:///nix/store/xifgdfqjdj9yffx430q82kgbx6wnkbcx-source/modules/home-manager/programs/ssh.nix)
+ - [/nix/store/hdbypkibmhnmv7h5m6y7svmcbrrv6ic4-source/modules/home-manager/programs/ssh\.nix](file:///nix/store/hdbypkibmhnmv7h5m6y7svmcbrrv6ic4-source/modules/home-manager/programs/ssh.nix)
 
 
 
@@ -4499,7 +4189,7 @@ list of string
 
 
 
-Hosts to configure SSH for\. Automatically adds them to matchBlocks and known_hosts\.
+Hosts to configure SSH for\. Automatically adds them to ssh settings and known_hosts\.
 
 
 
@@ -4509,10 +4199,13 @@ attribute set of (submodule)
 
 
 *Default:*
-` { } `
+
+```nix
+{ }
+```
 
 *Declared by:*
- - [/nix/store/xifgdfqjdj9yffx430q82kgbx6wnkbcx-source/modules/home-manager/programs/ssh\.nix](file:///nix/store/xifgdfqjdj9yffx430q82kgbx6wnkbcx-source/modules/home-manager/programs/ssh.nix)
+ - [/nix/store/hdbypkibmhnmv7h5m6y7svmcbrrv6ic4-source/modules/home-manager/programs/ssh\.nix](file:///nix/store/hdbypkibmhnmv7h5m6y7svmcbrrv6ic4-source/modules/home-manager/programs/ssh.nix)
 
 
 
@@ -4530,10 +4223,13 @@ null or string
 
 
 *Default:*
-` null `
+
+```nix
+null
+```
 
 *Declared by:*
- - [/nix/store/xifgdfqjdj9yffx430q82kgbx6wnkbcx-source/modules/home-manager/programs/ssh\.nix](file:///nix/store/xifgdfqjdj9yffx430q82kgbx6wnkbcx-source/modules/home-manager/programs/ssh.nix)
+ - [/nix/store/hdbypkibmhnmv7h5m6y7svmcbrrv6ic4-source/modules/home-manager/programs/ssh\.nix](file:///nix/store/hdbypkibmhnmv7h5m6y7svmcbrrv6ic4-source/modules/home-manager/programs/ssh.nix)
 
 
 
@@ -4549,7 +4245,7 @@ Path to the private key on the host file system\.
 string
 
 *Declared by:*
- - [/nix/store/xifgdfqjdj9yffx430q82kgbx6wnkbcx-source/modules/home-manager/programs/ssh\.nix](file:///nix/store/xifgdfqjdj9yffx430q82kgbx6wnkbcx-source/modules/home-manager/programs/ssh.nix)
+ - [/nix/store/hdbypkibmhnmv7h5m6y7svmcbrrv6ic4-source/modules/home-manager/programs/ssh\.nix](file:///nix/store/hdbypkibmhnmv7h5m6y7svmcbrrv6ic4-source/modules/home-manager/programs/ssh.nix)
 
 
 
@@ -4565,7 +4261,7 @@ Path to the public key on the host file system\.
 string
 
 *Declared by:*
- - [/nix/store/xifgdfqjdj9yffx430q82kgbx6wnkbcx-source/modules/home-manager/programs/ssh\.nix](file:///nix/store/xifgdfqjdj9yffx430q82kgbx6wnkbcx-source/modules/home-manager/programs/ssh.nix)
+ - [/nix/store/hdbypkibmhnmv7h5m6y7svmcbrrv6ic4-source/modules/home-manager/programs/ssh\.nix](file:///nix/store/hdbypkibmhnmv7h5m6y7svmcbrrv6ic4-source/modules/home-manager/programs/ssh.nix)
 
 
 
@@ -4583,10 +4279,13 @@ null or string
 
 
 *Default:*
-` null `
+
+```nix
+null
+```
 
 *Declared by:*
- - [/nix/store/xifgdfqjdj9yffx430q82kgbx6wnkbcx-source/modules/home-manager/programs/ssh\.nix](file:///nix/store/xifgdfqjdj9yffx430q82kgbx6wnkbcx-source/modules/home-manager/programs/ssh.nix)
+ - [/nix/store/hdbypkibmhnmv7h5m6y7svmcbrrv6ic4-source/modules/home-manager/programs/ssh\.nix](file:///nix/store/hdbypkibmhnmv7h5m6y7svmcbrrv6ic4-source/modules/home-manager/programs/ssh.nix)
 
 
 
@@ -4604,15 +4303,21 @@ boolean
 
 
 *Default:*
-` false `
+
+```nix
+false
+```
 
 
 
 *Example:*
-` true `
+
+```nix
+true
+```
 
 *Declared by:*
- - [/nix/store/xifgdfqjdj9yffx430q82kgbx6wnkbcx-source/modules/home-manager/services/mpris\.nix](file:///nix/store/xifgdfqjdj9yffx430q82kgbx6wnkbcx-source/modules/home-manager/services/mpris.nix)
+ - [/nix/store/hdbypkibmhnmv7h5m6y7svmcbrrv6ic4-source/modules/home-manager/services/mpris\.nix](file:///nix/store/hdbypkibmhnmv7h5m6y7svmcbrrv6ic4-source/modules/home-manager/services/mpris.nix)
 
 
 
@@ -4630,15 +4335,21 @@ boolean
 
 
 *Default:*
-` false `
+
+```nix
+false
+```
 
 
 
 *Example:*
-` true `
+
+```nix
+true
+```
 
 *Declared by:*
- - [/nix/store/xifgdfqjdj9yffx430q82kgbx6wnkbcx-source/modules/home-manager/services/nextcloud\.nix](file:///nix/store/xifgdfqjdj9yffx430q82kgbx6wnkbcx-source/modules/home-manager/services/nextcloud.nix)
+ - [/nix/store/hdbypkibmhnmv7h5m6y7svmcbrrv6ic4-source/modules/home-manager/services/nextcloud\.nix](file:///nix/store/hdbypkibmhnmv7h5m6y7svmcbrrv6ic4-source/modules/home-manager/services/nextcloud.nix)
 
 
 
@@ -4656,15 +4367,21 @@ boolean
 
 
 *Default:*
-` false `
+
+```nix
+false
+```
 
 
 
 *Example:*
-` true `
+
+```nix
+true
+```
 
 *Declared by:*
- - [/nix/store/xifgdfqjdj9yffx430q82kgbx6wnkbcx-source/modules/home-manager/theming](file:///nix/store/xifgdfqjdj9yffx430q82kgbx6wnkbcx-source/modules/home-manager/theming)
+ - [/nix/store/hdbypkibmhnmv7h5m6y7svmcbrrv6ic4-source/modules/home-manager/theming](file:///nix/store/hdbypkibmhnmv7h5m6y7svmcbrrv6ic4-source/modules/home-manager/theming)
 
 
 
@@ -4680,7 +4397,7 @@ Linux kernel package (linuxPackages set)\.
 raw value
 
 *Declared by:*
- - [/nix/store/xifgdfqjdj9yffx430q82kgbx6wnkbcx-source/modules/nixos/kernel/kernel\.nix](file:///nix/store/xifgdfqjdj9yffx430q82kgbx6wnkbcx-source/modules/nixos/kernel/kernel.nix)
+ - [/nix/store/hdbypkibmhnmv7h5m6y7svmcbrrv6ic4-source/modules/nixos/kernel/kernel\.nix](file:///nix/store/hdbypkibmhnmv7h5m6y7svmcbrrv6ic4-source/modules/nixos/kernel/kernel.nix)
 
 
 
@@ -4698,10 +4415,13 @@ list of string
 
 
 *Default:*
-` [ ] `
+
+```nix
+[ ]
+```
 
 *Declared by:*
- - [/nix/store/xifgdfqjdj9yffx430q82kgbx6wnkbcx-source/modules/nixos/kernel/kernel\.nix](file:///nix/store/xifgdfqjdj9yffx430q82kgbx6wnkbcx-source/modules/nixos/kernel/kernel.nix)
+ - [/nix/store/hdbypkibmhnmv7h5m6y7svmcbrrv6ic4-source/modules/nixos/kernel/kernel\.nix](file:///nix/store/hdbypkibmhnmv7h5m6y7svmcbrrv6ic4-source/modules/nixos/kernel/kernel.nix)
 
 
 
@@ -4719,10 +4439,13 @@ list of string
 
 
 *Default:*
-` [ ] `
+
+```nix
+[ ]
+```
 
 *Declared by:*
- - [/nix/store/xifgdfqjdj9yffx430q82kgbx6wnkbcx-source/modules/nixos/kernel/kernel\.nix](file:///nix/store/xifgdfqjdj9yffx430q82kgbx6wnkbcx-source/modules/nixos/kernel/kernel.nix)
+ - [/nix/store/hdbypkibmhnmv7h5m6y7svmcbrrv6ic4-source/modules/nixos/kernel/kernel\.nix](file:///nix/store/hdbypkibmhnmv7h5m6y7svmcbrrv6ic4-source/modules/nixos/kernel/kernel.nix)
 
 
 
@@ -4740,15 +4463,21 @@ boolean
 
 
 *Default:*
-` false `
+
+```nix
+false
+```
 
 
 
 *Example:*
-` true `
+
+```nix
+true
+```
 
 *Declared by:*
- - [/nix/store/xifgdfqjdj9yffx430q82kgbx6wnkbcx-source/modules/nixos/kernel/kernel\.nix](file:///nix/store/xifgdfqjdj9yffx430q82kgbx6wnkbcx-source/modules/nixos/kernel/kernel.nix)
+ - [/nix/store/hdbypkibmhnmv7h5m6y7svmcbrrv6ic4-source/modules/nixos/kernel/kernel\.nix](file:///nix/store/hdbypkibmhnmv7h5m6y7svmcbrrv6ic4-source/modules/nixos/kernel/kernel.nix)
 
 
 
@@ -4766,10 +4495,13 @@ null or string
 
 
 *Default:*
-` null `
+
+```nix
+null
+```
 
 *Declared by:*
- - [/nix/store/xifgdfqjdj9yffx430q82kgbx6wnkbcx-source/modules/nixos/kernel/kernel\.nix](file:///nix/store/xifgdfqjdj9yffx430q82kgbx6wnkbcx-source/modules/nixos/kernel/kernel.nix)
+ - [/nix/store/hdbypkibmhnmv7h5m6y7svmcbrrv6ic4-source/modules/nixos/kernel/kernel\.nix](file:///nix/store/hdbypkibmhnmv7h5m6y7svmcbrrv6ic4-source/modules/nixos/kernel/kernel.nix)
 
 
 
@@ -4787,10 +4519,13 @@ list of string
 
 
 *Default:*
-` [ ] `
+
+```nix
+[ ]
+```
 
 *Declared by:*
- - [/nix/store/xifgdfqjdj9yffx430q82kgbx6wnkbcx-source/modules/nixos/kernel/kernel\.nix](file:///nix/store/xifgdfqjdj9yffx430q82kgbx6wnkbcx-source/modules/nixos/kernel/kernel.nix)
+ - [/nix/store/hdbypkibmhnmv7h5m6y7svmcbrrv6ic4-source/modules/nixos/kernel/kernel\.nix](file:///nix/store/hdbypkibmhnmv7h5m6y7svmcbrrv6ic4-source/modules/nixos/kernel/kernel.nix)
 
 
 
@@ -4808,10 +4543,13 @@ Kernel modules blacklisted\.
 
 
 *Default:*
-` [ ] `
+
+```nix
+[ ]
+```
 
 *Declared by:*
- - [/nix/store/xifgdfqjdj9yffx430q82kgbx6wnkbcx-source/modules/nixos/kernel/kernel\.nix](file:///nix/store/xifgdfqjdj9yffx430q82kgbx6wnkbcx-source/modules/nixos/kernel/kernel.nix)
+ - [/nix/store/hdbypkibmhnmv7h5m6y7svmcbrrv6ic4-source/modules/nixos/kernel/kernel\.nix](file:///nix/store/hdbypkibmhnmv7h5m6y7svmcbrrv6ic4-source/modules/nixos/kernel/kernel.nix)
 
 
 
@@ -4829,10 +4567,13 @@ list of package
 
 
 *Default:*
-` [ ] `
+
+```nix
+[ ]
+```
 
 *Declared by:*
- - [/nix/store/xifgdfqjdj9yffx430q82kgbx6wnkbcx-source/modules/nixos/kernel/kernel\.nix](file:///nix/store/xifgdfqjdj9yffx430q82kgbx6wnkbcx-source/modules/nixos/kernel/kernel.nix)
+ - [/nix/store/hdbypkibmhnmv7h5m6y7svmcbrrv6ic4-source/modules/nixos/kernel/kernel\.nix](file:///nix/store/hdbypkibmhnmv7h5m6y7svmcbrrv6ic4-source/modules/nixos/kernel/kernel.nix)
 
 
 
@@ -4850,10 +4591,13 @@ Kernel modules available during stage 2\.
 
 
 *Default:*
-` [ ] `
+
+```nix
+[ ]
+```
 
 *Declared by:*
- - [/nix/store/xifgdfqjdj9yffx430q82kgbx6wnkbcx-source/modules/nixos/kernel/kernel\.nix](file:///nix/store/xifgdfqjdj9yffx430q82kgbx6wnkbcx-source/modules/nixos/kernel/kernel.nix)
+ - [/nix/store/hdbypkibmhnmv7h5m6y7svmcbrrv6ic4-source/modules/nixos/kernel/kernel\.nix](file:///nix/store/hdbypkibmhnmv7h5m6y7svmcbrrv6ic4-source/modules/nixos/kernel/kernel.nix)
 
 
 
@@ -4871,10 +4615,13 @@ list of string
 
 
 *Default:*
-` [ ] `
+
+```nix
+[ ]
+```
 
 *Declared by:*
- - [/nix/store/xifgdfqjdj9yffx430q82kgbx6wnkbcx-source/modules/nixos/kernel/kernel\.nix](file:///nix/store/xifgdfqjdj9yffx430q82kgbx6wnkbcx-source/modules/nixos/kernel/kernel.nix)
+ - [/nix/store/hdbypkibmhnmv7h5m6y7svmcbrrv6ic4-source/modules/nixos/kernel/kernel\.nix](file:///nix/store/hdbypkibmhnmv7h5m6y7svmcbrrv6ic4-source/modules/nixos/kernel/kernel.nix)
 
 
 
@@ -4892,10 +4639,13 @@ attribute set
 
 
 *Default:*
-` { } `
+
+```nix
+{ }
+```
 
 *Declared by:*
- - [/nix/store/xifgdfqjdj9yffx430q82kgbx6wnkbcx-source/modules/nixos/kernel/kernel\.nix](file:///nix/store/xifgdfqjdj9yffx430q82kgbx6wnkbcx-source/modules/nixos/kernel/kernel.nix)
+ - [/nix/store/hdbypkibmhnmv7h5m6y7svmcbrrv6ic4-source/modules/nixos/kernel/kernel\.nix](file:///nix/store/hdbypkibmhnmv7h5m6y7svmcbrrv6ic4-source/modules/nixos/kernel/kernel.nix)
 
 
 
@@ -4913,19 +4663,27 @@ boolean
 
 
 *Default:*
-` true `
+
+```nix
+true
+```
 
 
 
 *Example:*
-` true `
+
+```nix
+true
+```
 
 *Declared by:*
- - [/nix/store/xifgdfqjdj9yffx430q82kgbx6wnkbcx-source/modules/nixos/network](file:///nix/store/xifgdfqjdj9yffx430q82kgbx6wnkbcx-source/modules/nixos/network)
+ - [/nix/store/hdbypkibmhnmv7h5m6y7svmcbrrv6ic4-source/modules/nixos/network](file:///nix/store/hdbypkibmhnmv7h5m6y7svmcbrrv6ic4-source/modules/nixos/network)
 
 
 
 ## network\.mounts
+
+
 
 List of Network mounts\.
 
@@ -4937,10 +4695,13 @@ list of (submodule)
 
 
 *Default:*
-` [ ] `
+
+```nix
+[ ]
+```
 
 *Declared by:*
- - [/nix/store/xifgdfqjdj9yffx430q82kgbx6wnkbcx-source/modules/nixos/network/network-mounts\.nix](file:///nix/store/xifgdfqjdj9yffx430q82kgbx6wnkbcx-source/modules/nixos/network/network-mounts.nix)
+ - [/nix/store/hdbypkibmhnmv7h5m6y7svmcbrrv6ic4-source/modules/nixos/network/network-mounts\.nix](file:///nix/store/hdbypkibmhnmv7h5m6y7svmcbrrv6ic4-source/modules/nixos/network/network-mounts.nix)
 
 
 
@@ -4956,7 +4717,7 @@ To configure an automount for this mount point\.
 boolean
 
 *Declared by:*
- - [/nix/store/xifgdfqjdj9yffx430q82kgbx6wnkbcx-source/modules/nixos/network/network-mounts\.nix](file:///nix/store/xifgdfqjdj9yffx430q82kgbx6wnkbcx-source/modules/nixos/network/network-mounts.nix)
+ - [/nix/store/hdbypkibmhnmv7h5m6y7svmcbrrv6ic4-source/modules/nixos/network/network-mounts\.nix](file:///nix/store/hdbypkibmhnmv7h5m6y7svmcbrrv6ic4-source/modules/nixos/network/network-mounts.nix)
 
 
 
@@ -4972,7 +4733,7 @@ Mount point on the local filesystem\.
 string
 
 *Declared by:*
- - [/nix/store/xifgdfqjdj9yffx430q82kgbx6wnkbcx-source/modules/nixos/network/network-mounts\.nix](file:///nix/store/xifgdfqjdj9yffx430q82kgbx6wnkbcx-source/modules/nixos/network/network-mounts.nix)
+ - [/nix/store/hdbypkibmhnmv7h5m6y7svmcbrrv6ic4-source/modules/nixos/network/network-mounts\.nix](file:///nix/store/hdbypkibmhnmv7h5m6y7svmcbrrv6ic4-source/modules/nixos/network/network-mounts.nix)
 
 
 
@@ -4988,7 +4749,7 @@ Mount point source remote\.
 string
 
 *Declared by:*
- - [/nix/store/xifgdfqjdj9yffx430q82kgbx6wnkbcx-source/modules/nixos/network/network-mounts\.nix](file:///nix/store/xifgdfqjdj9yffx430q82kgbx6wnkbcx-source/modules/nixos/network/network-mounts.nix)
+ - [/nix/store/hdbypkibmhnmv7h5m6y7svmcbrrv6ic4-source/modules/nixos/network/network-mounts\.nix](file:///nix/store/hdbypkibmhnmv7h5m6y7svmcbrrv6ic4-source/modules/nixos/network/network-mounts.nix)
 
 
 
@@ -5004,7 +4765,7 @@ Mount point type\.
 string
 
 *Declared by:*
- - [/nix/store/xifgdfqjdj9yffx430q82kgbx6wnkbcx-source/modules/nixos/network/network-mounts\.nix](file:///nix/store/xifgdfqjdj9yffx430q82kgbx6wnkbcx-source/modules/nixos/network/network-mounts.nix)
+ - [/nix/store/hdbypkibmhnmv7h5m6y7svmcbrrv6ic4-source/modules/nixos/network/network-mounts\.nix](file:///nix/store/hdbypkibmhnmv7h5m6y7svmcbrrv6ic4-source/modules/nixos/network/network-mounts.nix)
 
 
 
@@ -5022,10 +4783,13 @@ list of 16 bit unsigned integer; between 0 and 65535 (both inclusive)
 
 
 *Default:*
-` [ ] `
+
+```nix
+[ ]
+```
 
 *Declared by:*
- - [/nix/store/xifgdfqjdj9yffx430q82kgbx6wnkbcx-source/modules/nixos/network](file:///nix/store/xifgdfqjdj9yffx430q82kgbx6wnkbcx-source/modules/nixos/network)
+ - [/nix/store/hdbypkibmhnmv7h5m6y7svmcbrrv6ic4-source/modules/nixos/network](file:///nix/store/hdbypkibmhnmv7h5m6y7svmcbrrv6ic4-source/modules/nixos/network)
 
 
 
@@ -5043,10 +4807,13 @@ list of attribute set of 16 bit unsigned integer; between 0 and 65535 (both incl
 
 
 *Default:*
-` [ ] `
+
+```nix
+[ ]
+```
 
 *Declared by:*
- - [/nix/store/xifgdfqjdj9yffx430q82kgbx6wnkbcx-source/modules/nixos/network](file:///nix/store/xifgdfqjdj9yffx430q82kgbx6wnkbcx-source/modules/nixos/network)
+ - [/nix/store/hdbypkibmhnmv7h5m6y7svmcbrrv6ic4-source/modules/nixos/network](file:///nix/store/hdbypkibmhnmv7h5m6y7svmcbrrv6ic4-source/modules/nixos/network)
 
 
 
@@ -5064,10 +4831,13 @@ list of 16 bit unsigned integer; between 0 and 65535 (both inclusive)
 
 
 *Default:*
-` [ ] `
+
+```nix
+[ ]
+```
 
 *Declared by:*
- - [/nix/store/xifgdfqjdj9yffx430q82kgbx6wnkbcx-source/modules/nixos/network](file:///nix/store/xifgdfqjdj9yffx430q82kgbx6wnkbcx-source/modules/nixos/network)
+ - [/nix/store/hdbypkibmhnmv7h5m6y7svmcbrrv6ic4-source/modules/nixos/network](file:///nix/store/hdbypkibmhnmv7h5m6y7svmcbrrv6ic4-source/modules/nixos/network)
 
 
 
@@ -5085,10 +4855,13 @@ list of attribute set of 16 bit unsigned integer; between 0 and 65535 (both incl
 
 
 *Default:*
-` [ ] `
+
+```nix
+[ ]
+```
 
 *Declared by:*
- - [/nix/store/xifgdfqjdj9yffx430q82kgbx6wnkbcx-source/modules/nixos/network](file:///nix/store/xifgdfqjdj9yffx430q82kgbx6wnkbcx-source/modules/nixos/network)
+ - [/nix/store/hdbypkibmhnmv7h5m6y7svmcbrrv6ic4-source/modules/nixos/network](file:///nix/store/hdbypkibmhnmv7h5m6y7svmcbrrv6ic4-source/modules/nixos/network)
 
 
 
@@ -5106,10 +4879,13 @@ list of (string or (attribute set))
 
 
 *Default:*
-` [ ] `
+
+```nix
+[ ]
+```
 
 *Declared by:*
- - [/nix/store/xifgdfqjdj9yffx430q82kgbx6wnkbcx-source/modules/nixos/network](file:///nix/store/xifgdfqjdj9yffx430q82kgbx6wnkbcx-source/modules/nixos/network)
+ - [/nix/store/hdbypkibmhnmv7h5m6y7svmcbrrv6ic4-source/modules/nixos/network](file:///nix/store/hdbypkibmhnmv7h5m6y7svmcbrrv6ic4-source/modules/nixos/network)
 
 
 
@@ -5127,10 +4903,13 @@ list of string
 
 
 *Default:*
-` [ ] `
+
+```nix
+[ ]
+```
 
 *Declared by:*
- - [/nix/store/xifgdfqjdj9yffx430q82kgbx6wnkbcx-source/modules/nixos/network](file:///nix/store/xifgdfqjdj9yffx430q82kgbx6wnkbcx-source/modules/nixos/network)
+ - [/nix/store/hdbypkibmhnmv7h5m6y7svmcbrrv6ic4-source/modules/nixos/network](file:///nix/store/hdbypkibmhnmv7h5m6y7svmcbrrv6ic4-source/modules/nixos/network)
 
 
 
@@ -5148,20 +4927,23 @@ list of string
 
 
 *Default:*
-` [ ] `
+
+```nix
+[ ]
+```
 
 
 
 *Example:*
 
-```
+```nix
 [
   "end0"
 ]
 ```
 
 *Declared by:*
- - [/nix/store/xifgdfqjdj9yffx430q82kgbx6wnkbcx-source/modules/nixos/network](file:///nix/store/xifgdfqjdj9yffx430q82kgbx6wnkbcx-source/modules/nixos/network)
+ - [/nix/store/hdbypkibmhnmv7h5m6y7svmcbrrv6ic4-source/modules/nixos/network](file:///nix/store/hdbypkibmhnmv7h5m6y7svmcbrrv6ic4-source/modules/nixos/network)
 
 
 
@@ -5179,10 +4961,13 @@ null or (submodule)
 
 
 *Default:*
-` null `
+
+```nix
+null
+```
 
 *Declared by:*
- - [/nix/store/xifgdfqjdj9yffx430q82kgbx6wnkbcx-source/modules/nixos/nix/remote-building\.nix](file:///nix/store/xifgdfqjdj9yffx430q82kgbx6wnkbcx-source/modules/nixos/nix/remote-building.nix)
+ - [/nix/store/hdbypkibmhnmv7h5m6y7svmcbrrv6ic4-source/modules/nixos/nix/remote-building\.nix](file:///nix/store/hdbypkibmhnmv7h5m6y7svmcbrrv6ic4-source/modules/nixos/nix/remote-building.nix)
 
 
 
@@ -5200,10 +4985,13 @@ list of string
 
 
 *Default:*
-` [ ] `
+
+```nix
+[ ]
+```
 
 *Declared by:*
- - [/nix/store/xifgdfqjdj9yffx430q82kgbx6wnkbcx-source/modules/nixos/nix/remote-building\.nix](file:///nix/store/xifgdfqjdj9yffx430q82kgbx6wnkbcx-source/modules/nixos/nix/remote-building.nix)
+ - [/nix/store/hdbypkibmhnmv7h5m6y7svmcbrrv6ic4-source/modules/nixos/nix/remote-building\.nix](file:///nix/store/hdbypkibmhnmv7h5m6y7svmcbrrv6ic4-source/modules/nixos/nix/remote-building.nix)
 
 
 
@@ -5221,13 +5009,16 @@ list of string
 
 
 *Default:*
-` [ ] `
+
+```nix
+[ ]
+```
 
 
 
 *Example:*
 
-```
+```nix
 [
   "aarch64-linux"
   "armv7l-linux"
@@ -5235,7 +5026,7 @@ list of string
 ```
 
 *Declared by:*
- - [/nix/store/xifgdfqjdj9yffx430q82kgbx6wnkbcx-source/modules/nixos/nix/remote-building\.nix](file:///nix/store/xifgdfqjdj9yffx430q82kgbx6wnkbcx-source/modules/nixos/nix/remote-building.nix)
+ - [/nix/store/hdbypkibmhnmv7h5m6y7svmcbrrv6ic4-source/modules/nixos/nix/remote-building\.nix](file:///nix/store/hdbypkibmhnmv7h5m6y7svmcbrrv6ic4-source/modules/nixos/nix/remote-building.nix)
 
 
 
@@ -5253,10 +5044,13 @@ signed integer
 
 
 *Default:*
-` 4 `
+
+```nix
+4
+```
 
 *Declared by:*
- - [/nix/store/xifgdfqjdj9yffx430q82kgbx6wnkbcx-source/modules/nixos/nix/remote-building\.nix](file:///nix/store/xifgdfqjdj9yffx430q82kgbx6wnkbcx-source/modules/nixos/nix/remote-building.nix)
+ - [/nix/store/hdbypkibmhnmv7h5m6y7svmcbrrv6ic4-source/modules/nixos/nix/remote-building\.nix](file:///nix/store/hdbypkibmhnmv7h5m6y7svmcbrrv6ic4-source/modules/nixos/nix/remote-building.nix)
 
 
 
@@ -5274,10 +5068,13 @@ signed integer
 
 
 *Default:*
-` 1 `
+
+```nix
+1
+```
 
 *Declared by:*
- - [/nix/store/xifgdfqjdj9yffx430q82kgbx6wnkbcx-source/modules/nixos/nix/remote-building\.nix](file:///nix/store/xifgdfqjdj9yffx430q82kgbx6wnkbcx-source/modules/nixos/nix/remote-building.nix)
+ - [/nix/store/hdbypkibmhnmv7h5m6y7svmcbrrv6ic4-source/modules/nixos/nix/remote-building\.nix](file:///nix/store/hdbypkibmhnmv7h5m6y7svmcbrrv6ic4-source/modules/nixos/nix/remote-building.nix)
 
 
 
@@ -5296,14 +5093,14 @@ list of string
 
 *Default:*
 
-```
+```nix
 [
   "aarch64-linux"
 ]
 ```
 
 *Declared by:*
- - [/nix/store/xifgdfqjdj9yffx430q82kgbx6wnkbcx-source/modules/nixos/nix/remote-building\.nix](file:///nix/store/xifgdfqjdj9yffx430q82kgbx6wnkbcx-source/modules/nixos/nix/remote-building.nix)
+ - [/nix/store/hdbypkibmhnmv7h5m6y7svmcbrrv6ic4-source/modules/nixos/nix/remote-building\.nix](file:///nix/store/hdbypkibmhnmv7h5m6y7svmcbrrv6ic4-source/modules/nixos/nix/remote-building.nix)
 
 
 
@@ -5321,10 +5118,13 @@ string
 
 
 *Default:*
-` "nixremote" `
+
+```nix
+"nixremote"
+```
 
 *Declared by:*
- - [/nix/store/xifgdfqjdj9yffx430q82kgbx6wnkbcx-source/modules/nixos/nix/remote-building\.nix](file:///nix/store/xifgdfqjdj9yffx430q82kgbx6wnkbcx-source/modules/nixos/nix/remote-building.nix)
+ - [/nix/store/hdbypkibmhnmv7h5m6y7svmcbrrv6ic4-source/modules/nixos/nix/remote-building\.nix](file:///nix/store/hdbypkibmhnmv7h5m6y7svmcbrrv6ic4-source/modules/nixos/nix/remote-building.nix)
 
 
 
@@ -5342,15 +5142,21 @@ boolean
 
 
 *Default:*
-` false `
+
+```nix
+false
+```
 
 
 
 *Example:*
-` true `
+
+```nix
+true
+```
 
 *Declared by:*
- - [/nix/store/xifgdfqjdj9yffx430q82kgbx6wnkbcx-source/modules/nixos/nix/auto-update\.nix](file:///nix/store/xifgdfqjdj9yffx430q82kgbx6wnkbcx-source/modules/nixos/nix/auto-update.nix)
+ - [/nix/store/hdbypkibmhnmv7h5m6y7svmcbrrv6ic4-source/modules/nixos/nix/auto-update\.nix](file:///nix/store/hdbypkibmhnmv7h5m6y7svmcbrrv6ic4-source/modules/nixos/nix/auto-update.nix)
 
 
 
@@ -5368,7 +5174,10 @@ string
 
 
 *Default:*
-` "*-*-* 18:00:00" `
+
+```nix
+"*-*-* 18:00:00"
+```
 
 
 
@@ -5376,7 +5185,7 @@ string
 ` *-1..12/3-1..31/2 00:30:00 ` => half past midnight on every other day on every 3rd month\.
 
 *Declared by:*
- - [/nix/store/xifgdfqjdj9yffx430q82kgbx6wnkbcx-source/modules/nixos/nix/auto-update\.nix](file:///nix/store/xifgdfqjdj9yffx430q82kgbx6wnkbcx-source/modules/nixos/nix/auto-update.nix)
+ - [/nix/store/hdbypkibmhnmv7h5m6y7svmcbrrv6ic4-source/modules/nixos/nix/auto-update\.nix](file:///nix/store/hdbypkibmhnmv7h5m6y7svmcbrrv6ic4-source/modules/nixos/nix/auto-update.nix)
 
 
 
@@ -5394,10 +5203,13 @@ null or string
 
 
 *Default:*
-` null `
+
+```nix
+null
+```
 
 *Declared by:*
- - [/nix/store/xifgdfqjdj9yffx430q82kgbx6wnkbcx-source/modules/nixos/nix/auto-update\.nix](file:///nix/store/xifgdfqjdj9yffx430q82kgbx6wnkbcx-source/modules/nixos/nix/auto-update.nix)
+ - [/nix/store/hdbypkibmhnmv7h5m6y7svmcbrrv6ic4-source/modules/nixos/nix/auto-update\.nix](file:///nix/store/hdbypkibmhnmv7h5m6y7svmcbrrv6ic4-source/modules/nixos/nix/auto-update.nix)
 
 
 
@@ -5415,10 +5227,13 @@ one of “self”, “remote”
 
 
 *Default:*
-` "self" `
+
+```nix
+"self"
+```
 
 *Declared by:*
- - [/nix/store/xifgdfqjdj9yffx430q82kgbx6wnkbcx-source/modules/nixos/nix/auto-update\.nix](file:///nix/store/xifgdfqjdj9yffx430q82kgbx6wnkbcx-source/modules/nixos/nix/auto-update.nix)
+ - [/nix/store/hdbypkibmhnmv7h5m6y7svmcbrrv6ic4-source/modules/nixos/nix/auto-update\.nix](file:///nix/store/hdbypkibmhnmv7h5m6y7svmcbrrv6ic4-source/modules/nixos/nix/auto-update.nix)
 
 
 
@@ -5436,10 +5251,13 @@ signed integer or floating point number
 
 
 *Default:*
-` 3 `
+
+```nix
+3
+```
 
 *Declared by:*
- - [/nix/store/xifgdfqjdj9yffx430q82kgbx6wnkbcx-source/modules/nixos/nix](file:///nix/store/xifgdfqjdj9yffx430q82kgbx6wnkbcx-source/modules/nixos/nix)
+ - [/nix/store/hdbypkibmhnmv7h5m6y7svmcbrrv6ic4-source/modules/nixos/nix](file:///nix/store/hdbypkibmhnmv7h5m6y7svmcbrrv6ic4-source/modules/nixos/nix)
 
 
 
@@ -5457,15 +5275,21 @@ boolean
 
 
 *Default:*
-` false `
+
+```nix
+false
+```
 
 
 
 *Example:*
-` true `
+
+```nix
+true
+```
 
 *Declared by:*
- - [/nix/store/xifgdfqjdj9yffx430q82kgbx6wnkbcx-source/modules/nixos/nix](file:///nix/store/xifgdfqjdj9yffx430q82kgbx6wnkbcx-source/modules/nixos/nix)
+ - [/nix/store/hdbypkibmhnmv7h5m6y7svmcbrrv6ic4-source/modules/nixos/nix](file:///nix/store/hdbypkibmhnmv7h5m6y7svmcbrrv6ic4-source/modules/nixos/nix)
 
 
 
@@ -5483,15 +5307,21 @@ string
 
 
 *Default:*
-` "weekly" `
+
+```nix
+"weekly"
+```
 
 
 
 *Example:*
-` "weekly" `
+
+```nix
+"weekly"
+```
 
 *Declared by:*
- - [/nix/store/xifgdfqjdj9yffx430q82kgbx6wnkbcx-source/modules/nixos/nix](file:///nix/store/xifgdfqjdj9yffx430q82kgbx6wnkbcx-source/modules/nixos/nix)
+ - [/nix/store/hdbypkibmhnmv7h5m6y7svmcbrrv6ic4-source/modules/nixos/nix](file:///nix/store/hdbypkibmhnmv7h5m6y7svmcbrrv6ic4-source/modules/nixos/nix)
 
 
 
@@ -5509,21 +5339,25 @@ string
 
 
 *Default:*
-` "1w" `
+
+```nix
+"1w"
+```
 
 
 
 *Example:*
-` "1w" `
+
+```nix
+"1w"
+```
 
 *Declared by:*
- - [/nix/store/xifgdfqjdj9yffx430q82kgbx6wnkbcx-source/modules/nixos/nix](file:///nix/store/xifgdfqjdj9yffx430q82kgbx6wnkbcx-source/modules/nixos/nix)
+ - [/nix/store/hdbypkibmhnmv7h5m6y7svmcbrrv6ic4-source/modules/nixos/nix](file:///nix/store/hdbypkibmhnmv7h5m6y7svmcbrrv6ic4-source/modules/nixos/nix)
 
 
 
 ## nix\.remoteBuilders
-
-
 
 Remote builders available to this machine\.
 
@@ -5535,10 +5369,13 @@ list of (submodule)
 
 
 *Default:*
-` [ ] `
+
+```nix
+[ ]
+```
 
 *Declared by:*
- - [/nix/store/xifgdfqjdj9yffx430q82kgbx6wnkbcx-source/modules/nixos/nix/remote-building\.nix](file:///nix/store/xifgdfqjdj9yffx430q82kgbx6wnkbcx-source/modules/nixos/nix/remote-building.nix)
+ - [/nix/store/hdbypkibmhnmv7h5m6y7svmcbrrv6ic4-source/modules/nixos/nix/remote-building\.nix](file:///nix/store/hdbypkibmhnmv7h5m6y7svmcbrrv6ic4-source/modules/nixos/nix/remote-building.nix)
 
 
 
@@ -5554,7 +5391,7 @@ The hostname of the remote builder\.
 string
 
 *Declared by:*
- - [/nix/store/xifgdfqjdj9yffx430q82kgbx6wnkbcx-source/modules/nixos/nix/remote-building\.nix](file:///nix/store/xifgdfqjdj9yffx430q82kgbx6wnkbcx-source/modules/nixos/nix/remote-building.nix)
+ - [/nix/store/hdbypkibmhnmv7h5m6y7svmcbrrv6ic4-source/modules/nixos/nix/remote-building\.nix](file:///nix/store/hdbypkibmhnmv7h5m6y7svmcbrrv6ic4-source/modules/nixos/nix/remote-building.nix)
 
 
 
@@ -5570,7 +5407,7 @@ SSH host public key of the builder, for known_hosts
 string
 
 *Declared by:*
- - [/nix/store/xifgdfqjdj9yffx430q82kgbx6wnkbcx-source/modules/nixos/nix/remote-building\.nix](file:///nix/store/xifgdfqjdj9yffx430q82kgbx6wnkbcx-source/modules/nixos/nix/remote-building.nix)
+ - [/nix/store/hdbypkibmhnmv7h5m6y7svmcbrrv6ic4-source/modules/nixos/nix/remote-building\.nix](file:///nix/store/hdbypkibmhnmv7h5m6y7svmcbrrv6ic4-source/modules/nixos/nix/remote-building.nix)
 
 
 
@@ -5588,10 +5425,13 @@ signed integer
 
 
 *Default:*
-` 4 `
+
+```nix
+4
+```
 
 *Declared by:*
- - [/nix/store/xifgdfqjdj9yffx430q82kgbx6wnkbcx-source/modules/nixos/nix/remote-building\.nix](file:///nix/store/xifgdfqjdj9yffx430q82kgbx6wnkbcx-source/modules/nixos/nix/remote-building.nix)
+ - [/nix/store/hdbypkibmhnmv7h5m6y7svmcbrrv6ic4-source/modules/nixos/nix/remote-building\.nix](file:///nix/store/hdbypkibmhnmv7h5m6y7svmcbrrv6ic4-source/modules/nixos/nix/remote-building.nix)
 
 
 
@@ -5609,10 +5449,13 @@ signed integer
 
 
 *Default:*
-` 1 `
+
+```nix
+1
+```
 
 *Declared by:*
- - [/nix/store/xifgdfqjdj9yffx430q82kgbx6wnkbcx-source/modules/nixos/nix/remote-building\.nix](file:///nix/store/xifgdfqjdj9yffx430q82kgbx6wnkbcx-source/modules/nixos/nix/remote-building.nix)
+ - [/nix/store/hdbypkibmhnmv7h5m6y7svmcbrrv6ic4-source/modules/nixos/nix/remote-building\.nix](file:///nix/store/hdbypkibmhnmv7h5m6y7svmcbrrv6ic4-source/modules/nixos/nix/remote-building.nix)
 
 
 
@@ -5630,10 +5473,13 @@ null or string
 
 
 *Default:*
-` null `
+
+```nix
+null
+```
 
 *Declared by:*
- - [/nix/store/xifgdfqjdj9yffx430q82kgbx6wnkbcx-source/modules/nixos/nix/remote-building\.nix](file:///nix/store/xifgdfqjdj9yffx430q82kgbx6wnkbcx-source/modules/nixos/nix/remote-building.nix)
+ - [/nix/store/hdbypkibmhnmv7h5m6y7svmcbrrv6ic4-source/modules/nixos/nix/remote-building\.nix](file:///nix/store/hdbypkibmhnmv7h5m6y7svmcbrrv6ic4-source/modules/nixos/nix/remote-building.nix)
 
 
 
@@ -5652,7 +5498,7 @@ list of string
 
 *Default:*
 
-```
+```nix
 [
   "nixos-test"
   "big-parallel"
@@ -5661,7 +5507,7 @@ list of string
 ```
 
 *Declared by:*
- - [/nix/store/xifgdfqjdj9yffx430q82kgbx6wnkbcx-source/modules/nixos/nix/remote-building\.nix](file:///nix/store/xifgdfqjdj9yffx430q82kgbx6wnkbcx-source/modules/nixos/nix/remote-building.nix)
+ - [/nix/store/hdbypkibmhnmv7h5m6y7svmcbrrv6ic4-source/modules/nixos/nix/remote-building\.nix](file:///nix/store/hdbypkibmhnmv7h5m6y7svmcbrrv6ic4-source/modules/nixos/nix/remote-building.nix)
 
 
 
@@ -5680,14 +5526,14 @@ list of string
 
 *Default:*
 
-```
+```nix
 [
   "x86_64-linux"
 ]
 ```
 
 *Declared by:*
- - [/nix/store/xifgdfqjdj9yffx430q82kgbx6wnkbcx-source/modules/nixos/nix/remote-building\.nix](file:///nix/store/xifgdfqjdj9yffx430q82kgbx6wnkbcx-source/modules/nixos/nix/remote-building.nix)
+ - [/nix/store/hdbypkibmhnmv7h5m6y7svmcbrrv6ic4-source/modules/nixos/nix/remote-building\.nix](file:///nix/store/hdbypkibmhnmv7h5m6y7svmcbrrv6ic4-source/modules/nixos/nix/remote-building.nix)
 
 
 
@@ -5705,10 +5551,13 @@ string
 
 
 *Default:*
-` "nixremote" `
+
+```nix
+"nixremote"
+```
 
 *Declared by:*
- - [/nix/store/xifgdfqjdj9yffx430q82kgbx6wnkbcx-source/modules/nixos/nix/remote-building\.nix](file:///nix/store/xifgdfqjdj9yffx430q82kgbx6wnkbcx-source/modules/nixos/nix/remote-building.nix)
+ - [/nix/store/hdbypkibmhnmv7h5m6y7svmcbrrv6ic4-source/modules/nixos/nix/remote-building\.nix](file:///nix/store/hdbypkibmhnmv7h5m6y7svmcbrrv6ic4-source/modules/nixos/nix/remote-building.nix)
 
 
 
@@ -5726,15 +5575,21 @@ boolean
 
 
 *Default:*
-` false `
+
+```nix
+false
+```
 
 
 
 *Example:*
-` true `
+
+```nix
+true
+```
 
 *Declared by:*
- - [/nix/store/xifgdfqjdj9yffx430q82kgbx6wnkbcx-source/modules/nixos/programs](file:///nix/store/xifgdfqjdj9yffx430q82kgbx6wnkbcx-source/modules/nixos/programs)
+ - [/nix/store/hdbypkibmhnmv7h5m6y7svmcbrrv6ic4-source/modules/nixos/programs](file:///nix/store/hdbypkibmhnmv7h5m6y7svmcbrrv6ic4-source/modules/nixos/programs)
 
 
 
@@ -5752,7 +5607,10 @@ package
 
 
 *Default:*
-` pkgs.harmonia `
+
+```nix
+pkgs.harmonia
+```
 
 *Declared by:*
  - [/nix/store/81sr43harc753claf8bzyv3mrnjzq652-source/nixos/modules/services/networking/harmonia\.nix](file:///nix/store/81sr43harc753claf8bzyv3mrnjzq652-source/nixos/modules/services/networking/harmonia.nix)
@@ -5773,12 +5631,18 @@ boolean
 
 
 *Default:*
-` false `
+
+```nix
+false
+```
 
 
 
 *Example:*
-` true `
+
+```nix
+true
+```
 
 *Declared by:*
  - [/nix/store/81sr43harc753claf8bzyv3mrnjzq652-source/nixos/modules/services/networking/harmonia\.nix](file:///nix/store/81sr43harc753claf8bzyv3mrnjzq652-source/nixos/modules/services/networking/harmonia.nix)
@@ -5800,7 +5664,10 @@ TOML value
 
 
 *Default:*
-` { } `
+
+```nix
+{ }
+```
 
 *Declared by:*
  - [/nix/store/81sr43harc753claf8bzyv3mrnjzq652-source/nixos/modules/services/networking/harmonia\.nix](file:///nix/store/81sr43harc753claf8bzyv3mrnjzq652-source/nixos/modules/services/networking/harmonia.nix)
@@ -5821,7 +5688,10 @@ null or absolute path
 
 
 *Default:*
-` null `
+
+```nix
+null
+```
 
 *Declared by:*
  - [/nix/store/81sr43harc753claf8bzyv3mrnjzq652-source/nixos/modules/services/networking/harmonia\.nix](file:///nix/store/81sr43harc753claf8bzyv3mrnjzq652-source/nixos/modules/services/networking/harmonia.nix)
@@ -5842,7 +5712,10 @@ list of absolute path
 
 
 *Default:*
-` [ ] `
+
+```nix
+[ ]
+```
 
 *Declared by:*
  - [/nix/store/81sr43harc753claf8bzyv3mrnjzq652-source/nixos/modules/services/networking/harmonia\.nix](file:///nix/store/81sr43harc753claf8bzyv3mrnjzq652-source/nixos/modules/services/networking/harmonia.nix)
@@ -5863,12 +5736,18 @@ boolean
 
 
 *Default:*
-` false `
+
+```nix
+false
+```
 
 
 
 *Example:*
-` true `
+
+```nix
+true
+```
 
 *Declared by:*
  - [/nix/store/81sr43harc753claf8bzyv3mrnjzq652-source/nixos/modules/services/networking/harmonia\.nix](file:///nix/store/81sr43harc753claf8bzyv3mrnjzq652-source/nixos/modules/services/networking/harmonia.nix)
@@ -5889,7 +5768,10 @@ string
 
 
 *Default:*
-` "/nix/var/nix/db/db.sqlite" `
+
+```nix
+"/nix/var/nix/db/db.sqlite"
+```
 
 *Declared by:*
  - [/nix/store/81sr43harc753claf8bzyv3mrnjzq652-source/nixos/modules/services/networking/harmonia\.nix](file:///nix/store/81sr43harc753claf8bzyv3mrnjzq652-source/nixos/modules/services/networking/harmonia.nix)
@@ -5910,7 +5792,10 @@ string
 
 
 *Default:*
-` "info" `
+
+```nix
+"info"
+```
 
 *Declared by:*
  - [/nix/store/81sr43harc753claf8bzyv3mrnjzq652-source/nixos/modules/services/networking/harmonia\.nix](file:///nix/store/81sr43harc753claf8bzyv3mrnjzq652-source/nixos/modules/services/networking/harmonia.nix)
@@ -5931,7 +5816,10 @@ string
 
 
 *Default:*
-` "/run/harmonia-daemon/socket" `
+
+```nix
+"/run/harmonia-daemon/socket"
+```
 
 *Declared by:*
  - [/nix/store/81sr43harc753claf8bzyv3mrnjzq652-source/nixos/modules/services/networking/harmonia\.nix](file:///nix/store/81sr43harc753claf8bzyv3mrnjzq652-source/nixos/modules/services/networking/harmonia.nix)
@@ -5952,7 +5840,10 @@ string
 
 
 *Default:*
-` "/nix/store" `
+
+```nix
+"/nix/store"
+```
 
 *Declared by:*
  - [/nix/store/81sr43harc753claf8bzyv3mrnjzq652-source/nixos/modules/services/networking/harmonia\.nix](file:///nix/store/81sr43harc753claf8bzyv3mrnjzq652-source/nixos/modules/services/networking/harmonia.nix)
@@ -5973,12 +5864,18 @@ boolean
 
 
 *Default:*
-` false `
+
+```nix
+false
+```
 
 
 
 *Example:*
-` true `
+
+```nix
+true
+```
 
 *Declared by:*
  - [/nix/store/81sr43harc753claf8bzyv3mrnjzq652-source/nixos/modules/services/networking/ncps\.nix](file:///nix/store/81sr43harc753claf8bzyv3mrnjzq652-source/nixos/modules/services/networking/ncps.nix)
@@ -5986,6 +5883,8 @@ boolean
 
 
 ## services\.ncps\.package
+
+
 
 The ncps package to use\.
 
@@ -5997,7 +5896,10 @@ package
 
 
 *Default:*
-` pkgs.ncps `
+
+```nix
+pkgs.ncps
+```
 
 *Declared by:*
  - [/nix/store/81sr43harc753claf8bzyv3mrnjzq652-source/nixos/modules/services/networking/ncps\.nix](file:///nix/store/81sr43harc753claf8bzyv3mrnjzq652-source/nixos/modules/services/networking/ncps.nix)
@@ -6018,7 +5920,10 @@ boolean
 
 
 *Default:*
-` true `
+
+```nix
+true
+```
 
 *Declared by:*
  - [/nix/store/81sr43harc753claf8bzyv3mrnjzq652-source/nixos/modules/services/networking/ncps\.nix](file:///nix/store/81sr43harc753claf8bzyv3mrnjzq652-source/nixos/modules/services/networking/ncps.nix)
@@ -6039,12 +5944,18 @@ boolean
 
 
 *Default:*
-` false `
+
+```nix
+false
+```
 
 
 
 *Example:*
-` true `
+
+```nix
+true
+```
 
 *Declared by:*
  - [/nix/store/81sr43harc753claf8bzyv3mrnjzq652-source/nixos/modules/services/networking/ncps\.nix](file:///nix/store/81sr43harc753claf8bzyv3mrnjzq652-source/nixos/modules/services/networking/ncps.nix)
@@ -6067,12 +5978,18 @@ boolean
 
 
 *Default:*
-` false `
+
+```nix
+false
+```
 
 
 
 *Example:*
-` true `
+
+```nix
+true
+```
 
 *Declared by:*
  - [/nix/store/81sr43harc753claf8bzyv3mrnjzq652-source/nixos/modules/services/networking/ncps\.nix](file:///nix/store/81sr43harc753claf8bzyv3mrnjzq652-source/nixos/modules/services/networking/ncps.nix)
@@ -6095,12 +6012,18 @@ boolean
 
 
 *Default:*
-` false `
+
+```nix
+false
+```
 
 
 
 *Example:*
-` true `
+
+```nix
+true
+```
 
 *Declared by:*
  - [/nix/store/81sr43harc753claf8bzyv3mrnjzq652-source/nixos/modules/services/networking/ncps\.nix](file:///nix/store/81sr43harc753claf8bzyv3mrnjzq652-source/nixos/modules/services/networking/ncps.nix)
@@ -6122,12 +6045,18 @@ boolean
 
 
 *Default:*
-` false `
+
+```nix
+false
+```
 
 
 
 *Example:*
-` true `
+
+```nix
+true
+```
 
 *Declared by:*
  - [/nix/store/81sr43harc753claf8bzyv3mrnjzq652-source/nixos/modules/services/networking/ncps\.nix](file:///nix/store/81sr43harc753claf8bzyv3mrnjzq652-source/nixos/modules/services/networking/ncps.nix)
@@ -6148,7 +6077,10 @@ The average chunk size for CDC in bytes\.
 
 
 *Default:*
-` 65536 `
+
+```nix
+65536
+```
 
 *Declared by:*
  - [/nix/store/81sr43harc753claf8bzyv3mrnjzq652-source/nixos/modules/services/networking/ncps\.nix](file:///nix/store/81sr43harc753claf8bzyv3mrnjzq652-source/nixos/modules/services/networking/ncps.nix)
@@ -6169,7 +6101,10 @@ The maximum chunk size for CDC in bytes\.
 
 
 *Default:*
-` 262144 `
+
+```nix
+262144
+```
 
 *Declared by:*
  - [/nix/store/81sr43harc753claf8bzyv3mrnjzq652-source/nixos/modules/services/networking/ncps\.nix](file:///nix/store/81sr43harc753claf8bzyv3mrnjzq652-source/nixos/modules/services/networking/ncps.nix)
@@ -6190,7 +6125,10 @@ The minimum chunk size for CDC in bytes\.
 
 
 *Default:*
-` 16384 `
+
+```nix
+16384
+```
 
 *Declared by:*
  - [/nix/store/81sr43harc753claf8bzyv3mrnjzq652-source/nixos/modules/services/networking/ncps\.nix](file:///nix/store/81sr43harc753claf8bzyv3mrnjzq652-source/nixos/modules/services/networking/ncps.nix)
@@ -6212,7 +6150,10 @@ signed integer
 
 
 *Default:*
-` 0 `
+
+```nix
+0
+```
 
 *Declared by:*
  - [/nix/store/81sr43harc753claf8bzyv3mrnjzq652-source/nixos/modules/services/networking/ncps\.nix](file:///nix/store/81sr43harc753claf8bzyv3mrnjzq652-source/nixos/modules/services/networking/ncps.nix)
@@ -6234,7 +6175,10 @@ signed integer
 
 
 *Default:*
-` 0 `
+
+```nix
+0
+```
 
 *Declared by:*
  - [/nix/store/81sr43harc753claf8bzyv3mrnjzq652-source/nixos/modules/services/networking/ncps\.nix](file:///nix/store/81sr43harc753claf8bzyv3mrnjzq652-source/nixos/modules/services/networking/ncps.nix)
@@ -6255,7 +6199,10 @@ null or string
 
 
 *Default:*
-` "sqlite:/var/lib/ncps/db/db.sqlite" `
+
+```nix
+"sqlite:/var/lib/ncps/db/db.sqlite"
+```
 
 *Declared by:*
  - [/nix/store/81sr43harc753claf8bzyv3mrnjzq652-source/nixos/modules/services/networking/ncps\.nix](file:///nix/store/81sr43harc753claf8bzyv3mrnjzq652-source/nixos/modules/services/networking/ncps.nix)
@@ -6276,7 +6223,10 @@ null or absolute path
 
 
 *Default:*
-` null `
+
+```nix
+null
+```
 
 *Declared by:*
  - [/nix/store/81sr43harc753claf8bzyv3mrnjzq652-source/nixos/modules/services/networking/ncps\.nix](file:///nix/store/81sr43harc753claf8bzyv3mrnjzq652-source/nixos/modules/services/networking/ncps.nix)
@@ -6315,7 +6265,10 @@ boolean
 
 
 *Default:*
-` false `
+
+```nix
+false
+```
 
 *Declared by:*
  - [/nix/store/81sr43harc753claf8bzyv3mrnjzq652-source/nixos/modules/services/networking/ncps\.nix](file:///nix/store/81sr43harc753claf8bzyv3mrnjzq652-source/nixos/modules/services/networking/ncps.nix)
@@ -6337,7 +6290,10 @@ one of “local”, “redis”
 
 
 *Default:*
-` "local" `
+
+```nix
+"local"
+```
 
 *Declared by:*
  - [/nix/store/81sr43harc753claf8bzyv3mrnjzq652-source/nixos/modules/services/networking/ncps\.nix](file:///nix/store/81sr43harc753claf8bzyv3mrnjzq652-source/nixos/modules/services/networking/ncps.nix)
@@ -6358,7 +6314,10 @@ string
 
 
 *Default:*
-` "5m0s" `
+
+```nix
+"5m0s"
+```
 
 *Declared by:*
  - [/nix/store/81sr43harc753claf8bzyv3mrnjzq652-source/nixos/modules/services/networking/ncps\.nix](file:///nix/store/81sr43harc753claf8bzyv3mrnjzq652-source/nixos/modules/services/networking/ncps.nix)
@@ -6379,7 +6338,10 @@ string
 
 
 *Default:*
-` "30m0s" `
+
+```nix
+"30m0s"
+```
 
 *Declared by:*
  - [/nix/store/81sr43harc753claf8bzyv3mrnjzq652-source/nixos/modules/services/networking/ncps\.nix](file:///nix/store/81sr43harc753claf8bzyv3mrnjzq652-source/nixos/modules/services/networking/ncps.nix)
@@ -6401,7 +6363,10 @@ string
 
 
 *Default:*
-` "ncps:lock:" `
+
+```nix
+"ncps:lock:"
+```
 
 *Declared by:*
  - [/nix/store/81sr43harc753claf8bzyv3mrnjzq652-source/nixos/modules/services/networking/ncps\.nix](file:///nix/store/81sr43harc753claf8bzyv3mrnjzq652-source/nixos/modules/services/networking/ncps.nix)
@@ -6422,7 +6387,10 @@ string
 
 
 *Default:*
-` "100ms" `
+
+```nix
+"100ms"
+```
 
 *Declared by:*
  - [/nix/store/81sr43harc753claf8bzyv3mrnjzq652-source/nixos/modules/services/networking/ncps\.nix](file:///nix/store/81sr43harc753claf8bzyv3mrnjzq652-source/nixos/modules/services/networking/ncps.nix)
@@ -6443,7 +6411,10 @@ boolean
 
 
 *Default:*
-` true `
+
+```nix
+true
+```
 
 *Declared by:*
  - [/nix/store/81sr43harc753claf8bzyv3mrnjzq652-source/nixos/modules/services/networking/ncps\.nix](file:///nix/store/81sr43harc753claf8bzyv3mrnjzq652-source/nixos/modules/services/networking/ncps.nix)
@@ -6464,7 +6435,10 @@ signed integer
 
 
 *Default:*
-` 3 `
+
+```nix
+3
+```
 
 *Declared by:*
  - [/nix/store/81sr43harc753claf8bzyv3mrnjzq652-source/nixos/modules/services/networking/ncps\.nix](file:///nix/store/81sr43harc753claf8bzyv3mrnjzq652-source/nixos/modules/services/networking/ncps.nix)
@@ -6486,7 +6460,10 @@ string
 
 
 *Default:*
-` "2s" `
+
+```nix
+"2s"
+```
 
 *Declared by:*
  - [/nix/store/81sr43harc753claf8bzyv3mrnjzq652-source/nixos/modules/services/networking/ncps\.nix](file:///nix/store/81sr43harc753claf8bzyv3mrnjzq652-source/nixos/modules/services/networking/ncps.nix)
@@ -6510,12 +6487,18 @@ null or string
 
 
 *Default:*
-` null `
+
+```nix
+null
+```
 
 
 
 *Example:*
-` "0 2 * * *" `
+
+```nix
+"0 2 * * *"
+```
 
 *Declared by:*
  - [/nix/store/81sr43harc753claf8bzyv3mrnjzq652-source/nixos/modules/services/networking/ncps\.nix](file:///nix/store/81sr43harc753claf8bzyv3mrnjzq652-source/nixos/modules/services/networking/ncps.nix)
@@ -6538,12 +6521,18 @@ string
 
 
 *Default:*
-` "Local" `
+
+```nix
+"Local"
+```
 
 
 
 *Example:*
-` "America/Los_Angeles" `
+
+```nix
+"America/Los_Angeles"
+```
 
 *Declared by:*
  - [/nix/store/81sr43harc753claf8bzyv3mrnjzq652-source/nixos/modules/services/networking/ncps\.nix](file:///nix/store/81sr43harc753claf8bzyv3mrnjzq652-source/nixos/modules/services/networking/ncps.nix)
@@ -6565,12 +6554,18 @@ null or string
 
 
 *Default:*
-` null `
+
+```nix
+null
+```
 
 
 
 *Example:*
-` "100G" `
+
+```nix
+"100G"
+```
 
 *Declared by:*
  - [/nix/store/81sr43harc753claf8bzyv3mrnjzq652-source/nixos/modules/services/networking/ncps\.nix](file:///nix/store/81sr43harc753claf8bzyv3mrnjzq652-source/nixos/modules/services/networking/ncps.nix)
@@ -6591,7 +6586,10 @@ null or (submodule)
 
 
 *Default:*
-` null `
+
+```nix
+null
+```
 
 *Declared by:*
  - [/nix/store/81sr43harc753claf8bzyv3mrnjzq652-source/nixos/modules/services/networking/ncps\.nix](file:///nix/store/81sr43harc753claf8bzyv3mrnjzq652-source/nixos/modules/services/networking/ncps.nix)
@@ -6612,9 +6610,17 @@ list of string
 
 
 
+*Default:*
+
+```nix
+[ ]
+```
+
+
+
 *Example:*
 
-```
+```nix
 ''
   ["redis0:6379" "redis1:6379"]
 ''
@@ -6639,7 +6645,10 @@ signed integer
 
 
 *Default:*
-` 0 `
+
+```nix
+0
+```
 
 *Declared by:*
  - [/nix/store/81sr43harc753claf8bzyv3mrnjzq652-source/nixos/modules/services/networking/ncps\.nix](file:///nix/store/81sr43harc753claf8bzyv3mrnjzq652-source/nixos/modules/services/networking/ncps.nix)
@@ -6660,7 +6669,10 @@ null or string
 
 
 *Default:*
-` null `
+
+```nix
+null
+```
 
 *Declared by:*
  - [/nix/store/81sr43harc753claf8bzyv3mrnjzq652-source/nixos/modules/services/networking/ncps\.nix](file:///nix/store/81sr43harc753claf8bzyv3mrnjzq652-source/nixos/modules/services/networking/ncps.nix)
@@ -6681,7 +6693,10 @@ null or absolute path
 
 
 *Default:*
-` null `
+
+```nix
+null
+```
 
 *Declared by:*
  - [/nix/store/81sr43harc753claf8bzyv3mrnjzq652-source/nixos/modules/services/networking/ncps\.nix](file:///nix/store/81sr43harc753claf8bzyv3mrnjzq652-source/nixos/modules/services/networking/ncps.nix)
@@ -6702,7 +6717,10 @@ signed integer
 
 
 *Default:*
-` 10 `
+
+```nix
+10
+```
 
 *Declared by:*
  - [/nix/store/81sr43harc753claf8bzyv3mrnjzq652-source/nixos/modules/services/networking/ncps\.nix](file:///nix/store/81sr43harc753claf8bzyv3mrnjzq652-source/nixos/modules/services/networking/ncps.nix)
@@ -6723,7 +6741,10 @@ boolean
 
 
 *Default:*
-` false `
+
+```nix
+false
+```
 
 *Declared by:*
  - [/nix/store/81sr43harc753claf8bzyv3mrnjzq652-source/nixos/modules/services/networking/ncps\.nix](file:///nix/store/81sr43harc753claf8bzyv3mrnjzq652-source/nixos/modules/services/networking/ncps.nix)
@@ -6744,7 +6765,10 @@ null or string
 
 
 *Default:*
-` null `
+
+```nix
+null
+```
 
 *Declared by:*
  - [/nix/store/81sr43harc753claf8bzyv3mrnjzq652-source/nixos/modules/services/networking/ncps\.nix](file:///nix/store/81sr43harc753claf8bzyv3mrnjzq652-source/nixos/modules/services/networking/ncps.nix)
@@ -6766,7 +6790,10 @@ null or absolute path
 
 
 *Default:*
-` null `
+
+```nix
+null
+```
 
 *Declared by:*
  - [/nix/store/81sr43harc753claf8bzyv3mrnjzq652-source/nixos/modules/services/networking/ncps\.nix](file:///nix/store/81sr43harc753claf8bzyv3mrnjzq652-source/nixos/modules/services/networking/ncps.nix)
@@ -6787,12 +6814,18 @@ boolean
 
 
 *Default:*
-` true `
+
+```nix
+true
+```
 
 
 
 *Example:*
-` false `
+
+```nix
+false
+```
 
 *Declared by:*
  - [/nix/store/81sr43harc753claf8bzyv3mrnjzq652-source/nixos/modules/services/networking/ncps\.nix](file:///nix/store/81sr43harc753claf8bzyv3mrnjzq652-source/nixos/modules/services/networking/ncps.nix)
@@ -6815,7 +6848,10 @@ absolute path
 
 
 *Default:*
-` "/var/lib/ncps" `
+
+```nix
+"/var/lib/ncps"
+```
 
 *Declared by:*
  - [/nix/store/81sr43harc753claf8bzyv3mrnjzq652-source/nixos/modules/services/networking/ncps\.nix](file:///nix/store/81sr43harc753claf8bzyv3mrnjzq652-source/nixos/modules/services/networking/ncps.nix)
@@ -6836,7 +6872,10 @@ null or (submodule)
 
 
 *Default:*
-` null `
+
+```nix
+null
+```
 
 *Declared by:*
  - [/nix/store/81sr43harc753claf8bzyv3mrnjzq652-source/nixos/modules/services/networking/ncps\.nix](file:///nix/store/81sr43harc753claf8bzyv3mrnjzq652-source/nixos/modules/services/networking/ncps.nix)
@@ -6889,7 +6928,10 @@ string
 
 
 *Example:*
-` "https://s3.amazonaws.com" `
+
+```nix
+"https://s3.amazonaws.com"
+```
 
 *Declared by:*
  - [/nix/store/81sr43harc753claf8bzyv3mrnjzq652-source/nixos/modules/services/networking/ncps\.nix](file:///nix/store/81sr43harc753claf8bzyv3mrnjzq652-source/nixos/modules/services/networking/ncps.nix)
@@ -6910,7 +6952,10 @@ boolean
 
 
 *Default:*
-` false `
+
+```nix
+false
+```
 
 *Declared by:*
  - [/nix/store/81sr43harc753claf8bzyv3mrnjzq652-source/nixos/modules/services/networking/ncps\.nix](file:///nix/store/81sr43harc753claf8bzyv3mrnjzq652-source/nixos/modules/services/networking/ncps.nix)
@@ -6931,7 +6976,10 @@ null or string
 
 
 *Default:*
-` null `
+
+```nix
+null
+```
 
 *Declared by:*
  - [/nix/store/81sr43harc753claf8bzyv3mrnjzq652-source/nixos/modules/services/networking/ncps\.nix](file:///nix/store/81sr43harc753claf8bzyv3mrnjzq652-source/nixos/modules/services/networking/ncps.nix)
@@ -6968,7 +7016,10 @@ absolute path
 
 
 *Default:*
-` "/tmp" `
+
+```nix
+"/tmp"
+```
 
 *Declared by:*
  - [/nix/store/81sr43harc753claf8bzyv3mrnjzq652-source/nixos/modules/services/networking/ncps\.nix](file:///nix/store/81sr43harc753claf8bzyv3mrnjzq652-source/nixos/modules/services/networking/ncps.nix)
@@ -6989,7 +7040,10 @@ null or string
 
 
 *Default:*
-` null `
+
+```nix
+null
+```
 
 *Declared by:*
  - [/nix/store/81sr43harc753claf8bzyv3mrnjzq652-source/nixos/modules/services/networking/ncps\.nix](file:///nix/store/81sr43harc753claf8bzyv3mrnjzq652-source/nixos/modules/services/networking/ncps.nix)
@@ -7012,13 +7066,16 @@ list of string
 
 
 *Default:*
-` [ ] `
+
+```nix
+[ ]
+```
 
 
 
 *Example:*
 
-```
+```nix
 [
   "cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY="
 ]
@@ -7043,12 +7100,18 @@ null or string
 
 
 *Default:*
-` null `
+
+```nix
+null
+```
 
 
 
 *Example:*
-` "5s" `
+
+```nix
+"5s"
+```
 
 *Declared by:*
  - [/nix/store/81sr43harc753claf8bzyv3mrnjzq652-source/nixos/modules/services/networking/ncps\.nix](file:///nix/store/81sr43harc753claf8bzyv3mrnjzq652-source/nixos/modules/services/networking/ncps.nix)
@@ -7068,9 +7131,17 @@ list of string
 
 
 
+*Default:*
+
+```nix
+[ ]
+```
+
+
+
 *Example:*
 
-```
+```nix
 [
   "https://cache.nixos.org"
 ]
@@ -7097,7 +7168,10 @@ one of “trace”, “debug”, “info”, “warn”, “error”, “fatal�
 
 
 *Default:*
-` "info" `
+
+```nix
+"info"
+```
 
 *Declared by:*
  - [/nix/store/81sr43harc753claf8bzyv3mrnjzq652-source/nixos/modules/services/networking/ncps\.nix](file:///nix/store/81sr43harc753claf8bzyv3mrnjzq652-source/nixos/modules/services/networking/ncps.nix)
@@ -7119,12 +7193,18 @@ null or absolute path
 
 
 *Default:*
-` null `
+
+```nix
+null
+```
 
 
 
 *Example:*
-` "/etc/nix/netrc" `
+
+```nix
+"/etc/nix/netrc"
+```
 
 *Declared by:*
  - [/nix/store/81sr43harc753claf8bzyv3mrnjzq652-source/nixos/modules/services/networking/ncps\.nix](file:///nix/store/81sr43harc753claf8bzyv3mrnjzq652-source/nixos/modules/services/networking/ncps.nix)
@@ -7145,12 +7225,18 @@ boolean
 
 
 *Default:*
-` false `
+
+```nix
+false
+```
 
 
 
 *Example:*
-` true `
+
+```nix
+true
+```
 
 *Declared by:*
  - [/nix/store/81sr43harc753claf8bzyv3mrnjzq652-source/nixos/modules/services/networking/ncps\.nix](file:///nix/store/81sr43harc753claf8bzyv3mrnjzq652-source/nixos/modules/services/networking/ncps.nix)
@@ -7173,7 +7259,10 @@ null or string
 
 
 *Default:*
-` null `
+
+```nix
+null
+```
 
 *Declared by:*
  - [/nix/store/81sr43harc753claf8bzyv3mrnjzq652-source/nixos/modules/services/networking/ncps\.nix](file:///nix/store/81sr43harc753claf8bzyv3mrnjzq652-source/nixos/modules/services/networking/ncps.nix)
@@ -7194,12 +7283,18 @@ boolean
 
 
 *Default:*
-` false `
+
+```nix
+false
+```
 
 
 
 *Example:*
-` true `
+
+```nix
+true
+```
 
 *Declared by:*
  - [/nix/store/81sr43harc753claf8bzyv3mrnjzq652-source/nixos/modules/services/networking/ncps\.nix](file:///nix/store/81sr43harc753claf8bzyv3mrnjzq652-source/nixos/modules/services/networking/ncps.nix)
@@ -7220,7 +7315,10 @@ string
 
 
 *Default:*
-` ":8501" `
+
+```nix
+":8501"
+```
 
 *Declared by:*
  - [/nix/store/81sr43harc753claf8bzyv3mrnjzq652-source/nixos/modules/services/networking/ncps\.nix](file:///nix/store/81sr43harc753claf8bzyv3mrnjzq652-source/nixos/modules/services/networking/ncps.nix)
@@ -7241,14 +7339,20 @@ boolean
 
 
 *Default:*
-` false `
+
+```nix
+false
+```
 
 
 
 *Example:*
-` true `
+
+```nix
+true
+```
 
 *Declared by:*
- - [/nix/store/xifgdfqjdj9yffx430q82kgbx6wnkbcx-source/modules/nixos/theming](file:///nix/store/xifgdfqjdj9yffx430q82kgbx6wnkbcx-source/modules/nixos/theming)
+ - [/nix/store/hdbypkibmhnmv7h5m6y7svmcbrrv6ic4-source/modules/nixos/theming](file:///nix/store/hdbypkibmhnmv7h5m6y7svmcbrrv6ic4-source/modules/nixos/theming)
 
 
