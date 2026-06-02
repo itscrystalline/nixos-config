@@ -100,6 +100,8 @@ jobs:
 
           tea login add --name "$USER" --token "$TOKEN" --url "$FORGEJO_SERVER_URL"
 
+          set -x
+
           tea pr create \
             --login "$USER" \
             --title "$TITLE" \
@@ -112,21 +114,18 @@ jobs:
         if: steps.create-pr.outputs.pr > 0
         id: auto-merge
         env:
-          TOKEN: ${{ inputs.token }}
-          FORGEJO_SERVER_URL: ${{ inputs.server }}
-          REPO: ${{ inputs.repo }}
+          TOKEN: ${{ secrets.FJ_TOKEN }}
+          FORGEJO_SERVER_URL: ${{ forgejo.server_url }}
+          REPO: ${{ forgejo.repository }}
           PR_NUMBER: ${{ steps.create-pr.outputs.pr }}
           PAYLOAD: |
             {
               "Do": "merge",
-              "delete_branch_after_merge": ${{ inputs.delete-branch == 'true' }},
+              "delete_branch_after_merge": true,
               "merge_when_checks_succeed": true,
               "force_merge": false
             }
         run: |
-          type -P curl > /dev/null \
-            || { echo "Dependency missing in PATH: curl"; exit 1; }
-
           curl --fail -s -X POST \
             -H "Authorization: token $TOKEN" \
             -H "Content-Type: application/json" \
