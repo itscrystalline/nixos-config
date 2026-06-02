@@ -130,6 +130,7 @@ in {
           access = {
             A = "itscrystalline";
             g = "*";
+            r = "*";
           };
         };
       };
