@@ -123,12 +123,12 @@ in {
       volumes = {
         "/" = {
           path = "/mnt/main/nfs";
-          read = "itscrystalline";
-          read-write = "itscrystalline";
+          admin = "itscrystalline";
+          get = [];
         };
         "/public" = {
           path = "/mnt/main/nfs/public";
-          read-write = "itscrystalline";
+          admin = "itscrystalline";
         };
       };
     };

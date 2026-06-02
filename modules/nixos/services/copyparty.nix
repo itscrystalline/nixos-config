@@ -22,7 +22,9 @@
       inherit (opts) path;
       access = {
         r = opts.read;
-        rw = opts.read-write;
+        w = opts.write;
+        g = opts.get;
+        A = opts.admin;
       };
       flags = volumeFlags;
     })
@@ -40,13 +42,23 @@ in {
           };
           read = mkOption {
             type = types.coercedTo types.str (x: lib.singleton x) (types.listOf types.str);
-            default = "*";
+            default = [];
             description = "Users that can access this volume read only.";
           };
-          read-write = mkOption {
+          write = mkOption {
             type = types.coercedTo types.str (x: lib.singleton x) (types.listOf types.str);
             default = [];
-            description = "Users that can access and modify this volume.";
+            description = "Users that can write to files on this volume.";
+          };
+          get = mkOption {
+            type = types.coercedTo types.str (x: lib.singleton x) (types.listOf types.str);
+            default = "*";
+            description = "Users that can access files on this volume *only if they have the link*.";
+          };
+          admin = mkOption {
+            type = types.coercedTo types.str (x: lib.singleton x) (types.listOf types.str);
+            default = [];
+            description = "Administrator users.";
           };
         };
       });
