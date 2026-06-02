@@ -97,7 +97,7 @@ in {
             server = {
               inherit DOMAIN ROOT_URL;
               HTTP_PORT = 4985;
-              SSH_PORT = lib.head config.services.openssh.ports;
+              SSH_PORT = 2222;
             };
             service = {
               # You can temporarily allow registration to create an admin user.
