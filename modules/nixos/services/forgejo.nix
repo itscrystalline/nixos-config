@@ -61,7 +61,9 @@ in {
     (lib.mkIf enabled {
       sops.secrets = {
         "forgejo-admin-password".owner = "forgejo";
-        "forgejo-mail-password" = {};
+        "forgejo-mail-password".owner = "forgejo";
+        "forgejo-signing-key".owner = "forgejo";
+        "forgejo-signing-key-pri".owner = "forgejo";
       };
 
       systemd.services.forgejo.preStart = let
@@ -98,6 +100,7 @@ in {
               inherit DOMAIN ROOT_URL;
               HTTP_PORT = 4985;
               SSH_PORT = 2222;
+              START_SSH_SERVER = true;
             };
             service = {
               # You can temporarily allow registration to create an admin user.
@@ -117,6 +120,16 @@ in {
               ENABLE_PUSH_CREATE_USER = true;
               ENABLE_PUSH_CREATE_ORG = true;
               DEFAULT_PUSH_CREATE_PRIVATE = true;
+
+              signing = {
+                FORMAT = "ssh";
+                SIGNING_NAME = "crystal's forgejo";
+                SIGNING_EMAIL = "noreply@${DOMAIN}";
+
+                INITIAL_COMMIT = "pubkey";
+                CRUD_ACTIONS = "pubkey";
+                MERGES = "pubkey";
+              };
             };
 
             mailer = {
@@ -130,6 +143,7 @@ in {
           };
           secrets = {
             mailer.PASSWD = config.sops.secrets.forgejo-mail-password.path;
+            repository.signing.SIGNING_KEY = config.sops.secrets.forgejo-signing-key.path;
           };
         };
       };
