@@ -100,13 +100,11 @@ jobs:
 
           tea login add --name "$USER" --token "$TOKEN" --url "$FORGEJO_SERVER_URL"
 
-          set -x
-
           tea pr create \
             --login "$USER" \
             --title "$TITLE" \
             --description "$DESCRIPTION" \
-            --repo "$REPO" | tail | grep -oP '/\K\d+' > pr
+            --repo "$REPO" | tail -1 | grep -oP '/\K\d+' > pr
 
           echo -n "pr=$(cat pr)" >> $FORGEJO_OUTPUT
 
