@@ -125,6 +125,7 @@ in {
               FORMAT = "ssh";
               SIGNING_NAME = "crystal's forgejo";
               SIGNING_EMAIL = "noreply@${DOMAIN}";
+              SIGNING_KEY = config.sops.secrets.forgejo-signing-key.path;
 
               INITIAL_COMMIT = "pubkey";
               CRUD_ACTIONS = "pubkey";
@@ -142,7 +143,6 @@ in {
           };
           secrets = {
             mailer.PASSWD = config.sops.secrets.forgejo-mail-password.path;
-            "repository.signing".SIGNING_KEY = config.sops.secrets.forgejo-signing-key.path;
           };
         };
       };
