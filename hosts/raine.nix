@@ -121,14 +121,16 @@ in {
     copyparty = {
       enable = true;
       volumes = {
-        # "/" = {
-        #   path = "/mnt/main/nfs";
-        #   admin = "itscrystalline";
-        #   get = [];
-        # };
+        "/" = {
+          path = "/mnt/main/nfs";
+          access.A = "itscrystalline";
+        };
         "/public" = {
           path = "/mnt/main/nfs/public";
-          admin = "itscrystalline";
+          access = {
+            A = "itscrystalline";
+            g = "*";
+          };
         };
       };
     };
