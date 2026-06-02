@@ -120,16 +120,15 @@ in {
               ENABLE_PUSH_CREATE_USER = true;
               ENABLE_PUSH_CREATE_ORG = true;
               DEFAULT_PUSH_CREATE_PRIVATE = true;
+            };
+            "repository.signing" = {
+              FORMAT = "ssh";
+              SIGNING_NAME = "crystal's forgejo";
+              SIGNING_EMAIL = "noreply@${DOMAIN}";
 
-              signing = {
-                FORMAT = "ssh";
-                SIGNING_NAME = "crystal's forgejo";
-                SIGNING_EMAIL = "noreply@${DOMAIN}";
-
-                INITIAL_COMMIT = "pubkey";
-                CRUD_ACTIONS = "pubkey";
-                MERGES = "pubkey";
-              };
+              INITIAL_COMMIT = "pubkey";
+              CRUD_ACTIONS = "pubkey";
+              MERGES = "pubkey";
             };
 
             mailer = {
@@ -143,7 +142,7 @@ in {
           };
           secrets = {
             mailer.PASSWD = config.sops.secrets.forgejo-mail-password.path;
-            repository.signing.SIGNING_KEY = config.sops.secrets.forgejo-signing-key.path;
+            "repository.signing".SIGNING_KEY = config.sops.secrets.forgejo-signing-key.path;
           };
         };
       };
