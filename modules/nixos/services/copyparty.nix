@@ -18,16 +18,17 @@
     e2d = true;
   };
   mkVolumes = vols:
-    builtins.mapAttrs (_: opts: {
-      inherit (opts) path;
-      access = {
-        r = opts.read;
-        w = opts.write;
-        g = opts.get;
-        A = opts.admin;
-      };
-      flags = volumeFlags;
-    })
+    builtins.mapAttrs (
+      _: opts:
+        {
+          inherit (opts) path;
+          flags = volumeFlags;
+        }
+        // (lib.optionalAttrs (opts.read != null) {access.r = opts.read;})
+        // (lib.optionalAttrs (opts.write != null) {access.w = opts.write;})
+        // (lib.optionalAttrs (opts.get != null) {access.g = opts.get;})
+        // (lib.optionalAttrs (opts.admin != null) {access.A = opts.admin;})
+    )
     vols;
 in {
   options.crystals-services.copyparty = {
@@ -41,23 +42,23 @@ in {
             description = "Host path for this volume.";
           };
           read = mkOption {
-            type = types.coercedTo types.str (x: lib.singleton x) (types.listOf types.str);
-            default = [];
+            type = types.nullOr (types.coercedTo types.str (x: lib.singleton x) (types.listOf types.str));
+            default = null;
             description = "Users that can access this volume read only.";
           };
           write = mkOption {
-            type = types.coercedTo types.str (x: lib.singleton x) (types.listOf types.str);
-            default = [];
+            type = types.nullOr (types.coercedTo types.str (x: lib.singleton x) (types.listOf types.str));
+            default = null;
             description = "Users that can write to files on this volume.";
           };
           get = mkOption {
-            type = types.coercedTo types.str (x: lib.singleton x) (types.listOf types.str);
+            type = types.nullOr (types.coercedTo types.str (x: lib.singleton x) (types.listOf types.str));
             default = "*";
             description = "Users that can access files on this volume *only if they have the link*.";
           };
           admin = mkOption {
-            type = types.coercedTo types.str (x: lib.singleton x) (types.listOf types.str);
-            default = [];
+            type = types.nullOr (types.coercedTo types.str (x: lib.singleton x) (types.listOf types.str));
+            default = null;
             description = "Administrator users.";
           };
         };
