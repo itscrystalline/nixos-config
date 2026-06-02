@@ -62,8 +62,14 @@ in {
       sops.secrets = {
         "forgejo-admin-password".owner = "forgejo";
         "forgejo-mail-password".owner = "forgejo";
-        "forgejo-signing-key".owner = "forgejo";
-        "forgejo-signing-key-pri".owner = "forgejo";
+        "forgejo-signing-key" = {
+          owner = "forgejo";
+          path = "${forgejo.directory}/signing_key.pub";
+        };
+        "forgejo-signing-key-pri" = {
+          owner = "forgejo";
+          path = "${forgejo.directory}/signing_key";
+        };
       };
 
       systemd.services.forgejo.preStart = let
