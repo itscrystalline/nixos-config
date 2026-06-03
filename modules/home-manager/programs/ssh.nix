@@ -80,6 +80,17 @@ in {
         }
         // matches;
     };
+
+    sops.secrets = {
+      "canon_ssh_privatekey" = {
+        path = "${config.home.homeDirectory}/.ssh/id_ed25519";
+        mode = "0600";
+      };
+      "canon_ssh_key" = {
+        path = "${config.home.homeDirectory}/.ssh/id_ed25519.pub";
+        mode = "0640";
+      };
+    };
     home.activation = {
       sshKnownHosts = lib.hm.dag.entryAfter ["writeBoundary"] ''
         mkdir -p "$HOME/.ssh"
