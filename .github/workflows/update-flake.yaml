@@ -12,6 +12,8 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
+        with: 
+          token: ${{ secrets.PUDDLE_TOKEN }}
 
       - name: Install Nix
         uses: cachix/install-nix-action@v30
@@ -65,46 +67,39 @@ jobs:
           rm pr_body.template
           rm pr_body.md
 
-      - uses: EndBug/add-and-commit@v10 # You can change this to use a specific version.
+      - name: Commit to new branch
+        uses: EndBug/add-and-commit@v10 
         id: commit
         with:
-          author_name: crystals forgojo actions runner
-          author_email: runner@git.iw2tryhard.dev
+          author_name: puddle
+          author_email: puddle@git.iw2tryhard.dev
           message: |
             automated: Update `flake.lock`
 
             ${{ steps.pr_body.outputs.content }}
           new_branch: update-flake-lock 
 
-      # - name: Create Pull Request
-      #   id: create-pull-request
-      #   uses: https://git.theless.one/actions/create-pr@main
-      #   with:
-      #     source-branch: update-flake-lock
-      #     token: ${{ secrets.FJ_TOKEN }}
-      #     user: itscrystalline
-      #     auto-merge: true
-      #     delete-branch: true
       - name: Create Pull Request
         id: create-pr
         if: steps.commit.outputs.committed == 'true'
         env:
-          USER: itscrystalline
-          TOKEN: ${{ secrets.FJ_TOKEN }}
+          TOKEN: ${{ secrets.PUDDLE_TOKEN }}
           FORGEJO_SERVER_URL: ${{ forgejo.server_url }}
-          TITLE: 'chore: Update flake (automated)'
-          DESCRIPTION: ${{ steps.pr_body.outputs.content }}
           REPO: ${{ forgejo.repository }}
+          PAYLOAD: |
+            {
+              "base": "main",
+              "body": "${{ steps.pr_body.outputs.content }}",
+              "head": "update-flake-lock",
+              "title": "chore: Update flake (automated)"
+            }
         run: |
-          nix profile install nixpkgs#tea
-
-          tea login add --name "$USER" --token "$TOKEN" --url "$FORGEJO_SERVER_URL"
-
-          tea pr create \
-            --login "$USER" \
-            --title "$TITLE" \
-            --description "$DESCRIPTION" \
-            --repo "$REPO" | tail -1 | grep -oP '/\K\d+' > pr
+          curl -X POST -s --fail \
+            -H "Authorization: token $TOKEN" \
+            -H "Content-Type: applocation/json" \
+            -d "$PAYLOAD" \
+            "$FORGEJO_SERVER_URL/api/v1/repos/$REPO/pulls" \
+          | jq ".number" > pr
 
           echo -n "pr=$(cat pr)" >> $FORGEJO_OUTPUT
 
@@ -112,7 +107,7 @@ jobs:
         if: steps.create-pr.outputs.pr > 0
         id: auto-merge
         env:
-          TOKEN: ${{ secrets.FJ_TOKEN }}
+          TOKEN: ${{ secrets.PUDDLE_TOKEN }}
           FORGEJO_SERVER_URL: ${{ forgejo.server_url }}
           REPO: ${{ forgejo.repository }}
           PR_NUMBER: ${{ steps.create-pr.outputs.pr }}
