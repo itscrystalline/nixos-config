@@ -86,18 +86,15 @@ jobs:
           TOKEN: ${{ secrets.PUDDLE_TOKEN }}
           FORGEJO_SERVER_URL: ${{ forgejo.server_url }}
           REPO: ${{ forgejo.repository }}
-          PAYLOAD: |
-            {
-              "base": "main",
-              "body": "${{ steps.pr_body.outputs.content }}",
-              "head": "update-flake-lock",
-              "title": "chore: Update flake (automated)"
-            }
+          DESC: ${{ steps.pr_body.outputs.content }}
         run: |
-          curl -X POST -s --fail \
+          jq -n \
+            --arg body "$DESC" \
+            '{base: "main", body: $body, head: "update-flake-lock", title: "chore: Update flake (automated)"}' \
+          | curl -X POST -s --fail \
             -H "Authorization: token $TOKEN" \
             -H "Content-Type: applocation/json" \
-            -d "$PAYLOAD" \
+            --data-binary @- \
             "$FORGEJO_SERVER_URL/api/v1/repos/$REPO/pulls" \
           | jq ".number" > pr
 
