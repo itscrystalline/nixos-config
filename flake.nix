@@ -21,11 +21,6 @@
       url = "github:nix-community/home-manager/release-26.05";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    # FIXME: until raspi kernels are on hydra or i find an alternate cache
-    home-manager-25-11 = {
-      url = "github:nix-community/home-manager/release-25.11";
-      inputs.nixpkgs.follows = "nixpkgs-25-11";
-    };
     zen-browser = {
       url = "github:0xc000022070/zen-browser-flake";
       inputs = {
@@ -75,8 +70,7 @@
     vicinae.url = "github:vicinaehq/vicinae";
 
     stylix = {
-      # url = "github:nix-community/stylix/release-26.05";
-      url = "github:nix-community/stylix/release-25.11";
+      url = "github:nix-community/stylix/release-26.05";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     stylix-unstable = {
