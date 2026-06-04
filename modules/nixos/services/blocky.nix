@@ -78,6 +78,7 @@ in {
             blocky.customDNS;
         in
           dns;
+        customDNS.filterUnmappedTypes = false;
 
         blocking = rec {
           denylists = {
