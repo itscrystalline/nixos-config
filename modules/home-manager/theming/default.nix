@@ -72,7 +72,7 @@ in {
     })
 
     (lib.mkIf (options ? stylix && niriEnabled) {
-      programs.niri.settings.layout.border.active = lib.mkForce "#f5c2e7";
+      programs.niri.settings.layout.border.active.color = lib.mkForce "#f5c2e7";
     })
     (lib.mkIf (options ? stylix && shellEnabled) {
       programs.noctalia-shell.colors = {
