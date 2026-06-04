@@ -14,5 +14,4 @@
   };
 
   services.blocky.settings.prometheus.enable = lib.mkForce true;
-  services.blocky.settings.customDNS.mapping."git.iw2tryhard.dev" = "100.125.37.13";
 }
