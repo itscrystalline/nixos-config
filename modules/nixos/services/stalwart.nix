@@ -24,10 +24,10 @@ in {
 
   config = lib.mkIf enabled {
     sops.secrets = {
-      "stalwart-admin-password".owner = "stalwart-mail";
-      "cloudflare-token".owner = "stalwart-mail";
-      "stalwart-dkim-rsa-key".owner = "stalwart-mail";
-      "stalwart-dkim-ed25519-key".owner = "stalwart-mail";
+      "stalwart-admin-password".owner = config.services.stalwart.user;
+      "cloudflare-token".owner = config.services.stalwart.user;
+      "stalwart-dkim-rsa-key".owner = config.services.stalwart.user;
+      "stalwart-dkim-ed25519-key".owner = config.services.stalwart.user;
     };
 
     services.stalwart = {
@@ -101,7 +101,7 @@ in {
             "mta-sts.${stalwart.host}"
           ];
           provider = "cloudflare";
-          secret = "%{file:/run/credentials/stalwart-mail.service/cloudflare_token}%";
+          secret = "%{file:/run/credentials/stalwart.service/cloudflare_token}%";
         };
 
         session = {
@@ -144,7 +144,7 @@ in {
 
         authentication.fallback-admin = {
           user = "admin";
-          secret = "%{file:/run/credentials/stalwart-mail.service/admin_pass}%";
+          secret = "%{file:/run/credentials/stalwart.service/admin_pass}%";
         };
 
         queue.strategy.route = [
@@ -165,7 +165,7 @@ in {
         ];
         signature = {
           "rsa-${stalwart.host}" = {
-            private-key = "%{file:/run/credentials/stalwart-mail.service/dkim-rsa.key}%";
+            private-key = "%{file:/run/credentials/stalwart.service/dkim-rsa.key}%";
             domain = stalwart.host;
             selector = "202604r";
             headers = ["From" "To" "Cc" "Date" "Subject" "Message-ID" "MIME-Version" "Content-Type" "In-Reply-To" "References" "List-Id"];
@@ -175,7 +175,7 @@ in {
             report = true;
           };
           "ed25519-${stalwart.host}" = {
-            private-key = "%{file:/run/credentials/stalwart-mail.service/dkim-ed25519.key}%";
+            private-key = "%{file:/run/credentials/stalwart.service/dkim-ed25519.key}%";
             domain = stalwart.host;
             selector = "202604e";
             headers = ["From" "To" "Cc" "Date" "Subject" "Message-ID" "MIME-Version" "Content-Type" "In-Reply-To" "References" "List-Id"];
