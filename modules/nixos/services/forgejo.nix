@@ -188,6 +188,17 @@ in {
                 settings = {
                   runner.fetch_interval = "10s";
                 };
+                hostPackages = with pkgs; [
+                  bash
+                  coreutils
+                  curl
+                  gawk
+                  gitMinimal
+                  gnused
+                  nodejs
+                  wget
+                  docker-client
+                ];
                 # Obtaining the path to the runner token file may differ
                 # tokenFile should be in format TOKEN=<secret>, since it's EnvironmentFile for systemd
                 tokenFile = config.sops.secrets.forgejo-runner-token.path;
