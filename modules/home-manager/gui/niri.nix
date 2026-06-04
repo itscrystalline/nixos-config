@@ -8,7 +8,6 @@
   inherit (config.hm.programs) gui;
   enabled = niri.enable && config.hm.gui.enable;
   guiProgramsEnabled = config.hm.programs.gui.enable;
-  cliProgramsEnabled = config.hm.programs.cli.enable;
   shellEnabled = config.hm.gui.shell.enable;
 in {
   options.hm.gui.niri.enable = lib.mkEnableOption "niri & friends (home-manager)";

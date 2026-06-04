@@ -8,6 +8,8 @@
   inherit (config.hm) theming;
   enabled = theming.enable;
   guiEnabled = config.hm.gui.enable;
+  niriEnabled = config.hm.gui.niri.enable;
+  shellEnabled = config.hm.gui.shell.enable;
 in {
   options.hm.theming.enable = lib.mkEnableOption "theming configuration";
 
@@ -70,7 +72,18 @@ in {
       };
     })
 
-    (lib.optionalAttrs (options ? stylix) {
+    (lib.mkIf (options ? stylix && niriEnabled) {
+      programs.niri.settings.layout.border.active = lib.mkForce "#f5c2e7";
+    })
+    (lib.mkIf (options ? stylix && shellEnabled) {
+      programs.noctalia-shell.colors = {
+        mHover = lib.mkForce "#f5c2e7";
+        mTertiary = lib.mkForce "#f5c2e7";
+        mPrimary = lib.mkForce "#f5c2e7";
+      };
+    })
+
+    (lib.mkIf (options ? stylix) {
       stylix = lib.mkMerge [
         {
           enable = true;
