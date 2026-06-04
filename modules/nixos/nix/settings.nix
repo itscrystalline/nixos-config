@@ -13,13 +13,11 @@
       substituters = [
         "https://cache.nixos.org"
         "http://cache.crys"
-        "https://attic.xuyh0120.win/lantian"
       ];
 
       trusted-public-keys = [
         "hydra.nixos.org-1:CNHJZBh9K4tP3EKF6FkkgeVYsS3ohTl+oS0Qa8bezVs="
         "mingzhu:V0KsUipFnrBNsfUD8VI0rFXQpgE3KKJfRby9Jm8cLTQ="
-        "lantian:EeAUQ+W+6r7EtwnmYjeVwx5kOGEBpjlBfPlzGlTNvHc="
       ];
 
       trusted-users = ["root" "itscrystalline" "nixremote" "@wheel"];
@@ -28,18 +26,7 @@
       builders-use-substitutes = true;
     };
 
-    nixPath = [
-      "nixpkgs=${inputs.nixpkgs}"
-      "nixpkgs-unstable=${inputs.nixpkgs-unstable}"
-      "nur=${inputs.nur}"
-      "nixos-hardware=${inputs.nixos-hardware}"
-      "stylix=${inputs.stylix}"
-      "stylix-unstable=${inputs.stylix-unstable}"
-      "home-manager=${inputs.home-manager}"
-      "zen-browser=${inputs.zen-browser}"
-      "nix-flatpak=${inputs.nix-flatpak}"
-      "niri=${inputs.niri}"
-    ];
+    nixPath = map (i: "${i}=${inputs.${i}}") (builtins.attrNames inputs);
 
     extraOptions = ''
       include ${config.sops.templates.nix-extra-config.path}

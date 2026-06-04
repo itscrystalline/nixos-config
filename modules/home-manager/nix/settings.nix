@@ -14,13 +14,11 @@ lib.mkIf (passthrough == null) {
       substituters = [
         "https://cache.nixos.org"
         "http://cache.crys"
-        "https://attic.xuyh0120.win/lantian"
       ];
 
       trusted-public-keys = [
         "hydra.nixos.org-1:CNHJZBh9K4tP3EKF6FkkgeVYsS3ohTl+oS0Qa8bezVs="
         "mingzhu:V0KsUipFnrBNsfUD8VI0rFXQpgE3KKJfRby9Jm8cLTQ="
-        "lantian:EeAUQ+W+6r7EtwnmYjeVwx5kOGEBpjlBfPlzGlTNvHc="
       ];
 
       trusted-users = ["root" "itscrystalline" "nixremote" "@wheel"];
@@ -29,14 +27,7 @@ lib.mkIf (passthrough == null) {
       fallback = true;
     };
 
-    nixPath = [
-      "nixpkgs=${inputs.nixpkgs or ""}"
-      "nur=${inputs.nur or ""}"
-      "home-manager=${inputs.home-manager or ""}"
-      "stylix=${inputs.stylix or ""}"
-      "zen-browser=${inputs.zen-browser or ""}"
-      "niri=${inputs.niri or ""}"
-    ];
+    nixPath = map (i: "${i}=${inputs.${i}}") (builtins.attrNames inputs);
 
     package = pkgs.lixPackageSets.stable.lix;
 
