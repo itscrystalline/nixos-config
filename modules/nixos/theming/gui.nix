@@ -39,7 +39,6 @@ in {
 
       fontDir.enable = true;
     };
-    gtk.gtk4.theme = config.gtk.theme;
 
     stylix = {
       targets.gtksourceview.enable = false;
