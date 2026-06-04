@@ -35,6 +35,7 @@ in {
         ];
         activation.installSteamSkin = lib.hm.dag.entryAfter ["writeBoundary"] ''
           if [ -d "$HOME/.local/share/Steam" ]; then
+            chmod +w "$HOME/.cache/AdwSteamInstaller/extracted/custom/custom.css"
             ${lib.getExe pkgs.adwsteamgtk} -o "color_theme:catppuccin-mocha;win_controls:adwaita;win_controls_layout:adwaita" -i || true
           fi
         '';
@@ -71,61 +72,64 @@ in {
       };
     })
 
-    (lib.mkIf (options ? stylix && niriEnabled) {
-      programs.niri.settings.layout.border.active.color = lib.mkForce "#f5c2e7";
-    })
-    (lib.mkIf (options ? stylix && shellEnabled) {
-      programs.noctalia-shell.colors = {
-        mHover = lib.mkForce "#f5c2e7";
-        mTertiary = lib.mkForce "#f5c2e7";
-        mPrimary = lib.mkForce "#f5c2e7";
-      };
-    })
-
-    (lib.mkIf (options ? stylix) {
-      stylix = lib.mkMerge [
+    (
+      lib.optionalAttrs (options ? stylix) (lib.mkMerge [
+        (lib.optionalAttrs (options ? niri) (lib.mkIf niriEnabled {
+          programs.niri.settings.layout.border.active.color = "#f5c2e7";
+        }))
+        (lib.optionalAttrs (options ? noctalia) (lib.mkIf shellEnabled {
+          programs.noctalia-shell.colors = {
+            mHover = lib.mkForce "#f5c2e7";
+            mTertiary = lib.mkForce "#f5c2e7";
+            mPrimary = lib.mkForce "#f5c2e7";
+          };
+        }))
         {
-          enable = true;
-          base16Scheme = "${pkgs.base16-schemes}/share/themes/catppuccin-mocha.yaml";
-          polarity = "dark";
-          autoEnable = true;
+          stylix = lib.mkMerge [
+            {
+              enable = true;
+              base16Scheme = "${pkgs.base16-schemes}/share/themes/catppuccin-mocha.yaml";
+              polarity = "dark";
+              autoEnable = true;
 
-          targets.starship.enable = false;
+              targets.starship.enable = false;
+            }
+
+            (lib.mkIf guiEnabled {
+              targets.gtksourceview.enable = false;
+              fonts = {
+                sansSerif = {
+                  package = pkgs.inter;
+                  name = "Inter";
+                };
+                serif = {
+                  package = pkgs.libertinus;
+                  name = "Libertinus Serif";
+                };
+                monospace = {
+                  package = pkgs.nerd-fonts.jetbrains-mono;
+                  name = "JetbrainsMono Nerd Font Mono";
+                };
+                emoji = {
+                  package = pkgs.noto-fonts-color-emoji;
+                  name = "Noto Color Emoji";
+                };
+              };
+              cursor = {
+                name = "catppuccin-mocha-pink-cursors";
+                package = pkgs.catppuccin-cursors.mochaPink;
+                size = 16;
+              };
+
+              targets.zen-browser = {
+                enable = true;
+                profileNames = ["crystal"];
+              };
+            })
+          ];
         }
-
-        (lib.mkIf guiEnabled {
-          targets.gtksourceview.enable = false;
-          fonts = {
-            sansSerif = {
-              package = pkgs.inter;
-              name = "Inter";
-            };
-            serif = {
-              package = pkgs.libertinus;
-              name = "Libertinus Serif";
-            };
-            monospace = {
-              package = pkgs.nerd-fonts.jetbrains-mono;
-              name = "JetbrainsMono Nerd Font Mono";
-            };
-            emoji = {
-              package = pkgs.noto-fonts-color-emoji;
-              name = "Noto Color Emoji";
-            };
-          };
-          cursor = {
-            name = "catppuccin-mocha-pink-cursors";
-            package = pkgs.catppuccin-cursors.mochaPink;
-            size = 16;
-          };
-
-          targets.zen-browser = {
-            enable = true;
-            profileNames = ["crystal"];
-          };
-        })
-      ];
-    })
+      ])
+    )
 
     {
       programs.eza.theme = {
