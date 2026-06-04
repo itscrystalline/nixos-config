@@ -198,6 +198,7 @@ in {
                   nodejs
                   wget
                   docker-client
+                  lixStatic
                 ];
                 # Obtaining the path to the runner token file may differ
                 # tokenFile should be in format TOKEN=<secret>, since it's EnvironmentFile for systemd
