@@ -62,7 +62,6 @@ in {
           }
         '';
       };
-      gtk.gtk4.theme = config.gtk.theme;
 
       programs.ghostty.settings.font-family = ["JetBrainsMono Nerd Font" "Noto Sans CJK JP" "Noto Sans Thai Looped" "Noto Color Emoji"];
 
