@@ -17,5 +17,5 @@ in {
     }
   '';
 
-  crystals-services.network.ports.tcp = [2222];
+  network.ports.tcp = [2222];
 }
