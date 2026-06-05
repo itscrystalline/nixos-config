@@ -1,5 +1,5 @@
 {lib, ...}: {
-  imports = [./root.nix];
+  imports = [./root.nix ./nginx-passthrough.nix];
 
   boot.tmp.cleanOnBoot = true;
   boot.loader.grub = {
