@@ -38,5 +38,12 @@ in {
         default = "http_status:404";
       };
     };
+    crystals-services.nginx.public.sites = lib.mergeAttrsList (map
+      (tld: {
+        ${tld}.extraConfig = ''
+          real_ip_header CF-Connecting-IP;
+        '';
+      })
+      (builtins.attrNames cloudflared.domains));
   };
 }
