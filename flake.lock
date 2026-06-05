@@ -198,11 +198,11 @@
         "rust-overlay": "rust-overlay"
       },
       "locked": {
-        "lastModified": 1780500563,
-        "narHash": "sha256-5JaNqKuEEUT0TPwi8no0UFQ2BzS5OwnpqV7V1tVfu/k=",
+        "lastModified": 1780571722,
+        "narHash": "sha256-RQA3+HRcUMBRMV4kmrUykYhE0PSk1KA6LcNgkFdTCXY=",
         "owner": "chojs23",
         "repo": "concord",
-        "rev": "2d7e5d69f5310a5f110bba13cb424df97a501e97",
+        "rev": "05e3abe795e3ac7b36a99d12dade7ba9d506a93b",
         "type": "github"
       },
       "original": {
@@ -766,11 +766,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1748955067,
-        "narHash": "sha256-YuRYTf0gi3plnNGmPHVI7WC6tAgJXFzZbY1vQqX66aE=",
+        "lastModified": 1780579788,
+        "narHash": "sha256-VQ9KLgd0kJHk41WJhqKqMxBY9BtNzIiHWMMMYQ5J2bY=",
         "ref": "refs/heads/main",
-        "rev": "6139216e3a6b671920a5d1f006830405a5530267",
-        "revCount": 49,
+        "rev": "d26728e467394f180dab34f09e916ff65c9f4899",
+        "revCount": 58,
         "type": "git",
         "url": "https://git.iw2tryhard.dev/itscrystalline/iw2tryhard-dev-3.0"
       },
@@ -1389,11 +1389,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1780548987,
-        "narHash": "sha256-wYX3fOPgDF1ztobCFbt0JEa//VaBzusBTwVnJFVazOM=",
+        "lastModified": 1780634776,
+        "narHash": "sha256-zL0vhT1Tpx8jx/EIADOuHdh+x6qkxIaDKJfHJAwVv+k=",
         "owner": "nix-community",
         "repo": "NUR",
-        "rev": "9ca380b869abcef73ca0bdd1be7f21185c668ac0",
+        "rev": "6d6d530e2f560ae9e333d02e9d0de4dde46925c5",
         "type": "github"
       },
       "original": {
@@ -1713,11 +1713,11 @@
         "tinted-zed": "tinted-zed"
       },
       "locked": {
-        "lastModified": 1780494751,
-        "narHash": "sha256-aR5oirEal1m0EuBDvIitn/IprzKHjTUllpEHmCrjK9A=",
+        "lastModified": 1780585491,
+        "narHash": "sha256-tv0CPeo5GxMl8d1jHGsCJGTsz6CGFwluIfpm7V30APs=",
         "owner": "nix-community",
         "repo": "stylix",
-        "rev": "e9a07f88c331d3c0a7e8ef3f996793cb19b49b30",
+        "rev": "aacc65706d523528aed81f55c2c780aaeb541d55",
         "type": "github"
       },
       "original": {
@@ -1747,11 +1747,11 @@
         "tinted-zed": "tinted-zed_2"
       },
       "locked": {
-        "lastModified": 1780498403,
-        "narHash": "sha256-ptk4OrUyr3ubnjZcuqM1qL97L3q7wgnL24oudQEYUno=",
+        "lastModified": 1780584783,
+        "narHash": "sha256-b4o1AlQpGgpUfieaNz/3gsSzogjoiczmnlbDj0khImY=",
         "owner": "nix-community",
         "repo": "stylix",
-        "rev": "525965744b770af79c985ae5c43c65e441dc8b29",
+        "rev": "6b6b874d082928aa9557e21516d4fe2f2bb305e1",
         "type": "github"
       },
       "original": {
@@ -2134,11 +2134,11 @@
         "systems": "systems_10"
       },
       "locked": {
-        "lastModified": 1780539000,
-        "narHash": "sha256-HtuBC0h1AdyOhc993ztI6E3epecM19OJZN7meXVVCwg=",
+        "lastModified": 1780619875,
+        "narHash": "sha256-mqBbr4J86jOygQzhKTgKuWq8ECpU41Eds2asuZwjBIg=",
         "owner": "vicinaehq",
         "repo": "vicinae",
-        "rev": "00a98dfc7d7fafaeb556d64200c3d51d261f6bd9",
+        "rev": "91b60315ad48e8a4f1ee1a9fe61b86a6eae85195",
         "type": "github"
       },
       "original": {
@@ -2190,11 +2190,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1780512239,
-        "narHash": "sha256-hRHaK71WF/UK2ka6uoHPXmbUPNh8pUf+Da47134O348=",
+        "lastModified": 1780567926,
+        "narHash": "sha256-LVaiAnBwgr2YotaIlrcwCgmbwHsE2ccegRztLjur/d4=",
         "owner": "0xc000022070",
         "repo": "zen-browser-flake",
-        "rev": "735371d9ccc5c9bd7981df54fe9adbb6be666965",
+        "rev": "eea9ae34eb9011aee9b8ce8ee2bc2dd111ee8285",
         "type": "github"
       },
       "original": {
