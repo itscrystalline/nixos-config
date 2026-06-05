@@ -3,7 +3,7 @@ _: let
 in {
   services.nginx.streamConfig = ''
     map $ssl_preread_server_name $backend {
-      git.iw2tryhard.dev  ${raine_ip}:443;
+      ~^(.*\.)?iw2tryhard\.dev$  ${raine_ip}:443;
     }
 
     server {
