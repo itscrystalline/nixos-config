@@ -38,7 +38,7 @@
     }: {
       name = expandDomain nginx.local.suffix name;
       value = {
-        inherit (value) locations;
+        inherit (value) locations extraConfig;
         serverAliases = map (a: expandDomain nginx.local.suffix a) value.aliases;
       };
     }) (lib.attrsToList domains));
@@ -53,7 +53,7 @@
     in {
       name = domain;
       value = {
-        inherit (value) locations;
+        inherit (value) locations extraConfig;
         serverAliases = map expandDomain' value.aliases;
         acmeRoot = null;
         forceSSL = value.acme != false;
