@@ -153,15 +153,18 @@ in {
         };
       };
       crystals-services = {
-        cloudflared.domains."git".noTLSVerify = true;
+        cloudflared.domains."git" = {};
         nginx = {
           enable = true;
           public.sites."git" = {
-            extraConfig = ''
-              client_max_body_size 512M;
-            '';
             locations."/" = {
               proxyPass = "http://localhost:${toString srv.HTTP_PORT}";
+              extraConfig = ''
+                client_max_body_size 0;
+                proxy_request_buffering off;
+                proxy_read_timeout 300s;
+                proxy_send_timeout 300s;
+              '';
             };
             acme = "";
           };
