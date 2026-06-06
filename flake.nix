@@ -58,10 +58,6 @@
     nix-flatpak.url = "github:gmodena/nix-flatpak";
     sanzenvim.url = "git+https://git.iw2tryhard.dev/itscrystalline/sanzenvim";
 
-    iw2tryhard-dev = {
-      url = "git+https://git.iw2tryhard.dev/itscrystalline/iw2tryhard-dev-3.0";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
     occasion = {
       url = "git+https://git.iw2tryhard.dev/itscrystalline/occasion";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -87,10 +83,6 @@
     };
     harmonia.url = "github:nix-community/harmonia";
     concord.url = "github:chojs23/concord";
-    # matcha = {
-    #   url = "github:floatpane/matcha";
-    #   inputs.nixpkgs.follows = "nixpkgs-unstable";
-    # };
   };
 
   outputs = inputs @ {
