@@ -213,6 +213,7 @@ in {
                     "ubuntu-22.04:docker://ghcr.io/catthehacker/ubuntu:runner-22.04"
                     "ubuntu-20.04:docker://ghcr.io/catthehacker/ubuntu:runner-20.04"
                     "ubuntu-18.04:docker://ghcr.io/catthehacker/ubuntu:runner-18.04"
+                    "native:host"
                   ])
                   ++ (lib.optionals pkgs.stdenv.hostPlatform.isAarch64 [
                     "ubuntu-latest-arm:docker://ghcr.io/catthehacker/ubuntu:runner-latest"
@@ -220,10 +221,8 @@ in {
                     "ubuntu-22.04-arm:docker://ghcr.io/catthehacker/ubuntu:runner-22.04"
                     "ubuntu-20.04-arm:docker://ghcr.io/catthehacker/ubuntu:runner-20.04"
                     "ubuntu-18.04-arm:docker://ghcr.io/catthehacker/ubuntu:runner-18.04"
-                  ])
-                  ++ [
-                    "native:host"
-                  ];
+                    "native-arm:host"
+                  ]);
               };
             })
             range);
