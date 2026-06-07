@@ -74,10 +74,10 @@ in {
 
     (
       lib.optionalAttrs (options ? stylix) (lib.mkMerge [
-        (lib.optionalAttrs (options ? niri) (lib.mkIf niriEnabled {
+        (lib.optionalAttrs (options.programs ? niri) (lib.mkIf niriEnabled {
           programs.niri.settings.layout.border.active.color = "#f5c2e7";
         }))
-        (lib.optionalAttrs (options ? noctalia) (lib.mkIf shellEnabled {
+        (lib.optionalAttrs (options.programs ? noctalia-shell) (lib.mkIf shellEnabled {
           programs.noctalia-shell.colors = {
             mHover = lib.mkForce "#f5c2e7";
             mTertiary = lib.mkForce "#f5c2e7";
