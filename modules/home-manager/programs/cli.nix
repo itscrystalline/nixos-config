@@ -381,6 +381,7 @@ in {
 
         settings = {
           show_startup_tips._args = [false];
+          pane_frames._args = [false];
           ui.pane_frames._children = [{rounded_corners._args = [true];}];
           keybinds = {
             _children = [{unbind._args = ["Ctrl s"];}];
