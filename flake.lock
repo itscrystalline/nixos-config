@@ -1620,11 +1620,11 @@
         "upstream-nur": "upstream-nur"
       },
       "locked": {
-        "lastModified": 1780885021,
-        "narHash": "sha256-D6TaD05w1gVhgUYkqKp2a+DhPQIeYIhxDCHtna1ULmg=",
+        "lastModified": 1780901355,
+        "narHash": "sha256-3iKHkcADT/eiBStPUQ+QadpOPnjToDMh+b6+3oN3aSQ=",
         "ref": "refs/heads/main",
-        "rev": "02e00494781cdded49bf6426c48d665fd3e31f8e",
-        "revCount": 229,
+        "rev": "3a0776a3ca82bf43eee3f6744ca5f1e8e226d24b",
+        "revCount": 230,
         "type": "git",
         "url": "https://git.iw2tryhard.dev/itscrystalline/sanzenvim"
       },
