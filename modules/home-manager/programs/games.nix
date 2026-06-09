@@ -30,11 +30,11 @@ in {
       ++ lib.optionals pkgs.stdenv.isLinux [
         mcpelauncher-ui-qt
         nur.repos.itscrystalline.irony-mod-manager
-        bottles
       ];
 
     services.flatpak.packages = lib.optionals (pkgs.stdenv.isLinux && config.hm.flatpak.enable) [
       "org.vinegarhq.Sober"
+      "com.usebottles.bottles"
     ];
   });
 }
