@@ -5,6 +5,8 @@ on:
     paths-ignore:
       - '.github/**'
       - '*.md'
+    branches:
+      - main
   pull_request:
     paths-ignore:
       - '.github/**'

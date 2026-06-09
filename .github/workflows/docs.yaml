@@ -4,6 +4,8 @@ on:
   push:
     paths:
       - 'modules/**'
+    branches:
+      - main
   workflow_dispatch:
 
 jobs:
