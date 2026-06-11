@@ -18,69 +18,35 @@ in {
       pkgs.wl-kbptr
     ];
 
-    services = {
-      hypridle = {
-        enable = true;
-        settings = let
-          lock = "noctalia-shell ipc call lockScreen lock";
-          screen_on = "niri msg action power-on-monitors";
-          screen_off = "niri msg action power-off-monitors";
-        in {
-          general = {
-            after_sleep_cmd = screen_on;
-            ignore_dbus_inhibit = false;
-            lock_cmd = lock;
-            before_sleep_cmd = lock;
-          };
-          listener = [
-            {
-              timeout = 600;
-              on-timeout = lock;
-            }
-            {
-              timeout = 900;
-              on-timeout = screen_off;
-              on-resume = screen_on;
-            }
-            {
-              timeout = 1200;
-              on-timeout = "systemctl suspend";
-              on-resume = screen_on;
-            }
-          ];
-        };
-      };
-    };
-
     programs = lib.optionalAttrs enabled {
       niri = {
         package = pkgs.niri-stable;
         settings = {
           binds = with config.lib.niri.actions; let
             sh = spawn "sh" "-c";
-            noctalia = spawn "noctalia-shell" "ipc" "call";
+            noctalia = spawn "noctalia" "msg";
           in
             (lib.optionalAttrs shellEnabled {
-              "Mod+Shift+Q".action = noctalia "sessionMenu" "toggle";
+              "Mod+Shift+Q".action = noctalia "panel-toggle" "session";
 
-              "XF86AudioMute".action = noctalia "volume" "muteOutput";
-              "Mod+Shift+M".action = noctalia "volume" "muteOutput";
-              "XF86AudioRaiseVolume".action = noctalia "volume" "increase";
-              "XF86AudioLowerVolume".action = noctalia "volume" "decrease";
-              "XF86MonBrightnessUp".action = noctalia "brightness" "increase";
-              "XF86MonBrightnessDown".action = noctalia "brightness" "decrease";
+              "XF86AudioMute".action = noctalia "volume-mute";
+              "Mod+Shift+M".action = noctalia "volume-mute";
+              "XF86AudioRaiseVolume".action = noctalia "volume-up";
+              "XF86AudioLowerVolume".action = noctalia "volume-down";
+              "XF86MonBrightnessUp".action = noctalia "brightness-up";
+              "XF86MonBrightnessDown".action = noctalia "brightness-down";
 
-              "Mod+Control+Space".action = noctalia "media" "playPause";
+              "Mod+Control+Space".action = noctalia "media" "toggle";
               "Mod+Control+Equal".action = noctalia "media" "next";
               "Mod+Control+Minus".action = noctalia "media" "previous";
-              "XF86AudioPlay".action = noctalia "media" "playPause";
-              "XF86AudioPause".action = noctalia "media" "playPause";
+              "XF86AudioPlay".action = noctalia "media" "toggle";
+              "XF86AudioPause".action = noctalia "media" "toggle";
               "XF86AudioNext".action = noctalia "media" "next";
               "XF86AudioPrev".action = noctalia "media" "previous";
-              "XF86AudioStop".action = noctalia "media" "pause";
+              "XF86AudioStop".action = noctalia "media" "stop";
 
-              "Mod+Comma".action = noctalia "settings" "toggle";
-              "Mod+L".action = noctalia "lockScreen" "lock";
+              "Mod+Comma".action = noctalia "settings-toggle";
+              "Mod+L".action = noctalia "session" "lock";
             })
             // (lib.optionalAttrs guiProgramsEnabled {
               "Mod+Shift+C".action = spawn "hyprpicker" "-a";
@@ -178,7 +144,7 @@ in {
             ]
             ++ lib.optionals shellEnabled [
               {argv = ["awww" "img" "/home/itscrystalline/bg.gif" "--filter=Nearest"];}
-              {sh = "QT_IM_MODULE=wayland noctalia-shell";}
+              {sh = "QT_IM_MODULE=wayland noctalia";}
             ]
             ++ lib.optionals guiProgramsEnabled [
               {argv = ["valent" "--gapplication-service"];}
@@ -358,6 +324,12 @@ in {
               matches = [{app-id = "at.yrlf.wl_mirror";}];
               open-fullscreen = true;
               open-on-output = "HDMI-A-1";
+            }
+            {
+              matches = [{app-id = "dev.noctalia.Noctalia.Settings";}];
+              open-floating = true;
+              default-column-width.fixed = 1080;
+              default-window-height.fixed = 920;
             }
             {
               matches = [{is-window-cast-target = true;}];

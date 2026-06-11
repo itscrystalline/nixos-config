@@ -8,7 +8,7 @@
   inherit (config.hm.gui) shell;
   enabled = shell.enable;
   guiEnabled = config.hm.gui.enable;
-  niriEnabled = config.hm.gui.niri.enable;
+  nextcloudEnabled = config.hm.services.nextcloud.enable;
 in {
   options.hm.gui.shell.enable = lib.mkEnableOption "Noctalia shell";
 
@@ -29,283 +29,149 @@ in {
         jq
       ];
     }
-    (lib.optionalAttrs (options.programs ? noctalia-shell) {
-      programs.noctalia-shell = {
+    (lib.optionalAttrs (options.programs ? noctalia) {
+      sops.templates."noctalia-state.toml" = lib.mkIf nextcloudEnabled {
+        path = "${config.home.homeDirectory}/.local/state/noctalia/state.toml";
+        content = ''
+          [calendar_credentials]
+          nextcloud_password = ${config.sops.placeholder.nextcloud-rclone-password}
+        '';
+      };
+
+      programs.noctalia = {
         enable = true;
-        plugins = {
-          sources = [
-            {
-              enabled = true;
-              name = "Official Noctalia Plugins";
-              url = "https://github.com/noctalia-dev/noctalia-plugins";
-            }
-            {
-              enabled = true;
-              name = "Crystal's Noctalia Plugins";
-              url = "https://github.com/itscrystalline/noctalia-plugins";
-            }
-          ];
-          states = let
-            mkEnable = host: plugins:
-              builtins.listToAttrs (map (plugin: {
-                  name = plugin;
-                  value = {
-                    enabled = true;
-                    sourceUrl = "https://github.com/${host}/noctalia-plugins";
-                  };
-                })
-                plugins);
-          in
-            mkEnable "noctalia-dev" [
-              "privacy-indicator"
-              "tailscale"
-              "keybind-cheatsheet"
-              "battery-threshold"
-              "battery-actions"
-              "polkit-agent"
-              "usb-drive-manager"
-              # "hassio"
-              "screen-toolkit"
-              "lyrics-fetch"
-            ];
-          version = 1;
-        };
-        pluginSettings = {
-          tailscale = {
-            refreshInterval = 10000;
-            compactMode = true;
-            showIpAddress = false;
-            showPeerCount = false;
-            hideDisconnected = false;
-            terminalCommand = "ghostty";
-            pingCount = 5;
-            defaultPeerAction = "copy-ip";
-          };
-          privacy-indicator = {
-            hideInactive = true;
-            iconSpacing = 4;
-            removeMargins = false;
-          };
-          battery-threshold = {
-            chargeThreshold = 85;
-            batteryDevice = "/sys/class/power_supply/BAT1";
-          };
-          battery-actions = lib.mkIf niriEnabled {
-            pluggedInScript = "niri msg output eDP-1 mode 1920x1080@144.003; noctalia-shell ipc call brightness set 100%; noctalia-shell ipc call powerProfile disableNoctaliaPerformance; brightnessctl -d asus::kbd_backlight set 3; asusctl profile -P Balanced; awww img ~/bg.gif";
-            onBatteryScript = "niri msg output eDP-1 mode 1920x1080@60.004; noctalia-shell ipc call brightness set 65%; noctalia-shell ipc call powerProfile enableNoctaliaPerformance; brightnessctl -d asus::kbd_backlight set 0; asusctl profile -P LowPower; awww img ~/bg.png";
-          };
-        };
+        systemd.enable = true;
+
         settings = {
-          ui = {
-            fontDefault = "Inter";
-            fontFixed = lib.mkForce "JetbrainsMono NF";
-          };
-          bar = {
-            position = "left";
-            showCapsule = true;
-            floating = true;
-            widgets = {
-              left = [
-                {
-                  colorizeDistroLogo = false;
-                  colorizeSystemIcon = "primary";
-                  customIconPath = "";
-                  enableColorization = true;
-                  icon = "noctalia";
-                  id = "ControlCenter";
-                  useDistroLogo = true;
-                }
-                {
-                  colorizeIcons = false;
-                  hideMode = "hidden";
-                  id = "ActiveWindow";
-                  maxWidth = 145;
-                  scrollingMode = "hover";
-                  showIcon = true;
-                  useFixedWidth = false;
-                }
-                {id = "plugin:lyrics-fetch";}
-                {id = "plugin:keybind-cheatsheet";}
-                # {id = "plugin:hassio";}
-              ];
-              center = [
-                {id = "plugin:screen-toolkit";}
-                {id = "plugin:tailscale";}
-                {
-                  characterCount = 2;
-                  colorizeIcons = false;
-                  emptyColor = "secondary";
-                  enableScrollWheel = true;
-                  focusedColor = "primary";
-                  followFocusedScreen = false;
-                  groupedBorderOpacity = 1;
-                  hideUnoccupied = true;
-                  iconScale = 0.8;
-                  id = "Workspace";
-                  labelMode = "none";
-                  occupiedColor = "secondary";
-                  reverseScroll = false;
-                  showApplications = true;
-                  showBadge = true;
-                  showLabelsOnlyWhenOccupied = true;
-                  unfocusedIconsOpacity = 0.65;
-                }
-                {id = "plugin:privacy-indicator";}
-                {
-                  autoMount = true;
-                  fileBrowser = "xdg-open";
-                  terminalCommand = "ghostty";
-                  showNotifications = true;
-                  hideWhenEmpty = false;
-                  showBadge = true;
-                  id = "plugin:usb-drive-manager";
-                }
-              ];
-              right = [
-                {
-                  blacklist = [];
-                  colorizeIcons = false;
-                  drawerEnabled = true;
-                  hidePassive = false;
-                  id = "Tray";
-                  pinned = [];
-                }
-                {
-                  hideWhenZero = false;
-                  hideWhenZeroUnread = false;
-                  id = "NotificationHistory";
-                  showUnreadBadge = true;
-                  unreadBadgeColor = "primary";
-                }
-                {
-                  displayMode = "onhover";
-                  id = "Volume";
-                  middleClickCommand = "pwvucontrol || pavucontrol";
-                }
-                {
-                  displayMode = "onhover";
-                  id = "Brightness";
-                }
-                {
-                  displayMode = "onhover";
-                  id = "Network";
-                }
-                {
-                  displayMode = "onhover";
-                  id = "Bluetooth";
-                }
-                {
-                  deviceNativePath = "";
-                  displayMode = "onhover";
-                  hideIfIdle = false;
-                  hideIfNotDetected = true;
-                  id = "Battery";
-                  showNoctaliaPerformance = true;
-                  showPowerProfiles = false;
-                  warningThreshold = 30;
-                }
-                {id = "plugin:battery-threshold";}
-                {
-                  customFont = "Inter Display ExtraBold";
-                  formatHorizontal = "HH:mm";
-                  formatVertical = "HH mm";
-                  id = "Clock";
-                  tooltipFormat = "HH:mm ddd, MMM dd";
-                  useCustomFont = true;
-                  usePrimaryColor = true;
-                }
-              ];
+          shell = {
+            font-family = lib.head config.fonts.fontconfig.defaultFonts.sansSerif;
+            lang = "en";
+            polkit_agent = true;
+            avatar_path = "~/.face";
+            clipboard_enabled = false;
+            launch_apps_as_systemd_services = true;
+
+            panel = {
+              wallpaper_placement = "centered";
+              session_placement = "centered";
+            };
+
+            screenshot = {
+              directory = "~/Pictures/Screenshots";
+              filename_pattern = "Screenshot at %Y-%m-%d %H-%M-%S";
+              copy_to_clipboard = true;
+              freeze_screen = true;
+            };
+
+            screen_corners = {
+              enabled = true;
+              size = 32;
             };
           };
-          colorSchemes.predefinedScheme = "Catppuccin";
-          plugins.autoUpdate = false;
-          general = {
-            language = "en";
-            avatarImage = "${config.home.homeDirectory}/.face";
-            showScreenCorners = true;
-            dimmerOpacity = 0.4;
-            forceBlackScreenCorners = true;
-          };
-          location = {
-            name = "Bangkok";
-            monthBeforeDay = false;
-          };
-          wallpaper.enabled = false;
-          dock.enabled = false;
-          sessionMenu.largeButtonsStyle = true;
-          desktopWidgets = {
-            enabled = true;
-            gridSnap = false;
-            monitorWidgets = [
+
+          bar.main = {
+            position = "left";
+            capsule = false;
+            margin_edge = 8;
+            margin_ends = 8;
+            padding = 12;
+            radius = 80;
+            thickness = 32;
+
+            start = ["control-center" "active_window" "media"];
+            center = ["lock_keys" "taskbar" "sysmon"];
+            end = ["tray" "notifications" "group:conn-media" "group:bat" "clock" "session"];
+
+            capsule_group = [
               {
-                name = "eDP-1";
-                widgets = [
-                  {
-                    clockStyle = "minimal";
-                    customFont = "";
-                    format = "HH:mm\\nd MMMM yyyy";
-                    id = "Clock";
-                    roundedCorners = true;
-                    scale = 1.310832355896586;
-                    showBackground = true;
-                    useCustomFont = false;
-                    usePrimaryColor = false;
-                    x = 1600;
-                    y = 949;
-                  }
-                  {
-                    hideMode = "visible";
-                    id = "MediaPlayer";
-                    roundedCorners = true;
-                    showAlbumArt = true;
-                    showBackground = true;
-                    showButtons = true;
-                    showVisualizer = true;
-                    visualizerType = "linear";
-                    x = 48;
-                    y = 992;
-                  }
-                  {
-                    id = "Weather";
-                    scale = 1.146743071335302;
-                    showBackground = true;
-                    x = 1599;
-                    y = 838;
-                  }
-                ];
+                id = "conn-media";
+                members = ["network" "bluetooth" "volume"];
               }
               {
-                name = "HDMI-A-1";
-                widgets = [
-                  {
-                    clockStyle = "minimal";
-                    customFont = "";
-                    format = "HH:mm\\nd MMMM yyyy";
-                    id = "Clock";
-                    roundedCorners = true;
-                    scale = 2.2303657992645927;
-                    showBackground = true;
-                    useCustomFont = false;
-                    usePrimaryColor = false;
-                    x = 1578;
-                    y = 911;
-                  }
-                  {
-                    hideMode = "visible";
-                    id = "MediaPlayer";
-                    roundedCorners = true;
-                    scale = 1.1414213562373094;
-                    showAlbumArt = true;
-                    showBackground = true;
-                    showButtons = true;
-                    showVisualizer = true;
-                    visualizerType = "linear";
-                    x = 1448;
-                    y = 16;
-                  }
-                ];
+                id = "bat";
+                members = ["brightness" "battery"];
               }
             ];
+          };
+          widget = {
+            taskbar = {
+              group_by_workspace = true;
+              hide_empty_workspaces = true;
+              show_workspace_label = false;
+              inactive_opacity = 0.8;
+            };
+            sysmon.show_label = false;
+            network.show_label = false;
+            volume.show_label = false;
+            brightness.show_label = false;
+            battery.display_mode = "graphic";
+            clock.capsule = true;
+          };
+
+          wallpaper = {
+            enabled = true;
+            fill_color = config.lib.stylix.colors.withHashtag.base00;
+            transition_on_startup = true;
+            default.path = "/home/itscrystalline/bg.png";
+          };
+
+          theme = {
+            mode = "dark"; # dark | light | auto
+            source = "builtin"; # builtin | wallpaper | community | custom
+            builtin = "Catppuccin"; # bundled palette name
+          };
+
+          brightness.enable_ddcutil = true;
+
+          audio = {
+            enable_overdrive = true;
+            enable_sounds = true;
+          };
+          calendar = {
+            enabled = true;
+            account.nextcloud = lib.mkIf nextcloudEnabled {
+              type = "caldav";
+              name = "Nextcloud";
+              provider = "custom";
+              server_url = "https://nc.iw2tryhard.dev/remote.php/dav/";
+              username = "itscrystalline";
+              calendars = []; # optional discovered collection ids; empty = all
+            };
+          };
+
+          idle = {
+            pre_action_fade_seconds = 1.5;
+            behavior = {
+              lock = {
+                enabled = true;
+                timeout = 600;
+                command = "noctalia:session lock";
+              };
+              screen-off = {
+                enabled = true;
+                timeout = 900;
+                command = "noctalia:dpms-off";
+                resume_command = "noctalia:dpms-on";
+              };
+              suspend = {
+                enabled = true;
+                timeout = 1200;
+                command = "noctalia:session suspend";
+                resume_command = "noctalia:dpms-on";
+              };
+            };
+          };
+
+          location = {
+            auto_locate = true;
+            address = "Bangkok, TH";
+          };
+          weather.enable = true;
+
+          hooks = {
+            battery_charging = "niri msg output eDP-1 mode 1920x1080@144.003; noctalia msg brightness-set 100; brightnessctl -d asus::kbd_backlight set 3; asusctl profile -P Balanced";
+            battery_plugged = "niri msg output eDP-1 mode 1920x1080@144.003; noctalia msg brightness-set 100; brightnessctl -d asus::kbd_backlight set 3; asusctl profile -P Balanced";
+            battery_discharging = "niri msg output eDP-1 mode 1920x1080@60.004; noctalia msg brightness-set 65; brightnessctl -d asus::kbd_backlight set 0; asusctl profile -P LowPower";
           };
         };
       };

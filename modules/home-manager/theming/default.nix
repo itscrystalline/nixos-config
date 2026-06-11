@@ -77,13 +77,13 @@ in {
         (lib.optionalAttrs (options.programs ? niri) (lib.mkIf niriEnabled {
           programs.niri.settings.layout.border.active.color = "#f5c2e7";
         }))
-        (lib.optionalAttrs (options.programs ? noctalia-shell) (lib.mkIf shellEnabled {
-          programs.noctalia-shell.colors = {
-            mHover = lib.mkForce "#f5c2e7";
-            mTertiary = lib.mkForce "#f5c2e7";
-            mPrimary = lib.mkForce "#f5c2e7";
-          };
-        }))
+        # (lib.optionalAttrs (options.programs ? noctalia-shell) (lib.mkIf shellEnabled {
+        #   programs.noctalia-shell.colors = {
+        #     mHover = lib.mkForce "#f5c2e7";
+        #     mTertiary = lib.mkForce "#f5c2e7";
+        #     mPrimary = lib.mkForce "#f5c2e7";
+        #   };
+        # }))
         {
           stylix = lib.mkMerge [
             {

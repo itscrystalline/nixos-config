@@ -46,10 +46,7 @@
         niri-unstable.follows = "niri-unstable_old";
       };
     };
-    noctalia = {
-      url = "github:noctalia-dev/noctalia-shell";
-      inputs.nixpkgs.follows = "nixpkgs-unstable";
-    };
+    noctalia.url = "github:noctalia-dev/noctalia-shell";
     blender-flake = {
       url = "github:edolstra/nix-warez?dir=blender";
       inputs.nixpkgs.follows = "nixpkgs";
