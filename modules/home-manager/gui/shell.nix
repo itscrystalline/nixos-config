@@ -30,12 +30,15 @@ in {
       ];
     }
     (lib.optionalAttrs (options.programs ? noctalia) {
-      sops.templates."noctalia-state.toml" = lib.mkIf nextcloudEnabled {
-        path = "${config.home.homeDirectory}/.local/state/noctalia/state.toml";
-        content = ''
-          [calendar_credentials]
-          nextcloud_password = ${config.sops.placeholder.nextcloud-rclone-password}
-        '';
+      sops = lib.mkIf nextcloudEnabled {
+        secrets."nextcloud-caldav" = {};
+        templates."noctalia-state.toml" = {
+          path = "${config.home.homeDirectory}/.local/state/noctalia/state.toml";
+          content = ''
+            [calendar_credentials]
+            nextcloud_password = "${config.sops.placeholder.nextcloud-caldav}"
+          '';
+        };
       };
 
       programs.noctalia = {
