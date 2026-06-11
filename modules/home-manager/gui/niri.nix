@@ -137,13 +137,13 @@ in {
 
           spawn-at-startup =
             [
-              {argv = ["awww-daemon" "--format" "argb"];}
+              # {argv = ["awww-daemon" "--format" "argb"];}
               {argv = ["fcitx5"];}
               {argv = ["gnome-keyring-daemon" "--start" "--components=secrets"];}
               {argv = ["xhost" "+SI:localuser:root"];}
             ]
             ++ lib.optionals shellEnabled [
-              {argv = ["awww" "img" "/home/itscrystalline/bg.gif" "--filter=Nearest"];}
+              # {argv = ["awww" "img" "/home/itscrystalline/bg.gif" "--filter=Nearest"];}
               {sh = "QT_IM_MODULE=wayland noctalia";}
             ]
             ++ lib.optionals guiProgramsEnabled [

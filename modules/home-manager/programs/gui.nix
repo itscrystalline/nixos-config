@@ -61,8 +61,7 @@ in {
           fuzzel
           brightnessctl
           ddcutil
-          awww
-          mpvpaper
+          # awww
           yad
           playerctl
           ydotool
