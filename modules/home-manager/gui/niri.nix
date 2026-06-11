@@ -55,7 +55,6 @@ in {
 
               "Mod+E".action = spawn "nautilus" "--new-window";
               "Mod+M".action = spawn "thunderbird";
-              "Mod+I".action = sh ''XDG_CURRENT_DESKTOP="gnome" gnome-control-center'';
               "Mod+V".action = spawn "pavucontrol";
               "Mod+W".action = spawn "zen-twilight" "-p" "crystal";
               "Mod+B".action = spawn "neovide";
