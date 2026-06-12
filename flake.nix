@@ -47,6 +47,7 @@
       };
     };
     noctalia.url = "github:noctalia-dev/noctalia-shell";
+    noctalia-greeter.url = "github:noctalia-dev/noctalia-greeter";
     blender-flake = {
       url = "github:edolstra/nix-warez?dir=blender";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -93,12 +94,8 @@
     hmModules = [
       ./modules/home-manager
       (import ./secrets false)
-      inputs.nix-flatpak.homeManagerModules.nix-flatpak
       inputs.nix-index-database.homeModules.nix-index
       inputs.occasion.homeManagerModule
-      inputs.vicinae.homeManagerModules.default
-      inputs.zen-browser.homeModules.twilight
-      inputs.noctalia.homeModules.default
       inputs.sops-nix.homeManagerModules.sops
     ];
 
@@ -111,7 +108,6 @@
           hmModules
           ++ [
             inputs.stylix.homeModules.stylix
-            inputs.niri.homeModules.niri
           ]
           ++ userModules;
         extraSpecialArgs = {
@@ -169,6 +165,10 @@
         nixos-hardware.nixosModules.asus-fx506hm
       ];
       userHomeModules = [
+        inputs.nix-flatpak.homeManagerModules.nix-flatpak
+        inputs.vicinae.homeManagerModules.default
+        inputs.zen-browser.homeModules.twilight
+        inputs.noctalia.homeModules.default
         (import ./homes/itscrystalline.nix {
           nextcloudMount = true;
           minimal = false;
