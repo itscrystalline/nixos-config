@@ -2,6 +2,7 @@
   config,
   pkgs,
   lib,
+  options,
   ...
 }: let
   enabled = config.gui.niri.enable && config.gui.enable;
@@ -9,41 +10,48 @@ in {
   options.gui.niri.enable = lib.mkEnableOption "niri & friends (nixos)";
   config = lib.mkIf enabled {
     users.users.${config.core.primaryUser}.extraGroups = ["ydotool"];
-    programs = {
-      niri.enable = true;
-      niri.package = pkgs.niri-unstable;
+    programs = lib.mkMerge [
+      {
+        niri.enable = true;
+        niri.package = pkgs.niri-unstable;
 
-      ydotool.enable = true;
+        ydotool.enable = true;
 
-      nautilus-open-any-terminal = {
-        enable = true;
-        terminal = "ghostty";
-      };
-    };
-    services = {
-      displayManager = {
-        defaultSession = "niri";
-        gdm.enable = true;
-      };
-      gvfs.enable = true;
-      xserver.enable = true;
-    };
+        nautilus-open-any-terminal = {
+          enable = true;
+          terminal = "ghostty";
+        };
+      }
 
-    # FIXME: https://github.com/NixOS/nixpkgs/issues/523332#issuecomment-4528189167
-    environment.sessionVariables.XDG_DATA_DIRS = ["${pkgs.gdm}/share"];
-    services.displayManager.gdm.settings.debug.Enable = true;
-    security.pam.services.gdm-launch-environment.rules.session.gnome-session-path = {
-      inherit (config.security.pam.services.gdm-launch-environment.rules.session.env) control modulePath;
-      order = config.security.pam.services.gdm-launch-environment.rules.session.env.order + 50;
-      settings = {
-        conffile = let
-          envfile = pkgs.writeText "gnome-session-path.env" ''
-            PATH   DEFAULT="''${PATH}:${pkgs.gnome-session}/bin"
-          '';
-        in "${envfile}";
-        readenv = 0;
-      };
-    };
+      (lib.optionalAttrs (options.programs ? noctalia-greeter) {
+        noctalia-greeter = {
+          enable = true;
+          greeter-args = "--session ${config.services.displayManager.defaultSession}";
+        };
+      })
+    ];
+    services = lib.mkMerge [
+      {
+        displayManager.defaultSession = "niri";
+
+        gvfs.enable = true;
+        xserver.enable = true;
+        xserver.xkb = {
+          layout = "us";
+          variant = "";
+        };
+      }
+
+      (
+        if (options.programs ? noctalia-greeter)
+        then {
+          greetd.settings.default_session.user = config.core.primaryUser;
+        }
+        else {
+          services.displayManager.ly.enable = true;
+        }
+      )
+    ];
 
     environment.systemPackages = with pkgs; [
       gnome-keyring
@@ -55,6 +63,7 @@ in {
       totem # default video player
       papers # default PDF viewer
       gnome-disk-utility # disks
+      gnome-calculator # calc (short for calculator)
       file-roller # default archiver
     ];
     i18n.inputMethod = {
@@ -64,10 +73,6 @@ in {
         fcitx5-mozc
         fcitx5-gtk
       ];
-    };
-    services.xserver.xkb = {
-      layout = "us";
-      variant = "";
     };
 
     systemd.user.services = {

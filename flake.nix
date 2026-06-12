@@ -162,6 +162,7 @@
       otherModules = [
         inputs.nix-flatpak.nixosModules.nix-flatpak
         inputs.niri.nixosModules.niri
+        inputs.noctalia-greeter.nixosModules.default
         nixos-hardware.nixosModules.asus-fx506hm
       ];
       userHomeModules = [
