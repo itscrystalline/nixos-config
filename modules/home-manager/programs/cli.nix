@@ -436,6 +436,13 @@ in {
         enableZshIntegration = true;
         tmux.enableShellIntegration = true;
       };
+
+      yazi = {
+        enable = true;
+        shellWrapperName = "y";
+        enableBashIntegration = true;
+        enableZshIntegration = true;
+      };
     };
   };
 }
