@@ -1,10 +1,11 @@
 {
   lib,
   config,
+  options,
   ...
 }: let
   inherit (config.hm) flatpak;
-  enabled = flatpak.enable;
+  enabled = flatpak.enable && options.services ? flatpak;
 in {
   options.hm.flatpak.enable = lib.mkEnableOption "Flatpak support";
 

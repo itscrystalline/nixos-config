@@ -2,6 +2,7 @@
   lib,
   config,
   pkgs,
+  options,
   ...
 }: let
   inherit (config.hm.programs) games;
@@ -32,9 +33,11 @@ in {
         nur.repos.itscrystalline.irony-mod-manager
       ];
 
-    services.flatpak.packages = lib.optionals (pkgs.stdenv.isLinux && config.hm.flatpak.enable) [
-      "org.vinegarhq.Sober"
-      "com.usebottles.bottles"
-    ];
+    services = lib.optionalAttrs (options.services ? flatpak) {
+      flatpak.packages = lib.optionals (pkgs.stdenv.isLinux && config.hm.flatpak.enable) [
+        "org.vinegarhq.Sober"
+        "com.usebottles.bottles"
+      ];
+    };
   });
 }
