@@ -51,12 +51,6 @@ in {
     };
   };
 
-  disabledModules = ["services/networking/ncps.nix" "services/networking/harmonia.nix"];
-  imports = [
-    (inputs.nixpkgs-unstable + "/nixos/modules/services/networking/ncps.nix")
-    (inputs.nixpkgs-unstable + "/nixos/modules/services/networking/harmonia.nix")
-  ];
-
   config = lib.mkIf enabled {
     sops.secrets."harmonia-secret-key".owner = "harmonia";
     users.users.harmonia = {
