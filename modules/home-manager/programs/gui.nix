@@ -3,6 +3,7 @@
   config,
   pkgs,
   inputs ? {},
+  options,
   ...
 }: let
   guiEnabled = config.hm.programs.gui.enable;
@@ -83,7 +84,7 @@ in {
       };
 
       sessionVariables = lib.mkIf pkgs.stdenv.isLinux {
-        DEFAULT_BROWSER = lib.optionalString (inputs ? zen-browser) "${inputs.zen-browser.packages.${pkgs.hostsys}.twilight}/bin/zen";
+        DEFAULT_BROWSER = lib.optionalString (options.programs ? zen-browser) "${inputs.zen-browser.packages.${pkgs.hostsys}.twilight}/bin/zen";
       };
     };
 
@@ -176,7 +177,7 @@ in {
           profiles.default.isDefault = true;
         };
       }
-      (lib.optionalAttrs (inputs ? zen-browser) {
+      (lib.optionalAttrs (options.programs ? zen-browser) {
         zen-browser = lib.mkIf pkgs.stdenv.isLinux {
           enable = true;
           setAsDefaultBrowser = true;
@@ -279,9 +280,11 @@ in {
       };
     };
 
-    services.flatpak.packages = lib.optionals (pkgs.stdenv.isLinux && config.hm.flatpak.enable) [
-      "com.github.tchx84.Flatseal"
-      "us.zoom.Zoom"
-    ];
+    services = lib.optionalAttrs (options.services ? flatpak) {
+      flatpak.packages = lib.optionals (pkgs.stdenv.isLinux && config.hm.flatpak.enable) [
+        "com.github.tchx84.Flatseal"
+        "us.zoom.Zoom"
+      ];
+    };
   };
 }
