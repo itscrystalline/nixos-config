@@ -87,126 +87,129 @@ in {
       };
     };
 
-    programs = {
-      chromium = {
-        enable = true;
-        extensions = [
-          "ophjlpahpchlmihnnnihgmmeilfjmjjc" # LINE
-        ];
-      };
-
-      obs-studio = lib.mkIf config.hm.programs.gui.obs.enable {
-        enable = true;
-        plugins =
-          (with pkgs.stable.obs-studio-plugins; [
-            obs-composite-blur
-            droidcam-obs
-          ])
-          ++ lib.optionals pkgs.stdenv.isLinux (with pkgs.stable.obs-studio-plugins; [
-            obs-pipewire-audio-capture
-          ]);
-      };
-
-      kitty = {
-        enable = true;
-        shellIntegration = {
-          enableZshIntegration = true;
-          enableBashIntegration = true;
-        };
-      };
-
-      fuzzel.enable = true;
-
-      ghostty = {
-        enable = true;
-        enableZshIntegration = true;
-        enableBashIntegration = true;
-        settings = {
-          font-size = 12;
-          clipboard-paste-protection = false;
-          clipboard-trim-trailing-spaces = true;
-          keybind = [
-            # keybinds
-            "ctrl+shift+o=unbind"
-            "ctrl+alt+arrow_left=unbind"
-            "ctrl+shift+e=unbind"
-            "super+ctrl+bracket_right=unbind"
-            "ctrl+alt+arrow_down=unbind"
-            "super+ctrl+shift+arrow_up=unbind"
-            "ctrl+alt+arrow_right=unbind"
-            "super+ctrl+shift+arrow_left=unbind"
-            "ctrl+alt+arrow_up=unbind"
-            "super+ctrl+shift+arrow_down=unbind"
-            "super+ctrl+bracket_left=unbind"
-            "super+ctrl+shift+arrow_right=unbind"
-            "ctrl+shift+enter=unbind"
-            # tabs
-            "ctrl+shift+arrow_left=unbind"
-            "alt+digit_3=unbind"
-            "alt+digit_7=unbind"
-            "alt+7=unbind"
-            "ctrl+tab=unbind"
-            "alt+digit_8=unbind"
-            "alt+digit_2=unbind"
-            "alt+5=unbind"
-            "ctrl+page_up=unbind"
-            "alt+digit_6=unbind"
-            "alt+digit_4=unbind"
-            "alt+2=unbind"
-            "alt+9=unbind"
-            "ctrl+shift+arrow_right=unbind"
-            "ctrl+page_down=unbind"
-            "alt+1=unbind"
-            "alt+digit_1=unbind"
-            "alt+6=unbind"
-            "alt+digit_5=unbind"
-            "ctrl+shift+tab=unbind"
-            "alt+3=unbind"
-            "ctrl+shift+t=unbind"
-            "alt+4=unbind"
-            "alt+8=unbind"
+    programs = lib.mkMerge [
+      {
+        chromium = {
+          enable = true;
+          extensions = [
+            "ophjlpahpchlmihnnnihgmmeilfjmjjc" # LINE
           ];
         };
-        systemd.enable = pkgs.stdenv.isLinux;
-      };
 
-      zen-browser = lib.mkIf pkgs.stdenv.isLinux {
-        enable = true;
-        setAsDefaultBrowser = true;
-        policies = let
-          mkLockedAttrs = builtins.mapAttrs (_: value: {
-            Value = value;
-            Status = "locked";
-          });
-        in {
-          AutofillAddressEnabled = true;
-          AutofillCreditCardEnabled = false;
-          DisableAppUpdate = true;
-          DisableFeedbackCommands = true;
-          DisableFirefoxStudies = true;
-          DisablePocket = true;
-          DisableTelemetry = true;
-          DontCheckDefaultBrowser = true;
-          NoDefaultBookmarks = true;
-          OfferToSaveLogins = false;
-          EnableTrackingProtection = {
-            Value = true;
-            Locked = true;
-            Cryptomining = true;
-            Fingerprinting = true;
-          };
-          Preferences = mkLockedAttrs {
-            "browser.tabs.warnOnClose" = false;
-            "toolkit.legacyUserProfileCustomizations.stylesheets" = true;
+        obs-studio = lib.mkIf config.hm.programs.gui.obs.enable {
+          enable = true;
+          plugins =
+            (with pkgs.stable.obs-studio-plugins; [
+              obs-composite-blur
+              droidcam-obs
+            ])
+            ++ lib.optionals pkgs.stdenv.isLinux (with pkgs.stable.obs-studio-plugins; [
+              obs-pipewire-audio-capture
+            ]);
+        };
+
+        kitty = {
+          enable = true;
+          shellIntegration = {
+            enableZshIntegration = true;
+            enableBashIntegration = true;
           };
         };
-      };
 
-      thunderbird = {
-        enable = true;
-        profiles.default.isDefault = true;
-      };
-    };
+        fuzzel.enable = true;
+
+        ghostty = {
+          enable = true;
+          enableZshIntegration = true;
+          enableBashIntegration = true;
+          settings = {
+            font-size = 12;
+            clipboard-paste-protection = false;
+            clipboard-trim-trailing-spaces = true;
+            keybind = [
+              # keybinds
+              "ctrl+shift+o=unbind"
+              "ctrl+alt+arrow_left=unbind"
+              "ctrl+shift+e=unbind"
+              "super+ctrl+bracket_right=unbind"
+              "ctrl+alt+arrow_down=unbind"
+              "super+ctrl+shift+arrow_up=unbind"
+              "ctrl+alt+arrow_right=unbind"
+              "super+ctrl+shift+arrow_left=unbind"
+              "ctrl+alt+arrow_up=unbind"
+              "super+ctrl+shift+arrow_down=unbind"
+              "super+ctrl+bracket_left=unbind"
+              "super+ctrl+shift+arrow_right=unbind"
+              "ctrl+shift+enter=unbind"
+              # tabs
+              "ctrl+shift+arrow_left=unbind"
+              "alt+digit_3=unbind"
+              "alt+digit_7=unbind"
+              "alt+7=unbind"
+              "ctrl+tab=unbind"
+              "alt+digit_8=unbind"
+              "alt+digit_2=unbind"
+              "alt+5=unbind"
+              "ctrl+page_up=unbind"
+              "alt+digit_6=unbind"
+              "alt+digit_4=unbind"
+              "alt+2=unbind"
+              "alt+9=unbind"
+              "ctrl+shift+arrow_right=unbind"
+              "ctrl+page_down=unbind"
+              "alt+1=unbind"
+              "alt+digit_1=unbind"
+              "alt+6=unbind"
+              "alt+digit_5=unbind"
+              "ctrl+shift+tab=unbind"
+              "alt+3=unbind"
+              "ctrl+shift+t=unbind"
+              "alt+4=unbind"
+              "alt+8=unbind"
+            ];
+          };
+          systemd.enable = pkgs.stdenv.isLinux;
+        };
+
+        thunderbird = {
+          enable = true;
+          profiles.default.isDefault = true;
+        };
+      }
+      (lib.optionalAttrs (inputs ? zen-browser) {
+        zen-browser = lib.mkIf pkgs.stdenv.isLinux {
+          enable = true;
+          setAsDefaultBrowser = true;
+          policies = let
+            mkLockedAttrs = builtins.mapAttrs (_: value: {
+              Value = value;
+              Status = "locked";
+            });
+          in {
+            AutofillAddressEnabled = true;
+            AutofillCreditCardEnabled = false;
+            DisableAppUpdate = true;
+            DisableFeedbackCommands = true;
+            DisableFirefoxStudies = true;
+            DisablePocket = true;
+            DisableTelemetry = true;
+            DontCheckDefaultBrowser = true;
+            NoDefaultBookmarks = true;
+            OfferToSaveLogins = false;
+            EnableTrackingProtection = {
+              Value = true;
+              Locked = true;
+              Cryptomining = true;
+              Fingerprinting = true;
+            };
+            Preferences = mkLockedAttrs {
+              "browser.tabs.warnOnClose" = false;
+              "toolkit.legacyUserProfileCustomizations.stylesheets" = true;
+            };
+          };
+        };
+      })
+    ];
 
     xdg = lib.mkIf pkgs.stdenv.isLinux {
       desktopEntries = {

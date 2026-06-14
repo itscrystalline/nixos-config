@@ -121,7 +121,7 @@ in {
                 size = 16;
               };
 
-              targets.zen-browser = {
+              targets.zen-browser = lib.mkIf (options.programs ? zen-browser) {
                 enable = true;
                 profileNames = ["crystal"];
               };
