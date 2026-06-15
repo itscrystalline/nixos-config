@@ -13,7 +13,14 @@ in {
     programs = lib.mkMerge [
       {
         niri.enable = true;
-        niri.package = pkgs.niri-unstable;
+        niri.package = pkgs.niri-unstable.overrideAttrs (_: {
+          patches = [
+            (pkgs.fetchpatch {
+              url = "https://github.com/user-attachments/files/28446966/color.patch";
+              hash = "sha256-cqyport7l+NOxAr/0LICJ2cP4+h7MZXGpwf/PZDsX+A=";
+            })
+          ];
+        });
 
         ydotool.enable = true;
 

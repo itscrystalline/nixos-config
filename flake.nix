@@ -36,14 +36,14 @@
       url = "github:nix-community/nix-index-database";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    # FIXME: until niri fixes https://github.com/niri-wm/niri/issues/4113
-    niri-unstable_old.url = "github:YaLTeR/niri/c5253968b4b2d9fc599c1636b0e295ff32aab52b";
+    # FIXME: until xwayland-sattelite fixes https://github.com/Supreeeme/xwayland-satellite/issues/278
+    xwayland-satellite_old.url = "github:Supreeeme/xwayland-satellite/3273a0fccd71da21c6362c74f3b1d1c0a89ff3ba";
     niri = {
       url = "github:sodiboo/niri-flake";
       inputs = {
         nixpkgs.follows = "nixpkgs-unstable";
         nixpkgs-stable.follows = "nixpkgs";
-        niri-unstable.follows = "niri-unstable_old";
+        xwayland-satellite-unstable.follows = "xwayland-satellite_old";
       };
     };
     noctalia.url = "github:noctalia-dev/noctalia-shell";
