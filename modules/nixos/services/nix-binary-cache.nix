@@ -2,7 +2,6 @@
   lib,
   config,
   pkgs,
-  inputs,
   ...
 }: let
   nbc = config.crystals-services.nix-binary-cache;
@@ -62,7 +61,6 @@ in {
     services = {
       ncps = {
         enable = true;
-        package = pkgs.unstable.ncps;
         cache = {
           inherit (config.networking) hostName;
           storage.local = nbc.basePath;
