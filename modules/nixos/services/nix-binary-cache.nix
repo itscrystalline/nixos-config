@@ -1,132 +1,102 @@
 {
   lib,
   config,
-  pkgs,
   ...
 }: let
   nbc = config.crystals-services.nix-binary-cache;
-  enabled = nbc.enable;
 
   inherit (config.crystals-services.nginx) local;
 in {
   options.crystals-services.nix-binary-cache = {
-    enable = lib.mkEnableOption "Local nix binary cache";
     domain = lib.mkOption {
       type = lib.types.str;
       description = "local domain for all cache-related things. this is affixed by `config.crystals-services.nginx.local.suffix`.";
       default = "cache";
     };
-    nixCaches = lib.mkOption {
-      type = lib.types.oneOf [
-        (lib.types.enum ["system"])
-        (lib.types.submodule {
-          options.urls = lib.mkOption {
-            type = lib.types.listOf lib.types.str;
-            default = [];
-            description = "Upstream caches for the binary cache.";
+    harmonia = {
+      enable = lib.mkEnableOption "Serve local nix store as cache";
+    };
+    ncro = {
+      enable = lib.mkEnableOption "Lightweight HTTP proxy for optimizing Nix cache routes for fast access";
+      publish = lib.mkEnableOption "Publishing to the network via nginx";
+      nixCaches = lib.mkOption {
+        type = lib.types.listOf (lib.types.submodule {
+          options.url = lib.mkOption {
+            type = lib.types.str;
+            default = "";
+            description = "Upstream cache URL.";
           };
-          options.publicKeys = lib.mkOption {
-            type = lib.types.listOf lib.types.str;
-            default = [];
-            description = "Upstream public keys for the binary cache.";
+          options.public_key = lib.mkOption {
+            type = lib.types.str;
+            default = "";
+            description = "Upstream public keys.";
           };
-        })
-      ];
-      default = {
-        urls = [];
-        publicKeys = [];
+        });
+        default = [];
+        description = "Nix cache config for ncro to use.";
       };
-      description = "Nix cache config for ncps to use. 'system' means to use the global nix caches.";
-    };
-    basePath = lib.mkOption {
-      type = lib.types.str;
-      default = "/var/lib/ncps";
-      description = "Base directory for ncps's data, temp, and database files";
-    };
-    openTelemetryGrpcUrl = lib.mkOption {
-      type = lib.types.nullOr lib.types.str;
-      default = null;
-      description = "OpenTelemetry gRPC URL for sending logs and traces. If null, telemetry is emitted to stdout.";
     };
   };
 
-  config = lib.mkIf enabled {
-    sops.secrets."harmonia-secret-key".owner = "harmonia";
-    users.users.harmonia = {
-      isSystemUser = true;
-      group = "harmonia";
-    };
-    users.groups.harmonia = {};
+  config = lib.mkMerge [
+    (lib.mkIf nbc.harmonia.enable {
+      sops.secrets."harmonia-secret-key".owner = "harmonia";
+      users.users.harmonia = {
+        isSystemUser = true;
+        group = "harmonia";
+      };
+      users.groups.harmonia = {};
 
-    services = {
-      ncps = {
-        enable = true;
-        cache = {
-          inherit (config.networking) hostName;
-          storage.local = nbc.basePath;
-          databaseURL = "sqlite:${nbc.basePath}/db/db.sqlite";
-          maxSize = "100G";
-          lru.schedule = "0 2 * * *";
-          lru.scheduleTimeZone = config.core.localization.timezone;
-          allowPutVerb = true;
-          allowDeleteVerb = true;
-          cdc.enabled = true;
+      services = {
+        harmonia-dev = {
+          daemon.enable = true;
+          cache = {
+            enable = true;
+            signKeyPaths = [config.sops.secrets.harmonia-secret-key.path];
+            settings.bind = "[::]:8502";
+          };
+        };
+      };
 
-          upstream =
-            if (nbc.nixCaches == "system")
-            then {
-              urls =
-                (builtins.filter (url: !(lib.strings.hasInfix local.suffix url)) config.nix.settings.substituters)
-                ++ [
-                  "http://127.0.0.1:8502"
-                ];
-              publicKeys =
-                (builtins.filter (key: !(lib.strings.hasInfix config.core.name key)) config.nix.settings.trusted-public-keys)
-                ++ [
-                  "harmonia.${nbc.domain}.${local.suffix}:5IjKpw7rA9DxB2BVvDY/NzD0Zakjn9t9SB40AEpY2Q8="
-                ];
-            }
-            else {
-              urls = ["http://127.0.0.1:8502"] ++ nbc.nixCaches.urls;
-              publicKeys = ["harmonia.${nbc.domain}.${local.suffix}:5IjKpw7rA9DxB2BVvDY/NzD0Zakjn9t9SB40AEpY2Q8="] ++ nbc.nixCaches.publicKeys;
+      crystals-services.nginx.local.sites = {
+        "harmonia.${nbc.domain}" = {
+          locations."/" = {
+            proxyPass = "http://127.0.0.1:8502";
+            proxyWebsockets = true;
+          };
+        };
+      };
+
+      networking.hosts = {
+        "127.0.0.1" = ["harmonia.${nbc.domain}.${local.suffix}"];
+      };
+    })
+    (lib.mkIf nbc.ncro.enable {
+      services = {
+        ncro = {
+          enable = true;
+          settings = {
+            upstreams = builtins.map (upstream: upstream // {priority = 10;}) nbc.ncro.nixCaches;
+            logging.level = "info";
+            server = {
+              listen = ":8503";
+              cache_priority = 20;
             };
-        };
-        server.addr = ":8501";
-        prometheus.enable = true;
-        openTelemetry = {
-          enable = true;
-          grpcURL = nbc.openTelemetryGrpcUrl;
-        };
-      };
-
-      harmonia-dev = {
-        # package = pkgs.unstable.harmonia;
-        daemon.enable = true;
-        cache = {
-          enable = true;
-          signKeyPaths = [config.sops.secrets.harmonia-secret-key.path];
-          settings.bind = "[::]:8502";
+            cache = {
+              ttl = "2h";
+              negative_ttl = "15m";
+            };
+          };
         };
       };
-    };
-
-    crystals-services.nginx.local.sites = {
-      "${nbc.domain}" = {
-        locations."/" = {
-          proxyPass = "http://127.0.0.1:8501";
-          proxyWebsockets = true;
+      crystals-services.nginx.local.sites = lib.mkIf nbc.ncro.publish {
+        "${nbc.domain}" = {
+          locations."/" = {
+            proxyPass = "http://127.0.0.1:8503";
+            proxyWebsockets = true;
+          };
         };
       };
-      "harmonia.${nbc.domain}" = {
-        locations."/" = {
-          proxyPass = "http://127.0.0.1:8502";
-          proxyWebsockets = true;
-        };
-      };
-    };
-
-    networking.hosts = {
-      "127.0.0.1" = ["${nbc.domain}.${local.suffix}" "harmonia.${nbc.domain}.${local.suffix}"];
-    };
-  };
+    })
+  ];
 }

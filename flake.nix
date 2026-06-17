@@ -81,6 +81,7 @@
     };
     harmonia.url = "github:nix-community/harmonia";
     concord.url = "github:chojs23/concord";
+    ncro.url = "github:feel-co/ncro";
   };
 
   outputs = inputs @ {
@@ -142,6 +143,7 @@
             inputs.nur.modules.nixos.default
             inputs.stylix.nixosModules.stylix
             inputs.nix-index-database.nixosModules.default
+            inputs.ncro.nixosModules.default
           ]
           ++ nixpkgs.lib.optionals (userHomeModules != []) [
             home-manager.nixosModules.home-manager

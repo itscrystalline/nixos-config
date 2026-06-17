@@ -48,37 +48,10 @@
       asExitNode = true;
       role = "server";
     };
-    nix-binary-cache = {
-      enable = true;
-      # nixCaches = "system";
-      nixCaches = {
-        urls = [
-          "https://cache.nixos.org"
-          "https://devenv.cachix.org"
-          "https://nix-community.cachix.org"
-          "https://nixpkgs-python.cachix.org"
-          "https://cuda-maintainers.cachix.org"
-          "https://attic.xuyh0120.win/lantian"
-          "https://niri.cachix.org"
-          "https://itscrystalline.cachix.org"
-          "https://vicinae.cachix.org"
-          "https://noctalia.cachix.org"
-        ];
-        publicKeys = [
-          "hydra.nixos.org-1:CNHJZBh9K4tP3EKF6FkkgeVYsS3ohTl+oS0Qa8bezVs="
-          "devenv.cachix.org-1:w1cLUi8dv3hnoSPGAuibQv+f9TZLr6cv/Hm9XgU50cw="
-          "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
-          "nixpkgs-python.cachix.org-1:hxjI7pFxTyuTHn2NkvWCrAUcNZLNS3ZAvfYNuYifcEU="
-          "niri.cachix.org-1:Wv0OmO7PsuocRKzfDoJ3mulSl7Z6oezYhGhR+3W2964="
-          "cuda-maintainers.cachix.org-1:0dq3bujKpuEPMCX6U4WylrUDZ9JyUG0VpVZa7CNfq5E="
-          "lantian:EeAUQ+W+6r7EtwnmYjeVwx5kOGEBpjlBfPlzGlTNvHc="
-          "itscrystalline.cachix.org-1:w+aEu6k5Rx3xgUSJPCUhdZSxS919ZJvv9wThPKGVMv4="
-          "vicinae.cachix.org-1:1kDrfienkGHPYbkpNj1mWTr7Fm1+zcenzgTizIcI3oc="
-          "noctalia.cachix.org-1:pCOR47nnMEo5thcxNDtzWpOxNFQsBRglJzxWPp3dkU4="
-        ];
-      };
-      openTelemetryGrpcUrl = "http://100.125.37.13:4317";
-    };
+
+    nix-binary-cache.harmonia.enable = true;
+    nix-binary-cache.ncro.publish = true;
+
     nginx.enable = true;
     blocky = {
       enable = true;
