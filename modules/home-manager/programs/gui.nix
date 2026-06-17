@@ -40,7 +40,16 @@ in {
     home = {
       packages =
         (with pkgs.stable; [
-          vesktop
+          (vesktop.overrideAttrs (_: prev: {
+            patches =
+              (prev.patches or [])
+              ++ [
+                (pkgs.fetchpatch {
+                  url = "https://patch-diff.githubusercontent.com/raw/Vencord/Vesktop/pull/1251.patch";
+                  hash = "sha256-0rTPJSBMBEBBl62bemT+Tlq94nbsoOjsSO5KmY6yejM=";
+                })
+              ];
+          }))
           beeper
           keepassxc
           vlc
