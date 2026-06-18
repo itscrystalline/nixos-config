@@ -9,16 +9,17 @@ in {
   options.gui.steam.enable = lib.mkEnableOption "steam";
   config = lib.mkIf enabled {
     environment.systemPackages = with pkgs; [
-      gamemode
-      # Proton
       protonup-qt
     ];
-
-    programs.steam = {
-      enable = true;
-      package = pkgs.steam.override {extraArgs = "-system-composer";}; # for HW accel to work
-      remotePlay.openFirewall = true; # Open ports in the firewall for Steam Remote Play
-      extest.enable = true;
+    programs = {
+      gamemode.enable = true;
+      gamescope.enable = true;
+      steam = {
+        enable = true;
+        package = pkgs.steam.override {extraArgs = "-system-composer";}; # for HW accel to work
+        remotePlay.openFirewall = true; # Open ports in the firewall for Steam Remote Play
+        extest.enable = true;
+      };
     };
   };
 }
