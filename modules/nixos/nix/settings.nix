@@ -73,8 +73,8 @@
         public_key = "nixpkgs-python.cachix.org-1:hxjI7pFxTyuTHn2NkvWCrAUcNZLNS3ZAvfYNuYifcEU=";
       }
       {
-        url = "https://cuda-maintainers.cachix.org";
-        public_key = "cuda-maintainers.cachix.org-1:0dq3bujKpuEPMCX6U4WylrUDZ9JyUG0VpVZa7CNfq5E=";
+        url = "https://cache.nixos-cuda.org";
+        public_key = "cache.nixos-cuda.org:74DUi4Ye579gUqzH4ziL9IyiJBlDpMRn9MBN8oNan9M=";
       }
       {
         url = "https://attic.xuyh0120.win/lantian";
