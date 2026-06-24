@@ -2,6 +2,7 @@
   config,
   inputs,
   pkgs,
+  lib,
   ...
 }: {
   sops.secrets.gh-token.restartUnits = ["nix-daemon.service"];
@@ -10,9 +11,7 @@
     settings = {
       experimental-features = ["nix-command" "flakes"];
 
-      substituters = [
-        "http://localhost${config.services.ncro.settings.server.listen}"
-      ];
+      substituters = lib.mkForce ["http://localhost${config.services.ncro.settings.server.listen}"];
 
       trusted-users = ["root" "itscrystalline" "nixremote" "@wheel"];
       auto-optimise-store = true;
@@ -59,7 +58,7 @@
     nixCaches = [
       {
         url = "https://cache.nixos.org";
-        public_key = "hydra.nixos.org-1:CNHJZBh9K4tP3EKF6FkkgeVYsS3ohTl+oS0Qa8bezVs=";
+        public_key = "cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY=";
       }
       {
         url = "https://devenv.cachix.org";

@@ -11,10 +11,7 @@ lib.mkIf (passthrough == null) {
     settings = {
       experimental-features = ["nix-command" "flakes"];
 
-      substituters = [
-        "https://cache.nixos.org"
-        "http://cache.crys"
-      ];
+      substituters = lib.mkForce ["http://cache.crys"];
 
       trusted-public-keys = [
         "cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY="
