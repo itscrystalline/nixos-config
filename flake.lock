@@ -706,11 +706,11 @@
         "treefmt-nix": "treefmt-nix"
       },
       "locked": {
-        "lastModified": 1782076342,
-        "narHash": "sha256-CV2gLcUOpLooBAmFx1xND3OKRyUN7gAXCBPh+HmQ8w0=",
+        "lastModified": 1782219080,
+        "narHash": "sha256-emtAIDw6+NmnzamrPXGJvbaf6nTm5IJ1yYBWp5ph1fA=",
         "owner": "nix-community",
         "repo": "harmonia",
-        "rev": "773c2f5635c4e38e7fb932b5e22a80d23b279153",
+        "rev": "0760dbe508a1162f05dc36bdf333b45318ee77a0",
         "type": "github"
       },
       "original": {
@@ -1272,11 +1272,11 @@
     },
     "nixpkgs_6": {
       "locked": {
-        "lastModified": 1781808408,
-        "narHash": "sha256-0sOb6OIaD/K1zHxBhpmlKvkADfe0n8+l4Jj2e1Q0r3w=",
+        "lastModified": 1782116945,
+        "narHash": "sha256-G3tw/IXmaH6IQ2upZvhuN9sG8CkuX+BLuJDpE8hz0Ds=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "e8210c649915deed7080033cdbabcc19e40bb899",
+        "rev": "34268251cf5547d39063f2c5ea9a196246f7f3a6",
         "type": "github"
       },
       "original": {
@@ -1333,11 +1333,11 @@
         "nixpkgs": "nixpkgs_7"
       },
       "locked": {
-        "lastModified": 1782186359,
-        "narHash": "sha256-grcnLF0vfw1mJOSIy+4BuWGBdbOwGo611dQk4qLgAp8=",
+        "lastModified": 1782276760,
+        "narHash": "sha256-tM/FsXOwHXoH3jlgL0zxXtWdJK4SQJOQkHWySl9kjq4=",
         "owner": "noctalia-dev",
         "repo": "noctalia-shell",
-        "rev": "a5eeef13338167fb85ecf8ea7c2fabb4c5536010",
+        "rev": "c81c84901a09c629f3415ae8cba1d7ad9011e050",
         "type": "github"
       },
       "original": {
@@ -1372,11 +1372,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1782189793,
-        "narHash": "sha256-jhu9XT9EXStgIHF2V9Ve5luSpnXg5hD7hoxAmC/NaqY=",
+        "lastModified": 1782276727,
+        "narHash": "sha256-2WMvWwnfwTUQG2IX2O00YT9tuL0MOZxI/l+f9HCEAf4=",
         "owner": "nix-community",
         "repo": "NUR",
-        "rev": "927f1cac1a882eb9bf03ec9319978588066a1ff0",
+        "rev": "eedbb99f83834ab4fffaa9630d74d59939c91905",
         "type": "github"
       },
       "original": {
@@ -1447,11 +1447,11 @@
         "systems": "systems_4"
       },
       "locked": {
-        "lastModified": 1781910657,
-        "narHash": "sha256-j6OlR6sKwEnRp6foT40sAXACCbGh5XdN2prSQVTlfhI=",
+        "lastModified": 1782253379,
+        "narHash": "sha256-c4Tm1GskFHOMsGYz/fnxIc01U4lYkaDL5olgAYuEo+U=",
         "owner": "notashelf",
         "repo": "nvf",
-        "rev": "56e20dd9c8815087100adeb8b1892e3633ff9bbc",
+        "rev": "b1b92ec251afd42395a5e2d66cbe4d1a93bc4021",
         "type": "github"
       },
       "original": {
@@ -1643,11 +1643,11 @@
         "upstream-nur": "upstream-nur"
       },
       "locked": {
-        "lastModified": 1781915138,
-        "narHash": "sha256-FTq7iA8idFRn5/e+dsi+FalknGzesn4Ain9klZp/Rsk=",
+        "lastModified": 1782261313,
+        "narHash": "sha256-zsVhA+R+k7Q2P4HOdBBXThzmXaVLUx8rEMM/LGk2TBE=",
         "ref": "refs/heads/main",
-        "rev": "db3f4d8d35c61f5fdbd4f3be637063266dc36052",
-        "revCount": 238,
+        "rev": "4a927efe32b2f40e4dda5e1b8eaf556b27a6d047",
+        "revCount": 240,
         "type": "git",
         "url": "https://git.iw2tryhard.dev/itscrystalline/sanzenvim"
       },
@@ -2021,11 +2021,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1781911232,
-        "narHash": "sha256-eCeQAdTzab7ccbXpSlTaRBh6IbTCa6WvSUdqVRLxC9c=",
+        "lastModified": 1782253630,
+        "narHash": "sha256-JMC0i3UCl/5yBOrcxl+YHxhhITFj7KXfw6xmWO6V3hU=",
         "owner": "nix-community",
         "repo": "NUR",
-        "rev": "a5e364c35b74dcde54e812aff9fe497c8381168f",
+        "rev": "5cfb02daed3a124636fcb5497d6c0c7033851ed0",
         "type": "github"
       },
       "original": {
@@ -2065,11 +2065,11 @@
         "systems": "systems_8"
       },
       "locked": {
-        "lastModified": 1782165262,
-        "narHash": "sha256-NVX8kGsoSxE+TlQmIq71maf9heEaZG0Yxdimvv19BCw=",
+        "lastModified": 1782255463,
+        "narHash": "sha256-agvSabL+FhK4RzwLsdnZCoBHNl/YuAnuEHsrO8gvCj4=",
         "owner": "vicinaehq",
         "repo": "vicinae",
-        "rev": "14fabd2bd47f9b2a8c657ff2859a679b27ac757e",
+        "rev": "dc0266854816db2f7c5c5b57ad69f1b052600407",
         "type": "github"
       },
       "original": {
