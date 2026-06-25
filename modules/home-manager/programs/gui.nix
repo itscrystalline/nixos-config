@@ -46,7 +46,7 @@ in {
               ++ [
                 (pkgs.fetchpatch {
                   url = "https://patch-diff.githubusercontent.com/raw/Vencord/Vesktop/pull/1251.patch";
-                  hash = "sha256-0rTPJSBMBEBBl62bemT+Tlq94nbsoOjsSO5KmY6yejM=";
+                  hash = "sha256-WmnXRISB1vfnbvSXJlD6sGkl5HSBTHpye+ezLyidtHU=";
                 })
               ];
           }))
