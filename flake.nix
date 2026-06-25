@@ -252,10 +252,30 @@
     };
     packages = import ./overridden-packages.nix {
       inherit inputs;
-      pkgs-x86_64 = nixpkgs.legacyPackages.x86_64-linux;
-      pkgs-aarch64 = nixpkgs.legacyPackages.aarch64-linux;
-      pkgs-x86_64-unstable = nixpkgs-unstable.legacyPackages.x86_64-linux;
-      pkgs-aarch64-unstable = nixpkgs-unstable.legacyPackages.aarch64-linux;
+      pkgs-x86_64 = import nixpkgs {
+        config.allowUnfree = true;
+        system = "x86_64-linux";
+        overlays = [
+          (_: prev: {
+            unstable = import inputs.nixpkgs-unstable {
+              config.allowUnfree = true;
+              inherit (prev.stdenv.hostPlatform) system;
+            };
+          })
+        ];
+      };
+      pkgs-aarch64 = import nixpkgs {
+        config.allowUnfree = true;
+        system = "aarch64-linux";
+        overlays = [
+          (_: prev: {
+            unstable = import inputs.nixpkgs-unstable {
+              config.allowUnfree = true;
+              inherit (prev.stdenv.hostPlatform) system;
+            };
+          })
+        ];
+      };
     };
   };
 }

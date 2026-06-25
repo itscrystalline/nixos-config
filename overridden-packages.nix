@@ -2,13 +2,10 @@
   inputs,
   pkgs-x86_64,
   pkgs-aarch64,
-  # pkgs-x86_64-unstable,
-  pkgs-aarch64-unstable,
   ...
 }: {
   x86_64-linux = let
     pkgs = pkgs-x86_64;
-    # pkgs-unstable = pkgs-x86_64-unstable;
   in {
     docs = pkgs.callPackage ./modules/docs.nix {inherit inputs;};
     niri-unstable = inputs.niri.packages.x86_64-linux.niri-unstable.overrideAttrs (_: {
@@ -35,7 +32,7 @@
         sed -i 's/0x000000/0x11111b/g' blahaj.plymouth
 
         # watermark
-        cp ${./rhys/watermark.png} watermark.png
+        cp ${./hosts/rhys/watermark.png} watermark.png
 
         runHook postPatch
       '';
@@ -122,10 +119,9 @@
   };
   aarch64-linux = let
     pkgs = pkgs-aarch64;
-    pkgs-unstable = pkgs-aarch64-unstable;
   in {
     docs = pkgs.callPackage ./modules/docs.nix {inherit inputs;};
-    home-assistant = pkgs-unstable.home-assistant.overrideAttrs (_: {doInstallCheck = false;});
+    home-assistant = pkgs.unstable.home-assistant.overrideAttrs (_: {doInstallCheck = false;});
     copyparty = pkgs.copyparty.override {
       withFastThumbnails = true;
       withMagic = true;
