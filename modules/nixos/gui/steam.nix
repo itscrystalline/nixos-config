@@ -2,6 +2,7 @@
   config,
   pkgs,
   lib,
+  spkgs,
   ...
 }: let
   enabled = config.gui.steam.enable && config.gui.enable && config.programs.enable;
@@ -16,7 +17,7 @@ in {
       gamescope.enable = true;
       steam = {
         enable = true;
-        package = pkgs.steam.override {extraArgs = "-system-composer";}; # for HW accel to work
+        package = spkgs.steam; # for HW accel to work
         remotePlay.openFirewall = true; # Open ports in the firewall for Steam Remote Play
         extest.enable = true;
       };

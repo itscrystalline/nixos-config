@@ -85,7 +85,9 @@
   };
 
   outputs = inputs @ {
+    self,
     nixpkgs,
+    nixpkgs-unstable,
     nixos-hardware,
     home-manager,
     ...
@@ -113,18 +115,22 @@
           ++ userModules;
         extraSpecialArgs = {
           inherit inputs;
+          spkgs = self.packages.${system};
           passthrough = null;
         };
       };
 
     # Inline NixOS module that wires up home-manager for the primary user.
     # hmUserModules: additional per-host HM option files.
-    nixosHmConfig = hmUserModules: {config, ...}: {
+    nixosHmConfig = hmUserModules: arch: {config, ...}: {
       home-manager = {
         useGlobalPkgs = true;
         useUserPackages = true;
         backupFileExtension = "hmbkup";
-        extraSpecialArgs = {inherit inputs;};
+        extraSpecialArgs = {
+          inherit inputs;
+          spkgs = self.packages.${arch};
+        };
         users.${config.core.primaryUser}.imports = hmModules ++ hmUserModules;
       };
     };
@@ -137,7 +143,10 @@
     }:
       nixpkgs.lib.nixosSystem {
         system = arch;
-        specialArgs.inputs = inputs;
+        specialArgs = {
+          inherit inputs;
+          spkgs = self.packages.${arch};
+        };
         modules =
           [
             inputs.nur.modules.nixos.default
@@ -147,7 +156,7 @@
           ]
           ++ nixpkgs.lib.optionals (userHomeModules != []) [
             home-manager.nixosModules.home-manager
-            (nixosHmConfig userHomeModules)
+            (nixosHmConfig userHomeModules arch)
           ]
           ++ [
             inputs.sops-nix.nixosModules.sops
@@ -241,9 +250,12 @@
     homeConfigurations = {
       "opc" = mkStandaloneHome "aarch64-linux" [./homes/opc.nix];
     };
-    packages = {
-      aarch64-linux.docs = nixpkgs.legacyPackages.aarch64-linux.callPackage ./modules/docs.nix {inherit inputs;};
-      x86_64-linux.docs = nixpkgs.legacyPackages.x86_64-linux.callPackage ./modules/docs.nix {inherit inputs;};
+    packages = import ./overridden-packages.nix {
+      inherit inputs;
+      pkgs-x86_64 = nixpkgs.legacyPackages.x86_64-linux;
+      pkgs-aarch64 = nixpkgs.legacyPackages.aarch64-linux;
+      pkgs-x86_64-unstable = nixpkgs-unstable.legacyPackages.x86_64-linux;
+      pkgs-aarch64-unstable = nixpkgs-unstable.legacyPackages.aarch64-linux;
     };
   };
 }

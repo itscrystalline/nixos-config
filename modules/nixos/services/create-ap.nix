@@ -2,6 +2,7 @@
   lib,
   config,
   pkgs,
+  spkgs,
   ...
 }: let
   inherit (config.crystals-services) create-ap;
@@ -64,15 +65,8 @@ in {
     };
 
     nixpkgs.overlays = [
-      (_final: prev: {
-        linux-wifi-hotspot = prev.linux-wifi-hotspot.overrideAttrs (_final: _prev: {
-          src = pkgs.fetchFromGitHub {
-            owner = "lakinduakash";
-            repo = "linux-wifi-hotspot";
-            rev = "c0f153bff954542c5f0e551bfcad791f44ac345e";
-            hash = "sha256-20yhcBhVlObl/aZKH4P2tdAeutTpZo+R0//i0/uAPFw=";
-          };
-        });
+      (_: _: {
+        linux-wifi-hotspot = spkgs.create-ap;
       })
     ];
 

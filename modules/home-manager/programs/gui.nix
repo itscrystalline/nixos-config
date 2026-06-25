@@ -4,6 +4,7 @@
   pkgs,
   inputs ? {},
   options,
+  spkgs,
   ...
 }: let
   guiEnabled = config.hm.programs.gui.enable;
@@ -11,19 +12,7 @@
 
   pear-desktop = isLinux:
     if isLinux
-    then
-      (pkgs.pear-desktop.overrideAttrs {
-        desktopItems = [
-          (pkgs.makeDesktopItem {
-            name = "pear-desktop";
-            exec = "pear-desktop --enable-features=UseOzonePlatform --ozone-platform=wayland --enable-wayland-ime %u";
-            icon = "pear-desktop";
-            desktopName = "Pear Desktop";
-            startupWMClass = "Pear Desktop";
-            categories = ["AudioVideo"];
-          })
-        ];
-      })
+    then spkgs.pear-desktop
     else pkgs.pear-desktop;
 
   mirrorScript = pkgs.writeShellScript "niri-mirror.sh" ''
@@ -40,16 +29,7 @@ in {
     home = {
       packages =
         (with pkgs.stable; [
-          (vesktop.overrideAttrs (_: prev: {
-            patches =
-              (prev.patches or [])
-              ++ [
-                (pkgs.fetchpatch {
-                  url = "https://patch-diff.githubusercontent.com/raw/Vencord/Vesktop/pull/1251.patch";
-                  hash = "sha256-WmnXRISB1vfnbvSXJlD6sGkl5HSBTHpye+ezLyidtHU=";
-                })
-              ];
-          }))
+          spkgs.vesktop
           beeper
           keepassxc
           vlc

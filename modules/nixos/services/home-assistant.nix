@@ -2,6 +2,7 @@
   lib,
   config,
   pkgs,
+  spkgs,
   ...
 }: let
   inherit (config.crystals-services) home-assistant;
@@ -31,7 +32,7 @@ in {
     services = {
       home-assistant = with config.secrets.homeassistant; {
         enable = true;
-        package = pkgs.unstable.home-assistant.overrideAttrs (_: {doInstallCheck = false;});
+        package = spkgs.home-assistant;
         openFirewall = true;
         extraComponents = ["wiz" "matter" "mobile_app" "bluetooth" "tplink" "tplink_tapo" "accuweather"];
         customComponents = with pkgs.nur.repos.itscrystalline; [

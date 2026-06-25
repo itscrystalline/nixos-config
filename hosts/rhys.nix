@@ -1,4 +1,8 @@
-{pkgs, ...}: {
+{
+  pkgs,
+  spkgs,
+  ...
+}: {
   imports = [./rhys];
 
   core = {
@@ -111,26 +115,7 @@
     ];
     verbosity.plymouth = {
       theme = "blahaj";
-      package = pkgs.plymouth-blahaj-theme.overrideAttrs {
-        patchPhase = ''
-          runHook prePatch
-
-          shopt -s extglob
-
-          # deal with all the non ascii stuff
-          mv !(*([[:graph:]])) blahaj.plymouth
-          sed -i 's/\xc3\xa5/a/g' blahaj.plymouth
-          sed -i 's/\xc3\x85/A/g' blahaj.plymouth
-
-          # colors!
-          sed -i 's/0x000000/0x11111b/g' blahaj.plymouth
-
-          # watermark
-          cp ${./rhys/watermark.png} watermark.png
-
-          runHook postPatch
-        '';
-      };
+      package = spkgs.plymouth-blahaj-theme;
     };
   };
 

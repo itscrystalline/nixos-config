@@ -4,6 +4,11 @@ on:
   schedule:
     - cron: "0 5 * * *"  # 12AM UTC+7
   workflow_dispatch:
+    inputs:
+      auto-merge:
+        type: boolean
+        description: set the PR created to auto-merge.
+        default: true
 
 jobs:
   update:
@@ -20,9 +25,6 @@ jobs:
         with:
           nix_path: nixpkgs=channel:nixos-26.05
           extra_nix_config: |
-            extra-substituters = http://cache.crys
-            extra-trusted-public-keys = mingzhu:V0KsUipFnrBNsfUD8VI0rFXQpgE3KKJfRby9Jm8cLTQ=
-            fallback = true
             access-tokens = github.com=${{ secrets.GH_TOKEN }}
 
       - name: Update flake.lock
@@ -101,7 +103,7 @@ jobs:
           echo -n "pr=$(cat pr)" >> $FORGEJO_OUTPUT
 
       - name: Enable automatic merge
-        if: steps.create-pr.outputs.pr > 0
+        if: steps.create-pr.outputs.pr > 0 && github.event.inputs.auto-merge == 'true'
         id: auto-merge
         env:
           TOKEN: ${{ secrets.PUDDLE_TOKEN }}
@@ -124,3 +126,42 @@ jobs:
 
       - name: PR number
         run: echo 'PR ${{ steps.create-pr.outputs.pr }}'
+
+  cache:
+    runs-on: ${{ matrix.arch }}
+    needs: update
+    strategy:
+      fail-fast: false
+      matrix:
+        arch: ["x86_64-linux", "aarch64-linux"]
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Install Nix
+        uses: cachix/install-nix-action@v31
+        with:
+          nix_path: nixpkgs=channel:nixos-26.05
+          extra_nix_config: |
+            substituters = http://cache.crys
+            trusted-public-keys = cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY= devenv.cachix.org-1:w1cLUi8dv3hnoSPGAuibQv+f9TZLr6cv/Hm9XgU50cw= nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs= nixpkgs-python.cachix.org-1:hxjI7pFxTyuTHn2NkvWCrAUcNZLNS3ZAvfYNuYifcEU= cache.nixos-cuda.org:74DUi4Ye579gUqzH4ziL9IyiJBlDpMRn9MBN8oNan9M= lantian:EeAUQ+W+6r7EtwnmYjeVwx5kOGEBpjlBfPlzGlTNvHc= niri.cachix.org-1:Wv0OmO7PsuocRKzfDoJ3mulSl7Z6oezYhGhR+3W2964= itscrystalline.cachix.org-1:w+aEu6k5Rx3xgUSJPCUhdZSxS919ZJvv9wThPKGVMv4= vicinae.cachix.org-1:1kDrfienkGHPYbkpNj1mWTr7Fm1+zcenzgTizIcI3oc= noctalia.cachix.org-1:pCOR47nnMEo5thcxNDtzWpOxNFQsBRglJzxWPp3dkU4= harmonia.cache.crys:5IjKpw7rA9DxB2BVvDY/NzD0Zakjn9t9SB40AEpY2Q8=
+
+      - name: Build & Upload 
+        run: |
+          mapfile -t pkgs < <(nix eval .#packages.${{ matrix.arch }} --apply 'builtins.attrNames' --json | jq -r '.[]')
+
+          # evaluate store paths without building
+          mapfile -t paths < <(nix eval "${pkgs[@]/#/.#packages.${{ matrix.arch }}.}" --apply 'p: p.outPath' --json | jq -r '.[]')
+
+          # filter to ones not in the cache
+          missing=()
+          for path in "${paths[@]}"; do
+            nix path-info --store http://cache.crys "$path" &>/dev/null || missing+=("$path")
+          done
+
+          # build and push only missing
+          if [ ${#missing[@]} -gt 0 ]; then
+            nix build "${missing[@]}" --no-link
+            NIX_SSHOPTS="-o StrictHostKeyChecking=no" nix copy --to "ssh://nixremote@mingzhu" "${missing[@]}"
+          fi

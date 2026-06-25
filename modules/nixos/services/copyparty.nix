@@ -3,6 +3,7 @@
   pkgs,
   config,
   inputs,
+  spkgs,
   ...
 }: let
   inherit (lib) mkEnableOption mkOption types;
@@ -54,12 +55,7 @@ in {
 
     services.copyparty = {
       enable = true;
-      package = pkgs.copyparty.override {
-        withFastThumbnails = true;
-        withMagic = true;
-
-        extraPackages = [pkgs.exiftool pkgs.cfssl];
-      };
+      package = spkgs.copyparty;
       # the user to run the service as
       user = "copyparty";
       # the group to run the service as

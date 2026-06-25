@@ -2,6 +2,7 @@
   lib,
   config,
   pkgs,
+  spkgs,
   options,
   ...
 }: let
@@ -14,18 +15,7 @@ in {
   config = lib.mkIf enabled (lib.mkIf guiEnabled {
     home.packages = with pkgs;
       [
-        (prismlauncher.override {
-          additionalPrograms = [ffmpeg mangohud];
-          gamemodeSupport = true;
-          jdks = [
-            graalvmPackages.graalvm-ce
-            graalvmPackages.graalvm-oracle_17
-            zulu8
-            zulu17
-            zulu21
-            zulu25
-          ];
-        })
+        spkgs.prismlauncher
         itch
       ]
       ++ lib.optionals pkgs.stdenv.isLinux [

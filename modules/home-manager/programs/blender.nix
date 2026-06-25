@@ -2,6 +2,7 @@
   lib,
   config,
   pkgs,
+  spkgs,
   inputs ? {},
   ...
 }: let
@@ -10,51 +11,7 @@
   enabled = largePrograms.enable && config.hm.gui.enable;
   themeEnabled = config.theming.enable && config.gui.enable;
 
-  blender = blender-flake.packages.${pkgs.hostsys}.default.overrideAttrs (_: _: let
-    libs = with pkgs; [
-      wayland
-      libdecor
-      libx11
-      libxi
-      libxxf86vm
-      libxfixes
-      libxrender
-      libxkbcommon
-      libGLU
-      libglvnd
-      numactl
-      SDL2
-      libdrm
-      ocl-icd
-      stdenv.cc.cc.lib
-      openal
-      libsm
-      libice
-      zlib
-    ];
-  in {
-    installPhase = ''
-      cd $out/libexec
-      mv blender-* blender
-
-      sed -i 's|^Exec=blender %f|Exec=env INTEL_DEBUG=reemit blender %f|' ./blender/blender.desktop
-
-      mkdir -p $out/share/applications
-      mv ./blender/blender.desktop $out/share/applications/blender.desktop
-
-      mkdir $out/bin
-
-      makeWrapper $out/libexec/blender/blender $out/bin/blender \
-        --prefix LD_LIBRARY_PATH : /run/opengl-driver/lib:${lib.makeLibraryPath libs} \
-        --prefix INTEL_DEBUG : reemit
-
-      patchelf --set-interpreter "$(cat $NIX_CC/nix-support/dynamic-linker)" \
-        blender/blender
-
-      patchelf --set-interpreter "$(cat $NIX_CC/nix-support/dynamic-linker)" \
-        $out/libexec/blender/*/python/bin/python3*
-    '';
-  });
+  inherit (spkgs) blender;
   blender_version = builtins.concatStringsSep "." (lib.dropEnd 1 (builtins.splitVersion (lib.getVersion blender)));
 
   blender_addons_zip_path = "~/.config/blender/${blender_version}/extensions/zips";
