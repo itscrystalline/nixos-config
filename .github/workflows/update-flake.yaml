@@ -162,6 +162,10 @@ jobs:
 
           # build and push only missing
           if [ ${#missing[@]} -gt 0 ]; then
-            nix build "${missing[@]}" --no-link
+            if [ "${{ matrix.arch }}" = "x86_64-linux" ]; then
+              nix build "${missing[@]}" --no-link --max-jobs $(($(nproc) / 2)) --cores $(($(nproc) / 2))
+            else
+              nix build "${missing[@]}" --no-link
+            fi
             NIX_SSHOPTS="-o StrictHostKeyChecking=no" nix copy --to "ssh://nixremote@mingzhu" "${missing[@]}"
           fi
