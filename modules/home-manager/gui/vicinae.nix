@@ -39,7 +39,7 @@ in {
       }
     '';
 
-    services = lib.optionalAttrs (options.services ? vicinae) {
+    programs = lib.optionalAttrs (options.programs? vicinae) {
       vicinae = {
         enable = true;
         settings = lib.mkMerge [
