@@ -36,7 +36,8 @@ lib.mkIf (passthrough == null) {
 
     nixPath = map (i: "${i}=${inputs.${i}}") (builtins.attrNames inputs);
 
-    package = pkgs.lixPackageSets.stable.lix;
+    # seems like an oxymoron but ironically lix stable on stable fails to build
+    package = pkgs.unstable.lixPackageSets.stable.lix;
 
     extraOptions = ''
       include ${config.sops.templates.nix-extra-config.path}
