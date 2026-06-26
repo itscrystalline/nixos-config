@@ -83,7 +83,10 @@
   };
 
   crystals-services = {
-    ssh.enable = true;
+    ssh = {
+      enable = true;
+      enablePasswordLogin = true;
+    };
     tailscale.enable = true;
     avahi.enable = true;
     localsend.enable = true;
