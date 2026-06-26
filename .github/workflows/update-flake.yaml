@@ -169,6 +169,10 @@ jobs:
           done
 
           if [ ${#missing[@]} -gt 0 ]; then
-            NIX_SSHOPTS="-o StrictHostKeyChecking=no -i /tmp/nixremote" nix copy --to "ssh://nixremote@mingzhu" "${missing[@]}"
+            if [ "${{ matrix.pair.arch }}" = "x86_64-linux" ]; then
+              NIX_SSHOPTS="-o StrictHostKeyChecking=no -i /tmp/nixremote" nix copy --substitute-on-destination --to "ssh://nixremote@mingzhu" "${missing[@]}" --option max-jobs $(($(nproc) / 2)) --option cores $(($(nproc) / 2))
+            else
+              NIX_SSHOPTS="-o StrictHostKeyChecking=no -i /tmp/nixremote" nix copy --substitute-on-destination --to "ssh://nixremote@mingzhu" "${missing[@]}"
+            fi
           fi
 
