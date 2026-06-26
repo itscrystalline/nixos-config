@@ -177,9 +177,12 @@ in {
           "forgejo-runner-token" = {};
           "forgejo-nixremote-ssh-key" = {};
         };
-        templates."nixremote-ssh-key".content = ''
-          MINGZHU_NIXREMOTE_PRIVKEY=${config.sops.placeholder."forgejo-nixremote-ssh-key"}
-        '';
+        templates."nixremote-ssh-key" = {
+          owner = "gitea-runner";
+          content = ''
+            MINGZHU_NIXREMOTE_PRIVKEY=${config.sops.placeholder."forgejo-nixremote-ssh-key"}
+          '';
+        };
       };
       crystals-services.docker.enable = true;
 
