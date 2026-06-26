@@ -184,8 +184,11 @@ in {
           '';
         };
       };
-      users.users.gitea-runner.group = "gitea-runner";
-      users.groups.gitea-runner = {};
+      users.users.gitea-runner = {
+        uid = 63182;
+        group = "gitea-runner";
+      };
+      users.groups.gitea-runner.gid = 63182;
 
       crystals-services.docker.enable = true;
 
