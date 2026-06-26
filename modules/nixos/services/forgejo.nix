@@ -172,7 +172,15 @@ in {
       };
     })
     (lib.mkIf forgejo.runner.enable {
-      sops.secrets."forgejo-runner-token" = {};
+      sops = {
+        secrets = {
+          "forgejo-runner-token" = {};
+          "forgejo-nixremote-ssh-key" = {};
+        };
+        templates."nixremote-ssh-key".content = ''
+          MINGZHU_NIXREMOTE_PRIVKEY=${config.sops.placeholder."forgejo-nixremote-ssh-key"}
+        '';
+      };
       crystals-services.docker.enable = true;
 
       services.gitea-actions-runner = {
@@ -189,7 +197,10 @@ in {
                 enable = true;
                 url = ROOT_URL;
                 settings = {
-                  runner.fetch_interval = "10s";
+                  runner = {
+                    fetch_interval = "10s";
+                    env_file = config.sops.templates.nixremote-ssh-key.path;
+                  };
                 };
                 hostPackages = with pkgs; [
                   bash
