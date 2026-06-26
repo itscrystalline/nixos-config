@@ -1,8 +1,4 @@
-{
-  config,
-  pkgs,
-  ...
-}: let
+{pkgs, ...}: let
   backup-script = pkgs.writeShellScriptBin "backup" ''
     if [ "$EUID" -ne 0 ]
       then ${pkgs.coreutils}/bin/echo "Please run as root"
