@@ -39,7 +39,7 @@ in {
           ente-auth
         ])
         ++ [(pear-desktop pkgs.stdenv.isLinux)]
-        ++ lib.optional (inputs ? concord) inputs.concord.packages.${pkgs.hostsys}.concord
+        ++ lib.optional (inputs ? concord) spkgs.concord
         ++ lib.optionals largePrograms (with pkgs.stable; [
           kdePackages.kdenlive
           audacity

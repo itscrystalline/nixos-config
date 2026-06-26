@@ -2,6 +2,7 @@
   config,
   pkgs,
   lib,
+  spkgs,
   ...
 }: let
   inherit (config.hm.gui) niri;
@@ -125,7 +126,7 @@ in {
           screenshot-path = "~/Pictures/Screenshots/Screenshot at %Y-%m-%d %H-%M-%S.png";
           xwayland-satellite = {
             enable = true;
-            path = lib.getExe pkgs.xwayland-satellite-unstable;
+            path = lib.getExe spkgs.xwayland-satellite-unstable;
           };
 
           workspaces = {

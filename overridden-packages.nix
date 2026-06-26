@@ -16,6 +16,7 @@
         })
       ];
     });
+    xwayland-satellite-unstable = inputs.niri.packages.x86_64-linux.xwayland-satellite-unstable;
     steam = pkgs.steam.override {extraArgs = "-system-composer";};
     plymouth-blahaj-theme = pkgs.plymouth-blahaj-theme.overrideAttrs {
       patchPhase = ''
@@ -116,6 +117,7 @@
           })
         ];
     });
+    concord = inputs.concord.packages.x86_64-linux.concord;
   };
   aarch64-linux = let
     pkgs = pkgs-aarch64;
