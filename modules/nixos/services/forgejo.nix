@@ -184,6 +184,9 @@ in {
           '';
         };
       };
+      users.users.gitea-runner.group = "gitea-runner";
+      users.groups.gitea-runner = {};
+
       crystals-services.docker.enable = true;
 
       services.gitea-actions-runner = {
