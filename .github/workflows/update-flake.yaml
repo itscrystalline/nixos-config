@@ -128,15 +128,16 @@ jobs:
         run: echo 'PR ${{ steps.create-pr.outputs.pr }}'
 
   cache:
-    runs-on: ${{ matrix.runner }}
+    runs-on: ${{ matrix.pair.runner }}
     needs: update
     strategy:
       fail-fast: false
       matrix:
-        - arch: x86_64-linux
-          runner: ubuntu-latest
-        - arch: aarch64-linux
-          runner: ubuntu-latest-arm
+        pair:
+          - arch: x86_64-linux
+            runner: ubuntu-latest
+          - arch: aarch64-linux
+            runner: ubuntu-latest-arm
 
     steps:
       - name: Checkout code
@@ -152,10 +153,10 @@ jobs:
 
       - name: Build & Upload 
         run: |
-          mapfile -t pkgs < <(nix eval .#packages.${{ matrix.arch }} --apply 'builtins.attrNames' --json | jq -r '.[]')
+          mapfile -t pkgs < <(nix eval .#packages.${{ matrix.pair.arch }} --apply 'builtins.attrNames' --json | jq -r '.[]')
 
           # evaluate store paths without building
-          mapfile -t paths < <(nix eval "${pkgs[@]/#/.#packages.${{ matrix.arch }}.}" --apply 'p: p.outPath' --json | jq -r '.[]')
+          mapfile -t paths < <(nix eval "${pkgs[@]/#/.#packages.${{ matrix.pair.arch }}.}" --apply 'p: p.outPath' --json | jq -r '.[]')
 
           # filter to ones not in the cache
           missing=()
