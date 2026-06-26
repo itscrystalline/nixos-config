@@ -154,22 +154,15 @@ jobs:
       - name: Build & Upload 
         run: |
           mapfile -t pkgs < <(nix eval .#packages.${{ matrix.pair.arch }} --apply 'builtins.attrNames' --json | jq -r '.[]')
+          installables=("${pkgs[@]/#/.#packages.${{ matrix.pair.arch }}.}")
 
-          # evaluate store paths without building
-          mapfile -t paths < <(nix eval "${pkgs[@]/#/.#packages.${{ matrix.pair.arch }}.}" --apply 'p: p.outPath' --json | jq -r '.[]')
-
-          # filter to ones not in the cache
           missing=()
-          for path in "${paths[@]}"; do
-            nix path-info --store http://cache.crys "$path" &>/dev/null || missing+=("$path")
+          for installable in "${installables[@]}"; do
+            path=$(nix eval "$installable.outPath" --raw)
+            nix path-info --store http://cache.crys "$path" &>/dev/null || missing+=("$installable")
           done
 
-          # build and push only missing
           if [ ${#missing[@]} -gt 0 ]; then
-            if [ "${{ matrix.arch }}" = "x86_64-linux" ]; then
-              nix build "${missing[@]}" --no-link --max-jobs $(($(nproc) / 2)) --cores $(($(nproc) / 2))
-            else
-              nix build "${missing[@]}" --no-link
-            fi
             NIX_SSHOPTS="-o StrictHostKeyChecking=no" nix copy --to "ssh://nixremote@mingzhu" "${missing[@]}"
           fi
+
