@@ -175,18 +175,19 @@ in {
       sops = {
         secrets = {
           "forgejo-runner-token" = {};
-          "forgejo-nixremote-ssh-key" = {};
+          "forgejo-nixremote-ssh-key-b64" = {};
         };
         templates."nixremote-ssh-key" = {
           owner = "gitea-runner";
           content = ''
-            MINGZHU_NIXREMOTE_PRIVKEY=${config.sops.placeholder."forgejo-nixremote-ssh-key"}
+            MINGZHU_NIXREMOTE_PRIVKEY_BASE64=${config.sops.placeholder."forgejo-nixremote-ssh-key-b64"}
           '';
         };
       };
       users.users.gitea-runner = {
         uid = 63182;
         group = "gitea-runner";
+        isSystemUser = true;
       };
       users.groups.gitea-runner.gid = 63182;
 
