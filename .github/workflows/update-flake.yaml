@@ -9,10 +9,15 @@ on:
         type: boolean
         description: set the PR created to auto-merge.
         default: true
+      just_cache:
+        type: boolean
+        description: don't update, just cache.
+        default: false 
 
 jobs:
   update:
-    name: Update flake    
+    name: Update flake
+    if: github.event_name != 'workflow_dispatch' || github.event.inputs.just-cache == 'false'
     runs-on: ubuntu-latest-arm
     steps:
       - name: Checkout code
@@ -103,7 +108,7 @@ jobs:
           echo -n "pr=$(cat pr)" >> $FORGEJO_OUTPUT
 
       - name: Enable automatic merge
-        if: steps.create-pr.outputs.pr > 0 && github.event.inputs.auto-merge == 'true'
+        if: steps.create-pr.outputs.pr > 0 && (github.event_name != 'workflow_dispatch' || github.event.inputs.auto-merge == 'true')
         id: auto-merge
         env:
           TOKEN: ${{ secrets.PUDDLE_TOKEN }}
