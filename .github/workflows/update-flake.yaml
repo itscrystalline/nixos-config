@@ -17,7 +17,6 @@ on:
 jobs:
   update:
     name: Update flake
-    if: github.event_name != 'workflow_dispatch' || github.event.inputs.just-cache == 'false'
     runs-on: ubuntu-latest-arm
     steps:
       - name: Checkout code
@@ -33,6 +32,7 @@ jobs:
             access-tokens = github.com=${{ secrets.GH_TOKEN }}
 
       - name: Update flake.lock
+        if: github.event_name != 'workflow_dispatch' || github.event.inputs.just-cache == 'false'
         id: update
         run: |
           nix flake update 2> >(tee /dev/stderr) | awk '
@@ -48,6 +48,7 @@ jobs:
           rm update.log
 
       - name: Write PR body template
+        if: github.event_name != 'workflow_dispatch' || github.event.inputs.just-cache == 'false'
         uses: https://github.com/DamianReeves/write-file-action@v1.3
         with:
           path: pr_body.template
@@ -59,22 +60,26 @@ jobs:
             ```
 
       - name: Generate PR body
+        if: github.event_name != 'workflow_dispatch' || github.event.inputs.just-cache == 'false'
         uses: pedrolamas/handlebars-action@v2.4.0 # v2.4.0
         with:
           files: "pr_body.template"
           output-filename: "pr_body.md"
       - name: Save PR body
+        if: github.event_name != 'workflow_dispatch' || github.event.inputs.just-cache == 'false'
         id: pr_body
         uses: juliangruber/read-file-action@v1
         with:
           path: "pr_body.md"
 
       - name: Remove temporary files
+        if: github.event_name != 'workflow_dispatch' || github.event.inputs.just-cache == 'false'
         run: |
           rm pr_body.template
           rm pr_body.md
 
       - name: Commit to new branch
+        if: github.event_name != 'workflow_dispatch' || github.event.inputs.just-cache == 'false'
         uses: EndBug/add-and-commit@v10 
         id: commit
         with:
@@ -88,7 +93,7 @@ jobs:
 
       - name: Create Pull Request
         id: create-pr
-        if: steps.commit.outputs.committed == 'true'
+        if: steps.commit.outputs.committed == 'true' && (github.event_name != 'workflow_dispatch' || github.event.inputs.just-cache == 'false')
         env:
           TOKEN: ${{ secrets.PUDDLE_TOKEN }}
           FORGEJO_SERVER_URL: ${{ forgejo.server_url }}
@@ -108,7 +113,7 @@ jobs:
           echo -n "pr=$(cat pr)" >> $FORGEJO_OUTPUT
 
       - name: Enable automatic merge
-        if: steps.create-pr.outputs.pr > 0 && (github.event_name != 'workflow_dispatch' || github.event.inputs.auto-merge == 'true')
+        if: steps.create-pr.outputs.pr > 0 && (github.event_name != 'workflow_dispatch' || (github.event.inputs.auto-merge == 'true' && github.event.inputs.just-cache == 'false'))
         id: auto-merge
         env:
           TOKEN: ${{ secrets.PUDDLE_TOKEN }}
@@ -130,13 +135,13 @@ jobs:
             "$FORGEJO_SERVER_URL/api/v1/repos/$REPO/pulls/$PR_NUMBER/merge"
 
       - name: PR number
+        if: github.event_name != 'workflow_dispatch' || github.event.inputs.just-cache == 'false'
         run: echo 'PR ${{ steps.create-pr.outputs.pr }}'
 
   cache:
     runs-on: ${{ matrix.pair.runner }}
     name: Build & cache ${{ matrix.pair.arch }} packages
     needs: update
-    if: github.event_name != 'workflow_dispatch' || github.event.inputs.just-cache == 'true'
     timeout-minutes: 240
     strategy:
       fail-fast: false
