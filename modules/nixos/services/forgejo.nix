@@ -210,6 +210,7 @@ in {
                   runner = {
                     fetch_interval = "10s";
                     env_file = config.sops.templates.nixremote-ssh-key.path;
+                    timeout = "6h";
                   };
                 };
                 hostPackages = with pkgs; [
