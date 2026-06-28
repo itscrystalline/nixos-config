@@ -172,7 +172,7 @@ jobs:
 
       - name: Build & Upload 
         run: |
-          mapfile -t pkgs < <(nix eval .#packages.${{ matrix.pair.arch }} --apply 'builtins.attrNames' --json | jq -r '.[]')
+          mapfile -t pkgs < <(nix eval .#packages.${{ matrix.pair.arch }} --apply 'ps: builtins.filter (p: p != "docs") (builtins.attrNames ps)' --json | jq -r '.[]')
           installables=("${pkgs[@]/#/.#packages.${{ matrix.pair.arch }}.}")
 
           missing=()
