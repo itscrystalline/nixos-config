@@ -3,8 +3,6 @@
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-26.05";
-    # FIXME: until raspi kernels are on hydra or i find an alternate cache
-    nixpkgs-25-11.url = "github:NixOS/nixpkgs/nixos-25.11";
     nixpkgs-unstable.url = "nixpkgs/nixos-unstable";
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
     disko = {
@@ -87,7 +85,6 @@
   outputs = inputs @ {
     self,
     nixpkgs,
-    nixpkgs-unstable,
     nixos-hardware,
     home-manager,
     ...

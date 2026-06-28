@@ -8,6 +8,7 @@
     pkgs = pkgs-x86_64;
   in {
     docs = pkgs.callPackage ./modules/docs.nix {inherit inputs;};
+
     niri-unstable = inputs.niri.packages.x86_64-linux.niri-unstable.overrideAttrs (_: {
       patches = [
         (pkgs.fetchpatch {
@@ -123,6 +124,7 @@
     pkgs = pkgs-aarch64;
   in {
     docs = pkgs.callPackage ./modules/docs.nix {inherit inputs;};
+
     home-assistant = pkgs.unstable.home-assistant.overrideAttrs (_: {doInstallCheck = false;});
     copyparty = pkgs.copyparty.override {
       withFastThumbnails = true;
@@ -138,5 +140,6 @@
         hash = "sha256-20yhcBhVlObl/aZKH4P2tdAeutTpZo+R0//i0/uAPFw=";
       };
     };
+    linux_rpi4 = pkgs.callPackage "${inputs.nixos-hardware}/raspberry-pi/common/kernel.nix" {rpiVersion = 4;};
   };
 }
