@@ -53,7 +53,6 @@
     };
   };
   kernel = {
-    # LTS
     package = pkgs.linuxPackages;
     cmdline = [
       "i915.enable_rc6=7"
@@ -63,6 +62,11 @@
 
       "nouveau.modeset=0"
     ];
+
+    sysctl = {
+      "vm.swappiness" = 100;
+      "vm.page-cluster" = 0;
+    };
   };
   boot = {
     bootloader = "grub";

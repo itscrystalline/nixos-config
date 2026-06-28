@@ -8,6 +8,5 @@ _: {
       size = 4096;
     }
   ];
-
   zramSwap.memoryPercent = 100;
 }
