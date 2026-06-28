@@ -129,6 +129,7 @@ jobs:
 
   cache:
     runs-on: ${{ matrix.pair.runner }}
+    name: Build & cache ${{ matrix.pair.arch }} packages
     needs: update
     strategy:
       fail-fast: false
@@ -167,12 +168,20 @@ jobs:
             path=$(nix eval "$installable.outPath" --raw)
             nix path-info --store http://cache.crys "$path" &>/dev/null || missing+=("$installable")
           done
+          echo "missing from cache: ${missing[@]}"
 
           if [ ${#missing[@]} -gt 0 ]; then
+            echo "building: ${missing[@]}"
             if [ "${{ matrix.pair.arch }}" = "x86_64-linux" ]; then
-              NIX_SSHOPTS="-o StrictHostKeyChecking=no -i /tmp/nixremote" nix copy --substitute-on-destination --to "ssh://nixremote@mingzhu" "${missing[@]}" --option max-jobs $(($(nproc) / 2)) --option cores $(($(nproc) / 2))
+              nix build "${missing[@]}" --no-link --print-build-logs \
+                --option max-jobs $(($(nproc) / 2)) --option cores $(($(nproc) / 2))
+              NIX_SSHOPTS="-o StrictHostKeyChecking=no -i /tmp/nixremote" nix copy \
+                --substitute-on-destination --to "ssh://nixremote@mingzhu" "${missing[@]}" \
+                --option max-jobs $(($(nproc) / 2)) --option cores $(($(nproc) / 2))
             else
-              NIX_SSHOPTS="-o StrictHostKeyChecking=no -i /tmp/nixremote" nix copy --substitute-on-destination --to "ssh://nixremote@mingzhu" "${missing[@]}"
+              nix build "${missing[@]}" --no-link --print-build-logs
+              NIX_SSHOPTS="-o StrictHostKeyChecking=no -i /tmp/nixremote" nix copy \
+                --substitute-on-destination --to "ssh://nixremote@mingzhu" "${missing[@]}"
             fi
           fi
 
