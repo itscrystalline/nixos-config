@@ -176,8 +176,7 @@ jobs:
               nix build "${missing[@]}" --no-link --print-build-logs \
                 --option max-jobs $(($(nproc) / 2)) --option cores $(($(nproc) / 2))
               NIX_SSHOPTS="-o StrictHostKeyChecking=no -i /tmp/nixremote" nix copy \
-                --substitute-on-destination --to "ssh://nixremote@mingzhu" "${missing[@]}" \
-                --option max-jobs $(($(nproc) / 2)) --option cores $(($(nproc) / 2))
+                --substitute-on-destination --to "ssh://nixremote@mingzhu" "${missing[@]}" 
             else
               nix build "${missing[@]}" --no-link --print-build-logs
               NIX_SSHOPTS="-o StrictHostKeyChecking=no -i /tmp/nixremote" nix copy \
