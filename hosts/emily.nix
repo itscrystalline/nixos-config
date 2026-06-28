@@ -32,6 +32,8 @@
 
     pm.enable = true;
     pm.profile = "server";
+
+    nix-binary-cache.ncro.publish = true;
   };
 
   nix = {

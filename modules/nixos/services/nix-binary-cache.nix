@@ -97,7 +97,7 @@ in {
           };
         };
       };
-      networking.hosts = {
+      networking.hosts = lib.mkIf nbc.ncro.publish {
         "127.0.0.1" = ["${nbc.domain}.${local.suffix}"];
       };
     })
