@@ -131,6 +131,7 @@ jobs:
     runs-on: ${{ matrix.pair.runner }}
     name: Build & cache ${{ matrix.pair.arch }} packages
     needs: update
+    timeout-minutes: 240
     strategy:
       fail-fast: false
       matrix:
