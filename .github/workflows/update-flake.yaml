@@ -136,6 +136,7 @@ jobs:
     runs-on: ${{ matrix.pair.runner }}
     name: Build & cache ${{ matrix.pair.arch }} packages
     needs: update
+    if: always() && (needs.update.result == 'success' || github.event.inputs.just-cache == 'true')
     timeout-minutes: 240
     strategy:
       fail-fast: false
