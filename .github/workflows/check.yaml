@@ -25,10 +25,20 @@ jobs:
         pairs: 
           - runner: ubuntu-latest
             arch: x86_64-linux
-            config: ["emily", "jocelyn"]
+            config: emily
+          - runner: ubuntu-latest
+            arch: x86_64-linux
+            config: jocelyn 
+
           - runner: ubuntu-latest-arm
             arch: aarch64-linux
-            config: ["raine", "liriel", "mingzhu"]
+            config: raine
+          - runner: ubuntu-latest-arm
+            arch: aarch64-linux
+            config: liriel
+          - runner: ubuntu-latest-arm
+            arch: aarch64-linux
+            config: mingzhu
 
     steps:
     - name: Checkout code
