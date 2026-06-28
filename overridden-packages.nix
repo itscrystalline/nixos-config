@@ -3,11 +3,17 @@
   pkgs-x86_64,
   pkgs-aarch64,
   ...
-}: {
+}: let
+  docs' = pkgs: pkgs.callPackage ./modules/docs.nix {inherit inputs;};
+  sanzenvim' = variant: pkgs: inputs.sanzenvim.packages.${pkgs.stdenv.hostPlatform.system}.${variant};
+
+  sanzenvim-full' = sanzenvim' "default";
+  sanzenvim-mini' = sanzenvim' "mini";
+in {
   x86_64-linux = let
     pkgs = pkgs-x86_64;
   in {
-    docs = pkgs.callPackage ./modules/docs.nix {inherit inputs;};
+    docs = docs' pkgs;
 
     niri-unstable = inputs.niri.packages.x86_64-linux.niri-unstable.overrideAttrs (_: {
       patches = [
@@ -119,11 +125,13 @@
         ];
     });
     concord = inputs.concord.packages.x86_64-linux.concord;
+    sanzenvim-full = sanzenvim-full' pkgs;
+    sanzenvim-mini = sanzenvim-mini' pkgs;
   };
   aarch64-linux = let
     pkgs = pkgs-aarch64;
   in {
-    docs = pkgs.callPackage ./modules/docs.nix {inherit inputs;};
+    docs = docs' pkgs;
 
     home-assistant = pkgs.unstable.home-assistant.overrideAttrs (_: {doInstallCheck = false;});
     copyparty = pkgs.copyparty.override {
@@ -140,6 +148,8 @@
         hash = "sha256-20yhcBhVlObl/aZKH4P2tdAeutTpZo+R0//i0/uAPFw=";
       };
     };
+    sanzenvim-full = sanzenvim-full' pkgs;
+    sanzenvim-mini = sanzenvim-mini' pkgs;
     linux_rpi4 = pkgs.callPackage "${inputs.nixos-hardware}/raspberry-pi/common/kernel.nix" {rpiVersion = 4;};
   };
 }

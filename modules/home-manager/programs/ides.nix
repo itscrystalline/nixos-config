@@ -3,16 +3,16 @@
   config,
   pkgs,
   inputs ? {},
+  spkgs,
   ...
 }: let
   inherit (config.hm.programs) ides;
-  inherit (inputs) sanzenvim;
   enabled = ides.enable;
   sanzenvim-prefix =
     if enabled
-    then "default"
+    then "full"
     else "mini";
-  sanzenvim-pkg = sanzenvim.packages.${pkgs.hostsys}.${sanzenvim-prefix};
+  sanzenvim-pkg = spkgs."sanzenvim-${sanzenvim-prefix}";
 
   neovide_conf = (pkgs.formats.toml {}).generate "config.toml" {
     fork = true;
