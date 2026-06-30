@@ -129,6 +129,7 @@
     emulatedArchitectures = ["aarch64-linux"];
     supportedFilesystems = ["ntfs" "nfs"];
     sysctl."kernel.sysrq" = 1;
+    cmdline = ["pm_freeze_timeout=7000"];
     hibernate = {
       enable = true;
       device = "/dev/nvme1n1p1";
