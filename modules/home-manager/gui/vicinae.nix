@@ -49,6 +49,7 @@ in {
               dark.name = "stylix";
             };
             font.normal.size = 10;
+            font.normal.family = lib.head config.fonts.fontconfig.defaultFonts.sansSerif;
             launcher_window.client_side_decorations = {
               enabled = true;
               rounding = 10;
@@ -67,7 +68,14 @@ in {
               "@knoopx/nix:home-manager-options"
               "@tonka3000/0a3cf1ce-7de6-415c-9e37-91a892d1747e:lights"
             ];
-            providers."@tonka3000/0a3cf1ce-7de6-415c-9e37-91a892d1747e".preferences.instance = "http://liriel:8000";
+            providers = {
+              files.preferences = {
+                autoIndexing = true;
+                indexingPaths = ["/home/itscrystalline"];
+                excludedIndexingPaths = ["/home/itscrystalline/Nextcloud/" "/home/itscrystalline/.cache/"];
+              };
+              "@tonka3000/0a3cf1ce-7de6-415c-9e37-91a892d1747e".preferences.instance = "http://dorm.crys";
+            };
           }
         ];
         systemd = {

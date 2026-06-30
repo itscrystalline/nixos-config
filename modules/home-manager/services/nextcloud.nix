@@ -29,7 +29,15 @@ in {
       };
       Service = {
         Type = "notify";
-        ExecStart = "${pkgs.rclone}/bin/rclone --config=${config.sops.templates."nextcloud-mount.conf".path} --vfs-cache-mode writes --ignore-checksum mount \"nextcloud:\" \"Nextcloud\"";
+        ExecStart = ''
+          ${pkgs.rclone}/bin/rclone --config=${config.sops.templates."nextcloud-mount.conf".path} \
+            --vfs-cache-mode writes \
+            --ignore-checksum \
+            --daemon-timeout 10m \
+            --timeout 30s \
+            --contimeout 10s \
+            mount "nextcloud:" "Nextcloud"
+        '';
         ExecStop = "${pkgs.fuse}/bin/fusermount -u %h/Nextcloud/%i";
         Restart = "always";
       };
