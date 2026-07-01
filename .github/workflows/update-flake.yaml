@@ -138,10 +138,19 @@ jobs:
         if: github.event_name != 'workflow_dispatch' || github.event.inputs.just-cache == 'false'
         run: echo 'PR ${{ steps.create-pr.outputs.pr }}'
 
+  wake-up-emily:
+    name: Wake up emily
+    runs-on: native-arm
+    needs: update
+
+    steps:
+      - name: Call HA webhook
+        run: curl -X PUT http://dorm.crys/api/webhook/wake-up-emily
+
   cache:
     runs-on: ${{ matrix.pair.runner }}
     name: Build & cache ${{ matrix.pair.arch }} packages
-    needs: update
+    needs: wake-up-emily
     timeout-minutes: 240
     strategy:
       fail-fast: false
