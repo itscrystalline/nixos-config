@@ -145,7 +145,7 @@ jobs:
 
     steps:
       - name: Call HA webhook
-        run: curl -X PUT http://dorm.crys/api/webhook/wake-up-emily
+        run: curl -X PUT http://dorm.crys/api/webhook/${{ secrets.EMILY_WAKE }}
 
   cache:
     runs-on: ${{ matrix.pair.runner }}
