@@ -28,6 +28,7 @@
     ./forgejo.nix
     ./stalwart.nix
     ./copyparty.nix
+    ./wakeonlan.nix
   ];
 
   options.crystals-services.essentialServices = lib.mkOption {
