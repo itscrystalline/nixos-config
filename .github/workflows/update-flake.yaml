@@ -155,6 +155,8 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
+        with: 
+          ref: update-flake-lock
 
       - name: Install Nix
         uses: cachix/install-nix-action@v31
