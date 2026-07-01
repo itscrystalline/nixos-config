@@ -285,6 +285,6 @@ in {
         };
       };
 
-    network.tcp = lib.mkIf monitoring.enableOpenTelemetryCollector [4317 4318];
+    network.ports.tcp = lib.mkIf monitoring.enableOpenTelemetryCollector [4317 4318];
   };
 }
