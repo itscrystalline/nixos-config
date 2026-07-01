@@ -34,6 +34,11 @@
     pm.profile = "server";
 
     nix-binary-cache.ncro.publish = true;
+
+    wakeonlan = {
+      enable = true;
+      interface = "enp9s0";
+    };
   };
 
   nix = {
