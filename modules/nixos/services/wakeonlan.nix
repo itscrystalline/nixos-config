@@ -17,6 +17,20 @@ in {
   };
   config = lib.mkIf enabled {
     networking.interfaces.${iface}.wakeOnLan.enable = true;
+    network.profiles = [
+      {
+        connection = {
+          id = iface;
+          uuid = "b0889f4c-1de2-3e95-a3bd-f4c065cc3de1";
+          type = "ethernet";
+          interface-name = iface;
+        };
+        ethernet.wake-on-lan = 64;
+        ipv4.method = "auto";
+        ipv6.method = "auto";
+        ipv6.addr-gen-mode = "default";
+      }
+    ];
     network.ports.udp = [9];
 
     systemd.services.auto-suspend = {
@@ -37,8 +51,10 @@ in {
     };
     systemd.timers.auto-suspend = {
       wantedBy = ["timers.target"];
-      timerConfig.OnUnitActiveSec = "10m";
-      timerConfig.Unit = "auto-suspend.service";
+      timerConfig = {
+        OnUnitActiveSec = "10min";
+        OnBootSec = "5min";
+      };
     };
   };
 }
