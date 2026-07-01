@@ -63,6 +63,7 @@ in {
             aiohttp-fast-zlib
             pyturbojpeg
             pycountry
+            wakeonlan
           ])
           ++ (with pkgs; [
             zlib-ng
