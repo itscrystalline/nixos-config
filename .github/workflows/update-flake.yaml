@@ -140,7 +140,7 @@ jobs:
 
   wake-up-emily:
     name: Wake up emily
-    runs-on: native-arm
+    runs-on: ubuntu-latest-arm
     needs: update
 
     steps:
