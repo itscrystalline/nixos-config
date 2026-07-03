@@ -15,6 +15,7 @@ on:
 
 jobs:
   wake-up-emily:
+    if: "!startsWith(github.event.head_commit.message, 'Merge pull request')"
     name: Wake up emily
     runs-on: ubuntu-latest-arm
 
