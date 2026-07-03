@@ -185,7 +185,6 @@ jobs:
         run: |
           mapfile -t pkgs < <(nix eval .#packages.${{ matrix.pair.arch }} --apply 'ps: builtins.filter (p: p != "docs") (builtins.attrNames ps)' --json | jq -r '.[]')
           installables=("${pkgs[@]/#/.#packages.${{ matrix.pair.arch }}.}")
-
           missing=()
           for installable in "${installables[@]}"; do
             path=$(nix eval "$installable.outPath" --raw)
@@ -193,17 +192,34 @@ jobs:
           done
           echo "missing from cache: ${missing[@]}"
 
-          if [ ${#missing[@]} -gt 0 ]; then
-            echo "building: ${missing[@]}"
-            if [ "${{ matrix.pair.arch }}" = "x86_64-linux" ]; then
-              nix build "${missing[@]}" --no-link --print-build-logs \
-                --option max-jobs $(($(nproc) / 2)) --option cores $(($(nproc) / 2))
-              NIX_SSHOPTS="-o StrictHostKeyChecking=no -i /tmp/nixremote" nix copy \
-                --to "ssh://nixremote@mingzhu" "${missing[@]}" 
-            else
-              nix build "${missing[@]}" --no-link --print-build-logs
-              NIX_SSHOPTS="-o StrictHostKeyChecking=no -i /tmp/nixremote" nix copy \
-                --to "ssh://nixremote@mingzhu" "${missing[@]}"
-            fi
+          if [ "${{ matrix.pair.arch }}" = "x86_64-linux" ]; then
+            build_opts=(--option max-jobs $(($(nproc) / 2)) --option cores $(($(nproc) / 2)))
+          else
+            build_opts=()
+          fi
+
+          to_build=("${missing[@]}")
+          failed=()
+
+          for round in 1 2 3; do
+            [ ${#to_build[@]} -eq 0 ] && break
+            echo "=== round $round: ${#to_build[@]} package(s) to build ==="
+            failed=()
+            for installable in "${to_build[@]}"; do
+              echo "building: $installable"
+              if nix build "$installable" --no-link --print-build-logs "${build_opts[@]}"; then
+                NIX_SSHOPTS="-o StrictHostKeyChecking=no -i /tmp/nixremote" nix copy \
+                  --to "ssh://nixremote@mingzhu" "$installable"
+              else
+                echo "failed: $installable"
+                failed+=("$installable")
+              fi
+            done
+            to_build=("${failed[@]}")
+          done
+
+          if [ ${#failed[@]} -gt 0 ]; then
+            echo "still failing after 3 rounds: ${failed[@]}"
+            exit 1
           fi
 
