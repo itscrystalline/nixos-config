@@ -214,7 +214,7 @@ jobs:
               echo "building: $installable"
               if nix build "$installable" --no-link --print-build-logs "${build_opts[@]}"; then
                 NIX_SSHOPTS="-o StrictHostKeyChecking=no -i /tmp/nixremote" nix copy \
-                  --to "ssh://nixremote@mingzhu" "$installable"
+                  --to "ssh://nixremote@mingzhu" --substitute-on-destination "$installable"
               else
                 echo "failed: $installable"
                 failed+=("$installable")
