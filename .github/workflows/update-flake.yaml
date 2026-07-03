@@ -165,6 +165,7 @@ jobs:
       - name: Checkout code (on updated branch)
         id: checkout-updated
         uses: actions/checkout@v4
+        continue-on-error: true
         with: 
           ref: update-flake-lock
       - name: Checkout code (on main branch)
