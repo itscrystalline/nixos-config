@@ -163,12 +163,12 @@ jobs:
 
     steps:
       - name: Checkout code (on updated branch)
-        if: github.event_name != 'workflow_dispatch' || github.event.inputs.just-cache == 'false'
+        id: checkout-updated
         uses: actions/checkout@v4
         with: 
           ref: update-flake-lock
       - name: Checkout code (on main branch)
-        if: github.event_name == 'workflow_dispatch' && github.event.inputs.just-cache == 'true'
+        if: failure() && steps.checkout-updated.outcome == 'failure'
         uses: actions/checkout@v4
 
       - name: Install Nix
