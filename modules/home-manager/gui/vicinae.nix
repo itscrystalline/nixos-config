@@ -69,12 +69,16 @@ in {
               "@tonka3000/0a3cf1ce-7de6-415c-9e37-91a892d1747e:lights"
             ];
             providers = {
-              files.preferences = {
-                autoIndexing = true;
-                indexingPaths = ["/home/itscrystalline"];
-                excludedIndexingPaths = ["/home/itscrystalline/Nextcloud/" "/home/itscrystalline/.cache/"];
+              files = {
+                enabled = false;
+                preferences = {
+                  autoIndexing = false;
+                  indexingPaths = ["/home/itscrystalline"];
+                  excludedIndexingPaths = ["/home/itscrystalline/Nextcloud/" "/home/itscrystalline/.cache/"];
+                };
               };
               "@tonka3000/0a3cf1ce-7de6-415c-9e37-91a892d1747e".preferences.instance = "http://dorm.crys";
+              "@tonka3000/homeassistant".enabled = false;
             };
           }
         ];
