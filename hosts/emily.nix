@@ -39,6 +39,8 @@
       enable = true;
       interface = "enp9s0";
     };
+
+    restartOnResumeServices = ["tailscaled" "gitea-runner-runner_x86_64_linux_emily_1"];
   };
 
   nix = {

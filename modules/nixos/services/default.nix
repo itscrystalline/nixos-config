@@ -30,20 +30,40 @@
     ./copyparty.nix
     ./wakeonlan.nix
   ];
-
-  options.crystals-services.essentialServices = lib.mkOption {
-    type = lib.types.listOf lib.types.str;
-    description = "Essential systemd services to restart always.";
-    default = [];
+  options.crystals-services = {
+    essentialServices = lib.mkOption {
+      type = lib.types.listOf lib.types.str;
+      description = "Essential systemd services to restart always.";
+      default = [];
+    };
+    restartOnResumeServices = lib.mkOption {
+      type = lib.types.listOf lib.types.str;
+      description = "Services that need restarting when the system resumes from sleep.";
+      default = [];
+    };
   };
 
   config.systemd = {
     settings.Manager.DefaultTimeoutStopSec = "20s";
     user.extraConfig = ''DefaultTimeoutStopSec=20s'';
-    services = builtins.listToAttrs (map (name: {
-        inherit name;
-        value.serviceConfig.Restart = lib.mkForce "always";
-      })
-      config.crystals-services.essentialServices);
+    services =
+      builtins.listToAttrs (map (name: {
+          inherit name;
+          value.serviceConfig.Restart = lib.mkForce "always";
+        })
+        config.crystals-services.essentialServices)
+      // {
+        restart-on-resume = {
+          description = "Restarts problematic services when the system resumes.";
+          after = ["suspend.target"];
+          script = lib.concatLines (map (s: "systemctl --no-block restart ${s}") config.crystals-services.restartOnResumeServices);
+          serviceConfig = {
+            Type = "oneshot";
+            StandardOutput = "journal";
+            StandardError = "journal";
+            User = "root";
+          };
+        };
+      };
   };
 }
