@@ -199,7 +199,7 @@ in {
           range = map toString (lib.range 1 forgejo.runner.workers);
         in
           builtins.listToAttrs (map (num: let
-              name = "runner-${pkgs.stdenv.hostPlatform.system}-${config.core.name}-${num}";
+              name = "runner_${builtins.replaceStrings ["-"] ["_"] pkgs.stdenv.hostPlatform.system}_${config.core.name}_${num}";
             in {
               inherit name;
               value = {
