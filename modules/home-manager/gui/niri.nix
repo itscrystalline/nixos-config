@@ -266,7 +266,7 @@ in {
             (mkWorkspace "LINE" "social" 0.5)
             (mkWorkspace "valent" "social" 0.5)
             {
-              matches = [{app-id = "^org\.keepassxc\.KeePassXC$";}];
+              matches = [{app-id = "^org.keepassxc.KeePassXC$";}];
               open-on-workspace = "social";
               default-column-width.proportion = 0.5;
               block-out-from = "screencast";
@@ -274,7 +274,7 @@ in {
             {
               matches = [
                 {
-                  app-id = "^org\.keepassxc\.KeePassXC$";
+                  app-id = "^org.keepassxc.KeePassXC$";
                   title = "^データベースのロックを解除 - KeePassXC$";
                 }
               ];
@@ -285,7 +285,7 @@ in {
             {
               matches = [
                 {
-                  app-id = "^org\.keepassxc\.KeePassXC$";
+                  app-id = "^org.keepassxc.KeePassXC$";
                   title = "^KeePassXC - ブラウザーのアクセス要求$";
                 }
               ];
