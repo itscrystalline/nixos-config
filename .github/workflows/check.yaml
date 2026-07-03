@@ -14,10 +14,19 @@ on:
   workflow_dispatch:
 
 jobs:
+  wake-up-emily:
+    name: Wake up emily
+    runs-on: ubuntu-latest-arm
+
+    steps:
+      - name: Call HA webhook
+        run: curl -X PUT http://dorm.crys/api/webhook/${{ secrets.EMILY_WAKE }}
+
   check:
     if: "!startsWith(github.event.head_commit.message, 'Merge pull request')"
     name: "Check config for ${{ matrix.pairs.arch }} -> ${{ matrix.pairs.config }}"
     runs-on: ${{ matrix.pairs.runner }}
+    needs: wake-up-emily
     timeout-minutes: 60
     strategy:
       fail-fast: false
@@ -60,6 +69,7 @@ jobs:
     if: "!startsWith(github.event.head_commit.message, 'Merge pull request')"
     name: "Check custom packages for ${{ matrix.pairs.arch }}"
     runs-on: ${{ matrix.pairs.runner }} 
+    needs: wake-up-emily
     timeout-minutes: 60
     strategy:
       fail-fast: false
