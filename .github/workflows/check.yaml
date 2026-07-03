@@ -17,7 +17,7 @@ jobs:
   check:
     if: "!startsWith(github.event.head_commit.message, 'Merge pull request')"
     name: "Check config for ${{ matrix.pairs.arch }} -> ${{ matrix.pairs.config }}"
-    runs-on: ubuntu-latest
+    runs-on: ${{ matrix.pairs.runner }}
     timeout-minutes: 60
     strategy:
       fail-fast: false
