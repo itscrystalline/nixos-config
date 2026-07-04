@@ -107,6 +107,9 @@ in {
               HTTP_PORT = 4985;
               SSH_PORT = 2222;
               START_SSH_SERVER = true;
+
+              PER_WRITE_TIMEOUT = "300s";
+              PER_WRITE_PER_KB_TIMEOUT = "300s";
             };
             service = {
               # You can temporarily allow registration to create an admin user.
