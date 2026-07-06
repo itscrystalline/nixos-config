@@ -53,9 +53,10 @@
         })
         config.crystals-services.essentialServices)
       // {
-        restart-on-resume = {
+        restart-on-resume = lib.mkIf (config.crystals-services.restartOnResumeServices != []) {
           description = "Restarts problematic services when the system resumes.";
           after = ["suspend.target"];
+          wantedBy = ["suspend.target"];
           script = lib.concatLines (map (s: "systemctl --no-block restart ${s}") config.crystals-services.restartOnResumeServices);
           serviceConfig = {
             Type = "oneshot";
