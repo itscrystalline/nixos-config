@@ -18,7 +18,7 @@ in {
     niri-unstable = inputs.niri.packages.x86_64-linux.niri-unstable.overrideAttrs (_: {
       patches = [
         (pkgs.fetchpatch {
-          url = "https://github.com/user-attachments/files/28446966/color.patch";
+          url = "https://github.com/user-attachments/files/29669843/color.patch";
           hash = "sha256-cqyport7l+NOxAr/0LICJ2cP4+h7MZXGpwf/PZDsX+A=";
         })
       ];
