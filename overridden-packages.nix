@@ -15,14 +15,8 @@ in {
   in {
     docs = docs' pkgs;
 
-    niri-unstable = inputs.niri.packages.x86_64-linux.niri-unstable.overrideAttrs (_: {
-      patches = [
-        (pkgs.fetchpatch {
-          url = "https://github.com/user-attachments/files/29669843/color.patch";
-          hash = "sha256-cqyport7l+NOxAr/0LICJ2cP4+h7MZXGpwf/PZDsX+A=";
-        })
-      ];
-    });
+    # FIXME: remove when niri-flake updates its lockfile again
+    niri-unstable = inputs.niri.packages.x86_64-linux.niri-unstable;
     xwayland-satellite-unstable = inputs.niri.packages.x86_64-linux.xwayland-satellite-unstable;
     steam = pkgs.steam.override {extraArgs = "-system-composer";};
     plymouth-blahaj-theme = pkgs.plymouth-blahaj-theme.overrideAttrs {
