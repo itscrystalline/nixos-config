@@ -46,31 +46,38 @@
   config.systemd = {
     settings.Manager.DefaultTimeoutStopSec = "20s";
     user.extraConfig = ''DefaultTimeoutStopSec=20s'';
-    services =
-      builtins.listToAttrs (map (name: {
-          inherit name;
-          value.serviceConfig.Restart = lib.mkForce "always";
-        })
-        config.crystals-services.essentialServices)
-      // {
-        restart-on-resume = lib.mkIf (config.crystals-services.restartOnResumeServices != []) {
-          description = "Restarts problematic services when the system resumes.";
-          after = ["suspend.target"];
-          wantedBy = ["suspend.target"];
-          script = lib.concatLines (map (s: "systemctl --no-block restart ${s}") config.crystals-services.restartOnResumeServices);
-          serviceConfig = {
-            Type = "oneshot";
-            StandardOutput = "journal";
-            StandardError = "journal";
-            User = "root";
+    services = lib.mkMerge [
+      (
+        builtins.listToAttrs (map (name: {
+            inherit name;
+            value.serviceConfig.Restart = lib.mkForce "always";
+          })
+          config.crystals-services.essentialServices)
+      )
+      (lib.mkIf (config.crystals-services.restartOnResumeServices != []) (lib.mkMerge [
+        {
+          restart-on-resume = {
+            description = "Restarts problematic services when the system resumes.";
+            after = ["suspend.target"];
+            wantedBy = ["suspend.target"];
+            script = lib.concatLines (map (s: "systemctl --no-block restart ${s}") config.crystals-services.restartOnResumeServices);
+            serviceConfig = {
+              Type = "oneshot";
+              StandardOutput = "journal";
+              StandardError = "journal";
+              User = "root";
+            };
           };
-        };
-        nixos-upgrade = lib.mkIf (config.crystals-services.restartOnResumeServices != []) {
-          after = ["restart-on-resume.service"];
-        };
-        nixos-remote-upgrade = lib.mkIf (config.crystals-services.restartOnResumeServices != []) {
-          after = ["restart-on-resume.service"];
-        };
-      };
+        }
+        (lib.mkIf config.nix.autoUpdate.enable (lib.mkMerge [
+          (lib.mkIf (config.nix.autoUpdate.type == "self") {
+            nixos-upgrade.after = ["restart-on-resume.service"];
+          })
+          (lib.mkIf (config.nix.autoUpdate.type == "remote") {
+            nixos-remote-upgrade.after = ["restart-on-resume.service"];
+          })
+        ]))
+      ]))
+    ];
   };
 }
