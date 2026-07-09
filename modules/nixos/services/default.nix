@@ -65,6 +65,12 @@
             User = "root";
           };
         };
+        nixos-upgrade = lib.mkIf (config.crystals-services.restartOnResumeServices != []) {
+          after = ["restart-on-resume.service"];
+        };
+        nixos-remote-upgrade = lib.mkIf (config.crystals-services.restartOnResumeServices != []) {
+          after = ["restart-on-resume.service"];
+        };
       };
   };
 }
