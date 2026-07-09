@@ -15,8 +15,6 @@ in {
   in {
     docs = docs' pkgs;
 
-    # FIXME: remove when niri-flake updates its lockfile again
-    niri-unstable = inputs.niri.packages.x86_64-linux.niri-unstable;
     xwayland-satellite-unstable = inputs.niri.packages.x86_64-linux.xwayland-satellite-unstable;
     steam = pkgs.steam.override {extraArgs = "-system-composer";};
     plymouth-blahaj-theme = pkgs.plymouth-blahaj-theme.overrideAttrs {

@@ -3,7 +3,6 @@
   pkgs,
   lib,
   options,
-  spkgs,
   ...
 }: let
   enabled = config.gui.niri.enable && config.gui.enable;
@@ -14,7 +13,7 @@ in {
     programs = lib.mkMerge [
       {
         niri.enable = true;
-        niri.package = spkgs.niri-unstable;
+        niri.package = pkgs.niri-unstable;
 
         ydotool.enable = true;
 

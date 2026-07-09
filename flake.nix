@@ -36,15 +36,12 @@
     };
     # FIXME: until xwayland-sattelite fixes https://github.com/Supreeeme/xwayland-satellite/issues/278
     xwayland-satellite_old.url = "github:Supreeeme/xwayland-satellite/3273a0fccd71da21c6362c74f3b1d1c0a89ff3ba";
-    # FIXME: remove when niri-flake updates its lockfile again
-    niri-unstable.url = "github:YaLTeR/niri";
     niri = {
       url = "github:sodiboo/niri-flake";
       inputs = {
         nixpkgs.follows = "nixpkgs-unstable";
         nixpkgs-stable.follows = "nixpkgs";
         xwayland-satellite-unstable.follows = "xwayland-satellite_old";
-        niri-unstable.follows = "niri-unstable";
       };
     };
     noctalia.url = "github:noctalia-dev/noctalia-shell";
