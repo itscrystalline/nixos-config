@@ -58,7 +58,7 @@ in {
             signingkey = "955937102112FE21";
           };
           safe.directory = "${config.home.homeDirectory}/nixos-config";
-          pull.rebase = false;
+          pull.rebase = true;
         };
       };
       gh = {
