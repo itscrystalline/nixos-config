@@ -29,6 +29,7 @@
     ./stalwart.nix
     ./copyparty.nix
     ./wakeonlan.nix
+    ./boinc.nix
   ];
   options.crystals-services = {
     essentialServices = lib.mkOption {
