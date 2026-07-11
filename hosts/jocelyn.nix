@@ -37,6 +37,7 @@
       enable = true;
       host = "iw2tryhard.dev";
     };
+    boinc.enable = true;
   };
 
   network.dhcp = false;

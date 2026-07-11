@@ -94,6 +94,7 @@
       enable = true;
       workers = 5;
     };
+    boinc.enable = true;
   };
 
   nix = {
