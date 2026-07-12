@@ -37,7 +37,15 @@
       enable = true;
       host = "iw2tryhard.dev";
     };
-    boinc.enable = true;
+    boinc = {
+      enable = true;
+      projects = [
+        {
+          url = "http://numberfields.asu.edu/NumberFields/";
+          key = "numberfields";
+        }
+      ];
+    };
   };
 
   network.dhcp = false;

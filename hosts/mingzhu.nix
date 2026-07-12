@@ -94,7 +94,15 @@
       enable = true;
       workers = 5;
     };
-    boinc.enable = true;
+    boinc = {
+      enable = true;
+      projects = [
+        {
+          url = "https://boinc.bakerlab.org/rosetta/";
+          key = "rosetta";
+        }
+      ];
+    };
   };
 
   nix = {

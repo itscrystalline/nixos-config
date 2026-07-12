@@ -99,6 +99,19 @@
       enable = true;
       workers = 2;
     };
+    boinc = {
+      enable = true;
+      projects = [
+        {
+          url = "http://numberfields.asu.edu/NumberFields/";
+          key = "numberfields";
+        }
+        {
+          url = "https://boinc.bakerlab.org/rosetta/";
+          key = "rosetta";
+        }
+      ];
+    };
   };
 
   nix = {
