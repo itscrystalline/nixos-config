@@ -144,7 +144,7 @@ in {
             ]
             ++ lib.optionals shellEnabled [
               # {argv = ["awww" "img" "/home/itscrystalline/bg.gif" "--filter=Nearest"];}
-              {sh = "QT_IM_MODULE=wayland noctalia";}
+              {sh = "noctalia";}
             ]
             ++ lib.optionals guiProgramsEnabled [
               {argv = ["valent" "--gapplication-service"];}
