@@ -14,6 +14,12 @@
     sleep 0.2
     xdg-open http://localhost:8888 &
   '';
+
+  changeGitUserScript = pkgs.writeShellScriptBin "wararat-git" ''
+    git config user.name "Wararat Choyrum"
+    git config user.email "real@iw2tryhard.dev"
+    git config user.signingkey "CF99E3DB703AF4F7"
+  '';
 in {
   imports = [./ai.nix];
 
@@ -29,6 +35,7 @@ in {
         python3
 
         forgejo-cli
+        changeGitUserScript
 
         matlabScript
       ]
