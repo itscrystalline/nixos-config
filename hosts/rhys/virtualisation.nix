@@ -36,6 +36,11 @@
         swtpm.enable = true;
       };
     };
+    virtualbox.host = {
+      enable = false;
+      enableKvm = true;
+      addNetworkInterface = false;
+    };
     spiceUSBRedirection.enable = true;
   };
 
