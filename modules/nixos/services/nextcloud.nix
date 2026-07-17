@@ -102,7 +102,22 @@ in {
           trusted_proxies = [
             "127.0.0.1"
             "::1"
-            "2001:fb1:139:87b0:33d6:4f2:97b9:481e"
+            "100.95.62.30"
+            "173.245.48.0/20"
+            "103.21.244.0/22"
+            "103.22.200.0/22"
+            "103.31.4.0/22"
+            "141.101.64.0/18"
+            "108.162.192.0/18"
+            "190.93.240.0/20"
+            "188.114.96.0/20"
+            "197.234.240.0/22"
+            "198.41.128.0/17"
+            "162.158.0.0/15"
+            "104.16.0.0/13"
+            "104.24.0.0/14"
+            "172.64.0.0/13"
+            "131.0.72.0/22"
           ];
           "memories.exiftool" = "${lib.getExe pkgs.exiftool}";
           "memories.exiftool_no_local" = true;
@@ -127,12 +142,6 @@ in {
 
     crystals-services.nginx.public.sites.${nextcloud.domain} = {
       acme = ""; # iw2tryhard.dev
-    };
-
-    crystals-services.cloudflared.domains.${nextcloud.domain} = {
-      disableChunkedEncoding = true;
-      noHappyEyeballs = true;
-      noTLSVerify = true;
     };
 
     systemd.services = {
