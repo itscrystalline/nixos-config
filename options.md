@@ -97,7 +97,7 @@ true
 ```
 
 *Declared by:*
- - [/nix/store/nadx1qc8fcqjpgnz084l6lj0lr3ykc18-source/modules/nixos/bluetooth](file:///nix/store/nadx1qc8fcqjpgnz084l6lj0lr3ykc18-source/modules/nixos/bluetooth)
+ - [/nix/store/rqvlfwqsnwxcg2bh5n2sdhic6lj2d9l4-source/modules/nixos/bluetooth](file:///nix/store/rqvlfwqsnwxcg2bh5n2sdhic6lj2d9l4-source/modules/nixos/bluetooth)
 
 
 
@@ -113,7 +113,7 @@ Boot loader\. ‘limine’, ‘systemd-boot’, ‘grub’ or ‘generic’\.
 one of “systemd-boot”, “generic”, “grub”, “limine”
 
 *Declared by:*
- - [/nix/store/nadx1qc8fcqjpgnz084l6lj0lr3ykc18-source/modules/nixos/kernel/boot\.nix](file:///nix/store/nadx1qc8fcqjpgnz084l6lj0lr3ykc18-source/modules/nixos/kernel/boot.nix)
+ - [/nix/store/rqvlfwqsnwxcg2bh5n2sdhic6lj2d9l4-source/modules/nixos/kernel/boot\.nix](file:///nix/store/rqvlfwqsnwxcg2bh5n2sdhic6lj2d9l4-source/modules/nixos/kernel/boot.nix)
 
 
 
@@ -137,7 +137,7 @@ null
 ```
 
 *Declared by:*
- - [/nix/store/nadx1qc8fcqjpgnz084l6lj0lr3ykc18-source/modules/nixos/kernel/boot\.nix](file:///nix/store/nadx1qc8fcqjpgnz084l6lj0lr3ykc18-source/modules/nixos/kernel/boot.nix)
+ - [/nix/store/rqvlfwqsnwxcg2bh5n2sdhic6lj2d9l4-source/modules/nixos/kernel/boot\.nix](file:///nix/store/rqvlfwqsnwxcg2bh5n2sdhic6lj2d9l4-source/modules/nixos/kernel/boot.nix)
 
 
 
@@ -161,7 +161,7 @@ string
 ```
 
 *Declared by:*
- - [/nix/store/nadx1qc8fcqjpgnz084l6lj0lr3ykc18-source/modules/nixos/kernel/boot\.nix](file:///nix/store/nadx1qc8fcqjpgnz084l6lj0lr3ykc18-source/modules/nixos/kernel/boot.nix)
+ - [/nix/store/rqvlfwqsnwxcg2bh5n2sdhic6lj2d9l4-source/modules/nixos/kernel/boot\.nix](file:///nix/store/rqvlfwqsnwxcg2bh5n2sdhic6lj2d9l4-source/modules/nixos/kernel/boot.nix)
 
 
 
@@ -193,7 +193,7 @@ true
 ```
 
 *Declared by:*
- - [/nix/store/nadx1qc8fcqjpgnz084l6lj0lr3ykc18-source/modules/nixos/kernel/boot\.nix](file:///nix/store/nadx1qc8fcqjpgnz084l6lj0lr3ykc18-source/modules/nixos/kernel/boot.nix)
+ - [/nix/store/rqvlfwqsnwxcg2bh5n2sdhic6lj2d9l4-source/modules/nixos/kernel/boot\.nix](file:///nix/store/rqvlfwqsnwxcg2bh5n2sdhic6lj2d9l4-source/modules/nixos/kernel/boot.nix)
 
 
 
@@ -217,7 +217,7 @@ Kernel modules available during stage 1\.
 ```
 
 *Declared by:*
- - [/nix/store/nadx1qc8fcqjpgnz084l6lj0lr3ykc18-source/modules/nixos/kernel/boot\.nix](file:///nix/store/nadx1qc8fcqjpgnz084l6lj0lr3ykc18-source/modules/nixos/kernel/boot.nix)
+ - [/nix/store/rqvlfwqsnwxcg2bh5n2sdhic6lj2d9l4-source/modules/nixos/kernel/boot\.nix](file:///nix/store/rqvlfwqsnwxcg2bh5n2sdhic6lj2d9l4-source/modules/nixos/kernel/boot.nix)
 
 
 
@@ -241,7 +241,7 @@ Kernel modules loaded during stage 1\.
 ```
 
 *Declared by:*
- - [/nix/store/nadx1qc8fcqjpgnz084l6lj0lr3ykc18-source/modules/nixos/kernel/boot\.nix](file:///nix/store/nadx1qc8fcqjpgnz084l6lj0lr3ykc18-source/modules/nixos/kernel/boot.nix)
+ - [/nix/store/rqvlfwqsnwxcg2bh5n2sdhic6lj2d9l4-source/modules/nixos/kernel/boot\.nix](file:///nix/store/rqvlfwqsnwxcg2bh5n2sdhic6lj2d9l4-source/modules/nixos/kernel/boot.nix)
 
 
 
@@ -265,7 +265,7 @@ one of “silent”, “verbose” or (submodule)
 ```
 
 *Declared by:*
- - [/nix/store/nadx1qc8fcqjpgnz084l6lj0lr3ykc18-source/modules/nixos/kernel/boot\.nix](file:///nix/store/nadx1qc8fcqjpgnz084l6lj0lr3ykc18-source/modules/nixos/kernel/boot.nix)
+ - [/nix/store/rqvlfwqsnwxcg2bh5n2sdhic6lj2d9l4-source/modules/nixos/kernel/boot\.nix](file:///nix/store/rqvlfwqsnwxcg2bh5n2sdhic6lj2d9l4-source/modules/nixos/kernel/boot.nix)
 
 
 
@@ -297,7 +297,7 @@ true
 ```
 
 *Declared by:*
- - [/nix/store/nadx1qc8fcqjpgnz084l6lj0lr3ykc18-source/modules/nixos/compatibility/nix-ld\.nix](file:///nix/store/nadx1qc8fcqjpgnz084l6lj0lr3ykc18-source/modules/nixos/compatibility/nix-ld.nix)
+ - [/nix/store/rqvlfwqsnwxcg2bh5n2sdhic6lj2d9l4-source/modules/nixos/compatibility/nix-ld\.nix](file:///nix/store/rqvlfwqsnwxcg2bh5n2sdhic6lj2d9l4-source/modules/nixos/compatibility/nix-ld.nix)
 
 
 
@@ -329,7 +329,7 @@ true
 ```
 
 *Declared by:*
- - [/nix/store/nadx1qc8fcqjpgnz084l6lj0lr3ykc18-source/modules/nixos/compatibility/steam-run\.nix](file:///nix/store/nadx1qc8fcqjpgnz084l6lj0lr3ykc18-source/modules/nixos/compatibility/steam-run.nix)
+ - [/nix/store/rqvlfwqsnwxcg2bh5n2sdhic6lj2d9l4-source/modules/nixos/compatibility/steam-run\.nix](file:///nix/store/rqvlfwqsnwxcg2bh5n2sdhic6lj2d9l4-source/modules/nixos/compatibility/steam-run.nix)
 
 
 
@@ -353,7 +353,7 @@ string
 ```
 
 *Declared by:*
- - [/nix/store/nadx1qc8fcqjpgnz084l6lj0lr3ykc18-source/modules/nixos](file:///nix/store/nadx1qc8fcqjpgnz084l6lj0lr3ykc18-source/modules/nixos)
+ - [/nix/store/rqvlfwqsnwxcg2bh5n2sdhic6lj2d9l4-source/modules/nixos](file:///nix/store/rqvlfwqsnwxcg2bh5n2sdhic6lj2d9l4-source/modules/nixos)
 
 
 
@@ -377,7 +377,7 @@ attribute set
 ```
 
 *Declared by:*
- - [/nix/store/nadx1qc8fcqjpgnz084l6lj0lr3ykc18-source/modules/nixos](file:///nix/store/nadx1qc8fcqjpgnz084l6lj0lr3ykc18-source/modules/nixos)
+ - [/nix/store/rqvlfwqsnwxcg2bh5n2sdhic6lj2d9l4-source/modules/nixos](file:///nix/store/rqvlfwqsnwxcg2bh5n2sdhic6lj2d9l4-source/modules/nixos)
 
 
 
@@ -401,7 +401,7 @@ submodule
 ```
 
 *Declared by:*
- - [/nix/store/nadx1qc8fcqjpgnz084l6lj0lr3ykc18-source/modules/nixos](file:///nix/store/nadx1qc8fcqjpgnz084l6lj0lr3ykc18-source/modules/nixos)
+ - [/nix/store/rqvlfwqsnwxcg2bh5n2sdhic6lj2d9l4-source/modules/nixos](file:///nix/store/rqvlfwqsnwxcg2bh5n2sdhic6lj2d9l4-source/modules/nixos)
 
 
 
@@ -425,7 +425,7 @@ string
 ```
 
 *Declared by:*
- - [/nix/store/nadx1qc8fcqjpgnz084l6lj0lr3ykc18-source/modules/nixos](file:///nix/store/nadx1qc8fcqjpgnz084l6lj0lr3ykc18-source/modules/nixos)
+ - [/nix/store/rqvlfwqsnwxcg2bh5n2sdhic6lj2d9l4-source/modules/nixos](file:///nix/store/rqvlfwqsnwxcg2bh5n2sdhic6lj2d9l4-source/modules/nixos)
 
 
 
@@ -449,7 +449,7 @@ string
 ```
 
 *Declared by:*
- - [/nix/store/nadx1qc8fcqjpgnz084l6lj0lr3ykc18-source/modules/nixos](file:///nix/store/nadx1qc8fcqjpgnz084l6lj0lr3ykc18-source/modules/nixos)
+ - [/nix/store/rqvlfwqsnwxcg2bh5n2sdhic6lj2d9l4-source/modules/nixos](file:///nix/store/rqvlfwqsnwxcg2bh5n2sdhic6lj2d9l4-source/modules/nixos)
 
 
 
@@ -473,7 +473,7 @@ string
 ```
 
 *Declared by:*
- - [/nix/store/nadx1qc8fcqjpgnz084l6lj0lr3ykc18-source/modules/nixos](file:///nix/store/nadx1qc8fcqjpgnz084l6lj0lr3ykc18-source/modules/nixos)
+ - [/nix/store/rqvlfwqsnwxcg2bh5n2sdhic6lj2d9l4-source/modules/nixos](file:///nix/store/rqvlfwqsnwxcg2bh5n2sdhic6lj2d9l4-source/modules/nixos)
 
 
 
@@ -497,7 +497,7 @@ string
 ```
 
 *Declared by:*
- - [/nix/store/nadx1qc8fcqjpgnz084l6lj0lr3ykc18-source/modules/nixos](file:///nix/store/nadx1qc8fcqjpgnz084l6lj0lr3ykc18-source/modules/nixos)
+ - [/nix/store/rqvlfwqsnwxcg2bh5n2sdhic6lj2d9l4-source/modules/nixos](file:///nix/store/rqvlfwqsnwxcg2bh5n2sdhic6lj2d9l4-source/modules/nixos)
 
 
 
@@ -521,7 +521,7 @@ string
 ```
 
 *Declared by:*
- - [/nix/store/nadx1qc8fcqjpgnz084l6lj0lr3ykc18-source/modules/nixos](file:///nix/store/nadx1qc8fcqjpgnz084l6lj0lr3ykc18-source/modules/nixos)
+ - [/nix/store/rqvlfwqsnwxcg2bh5n2sdhic6lj2d9l4-source/modules/nixos](file:///nix/store/rqvlfwqsnwxcg2bh5n2sdhic6lj2d9l4-source/modules/nixos)
 
 
 
@@ -545,7 +545,7 @@ list of string
 ```
 
 *Declared by:*
- - [/nix/store/nadx1qc8fcqjpgnz084l6lj0lr3ykc18-source/modules/nixos](file:///nix/store/nadx1qc8fcqjpgnz084l6lj0lr3ykc18-source/modules/nixos)
+ - [/nix/store/rqvlfwqsnwxcg2bh5n2sdhic6lj2d9l4-source/modules/nixos](file:///nix/store/rqvlfwqsnwxcg2bh5n2sdhic6lj2d9l4-source/modules/nixos)
 
 
 
@@ -569,7 +569,7 @@ string
 ```
 
 *Declared by:*
- - [/nix/store/nadx1qc8fcqjpgnz084l6lj0lr3ykc18-source/modules/nixos](file:///nix/store/nadx1qc8fcqjpgnz084l6lj0lr3ykc18-source/modules/nixos)
+ - [/nix/store/rqvlfwqsnwxcg2bh5n2sdhic6lj2d9l4-source/modules/nixos](file:///nix/store/rqvlfwqsnwxcg2bh5n2sdhic6lj2d9l4-source/modules/nixos)
 
 
 
@@ -601,7 +601,7 @@ true
 ```
 
 *Declared by:*
- - [/nix/store/nadx1qc8fcqjpgnz084l6lj0lr3ykc18-source/modules/nixos/services/argonone\.nix](file:///nix/store/nadx1qc8fcqjpgnz084l6lj0lr3ykc18-source/modules/nixos/services/argonone.nix)
+ - [/nix/store/rqvlfwqsnwxcg2bh5n2sdhic6lj2d9l4-source/modules/nixos/services/argonone\.nix](file:///nix/store/rqvlfwqsnwxcg2bh5n2sdhic6lj2d9l4-source/modules/nixos/services/argonone.nix)
 
 
 
@@ -629,7 +629,7 @@ list of signed integer
 ```
 
 *Declared by:*
- - [/nix/store/nadx1qc8fcqjpgnz084l6lj0lr3ykc18-source/modules/nixos/services/argonone\.nix](file:///nix/store/nadx1qc8fcqjpgnz084l6lj0lr3ykc18-source/modules/nixos/services/argonone.nix)
+ - [/nix/store/rqvlfwqsnwxcg2bh5n2sdhic6lj2d9l4-source/modules/nixos/services/argonone\.nix](file:///nix/store/rqvlfwqsnwxcg2bh5n2sdhic6lj2d9l4-source/modules/nixos/services/argonone.nix)
 
 
 
@@ -653,7 +653,7 @@ signed integer
 ```
 
 *Declared by:*
- - [/nix/store/nadx1qc8fcqjpgnz084l6lj0lr3ykc18-source/modules/nixos/services/argonone\.nix](file:///nix/store/nadx1qc8fcqjpgnz084l6lj0lr3ykc18-source/modules/nixos/services/argonone.nix)
+ - [/nix/store/rqvlfwqsnwxcg2bh5n2sdhic6lj2d9l4-source/modules/nixos/services/argonone\.nix](file:///nix/store/rqvlfwqsnwxcg2bh5n2sdhic6lj2d9l4-source/modules/nixos/services/argonone.nix)
 
 
 
@@ -681,7 +681,7 @@ list of signed integer
 ```
 
 *Declared by:*
- - [/nix/store/nadx1qc8fcqjpgnz084l6lj0lr3ykc18-source/modules/nixos/services/argonone\.nix](file:///nix/store/nadx1qc8fcqjpgnz084l6lj0lr3ykc18-source/modules/nixos/services/argonone.nix)
+ - [/nix/store/rqvlfwqsnwxcg2bh5n2sdhic6lj2d9l4-source/modules/nixos/services/argonone\.nix](file:///nix/store/rqvlfwqsnwxcg2bh5n2sdhic6lj2d9l4-source/modules/nixos/services/argonone.nix)
 
 
 
@@ -713,7 +713,7 @@ true
 ```
 
 *Declared by:*
- - [/nix/store/nadx1qc8fcqjpgnz084l6lj0lr3ykc18-source/modules/nixos/services/avahi\.nix](file:///nix/store/nadx1qc8fcqjpgnz084l6lj0lr3ykc18-source/modules/nixos/services/avahi.nix)
+ - [/nix/store/rqvlfwqsnwxcg2bh5n2sdhic6lj2d9l4-source/modules/nixos/services/avahi\.nix](file:///nix/store/rqvlfwqsnwxcg2bh5n2sdhic6lj2d9l4-source/modules/nixos/services/avahi.nix)
 
 
 
@@ -745,7 +745,7 @@ true
 ```
 
 *Declared by:*
- - [/nix/store/nadx1qc8fcqjpgnz084l6lj0lr3ykc18-source/modules/nixos/services/blocky\.nix](file:///nix/store/nadx1qc8fcqjpgnz084l6lj0lr3ykc18-source/modules/nixos/services/blocky.nix)
+ - [/nix/store/rqvlfwqsnwxcg2bh5n2sdhic6lj2d9l4-source/modules/nixos/services/blocky\.nix](file:///nix/store/rqvlfwqsnwxcg2bh5n2sdhic6lj2d9l4-source/modules/nixos/services/blocky.nix)
 
 
 
@@ -769,7 +769,7 @@ strings concatenated with “\\n”
 ```
 
 *Declared by:*
- - [/nix/store/nadx1qc8fcqjpgnz084l6lj0lr3ykc18-source/modules/nixos/services/blocky\.nix](file:///nix/store/nadx1qc8fcqjpgnz084l6lj0lr3ykc18-source/modules/nixos/services/blocky.nix)
+ - [/nix/store/rqvlfwqsnwxcg2bh5n2sdhic6lj2d9l4-source/modules/nixos/services/blocky\.nix](file:///nix/store/rqvlfwqsnwxcg2bh5n2sdhic6lj2d9l4-source/modules/nixos/services/blocky.nix)
 
 
 
@@ -805,7 +805,7 @@ attribute set of string
 ```
 
 *Declared by:*
- - [/nix/store/nadx1qc8fcqjpgnz084l6lj0lr3ykc18-source/modules/nixos/services/blocky\.nix](file:///nix/store/nadx1qc8fcqjpgnz084l6lj0lr3ykc18-source/modules/nixos/services/blocky.nix)
+ - [/nix/store/rqvlfwqsnwxcg2bh5n2sdhic6lj2d9l4-source/modules/nixos/services/blocky\.nix](file:///nix/store/rqvlfwqsnwxcg2bh5n2sdhic6lj2d9l4-source/modules/nixos/services/blocky.nix)
 
 
 
@@ -829,7 +829,7 @@ strings concatenated with “\\n”
 ```
 
 *Declared by:*
- - [/nix/store/nadx1qc8fcqjpgnz084l6lj0lr3ykc18-source/modules/nixos/services/blocky\.nix](file:///nix/store/nadx1qc8fcqjpgnz084l6lj0lr3ykc18-source/modules/nixos/services/blocky.nix)
+ - [/nix/store/rqvlfwqsnwxcg2bh5n2sdhic6lj2d9l4-source/modules/nixos/services/blocky\.nix](file:///nix/store/rqvlfwqsnwxcg2bh5n2sdhic6lj2d9l4-source/modules/nixos/services/blocky.nix)
 
 
 
@@ -853,7 +853,7 @@ string
 ```
 
 *Declared by:*
- - [/nix/store/nadx1qc8fcqjpgnz084l6lj0lr3ykc18-source/modules/nixos/services/blocky\.nix](file:///nix/store/nadx1qc8fcqjpgnz084l6lj0lr3ykc18-source/modules/nixos/services/blocky.nix)
+ - [/nix/store/rqvlfwqsnwxcg2bh5n2sdhic6lj2d9l4-source/modules/nixos/services/blocky\.nix](file:///nix/store/rqvlfwqsnwxcg2bh5n2sdhic6lj2d9l4-source/modules/nixos/services/blocky.nix)
 
 
 
@@ -885,7 +885,7 @@ true
 ```
 
 *Declared by:*
- - [/nix/store/nadx1qc8fcqjpgnz084l6lj0lr3ykc18-source/modules/nixos/services/boinc\.nix](file:///nix/store/nadx1qc8fcqjpgnz084l6lj0lr3ykc18-source/modules/nixos/services/boinc.nix)
+ - [/nix/store/rqvlfwqsnwxcg2bh5n2sdhic6lj2d9l4-source/modules/nixos/services/boinc\.nix](file:///nix/store/rqvlfwqsnwxcg2bh5n2sdhic6lj2d9l4-source/modules/nixos/services/boinc.nix)
 
 
 
@@ -909,7 +909,7 @@ list of (submodule)
 ```
 
 *Declared by:*
- - [/nix/store/nadx1qc8fcqjpgnz084l6lj0lr3ykc18-source/modules/nixos/services/boinc\.nix](file:///nix/store/nadx1qc8fcqjpgnz084l6lj0lr3ykc18-source/modules/nixos/services/boinc.nix)
+ - [/nix/store/rqvlfwqsnwxcg2bh5n2sdhic6lj2d9l4-source/modules/nixos/services/boinc\.nix](file:///nix/store/rqvlfwqsnwxcg2bh5n2sdhic6lj2d9l4-source/modules/nixos/services/boinc.nix)
 
 
 
@@ -933,7 +933,7 @@ string
 ```
 
 *Declared by:*
- - [/nix/store/nadx1qc8fcqjpgnz084l6lj0lr3ykc18-source/modules/nixos/services/boinc\.nix](file:///nix/store/nadx1qc8fcqjpgnz084l6lj0lr3ykc18-source/modules/nixos/services/boinc.nix)
+ - [/nix/store/rqvlfwqsnwxcg2bh5n2sdhic6lj2d9l4-source/modules/nixos/services/boinc\.nix](file:///nix/store/rqvlfwqsnwxcg2bh5n2sdhic6lj2d9l4-source/modules/nixos/services/boinc.nix)
 
 
 
@@ -957,7 +957,7 @@ string
 ```
 
 *Declared by:*
- - [/nix/store/nadx1qc8fcqjpgnz084l6lj0lr3ykc18-source/modules/nixos/services/boinc\.nix](file:///nix/store/nadx1qc8fcqjpgnz084l6lj0lr3ykc18-source/modules/nixos/services/boinc.nix)
+ - [/nix/store/rqvlfwqsnwxcg2bh5n2sdhic6lj2d9l4-source/modules/nixos/services/boinc\.nix](file:///nix/store/rqvlfwqsnwxcg2bh5n2sdhic6lj2d9l4-source/modules/nixos/services/boinc.nix)
 
 
 
@@ -989,7 +989,7 @@ true
 ```
 
 *Declared by:*
- - [/nix/store/nadx1qc8fcqjpgnz084l6lj0lr3ykc18-source/modules/nixos/services/cloudflared\.nix](file:///nix/store/nadx1qc8fcqjpgnz084l6lj0lr3ykc18-source/modules/nixos/services/cloudflared.nix)
+ - [/nix/store/rqvlfwqsnwxcg2bh5n2sdhic6lj2d9l4-source/modules/nixos/services/cloudflared\.nix](file:///nix/store/rqvlfwqsnwxcg2bh5n2sdhic6lj2d9l4-source/modules/nixos/services/cloudflared.nix)
 
 
 
@@ -1013,7 +1013,7 @@ attribute set of (attribute set)
 ```
 
 *Declared by:*
- - [/nix/store/nadx1qc8fcqjpgnz084l6lj0lr3ykc18-source/modules/nixos/services/cloudflared\.nix](file:///nix/store/nadx1qc8fcqjpgnz084l6lj0lr3ykc18-source/modules/nixos/services/cloudflared.nix)
+ - [/nix/store/rqvlfwqsnwxcg2bh5n2sdhic6lj2d9l4-source/modules/nixos/services/cloudflared\.nix](file:///nix/store/rqvlfwqsnwxcg2bh5n2sdhic6lj2d9l4-source/modules/nixos/services/cloudflared.nix)
 
 
 
@@ -1045,7 +1045,7 @@ true
 ```
 
 *Declared by:*
- - [/nix/store/nadx1qc8fcqjpgnz084l6lj0lr3ykc18-source/modules/nixos/services/copyparty\.nix](file:///nix/store/nadx1qc8fcqjpgnz084l6lj0lr3ykc18-source/modules/nixos/services/copyparty.nix)
+ - [/nix/store/rqvlfwqsnwxcg2bh5n2sdhic6lj2d9l4-source/modules/nixos/services/copyparty\.nix](file:///nix/store/rqvlfwqsnwxcg2bh5n2sdhic6lj2d9l4-source/modules/nixos/services/copyparty.nix)
 
 
 
@@ -1069,7 +1069,7 @@ attribute set of (submodule)
 ```
 
 *Declared by:*
- - [/nix/store/nadx1qc8fcqjpgnz084l6lj0lr3ykc18-source/modules/nixos/services/copyparty\.nix](file:///nix/store/nadx1qc8fcqjpgnz084l6lj0lr3ykc18-source/modules/nixos/services/copyparty.nix)
+ - [/nix/store/rqvlfwqsnwxcg2bh5n2sdhic6lj2d9l4-source/modules/nixos/services/copyparty\.nix](file:///nix/store/rqvlfwqsnwxcg2bh5n2sdhic6lj2d9l4-source/modules/nixos/services/copyparty.nix)
 
 
 
@@ -1093,7 +1093,7 @@ attribute set of ((list of string) or string convertible to it)
 ```
 
 *Declared by:*
- - [/nix/store/nadx1qc8fcqjpgnz084l6lj0lr3ykc18-source/modules/nixos/services/copyparty\.nix](file:///nix/store/nadx1qc8fcqjpgnz084l6lj0lr3ykc18-source/modules/nixos/services/copyparty.nix)
+ - [/nix/store/rqvlfwqsnwxcg2bh5n2sdhic6lj2d9l4-source/modules/nixos/services/copyparty\.nix](file:///nix/store/rqvlfwqsnwxcg2bh5n2sdhic6lj2d9l4-source/modules/nixos/services/copyparty.nix)
 
 
 
@@ -1117,7 +1117,7 @@ string
 ```
 
 *Declared by:*
- - [/nix/store/nadx1qc8fcqjpgnz084l6lj0lr3ykc18-source/modules/nixos/services/copyparty\.nix](file:///nix/store/nadx1qc8fcqjpgnz084l6lj0lr3ykc18-source/modules/nixos/services/copyparty.nix)
+ - [/nix/store/rqvlfwqsnwxcg2bh5n2sdhic6lj2d9l4-source/modules/nixos/services/copyparty\.nix](file:///nix/store/rqvlfwqsnwxcg2bh5n2sdhic6lj2d9l4-source/modules/nixos/services/copyparty.nix)
 
 
 
@@ -1149,7 +1149,7 @@ true
 ```
 
 *Declared by:*
- - [/nix/store/nadx1qc8fcqjpgnz084l6lj0lr3ykc18-source/modules/nixos/services/create-ap\.nix](file:///nix/store/nadx1qc8fcqjpgnz084l6lj0lr3ykc18-source/modules/nixos/services/create-ap.nix)
+ - [/nix/store/rqvlfwqsnwxcg2bh5n2sdhic6lj2d9l4-source/modules/nixos/services/create-ap\.nix](file:///nix/store/rqvlfwqsnwxcg2bh5n2sdhic6lj2d9l4-source/modules/nixos/services/create-ap.nix)
 
 
 
@@ -1173,7 +1173,7 @@ list of (submodule)
 ```
 
 *Declared by:*
- - [/nix/store/nadx1qc8fcqjpgnz084l6lj0lr3ykc18-source/modules/nixos/services/create-ap\.nix](file:///nix/store/nadx1qc8fcqjpgnz084l6lj0lr3ykc18-source/modules/nixos/services/create-ap.nix)
+ - [/nix/store/rqvlfwqsnwxcg2bh5n2sdhic6lj2d9l4-source/modules/nixos/services/create-ap\.nix](file:///nix/store/rqvlfwqsnwxcg2bh5n2sdhic6lj2d9l4-source/modules/nixos/services/create-ap.nix)
 
 
 
@@ -1189,7 +1189,7 @@ Hostname\.
 string
 
 *Declared by:*
- - [/nix/store/nadx1qc8fcqjpgnz084l6lj0lr3ykc18-source/modules/nixos/services/create-ap\.nix](file:///nix/store/nadx1qc8fcqjpgnz084l6lj0lr3ykc18-source/modules/nixos/services/create-ap.nix)
+ - [/nix/store/rqvlfwqsnwxcg2bh5n2sdhic6lj2d9l4-source/modules/nixos/services/create-ap\.nix](file:///nix/store/rqvlfwqsnwxcg2bh5n2sdhic6lj2d9l4-source/modules/nixos/services/create-ap.nix)
 
 
 
@@ -1205,7 +1205,7 @@ IP address\.
 string
 
 *Declared by:*
- - [/nix/store/nadx1qc8fcqjpgnz084l6lj0lr3ykc18-source/modules/nixos/services/create-ap\.nix](file:///nix/store/nadx1qc8fcqjpgnz084l6lj0lr3ykc18-source/modules/nixos/services/create-ap.nix)
+ - [/nix/store/rqvlfwqsnwxcg2bh5n2sdhic6lj2d9l4-source/modules/nixos/services/create-ap\.nix](file:///nix/store/rqvlfwqsnwxcg2bh5n2sdhic6lj2d9l4-source/modules/nixos/services/create-ap.nix)
 
 
 
@@ -1229,7 +1229,7 @@ string
 ```
 
 *Declared by:*
- - [/nix/store/nadx1qc8fcqjpgnz084l6lj0lr3ykc18-source/modules/nixos/services/create-ap\.nix](file:///nix/store/nadx1qc8fcqjpgnz084l6lj0lr3ykc18-source/modules/nixos/services/create-ap.nix)
+ - [/nix/store/rqvlfwqsnwxcg2bh5n2sdhic6lj2d9l4-source/modules/nixos/services/create-ap\.nix](file:///nix/store/rqvlfwqsnwxcg2bh5n2sdhic6lj2d9l4-source/modules/nixos/services/create-ap.nix)
 
 
 
@@ -1245,7 +1245,7 @@ MAC address\.
 string
 
 *Declared by:*
- - [/nix/store/nadx1qc8fcqjpgnz084l6lj0lr3ykc18-source/modules/nixos/services/create-ap\.nix](file:///nix/store/nadx1qc8fcqjpgnz084l6lj0lr3ykc18-source/modules/nixos/services/create-ap.nix)
+ - [/nix/store/rqvlfwqsnwxcg2bh5n2sdhic6lj2d9l4-source/modules/nixos/services/create-ap\.nix](file:///nix/store/rqvlfwqsnwxcg2bh5n2sdhic6lj2d9l4-source/modules/nixos/services/create-ap.nix)
 
 
 
@@ -1277,7 +1277,7 @@ true
 ```
 
 *Declared by:*
- - [/nix/store/nadx1qc8fcqjpgnz084l6lj0lr3ykc18-source/modules/nixos/services/docker\.nix](file:///nix/store/nadx1qc8fcqjpgnz084l6lj0lr3ykc18-source/modules/nixos/services/docker.nix)
+ - [/nix/store/rqvlfwqsnwxcg2bh5n2sdhic6lj2d9l4-source/modules/nixos/services/docker\.nix](file:///nix/store/rqvlfwqsnwxcg2bh5n2sdhic6lj2d9l4-source/modules/nixos/services/docker.nix)
 
 
 
@@ -1309,7 +1309,7 @@ true
 ```
 
 *Declared by:*
- - [/nix/store/nadx1qc8fcqjpgnz084l6lj0lr3ykc18-source/modules/nixos/services/earlyoom\.nix](file:///nix/store/nadx1qc8fcqjpgnz084l6lj0lr3ykc18-source/modules/nixos/services/earlyoom.nix)
+ - [/nix/store/rqvlfwqsnwxcg2bh5n2sdhic6lj2d9l4-source/modules/nixos/services/earlyoom\.nix](file:///nix/store/rqvlfwqsnwxcg2bh5n2sdhic6lj2d9l4-source/modules/nixos/services/earlyoom.nix)
 
 
 
@@ -1333,7 +1333,7 @@ list of string
 ```
 
 *Declared by:*
- - [/nix/store/nadx1qc8fcqjpgnz084l6lj0lr3ykc18-source/modules/nixos/services](file:///nix/store/nadx1qc8fcqjpgnz084l6lj0lr3ykc18-source/modules/nixos/services)
+ - [/nix/store/rqvlfwqsnwxcg2bh5n2sdhic6lj2d9l4-source/modules/nixos/services](file:///nix/store/rqvlfwqsnwxcg2bh5n2sdhic6lj2d9l4-source/modules/nixos/services)
 
 
 
@@ -1365,7 +1365,7 @@ true
 ```
 
 *Declared by:*
- - [/nix/store/nadx1qc8fcqjpgnz084l6lj0lr3ykc18-source/modules/nixos/services/forgejo\.nix](file:///nix/store/nadx1qc8fcqjpgnz084l6lj0lr3ykc18-source/modules/nixos/services/forgejo.nix)
+ - [/nix/store/rqvlfwqsnwxcg2bh5n2sdhic6lj2d9l4-source/modules/nixos/services/forgejo\.nix](file:///nix/store/rqvlfwqsnwxcg2bh5n2sdhic6lj2d9l4-source/modules/nixos/services/forgejo.nix)
 
 
 
@@ -1389,7 +1389,7 @@ string
 ```
 
 *Declared by:*
- - [/nix/store/nadx1qc8fcqjpgnz084l6lj0lr3ykc18-source/modules/nixos/services/forgejo\.nix](file:///nix/store/nadx1qc8fcqjpgnz084l6lj0lr3ykc18-source/modules/nixos/services/forgejo.nix)
+ - [/nix/store/rqvlfwqsnwxcg2bh5n2sdhic6lj2d9l4-source/modules/nixos/services/forgejo\.nix](file:///nix/store/rqvlfwqsnwxcg2bh5n2sdhic6lj2d9l4-source/modules/nixos/services/forgejo.nix)
 
 
 
@@ -1421,7 +1421,7 @@ true
 ```
 
 *Declared by:*
- - [/nix/store/nadx1qc8fcqjpgnz084l6lj0lr3ykc18-source/modules/nixos/services/forgejo\.nix](file:///nix/store/nadx1qc8fcqjpgnz084l6lj0lr3ykc18-source/modules/nixos/services/forgejo.nix)
+ - [/nix/store/rqvlfwqsnwxcg2bh5n2sdhic6lj2d9l4-source/modules/nixos/services/forgejo\.nix](file:///nix/store/rqvlfwqsnwxcg2bh5n2sdhic6lj2d9l4-source/modules/nixos/services/forgejo.nix)
 
 
 
@@ -1445,7 +1445,7 @@ signed integer
 ```
 
 *Declared by:*
- - [/nix/store/nadx1qc8fcqjpgnz084l6lj0lr3ykc18-source/modules/nixos/services/forgejo\.nix](file:///nix/store/nadx1qc8fcqjpgnz084l6lj0lr3ykc18-source/modules/nixos/services/forgejo.nix)
+ - [/nix/store/rqvlfwqsnwxcg2bh5n2sdhic6lj2d9l4-source/modules/nixos/services/forgejo\.nix](file:///nix/store/rqvlfwqsnwxcg2bh5n2sdhic6lj2d9l4-source/modules/nixos/services/forgejo.nix)
 
 
 
@@ -1477,7 +1477,7 @@ true
 ```
 
 *Declared by:*
- - [/nix/store/nadx1qc8fcqjpgnz084l6lj0lr3ykc18-source/modules/nixos/services/forgejo\.nix](file:///nix/store/nadx1qc8fcqjpgnz084l6lj0lr3ykc18-source/modules/nixos/services/forgejo.nix)
+ - [/nix/store/rqvlfwqsnwxcg2bh5n2sdhic6lj2d9l4-source/modules/nixos/services/forgejo\.nix](file:///nix/store/rqvlfwqsnwxcg2bh5n2sdhic6lj2d9l4-source/modules/nixos/services/forgejo.nix)
 
 
 
@@ -1509,7 +1509,7 @@ true
 ```
 
 *Declared by:*
- - [/nix/store/nadx1qc8fcqjpgnz084l6lj0lr3ykc18-source/modules/nixos/services/home-assistant\.nix](file:///nix/store/nadx1qc8fcqjpgnz084l6lj0lr3ykc18-source/modules/nixos/services/home-assistant.nix)
+ - [/nix/store/rqvlfwqsnwxcg2bh5n2sdhic6lj2d9l4-source/modules/nixos/services/home-assistant\.nix](file:///nix/store/rqvlfwqsnwxcg2bh5n2sdhic6lj2d9l4-source/modules/nixos/services/home-assistant.nix)
 
 
 
@@ -1541,7 +1541,7 @@ true
 ```
 
 *Declared by:*
- - [/nix/store/nadx1qc8fcqjpgnz084l6lj0lr3ykc18-source/modules/nixos/services/iw2tryhard-dev\.nix](file:///nix/store/nadx1qc8fcqjpgnz084l6lj0lr3ykc18-source/modules/nixos/services/iw2tryhard-dev.nix)
+ - [/nix/store/rqvlfwqsnwxcg2bh5n2sdhic6lj2d9l4-source/modules/nixos/services/iw2tryhard-dev\.nix](file:///nix/store/rqvlfwqsnwxcg2bh5n2sdhic6lj2d9l4-source/modules/nixos/services/iw2tryhard-dev.nix)
 
 
 
@@ -1573,7 +1573,7 @@ true
 ```
 
 *Declared by:*
- - [/nix/store/nadx1qc8fcqjpgnz084l6lj0lr3ykc18-source/modules/nixos/services/localsend\.nix](file:///nix/store/nadx1qc8fcqjpgnz084l6lj0lr3ykc18-source/modules/nixos/services/localsend.nix)
+ - [/nix/store/rqvlfwqsnwxcg2bh5n2sdhic6lj2d9l4-source/modules/nixos/services/localsend\.nix](file:///nix/store/rqvlfwqsnwxcg2bh5n2sdhic6lj2d9l4-source/modules/nixos/services/localsend.nix)
 
 
 
@@ -1605,7 +1605,7 @@ true
 ```
 
 *Declared by:*
- - [/nix/store/nadx1qc8fcqjpgnz084l6lj0lr3ykc18-source/modules/nixos/services/manga\.nix](file:///nix/store/nadx1qc8fcqjpgnz084l6lj0lr3ykc18-source/modules/nixos/services/manga.nix)
+ - [/nix/store/rqvlfwqsnwxcg2bh5n2sdhic6lj2d9l4-source/modules/nixos/services/manga\.nix](file:///nix/store/rqvlfwqsnwxcg2bh5n2sdhic6lj2d9l4-source/modules/nixos/services/manga.nix)
 
 
 
@@ -1637,7 +1637,7 @@ true
 ```
 
 *Declared by:*
- - [/nix/store/nadx1qc8fcqjpgnz084l6lj0lr3ykc18-source/modules/nixos/services/monitoring\.nix](file:///nix/store/nadx1qc8fcqjpgnz084l6lj0lr3ykc18-source/modules/nixos/services/monitoring.nix)
+ - [/nix/store/rqvlfwqsnwxcg2bh5n2sdhic6lj2d9l4-source/modules/nixos/services/monitoring\.nix](file:///nix/store/rqvlfwqsnwxcg2bh5n2sdhic6lj2d9l4-source/modules/nixos/services/monitoring.nix)
 
 
 
@@ -1669,7 +1669,7 @@ true
 ```
 
 *Declared by:*
- - [/nix/store/nadx1qc8fcqjpgnz084l6lj0lr3ykc18-source/modules/nixos/services/monitoring\.nix](file:///nix/store/nadx1qc8fcqjpgnz084l6lj0lr3ykc18-source/modules/nixos/services/monitoring.nix)
+ - [/nix/store/rqvlfwqsnwxcg2bh5n2sdhic6lj2d9l4-source/modules/nixos/services/monitoring\.nix](file:///nix/store/rqvlfwqsnwxcg2bh5n2sdhic6lj2d9l4-source/modules/nixos/services/monitoring.nix)
 
 
 
@@ -1693,7 +1693,7 @@ list of (attribute set)
 ```
 
 *Declared by:*
- - [/nix/store/nadx1qc8fcqjpgnz084l6lj0lr3ykc18-source/modules/nixos/services/monitoring\.nix](file:///nix/store/nadx1qc8fcqjpgnz084l6lj0lr3ykc18-source/modules/nixos/services/monitoring.nix)
+ - [/nix/store/rqvlfwqsnwxcg2bh5n2sdhic6lj2d9l4-source/modules/nixos/services/monitoring\.nix](file:///nix/store/rqvlfwqsnwxcg2bh5n2sdhic6lj2d9l4-source/modules/nixos/services/monitoring.nix)
 
 
 
@@ -1725,7 +1725,7 @@ true
 ```
 
 *Declared by:*
- - [/nix/store/nadx1qc8fcqjpgnz084l6lj0lr3ykc18-source/modules/nixos/services/nextcloud\.nix](file:///nix/store/nadx1qc8fcqjpgnz084l6lj0lr3ykc18-source/modules/nixos/services/nextcloud.nix)
+ - [/nix/store/rqvlfwqsnwxcg2bh5n2sdhic6lj2d9l4-source/modules/nixos/services/nextcloud\.nix](file:///nix/store/rqvlfwqsnwxcg2bh5n2sdhic6lj2d9l4-source/modules/nixos/services/nextcloud.nix)
 
 
 
@@ -1741,7 +1741,7 @@ Path to a file containing the Nextcloud admin password\.
 string
 
 *Declared by:*
- - [/nix/store/nadx1qc8fcqjpgnz084l6lj0lr3ykc18-source/modules/nixos/services/nextcloud\.nix](file:///nix/store/nadx1qc8fcqjpgnz084l6lj0lr3ykc18-source/modules/nixos/services/nextcloud.nix)
+ - [/nix/store/rqvlfwqsnwxcg2bh5n2sdhic6lj2d9l4-source/modules/nixos/services/nextcloud\.nix](file:///nix/store/rqvlfwqsnwxcg2bh5n2sdhic6lj2d9l4-source/modules/nixos/services/nextcloud.nix)
 
 
 
@@ -1757,7 +1757,7 @@ Domain name for Nextcloud\.
 string
 
 *Declared by:*
- - [/nix/store/nadx1qc8fcqjpgnz084l6lj0lr3ykc18-source/modules/nixos/services/nextcloud\.nix](file:///nix/store/nadx1qc8fcqjpgnz084l6lj0lr3ykc18-source/modules/nixos/services/nextcloud.nix)
+ - [/nix/store/rqvlfwqsnwxcg2bh5n2sdhic6lj2d9l4-source/modules/nixos/services/nextcloud\.nix](file:///nix/store/rqvlfwqsnwxcg2bh5n2sdhic6lj2d9l4-source/modules/nixos/services/nextcloud.nix)
 
 
 
@@ -1773,7 +1773,7 @@ Main Nextcloud data directory\.
 string
 
 *Declared by:*
- - [/nix/store/nadx1qc8fcqjpgnz084l6lj0lr3ykc18-source/modules/nixos/services/nextcloud\.nix](file:///nix/store/nadx1qc8fcqjpgnz084l6lj0lr3ykc18-source/modules/nixos/services/nextcloud.nix)
+ - [/nix/store/rqvlfwqsnwxcg2bh5n2sdhic6lj2d9l4-source/modules/nixos/services/nextcloud\.nix](file:///nix/store/rqvlfwqsnwxcg2bh5n2sdhic6lj2d9l4-source/modules/nixos/services/nextcloud.nix)
 
 
 
@@ -1789,7 +1789,7 @@ Path to a file containing the Nextcloud serverinfo stats API token\.
 string
 
 *Declared by:*
- - [/nix/store/nadx1qc8fcqjpgnz084l6lj0lr3ykc18-source/modules/nixos/services/nextcloud\.nix](file:///nix/store/nadx1qc8fcqjpgnz084l6lj0lr3ykc18-source/modules/nixos/services/nextcloud.nix)
+ - [/nix/store/rqvlfwqsnwxcg2bh5n2sdhic6lj2d9l4-source/modules/nixos/services/nextcloud\.nix](file:///nix/store/rqvlfwqsnwxcg2bh5n2sdhic6lj2d9l4-source/modules/nixos/services/nextcloud.nix)
 
 
 
@@ -1821,7 +1821,7 @@ true
 ```
 
 *Declared by:*
- - [/nix/store/nadx1qc8fcqjpgnz084l6lj0lr3ykc18-source/modules/nixos/services/nfs\.nix](file:///nix/store/nadx1qc8fcqjpgnz084l6lj0lr3ykc18-source/modules/nixos/services/nfs.nix)
+ - [/nix/store/rqvlfwqsnwxcg2bh5n2sdhic6lj2d9l4-source/modules/nixos/services/nfs\.nix](file:///nix/store/rqvlfwqsnwxcg2bh5n2sdhic6lj2d9l4-source/modules/nixos/services/nfs.nix)
 
 
 
@@ -1845,7 +1845,7 @@ strings concatenated with “\\n”
 ```
 
 *Declared by:*
- - [/nix/store/nadx1qc8fcqjpgnz084l6lj0lr3ykc18-source/modules/nixos/services/nfs\.nix](file:///nix/store/nadx1qc8fcqjpgnz084l6lj0lr3ykc18-source/modules/nixos/services/nfs.nix)
+ - [/nix/store/rqvlfwqsnwxcg2bh5n2sdhic6lj2d9l4-source/modules/nixos/services/nfs\.nix](file:///nix/store/rqvlfwqsnwxcg2bh5n2sdhic6lj2d9l4-source/modules/nixos/services/nfs.nix)
 
 
 
@@ -1869,7 +1869,7 @@ null
 ```
 
 *Declared by:*
- - [/nix/store/nadx1qc8fcqjpgnz084l6lj0lr3ykc18-source/modules/nixos/services/nfs\.nix](file:///nix/store/nadx1qc8fcqjpgnz084l6lj0lr3ykc18-source/modules/nixos/services/nfs.nix)
+ - [/nix/store/rqvlfwqsnwxcg2bh5n2sdhic6lj2d9l4-source/modules/nixos/services/nfs\.nix](file:///nix/store/rqvlfwqsnwxcg2bh5n2sdhic6lj2d9l4-source/modules/nixos/services/nfs.nix)
 
 
 
@@ -1901,7 +1901,7 @@ true
 ```
 
 *Declared by:*
- - [/nix/store/nadx1qc8fcqjpgnz084l6lj0lr3ykc18-source/modules/nixos/services/nginx\.nix](file:///nix/store/nadx1qc8fcqjpgnz084l6lj0lr3ykc18-source/modules/nixos/services/nginx.nix)
+ - [/nix/store/rqvlfwqsnwxcg2bh5n2sdhic6lj2d9l4-source/modules/nixos/services/nginx\.nix](file:///nix/store/rqvlfwqsnwxcg2bh5n2sdhic6lj2d9l4-source/modules/nixos/services/nginx.nix)
 
 
 
@@ -1925,7 +1925,7 @@ attribute set of (submodule)
 ```
 
 *Declared by:*
- - [/nix/store/nadx1qc8fcqjpgnz084l6lj0lr3ykc18-source/modules/nixos/services/nginx\.nix](file:///nix/store/nadx1qc8fcqjpgnz084l6lj0lr3ykc18-source/modules/nixos/services/nginx.nix)
+ - [/nix/store/rqvlfwqsnwxcg2bh5n2sdhic6lj2d9l4-source/modules/nixos/services/nginx\.nix](file:///nix/store/rqvlfwqsnwxcg2bh5n2sdhic6lj2d9l4-source/modules/nixos/services/nginx.nix)
 
 
 
@@ -1949,7 +1949,7 @@ list of string
 ```
 
 *Declared by:*
- - [/nix/store/nadx1qc8fcqjpgnz084l6lj0lr3ykc18-source/modules/nixos/services/nginx\.nix](file:///nix/store/nadx1qc8fcqjpgnz084l6lj0lr3ykc18-source/modules/nixos/services/nginx.nix)
+ - [/nix/store/rqvlfwqsnwxcg2bh5n2sdhic6lj2d9l4-source/modules/nixos/services/nginx\.nix](file:///nix/store/rqvlfwqsnwxcg2bh5n2sdhic6lj2d9l4-source/modules/nixos/services/nginx.nix)
 
 
 
@@ -1973,7 +1973,7 @@ strings concatenated with “\\n”
 ```
 
 *Declared by:*
- - [/nix/store/nadx1qc8fcqjpgnz084l6lj0lr3ykc18-source/modules/nixos/services/nginx\.nix](file:///nix/store/nadx1qc8fcqjpgnz084l6lj0lr3ykc18-source/modules/nixos/services/nginx.nix)
+ - [/nix/store/rqvlfwqsnwxcg2bh5n2sdhic6lj2d9l4-source/modules/nixos/services/nginx\.nix](file:///nix/store/rqvlfwqsnwxcg2bh5n2sdhic6lj2d9l4-source/modules/nixos/services/nginx.nix)
 
 
 
@@ -1999,7 +1999,7 @@ attribute set of (attribute set)
 ```
 
 *Declared by:*
- - [/nix/store/nadx1qc8fcqjpgnz084l6lj0lr3ykc18-source/modules/nixos/services/nginx\.nix](file:///nix/store/nadx1qc8fcqjpgnz084l6lj0lr3ykc18-source/modules/nixos/services/nginx.nix)
+ - [/nix/store/rqvlfwqsnwxcg2bh5n2sdhic6lj2d9l4-source/modules/nixos/services/nginx\.nix](file:///nix/store/rqvlfwqsnwxcg2bh5n2sdhic6lj2d9l4-source/modules/nixos/services/nginx.nix)
 
 
 
@@ -2023,7 +2023,7 @@ string
 ```
 
 *Declared by:*
- - [/nix/store/nadx1qc8fcqjpgnz084l6lj0lr3ykc18-source/modules/nixos/services/nginx\.nix](file:///nix/store/nadx1qc8fcqjpgnz084l6lj0lr3ykc18-source/modules/nixos/services/nginx.nix)
+ - [/nix/store/rqvlfwqsnwxcg2bh5n2sdhic6lj2d9l4-source/modules/nixos/services/nginx\.nix](file:///nix/store/rqvlfwqsnwxcg2bh5n2sdhic6lj2d9l4-source/modules/nixos/services/nginx.nix)
 
 
 
@@ -2047,7 +2047,7 @@ attribute set of (submodule)
 ```
 
 *Declared by:*
- - [/nix/store/nadx1qc8fcqjpgnz084l6lj0lr3ykc18-source/modules/nixos/services/nginx\.nix](file:///nix/store/nadx1qc8fcqjpgnz084l6lj0lr3ykc18-source/modules/nixos/services/nginx.nix)
+ - [/nix/store/rqvlfwqsnwxcg2bh5n2sdhic6lj2d9l4-source/modules/nixos/services/nginx\.nix](file:///nix/store/rqvlfwqsnwxcg2bh5n2sdhic6lj2d9l4-source/modules/nixos/services/nginx.nix)
 
 
 
@@ -2071,7 +2071,7 @@ true
 ```
 
 *Declared by:*
- - [/nix/store/nadx1qc8fcqjpgnz084l6lj0lr3ykc18-source/modules/nixos/services/nginx\.nix](file:///nix/store/nadx1qc8fcqjpgnz084l6lj0lr3ykc18-source/modules/nixos/services/nginx.nix)
+ - [/nix/store/rqvlfwqsnwxcg2bh5n2sdhic6lj2d9l4-source/modules/nixos/services/nginx\.nix](file:///nix/store/rqvlfwqsnwxcg2bh5n2sdhic6lj2d9l4-source/modules/nixos/services/nginx.nix)
 
 
 
@@ -2095,7 +2095,7 @@ null
 ```
 
 *Declared by:*
- - [/nix/store/nadx1qc8fcqjpgnz084l6lj0lr3ykc18-source/modules/nixos/services/nginx\.nix](file:///nix/store/nadx1qc8fcqjpgnz084l6lj0lr3ykc18-source/modules/nixos/services/nginx.nix)
+ - [/nix/store/rqvlfwqsnwxcg2bh5n2sdhic6lj2d9l4-source/modules/nixos/services/nginx\.nix](file:///nix/store/rqvlfwqsnwxcg2bh5n2sdhic6lj2d9l4-source/modules/nixos/services/nginx.nix)
 
 
 
@@ -2119,7 +2119,7 @@ null
 ```
 
 *Declared by:*
- - [/nix/store/nadx1qc8fcqjpgnz084l6lj0lr3ykc18-source/modules/nixos/services/nginx\.nix](file:///nix/store/nadx1qc8fcqjpgnz084l6lj0lr3ykc18-source/modules/nixos/services/nginx.nix)
+ - [/nix/store/rqvlfwqsnwxcg2bh5n2sdhic6lj2d9l4-source/modules/nixos/services/nginx\.nix](file:///nix/store/rqvlfwqsnwxcg2bh5n2sdhic6lj2d9l4-source/modules/nixos/services/nginx.nix)
 
 
 
@@ -2143,7 +2143,7 @@ list of string
 ```
 
 *Declared by:*
- - [/nix/store/nadx1qc8fcqjpgnz084l6lj0lr3ykc18-source/modules/nixos/services/nginx\.nix](file:///nix/store/nadx1qc8fcqjpgnz084l6lj0lr3ykc18-source/modules/nixos/services/nginx.nix)
+ - [/nix/store/rqvlfwqsnwxcg2bh5n2sdhic6lj2d9l4-source/modules/nixos/services/nginx\.nix](file:///nix/store/rqvlfwqsnwxcg2bh5n2sdhic6lj2d9l4-source/modules/nixos/services/nginx.nix)
 
 
 
@@ -2167,7 +2167,7 @@ strings concatenated with “\\n”
 ```
 
 *Declared by:*
- - [/nix/store/nadx1qc8fcqjpgnz084l6lj0lr3ykc18-source/modules/nixos/services/nginx\.nix](file:///nix/store/nadx1qc8fcqjpgnz084l6lj0lr3ykc18-source/modules/nixos/services/nginx.nix)
+ - [/nix/store/rqvlfwqsnwxcg2bh5n2sdhic6lj2d9l4-source/modules/nixos/services/nginx\.nix](file:///nix/store/rqvlfwqsnwxcg2bh5n2sdhic6lj2d9l4-source/modules/nixos/services/nginx.nix)
 
 
 
@@ -2193,7 +2193,7 @@ attribute set of (attribute set)
 ```
 
 *Declared by:*
- - [/nix/store/nadx1qc8fcqjpgnz084l6lj0lr3ykc18-source/modules/nixos/services/nginx\.nix](file:///nix/store/nadx1qc8fcqjpgnz084l6lj0lr3ykc18-source/modules/nixos/services/nginx.nix)
+ - [/nix/store/rqvlfwqsnwxcg2bh5n2sdhic6lj2d9l4-source/modules/nixos/services/nginx\.nix](file:///nix/store/rqvlfwqsnwxcg2bh5n2sdhic6lj2d9l4-source/modules/nixos/services/nginx.nix)
 
 
 
@@ -2217,7 +2217,7 @@ string
 ```
 
 *Declared by:*
- - [/nix/store/nadx1qc8fcqjpgnz084l6lj0lr3ykc18-source/modules/nixos/services/nginx\.nix](file:///nix/store/nadx1qc8fcqjpgnz084l6lj0lr3ykc18-source/modules/nixos/services/nginx.nix)
+ - [/nix/store/rqvlfwqsnwxcg2bh5n2sdhic6lj2d9l4-source/modules/nixos/services/nginx\.nix](file:///nix/store/rqvlfwqsnwxcg2bh5n2sdhic6lj2d9l4-source/modules/nixos/services/nginx.nix)
 
 
 
@@ -2241,7 +2241,7 @@ string
 ```
 
 *Declared by:*
- - [/nix/store/nadx1qc8fcqjpgnz084l6lj0lr3ykc18-source/modules/nixos/services/nix-binary-cache\.nix](file:///nix/store/nadx1qc8fcqjpgnz084l6lj0lr3ykc18-source/modules/nixos/services/nix-binary-cache.nix)
+ - [/nix/store/rqvlfwqsnwxcg2bh5n2sdhic6lj2d9l4-source/modules/nixos/services/nix-binary-cache\.nix](file:///nix/store/rqvlfwqsnwxcg2bh5n2sdhic6lj2d9l4-source/modules/nixos/services/nix-binary-cache.nix)
 
 
 
@@ -2273,7 +2273,7 @@ true
 ```
 
 *Declared by:*
- - [/nix/store/nadx1qc8fcqjpgnz084l6lj0lr3ykc18-source/modules/nixos/services/nix-binary-cache\.nix](file:///nix/store/nadx1qc8fcqjpgnz084l6lj0lr3ykc18-source/modules/nixos/services/nix-binary-cache.nix)
+ - [/nix/store/rqvlfwqsnwxcg2bh5n2sdhic6lj2d9l4-source/modules/nixos/services/nix-binary-cache\.nix](file:///nix/store/rqvlfwqsnwxcg2bh5n2sdhic6lj2d9l4-source/modules/nixos/services/nix-binary-cache.nix)
 
 
 
@@ -2305,7 +2305,7 @@ true
 ```
 
 *Declared by:*
- - [/nix/store/nadx1qc8fcqjpgnz084l6lj0lr3ykc18-source/modules/nixos/services/nix-binary-cache\.nix](file:///nix/store/nadx1qc8fcqjpgnz084l6lj0lr3ykc18-source/modules/nixos/services/nix-binary-cache.nix)
+ - [/nix/store/rqvlfwqsnwxcg2bh5n2sdhic6lj2d9l4-source/modules/nixos/services/nix-binary-cache\.nix](file:///nix/store/rqvlfwqsnwxcg2bh5n2sdhic6lj2d9l4-source/modules/nixos/services/nix-binary-cache.nix)
 
 
 
@@ -2329,7 +2329,7 @@ list of (submodule)
 ```
 
 *Declared by:*
- - [/nix/store/nadx1qc8fcqjpgnz084l6lj0lr3ykc18-source/modules/nixos/services/nix-binary-cache\.nix](file:///nix/store/nadx1qc8fcqjpgnz084l6lj0lr3ykc18-source/modules/nixos/services/nix-binary-cache.nix)
+ - [/nix/store/rqvlfwqsnwxcg2bh5n2sdhic6lj2d9l4-source/modules/nixos/services/nix-binary-cache\.nix](file:///nix/store/rqvlfwqsnwxcg2bh5n2sdhic6lj2d9l4-source/modules/nixos/services/nix-binary-cache.nix)
 
 
 
@@ -2353,7 +2353,7 @@ string
 ```
 
 *Declared by:*
- - [/nix/store/nadx1qc8fcqjpgnz084l6lj0lr3ykc18-source/modules/nixos/services/nix-binary-cache\.nix](file:///nix/store/nadx1qc8fcqjpgnz084l6lj0lr3ykc18-source/modules/nixos/services/nix-binary-cache.nix)
+ - [/nix/store/rqvlfwqsnwxcg2bh5n2sdhic6lj2d9l4-source/modules/nixos/services/nix-binary-cache\.nix](file:///nix/store/rqvlfwqsnwxcg2bh5n2sdhic6lj2d9l4-source/modules/nixos/services/nix-binary-cache.nix)
 
 
 
@@ -2377,7 +2377,7 @@ string
 ```
 
 *Declared by:*
- - [/nix/store/nadx1qc8fcqjpgnz084l6lj0lr3ykc18-source/modules/nixos/services/nix-binary-cache\.nix](file:///nix/store/nadx1qc8fcqjpgnz084l6lj0lr3ykc18-source/modules/nixos/services/nix-binary-cache.nix)
+ - [/nix/store/rqvlfwqsnwxcg2bh5n2sdhic6lj2d9l4-source/modules/nixos/services/nix-binary-cache\.nix](file:///nix/store/rqvlfwqsnwxcg2bh5n2sdhic6lj2d9l4-source/modules/nixos/services/nix-binary-cache.nix)
 
 
 
@@ -2409,7 +2409,7 @@ true
 ```
 
 *Declared by:*
- - [/nix/store/nadx1qc8fcqjpgnz084l6lj0lr3ykc18-source/modules/nixos/services/nix-binary-cache\.nix](file:///nix/store/nadx1qc8fcqjpgnz084l6lj0lr3ykc18-source/modules/nixos/services/nix-binary-cache.nix)
+ - [/nix/store/rqvlfwqsnwxcg2bh5n2sdhic6lj2d9l4-source/modules/nixos/services/nix-binary-cache\.nix](file:///nix/store/rqvlfwqsnwxcg2bh5n2sdhic6lj2d9l4-source/modules/nixos/services/nix-binary-cache.nix)
 
 
 
@@ -2441,7 +2441,7 @@ true
 ```
 
 *Declared by:*
- - [/nix/store/nadx1qc8fcqjpgnz084l6lj0lr3ykc18-source/modules/nixos/services/power-management\.nix](file:///nix/store/nadx1qc8fcqjpgnz084l6lj0lr3ykc18-source/modules/nixos/services/power-management.nix)
+ - [/nix/store/rqvlfwqsnwxcg2bh5n2sdhic6lj2d9l4-source/modules/nixos/services/power-management\.nix](file:///nix/store/rqvlfwqsnwxcg2bh5n2sdhic6lj2d9l4-source/modules/nixos/services/power-management.nix)
 
 
 
@@ -2465,7 +2465,7 @@ one of “workstation”, “server” or (attribute set)
 ```
 
 *Declared by:*
- - [/nix/store/nadx1qc8fcqjpgnz084l6lj0lr3ykc18-source/modules/nixos/services/power-management\.nix](file:///nix/store/nadx1qc8fcqjpgnz084l6lj0lr3ykc18-source/modules/nixos/services/power-management.nix)
+ - [/nix/store/rqvlfwqsnwxcg2bh5n2sdhic6lj2d9l4-source/modules/nixos/services/power-management\.nix](file:///nix/store/rqvlfwqsnwxcg2bh5n2sdhic6lj2d9l4-source/modules/nixos/services/power-management.nix)
 
 
 
@@ -2497,7 +2497,7 @@ true
 ```
 
 *Declared by:*
- - [/nix/store/nadx1qc8fcqjpgnz084l6lj0lr3ykc18-source/modules/nixos/services/printing\.nix](file:///nix/store/nadx1qc8fcqjpgnz084l6lj0lr3ykc18-source/modules/nixos/services/printing.nix)
+ - [/nix/store/rqvlfwqsnwxcg2bh5n2sdhic6lj2d9l4-source/modules/nixos/services/printing\.nix](file:///nix/store/rqvlfwqsnwxcg2bh5n2sdhic6lj2d9l4-source/modules/nixos/services/printing.nix)
 
 
 
@@ -2521,7 +2521,7 @@ null
 ```
 
 *Declared by:*
- - [/nix/store/nadx1qc8fcqjpgnz084l6lj0lr3ykc18-source/modules/nixos/services/printing\.nix](file:///nix/store/nadx1qc8fcqjpgnz084l6lj0lr3ykc18-source/modules/nixos/services/printing.nix)
+ - [/nix/store/rqvlfwqsnwxcg2bh5n2sdhic6lj2d9l4-source/modules/nixos/services/printing\.nix](file:///nix/store/rqvlfwqsnwxcg2bh5n2sdhic6lj2d9l4-source/modules/nixos/services/printing.nix)
 
 
 
@@ -2545,7 +2545,7 @@ list of package
 ```
 
 *Declared by:*
- - [/nix/store/nadx1qc8fcqjpgnz084l6lj0lr3ykc18-source/modules/nixos/services/printing\.nix](file:///nix/store/nadx1qc8fcqjpgnz084l6lj0lr3ykc18-source/modules/nixos/services/printing.nix)
+ - [/nix/store/rqvlfwqsnwxcg2bh5n2sdhic6lj2d9l4-source/modules/nixos/services/printing\.nix](file:///nix/store/rqvlfwqsnwxcg2bh5n2sdhic6lj2d9l4-source/modules/nixos/services/printing.nix)
 
 
 
@@ -2569,7 +2569,7 @@ list of (submodule)
 ```
 
 *Declared by:*
- - [/nix/store/nadx1qc8fcqjpgnz084l6lj0lr3ykc18-source/modules/nixos/services/printing\.nix](file:///nix/store/nadx1qc8fcqjpgnz084l6lj0lr3ykc18-source/modules/nixos/services/printing.nix)
+ - [/nix/store/rqvlfwqsnwxcg2bh5n2sdhic6lj2d9l4-source/modules/nixos/services/printing\.nix](file:///nix/store/rqvlfwqsnwxcg2bh5n2sdhic6lj2d9l4-source/modules/nixos/services/printing.nix)
 
 
 
@@ -2585,7 +2585,7 @@ Printer device URI\.
 string
 
 *Declared by:*
- - [/nix/store/nadx1qc8fcqjpgnz084l6lj0lr3ykc18-source/modules/nixos/services/printing\.nix](file:///nix/store/nadx1qc8fcqjpgnz084l6lj0lr3ykc18-source/modules/nixos/services/printing.nix)
+ - [/nix/store/rqvlfwqsnwxcg2bh5n2sdhic6lj2d9l4-source/modules/nixos/services/printing\.nix](file:///nix/store/rqvlfwqsnwxcg2bh5n2sdhic6lj2d9l4-source/modules/nixos/services/printing.nix)
 
 
 
@@ -2609,7 +2609,7 @@ string
 ```
 
 *Declared by:*
- - [/nix/store/nadx1qc8fcqjpgnz084l6lj0lr3ykc18-source/modules/nixos/services/printing\.nix](file:///nix/store/nadx1qc8fcqjpgnz084l6lj0lr3ykc18-source/modules/nixos/services/printing.nix)
+ - [/nix/store/rqvlfwqsnwxcg2bh5n2sdhic6lj2d9l4-source/modules/nixos/services/printing\.nix](file:///nix/store/rqvlfwqsnwxcg2bh5n2sdhic6lj2d9l4-source/modules/nixos/services/printing.nix)
 
 
 
@@ -2625,7 +2625,7 @@ Printer PPD model\.
 string
 
 *Declared by:*
- - [/nix/store/nadx1qc8fcqjpgnz084l6lj0lr3ykc18-source/modules/nixos/services/printing\.nix](file:///nix/store/nadx1qc8fcqjpgnz084l6lj0lr3ykc18-source/modules/nixos/services/printing.nix)
+ - [/nix/store/rqvlfwqsnwxcg2bh5n2sdhic6lj2d9l4-source/modules/nixos/services/printing\.nix](file:///nix/store/rqvlfwqsnwxcg2bh5n2sdhic6lj2d9l4-source/modules/nixos/services/printing.nix)
 
 
 
@@ -2639,7 +2639,7 @@ Printer name\.
 string
 
 *Declared by:*
- - [/nix/store/nadx1qc8fcqjpgnz084l6lj0lr3ykc18-source/modules/nixos/services/printing\.nix](file:///nix/store/nadx1qc8fcqjpgnz084l6lj0lr3ykc18-source/modules/nixos/services/printing.nix)
+ - [/nix/store/rqvlfwqsnwxcg2bh5n2sdhic6lj2d9l4-source/modules/nixos/services/printing\.nix](file:///nix/store/rqvlfwqsnwxcg2bh5n2sdhic6lj2d9l4-source/modules/nixos/services/printing.nix)
 
 
 
@@ -2663,7 +2663,7 @@ attribute set of string
 ```
 
 *Declared by:*
- - [/nix/store/nadx1qc8fcqjpgnz084l6lj0lr3ykc18-source/modules/nixos/services/printing\.nix](file:///nix/store/nadx1qc8fcqjpgnz084l6lj0lr3ykc18-source/modules/nixos/services/printing.nix)
+ - [/nix/store/rqvlfwqsnwxcg2bh5n2sdhic6lj2d9l4-source/modules/nixos/services/printing\.nix](file:///nix/store/rqvlfwqsnwxcg2bh5n2sdhic6lj2d9l4-source/modules/nixos/services/printing.nix)
 
 
 
@@ -2695,7 +2695,7 @@ true
 ```
 
 *Declared by:*
- - [/nix/store/nadx1qc8fcqjpgnz084l6lj0lr3ykc18-source/modules/nixos/services/printing\.nix](file:///nix/store/nadx1qc8fcqjpgnz084l6lj0lr3ykc18-source/modules/nixos/services/printing.nix)
+ - [/nix/store/rqvlfwqsnwxcg2bh5n2sdhic6lj2d9l4-source/modules/nixos/services/printing\.nix](file:///nix/store/rqvlfwqsnwxcg2bh5n2sdhic6lj2d9l4-source/modules/nixos/services/printing.nix)
 
 
 
@@ -2719,7 +2719,7 @@ list of string
 ```
 
 *Declared by:*
- - [/nix/store/nadx1qc8fcqjpgnz084l6lj0lr3ykc18-source/modules/nixos/services](file:///nix/store/nadx1qc8fcqjpgnz084l6lj0lr3ykc18-source/modules/nixos/services)
+ - [/nix/store/rqvlfwqsnwxcg2bh5n2sdhic6lj2d9l4-source/modules/nixos/services](file:///nix/store/rqvlfwqsnwxcg2bh5n2sdhic6lj2d9l4-source/modules/nixos/services)
 
 
 
@@ -2751,7 +2751,7 @@ true
 ```
 
 *Declared by:*
- - [/nix/store/nadx1qc8fcqjpgnz084l6lj0lr3ykc18-source/modules/nixos/services/scanservjs\.nix](file:///nix/store/nadx1qc8fcqjpgnz084l6lj0lr3ykc18-source/modules/nixos/services/scanservjs.nix)
+ - [/nix/store/rqvlfwqsnwxcg2bh5n2sdhic6lj2d9l4-source/modules/nixos/services/scanservjs\.nix](file:///nix/store/rqvlfwqsnwxcg2bh5n2sdhic6lj2d9l4-source/modules/nixos/services/scanservjs.nix)
 
 
 
@@ -2775,7 +2775,7 @@ null or string
 ```
 
 *Declared by:*
- - [/nix/store/nadx1qc8fcqjpgnz084l6lj0lr3ykc18-source/modules/nixos/services/scanservjs\.nix](file:///nix/store/nadx1qc8fcqjpgnz084l6lj0lr3ykc18-source/modules/nixos/services/scanservjs.nix)
+ - [/nix/store/rqvlfwqsnwxcg2bh5n2sdhic6lj2d9l4-source/modules/nixos/services/scanservjs\.nix](file:///nix/store/rqvlfwqsnwxcg2bh5n2sdhic6lj2d9l4-source/modules/nixos/services/scanservjs.nix)
 
 
 
@@ -2807,7 +2807,7 @@ true
 ```
 
 *Declared by:*
- - [/nix/store/nadx1qc8fcqjpgnz084l6lj0lr3ykc18-source/modules/nixos/services/ssh\.nix](file:///nix/store/nadx1qc8fcqjpgnz084l6lj0lr3ykc18-source/modules/nixos/services/ssh.nix)
+ - [/nix/store/rqvlfwqsnwxcg2bh5n2sdhic6lj2d9l4-source/modules/nixos/services/ssh\.nix](file:///nix/store/rqvlfwqsnwxcg2bh5n2sdhic6lj2d9l4-source/modules/nixos/services/ssh.nix)
 
 
 
@@ -2839,7 +2839,7 @@ true
 ```
 
 *Declared by:*
- - [/nix/store/nadx1qc8fcqjpgnz084l6lj0lr3ykc18-source/modules/nixos/services/ssh\.nix](file:///nix/store/nadx1qc8fcqjpgnz084l6lj0lr3ykc18-source/modules/nixos/services/ssh.nix)
+ - [/nix/store/rqvlfwqsnwxcg2bh5n2sdhic6lj2d9l4-source/modules/nixos/services/ssh\.nix](file:///nix/store/rqvlfwqsnwxcg2bh5n2sdhic6lj2d9l4-source/modules/nixos/services/ssh.nix)
 
 
 
@@ -2871,7 +2871,7 @@ true
 ```
 
 *Declared by:*
- - [/nix/store/nadx1qc8fcqjpgnz084l6lj0lr3ykc18-source/modules/nixos/services/stalwart\.nix](file:///nix/store/nadx1qc8fcqjpgnz084l6lj0lr3ykc18-source/modules/nixos/services/stalwart.nix)
+ - [/nix/store/rqvlfwqsnwxcg2bh5n2sdhic6lj2d9l4-source/modules/nixos/services/stalwart\.nix](file:///nix/store/rqvlfwqsnwxcg2bh5n2sdhic6lj2d9l4-source/modules/nixos/services/stalwart.nix)
 
 
 
@@ -2895,7 +2895,7 @@ absolute path
 ```
 
 *Declared by:*
- - [/nix/store/nadx1qc8fcqjpgnz084l6lj0lr3ykc18-source/modules/nixos/services/stalwart\.nix](file:///nix/store/nadx1qc8fcqjpgnz084l6lj0lr3ykc18-source/modules/nixos/services/stalwart.nix)
+ - [/nix/store/rqvlfwqsnwxcg2bh5n2sdhic6lj2d9l4-source/modules/nixos/services/stalwart\.nix](file:///nix/store/rqvlfwqsnwxcg2bh5n2sdhic6lj2d9l4-source/modules/nixos/services/stalwart.nix)
 
 
 
@@ -2919,7 +2919,7 @@ null or string
 ```
 
 *Declared by:*
- - [/nix/store/nadx1qc8fcqjpgnz084l6lj0lr3ykc18-source/modules/nixos/services/stalwart\.nix](file:///nix/store/nadx1qc8fcqjpgnz084l6lj0lr3ykc18-source/modules/nixos/services/stalwart.nix)
+ - [/nix/store/rqvlfwqsnwxcg2bh5n2sdhic6lj2d9l4-source/modules/nixos/services/stalwart\.nix](file:///nix/store/rqvlfwqsnwxcg2bh5n2sdhic6lj2d9l4-source/modules/nixos/services/stalwart.nix)
 
 
 
@@ -2951,7 +2951,7 @@ true
 ```
 
 *Declared by:*
- - [/nix/store/nadx1qc8fcqjpgnz084l6lj0lr3ykc18-source/modules/nixos/services/tailscale\.nix](file:///nix/store/nadx1qc8fcqjpgnz084l6lj0lr3ykc18-source/modules/nixos/services/tailscale.nix)
+ - [/nix/store/rqvlfwqsnwxcg2bh5n2sdhic6lj2d9l4-source/modules/nixos/services/tailscale\.nix](file:///nix/store/rqvlfwqsnwxcg2bh5n2sdhic6lj2d9l4-source/modules/nixos/services/tailscale.nix)
 
 
 
@@ -2983,7 +2983,7 @@ true
 ```
 
 *Declared by:*
- - [/nix/store/nadx1qc8fcqjpgnz084l6lj0lr3ykc18-source/modules/nixos/services/tailscale\.nix](file:///nix/store/nadx1qc8fcqjpgnz084l6lj0lr3ykc18-source/modules/nixos/services/tailscale.nix)
+ - [/nix/store/rqvlfwqsnwxcg2bh5n2sdhic6lj2d9l4-source/modules/nixos/services/tailscale\.nix](file:///nix/store/rqvlfwqsnwxcg2bh5n2sdhic6lj2d9l4-source/modules/nixos/services/tailscale.nix)
 
 
 
@@ -3007,7 +3007,7 @@ one of “client”, “server”
 ```
 
 *Declared by:*
- - [/nix/store/nadx1qc8fcqjpgnz084l6lj0lr3ykc18-source/modules/nixos/services/tailscale\.nix](file:///nix/store/nadx1qc8fcqjpgnz084l6lj0lr3ykc18-source/modules/nixos/services/tailscale.nix)
+ - [/nix/store/rqvlfwqsnwxcg2bh5n2sdhic6lj2d9l4-source/modules/nixos/services/tailscale\.nix](file:///nix/store/rqvlfwqsnwxcg2bh5n2sdhic6lj2d9l4-source/modules/nixos/services/tailscale.nix)
 
 
 
@@ -3039,7 +3039,7 @@ true
 ```
 
 *Declared by:*
- - [/nix/store/nadx1qc8fcqjpgnz084l6lj0lr3ykc18-source/modules/nixos/services/wakeonlan\.nix](file:///nix/store/nadx1qc8fcqjpgnz084l6lj0lr3ykc18-source/modules/nixos/services/wakeonlan.nix)
+ - [/nix/store/rqvlfwqsnwxcg2bh5n2sdhic6lj2d9l4-source/modules/nixos/services/wakeonlan\.nix](file:///nix/store/rqvlfwqsnwxcg2bh5n2sdhic6lj2d9l4-source/modules/nixos/services/wakeonlan.nix)
 
 
 
@@ -3063,7 +3063,7 @@ string
 ```
 
 *Declared by:*
- - [/nix/store/nadx1qc8fcqjpgnz084l6lj0lr3ykc18-source/modules/nixos/services/wakeonlan\.nix](file:///nix/store/nadx1qc8fcqjpgnz084l6lj0lr3ykc18-source/modules/nixos/services/wakeonlan.nix)
+ - [/nix/store/rqvlfwqsnwxcg2bh5n2sdhic6lj2d9l4-source/modules/nixos/services/wakeonlan\.nix](file:///nix/store/rqvlfwqsnwxcg2bh5n2sdhic6lj2d9l4-source/modules/nixos/services/wakeonlan.nix)
 
 
 
@@ -3095,7 +3095,7 @@ true
 ```
 
 *Declared by:*
- - [/nix/store/nadx1qc8fcqjpgnz084l6lj0lr3ykc18-source/modules/nixos/gui](file:///nix/store/nadx1qc8fcqjpgnz084l6lj0lr3ykc18-source/modules/nixos/gui)
+ - [/nix/store/rqvlfwqsnwxcg2bh5n2sdhic6lj2d9l4-source/modules/nixos/gui](file:///nix/store/rqvlfwqsnwxcg2bh5n2sdhic6lj2d9l4-source/modules/nixos/gui)
 
 
 
@@ -3127,7 +3127,7 @@ true
 ```
 
 *Declared by:*
- - [/nix/store/nadx1qc8fcqjpgnz084l6lj0lr3ykc18-source/modules/nixos/gui/audio\.nix](file:///nix/store/nadx1qc8fcqjpgnz084l6lj0lr3ykc18-source/modules/nixos/gui/audio.nix)
+ - [/nix/store/rqvlfwqsnwxcg2bh5n2sdhic6lj2d9l4-source/modules/nixos/gui/audio\.nix](file:///nix/store/rqvlfwqsnwxcg2bh5n2sdhic6lj2d9l4-source/modules/nixos/gui/audio.nix)
 
 
 
@@ -3159,7 +3159,7 @@ true
 ```
 
 *Declared by:*
- - [/nix/store/nadx1qc8fcqjpgnz084l6lj0lr3ykc18-source/modules/nixos/gui/flatpak\.nix](file:///nix/store/nadx1qc8fcqjpgnz084l6lj0lr3ykc18-source/modules/nixos/gui/flatpak.nix)
+ - [/nix/store/rqvlfwqsnwxcg2bh5n2sdhic6lj2d9l4-source/modules/nixos/gui/flatpak\.nix](file:///nix/store/rqvlfwqsnwxcg2bh5n2sdhic6lj2d9l4-source/modules/nixos/gui/flatpak.nix)
 
 
 
@@ -3191,7 +3191,7 @@ true
 ```
 
 *Declared by:*
- - [/nix/store/nadx1qc8fcqjpgnz084l6lj0lr3ykc18-source/modules/nixos/gui/graphics\.nix](file:///nix/store/nadx1qc8fcqjpgnz084l6lj0lr3ykc18-source/modules/nixos/gui/graphics.nix)
+ - [/nix/store/rqvlfwqsnwxcg2bh5n2sdhic6lj2d9l4-source/modules/nixos/gui/graphics\.nix](file:///nix/store/rqvlfwqsnwxcg2bh5n2sdhic6lj2d9l4-source/modules/nixos/gui/graphics.nix)
 
 
 
@@ -3223,7 +3223,7 @@ true
 ```
 
 *Declared by:*
- - [/nix/store/nadx1qc8fcqjpgnz084l6lj0lr3ykc18-source/modules/nixos/gui/graphics\.nix](file:///nix/store/nadx1qc8fcqjpgnz084l6lj0lr3ykc18-source/modules/nixos/gui/graphics.nix)
+ - [/nix/store/rqvlfwqsnwxcg2bh5n2sdhic6lj2d9l4-source/modules/nixos/gui/graphics\.nix](file:///nix/store/rqvlfwqsnwxcg2bh5n2sdhic6lj2d9l4-source/modules/nixos/gui/graphics.nix)
 
 
 
@@ -3255,7 +3255,7 @@ true
 ```
 
 *Declared by:*
- - [/nix/store/nadx1qc8fcqjpgnz084l6lj0lr3ykc18-source/modules/nixos/gui/graphics\.nix](file:///nix/store/nadx1qc8fcqjpgnz084l6lj0lr3ykc18-source/modules/nixos/gui/graphics.nix)
+ - [/nix/store/rqvlfwqsnwxcg2bh5n2sdhic6lj2d9l4-source/modules/nixos/gui/graphics\.nix](file:///nix/store/rqvlfwqsnwxcg2bh5n2sdhic6lj2d9l4-source/modules/nixos/gui/graphics.nix)
 
 
 
@@ -3279,7 +3279,7 @@ string
 ```
 
 *Declared by:*
- - [/nix/store/nadx1qc8fcqjpgnz084l6lj0lr3ykc18-source/modules/nixos/gui/graphics\.nix](file:///nix/store/nadx1qc8fcqjpgnz084l6lj0lr3ykc18-source/modules/nixos/gui/graphics.nix)
+ - [/nix/store/rqvlfwqsnwxcg2bh5n2sdhic6lj2d9l4-source/modules/nixos/gui/graphics\.nix](file:///nix/store/rqvlfwqsnwxcg2bh5n2sdhic6lj2d9l4-source/modules/nixos/gui/graphics.nix)
 
 
 
@@ -3303,7 +3303,7 @@ string
 ```
 
 *Declared by:*
- - [/nix/store/nadx1qc8fcqjpgnz084l6lj0lr3ykc18-source/modules/nixos/gui/graphics\.nix](file:///nix/store/nadx1qc8fcqjpgnz084l6lj0lr3ykc18-source/modules/nixos/gui/graphics.nix)
+ - [/nix/store/rqvlfwqsnwxcg2bh5n2sdhic6lj2d9l4-source/modules/nixos/gui/graphics\.nix](file:///nix/store/rqvlfwqsnwxcg2bh5n2sdhic6lj2d9l4-source/modules/nixos/gui/graphics.nix)
 
 
 
@@ -3335,7 +3335,7 @@ true
 ```
 
 *Declared by:*
- - [/nix/store/nadx1qc8fcqjpgnz084l6lj0lr3ykc18-source/modules/nixos/gui/niri\.nix](file:///nix/store/nadx1qc8fcqjpgnz084l6lj0lr3ykc18-source/modules/nixos/gui/niri.nix)
+ - [/nix/store/rqvlfwqsnwxcg2bh5n2sdhic6lj2d9l4-source/modules/nixos/gui/niri\.nix](file:///nix/store/rqvlfwqsnwxcg2bh5n2sdhic6lj2d9l4-source/modules/nixos/gui/niri.nix)
 
 
 
@@ -3367,7 +3367,7 @@ true
 ```
 
 *Declared by:*
- - [/nix/store/nadx1qc8fcqjpgnz084l6lj0lr3ykc18-source/modules/nixos/gui/obs\.nix](file:///nix/store/nadx1qc8fcqjpgnz084l6lj0lr3ykc18-source/modules/nixos/gui/obs.nix)
+ - [/nix/store/rqvlfwqsnwxcg2bh5n2sdhic6lj2d9l4-source/modules/nixos/gui/obs\.nix](file:///nix/store/rqvlfwqsnwxcg2bh5n2sdhic6lj2d9l4-source/modules/nixos/gui/obs.nix)
 
 
 
@@ -3399,7 +3399,7 @@ true
 ```
 
 *Declared by:*
- - [/nix/store/nadx1qc8fcqjpgnz084l6lj0lr3ykc18-source/modules/nixos/gui/steam\.nix](file:///nix/store/nadx1qc8fcqjpgnz084l6lj0lr3ykc18-source/modules/nixos/gui/steam.nix)
+ - [/nix/store/rqvlfwqsnwxcg2bh5n2sdhic6lj2d9l4-source/modules/nixos/gui/steam\.nix](file:///nix/store/rqvlfwqsnwxcg2bh5n2sdhic6lj2d9l4-source/modules/nixos/gui/steam.nix)
 
 
 
@@ -3431,7 +3431,7 @@ true
 ```
 
 *Declared by:*
- - [/nix/store/nadx1qc8fcqjpgnz084l6lj0lr3ykc18-source/modules/nixos/hardware/raspberrypi\.nix](file:///nix/store/nadx1qc8fcqjpgnz084l6lj0lr3ykc18-source/modules/nixos/hardware/raspberrypi.nix)
+ - [/nix/store/rqvlfwqsnwxcg2bh5n2sdhic6lj2d9l4-source/modules/nixos/hardware/raspberrypi\.nix](file:///nix/store/rqvlfwqsnwxcg2bh5n2sdhic6lj2d9l4-source/modules/nixos/hardware/raspberrypi.nix)
 
 
 
@@ -3463,7 +3463,7 @@ true
 ```
 
 *Declared by:*
- - [/nix/store/nadx1qc8fcqjpgnz084l6lj0lr3ykc18-source/modules/home-manager](file:///nix/store/nadx1qc8fcqjpgnz084l6lj0lr3ykc18-source/modules/home-manager)
+ - [/nix/store/rqvlfwqsnwxcg2bh5n2sdhic6lj2d9l4-source/modules/home-manager](file:///nix/store/rqvlfwqsnwxcg2bh5n2sdhic6lj2d9l4-source/modules/home-manager)
 
 
 
@@ -3487,7 +3487,7 @@ string
 ```
 
 *Declared by:*
- - [/nix/store/nadx1qc8fcqjpgnz084l6lj0lr3ykc18-source/modules/home-manager](file:///nix/store/nadx1qc8fcqjpgnz084l6lj0lr3ykc18-source/modules/home-manager)
+ - [/nix/store/rqvlfwqsnwxcg2bh5n2sdhic6lj2d9l4-source/modules/home-manager](file:///nix/store/rqvlfwqsnwxcg2bh5n2sdhic6lj2d9l4-source/modules/home-manager)
 
 
 
@@ -3511,7 +3511,7 @@ string
 ```
 
 *Declared by:*
- - [/nix/store/nadx1qc8fcqjpgnz084l6lj0lr3ykc18-source/modules/home-manager](file:///nix/store/nadx1qc8fcqjpgnz084l6lj0lr3ykc18-source/modules/home-manager)
+ - [/nix/store/rqvlfwqsnwxcg2bh5n2sdhic6lj2d9l4-source/modules/home-manager](file:///nix/store/rqvlfwqsnwxcg2bh5n2sdhic6lj2d9l4-source/modules/home-manager)
 
 
 
@@ -3543,7 +3543,7 @@ true
 ```
 
 *Declared by:*
- - [/nix/store/nadx1qc8fcqjpgnz084l6lj0lr3ykc18-source/modules/home-manager/gui/flatpak\.nix](file:///nix/store/nadx1qc8fcqjpgnz084l6lj0lr3ykc18-source/modules/home-manager/gui/flatpak.nix)
+ - [/nix/store/rqvlfwqsnwxcg2bh5n2sdhic6lj2d9l4-source/modules/home-manager/gui/flatpak\.nix](file:///nix/store/rqvlfwqsnwxcg2bh5n2sdhic6lj2d9l4-source/modules/home-manager/gui/flatpak.nix)
 
 
 
@@ -3575,7 +3575,7 @@ true
 ```
 
 *Declared by:*
- - [/nix/store/nadx1qc8fcqjpgnz084l6lj0lr3ykc18-source/modules/home-manager/gui](file:///nix/store/nadx1qc8fcqjpgnz084l6lj0lr3ykc18-source/modules/home-manager/gui)
+ - [/nix/store/rqvlfwqsnwxcg2bh5n2sdhic6lj2d9l4-source/modules/home-manager/gui](file:///nix/store/rqvlfwqsnwxcg2bh5n2sdhic6lj2d9l4-source/modules/home-manager/gui)
 
 
 
@@ -3607,7 +3607,7 @@ true
 ```
 
 *Declared by:*
- - [/nix/store/nadx1qc8fcqjpgnz084l6lj0lr3ykc18-source/modules/home-manager/gui/niri\.nix](file:///nix/store/nadx1qc8fcqjpgnz084l6lj0lr3ykc18-source/modules/home-manager/gui/niri.nix)
+ - [/nix/store/rqvlfwqsnwxcg2bh5n2sdhic6lj2d9l4-source/modules/home-manager/gui/niri\.nix](file:///nix/store/rqvlfwqsnwxcg2bh5n2sdhic6lj2d9l4-source/modules/home-manager/gui/niri.nix)
 
 
 
@@ -3639,7 +3639,7 @@ true
 ```
 
 *Declared by:*
- - [/nix/store/nadx1qc8fcqjpgnz084l6lj0lr3ykc18-source/modules/home-manager/gui/shell\.nix](file:///nix/store/nadx1qc8fcqjpgnz084l6lj0lr3ykc18-source/modules/home-manager/gui/shell.nix)
+ - [/nix/store/rqvlfwqsnwxcg2bh5n2sdhic6lj2d9l4-source/modules/home-manager/gui/shell\.nix](file:///nix/store/rqvlfwqsnwxcg2bh5n2sdhic6lj2d9l4-source/modules/home-manager/gui/shell.nix)
 
 
 
@@ -3680,7 +3680,7 @@ null
 ```
 
 *Declared by:*
- - [/nix/store/nadx1qc8fcqjpgnz084l6lj0lr3ykc18-source/modules/home-manager/nix/remote-building\.nix](file:///nix/store/nadx1qc8fcqjpgnz084l6lj0lr3ykc18-source/modules/home-manager/nix/remote-building.nix)
+ - [/nix/store/rqvlfwqsnwxcg2bh5n2sdhic6lj2d9l4-source/modules/home-manager/nix/remote-building\.nix](file:///nix/store/rqvlfwqsnwxcg2bh5n2sdhic6lj2d9l4-source/modules/home-manager/nix/remote-building.nix)
 
 
 
@@ -3716,7 +3716,7 @@ list of string
 ```
 
 *Declared by:*
- - [/nix/store/nadx1qc8fcqjpgnz084l6lj0lr3ykc18-source/modules/home-manager/nix/remote-building\.nix](file:///nix/store/nadx1qc8fcqjpgnz084l6lj0lr3ykc18-source/modules/home-manager/nix/remote-building.nix)
+ - [/nix/store/rqvlfwqsnwxcg2bh5n2sdhic6lj2d9l4-source/modules/home-manager/nix/remote-building\.nix](file:///nix/store/rqvlfwqsnwxcg2bh5n2sdhic6lj2d9l4-source/modules/home-manager/nix/remote-building.nix)
 
 
 
@@ -3740,7 +3740,7 @@ signed integer
 ```
 
 *Declared by:*
- - [/nix/store/nadx1qc8fcqjpgnz084l6lj0lr3ykc18-source/modules/home-manager/nix/remote-building\.nix](file:///nix/store/nadx1qc8fcqjpgnz084l6lj0lr3ykc18-source/modules/home-manager/nix/remote-building.nix)
+ - [/nix/store/rqvlfwqsnwxcg2bh5n2sdhic6lj2d9l4-source/modules/home-manager/nix/remote-building\.nix](file:///nix/store/rqvlfwqsnwxcg2bh5n2sdhic6lj2d9l4-source/modules/home-manager/nix/remote-building.nix)
 
 
 
@@ -3764,7 +3764,7 @@ signed integer
 ```
 
 *Declared by:*
- - [/nix/store/nadx1qc8fcqjpgnz084l6lj0lr3ykc18-source/modules/home-manager/nix/remote-building\.nix](file:///nix/store/nadx1qc8fcqjpgnz084l6lj0lr3ykc18-source/modules/home-manager/nix/remote-building.nix)
+ - [/nix/store/rqvlfwqsnwxcg2bh5n2sdhic6lj2d9l4-source/modules/home-manager/nix/remote-building\.nix](file:///nix/store/rqvlfwqsnwxcg2bh5n2sdhic6lj2d9l4-source/modules/home-manager/nix/remote-building.nix)
 
 
 
@@ -3790,7 +3790,7 @@ list of string
 ```
 
 *Declared by:*
- - [/nix/store/nadx1qc8fcqjpgnz084l6lj0lr3ykc18-source/modules/home-manager/nix/remote-building\.nix](file:///nix/store/nadx1qc8fcqjpgnz084l6lj0lr3ykc18-source/modules/home-manager/nix/remote-building.nix)
+ - [/nix/store/rqvlfwqsnwxcg2bh5n2sdhic6lj2d9l4-source/modules/home-manager/nix/remote-building\.nix](file:///nix/store/rqvlfwqsnwxcg2bh5n2sdhic6lj2d9l4-source/modules/home-manager/nix/remote-building.nix)
 
 
 
@@ -3827,7 +3827,7 @@ list of (submodule)
 ```
 
 *Declared by:*
- - [/nix/store/nadx1qc8fcqjpgnz084l6lj0lr3ykc18-source/modules/home-manager/nix/remote-building\.nix](file:///nix/store/nadx1qc8fcqjpgnz084l6lj0lr3ykc18-source/modules/home-manager/nix/remote-building.nix)
+ - [/nix/store/rqvlfwqsnwxcg2bh5n2sdhic6lj2d9l4-source/modules/home-manager/nix/remote-building\.nix](file:///nix/store/rqvlfwqsnwxcg2bh5n2sdhic6lj2d9l4-source/modules/home-manager/nix/remote-building.nix)
 
 
 
@@ -3852,7 +3852,7 @@ string
 ```
 
 *Declared by:*
- - [/nix/store/nadx1qc8fcqjpgnz084l6lj0lr3ykc18-source/modules/home-manager/nix/remote-building\.nix](file:///nix/store/nadx1qc8fcqjpgnz084l6lj0lr3ykc18-source/modules/home-manager/nix/remote-building.nix)
+ - [/nix/store/rqvlfwqsnwxcg2bh5n2sdhic6lj2d9l4-source/modules/home-manager/nix/remote-building\.nix](file:///nix/store/rqvlfwqsnwxcg2bh5n2sdhic6lj2d9l4-source/modules/home-manager/nix/remote-building.nix)
 
 
 
@@ -3876,7 +3876,7 @@ signed integer
 ```
 
 *Declared by:*
- - [/nix/store/nadx1qc8fcqjpgnz084l6lj0lr3ykc18-source/modules/home-manager/nix/remote-building\.nix](file:///nix/store/nadx1qc8fcqjpgnz084l6lj0lr3ykc18-source/modules/home-manager/nix/remote-building.nix)
+ - [/nix/store/rqvlfwqsnwxcg2bh5n2sdhic6lj2d9l4-source/modules/home-manager/nix/remote-building\.nix](file:///nix/store/rqvlfwqsnwxcg2bh5n2sdhic6lj2d9l4-source/modules/home-manager/nix/remote-building.nix)
 
 
 
@@ -3907,7 +3907,7 @@ string
 ```
 
 *Declared by:*
- - [/nix/store/nadx1qc8fcqjpgnz084l6lj0lr3ykc18-source/modules/home-manager/nix/remote-building\.nix](file:///nix/store/nadx1qc8fcqjpgnz084l6lj0lr3ykc18-source/modules/home-manager/nix/remote-building.nix)
+ - [/nix/store/rqvlfwqsnwxcg2bh5n2sdhic6lj2d9l4-source/modules/home-manager/nix/remote-building\.nix](file:///nix/store/rqvlfwqsnwxcg2bh5n2sdhic6lj2d9l4-source/modules/home-manager/nix/remote-building.nix)
 
 
 
@@ -3936,7 +3936,7 @@ string
 ```
 
 *Declared by:*
- - [/nix/store/nadx1qc8fcqjpgnz084l6lj0lr3ykc18-source/modules/home-manager/nix/remote-building\.nix](file:///nix/store/nadx1qc8fcqjpgnz084l6lj0lr3ykc18-source/modules/home-manager/nix/remote-building.nix)
+ - [/nix/store/rqvlfwqsnwxcg2bh5n2sdhic6lj2d9l4-source/modules/home-manager/nix/remote-building\.nix](file:///nix/store/rqvlfwqsnwxcg2bh5n2sdhic6lj2d9l4-source/modules/home-manager/nix/remote-building.nix)
 
 
 
@@ -3960,7 +3960,7 @@ signed integer
 ```
 
 *Declared by:*
- - [/nix/store/nadx1qc8fcqjpgnz084l6lj0lr3ykc18-source/modules/home-manager/nix/remote-building\.nix](file:///nix/store/nadx1qc8fcqjpgnz084l6lj0lr3ykc18-source/modules/home-manager/nix/remote-building.nix)
+ - [/nix/store/rqvlfwqsnwxcg2bh5n2sdhic6lj2d9l4-source/modules/home-manager/nix/remote-building\.nix](file:///nix/store/rqvlfwqsnwxcg2bh5n2sdhic6lj2d9l4-source/modules/home-manager/nix/remote-building.nix)
 
 
 
@@ -3988,7 +3988,7 @@ list of string
 ```
 
 *Declared by:*
- - [/nix/store/nadx1qc8fcqjpgnz084l6lj0lr3ykc18-source/modules/home-manager/nix/remote-building\.nix](file:///nix/store/nadx1qc8fcqjpgnz084l6lj0lr3ykc18-source/modules/home-manager/nix/remote-building.nix)
+ - [/nix/store/rqvlfwqsnwxcg2bh5n2sdhic6lj2d9l4-source/modules/home-manager/nix/remote-building\.nix](file:///nix/store/rqvlfwqsnwxcg2bh5n2sdhic6lj2d9l4-source/modules/home-manager/nix/remote-building.nix)
 
 
 
@@ -4025,7 +4025,7 @@ list of string
 ```
 
 *Declared by:*
- - [/nix/store/nadx1qc8fcqjpgnz084l6lj0lr3ykc18-source/modules/home-manager/nix/remote-building\.nix](file:///nix/store/nadx1qc8fcqjpgnz084l6lj0lr3ykc18-source/modules/home-manager/nix/remote-building.nix)
+ - [/nix/store/rqvlfwqsnwxcg2bh5n2sdhic6lj2d9l4-source/modules/home-manager/nix/remote-building\.nix](file:///nix/store/rqvlfwqsnwxcg2bh5n2sdhic6lj2d9l4-source/modules/home-manager/nix/remote-building.nix)
 
 
 
@@ -4050,7 +4050,7 @@ string
 ```
 
 *Declared by:*
- - [/nix/store/nadx1qc8fcqjpgnz084l6lj0lr3ykc18-source/modules/home-manager/nix/remote-building\.nix](file:///nix/store/nadx1qc8fcqjpgnz084l6lj0lr3ykc18-source/modules/home-manager/nix/remote-building.nix)
+ - [/nix/store/rqvlfwqsnwxcg2bh5n2sdhic6lj2d9l4-source/modules/home-manager/nix/remote-building\.nix](file:///nix/store/rqvlfwqsnwxcg2bh5n2sdhic6lj2d9l4-source/modules/home-manager/nix/remote-building.nix)
 
 
 
@@ -4082,7 +4082,7 @@ true
 ```
 
 *Declared by:*
- - [/nix/store/nadx1qc8fcqjpgnz084l6lj0lr3ykc18-source/modules/home-manager/programs/cli\.nix](file:///nix/store/nadx1qc8fcqjpgnz084l6lj0lr3ykc18-source/modules/home-manager/programs/cli.nix)
+ - [/nix/store/rqvlfwqsnwxcg2bh5n2sdhic6lj2d9l4-source/modules/home-manager/programs/cli\.nix](file:///nix/store/rqvlfwqsnwxcg2bh5n2sdhic6lj2d9l4-source/modules/home-manager/programs/cli.nix)
 
 
 
@@ -4114,7 +4114,7 @@ true
 ```
 
 *Declared by:*
- - [/nix/store/nadx1qc8fcqjpgnz084l6lj0lr3ykc18-source/modules/home-manager/programs/dev\.nix](file:///nix/store/nadx1qc8fcqjpgnz084l6lj0lr3ykc18-source/modules/home-manager/programs/dev.nix)
+ - [/nix/store/rqvlfwqsnwxcg2bh5n2sdhic6lj2d9l4-source/modules/home-manager/programs/dev\.nix](file:///nix/store/rqvlfwqsnwxcg2bh5n2sdhic6lj2d9l4-source/modules/home-manager/programs/dev.nix)
 
 
 
@@ -4146,7 +4146,7 @@ true
 ```
 
 *Declared by:*
- - [/nix/store/nadx1qc8fcqjpgnz084l6lj0lr3ykc18-source/modules/home-manager/programs/ai\.nix](file:///nix/store/nadx1qc8fcqjpgnz084l6lj0lr3ykc18-source/modules/home-manager/programs/ai.nix)
+ - [/nix/store/rqvlfwqsnwxcg2bh5n2sdhic6lj2d9l4-source/modules/home-manager/programs/ai\.nix](file:///nix/store/rqvlfwqsnwxcg2bh5n2sdhic6lj2d9l4-source/modules/home-manager/programs/ai.nix)
 
 
 
@@ -4170,7 +4170,7 @@ one of “full”, “minimal”
 ```
 
 *Declared by:*
- - [/nix/store/nadx1qc8fcqjpgnz084l6lj0lr3ykc18-source/modules/home-manager/programs/cli\.nix](file:///nix/store/nadx1qc8fcqjpgnz084l6lj0lr3ykc18-source/modules/home-manager/programs/cli.nix)
+ - [/nix/store/rqvlfwqsnwxcg2bh5n2sdhic6lj2d9l4-source/modules/home-manager/programs/cli\.nix](file:///nix/store/rqvlfwqsnwxcg2bh5n2sdhic6lj2d9l4-source/modules/home-manager/programs/cli.nix)
 
 
 
@@ -4202,7 +4202,7 @@ true
 ```
 
 *Declared by:*
- - [/nix/store/nadx1qc8fcqjpgnz084l6lj0lr3ykc18-source/modules/home-manager/programs/games\.nix](file:///nix/store/nadx1qc8fcqjpgnz084l6lj0lr3ykc18-source/modules/home-manager/programs/games.nix)
+ - [/nix/store/rqvlfwqsnwxcg2bh5n2sdhic6lj2d9l4-source/modules/home-manager/programs/games\.nix](file:///nix/store/rqvlfwqsnwxcg2bh5n2sdhic6lj2d9l4-source/modules/home-manager/programs/games.nix)
 
 
 
@@ -4234,7 +4234,7 @@ true
 ```
 
 *Declared by:*
- - [/nix/store/nadx1qc8fcqjpgnz084l6lj0lr3ykc18-source/modules/home-manager/programs/gui\.nix](file:///nix/store/nadx1qc8fcqjpgnz084l6lj0lr3ykc18-source/modules/home-manager/programs/gui.nix)
+ - [/nix/store/rqvlfwqsnwxcg2bh5n2sdhic6lj2d9l4-source/modules/home-manager/programs/gui\.nix](file:///nix/store/rqvlfwqsnwxcg2bh5n2sdhic6lj2d9l4-source/modules/home-manager/programs/gui.nix)
 
 
 
@@ -4266,7 +4266,7 @@ true
 ```
 
 *Declared by:*
- - [/nix/store/nadx1qc8fcqjpgnz084l6lj0lr3ykc18-source/modules/home-manager/programs/gui\.nix](file:///nix/store/nadx1qc8fcqjpgnz084l6lj0lr3ykc18-source/modules/home-manager/programs/gui.nix)
+ - [/nix/store/rqvlfwqsnwxcg2bh5n2sdhic6lj2d9l4-source/modules/home-manager/programs/gui\.nix](file:///nix/store/rqvlfwqsnwxcg2bh5n2sdhic6lj2d9l4-source/modules/home-manager/programs/gui.nix)
 
 
 
@@ -4298,7 +4298,7 @@ true
 ```
 
 *Declared by:*
- - [/nix/store/nadx1qc8fcqjpgnz084l6lj0lr3ykc18-source/modules/home-manager/programs/gui\.nix](file:///nix/store/nadx1qc8fcqjpgnz084l6lj0lr3ykc18-source/modules/home-manager/programs/gui.nix)
+ - [/nix/store/rqvlfwqsnwxcg2bh5n2sdhic6lj2d9l4-source/modules/home-manager/programs/gui\.nix](file:///nix/store/rqvlfwqsnwxcg2bh5n2sdhic6lj2d9l4-source/modules/home-manager/programs/gui.nix)
 
 
 
@@ -4330,7 +4330,7 @@ true
 ```
 
 *Declared by:*
- - [/nix/store/nadx1qc8fcqjpgnz084l6lj0lr3ykc18-source/modules/home-manager/gui/vicinae\.nix](file:///nix/store/nadx1qc8fcqjpgnz084l6lj0lr3ykc18-source/modules/home-manager/gui/vicinae.nix)
+ - [/nix/store/rqvlfwqsnwxcg2bh5n2sdhic6lj2d9l4-source/modules/home-manager/gui/vicinae\.nix](file:///nix/store/rqvlfwqsnwxcg2bh5n2sdhic6lj2d9l4-source/modules/home-manager/gui/vicinae.nix)
 
 
 
@@ -4354,7 +4354,7 @@ list of string
 ```
 
 *Declared by:*
- - [/nix/store/nadx1qc8fcqjpgnz084l6lj0lr3ykc18-source/modules/home-manager/gui/vicinae\.nix](file:///nix/store/nadx1qc8fcqjpgnz084l6lj0lr3ykc18-source/modules/home-manager/gui/vicinae.nix)
+ - [/nix/store/rqvlfwqsnwxcg2bh5n2sdhic6lj2d9l4-source/modules/home-manager/gui/vicinae\.nix](file:///nix/store/rqvlfwqsnwxcg2bh5n2sdhic6lj2d9l4-source/modules/home-manager/gui/vicinae.nix)
 
 
 
@@ -4378,7 +4378,7 @@ list of string
 ```
 
 *Declared by:*
- - [/nix/store/nadx1qc8fcqjpgnz084l6lj0lr3ykc18-source/modules/home-manager/gui/vicinae\.nix](file:///nix/store/nadx1qc8fcqjpgnz084l6lj0lr3ykc18-source/modules/home-manager/gui/vicinae.nix)
+ - [/nix/store/rqvlfwqsnwxcg2bh5n2sdhic6lj2d9l4-source/modules/home-manager/gui/vicinae\.nix](file:///nix/store/rqvlfwqsnwxcg2bh5n2sdhic6lj2d9l4-source/modules/home-manager/gui/vicinae.nix)
 
 
 
@@ -4410,7 +4410,7 @@ true
 ```
 
 *Declared by:*
- - [/nix/store/nadx1qc8fcqjpgnz084l6lj0lr3ykc18-source/modules/home-manager/programs/ides\.nix](file:///nix/store/nadx1qc8fcqjpgnz084l6lj0lr3ykc18-source/modules/home-manager/programs/ides.nix)
+ - [/nix/store/rqvlfwqsnwxcg2bh5n2sdhic6lj2d9l4-source/modules/home-manager/programs/ides\.nix](file:///nix/store/rqvlfwqsnwxcg2bh5n2sdhic6lj2d9l4-source/modules/home-manager/programs/ides.nix)
 
 
 
@@ -4434,7 +4434,7 @@ list of string
 ```
 
 *Declared by:*
- - [/nix/store/nadx1qc8fcqjpgnz084l6lj0lr3ykc18-source/modules/home-manager/programs/ssh\.nix](file:///nix/store/nadx1qc8fcqjpgnz084l6lj0lr3ykc18-source/modules/home-manager/programs/ssh.nix)
+ - [/nix/store/rqvlfwqsnwxcg2bh5n2sdhic6lj2d9l4-source/modules/home-manager/programs/ssh\.nix](file:///nix/store/rqvlfwqsnwxcg2bh5n2sdhic6lj2d9l4-source/modules/home-manager/programs/ssh.nix)
 
 
 
@@ -4458,7 +4458,7 @@ attribute set of (submodule)
 ```
 
 *Declared by:*
- - [/nix/store/nadx1qc8fcqjpgnz084l6lj0lr3ykc18-source/modules/home-manager/programs/ssh\.nix](file:///nix/store/nadx1qc8fcqjpgnz084l6lj0lr3ykc18-source/modules/home-manager/programs/ssh.nix)
+ - [/nix/store/rqvlfwqsnwxcg2bh5n2sdhic6lj2d9l4-source/modules/home-manager/programs/ssh\.nix](file:///nix/store/rqvlfwqsnwxcg2bh5n2sdhic6lj2d9l4-source/modules/home-manager/programs/ssh.nix)
 
 
 
@@ -4482,7 +4482,7 @@ null
 ```
 
 *Declared by:*
- - [/nix/store/nadx1qc8fcqjpgnz084l6lj0lr3ykc18-source/modules/home-manager/programs/ssh\.nix](file:///nix/store/nadx1qc8fcqjpgnz084l6lj0lr3ykc18-source/modules/home-manager/programs/ssh.nix)
+ - [/nix/store/rqvlfwqsnwxcg2bh5n2sdhic6lj2d9l4-source/modules/home-manager/programs/ssh\.nix](file:///nix/store/rqvlfwqsnwxcg2bh5n2sdhic6lj2d9l4-source/modules/home-manager/programs/ssh.nix)
 
 
 
@@ -4498,7 +4498,7 @@ Path to the private key on the host file system\.
 string
 
 *Declared by:*
- - [/nix/store/nadx1qc8fcqjpgnz084l6lj0lr3ykc18-source/modules/home-manager/programs/ssh\.nix](file:///nix/store/nadx1qc8fcqjpgnz084l6lj0lr3ykc18-source/modules/home-manager/programs/ssh.nix)
+ - [/nix/store/rqvlfwqsnwxcg2bh5n2sdhic6lj2d9l4-source/modules/home-manager/programs/ssh\.nix](file:///nix/store/rqvlfwqsnwxcg2bh5n2sdhic6lj2d9l4-source/modules/home-manager/programs/ssh.nix)
 
 
 
@@ -4514,7 +4514,7 @@ Path to the public key on the host file system\.
 string
 
 *Declared by:*
- - [/nix/store/nadx1qc8fcqjpgnz084l6lj0lr3ykc18-source/modules/home-manager/programs/ssh\.nix](file:///nix/store/nadx1qc8fcqjpgnz084l6lj0lr3ykc18-source/modules/home-manager/programs/ssh.nix)
+ - [/nix/store/rqvlfwqsnwxcg2bh5n2sdhic6lj2d9l4-source/modules/home-manager/programs/ssh\.nix](file:///nix/store/rqvlfwqsnwxcg2bh5n2sdhic6lj2d9l4-source/modules/home-manager/programs/ssh.nix)
 
 
 
@@ -4538,7 +4538,7 @@ null
 ```
 
 *Declared by:*
- - [/nix/store/nadx1qc8fcqjpgnz084l6lj0lr3ykc18-source/modules/home-manager/programs/ssh\.nix](file:///nix/store/nadx1qc8fcqjpgnz084l6lj0lr3ykc18-source/modules/home-manager/programs/ssh.nix)
+ - [/nix/store/rqvlfwqsnwxcg2bh5n2sdhic6lj2d9l4-source/modules/home-manager/programs/ssh\.nix](file:///nix/store/rqvlfwqsnwxcg2bh5n2sdhic6lj2d9l4-source/modules/home-manager/programs/ssh.nix)
 
 
 
@@ -4570,7 +4570,7 @@ true
 ```
 
 *Declared by:*
- - [/nix/store/nadx1qc8fcqjpgnz084l6lj0lr3ykc18-source/modules/home-manager/services/mpris\.nix](file:///nix/store/nadx1qc8fcqjpgnz084l6lj0lr3ykc18-source/modules/home-manager/services/mpris.nix)
+ - [/nix/store/rqvlfwqsnwxcg2bh5n2sdhic6lj2d9l4-source/modules/home-manager/services/mpris\.nix](file:///nix/store/rqvlfwqsnwxcg2bh5n2sdhic6lj2d9l4-source/modules/home-manager/services/mpris.nix)
 
 
 
@@ -4602,7 +4602,7 @@ true
 ```
 
 *Declared by:*
- - [/nix/store/nadx1qc8fcqjpgnz084l6lj0lr3ykc18-source/modules/home-manager/services/nextcloud\.nix](file:///nix/store/nadx1qc8fcqjpgnz084l6lj0lr3ykc18-source/modules/home-manager/services/nextcloud.nix)
+ - [/nix/store/rqvlfwqsnwxcg2bh5n2sdhic6lj2d9l4-source/modules/home-manager/services/nextcloud\.nix](file:///nix/store/rqvlfwqsnwxcg2bh5n2sdhic6lj2d9l4-source/modules/home-manager/services/nextcloud.nix)
 
 
 
@@ -4634,7 +4634,7 @@ true
 ```
 
 *Declared by:*
- - [/nix/store/nadx1qc8fcqjpgnz084l6lj0lr3ykc18-source/modules/home-manager/theming](file:///nix/store/nadx1qc8fcqjpgnz084l6lj0lr3ykc18-source/modules/home-manager/theming)
+ - [/nix/store/rqvlfwqsnwxcg2bh5n2sdhic6lj2d9l4-source/modules/home-manager/theming](file:///nix/store/rqvlfwqsnwxcg2bh5n2sdhic6lj2d9l4-source/modules/home-manager/theming)
 
 
 
@@ -4650,7 +4650,7 @@ Linux kernel package (linuxPackages set)\.
 raw value
 
 *Declared by:*
- - [/nix/store/nadx1qc8fcqjpgnz084l6lj0lr3ykc18-source/modules/nixos/kernel/kernel\.nix](file:///nix/store/nadx1qc8fcqjpgnz084l6lj0lr3ykc18-source/modules/nixos/kernel/kernel.nix)
+ - [/nix/store/rqvlfwqsnwxcg2bh5n2sdhic6lj2d9l4-source/modules/nixos/kernel/kernel\.nix](file:///nix/store/rqvlfwqsnwxcg2bh5n2sdhic6lj2d9l4-source/modules/nixos/kernel/kernel.nix)
 
 
 
@@ -4674,7 +4674,7 @@ list of string
 ```
 
 *Declared by:*
- - [/nix/store/nadx1qc8fcqjpgnz084l6lj0lr3ykc18-source/modules/nixos/kernel/kernel\.nix](file:///nix/store/nadx1qc8fcqjpgnz084l6lj0lr3ykc18-source/modules/nixos/kernel/kernel.nix)
+ - [/nix/store/rqvlfwqsnwxcg2bh5n2sdhic6lj2d9l4-source/modules/nixos/kernel/kernel\.nix](file:///nix/store/rqvlfwqsnwxcg2bh5n2sdhic6lj2d9l4-source/modules/nixos/kernel/kernel.nix)
 
 
 
@@ -4698,7 +4698,7 @@ list of string
 ```
 
 *Declared by:*
- - [/nix/store/nadx1qc8fcqjpgnz084l6lj0lr3ykc18-source/modules/nixos/kernel/kernel\.nix](file:///nix/store/nadx1qc8fcqjpgnz084l6lj0lr3ykc18-source/modules/nixos/kernel/kernel.nix)
+ - [/nix/store/rqvlfwqsnwxcg2bh5n2sdhic6lj2d9l4-source/modules/nixos/kernel/kernel\.nix](file:///nix/store/rqvlfwqsnwxcg2bh5n2sdhic6lj2d9l4-source/modules/nixos/kernel/kernel.nix)
 
 
 
@@ -4730,7 +4730,7 @@ true
 ```
 
 *Declared by:*
- - [/nix/store/nadx1qc8fcqjpgnz084l6lj0lr3ykc18-source/modules/nixos/kernel/kernel\.nix](file:///nix/store/nadx1qc8fcqjpgnz084l6lj0lr3ykc18-source/modules/nixos/kernel/kernel.nix)
+ - [/nix/store/rqvlfwqsnwxcg2bh5n2sdhic6lj2d9l4-source/modules/nixos/kernel/kernel\.nix](file:///nix/store/rqvlfwqsnwxcg2bh5n2sdhic6lj2d9l4-source/modules/nixos/kernel/kernel.nix)
 
 
 
@@ -4754,7 +4754,7 @@ null
 ```
 
 *Declared by:*
- - [/nix/store/nadx1qc8fcqjpgnz084l6lj0lr3ykc18-source/modules/nixos/kernel/kernel\.nix](file:///nix/store/nadx1qc8fcqjpgnz084l6lj0lr3ykc18-source/modules/nixos/kernel/kernel.nix)
+ - [/nix/store/rqvlfwqsnwxcg2bh5n2sdhic6lj2d9l4-source/modules/nixos/kernel/kernel\.nix](file:///nix/store/rqvlfwqsnwxcg2bh5n2sdhic6lj2d9l4-source/modules/nixos/kernel/kernel.nix)
 
 
 
@@ -4778,7 +4778,7 @@ list of string
 ```
 
 *Declared by:*
- - [/nix/store/nadx1qc8fcqjpgnz084l6lj0lr3ykc18-source/modules/nixos/kernel/kernel\.nix](file:///nix/store/nadx1qc8fcqjpgnz084l6lj0lr3ykc18-source/modules/nixos/kernel/kernel.nix)
+ - [/nix/store/rqvlfwqsnwxcg2bh5n2sdhic6lj2d9l4-source/modules/nixos/kernel/kernel\.nix](file:///nix/store/rqvlfwqsnwxcg2bh5n2sdhic6lj2d9l4-source/modules/nixos/kernel/kernel.nix)
 
 
 
@@ -4802,7 +4802,7 @@ Kernel modules blacklisted\.
 ```
 
 *Declared by:*
- - [/nix/store/nadx1qc8fcqjpgnz084l6lj0lr3ykc18-source/modules/nixos/kernel/kernel\.nix](file:///nix/store/nadx1qc8fcqjpgnz084l6lj0lr3ykc18-source/modules/nixos/kernel/kernel.nix)
+ - [/nix/store/rqvlfwqsnwxcg2bh5n2sdhic6lj2d9l4-source/modules/nixos/kernel/kernel\.nix](file:///nix/store/rqvlfwqsnwxcg2bh5n2sdhic6lj2d9l4-source/modules/nixos/kernel/kernel.nix)
 
 
 
@@ -4826,7 +4826,7 @@ list of package
 ```
 
 *Declared by:*
- - [/nix/store/nadx1qc8fcqjpgnz084l6lj0lr3ykc18-source/modules/nixos/kernel/kernel\.nix](file:///nix/store/nadx1qc8fcqjpgnz084l6lj0lr3ykc18-source/modules/nixos/kernel/kernel.nix)
+ - [/nix/store/rqvlfwqsnwxcg2bh5n2sdhic6lj2d9l4-source/modules/nixos/kernel/kernel\.nix](file:///nix/store/rqvlfwqsnwxcg2bh5n2sdhic6lj2d9l4-source/modules/nixos/kernel/kernel.nix)
 
 
 
@@ -4850,7 +4850,7 @@ Kernel modules available during stage 2\.
 ```
 
 *Declared by:*
- - [/nix/store/nadx1qc8fcqjpgnz084l6lj0lr3ykc18-source/modules/nixos/kernel/kernel\.nix](file:///nix/store/nadx1qc8fcqjpgnz084l6lj0lr3ykc18-source/modules/nixos/kernel/kernel.nix)
+ - [/nix/store/rqvlfwqsnwxcg2bh5n2sdhic6lj2d9l4-source/modules/nixos/kernel/kernel\.nix](file:///nix/store/rqvlfwqsnwxcg2bh5n2sdhic6lj2d9l4-source/modules/nixos/kernel/kernel.nix)
 
 
 
@@ -4874,7 +4874,7 @@ list of string
 ```
 
 *Declared by:*
- - [/nix/store/nadx1qc8fcqjpgnz084l6lj0lr3ykc18-source/modules/nixos/kernel/kernel\.nix](file:///nix/store/nadx1qc8fcqjpgnz084l6lj0lr3ykc18-source/modules/nixos/kernel/kernel.nix)
+ - [/nix/store/rqvlfwqsnwxcg2bh5n2sdhic6lj2d9l4-source/modules/nixos/kernel/kernel\.nix](file:///nix/store/rqvlfwqsnwxcg2bh5n2sdhic6lj2d9l4-source/modules/nixos/kernel/kernel.nix)
 
 
 
@@ -4898,7 +4898,7 @@ attribute set
 ```
 
 *Declared by:*
- - [/nix/store/nadx1qc8fcqjpgnz084l6lj0lr3ykc18-source/modules/nixos/kernel/kernel\.nix](file:///nix/store/nadx1qc8fcqjpgnz084l6lj0lr3ykc18-source/modules/nixos/kernel/kernel.nix)
+ - [/nix/store/rqvlfwqsnwxcg2bh5n2sdhic6lj2d9l4-source/modules/nixos/kernel/kernel\.nix](file:///nix/store/rqvlfwqsnwxcg2bh5n2sdhic6lj2d9l4-source/modules/nixos/kernel/kernel.nix)
 
 
 
@@ -4930,7 +4930,7 @@ true
 ```
 
 *Declared by:*
- - [/nix/store/nadx1qc8fcqjpgnz084l6lj0lr3ykc18-source/modules/nixos/network](file:///nix/store/nadx1qc8fcqjpgnz084l6lj0lr3ykc18-source/modules/nixos/network)
+ - [/nix/store/rqvlfwqsnwxcg2bh5n2sdhic6lj2d9l4-source/modules/nixos/network](file:///nix/store/rqvlfwqsnwxcg2bh5n2sdhic6lj2d9l4-source/modules/nixos/network)
 
 
 
@@ -4954,7 +4954,7 @@ list of (submodule)
 ```
 
 *Declared by:*
- - [/nix/store/nadx1qc8fcqjpgnz084l6lj0lr3ykc18-source/modules/nixos/network/network-mounts\.nix](file:///nix/store/nadx1qc8fcqjpgnz084l6lj0lr3ykc18-source/modules/nixos/network/network-mounts.nix)
+ - [/nix/store/rqvlfwqsnwxcg2bh5n2sdhic6lj2d9l4-source/modules/nixos/network/network-mounts\.nix](file:///nix/store/rqvlfwqsnwxcg2bh5n2sdhic6lj2d9l4-source/modules/nixos/network/network-mounts.nix)
 
 
 
@@ -4970,7 +4970,7 @@ To configure an automount for this mount point\.
 boolean
 
 *Declared by:*
- - [/nix/store/nadx1qc8fcqjpgnz084l6lj0lr3ykc18-source/modules/nixos/network/network-mounts\.nix](file:///nix/store/nadx1qc8fcqjpgnz084l6lj0lr3ykc18-source/modules/nixos/network/network-mounts.nix)
+ - [/nix/store/rqvlfwqsnwxcg2bh5n2sdhic6lj2d9l4-source/modules/nixos/network/network-mounts\.nix](file:///nix/store/rqvlfwqsnwxcg2bh5n2sdhic6lj2d9l4-source/modules/nixos/network/network-mounts.nix)
 
 
 
@@ -4986,7 +4986,7 @@ Mount point on the local filesystem\.
 string
 
 *Declared by:*
- - [/nix/store/nadx1qc8fcqjpgnz084l6lj0lr3ykc18-source/modules/nixos/network/network-mounts\.nix](file:///nix/store/nadx1qc8fcqjpgnz084l6lj0lr3ykc18-source/modules/nixos/network/network-mounts.nix)
+ - [/nix/store/rqvlfwqsnwxcg2bh5n2sdhic6lj2d9l4-source/modules/nixos/network/network-mounts\.nix](file:///nix/store/rqvlfwqsnwxcg2bh5n2sdhic6lj2d9l4-source/modules/nixos/network/network-mounts.nix)
 
 
 
@@ -5002,7 +5002,7 @@ Mount point source remote\.
 string
 
 *Declared by:*
- - [/nix/store/nadx1qc8fcqjpgnz084l6lj0lr3ykc18-source/modules/nixos/network/network-mounts\.nix](file:///nix/store/nadx1qc8fcqjpgnz084l6lj0lr3ykc18-source/modules/nixos/network/network-mounts.nix)
+ - [/nix/store/rqvlfwqsnwxcg2bh5n2sdhic6lj2d9l4-source/modules/nixos/network/network-mounts\.nix](file:///nix/store/rqvlfwqsnwxcg2bh5n2sdhic6lj2d9l4-source/modules/nixos/network/network-mounts.nix)
 
 
 
@@ -5018,7 +5018,7 @@ Mount point type\.
 string
 
 *Declared by:*
- - [/nix/store/nadx1qc8fcqjpgnz084l6lj0lr3ykc18-source/modules/nixos/network/network-mounts\.nix](file:///nix/store/nadx1qc8fcqjpgnz084l6lj0lr3ykc18-source/modules/nixos/network/network-mounts.nix)
+ - [/nix/store/rqvlfwqsnwxcg2bh5n2sdhic6lj2d9l4-source/modules/nixos/network/network-mounts\.nix](file:///nix/store/rqvlfwqsnwxcg2bh5n2sdhic6lj2d9l4-source/modules/nixos/network/network-mounts.nix)
 
 
 
@@ -5042,7 +5042,7 @@ list of 16 bit unsigned integer; between 0 and 65535 (both inclusive)
 ```
 
 *Declared by:*
- - [/nix/store/nadx1qc8fcqjpgnz084l6lj0lr3ykc18-source/modules/nixos/network](file:///nix/store/nadx1qc8fcqjpgnz084l6lj0lr3ykc18-source/modules/nixos/network)
+ - [/nix/store/rqvlfwqsnwxcg2bh5n2sdhic6lj2d9l4-source/modules/nixos/network](file:///nix/store/rqvlfwqsnwxcg2bh5n2sdhic6lj2d9l4-source/modules/nixos/network)
 
 
 
@@ -5066,7 +5066,7 @@ list of attribute set of 16 bit unsigned integer; between 0 and 65535 (both incl
 ```
 
 *Declared by:*
- - [/nix/store/nadx1qc8fcqjpgnz084l6lj0lr3ykc18-source/modules/nixos/network](file:///nix/store/nadx1qc8fcqjpgnz084l6lj0lr3ykc18-source/modules/nixos/network)
+ - [/nix/store/rqvlfwqsnwxcg2bh5n2sdhic6lj2d9l4-source/modules/nixos/network](file:///nix/store/rqvlfwqsnwxcg2bh5n2sdhic6lj2d9l4-source/modules/nixos/network)
 
 
 
@@ -5090,7 +5090,7 @@ list of 16 bit unsigned integer; between 0 and 65535 (both inclusive)
 ```
 
 *Declared by:*
- - [/nix/store/nadx1qc8fcqjpgnz084l6lj0lr3ykc18-source/modules/nixos/network](file:///nix/store/nadx1qc8fcqjpgnz084l6lj0lr3ykc18-source/modules/nixos/network)
+ - [/nix/store/rqvlfwqsnwxcg2bh5n2sdhic6lj2d9l4-source/modules/nixos/network](file:///nix/store/rqvlfwqsnwxcg2bh5n2sdhic6lj2d9l4-source/modules/nixos/network)
 
 
 
@@ -5114,7 +5114,7 @@ list of attribute set of 16 bit unsigned integer; between 0 and 65535 (both incl
 ```
 
 *Declared by:*
- - [/nix/store/nadx1qc8fcqjpgnz084l6lj0lr3ykc18-source/modules/nixos/network](file:///nix/store/nadx1qc8fcqjpgnz084l6lj0lr3ykc18-source/modules/nixos/network)
+ - [/nix/store/rqvlfwqsnwxcg2bh5n2sdhic6lj2d9l4-source/modules/nixos/network](file:///nix/store/rqvlfwqsnwxcg2bh5n2sdhic6lj2d9l4-source/modules/nixos/network)
 
 
 
@@ -5138,7 +5138,7 @@ list of (string or (attribute set))
 ```
 
 *Declared by:*
- - [/nix/store/nadx1qc8fcqjpgnz084l6lj0lr3ykc18-source/modules/nixos/network](file:///nix/store/nadx1qc8fcqjpgnz084l6lj0lr3ykc18-source/modules/nixos/network)
+ - [/nix/store/rqvlfwqsnwxcg2bh5n2sdhic6lj2d9l4-source/modules/nixos/network](file:///nix/store/rqvlfwqsnwxcg2bh5n2sdhic6lj2d9l4-source/modules/nixos/network)
 
 
 
@@ -5162,7 +5162,7 @@ list of string
 ```
 
 *Declared by:*
- - [/nix/store/nadx1qc8fcqjpgnz084l6lj0lr3ykc18-source/modules/nixos/network](file:///nix/store/nadx1qc8fcqjpgnz084l6lj0lr3ykc18-source/modules/nixos/network)
+ - [/nix/store/rqvlfwqsnwxcg2bh5n2sdhic6lj2d9l4-source/modules/nixos/network](file:///nix/store/rqvlfwqsnwxcg2bh5n2sdhic6lj2d9l4-source/modules/nixos/network)
 
 
 
@@ -5196,7 +5196,7 @@ list of string
 ```
 
 *Declared by:*
- - [/nix/store/nadx1qc8fcqjpgnz084l6lj0lr3ykc18-source/modules/nixos/network](file:///nix/store/nadx1qc8fcqjpgnz084l6lj0lr3ykc18-source/modules/nixos/network)
+ - [/nix/store/rqvlfwqsnwxcg2bh5n2sdhic6lj2d9l4-source/modules/nixos/network](file:///nix/store/rqvlfwqsnwxcg2bh5n2sdhic6lj2d9l4-source/modules/nixos/network)
 
 
 
@@ -5220,7 +5220,7 @@ null
 ```
 
 *Declared by:*
- - [/nix/store/nadx1qc8fcqjpgnz084l6lj0lr3ykc18-source/modules/nixos/nix/remote-building\.nix](file:///nix/store/nadx1qc8fcqjpgnz084l6lj0lr3ykc18-source/modules/nixos/nix/remote-building.nix)
+ - [/nix/store/rqvlfwqsnwxcg2bh5n2sdhic6lj2d9l4-source/modules/nixos/nix/remote-building\.nix](file:///nix/store/rqvlfwqsnwxcg2bh5n2sdhic6lj2d9l4-source/modules/nixos/nix/remote-building.nix)
 
 
 
@@ -5244,7 +5244,7 @@ list of string
 ```
 
 *Declared by:*
- - [/nix/store/nadx1qc8fcqjpgnz084l6lj0lr3ykc18-source/modules/nixos/nix/remote-building\.nix](file:///nix/store/nadx1qc8fcqjpgnz084l6lj0lr3ykc18-source/modules/nixos/nix/remote-building.nix)
+ - [/nix/store/rqvlfwqsnwxcg2bh5n2sdhic6lj2d9l4-source/modules/nixos/nix/remote-building\.nix](file:///nix/store/rqvlfwqsnwxcg2bh5n2sdhic6lj2d9l4-source/modules/nixos/nix/remote-building.nix)
 
 
 
@@ -5279,7 +5279,7 @@ list of string
 ```
 
 *Declared by:*
- - [/nix/store/nadx1qc8fcqjpgnz084l6lj0lr3ykc18-source/modules/nixos/nix/remote-building\.nix](file:///nix/store/nadx1qc8fcqjpgnz084l6lj0lr3ykc18-source/modules/nixos/nix/remote-building.nix)
+ - [/nix/store/rqvlfwqsnwxcg2bh5n2sdhic6lj2d9l4-source/modules/nixos/nix/remote-building\.nix](file:///nix/store/rqvlfwqsnwxcg2bh5n2sdhic6lj2d9l4-source/modules/nixos/nix/remote-building.nix)
 
 
 
@@ -5303,7 +5303,7 @@ signed integer
 ```
 
 *Declared by:*
- - [/nix/store/nadx1qc8fcqjpgnz084l6lj0lr3ykc18-source/modules/nixos/nix/remote-building\.nix](file:///nix/store/nadx1qc8fcqjpgnz084l6lj0lr3ykc18-source/modules/nixos/nix/remote-building.nix)
+ - [/nix/store/rqvlfwqsnwxcg2bh5n2sdhic6lj2d9l4-source/modules/nixos/nix/remote-building\.nix](file:///nix/store/rqvlfwqsnwxcg2bh5n2sdhic6lj2d9l4-source/modules/nixos/nix/remote-building.nix)
 
 
 
@@ -5327,7 +5327,7 @@ signed integer
 ```
 
 *Declared by:*
- - [/nix/store/nadx1qc8fcqjpgnz084l6lj0lr3ykc18-source/modules/nixos/nix/remote-building\.nix](file:///nix/store/nadx1qc8fcqjpgnz084l6lj0lr3ykc18-source/modules/nixos/nix/remote-building.nix)
+ - [/nix/store/rqvlfwqsnwxcg2bh5n2sdhic6lj2d9l4-source/modules/nixos/nix/remote-building\.nix](file:///nix/store/rqvlfwqsnwxcg2bh5n2sdhic6lj2d9l4-source/modules/nixos/nix/remote-building.nix)
 
 
 
@@ -5353,7 +5353,7 @@ list of string
 ```
 
 *Declared by:*
- - [/nix/store/nadx1qc8fcqjpgnz084l6lj0lr3ykc18-source/modules/nixos/nix/remote-building\.nix](file:///nix/store/nadx1qc8fcqjpgnz084l6lj0lr3ykc18-source/modules/nixos/nix/remote-building.nix)
+ - [/nix/store/rqvlfwqsnwxcg2bh5n2sdhic6lj2d9l4-source/modules/nixos/nix/remote-building\.nix](file:///nix/store/rqvlfwqsnwxcg2bh5n2sdhic6lj2d9l4-source/modules/nixos/nix/remote-building.nix)
 
 
 
@@ -5375,7 +5375,7 @@ string
 ```
 
 *Declared by:*
- - [/nix/store/nadx1qc8fcqjpgnz084l6lj0lr3ykc18-source/modules/nixos/nix/remote-building\.nix](file:///nix/store/nadx1qc8fcqjpgnz084l6lj0lr3ykc18-source/modules/nixos/nix/remote-building.nix)
+ - [/nix/store/rqvlfwqsnwxcg2bh5n2sdhic6lj2d9l4-source/modules/nixos/nix/remote-building\.nix](file:///nix/store/rqvlfwqsnwxcg2bh5n2sdhic6lj2d9l4-source/modules/nixos/nix/remote-building.nix)
 
 
 
@@ -5407,7 +5407,7 @@ true
 ```
 
 *Declared by:*
- - [/nix/store/nadx1qc8fcqjpgnz084l6lj0lr3ykc18-source/modules/nixos/nix/auto-update\.nix](file:///nix/store/nadx1qc8fcqjpgnz084l6lj0lr3ykc18-source/modules/nixos/nix/auto-update.nix)
+ - [/nix/store/rqvlfwqsnwxcg2bh5n2sdhic6lj2d9l4-source/modules/nixos/nix/auto-update\.nix](file:///nix/store/rqvlfwqsnwxcg2bh5n2sdhic6lj2d9l4-source/modules/nixos/nix/auto-update.nix)
 
 
 
@@ -5436,7 +5436,7 @@ string
 ` *-1..12/3-1..31/2 00:30:00 ` => half past midnight on every other day on every 3rd month\.
 
 *Declared by:*
- - [/nix/store/nadx1qc8fcqjpgnz084l6lj0lr3ykc18-source/modules/nixos/nix/auto-update\.nix](file:///nix/store/nadx1qc8fcqjpgnz084l6lj0lr3ykc18-source/modules/nixos/nix/auto-update.nix)
+ - [/nix/store/rqvlfwqsnwxcg2bh5n2sdhic6lj2d9l4-source/modules/nixos/nix/auto-update\.nix](file:///nix/store/rqvlfwqsnwxcg2bh5n2sdhic6lj2d9l4-source/modules/nixos/nix/auto-update.nix)
 
 
 
@@ -5460,7 +5460,7 @@ null
 ```
 
 *Declared by:*
- - [/nix/store/nadx1qc8fcqjpgnz084l6lj0lr3ykc18-source/modules/nixos/nix/auto-update\.nix](file:///nix/store/nadx1qc8fcqjpgnz084l6lj0lr3ykc18-source/modules/nixos/nix/auto-update.nix)
+ - [/nix/store/rqvlfwqsnwxcg2bh5n2sdhic6lj2d9l4-source/modules/nixos/nix/auto-update\.nix](file:///nix/store/rqvlfwqsnwxcg2bh5n2sdhic6lj2d9l4-source/modules/nixos/nix/auto-update.nix)
 
 
 
@@ -5484,7 +5484,7 @@ one of “self”, “remote”
 ```
 
 *Declared by:*
- - [/nix/store/nadx1qc8fcqjpgnz084l6lj0lr3ykc18-source/modules/nixos/nix/auto-update\.nix](file:///nix/store/nadx1qc8fcqjpgnz084l6lj0lr3ykc18-source/modules/nixos/nix/auto-update.nix)
+ - [/nix/store/rqvlfwqsnwxcg2bh5n2sdhic6lj2d9l4-source/modules/nixos/nix/auto-update\.nix](file:///nix/store/rqvlfwqsnwxcg2bh5n2sdhic6lj2d9l4-source/modules/nixos/nix/auto-update.nix)
 
 
 
@@ -5508,7 +5508,7 @@ signed integer or floating point number
 ```
 
 *Declared by:*
- - [/nix/store/nadx1qc8fcqjpgnz084l6lj0lr3ykc18-source/modules/nixos/nix](file:///nix/store/nadx1qc8fcqjpgnz084l6lj0lr3ykc18-source/modules/nixos/nix)
+ - [/nix/store/rqvlfwqsnwxcg2bh5n2sdhic6lj2d9l4-source/modules/nixos/nix](file:///nix/store/rqvlfwqsnwxcg2bh5n2sdhic6lj2d9l4-source/modules/nixos/nix)
 
 
 
@@ -5540,7 +5540,7 @@ true
 ```
 
 *Declared by:*
- - [/nix/store/nadx1qc8fcqjpgnz084l6lj0lr3ykc18-source/modules/nixos/nix](file:///nix/store/nadx1qc8fcqjpgnz084l6lj0lr3ykc18-source/modules/nixos/nix)
+ - [/nix/store/rqvlfwqsnwxcg2bh5n2sdhic6lj2d9l4-source/modules/nixos/nix](file:///nix/store/rqvlfwqsnwxcg2bh5n2sdhic6lj2d9l4-source/modules/nixos/nix)
 
 
 
@@ -5572,7 +5572,7 @@ string
 ```
 
 *Declared by:*
- - [/nix/store/nadx1qc8fcqjpgnz084l6lj0lr3ykc18-source/modules/nixos/nix](file:///nix/store/nadx1qc8fcqjpgnz084l6lj0lr3ykc18-source/modules/nixos/nix)
+ - [/nix/store/rqvlfwqsnwxcg2bh5n2sdhic6lj2d9l4-source/modules/nixos/nix](file:///nix/store/rqvlfwqsnwxcg2bh5n2sdhic6lj2d9l4-source/modules/nixos/nix)
 
 
 
@@ -5604,7 +5604,7 @@ string
 ```
 
 *Declared by:*
- - [/nix/store/nadx1qc8fcqjpgnz084l6lj0lr3ykc18-source/modules/nixos/nix](file:///nix/store/nadx1qc8fcqjpgnz084l6lj0lr3ykc18-source/modules/nixos/nix)
+ - [/nix/store/rqvlfwqsnwxcg2bh5n2sdhic6lj2d9l4-source/modules/nixos/nix](file:///nix/store/rqvlfwqsnwxcg2bh5n2sdhic6lj2d9l4-source/modules/nixos/nix)
 
 
 
@@ -5628,7 +5628,7 @@ list of (submodule)
 ```
 
 *Declared by:*
- - [/nix/store/nadx1qc8fcqjpgnz084l6lj0lr3ykc18-source/modules/nixos/nix/remote-building\.nix](file:///nix/store/nadx1qc8fcqjpgnz084l6lj0lr3ykc18-source/modules/nixos/nix/remote-building.nix)
+ - [/nix/store/rqvlfwqsnwxcg2bh5n2sdhic6lj2d9l4-source/modules/nixos/nix/remote-building\.nix](file:///nix/store/rqvlfwqsnwxcg2bh5n2sdhic6lj2d9l4-source/modules/nixos/nix/remote-building.nix)
 
 
 
@@ -5644,7 +5644,7 @@ The hostname of the remote builder\.
 string
 
 *Declared by:*
- - [/nix/store/nadx1qc8fcqjpgnz084l6lj0lr3ykc18-source/modules/nixos/nix/remote-building\.nix](file:///nix/store/nadx1qc8fcqjpgnz084l6lj0lr3ykc18-source/modules/nixos/nix/remote-building.nix)
+ - [/nix/store/rqvlfwqsnwxcg2bh5n2sdhic6lj2d9l4-source/modules/nixos/nix/remote-building\.nix](file:///nix/store/rqvlfwqsnwxcg2bh5n2sdhic6lj2d9l4-source/modules/nixos/nix/remote-building.nix)
 
 
 
@@ -5660,7 +5660,7 @@ SSH host public key of the builder, for known_hosts
 string
 
 *Declared by:*
- - [/nix/store/nadx1qc8fcqjpgnz084l6lj0lr3ykc18-source/modules/nixos/nix/remote-building\.nix](file:///nix/store/nadx1qc8fcqjpgnz084l6lj0lr3ykc18-source/modules/nixos/nix/remote-building.nix)
+ - [/nix/store/rqvlfwqsnwxcg2bh5n2sdhic6lj2d9l4-source/modules/nixos/nix/remote-building\.nix](file:///nix/store/rqvlfwqsnwxcg2bh5n2sdhic6lj2d9l4-source/modules/nixos/nix/remote-building.nix)
 
 
 
@@ -5684,7 +5684,7 @@ signed integer
 ```
 
 *Declared by:*
- - [/nix/store/nadx1qc8fcqjpgnz084l6lj0lr3ykc18-source/modules/nixos/nix/remote-building\.nix](file:///nix/store/nadx1qc8fcqjpgnz084l6lj0lr3ykc18-source/modules/nixos/nix/remote-building.nix)
+ - [/nix/store/rqvlfwqsnwxcg2bh5n2sdhic6lj2d9l4-source/modules/nixos/nix/remote-building\.nix](file:///nix/store/rqvlfwqsnwxcg2bh5n2sdhic6lj2d9l4-source/modules/nixos/nix/remote-building.nix)
 
 
 
@@ -5708,7 +5708,7 @@ signed integer
 ```
 
 *Declared by:*
- - [/nix/store/nadx1qc8fcqjpgnz084l6lj0lr3ykc18-source/modules/nixos/nix/remote-building\.nix](file:///nix/store/nadx1qc8fcqjpgnz084l6lj0lr3ykc18-source/modules/nixos/nix/remote-building.nix)
+ - [/nix/store/rqvlfwqsnwxcg2bh5n2sdhic6lj2d9l4-source/modules/nixos/nix/remote-building\.nix](file:///nix/store/rqvlfwqsnwxcg2bh5n2sdhic6lj2d9l4-source/modules/nixos/nix/remote-building.nix)
 
 
 
@@ -5732,7 +5732,7 @@ null
 ```
 
 *Declared by:*
- - [/nix/store/nadx1qc8fcqjpgnz084l6lj0lr3ykc18-source/modules/nixos/nix/remote-building\.nix](file:///nix/store/nadx1qc8fcqjpgnz084l6lj0lr3ykc18-source/modules/nixos/nix/remote-building.nix)
+ - [/nix/store/rqvlfwqsnwxcg2bh5n2sdhic6lj2d9l4-source/modules/nixos/nix/remote-building\.nix](file:///nix/store/rqvlfwqsnwxcg2bh5n2sdhic6lj2d9l4-source/modules/nixos/nix/remote-building.nix)
 
 
 
@@ -5760,7 +5760,7 @@ list of string
 ```
 
 *Declared by:*
- - [/nix/store/nadx1qc8fcqjpgnz084l6lj0lr3ykc18-source/modules/nixos/nix/remote-building\.nix](file:///nix/store/nadx1qc8fcqjpgnz084l6lj0lr3ykc18-source/modules/nixos/nix/remote-building.nix)
+ - [/nix/store/rqvlfwqsnwxcg2bh5n2sdhic6lj2d9l4-source/modules/nixos/nix/remote-building\.nix](file:///nix/store/rqvlfwqsnwxcg2bh5n2sdhic6lj2d9l4-source/modules/nixos/nix/remote-building.nix)
 
 
 
@@ -5786,7 +5786,7 @@ list of string
 ```
 
 *Declared by:*
- - [/nix/store/nadx1qc8fcqjpgnz084l6lj0lr3ykc18-source/modules/nixos/nix/remote-building\.nix](file:///nix/store/nadx1qc8fcqjpgnz084l6lj0lr3ykc18-source/modules/nixos/nix/remote-building.nix)
+ - [/nix/store/rqvlfwqsnwxcg2bh5n2sdhic6lj2d9l4-source/modules/nixos/nix/remote-building\.nix](file:///nix/store/rqvlfwqsnwxcg2bh5n2sdhic6lj2d9l4-source/modules/nixos/nix/remote-building.nix)
 
 
 
@@ -5810,7 +5810,7 @@ string
 ```
 
 *Declared by:*
- - [/nix/store/nadx1qc8fcqjpgnz084l6lj0lr3ykc18-source/modules/nixos/nix/remote-building\.nix](file:///nix/store/nadx1qc8fcqjpgnz084l6lj0lr3ykc18-source/modules/nixos/nix/remote-building.nix)
+ - [/nix/store/rqvlfwqsnwxcg2bh5n2sdhic6lj2d9l4-source/modules/nixos/nix/remote-building\.nix](file:///nix/store/rqvlfwqsnwxcg2bh5n2sdhic6lj2d9l4-source/modules/nixos/nix/remote-building.nix)
 
 
 
@@ -5842,7 +5842,7 @@ true
 ```
 
 *Declared by:*
- - [/nix/store/nadx1qc8fcqjpgnz084l6lj0lr3ykc18-source/modules/nixos/programs](file:///nix/store/nadx1qc8fcqjpgnz084l6lj0lr3ykc18-source/modules/nixos/programs)
+ - [/nix/store/rqvlfwqsnwxcg2bh5n2sdhic6lj2d9l4-source/modules/nixos/programs](file:///nix/store/rqvlfwqsnwxcg2bh5n2sdhic6lj2d9l4-source/modules/nixos/programs)
 
 
 
@@ -5874,6 +5874,6 @@ true
 ```
 
 *Declared by:*
- - [/nix/store/nadx1qc8fcqjpgnz084l6lj0lr3ykc18-source/modules/nixos/theming](file:///nix/store/nadx1qc8fcqjpgnz084l6lj0lr3ykc18-source/modules/nixos/theming)
+ - [/nix/store/rqvlfwqsnwxcg2bh5n2sdhic6lj2d9l4-source/modules/nixos/theming](file:///nix/store/rqvlfwqsnwxcg2bh5n2sdhic6lj2d9l4-source/modules/nixos/theming)
 
 
