@@ -116,7 +116,7 @@ in {
         outPath=$(sudo ${sshRemote} nix build --refresh --no-link --print-out-paths "${flakeAttr}")
 
         echo "Copying closure from ${host} to local store..."
-        NIX_SSHOPTS="-i ${sshKey}" sudo ${nix} copy --no-check-sigs --from ssh://${sshUser}@${host} "$outPath"
+        NIX_SSHOPTS="-i ${sshKey}" sudo ${nix} copy --no-check-sigs --from ssh://${sshUser}@${host} --substitute-on-destination "$outPath"
 
         echo "Activating new configuration..."
         ${nh} os switch --no-nom "$outPath"
