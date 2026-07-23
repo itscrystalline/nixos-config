@@ -34,7 +34,7 @@
       url = "github:nix-community/nix-index-database";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    # FIXME: until xwayland-sattelite fixes https://github.com/Supreeeme/xwayland-satellite/issues/278
+    # FIXME: until xwayland-satellite fixes https://github.com/Supreeeme/xwayland-satellite/issues/278
     xwayland-satellite_old.url = "github:Supreeeme/xwayland-satellite/3273a0fccd71da21c6362c74f3b1d1c0a89ff3ba";
     niri = {
       url = "github:sodiboo/niri-flake";
