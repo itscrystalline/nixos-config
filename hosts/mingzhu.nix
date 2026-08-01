@@ -101,6 +101,10 @@
           url = "https://boinc.bakerlab.org/rosetta/";
           key = "rosetta";
         }
+        {
+          url = "https://milkyway.cs.rpi.edu/milkyway/";
+          key = "milkyway";
+        }
       ];
     };
   };

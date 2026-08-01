@@ -40,9 +40,13 @@
     boinc = {
       enable = true;
       projects = [
+        # {
+        #   url = "http://numberfields.asu.edu/NumberFields/";
+        #   key = "numberfields";
+        # }
         {
-          url = "http://numberfields.asu.edu/NumberFields/";
-          key = "numberfields";
+          url = "https://milkyway.cs.rpi.edu/milkyway/";
+          key = "milkyway";
         }
       ];
     };
