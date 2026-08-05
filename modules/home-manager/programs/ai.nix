@@ -144,5 +144,18 @@ in {
         };
       };
     };
+    home.file.".omp/agent/WATCHDOG.yml".text = ''
+      advisors:
+        - name: default
+          model: opencode-zen/deepseek-v4-flash-free:high
+          tools:
+            - read
+            - bash
+            - glob
+            - grep
+            - lsp
+            - inspect_image
+            - recall
+    '';
   };
 }
