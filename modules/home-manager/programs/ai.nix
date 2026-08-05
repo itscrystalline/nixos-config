@@ -133,7 +133,15 @@ in {
           args = ["stdio"];
           env.GITHUB_PERSONAL_ACCESS_TOKEN = "\${GITHUB_PERSONAL_ACCESS_TOKEN}";
         };
-        nixos.command = "${lib.getExe pkgs.mcp-nixos}";
+        nixos = {
+          type = "stdio";
+          command = "${lib.getExe pkgs.mcp-nixos}";
+        };
+        devenv = {
+          type = "stdio";
+          command = "${lib.getExe config.programs.devenv.pakcage}";
+          args = ["mcp"];
+        };
       };
     };
   };
