@@ -29,6 +29,7 @@ in {
     home.packages = with pkgs;
       [
         gnumake
+        unstable.devenv
         nixd
         cargo-mommy
         python3
@@ -78,12 +79,12 @@ in {
         enableZshIntegration = true;
         enableBashIntegration = true;
       };
-      devenv = {
-        enable = true;
-        package = pkgs.unstable.devenv;
-        enableZshIntegration = true;
-        enableBashIntegration = true;
-      };
+      # devenv = {
+      #   enable = true;
+      #   package = pkgs.unstable.devenv;
+      #   enableZshIntegration = true;
+      #   enableBashIntegration = true;
+      # };
 
       lazygit = {
         enable = true;

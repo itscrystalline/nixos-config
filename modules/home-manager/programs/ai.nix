@@ -139,7 +139,7 @@ in {
         };
         devenv = {
           type = "stdio";
-          command = "${lib.getExe config.programs.devenv.pakcage}";
+          command = "${lib.getExe pkgs.unstable.devenv}";
           args = ["mcp"];
         };
       };
