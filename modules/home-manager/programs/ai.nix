@@ -71,7 +71,7 @@ in {
         nix-flakes = "github:knoopx/pi/skills/nix-flakes@702a7c6f6a78ed5a02b159e32c5ba057a3e13816";
         nh = "github:knoopx/pi/skills/nh@702a7c6f6a78ed5a02b159e32c5ba057a3e13816";
 
-        direnv = "github:julianobarbosa/claude-code-skills/skills/direnv@865973f0f3f59df71c7075db2f1d424a82d9a147";
+        direnv = "github:julianobarbosa/claude-code-skills/skills/direnv@ac701ada10169dc2a7008cb3f8279acdfb3846f5";
       };
 
       rules = {
@@ -106,9 +106,9 @@ in {
         she/they <3
 
         # software
-        when you need a cli tool that isn't installed, don't try to install it
-        permanently — use the `,` (comma) command instead. it's a nix-shell wrapper
-        that runs any program from nixpkgs without installing it, e.g.:
+        when you need a cli tool, first try just running it. if that isn't installed,
+        don't try to install it permanently — use the `,` (comma) command instead.
+        it's a nix-shell wrapper that runs any program from nixpkgs without installing it, e.g.:
 
           , arp -a
           , busybox ls
@@ -117,10 +117,11 @@ in {
         just prefix the command with `,` and the package name (usually matches the
         binary name, but check nixpkgs if it doesn't resolve). never use apt/pip/npm
         global installs or touch system packages — `,` is the only way to pull in
-        ad-hoc tools in this environment.
+        ad-hoc tools in this environment. but try to run just the command first, as the
+        environment may already have it.
       '';
 
-      mcp = {
+      mcp.mcpServers = {
         context7 = {
           type = "http";
           url = "https://mcp.context7.com/mcp";
