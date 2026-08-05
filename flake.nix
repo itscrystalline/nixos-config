@@ -80,6 +80,10 @@
     harmonia.url = "github:nix-community/harmonia";
     concord.url = "github:chojs23/concord";
     ncro.url = "github:feel-co/ncro";
+    omp = {
+      url = "git+https://git.molez.org/mandlm/omp-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = inputs @ {
@@ -97,6 +101,7 @@
       inputs.nix-index-database.homeModules.nix-index
       inputs.occasion.homeManagerModule
       inputs.sops-nix.homeManagerModules.sops
+      inputs.omp.homeManagerModules.omp
     ];
 
     # Build a standalone homeManagerConfiguration (adds stylix HM module).

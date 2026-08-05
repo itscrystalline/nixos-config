@@ -1443,6 +1443,26 @@
         "url": "https://git.iw2tryhard.dev/itscrystalline/occasion"
       }
     },
+    "omp": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1785863025,
+        "narHash": "sha256-WYZuap/xEkzwQQFi8r7JanFh6qyGi+kblmg5e7QtO4M=",
+        "ref": "refs/heads/main",
+        "rev": "a1878857607b4a3f5e06ce7c1f3e71c0719916bc",
+        "revCount": 352,
+        "type": "git",
+        "url": "https://git.molez.org/mandlm/omp-nix"
+      },
+      "original": {
+        "type": "git",
+        "url": "https://git.molez.org/mandlm/omp-nix"
+      }
+    },
     "pyproject-build-systems": {
       "inputs": {
         "nixpkgs": [
@@ -1515,6 +1535,7 @@
         "noctalia-greeter": "noctalia-greeter",
         "nur": "nur",
         "occasion": "occasion",
+        "omp": "omp",
         "sanzenvim": "sanzenvim",
         "sops-nix": "sops-nix",
         "stylix": "stylix",
